@@ -234,7 +234,7 @@ U 1 1 5F7B452C
 P 1700 2600
 F 0 "P1" H 1807 3467 50  0000 C CNN
 F 1 "USB_C_Plug_USB2.0" H 1807 3376 50  0000 C CNN
-F 2 "Connector_USB:USB_C_Receptacle_Amphenol_12401610E4-2A" H 1850 2600 50  0001 C CNN
+F 2 "JPConnectors:USB_C_Receptacle_Adam_Tech" H 1850 2600 50  0001 C CNN
 F 3 "https://www.usb.org/sites/default/files/documents/usb_type-c.zip" H 1850 2600 50  0001 C CNN
 	1    1700 2600
 	1    0    0    -1  
@@ -374,17 +374,6 @@ F 2 "Resistor_SMD:R_0805_2012Metric" V 6380 4850 50  0001 C CNN
 F 3 "~" H 6450 4850 50  0001 C CNN
 	1    6450 4850
 	0    -1   -1   0   
-$EndComp
-$Comp
-L power:VBUS #PWR0110
-U 1 1 5F7F80CF
-P 7150 4850
-F 0 "#PWR0110" H 7150 4700 50  0001 C CNN
-F 1 "VBUS" H 7165 5023 50  0000 C CNN
-F 2 "" H 7150 4850 50  0001 C CNN
-F 3 "" H 7150 4850 50  0001 C CNN
-	1    7150 4850
-	0    1    1    0   
 $EndComp
 $Comp
 L Device:C C11
@@ -537,7 +526,7 @@ Wire Wire Line
 Wire Wire Line
 	4600 3950 4900 3950
 Wire Wire Line
-	4900 3950 4900 4700
+	4900 3950 4900 4150
 Connection ~ 4900 3950
 Wire Wire Line
 	4900 3950 5150 3950
@@ -2850,9 +2839,6 @@ Wire Wire Line
 	7100 4850 7100 4700
 Wire Wire Line
 	7100 4700 7050 4700
-Connection ~ 7100 4850
-Wire Wire Line
-	7100 4850 7150 4850
 Wire Wire Line
 	9700 2250 9700 2300
 Wire Wire Line
@@ -2876,4 +2862,12 @@ Wire Wire Line
 	9750 2300 9800 2300
 Text Notes 10650 3800 0    50   ~ 0
 deltaT=(5.0V-0.5V-3.3V)*65mA*193C/W\ndeltaT=78mW*193C/W=15C
+Wire Wire Line
+	7100 4700 7100 4150
+Wire Wire Line
+	7100 4150 4900 4150
+Connection ~ 7100 4700
+Connection ~ 4900 4150
+Wire Wire Line
+	4900 4150 4900 4700
 $EndSCHEMATC

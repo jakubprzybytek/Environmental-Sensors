@@ -1,4 +1,4 @@
-update=2020-10-25 19:23:50
+update=2020-11-04 17:11:39
 version=1
 last_client=kicad
 [general]
@@ -52,7 +52,7 @@ ViaDrill2=0.4
 ViaDiameter3=0.8
 ViaDrill3=0.5
 ViaDiameter4=1.2
-ViaDrill4=0.6
+ViaDrill4=0.8
 dPairWidth1=0.2
 dPairGap1=0.25
 dPairViaGap1=0.25
