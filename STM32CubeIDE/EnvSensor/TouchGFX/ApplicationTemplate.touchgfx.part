@@ -1,0 +1,21 @@
+
+{
+  "Application": {
+    "Name": "EnvSensor",
+    "TouchGfxPath": "../Middlewares/ST/touchgfx",
+    "AvailableColorDepths": [ 1 ],
+    "AvailableLCDs":
+    {
+      "1": "LCD1bpp"
+    },
+    "AvailableResolutions" : [
+      {
+        "Width": 400,
+        "Height": 600
+      }
+    ],
+    "PostGenerateTargetCommand" : "touchgfx update_project --project-file=../EnvSensor.ioc --platform=m4",
+    "Family" : "STM32L4"
+  },
+  "Version": "4.15.0"
+}
