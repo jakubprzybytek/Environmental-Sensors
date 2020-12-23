@@ -9,7 +9,7 @@
 #include <gui/main_screen/MainPresenter.hpp>
 #include <touchgfx/widgets/Box.hpp>
 #include <touchgfx/widgets/TextArea.hpp>
-#include <touchgfx/widgets/TextAreaWithWildcard.hpp>
+#include <gui/containers/ReadoutContainer.hpp>
 #include <gui/containers/BigReadoutContainer.hpp>
 
 class MainViewBase : public touchgfx::View<MainPresenter>
@@ -30,20 +30,14 @@ protected:
     touchgfx::Box __background;
     touchgfx::Box box2;
     touchgfx::Box box1;
-    touchgfx::TextArea textArea3;
-    touchgfx::TextAreaWithOneWildcard temperatureValueTextArea;
-    touchgfx::TextArea temperatureUnitLabelTextArea;
-    touchgfx::TextArea temperatureLabelTextArea;
-    touchgfx::TextAreaWithOneWildcard humidityValueTextArea;
-    touchgfx::TextArea humidityUnitLabelTextArea;
-    touchgfx::TextArea humidityLabelTextArea;
-    touchgfx::TextArea preassureLabelTextArea;
-    touchgfx::TextAreaWithOneWildcard preassureValueTextArea;
-    touchgfx::TextArea preassureUnitLabelTextArea;
     touchgfx::TextArea textArea3_1;
     touchgfx::TextArea textArea3_1_1;
     touchgfx::TextArea textArea3_1_1_1;
-    BigReadoutContainer bigReadoutContainer1;
+    touchgfx::TextArea textArea3;
+    ReadoutContainer temperatureReadoutContainer;
+    ReadoutContainer humidityReadoutContainer;
+    BigReadoutContainer preassureBigReadoutContainer;
+    BigReadoutContainer co2BigReadoutContainer;
 
 private:
 

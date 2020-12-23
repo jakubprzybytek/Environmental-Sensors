@@ -5,17 +5,27 @@ MainPresenter::MainPresenter(MainView &v) : view(v) {
 }
 
 void MainPresenter::activate() {
+	view.setCo2(model->getCo2());
 	view.setPreassure(model->getPreassure());
 	view.setTemperature(model->getTemperature());
+	view.setHumidity(model->getHumidity());
 }
 
 void MainPresenter::deactivate() {
 }
 
-void MainPresenter::notifyPreassureChanged(uint32_t preassure) {
+void MainPresenter::notifyCo2Changed(float co2) {
+	view.setCo2(co2);
+}
+
+void MainPresenter::notifyPreassureChanged(float preassure) {
 	view.setPreassure(preassure);
 }
 
-void MainPresenter::notifyTemperatureChanged(int16_t temperature) {
+void MainPresenter::notifyTemperatureChanged(float temperature) {
 	view.setTemperature(temperature);
+}
+
+void MainPresenter::notifyHumidityChanged(float humidity) {
+	view.setHumidity(humidity);
 }

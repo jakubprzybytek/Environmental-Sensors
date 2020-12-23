@@ -27,8 +27,10 @@ public:
 
     virtual ~MainPresenter() {};
 
-    void notifyPreassureChanged(uint32_t voltage);
-    void notifyTemperatureChanged(int16_t voltage);
+    void notifyCo2Changed(float co2);
+    void notifyPreassureChanged(float voltage);
+    void notifyTemperatureChanged(float voltage);
+    void notifyHumidityChanged(float humidity);
 
 private:
     MainPresenter();

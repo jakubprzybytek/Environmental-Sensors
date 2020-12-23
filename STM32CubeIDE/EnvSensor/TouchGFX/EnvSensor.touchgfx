@@ -45,258 +45,6 @@
           },
           {
             "Type": "TextArea",
-            "TextId": "SingleUseId3",
-            "TextRotation": "0",
-            "Color": {
-              "Red": 0,
-              "Green": 0,
-              "Blue": 0
-            },
-            "Alpha": 255,
-            "AutoSize": true,
-            "LineSpacing": 0,
-            "Name": "textArea3",
-            "X": -1,
-            "Y": 575,
-            "Width": 33,
-            "Height": 27,
-            "Visible": true,
-            "LockPosition": false,
-            "Draggable": false,
-            "Clickable": false,
-            "Fadeable": false,
-            "Moveable": false
-          },
-          {
-            "Type": "TextArea",
-            "TextId": "SingleUseId7",
-            "TextRotation": "0",
-            "Color": {
-              "Red": 0,
-              "Green": 0,
-              "Blue": 0
-            },
-            "Alpha": 255,
-            "AutoSize": false,
-            "LineSpacing": 0,
-            "Wildcard1": {
-              "UseBuffer": false,
-              "BufferSize": 0
-            },
-            "Name": "temperatureValueTextArea",
-            "X": 200,
-            "Y": 230,
-            "Width": 165,
-            "Height": 56,
-            "Visible": true,
-            "LockPosition": false,
-            "Draggable": false,
-            "Clickable": false,
-            "Fadeable": false,
-            "Moveable": false
-          },
-          {
-            "Type": "TextArea",
-            "TextId": "SingleUseId8",
-            "TextRotation": "0",
-            "Color": {
-              "Red": 0,
-              "Green": 0,
-              "Blue": 0
-            },
-            "Alpha": 255,
-            "AutoSize": true,
-            "LineSpacing": 0,
-            "Name": "temperatureUnitLabelTextArea",
-            "X": 369,
-            "Y": 235,
-            "Width": 20,
-            "Height": 27,
-            "Visible": true,
-            "LockPosition": false,
-            "Draggable": false,
-            "Clickable": false,
-            "Fadeable": false,
-            "Moveable": false
-          },
-          {
-            "Type": "TextArea",
-            "TextId": "SingleUseId2",
-            "TextRotation": "0",
-            "Color": {
-              "Red": 0,
-              "Green": 0,
-              "Blue": 0
-            },
-            "Alpha": 255,
-            "AutoSize": true,
-            "LineSpacing": 0,
-            "Name": "temperatureLabelTextArea",
-            "X": 257,
-            "Y": 203,
-            "Width": 108,
-            "Height": 27,
-            "Visible": true,
-            "LockPosition": false,
-            "Draggable": false,
-            "Clickable": false,
-            "Fadeable": false,
-            "Moveable": false
-          },
-          {
-            "Type": "TextArea",
-            "TextId": "SingleUseId10",
-            "TextRotation": "0",
-            "Color": {
-              "Red": 0,
-              "Green": 0,
-              "Blue": 0
-            },
-            "Alpha": 255,
-            "AutoSize": false,
-            "LineSpacing": 0,
-            "Wildcard1": {
-              "UseBuffer": false,
-              "BufferSize": 0
-            },
-            "Name": "humidityValueTextArea",
-            "X": 0,
-            "Y": 230,
-            "Width": 165,
-            "Height": 56,
-            "Visible": true,
-            "LockPosition": false,
-            "Draggable": false,
-            "Clickable": false,
-            "Fadeable": false,
-            "Moveable": false
-          },
-          {
-            "Type": "TextArea",
-            "TextId": "SingleUseId11",
-            "TextRotation": "0",
-            "Color": {
-              "Red": 0,
-              "Green": 0,
-              "Blue": 0
-            },
-            "Alpha": 255,
-            "AutoSize": true,
-            "LineSpacing": 0,
-            "Name": "humidityUnitLabelTextArea",
-            "X": 169,
-            "Y": 235,
-            "Width": 16,
-            "Height": 27,
-            "Visible": true,
-            "LockPosition": false,
-            "Draggable": false,
-            "Clickable": false,
-            "Fadeable": false,
-            "Moveable": false
-          },
-          {
-            "Type": "TextArea",
-            "TextId": "SingleUseId12",
-            "TextRotation": "0",
-            "Color": {
-              "Red": 0,
-              "Green": 0,
-              "Blue": 0
-            },
-            "Alpha": 255,
-            "AutoSize": true,
-            "LineSpacing": 0,
-            "Name": "humidityLabelTextArea",
-            "X": 87,
-            "Y": 203,
-            "Width": 78,
-            "Height": 27,
-            "Visible": true,
-            "LockPosition": false,
-            "Draggable": false,
-            "Clickable": false,
-            "Fadeable": false,
-            "Moveable": false
-          },
-          {
-            "Type": "TextArea",
-            "TextId": "SingleUseId6",
-            "TextRotation": "0",
-            "Color": {
-              "Red": 0,
-              "Green": 0,
-              "Blue": 0
-            },
-            "Alpha": 255,
-            "AutoSize": true,
-            "LineSpacing": 0,
-            "Name": "preassureLabelTextArea",
-            "X": 188,
-            "Y": 105,
-            "Width": 82,
-            "Height": 27,
-            "Visible": true,
-            "LockPosition": false,
-            "Draggable": false,
-            "Clickable": false,
-            "Fadeable": false,
-            "Moveable": false
-          },
-          {
-            "Type": "TextArea",
-            "TextId": "SingleUseId1",
-            "TextRotation": "0",
-            "Color": {
-              "Red": 0,
-              "Green": 0,
-              "Blue": 0
-            },
-            "Alpha": 255,
-            "AutoSize": false,
-            "LineSpacing": 0,
-            "Wildcard1": {
-              "UseBuffer": false,
-              "BufferSize": 0
-            },
-            "Name": "preassureValueTextArea",
-            "X": 50,
-            "Y": 124,
-            "Width": 220,
-            "Height": 68,
-            "Visible": true,
-            "LockPosition": false,
-            "Draggable": false,
-            "Clickable": false,
-            "Fadeable": false,
-            "Moveable": false
-          },
-          {
-            "Type": "TextArea",
-            "TextId": "SingleUseId9",
-            "TextRotation": "0",
-            "Color": {
-              "Red": 0,
-              "Green": 0,
-              "Blue": 0
-            },
-            "Alpha": 255,
-            "AutoSize": true,
-            "LineSpacing": 0,
-            "Name": "preassureUnitLabelTextArea",
-            "X": 270,
-            "Y": 139,
-            "Width": 22,
-            "Height": 27,
-            "Visible": true,
-            "LockPosition": false,
-            "Draggable": false,
-            "Clickable": false,
-            "Fadeable": false,
-            "Moveable": false
-          },
-          {
-            "Type": "TextArea",
             "TextId": "SingleUseId16",
             "TextRotation": "0",
             "Color": {
@@ -310,7 +58,7 @@
             "Name": "textArea3_1",
             "X": 45,
             "Y": 274,
-            "Width": 62,
+            "Width": 65,
             "Height": 27,
             "Visible": true,
             "LockPosition": false,
@@ -334,7 +82,7 @@
             "Name": "textArea3_1_1",
             "X": 131,
             "Y": 274,
-            "Width": 36,
+            "Width": 37,
             "Height": 27,
             "Visible": true,
             "LockPosition": false,
@@ -358,8 +106,62 @@
             "Name": "textArea3_1_1_1",
             "X": 290,
             "Y": 274,
-            "Width": 23,
+            "Width": 24,
             "Height": 27,
+            "Visible": true,
+            "LockPosition": false,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "TextArea",
+            "TextId": "SingleUseId3",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 0,
+              "Green": 0,
+              "Blue": 0
+            },
+            "Alpha": 255,
+            "AutoSize": true,
+            "LineSpacing": 0,
+            "Name": "textArea3",
+            "X": 0,
+            "Y": 575,
+            "Width": 33,
+            "Height": 27,
+            "Visible": true,
+            "LockPosition": false,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "CustomContainerDefinitionName": "ReadoutContainer",
+            "Type": "CustomContainerInstance",
+            "Name": "temperatureReadoutContainer",
+            "X": 200,
+            "Y": 200,
+            "Width": 200,
+            "Height": 90,
+            "Visible": true,
+            "LockPosition": false,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "CustomContainerDefinitionName": "ReadoutContainer",
+            "Type": "CustomContainerInstance",
+            "Name": "humidityReadoutContainer",
+            "X": 0,
+            "Y": 200,
+            "Width": 200,
+            "Height": 90,
             "Visible": true,
             "LockPosition": false,
             "Draggable": false,
@@ -370,11 +172,26 @@
           {
             "CustomContainerDefinitionName": "BigReadoutContainer",
             "Type": "CustomContainerInstance",
-            "Name": "bigReadoutContainer1",
-            "X": -1,
+            "Name": "preassureBigReadoutContainer",
+            "X": 0,
+            "Y": 100,
+            "Width": 400,
+            "Height": 100,
+            "Visible": true,
+            "LockPosition": false,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "CustomContainerDefinitionName": "BigReadoutContainer",
+            "Type": "CustomContainerInstance",
+            "Name": "co2BigReadoutContainer",
+            "X": 0,
             "Y": 0,
             "Width": 400,
-            "Height": 109,
+            "Height": 100,
             "Visible": true,
             "LockPosition": false,
             "Draggable": false,
@@ -394,30 +211,6 @@
         "Components": [
           {
             "Type": "TextArea",
-            "TextId": "SingleUseId19",
-            "TextRotation": "0",
-            "Color": {
-              "Red": 0,
-              "Green": 0,
-              "Blue": 0
-            },
-            "Alpha": 255,
-            "AutoSize": false,
-            "LineSpacing": 0,
-            "Name": "labelTextArea",
-            "X": 100,
-            "Y": 0,
-            "Width": 220,
-            "Height": 27,
-            "Visible": true,
-            "LockPosition": false,
-            "Draggable": false,
-            "Clickable": false,
-            "Fadeable": false,
-            "Moveable": false
-          },
-          {
-            "Type": "TextArea",
             "TextId": "SingleUseId20",
             "TextRotation": "0",
             "Color": {
@@ -428,9 +221,13 @@
             "Alpha": 255,
             "AutoSize": false,
             "LineSpacing": 0,
+            "Wildcard1": {
+              "UseBuffer": false,
+              "BufferSize": 0
+            },
             "Name": "valueTextArea",
             "X": 0,
-            "Y": 23,
+            "Y": 14,
             "Width": 320,
             "Height": 86,
             "Visible": true,
@@ -454,8 +251,32 @@
             "LineSpacing": 0,
             "Name": "unitTextArea",
             "X": 326,
-            "Y": 41,
+            "Y": 34,
             "Width": 50,
+            "Height": 27,
+            "Visible": true,
+            "LockPosition": false,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "TextArea",
+            "TextId": "SingleUseId19",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 0,
+              "Green": 0,
+              "Blue": 0
+            },
+            "Alpha": 255,
+            "AutoSize": false,
+            "LineSpacing": 0,
+            "Name": "labelTextArea",
+            "X": 100,
+            "Y": 0,
+            "Width": 220,
             "Height": 27,
             "Visible": true,
             "LockPosition": false,
@@ -470,48 +291,98 @@
         "X": 0,
         "Y": 0,
         "Width": 400,
-        "Height": 109
+        "Height": 100
+      },
+      {
+        "Components": [
+          {
+            "Type": "TextArea",
+            "TextId": "SingleUseId23",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 0,
+              "Green": 0,
+              "Blue": 0
+            },
+            "Alpha": 255,
+            "AutoSize": false,
+            "LineSpacing": 0,
+            "Wildcard1": {
+              "UseBuffer": false,
+              "BufferSize": 0
+            },
+            "Name": "valueTextArea",
+            "X": 0,
+            "Y": 18,
+            "Width": 160,
+            "Height": 62,
+            "Visible": true,
+            "LockPosition": false,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "TextArea",
+            "TextId": "SingleUseId24",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 0,
+              "Green": 0,
+              "Blue": 0
+            },
+            "Alpha": 255,
+            "AutoSize": false,
+            "LineSpacing": 0,
+            "Name": "unitTextArea",
+            "X": 162,
+            "Y": 28,
+            "Width": 50,
+            "Height": 27,
+            "Visible": true,
+            "LockPosition": false,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "TextArea",
+            "TextId": "SingleUseId22",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 0,
+              "Green": 0,
+              "Blue": 0
+            },
+            "Alpha": 255,
+            "AutoSize": false,
+            "LineSpacing": 0,
+            "Name": "labelTextArea",
+            "X": 0,
+            "Y": 0,
+            "Width": 160,
+            "Height": 27,
+            "Visible": true,
+            "LockPosition": false,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          }
+        ],
+        "Interactions": [],
+        "Name": "ReadoutContainer",
+        "X": 0,
+        "Y": 0,
+        "Width": 200,
+        "Height": 80
       }
     ],
     "TextEntries": [
       {
-        "TextEntryId": "SingleUseId1",
-        "IsResource": false
-      },
-      {
-        "TextEntryId": "SingleUseId2",
-        "IsResource": false
-      },
-      {
         "TextEntryId": "SingleUseId3",
-        "IsResource": false
-      },
-      {
-        "TextEntryId": "SingleUseId6",
-        "IsResource": false
-      },
-      {
-        "TextEntryId": "SingleUseId7",
-        "IsResource": false
-      },
-      {
-        "TextEntryId": "SingleUseId8",
-        "IsResource": false
-      },
-      {
-        "TextEntryId": "SingleUseId9",
-        "IsResource": false
-      },
-      {
-        "TextEntryId": "SingleUseId10",
-        "IsResource": false
-      },
-      {
-        "TextEntryId": "SingleUseId11",
-        "IsResource": false
-      },
-      {
-        "TextEntryId": "SingleUseId12",
         "IsResource": false
       },
       {
@@ -537,6 +408,50 @@
       {
         "TextEntryId": "SingleUseId21",
         "IsResource": false
+      },
+      {
+        "TextEntryId": "CO2",
+        "IsResource": true
+      },
+      {
+        "TextEntryId": "CO2_Unit",
+        "IsResource": true
+      },
+      {
+        "TextEntryId": "Preassure",
+        "IsResource": true
+      },
+      {
+        "TextEntryId": "Preassure_Unit",
+        "IsResource": true
+      },
+      {
+        "TextEntryId": "SingleUseId22",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId23",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId24",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "Humidity",
+        "IsResource": true
+      },
+      {
+        "TextEntryId": "Humidity_Unit",
+        "IsResource": true
+      },
+      {
+        "TextEntryId": "Temperature",
+        "IsResource": true
+      },
+      {
+        "TextEntryId": "Temperature_Unit",
+        "IsResource": true
       }
     ],
     "Name": "EnvSensor",

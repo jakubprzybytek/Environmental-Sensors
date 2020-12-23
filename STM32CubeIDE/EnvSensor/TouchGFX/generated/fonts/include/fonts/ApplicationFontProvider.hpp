@@ -20,9 +20,9 @@ struct Typography
 
 struct TypographyFontIndex
 {
-    static const touchgfx::FontId DEFAULT = 0; // segoeuisl_20_1bpp
-    static const touchgfx::FontId LARGE = 1;   // segoeuisl_40_1bpp
-    static const touchgfx::FontId HUGE = 2;    // segoeuisl_64_1bpp
+    static const touchgfx::FontId DEFAULT = 0; // segoeui_20_1bpp
+    static const touchgfx::FontId LARGE = 1;   // segoeuisl_46_1bpp
+    static const touchgfx::FontId HUGE = 2;    // segoeuisl_74_1bpp
     static const uint16_t NUMBER_OF_FONTS = 3;
 };
 

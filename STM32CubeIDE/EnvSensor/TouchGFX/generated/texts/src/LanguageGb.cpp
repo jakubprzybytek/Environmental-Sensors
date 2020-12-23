@@ -10,20 +10,22 @@ KEEP extern const uint32_t indicesGb[] TEXT_LOCATION_FLASH_ATTRIBUTE;
 TEXT_LOCATION_FLASH_PRAGMA
 KEEP extern const uint32_t indicesGb[] TEXT_LOCATION_FLASH_ATTRIBUTE =
 {
-    36, // T_SingleUseId1
-    0, // T_SingleUseId2
-    61, // T_SingleUseId3
-    17, // T_SingleUseId6
-    36, // T_SingleUseId7
-    72, // T_SingleUseId8
-    69, // T_SingleUseId9
-    12, // T_SingleUseId10
-    75, // T_SingleUseId11
-    27, // T_SingleUseId12
-    44, // T_SingleUseId16
-    46, // T_SingleUseId17
-    65, // T_SingleUseId18
-    50, // T_SingleUseId19
-    38, // T_SingleUseId20
-    56  // T_SingleUseId21
+    50, // T_SingleUseId3
+    39, // T_SingleUseId16
+    41, // T_SingleUseId17
+    54, // T_SingleUseId18
+    33, // T_SingleUseId19
+    31, // T_SingleUseId20
+    45, // T_SingleUseId21
+    58, // T_CO2
+    68, // T_CO2_Unit
+    12, // T_Preassure
+    62, // T_Preassure_Unit
+    33, // T_SingleUseId22
+    31, // T_SingleUseId23
+    45, // T_SingleUseId24
+    22, // T_Humidity
+    71, // T_Humidity_Unit
+    0, // T_Temperature
+    65  // T_Temperature_Unit
 };

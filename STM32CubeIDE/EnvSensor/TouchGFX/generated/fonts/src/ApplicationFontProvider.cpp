@@ -10,13 +10,13 @@ touchgfx::Font* ApplicationFontProvider::getFont(touchgfx::FontId typography)
     switch (typography)
     {
     case Typography::DEFAULT:
-        // segoeuisl_20_1bpp
+        // segoeui_20_1bpp
         return const_cast<touchgfx::Font*>(TypedTextDatabase::getFonts()[0]);
     case Typography::LARGE:
-        // segoeuisl_40_1bpp
+        // segoeuisl_46_1bpp
         return const_cast<touchgfx::Font*>(TypedTextDatabase::getFonts()[1]);
     case Typography::HUGE:
-        // segoeuisl_64_1bpp
+        // segoeuisl_74_1bpp
         return const_cast<touchgfx::Font*>(TypedTextDatabase::getFonts()[2]);
     default:
         return 0;

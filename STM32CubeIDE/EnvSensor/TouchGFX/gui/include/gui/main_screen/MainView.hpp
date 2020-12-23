@@ -6,19 +6,16 @@
 
 class MainView : public MainViewBase
 {
-private:
-	static const uint8_t TEXTAREA_SIZE = 10;
-	touchgfx::Unicode::UnicodeChar preassureBuffer[TEXTAREA_SIZE];
-	touchgfx::Unicode::UnicodeChar temperatureBuffer[TEXTAREA_SIZE];
-
 public:
     MainView();
     virtual ~MainView() {}
     virtual void setupScreen();
     virtual void tearDownScreen();
 
-    void setPreassure(uint32_t preassure);
-    void setTemperature(int16_t temperature);
+    void setCo2(float co2);
+    void setPreassure(float preassure);
+    void setTemperature(float temperature);
+    void setHumidity(float humidity);
 
 protected:
 };

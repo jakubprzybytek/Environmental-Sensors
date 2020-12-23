@@ -1,36 +1,42 @@
 #ifndef MODEL_HPP
 #define MODEL_HPP
 
-#include <stm32l4xx_hal.h>
-
 class ModelListener;
 
-class Model
-{
+class Model {
 private:
-	uint32_t preassure;
-	int16_t temperature;
+	float co2;
+	float preassure;
+	float temperature;
+	float humidity;
 
 public:
-    Model();
+	Model();
 
-    void bind(ModelListener* listener)
-    {
-        modelListener = listener;
-    }
+	void bind(ModelListener *listener) {
+		modelListener = listener;
+	}
 
-    void tick();
+	void tick();
 
-    uint32_t getPreassure() {
-    	return preassure;
-    }
+	float getCo2() {
+		return co2;
+	}
 
-    int16_t getTemperature() {
-    	return temperature;
-    }
+	float getPreassure() {
+		return preassure;
+	}
+
+	float getTemperature() {
+		return temperature;
+	}
+
+	float getHumidity() {
+		return humidity;
+	}
 
 protected:
-    ModelListener* modelListener;
+	ModelListener *modelListener;
 };
 
 #endif // MODEL_HPP

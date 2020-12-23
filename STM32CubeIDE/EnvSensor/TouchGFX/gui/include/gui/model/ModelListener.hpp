@@ -15,8 +15,10 @@ public:
         model = m;
     }
 
-    virtual void notifyPreassureChanged(uint32_t preassure) {}
-    virtual void notifyTemperatureChanged(int16_t temperature) {}
+    virtual void notifyCo2Changed(float co2) {}
+    virtual void notifyPreassureChanged(float preassure) {}
+    virtual void notifyTemperatureChanged(float temperature) {}
+    virtual void notifyHumidityChanged(float humidity) {}
 
 protected:
     Model* model;

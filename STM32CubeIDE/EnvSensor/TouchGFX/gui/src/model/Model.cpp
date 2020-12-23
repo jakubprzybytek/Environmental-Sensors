@@ -9,9 +9,13 @@ Model::Model() : modelListener(0) {
 }
 
 void Model::tick() {
+	co2 = envState.co2;
 	preassure = envState.preassure;
 	temperature = envState.temperature;
+	humidity = envState.humidity;
 
+	modelListener->notifyCo2Changed(co2);
 	modelListener->notifyPreassureChanged(preassure);
 	modelListener->notifyTemperatureChanged(temperature);
+	modelListener->notifyHumidityChanged(humidity);
 }

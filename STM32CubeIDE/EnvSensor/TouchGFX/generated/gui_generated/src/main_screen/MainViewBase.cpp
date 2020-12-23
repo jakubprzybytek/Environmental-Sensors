@@ -17,56 +17,6 @@ MainViewBase::MainViewBase()
     box1.setPosition(0, 0, 400, 300);
     box1.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
 
-    textArea3.setXY(-1, 575);
-    textArea3.setColor(touchgfx::Color::getColorFrom24BitRGB(0, 0, 0));
-    textArea3.setLinespacing(0);
-    textArea3.setTypedText(touchgfx::TypedText(T_SINGLEUSEID3));
-
-    temperatureValueTextArea.setPosition(200, 230, 165, 56);
-    temperatureValueTextArea.setColor(touchgfx::Color::getColorFrom24BitRGB(0, 0, 0));
-    temperatureValueTextArea.setLinespacing(0);
-    temperatureValueTextArea.setTypedText(touchgfx::TypedText(T_SINGLEUSEID7));
-
-    temperatureUnitLabelTextArea.setXY(369, 235);
-    temperatureUnitLabelTextArea.setColor(touchgfx::Color::getColorFrom24BitRGB(0, 0, 0));
-    temperatureUnitLabelTextArea.setLinespacing(0);
-    temperatureUnitLabelTextArea.setTypedText(touchgfx::TypedText(T_SINGLEUSEID8));
-
-    temperatureLabelTextArea.setXY(257, 203);
-    temperatureLabelTextArea.setColor(touchgfx::Color::getColorFrom24BitRGB(0, 0, 0));
-    temperatureLabelTextArea.setLinespacing(0);
-    temperatureLabelTextArea.setTypedText(touchgfx::TypedText(T_SINGLEUSEID2));
-
-    humidityValueTextArea.setPosition(0, 230, 165, 56);
-    humidityValueTextArea.setColor(touchgfx::Color::getColorFrom24BitRGB(0, 0, 0));
-    humidityValueTextArea.setLinespacing(0);
-    humidityValueTextArea.setTypedText(touchgfx::TypedText(T_SINGLEUSEID10));
-
-    humidityUnitLabelTextArea.setXY(169, 235);
-    humidityUnitLabelTextArea.setColor(touchgfx::Color::getColorFrom24BitRGB(0, 0, 0));
-    humidityUnitLabelTextArea.setLinespacing(0);
-    humidityUnitLabelTextArea.setTypedText(touchgfx::TypedText(T_SINGLEUSEID11));
-
-    humidityLabelTextArea.setXY(87, 203);
-    humidityLabelTextArea.setColor(touchgfx::Color::getColorFrom24BitRGB(0, 0, 0));
-    humidityLabelTextArea.setLinespacing(0);
-    humidityLabelTextArea.setTypedText(touchgfx::TypedText(T_SINGLEUSEID12));
-
-    preassureLabelTextArea.setXY(188, 105);
-    preassureLabelTextArea.setColor(touchgfx::Color::getColorFrom24BitRGB(0, 0, 0));
-    preassureLabelTextArea.setLinespacing(0);
-    preassureLabelTextArea.setTypedText(touchgfx::TypedText(T_SINGLEUSEID6));
-
-    preassureValueTextArea.setPosition(50, 124, 220, 68);
-    preassureValueTextArea.setColor(touchgfx::Color::getColorFrom24BitRGB(0, 0, 0));
-    preassureValueTextArea.setLinespacing(0);
-    preassureValueTextArea.setTypedText(touchgfx::TypedText(T_SINGLEUSEID1));
-
-    preassureUnitLabelTextArea.setXY(270, 139);
-    preassureUnitLabelTextArea.setColor(touchgfx::Color::getColorFrom24BitRGB(0, 0, 0));
-    preassureUnitLabelTextArea.setLinespacing(0);
-    preassureUnitLabelTextArea.setTypedText(touchgfx::TypedText(T_SINGLEUSEID9));
-
     textArea3_1.setXY(45, 274);
     textArea3_1.setColor(touchgfx::Color::getColorFrom24BitRGB(0, 0, 0));
     textArea3_1.setLinespacing(0);
@@ -82,28 +32,36 @@ MainViewBase::MainViewBase()
     textArea3_1_1_1.setLinespacing(0);
     textArea3_1_1_1.setTypedText(touchgfx::TypedText(T_SINGLEUSEID18));
 
-    bigReadoutContainer1.setXY(-1, 0);
+    textArea3.setXY(0, 575);
+    textArea3.setColor(touchgfx::Color::getColorFrom24BitRGB(0, 0, 0));
+    textArea3.setLinespacing(0);
+    textArea3.setTypedText(touchgfx::TypedText(T_SINGLEUSEID3));
+
+    temperatureReadoutContainer.setXY(200, 200);
+
+    humidityReadoutContainer.setXY(0, 200);
+
+    preassureBigReadoutContainer.setXY(0, 100);
+
+    co2BigReadoutContainer.setXY(0, 0);
 
     add(__background);
     add(box2);
     add(box1);
-    add(textArea3);
-    add(temperatureValueTextArea);
-    add(temperatureUnitLabelTextArea);
-    add(temperatureLabelTextArea);
-    add(humidityValueTextArea);
-    add(humidityUnitLabelTextArea);
-    add(humidityLabelTextArea);
-    add(preassureLabelTextArea);
-    add(preassureValueTextArea);
-    add(preassureUnitLabelTextArea);
     add(textArea3_1);
     add(textArea3_1_1);
     add(textArea3_1_1_1);
-    add(bigReadoutContainer1);
+    add(textArea3);
+    add(temperatureReadoutContainer);
+    add(humidityReadoutContainer);
+    add(preassureBigReadoutContainer);
+    add(co2BigReadoutContainer);
 }
 
 void MainViewBase::setupScreen()
 {
-    bigReadoutContainer1.initialize();
+    temperatureReadoutContainer.initialize();
+    humidityReadoutContainer.initialize();
+    preassureBigReadoutContainer.initialize();
+    co2BigReadoutContainer.initialize();
 }

@@ -15,8 +15,6 @@
 
 #include "Sensors/BMP280.hpp"
 
-#include "GUI_Paint.hpp"
-
 using namespace touchgfx;
 
 extern SPI_HandleTypeDef hspi2;
@@ -61,10 +59,10 @@ void EnvSensor_Switch1() {
 	int32_t temperature;
 	bmp280.readMeasurements(&preassure, &temperature);
 
-	preassure /= 256;
-
-	envState.preassure = preassure;
-	envState.temperature = temperature;
+	envState.co2 = 23422.43f;
+	envState.preassure = preassure / 25600.0f;
+	envState.temperature = temperature / 100.0f;
+	envState.humidity = 43.2f;
 
 	OSWrappers::signalVSync();
 }

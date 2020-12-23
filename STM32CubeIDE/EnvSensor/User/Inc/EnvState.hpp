@@ -12,8 +12,10 @@
 
 class EnvState {
 public:
-	uint32_t preassure;
-	int16_t temperature;
+	float co2;
+	float preassure;
+	float temperature;
+	float humidity;
 };
 
 
