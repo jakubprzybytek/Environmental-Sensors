@@ -14,6 +14,9 @@
 #define LED_OFF 	HAL_GPIO_WritePin(LED_GPIO_Port, LED_Pin, GPIO_PIN_RESET)
 #define LED_TOGGLE	HAL_GPIO_TogglePin(LED_GPIO_Port, LED_Pin)
 
+#define BUZZER_ON  	HAL_GPIO_WritePin(Buzzer_GPIO_Port, Buzzer_Pin, GPIO_PIN_SET)
+#define BUZZER_OFF 	HAL_GPIO_WritePin(Buzzer_GPIO_Port, Buzzer_Pin, GPIO_PIN_RESET)
+
 #ifdef __cplusplus
 extern "C" {
 #endif

@@ -9,12 +9,12 @@ BigReadoutContainerBase::BigReadoutContainerBase()
 {
     setWidth(400);
     setHeight(100);
-    valueTextArea.setPosition(0, 14, 320, 86);
+    valueTextArea.setPosition(0, 12, 320, 88);
     valueTextArea.setColor(touchgfx::Color::getColorFrom24BitRGB(0, 0, 0));
     valueTextArea.setLinespacing(0);
     valueTextArea.setTypedText(touchgfx::TypedText(T_SINGLEUSEID20));
 
-    unitTextArea.setPosition(326, 34, 50, 27);
+    unitTextArea.setPosition(326, 32, 50, 27);
     unitTextArea.setColor(touchgfx::Color::getColorFrom24BitRGB(0, 0, 0));
     unitTextArea.setLinespacing(0);
     unitTextArea.setTypedText(touchgfx::TypedText(T_SINGLEUSEID21));

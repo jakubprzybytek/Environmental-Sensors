@@ -46,6 +46,10 @@ void EnvSensor_Loop() {
 		EnvSensor_Switch2();
 		switch2Pressed = false;
 	}
+	if (switch3Pressed) {
+		EnvSensor_Switch3();
+		switch3Pressed = false;
+	}
 	if (switch4Pressed) {
 		EnvSensor_Switch4();
 		switch4Pressed = false;
@@ -69,6 +73,12 @@ void EnvSensor_Switch1() {
 
 void EnvSensor_Switch2() {
 	OSWrappers::signalVSync();
+}
+
+void EnvSensor_Switch3() {
+	BUZZER_ON;
+	HAL_Delay(100);
+	BUZZER_OFF;
 }
 
 void EnvSensor_Switch4() {

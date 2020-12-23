@@ -30,9 +30,10 @@ protected:
     touchgfx::Box __background;
     touchgfx::Box box2;
     touchgfx::Box box1;
-    touchgfx::TextArea textArea3_1;
-    touchgfx::TextArea textArea3_1_1;
-    touchgfx::TextArea textArea3_1_1_1;
+    touchgfx::TextArea button4;
+    touchgfx::TextArea button3;
+    touchgfx::TextArea button2;
+    touchgfx::TextArea button1;
     touchgfx::TextArea textArea3;
     ReadoutContainer temperatureReadoutContainer;
     ReadoutContainer humidityReadoutContainer;

@@ -9,6 +9,7 @@ KEEP extern const touchgfx::KerningNode kerning_segoeui_20_1bpp[] FONT_KERNING_L
     { 0x0054, -1 },  // (First char = [0x0054, T], Second char = [0x0043, C], Kerning dist = -1)
     { 0x004C, -1 },  // (First char = [0x004C, L], Second char = [0x004F, O], Kerning dist = -1)
     { 0x0054, -1 },  // (First char = [0x0054, T], Second char = [0x004F, O], Kerning dist = -1)
+    { 0x0042, -1 },  // (First char = [0x0042, B], Second char = [0x0054, T], Kerning dist = -1)
     { 0x004C, -1 },  // (First char = [0x004C, L], Second char = [0x0054, T], Kerning dist = -1)
     { 0x004F, -1 },  // (First char = [0x004F, O], Second char = [0x0054, T], Kerning dist = -1)
     { 0x0050, -1 },  // (First char = [0x0050, P], Second char = [0x0061, a], Kerning dist = -1)
@@ -26,4 +27,5 @@ KEEP extern const touchgfx::KerningNode kerning_segoeui_20_1bpp[] FONT_KERNING_L
     { 0x004C, -1 },  // (First char = [0x004C, L], Second char = [0x0079, y], Kerning dist = -1)
     { 0x0054, -1 },  // (First char = [0x0054, T], Second char = [0x0079, y], Kerning dist = -1)
     { 0x0072,  1 },  // (First char = [0x0072, r], Second char = [0x0079, y], Kerning dist = 1)
+    { 0x0054, -1 },  // (First char = [0x0054, T], Second char = [0x007A, z], Kerning dist = -1)
 };

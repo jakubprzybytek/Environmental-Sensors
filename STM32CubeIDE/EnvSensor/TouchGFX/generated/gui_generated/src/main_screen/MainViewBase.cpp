@@ -17,20 +17,25 @@ MainViewBase::MainViewBase()
     box1.setPosition(0, 0, 400, 300);
     box1.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
 
-    textArea3_1.setXY(45, 274);
-    textArea3_1.setColor(touchgfx::Color::getColorFrom24BitRGB(0, 0, 0));
-    textArea3_1.setLinespacing(0);
-    textArea3_1.setTypedText(touchgfx::TypedText(T_SINGLEUSEID16));
+    button4.setXY(290, 274);
+    button4.setColor(touchgfx::Color::getColorFrom24BitRGB(0, 0, 0));
+    button4.setLinespacing(0);
+    button4.setTypedText(touchgfx::TypedText(T_SINGLEUSEID18));
 
-    textArea3_1_1.setXY(131, 274);
-    textArea3_1_1.setColor(touchgfx::Color::getColorFrom24BitRGB(0, 0, 0));
-    textArea3_1_1.setLinespacing(0);
-    textArea3_1_1.setTypedText(touchgfx::TypedText(T_SINGLEUSEID17));
+    button3.setXY(210, 274);
+    button3.setColor(touchgfx::Color::getColorFrom24BitRGB(0, 0, 0));
+    button3.setLinespacing(0);
+    button3.setTypedText(touchgfx::TypedText(T_SINGLEUSEID25));
 
-    textArea3_1_1_1.setXY(290, 274);
-    textArea3_1_1_1.setColor(touchgfx::Color::getColorFrom24BitRGB(0, 0, 0));
-    textArea3_1_1_1.setLinespacing(0);
-    textArea3_1_1_1.setTypedText(touchgfx::TypedText(T_SINGLEUSEID18));
+    button2.setXY(131, 274);
+    button2.setColor(touchgfx::Color::getColorFrom24BitRGB(0, 0, 0));
+    button2.setLinespacing(0);
+    button2.setTypedText(touchgfx::TypedText(T_SINGLEUSEID17));
+
+    button1.setXY(45, 274);
+    button1.setColor(touchgfx::Color::getColorFrom24BitRGB(0, 0, 0));
+    button1.setLinespacing(0);
+    button1.setTypedText(touchgfx::TypedText(T_SINGLEUSEID16));
 
     textArea3.setXY(0, 575);
     textArea3.setColor(touchgfx::Color::getColorFrom24BitRGB(0, 0, 0));
@@ -48,9 +53,10 @@ MainViewBase::MainViewBase()
     add(__background);
     add(box2);
     add(box1);
-    add(textArea3_1);
-    add(textArea3_1_1);
-    add(textArea3_1_1_1);
+    add(button4);
+    add(button3);
+    add(button2);
+    add(button1);
     add(textArea3);
     add(temperatureReadoutContainer);
     add(humidityReadoutContainer);

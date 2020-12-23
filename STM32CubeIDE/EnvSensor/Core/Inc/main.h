@@ -80,6 +80,8 @@ void Error_Handler(void);
 #define Switch4_EXTI_IRQn EXTI2_IRQn
 #define LED_Pin GPIO_PIN_11
 #define LED_GPIO_Port GPIOB
+#define Buzzer_Pin GPIO_PIN_12
+#define Buzzer_GPIO_Port GPIOB
 /* USER CODE BEGIN Private defines */
 
 /* USER CODE END Private defines */
