@@ -10,20 +10,14 @@ touchgfx::Font* ApplicationFontProvider::getFont(touchgfx::FontId typography)
     switch (typography)
     {
     case Typography::DEFAULT:
-        // verdana_20_1bpp
+        // segoeuisl_20_1bpp
         return const_cast<touchgfx::Font*>(TypedTextDatabase::getFonts()[0]);
     case Typography::LARGE:
-        // verdana_40_1bpp
+        // segoeuisl_40_1bpp
         return const_cast<touchgfx::Font*>(TypedTextDatabase::getFonts()[1]);
-    case Typography::SMALL:
-        // verdana_10_1bpp
+    case Typography::HUGE:
+        // segoeuisl_64_1bpp
         return const_cast<touchgfx::Font*>(TypedTextDatabase::getFonts()[2]);
-    case Typography::LCD_LARGE:
-        // liquidcrystal_56_1bpp
-        return const_cast<touchgfx::Font*>(TypedTextDatabase::getFonts()[3]);
-    case Typography::TAHOMA_LARGE:
-        // tahoma_52_1bpp
-        return const_cast<touchgfx::Font*>(TypedTextDatabase::getFonts()[4]);
     default:
         return 0;
     }

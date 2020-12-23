@@ -14,6 +14,10 @@ public:
     {
         model = m;
     }
+
+    virtual void notifyPreassureChanged(uint32_t preassure) {}
+    virtual void notifyTemperatureChanged(int16_t temperature) {}
+
 protected:
     Model* model;
 };

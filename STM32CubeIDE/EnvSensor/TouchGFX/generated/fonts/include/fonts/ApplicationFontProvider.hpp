@@ -15,19 +15,15 @@ struct Typography
 {
     static const touchgfx::FontId DEFAULT = 0;
     static const touchgfx::FontId LARGE = 1;
-    static const touchgfx::FontId SMALL = 2;
-    static const touchgfx::FontId LCD_LARGE = 3;
-    static const touchgfx::FontId TAHOMA_LARGE = 4;
+    static const touchgfx::FontId HUGE = 2;
 };
 
 struct TypographyFontIndex
 {
-    static const touchgfx::FontId DEFAULT = 0;      // verdana_20_1bpp
-    static const touchgfx::FontId LARGE = 1;        // verdana_40_1bpp
-    static const touchgfx::FontId SMALL = 2;        // verdana_10_1bpp
-    static const touchgfx::FontId LCD_LARGE = 3;    // liquidcrystal_56_1bpp
-    static const touchgfx::FontId TAHOMA_LARGE = 4; // tahoma_52_1bpp
-    static const uint16_t NUMBER_OF_FONTS = 5;
+    static const touchgfx::FontId DEFAULT = 0; // segoeuisl_20_1bpp
+    static const touchgfx::FontId LARGE = 1;   // segoeuisl_40_1bpp
+    static const touchgfx::FontId HUGE = 2;    // segoeuisl_64_1bpp
+    static const uint16_t NUMBER_OF_FONTS = 3;
 };
 
 class ApplicationFontProvider : public touchgfx::FontProvider
