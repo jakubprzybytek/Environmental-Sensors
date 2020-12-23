@@ -51,6 +51,8 @@
 #define EPD_4IN2B_READ_OTP                                    0xA2
 #define EPD_4IN2B_POWER_SAVING                                0xE3
 
+#define EPD_TIMEOUT			10000
+
 #define EPD_WIDTH			400
 #define EPD_WIDTH_BLOCKS	EPD_WIDTH / 8
 #define EPD_HEIGHT			300
@@ -73,6 +75,9 @@ private:
 
 	void sendCommand(uint8_t command);
 	void sendData(uint8_t data);
+	void sendData(const uint8_t *data, uint16_t size);
+
+	void sendRefreshCommand();
 
 public:
 	EPD_4in2B(SPI_HandleTypeDef &hspi) : hspi(hspi) {
@@ -83,7 +88,6 @@ public:
 	void clear();
 	void display(const uint8_t *blackBuffer, uint8_t *redBuffer);
 	void displayPartial(const uint8_t *buffer, uint16_t x, uint16_t y, uint16_t width, uint16_t height);
-	void fullRefresh();
 };
 
 #endif /* INC_DISPLAY_EPD_4IN2B_HPP2_ */

@@ -18,16 +18,23 @@ void EPD_4in2B::reset() {
 
 void EPD_4in2B::sendCommand(uint8_t command) {
 	EPD_DATA_COMMAND_LOW;
-	EPD_CHIP_SELECT_LOW;
-	HAL_SPI_Transmit(&hspi, &command, 1, 1000);
-	EPD_CHIP_SELECT_HIGH;
+	HAL_SPI_Transmit(&hspi, &command, 1, EPD_TIMEOUT);
 }
 
 void EPD_4in2B::sendData(uint8_t data) {
 	EPD_DATA_COMMAND_HIGH;
-	EPD_CHIP_SELECT_LOW;
-	HAL_SPI_Transmit(&hspi, &data, 1, 1000);
-	EPD_CHIP_SELECT_HIGH;
+	HAL_SPI_Transmit(&hspi, &data, 1, EPD_TIMEOUT);
+}
+
+void EPD_4in2B::sendData(const uint8_t *data, uint16_t size) {
+	EPD_DATA_COMMAND_HIGH;
+	HAL_SPI_Transmit(&hspi, (uint8_t*) data, size, EPD_TIMEOUT);
+}
+
+void EPD_4in2B::sendRefreshCommand() {
+	sendCommand(EPD_4IN2B_DISPLAY_REFRESH);
+	HAL_Delay(100);
+	waitUntilIdle();
 }
 
 void EPD_4in2B::waitUntilIdle() {
@@ -41,14 +48,20 @@ void EPD_4in2B::waitUntilIdle() {
 void EPD_4in2B::init() {
 	reset();
 
+	EPD_CHIP_SELECT_LOW;
+
 	sendCommand(EPD_4IN2B_PANEL_SETTING);
 	sendData(0b00001111);
 
 	sendCommand(EPD_4IN2B_POWER_ON);
 	waitUntilIdle();
+
+	EPD_CHIP_SELECT_HIGH;
 }
 
 void EPD_4in2B::sleep() {
+	EPD_CHIP_SELECT_LOW;
+
 	sendCommand(EPD_4IN2B_VCOM_AND_DATA_INTERVAL_SETTING);
 	sendData(0xf7);
 
@@ -56,15 +69,13 @@ void EPD_4in2B::sleep() {
 	waitUntilIdle();
 	sendCommand(EPD_4IN2B_DEEP_SLEEP);
 	sendData(0xA5);
-}
 
-void EPD_4in2B::fullRefresh() {
-	sendCommand(EPD_4IN2B_DISPLAY_REFRESH);
-	HAL_Delay(100);
-	waitUntilIdle();
+	EPD_CHIP_SELECT_HIGH;
 }
 
 void EPD_4in2B::clear() {
+	EPD_CHIP_SELECT_LOW;
+
 	sendCommand(EPD_4IN2B_DATA_START_TRANSMISSION_1);
 	for (uint16_t i = 0; i < EPD_WIDTH_BLOCKS * EPD_HEIGHT; i++) {
 		sendData(0xff);
@@ -81,30 +92,28 @@ void EPD_4in2B::clear() {
 		}
 	}
 
-	fullRefresh();
+	sendRefreshCommand();
+
+	EPD_CHIP_SELECT_HIGH;
 }
 
 void EPD_4in2B::display(const uint8_t *blackBuffer, uint8_t *redBuffer) {
+	EPD_CHIP_SELECT_LOW;
+
 	sendCommand(EPD_4IN2B_DATA_START_TRANSMISSION_1);
-	for (uint16_t i = 0; i < EPD_WIDTH_BLOCKS * EPD_HEIGHT; i++) {
-		sendData(blackBuffer[i]);
-		if (i % 100 == 0) {
-			LED_TOGGLE;
-		}
-	}
+	sendData(blackBuffer, EPD_WIDTH_BLOCKS * EPD_HEIGHT);
 
 	sendCommand(EPD_4IN2B_DATA_START_TRANSMISSION_2);
-	for (uint16_t i = 0; i < EPD_WIDTH_BLOCKS * EPD_HEIGHT; i++) {
-		sendData(redBuffer[i]);
-		if (i % 100 == 0) {
-			LED_TOGGLE;
-		}
-	}
+	sendData(redBuffer, EPD_WIDTH_BLOCKS * EPD_HEIGHT);
 
-	fullRefresh();
+	sendRefreshCommand();
+
+	EPD_CHIP_SELECT_HIGH;
 }
 
 void EPD_4in2B::displayPartial(const uint8_t *buffer, uint16_t x, uint16_t y, uint16_t width, uint16_t height) {
+	EPD_CHIP_SELECT_LOW;
+
 	sendCommand(EPD_4IN2B_PARTIAL_IN);
 	sendCommand(EPD_4IN2B_PARTIAL_WINDOW);
 	sendData(x >> 8);
@@ -124,5 +133,7 @@ void EPD_4in2B::displayPartial(const uint8_t *buffer, uint16_t x, uint16_t y, ui
 	//   DelayMs(2);
 	sendCommand(EPD_4IN2B_PARTIAL_OUT);
 
-	fullRefresh();
+	sendRefreshCommand();
+
+	EPD_CHIP_SELECT_HIGH;
 }

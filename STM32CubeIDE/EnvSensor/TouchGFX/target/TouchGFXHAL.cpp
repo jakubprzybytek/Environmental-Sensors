@@ -86,9 +86,14 @@ void TouchGFXHAL::flushFrameBuffer(const touchgfx::Rect& rect)
     //TouchGFXGeneratedHAL::flushFrameBuffer(rect);
 	HAL::flushFrameBuffer(rect);
 
+	//frameBufferAllocator->markBlockReadyForTransfer();
+
 	eInk.init();
 	eInk.display((uint8_t*) getClientFrameBuffer(), ((uint8_t*) getClientFrameBuffer() + EPD_WIDTH_BLOCKS * EPD_HEIGHT));
+	//eInk.display((uint8_t*) frameBufferAllocator->getBlockForTransfer(rect), ((uint8_t*) frameBufferAllocator->getBlockForTransfer(rect) + EPD_WIDTH_BLOCKS * EPD_HEIGHT));
 	eInk.sleep();
+
+	//frameBufferAllocator->freeBlockAfterTransfer();
 }
 
 bool TouchGFXHAL::blockCopy(void* RESTRICT dest, const void* RESTRICT src, uint32_t numBytes)
