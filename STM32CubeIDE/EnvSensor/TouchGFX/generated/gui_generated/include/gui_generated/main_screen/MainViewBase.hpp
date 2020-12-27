@@ -31,7 +31,6 @@ protected:
     touchgfx::Box box2;
     touchgfx::Box box1;
     touchgfx::TextArea button4;
-    touchgfx::TextArea button3;
     touchgfx::TextArea button2;
     touchgfx::TextArea button1;
     touchgfx::TextArea textArea3;

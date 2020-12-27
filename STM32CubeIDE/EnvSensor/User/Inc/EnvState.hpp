@@ -15,6 +15,7 @@ public:
 	float co2;
 	float preassure;
 	float temperature;
+	float temperature2;
 	float humidity;
 };
 

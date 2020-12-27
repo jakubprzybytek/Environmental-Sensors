@@ -29,7 +29,7 @@ class Bmp280 {
 private:
 	I2C_HandleTypeDef &hi2c;
 
-	uint8_t bmp280DataBuffer[6];
+	uint8_t buffer[6];
 
 	uint16_t dig_T1;
 	int16_t dig_T2, dig_T3;

@@ -14,6 +14,7 @@
 #include "Display/EPD_4in2b.hpp"
 
 #include "Sensors/BMP280.hpp"
+#include "Sensors/SCD30.hpp"
 
 using namespace touchgfx;
 
@@ -23,6 +24,7 @@ extern I2C_HandleTypeDef hi2c1;
 EPD_4in2B eInk(hspi2);
 
 Bmp280 bmp280(hi2c1);
+Scd30 scd30(hi2c1);
 
 bool switch1Pressed = false;
 bool switch2Pressed = false;
@@ -32,7 +34,28 @@ bool switch4Pressed = false;
 EnvState envState;
 
 int8_t EnvSensor_Init() {
-	return bmp280.init();
+
+	LED_ON;
+	HAL_Delay(100);
+	LED_OFF;
+
+	uint8_t status = scd30.init();
+
+	if (status != HAL_OK) {
+		return status;
+	}
+
+	status = bmp280.init();
+
+	if (status != HAL_OK) {
+		return status;
+	}
+
+	LED_ON;
+	HAL_Delay(100);
+	LED_OFF;
+
+	return status;
 }
 
 void EnvSensor_Loop() {
@@ -54,7 +77,8 @@ void EnvSensor_Loop() {
 		EnvSensor_Switch4();
 		switch4Pressed = false;
 	}
-	LED_TOGGLE;
+
+	//LED_TOGGLE;
 	HAL_Delay(500);
 }
 
@@ -63,22 +87,61 @@ void EnvSensor_Switch1() {
 	int32_t temperature;
 	bmp280.readMeasurements(&preassure, &temperature);
 
-	envState.co2 = 23422.43f;
 	envState.preassure = preassure / 25600.0f;
 	envState.temperature = temperature / 100.0f;
-	envState.humidity = 43.2f;
 
 	OSWrappers::signalVSync();
 }
 
 void EnvSensor_Switch2() {
-	OSWrappers::signalVSync();
+	float co2;
+	float temp;
+	float hum;
+
+	uint8_t stat = scd30.isDataReady();
+
+	if (stat != HAL_OK) {
+		BUZZER_ON;
+		HAL_Delay(200);
+		BUZZER_OFF;
+		HAL_Delay(200);
+	}
+
+	stat = scd30.readMeasurements(&co2, &temp, &hum);
+
+	if (stat != HAL_OK) {
+		BUZZER_ON;
+		HAL_Delay(200);
+		BUZZER_OFF;
+	} else {
+		envState.co2 = co2;
+		envState.temperature2 = temp;
+		envState.humidity = hum;
+	}
 }
 
 void EnvSensor_Switch3() {
 	BUZZER_ON;
-	HAL_Delay(100);
+	HAL_Delay(200);
 	BUZZER_OFF;
+
+	uint8_t i2cStatus = scd30.setMeasurementInterval(2);
+
+	if (i2cStatus != HAL_OK) {
+		HAL_Delay(50);
+		BUZZER_ON;
+		HAL_Delay(200);
+		BUZZER_OFF;
+	}
+
+	i2cStatus = scd30.startContinousMeasurement(0);
+
+	if (i2cStatus != HAL_OK) {
+		HAL_Delay(50);
+		BUZZER_ON;
+		HAL_Delay(200);
+		BUZZER_OFF;
+	}
 }
 
 void EnvSensor_Switch4() {
@@ -100,6 +163,9 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin) {
 		break;
 	case Switch4_Pin:
 		switch4Pressed = true;
+		break;
+	case SCD30_Ready_Pin:
+		HAL_GPIO_WritePin(LED_GPIO_Port, LED_Pin, HAL_GPIO_ReadPin(SCD30_Ready_GPIO_Port, SCD30_Ready_Pin));
 		break;
 	}
 }

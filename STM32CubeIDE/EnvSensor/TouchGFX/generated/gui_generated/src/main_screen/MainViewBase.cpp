@@ -22,11 +22,6 @@ MainViewBase::MainViewBase()
     button4.setLinespacing(0);
     button4.setTypedText(touchgfx::TypedText(T_SINGLEUSEID18));
 
-    button3.setXY(210, 274);
-    button3.setColor(touchgfx::Color::getColorFrom24BitRGB(0, 0, 0));
-    button3.setLinespacing(0);
-    button3.setTypedText(touchgfx::TypedText(T_SINGLEUSEID25));
-
     button2.setXY(131, 274);
     button2.setColor(touchgfx::Color::getColorFrom24BitRGB(0, 0, 0));
     button2.setLinespacing(0);
@@ -54,7 +49,6 @@ MainViewBase::MainViewBase()
     add(box2);
     add(box1);
     add(button4);
-    add(button3);
     add(button2);
     add(button1);
     add(textArea3);

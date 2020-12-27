@@ -1,6 +1,6 @@
 /*
  * EPD_4in2b.cpp
- *
+ * https://github.com/waveshare/e-Paper/tree/master/STM32/STM32-F103ZET6
  *  Created on: Dec 21, 2020
  *      Author: Chipotle
  */
@@ -38,11 +38,11 @@ void EPD_4in2B::sendRefreshCommand() {
 }
 
 void EPD_4in2B::waitUntilIdle() {
-	LED_ON;
+	//LED_ON;
 	do {
 	} while (!EPD_BUSY_READ);
 	//HAL_Delay(200);
-	LED_OFF;
+	//LED_OFF;
 }
 
 void EPD_4in2B::init() {

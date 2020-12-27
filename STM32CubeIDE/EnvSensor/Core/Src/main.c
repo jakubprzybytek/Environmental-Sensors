@@ -220,7 +220,7 @@ static void MX_I2C1_Init(void)
 
   /* USER CODE END I2C1_Init 1 */
   hi2c1.Instance = I2C1;
-  hi2c1.Init.Timing = 0x00000004;
+  hi2c1.Init.Timing = 0x00000E14;
   hi2c1.Init.OwnAddress1 = 0;
   hi2c1.Init.AddressingMode = I2C_ADDRESSINGMODE_7BIT;
   hi2c1.Init.DualAddressMode = I2C_DUALADDRESS_DISABLE;
@@ -342,13 +342,13 @@ static void MX_GPIO_Init(void)
   HAL_GPIO_WritePin(E_INK_Select_GPIO_Port, E_INK_Select_Pin, GPIO_PIN_SET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOA, E_INK_DC_Pin|E_INK_Reset_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOA, E_INK_DC_Pin|E_INK_Reset_Pin|AuxPowerEnable_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOB, LED_Pin|Buzzer_Pin, GPIO_PIN_RESET);
 
-  /*Configure GPIO pins : E_INK_Select_Pin E_INK_DC_Pin E_INK_Reset_Pin */
-  GPIO_InitStruct.Pin = E_INK_Select_Pin|E_INK_DC_Pin|E_INK_Reset_Pin;
+  /*Configure GPIO pins : E_INK_Select_Pin E_INK_DC_Pin E_INK_Reset_Pin AuxPowerEnable_Pin */
+  GPIO_InitStruct.Pin = E_INK_Select_Pin|E_INK_DC_Pin|E_INK_Reset_Pin|AuxPowerEnable_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
@@ -379,6 +379,12 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
+  /*Configure GPIO pin : SCD30_Ready_Pin */
+  GPIO_InitStruct.Pin = SCD30_Ready_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING_FALLING;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  HAL_GPIO_Init(SCD30_Ready_GPIO_Port, &GPIO_InitStruct);
+
   /* EXTI interrupt init*/
   HAL_NVIC_SetPriority(EXTI0_IRQn, 0, 0);
   HAL_NVIC_EnableIRQ(EXTI0_IRQn);
@@ -391,6 +397,9 @@ static void MX_GPIO_Init(void)
 
   HAL_NVIC_SetPriority(EXTI9_5_IRQn, 0, 0);
   HAL_NVIC_EnableIRQ(EXTI9_5_IRQn);
+
+  HAL_NVIC_SetPriority(EXTI15_10_IRQn, 0, 0);
+  HAL_NVIC_EnableIRQ(EXTI15_10_IRQn);
 
 }
 
