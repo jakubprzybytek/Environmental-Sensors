@@ -40,10 +40,12 @@ public:
 	}
 
 	uint8_t init(uint16_t measurementInterval);
+
 	uint8_t startContinousMeasurement(uint16_t preassure);
 	uint8_t stopContinousMeasurement();
 
 	uint8_t readFirmwareVersion(uint8_t *major, uint8_t *minor);
+
 	bool isDataReady();
 	uint8_t readMeasurements(float *co2, float *temperature, float *humidity);
 };

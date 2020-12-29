@@ -84,7 +84,6 @@ void Error_Handler(void);
 #define Buzzer_GPIO_Port GPIOB
 #define SCD30_Ready_Pin GPIO_PIN_11
 #define SCD30_Ready_GPIO_Port GPIOA
-#define SCD30_Ready_EXTI_IRQn EXTI15_10_IRQn
 #define AuxPowerEnable_Pin GPIO_PIN_12
 #define AuxPowerEnable_GPIO_Port GPIOA
 /* USER CODE BEGIN Private defines */

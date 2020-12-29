@@ -40,13 +40,13 @@ uint32_t Bmp280::compensate_P_int64(int32_t adc_P) {
 
 uint8_t Bmp280::setMode(uint8_t mode) {
 	uint8_t toWrite = 0b10101010 | mode; // pressure oversampling x16, temperature oversampling x2
-	return HAL_I2C_Mem_Write(&hi2c, BMP280_SLAVE_ADDRESS, BMP280_INTERNAL_CTRL_MEAS, 1, (uint8_t*) &toWrite, 1, HAL_MAX_DELAY);
+	return HAL_I2C_Mem_Write(&hi2c, BMP280_SLAVE_ADDRESS, BMP280_INTERNAL_CTRL_MEAS, 1, (uint8_t*) &toWrite, 1, BMP280_MAX_DELAY);
 }
 
 uint8_t Bmp280::init() {
 	HAL_StatusTypeDef status;
 	// read calibration parameters
-	status = HAL_I2C_Mem_Read(&hi2c, BMP280_SLAVE_ADDRESS, BMP280_INTERNAL_CALIB_1, 1, (uint8_t*) &buffer, 6, HAL_MAX_DELAY);
+	status = HAL_I2C_Mem_Read(&hi2c, BMP280_SLAVE_ADDRESS, BMP280_INTERNAL_CALIB_1, 1, (uint8_t*) &buffer, 6, BMP280_MAX_DELAY);
 	if (status != HAL_OK) {
 		return status;
 	}
@@ -55,7 +55,7 @@ uint8_t Bmp280::init() {
 	dig_T2 = buffer[3] << 8 | buffer[2];
 	dig_T3 = buffer[5] << 8 | buffer[4];
 
-	status = HAL_I2C_Mem_Read(&hi2c, BMP280_SLAVE_ADDRESS, BMP280_INTERNAL_CALIB_2, 1, (uint8_t*) &buffer, 6, HAL_MAX_DELAY);
+	status = HAL_I2C_Mem_Read(&hi2c, BMP280_SLAVE_ADDRESS, BMP280_INTERNAL_CALIB_2, 1, (uint8_t*) &buffer, 6, BMP280_MAX_DELAY);
 	if (status != HAL_OK) {
 		return status;
 	}
@@ -64,7 +64,7 @@ uint8_t Bmp280::init() {
 	dig_P2 = buffer[3] << 8 | buffer[2];
 	dig_P3 = buffer[5] << 8 | buffer[4];
 
-	status = HAL_I2C_Mem_Read(&hi2c, BMP280_SLAVE_ADDRESS, BMP280_INTERNAL_CALIB_3, 1, (uint8_t*) &buffer, 6, HAL_MAX_DELAY);
+	status = HAL_I2C_Mem_Read(&hi2c, BMP280_SLAVE_ADDRESS, BMP280_INTERNAL_CALIB_3, 1, (uint8_t*) &buffer, 6, BMP280_MAX_DELAY);
 	if (status != HAL_OK) {
 		return status;
 	}
@@ -73,7 +73,7 @@ uint8_t Bmp280::init() {
 	dig_P5 = buffer[3] << 8 | buffer[2];
 	dig_P6 = buffer[5] << 8 | buffer[4];
 
-	status = HAL_I2C_Mem_Read(&hi2c, BMP280_SLAVE_ADDRESS, BMP280_INTERNAL_CALIB_4, 1, (uint8_t*) &buffer, 6, HAL_MAX_DELAY);
+	status = HAL_I2C_Mem_Read(&hi2c, BMP280_SLAVE_ADDRESS, BMP280_INTERNAL_CALIB_4, 1, (uint8_t*) &buffer, 6, BMP280_MAX_DELAY);
 	if (status != HAL_OK) {
 		return status;
 	}
@@ -83,20 +83,21 @@ uint8_t Bmp280::init() {
 	dig_P9 = buffer[5] << 8 | buffer[4];
 
 	uint8_t toWrite = 0b10110100; // t_sb = 1000ms, IIR 2
-	status = HAL_I2C_Mem_Write(&hi2c, BMP280_SLAVE_ADDRESS, BMP280_INTERNAL_CONFIG, 1, (uint8_t*) &toWrite, 1, HAL_MAX_DELAY);
-	if (status != HAL_OK) {
-		return status;
-	}
+	return HAL_I2C_Mem_Write(&hi2c, BMP280_SLAVE_ADDRESS, BMP280_INTERNAL_CONFIG, 1, (uint8_t*) &toWrite, 1, BMP280_MAX_DELAY);
+}
 
+uint8_t Bmp280::startContinousMeasurement() {
 	return setMode(BMP280_MODE_NORMAL);
 }
 
-uint8_t Bmp280::readMeasurements(uint32_t *preassure, int32_t *temperature) {
+uint8_t Bmp280::stopContinousMeasurement() {
+	return setMode(BMP280_MODE_SLEEP);
+}
 
+uint8_t Bmp280::readMeasurements(uint32_t *preassure, int32_t *temperature) {
 	int32_t preassureRaw, temperatureRaw;
 
-	HAL_StatusTypeDef status = HAL_I2C_Mem_Read(&hi2c, BMP280_SLAVE_ADDRESS, BMP280_INTERNAL_MEASUREMENTS, 1, (uint8_t*) &buffer, 6,
-	HAL_MAX_DELAY);
+	HAL_StatusTypeDef status = HAL_I2C_Mem_Read(&hi2c, BMP280_SLAVE_ADDRESS, BMP280_INTERNAL_MEASUREMENTS, 1, (uint8_t*) &buffer, 6, BMP280_MAX_DELAY);
 
 	if (status != HAL_OK) {
 		return status;

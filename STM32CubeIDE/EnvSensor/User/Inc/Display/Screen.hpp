@@ -28,6 +28,7 @@ public:
 
 	uint8_t init();
 
+	void clear();
 	void drawTextLine(uint8_t lineNumber, const char *textLine);
 	void appendTextLine(const char *textLine);
 };

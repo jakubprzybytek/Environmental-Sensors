@@ -25,18 +25,20 @@ extern I2C_HandleTypeDef hi2c1;
 class Sensors {
 
 private:
-	Scd30 scd30;
+	bool active;
 
-public:
+	Scd30 scd30;
 	Bmp280 bmp280;
 
-	Sensors() : scd30(hi2c1), bmp280(hi2c1) {
+public:
+	Sensors() : active(false), scd30(hi2c1), bmp280(hi2c1) {
 	}
 
-	uint8_t initialize();
+	uint8_t init();
 
 	uint8_t start();
 	uint8_t sleep();
+	bool areActive();
 
 	void readFromScd30();
 	void readFromBmp280();

@@ -17,7 +17,7 @@ extern char screenBuffer[20];
 
 extern EnvState envState;
 
-uint8_t Sensors::initialize() {
+uint8_t Sensors::init() {
 
 	AUX_POWER_ENABLE;
 
@@ -40,6 +40,8 @@ uint8_t Sensors::initialize() {
 
 uint8_t Sensors::start() {
 
+	active = true;
+
 	AUX_POWER_ENABLE;
 
 	LED_Blink(100);
@@ -50,10 +52,18 @@ uint8_t Sensors::start() {
 		LED_Blinks(250, 2);
 	}
 
+	status = bmp280.startContinousMeasurement();
+
+	if (status != HAL_OK) {
+		LED_Blinks(250, 3);
+	}
+
 	return status;
 }
 
 uint8_t Sensors::sleep() {
+
+	active = false;
 
 	LED_Blink(100);
 
@@ -63,10 +73,20 @@ uint8_t Sensors::sleep() {
 		LED_Blinks(250, 2);
 	}
 
+	status = bmp280.stopContinousMeasurement();
+
+	if (status != HAL_OK) {
+		LED_Blinks(250, 3);
+	}
+
 	HAL_Delay(50);
 	AUX_POWER_DISABLE;
 
 	return status;
+}
+
+bool Sensors::areActive() {
+	return active;
 }
 
 void Sensors::readFromScd30() {
@@ -77,22 +97,22 @@ void Sensors::readFromScd30() {
 	bool dataReady = scd30.isDataReady();
 
 	if (!dataReady) {
-		screen.appendTextLine("SCD30 no data");
+		screen.drawTextLine(0, "SCD30 no data");
 		return;
 	}
 
 	uint8_t i2cStatus = scd30.readMeasurements(&co2, &temp, &hum);
 
 	if (i2cStatus != HAL_OK) {
-		screen.appendTextLine("SCD30 I2C error");
+		screen.drawTextLine(0, "SCD30 I2C error");
 		return;
 	}
 
 	sprintf(screenBuffer, "CO2: %.2f", co2);
-	screen.appendTextLine(screenBuffer);
+	screen.drawTextLine(0, screenBuffer);
 
 	sprintf(screenBuffer, "T: %.2f, H: %.2f", temp, hum);
-	screen.appendTextLine(screenBuffer);
+	screen.drawTextLine(1, screenBuffer);
 
 	envState.co2 = co2;
 	envState.temperature2 = temp;
@@ -113,8 +133,8 @@ void Sensors::readFromBmp280() {
 	envState.temperature = temperature / 100.0f;
 
 	sprintf(screenBuffer, "P: %.2f", envState.pressure);
-	screen.appendTextLine(screenBuffer);
+	screen.drawTextLine(3, screenBuffer);
 
 	sprintf(screenBuffer, "T: %.2f", envState.temperature);
-	screen.appendTextLine(screenBuffer);
+	screen.drawTextLine(4, screenBuffer);
 }

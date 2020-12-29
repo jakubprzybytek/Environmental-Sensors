@@ -12,9 +12,10 @@
 #include "EnvState.hpp"
 
 #include "Display/Epd_4in2b.hpp"
+#include "Sensors/Sensors.hpp"
+
 #include "Display/Screen.hpp"
 #include <stdio.h>
-#include "Sensors/Sensors.hpp"
 
 using namespace touchgfx;
 
@@ -35,8 +36,10 @@ EnvState envState;
 
 uint8_t EnvSensor_Init() {
 	screen.init();
-	screen.appendTextLine("roko");
-	return sensors.initialize();
+	screen.clear();
+
+	sensors.init();
+	return sensors.start();
 }
 
 void EnvSensor_Loop() {
@@ -59,12 +62,20 @@ void EnvSensor_Loop() {
 		switch4Pressed = false;
 	}
 
-	if (SCD30_DATA_READY) {
-		sensors.readFromScd30();
-	}
-	sensors.readFromBmp280();
+	if (sensors.areActive()) {
+		if (SCD30_DATA_READY) {
+			LED_ON;
+			sensors.readFromScd30();
+			LED_OFF;
+		}
 
-	//LED_TOGGLE;
+		LED_ON;
+		sensors.readFromBmp280();
+		LED_OFF;
+
+		//LED_TOGGLE;
+	}
+
 	HAL_Delay(1000);
 }
 
@@ -73,11 +84,9 @@ void EnvSensor_Switch1() {
 }
 
 void EnvSensor_Switch2() {
-
 }
 
 void EnvSensor_Switch3() {
-
 	//OSWrappers::signalVSync();
 }
 
@@ -104,7 +113,7 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin) {
 		switch4Pressed = true;
 		break;
 	case SCD30_Ready_Pin:
-		HAL_GPIO_WritePin(LED_GPIO_Port, LED_Pin, HAL_GPIO_ReadPin(SCD30_Ready_GPIO_Port, SCD30_Ready_Pin));
+		//HAL_GPIO_WritePin(LED_GPIO_Port, LED_Pin, HAL_GPIO_ReadPin(SCD30_Ready_GPIO_Port, SCD30_Ready_Pin));
 		break;
 	}
 }

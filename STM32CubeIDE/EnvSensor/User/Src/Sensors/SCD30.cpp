@@ -40,6 +40,7 @@ uint8_t Scd30::sendCommand(uint16_t command, uint16_t argument) {
 	buffer[0] = argument >> 8;
 	buffer[1] = (uint8_t) argument;
 	buffer[2] = computeCRC8(buffer);
+
 	return HAL_I2C_Mem_Write(&hi2c, SCD30_SLAVE_ADDRESS, command, 2, buffer, 3, SCD30_MAX_DELAY);
 }
 

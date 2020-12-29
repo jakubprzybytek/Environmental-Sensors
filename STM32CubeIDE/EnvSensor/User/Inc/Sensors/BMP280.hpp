@@ -10,7 +10,9 @@
 
 #include <stm32l4xx_hal.h>
 
-#define BMP280_SLAVE_ADDRESS			0b11101100
+#define BMP280_SLAVE_ADDRESS	0b11101100
+
+#define BMP280_MAX_DELAY		100
 
 #define BMP280_INTERNAL_CALIB_1			0x88
 #define BMP280_INTERNAL_CALIB_2 		0x8E
@@ -39,6 +41,7 @@ private:
 
 	int32_t compensate_T_int32(int32_t adc_T);
 	uint32_t compensate_P_int64(int32_t adc_P);
+
 	uint8_t setMode (uint8_t mode);
 
 public:
@@ -46,8 +49,11 @@ public:
 	}
 
 	uint8_t init();
-	uint8_t readMeasurements(uint32_t *preassure, int32_t *temperature);
 
+	uint8_t startContinousMeasurement();
+	uint8_t stopContinousMeasurement();
+
+	uint8_t readMeasurements(uint32_t *preassure, int32_t *temperature);
 };
 
 #endif /* INC_SENSORS_BMP280_HPP_ */
