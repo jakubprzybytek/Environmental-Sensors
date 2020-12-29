@@ -5,16 +5,7 @@
  *      Author: Chipotle
  */
 
-#include <cstring>
-
 #include "Sensors/SCD30.hpp"
-
-using namespace std;
-
-uint8_t Scd30::init() {
-	AUX_POWER_ENABLE;
-	return HAL_OK;
-}
 
 uint8_t Scd30::computeCRC8(uint8_t *data) {
 	uint8_t crc = 0xFF; //Init with 0xFF
@@ -33,6 +24,18 @@ uint8_t Scd30::computeCRC8(uint8_t *data) {
 	return crc;
 }
 
+/**
+ * Send 2-byte command without arguments.
+ */
+uint8_t Scd30::sendCommand(uint16_t command) {
+	buffer[0] = command >> 8;
+	buffer[1] = (uint8_t) command;
+	return HAL_I2C_Master_Transmit(&hi2c, SCD30_SLAVE_ADDRESS, buffer, 2, SCD30_MAX_DELAY);
+}
+
+/**
+ * Send 2-byte command with 2-byte arguments.
+ */
 uint8_t Scd30::sendCommand(uint16_t command, uint16_t argument) {
 	buffer[0] = argument >> 8;
 	buffer[1] = (uint8_t) argument;
@@ -40,25 +43,61 @@ uint8_t Scd30::sendCommand(uint16_t command, uint16_t argument) {
 	return HAL_I2C_Mem_Write(&hi2c, SCD30_SLAVE_ADDRESS, command, 2, buffer, 3, SCD30_MAX_DELAY);
 }
 
+/**
+ * Send 2-byte command and read response into the buffer.
+ * For some reason SCD30 doesn't work well with HAL_I2C_Mem_Read. Use separate HAL_I2C_Master_Transmit and HAL_I2C_Master_Receive instead.
+ */
 uint8_t Scd30::readCommand(uint16_t command, uint8_t dataSize) {
-	return HAL_I2C_Mem_Read(&hi2c, SCD30_SLAVE_ADDRESS, command, 2, buffer, dataSize, SCD30_MAX_DELAY);
+	buffer[0] = command >> 8;
+	buffer[1] = command;
+	uint8_t i2cStatus = HAL_I2C_Master_Transmit(&hi2c, SCD30_SLAVE_ADDRESS, buffer, 2, SCD30_MAX_DELAY);
+
+	if (i2cStatus != HAL_OK) {
+		return i2cStatus;
+	}
+
+	//HAL_Delay(1);
+
+	return HAL_I2C_Master_Receive(&hi2c, SCD30_SLAVE_ADDRESS, buffer, dataSize, SCD30_MAX_DELAY);
 }
 
 uint8_t Scd30::setMeasurementInterval(uint16_t interval) {
 	return sendCommand(SCD30_SET_MEASUREMENT_INTERVAL, interval);
 }
 
-uint8_t Scd30::startContinousMeasurement(uint16_t preassure) {
-	return sendCommand(SCD30_START_CONTINOUS_MEASUREMENT, preassure);
+uint8_t Scd30::startContinousMeasurement(uint16_t pressure) {
+	return sendCommand(SCD30_START_CONTINOUS_MEASUREMENT, pressure);
+}
+
+uint8_t Scd30::stopContinousMeasurement() {
+	return sendCommand(SCD30_STOP_CONTINOUS_MEASUREMENT);
+}
+
+uint8_t Scd30::init(uint16_t measurementInterval) {
+	return setMeasurementInterval(measurementInterval);
+}
+
+uint8_t Scd30::readFirmwareVersion(uint8_t *major, uint8_t *minor) {
+	uint8_t i2cStatus = readCommand(SCD30_READ_FIRMWARE_VERSION, 3);
+
+	if (i2cStatus != HAL_OK) {
+		return i2cStatus;
+	}
+
+	if (buffer[2] != computeCRC8(buffer)) {
+		return HAL_ERROR;
+	}
+
+	*major = buffer[0];
+	*minor = buffer[1];
+
+	return HAL_OK;
 }
 
 bool Scd30::isDataReady() {
-	uint16_t status;
 	uint8_t i2cStatus = readCommand(SCD30_GET_DATA_READY_STATUS, 3);
 
-	status = buffer[1];
-
-	return i2cStatus == HAL_OK && buffer[2] == computeCRC8(buffer) && status == 1;
+	return i2cStatus == HAL_OK && buffer[2] == computeCRC8(buffer) && buffer[1] == 1;
 }
 
 uint8_t Scd30::readMeasurements(float *co2, float *temperature, float *humidity) {
@@ -77,9 +116,9 @@ uint8_t Scd30::readMeasurements(float *co2, float *temperature, float *humidity)
 	uint32_t temperatureRaw = buffer[6] << 24 | buffer[7] << 16 | buffer[9] << 8 | buffer[10];
 	uint32_t humidityRaw = buffer[12] << 24 | buffer[13] << 16 | buffer[15] << 8 | buffer[16];
 
-	memcpy(co2, &co2Raw, 4);
-	memcpy(temperature, &temperatureRaw, 4);
-	memcpy(humidity, &humidityRaw, 4);
+	*co2 = *((float*) &co2Raw);
+	*temperature = *((float*) &temperatureRaw);
+	*humidity = *((float*) &humidityRaw);
 
 	return HAL_OK;
 }

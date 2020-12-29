@@ -77,6 +77,7 @@ private:
 	void sendData(uint8_t data);
 	void sendData(const uint8_t *data, uint16_t size);
 
+	void SetLut();
 	void sendRefreshCommand();
 
 public:
