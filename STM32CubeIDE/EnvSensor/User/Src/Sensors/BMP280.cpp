@@ -5,7 +5,7 @@
  *      Author: Chipotle
  */
 
-#include "Sensors/BMP280.hpp"
+#include "Sensors/Bmp280.hpp"
 
 // Returns temperature in DegC, resolution is 0.01 DegC. Output value of '5123' equals 51.23 DegC.
 int32_t Bmp280::compensate_T_int32(int32_t adc_T) {

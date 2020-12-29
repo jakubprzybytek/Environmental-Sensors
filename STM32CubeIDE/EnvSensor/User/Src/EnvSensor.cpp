@@ -11,7 +11,7 @@
 #include "EnvSensor.hpp"
 #include "EnvState.hpp"
 
-#include "Display/EPD_4in2b.hpp"
+#include "Display/Epd_4in2b.hpp"
 #include "Display/Screen.hpp"
 #include <stdio.h>
 #include "Sensors/Sensors.hpp"

@@ -12,8 +12,8 @@
 
 #include "EnvSensor.hpp"
 
-#include "Sensors/BMP280.hpp"
-#include "Sensors/SCD30.hpp"
+#include "Sensors/Bmp280.hpp"
+#include "Sensors/Scd30.hpp"
 
 #define AUX_POWER_ENABLE 	HAL_GPIO_WritePin(AuxPowerEnable_GPIO_Port, AuxPowerEnable_Pin, GPIO_PIN_SET)
 #define AUX_POWER_DISABLE 	HAL_GPIO_WritePin(AuxPowerEnable_GPIO_Port, AuxPowerEnable_Pin, GPIO_PIN_RESET)

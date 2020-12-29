@@ -5,7 +5,7 @@
  *      Author: Chipotle
  */
 
-#include "Sensors/SCD30.hpp"
+#include "Sensors/Scd30.hpp"
 
 uint8_t Scd30::computeCRC8(uint8_t *data) {
 	uint8_t crc = 0xFF; //Init with 0xFF
