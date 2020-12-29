@@ -10,7 +10,7 @@ Model::Model() : modelListener(0) {
 
 void Model::tick() {
 	co2 = envState.co2;
-	preassure = envState.preassure;
+	preassure = envState.pressure;
 	temperature = envState.temperature;
 	humidity = envState.humidity;
 

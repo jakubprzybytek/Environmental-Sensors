@@ -13,7 +13,7 @@
 class EnvState {
 public:
 	float co2;
-	float preassure;
+	float pressure;
 	float temperature;
 	float temperature2;
 	float humidity;

@@ -53,6 +53,13 @@ uint8_t Scd30::readCommand(uint16_t command, uint8_t dataSize) {
 	uint8_t i2cStatus = HAL_I2C_Master_Transmit(&hi2c, SCD30_SLAVE_ADDRESS, buffer, 2, SCD30_MAX_DELAY);
 
 	if (i2cStatus != HAL_OK) {
+
+		if (__HAL_I2C_GET_FLAG(&hi2c, I2C_FLAG_BUSY) == SET) {
+			// recover from SCD30 communication failure
+			HAL_I2C_DeInit(&hi2c);
+			HAL_I2C_Init(&hi2c);
+		}
+
 		return i2cStatus;
 	}
 

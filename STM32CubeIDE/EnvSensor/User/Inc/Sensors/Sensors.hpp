@@ -39,6 +39,7 @@ public:
 	uint8_t sleep();
 
 	void readFromScd30();
+	void readFromBmp280();
 };
 
 #endif /* INC_SENSOR_HPP_ */

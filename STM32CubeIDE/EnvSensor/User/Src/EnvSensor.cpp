@@ -62,8 +62,7 @@ void EnvSensor_Loop() {
 	if (SCD30_DATA_READY) {
 		sensors.readFromScd30();
 	}
-
-	screen.appendTextLine("tick");
+	sensors.readFromBmp280();
 
 	//LED_TOGGLE;
 	HAL_Delay(1000);
@@ -78,15 +77,6 @@ void EnvSensor_Switch2() {
 }
 
 void EnvSensor_Switch3() {
-	uint32_t preassure;
-	int32_t temperature;
-	sensors.bmp280.readMeasurements(&preassure, &temperature);
-
-	sprintf(screenBuffer, "bmp280 %ld", preassure);
-	//screen.appendTextLine(buffer);
-
-	envState.preassure = preassure / 25600.0f;
-	envState.temperature = temperature / 100.0f;
 
 	//OSWrappers::signalVSync();
 }
