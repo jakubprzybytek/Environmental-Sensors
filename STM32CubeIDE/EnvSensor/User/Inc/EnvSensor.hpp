@@ -34,6 +34,8 @@ extern void EnvSensor_Switch2();
 extern void EnvSensor_Switch3();
 extern void EnvSensor_Switch4();
 
+extern void EnvSensor_PerformMeasurements();
+
 #ifdef __cplusplus
 }
 #endif

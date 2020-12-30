@@ -20,6 +20,7 @@
 using namespace touchgfx;
 
 extern SPI_HandleTypeDef hspi2;
+extern TIM_HandleTypeDef htim2;
 
 EPD_4in2B eInk(hspi2);
 Screen screen;
@@ -32,6 +33,8 @@ bool switch2Pressed = false;
 bool switch3Pressed = false;
 bool switch4Pressed = false;
 
+bool measureRequested = false;
+
 EnvState envState;
 
 uint8_t EnvSensor_Init() {
@@ -39,7 +42,10 @@ uint8_t EnvSensor_Init() {
 	screen.clear();
 
 	sensors.init();
-	return sensors.start();
+	sensors.start();
+
+	// Main measurement timer
+	HAL_TIM_Base_Start_IT(&htim2);
 }
 
 void EnvSensor_Loop() {
@@ -62,21 +68,17 @@ void EnvSensor_Loop() {
 		switch4Pressed = false;
 	}
 
-	if (sensors.areActive()) {
-		if (SCD30_DATA_READY) {
-			LED_ON;
-			sensors.readFromScd30();
-			LED_OFF;
+	if (measureRequested) {
+		if (sensors.areActive()) {
+			LED_Blink(10);
+			EnvSensor_PerformMeasurements();
 		}
-
-		LED_ON;
-		sensors.readFromBmp280();
-		LED_OFF;
-
-		//LED_TOGGLE;
+		measureRequested = false;
 	}
 
-	HAL_Delay(1000);
+	HAL_SuspendTick();
+	HAL_PWR_EnterSLEEPMode(PWR_MAINREGULATOR_ON, PWR_SLEEPENTRY_WFI);
+	HAL_ResumeTick();
 }
 
 void EnvSensor_Switch1() {
@@ -98,6 +100,14 @@ void EnvSensor_Switch4() {
 	 eInk.sleep();*/
 }
 
+void EnvSensor_PerformMeasurements() {
+	if (SCD30_DATA_READY) {
+		sensors.readFromScd30();
+	}
+
+	sensors.readFromBmp280();
+}
+
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin) {
 	switch (GPIO_Pin) {
 	case Switch1_Pin:
@@ -115,5 +125,12 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin) {
 	case SCD30_Ready_Pin:
 		//HAL_GPIO_WritePin(LED_GPIO_Port, LED_Pin, HAL_GPIO_ReadPin(SCD30_Ready_GPIO_Port, SCD30_Ready_Pin));
 		break;
+	}
+}
+
+void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
+	// Main measurement request
+	if (htim == &htim2) {
+		measureRequested = true;
 	}
 }
