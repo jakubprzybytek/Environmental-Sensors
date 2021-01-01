@@ -58,6 +58,7 @@ void Error_Handler(void);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
+#define READOUT_RETRY_DELAY 1
 #define E_INK_Select_Pin GPIO_PIN_3
 #define E_INK_Select_GPIO_Port GPIOA
 #define E_INK_DC_Pin GPIO_PIN_4

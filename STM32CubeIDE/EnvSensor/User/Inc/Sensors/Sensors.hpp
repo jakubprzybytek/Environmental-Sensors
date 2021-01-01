@@ -40,7 +40,7 @@ public:
 	uint8_t sleep();
 	bool areActive();
 
-	void readFromScd30();
+	bool readFromScd30();
 	void readFromBmp280();
 };
 

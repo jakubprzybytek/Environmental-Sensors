@@ -18,14 +18,14 @@
 #define LED_Blink(delay)	LED_ON; HAL_Delay(delay); LED_OFF;
 #define LED_Blinks(delay, repeat)	for(uint8_t ledBlink; ledBlink < repeat; ledBlink++) { HAL_Delay(delay); LED_ON; HAL_Delay(delay); LED_OFF; }
 
-#define BUZZER_ON  	HAL_GPIO_WritePin(Buzzer_GPIO_Port, Buzzer_Pin, GPIO_PIN_SET)
-#define BUZZER_OFF 	HAL_GPIO_WritePin(Buzzer_GPIO_Port, Buzzer_Pin, GPIO_PIN_RESET)
+#define BUZZER_ON 		 	HAL_GPIO_WritePin(Buzzer_GPIO_Port, Buzzer_Pin, GPIO_PIN_SET)
+#define BUZZER_OFF 			HAL_GPIO_WritePin(Buzzer_GPIO_Port, Buzzer_Pin, GPIO_PIN_RESET)
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-extern uint8_t EnvSensor_Init();
+extern void EnvSensor_Init();
 
 extern void EnvSensor_Loop();
 

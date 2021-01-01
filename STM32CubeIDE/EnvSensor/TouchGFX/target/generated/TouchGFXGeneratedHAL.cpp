@@ -26,7 +26,7 @@ using namespace touchgfx;
 namespace {
     // Use the section "TouchGFX_Framebuffer" in the linker to specify the placement of the buffer
     LOCATION_PRAGMA("TouchGFX_Framebuffer")
-    uint32_t frameBuf[(((400 + 7) / 8) * 600 + 3) / 4 * 2] LOCATION_ATTRIBUTE("TouchGFX_Framebuffer");
+    uint32_t frameBuf[(((400 + 7) / 8) * 600 + 3) / 4] LOCATION_ATTRIBUTE("TouchGFX_Framebuffer");
 }
 
 void TouchGFXGeneratedHAL::initialize()
@@ -36,7 +36,14 @@ void TouchGFXGeneratedHAL::initialize()
     registerEventListener(*(Application::getInstance()));
     enableLCDControllerInterrupt();
     enableInterrupts();
-    setFrameBufferStartAddresses((void*)frameBuf, (void*)(frameBuf + sizeof(frameBuf)/(sizeof(uint32_t)*2)), (void*)0);
+    setFrameBufferStartAddresses((void*)frameBuf, (void*)0, (void*)0);
+    /*
+     * Set whether the DMA transfers are locked to the TFT update cycle. If
+     * locked, DMA transfer will not begin until the TFT controller has finished
+     * updating the display. If not locked, DMA transfers will begin as soon as
+     * possible. Default is true (DMA is locked with TFT).
+     */
+    lockDMAToFrontPorch(true);
 }
 
 void TouchGFXGeneratedHAL::configureInterrupts()

@@ -21,6 +21,7 @@ using namespace touchgfx;
 
 extern SPI_HandleTypeDef hspi2;
 extern TIM_HandleTypeDef htim2;
+extern TIM_HandleTypeDef htim15;
 
 EPD_4in2B eInk(hspi2);
 Screen screen;
@@ -34,10 +35,11 @@ bool switch3Pressed = false;
 bool switch4Pressed = false;
 
 bool measureRequested = false;
+bool readoutRetry = false;
 
 EnvState envState;
 
-uint8_t EnvSensor_Init() {
+void EnvSensor_Init() {
 	screen.init();
 	screen.clear();
 
@@ -76,6 +78,15 @@ void EnvSensor_Loop() {
 		measureRequested = false;
 	}
 
+	if (readoutRetry) {
+		if (sensors.areActive()) {
+
+		}
+		readoutRetry = false;
+	}
+
+	LED_Blink(2);
+
 	HAL_SuspendTick();
 	HAL_PWR_EnterSLEEPMode(PWR_MAINREGULATOR_ON, PWR_SLEEPENTRY_WFI);
 	HAL_ResumeTick();
@@ -89,7 +100,7 @@ void EnvSensor_Switch2() {
 }
 
 void EnvSensor_Switch3() {
-	//OSWrappers::signalVSync();
+	OSWrappers::signalVSync();
 }
 
 void EnvSensor_Switch4() {
@@ -102,7 +113,11 @@ void EnvSensor_Switch4() {
 
 void EnvSensor_PerformMeasurements() {
 	if (SCD30_DATA_READY) {
-		sensors.readFromScd30();
+		if (!sensors.readFromScd30()) {
+			// start the readout retry timer
+			htim15.Instance->CNT = 0;
+			HAL_TIM_Base_Start_IT(&htim15);
+		}
 	}
 
 	sensors.readFromBmp280();
@@ -132,5 +147,10 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
 	// Main measurement request
 	if (htim == &htim2) {
 		measureRequested = true;
+	}
+	// readout retry
+	if (htim == &htim15) {
+		HAL_TIM_Base_Stop_IT(&htim15);
+		readoutRetry = true;
 	}
 }

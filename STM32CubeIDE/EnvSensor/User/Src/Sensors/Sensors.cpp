@@ -89,7 +89,10 @@ bool Sensors::areActive() {
 	return active;
 }
 
-void Sensors::readFromScd30() {
+/**
+ * @ret True if readout was successful.
+ */
+bool Sensors::readFromScd30() {
 	float co2;
 	float temp;
 	float hum;
@@ -98,14 +101,14 @@ void Sensors::readFromScd30() {
 
 	if (!dataReady) {
 		screen.drawTextLine(0, "SCD30 no data");
-		return;
+		return false;
 	}
 
 	uint8_t i2cStatus = scd30.readMeasurements(&co2, &temp, &hum);
 
 	if (i2cStatus != HAL_OK) {
 		screen.drawTextLine(0, "SCD30 I2C error");
-		return;
+		return false;
 	}
 
 	sprintf(screenBuffer, "CO2: %.2f", co2);
@@ -117,6 +120,8 @@ void Sensors::readFromScd30() {
 	envState.co2 = co2;
 	envState.temperature2 = temp;
 	envState.humidity = hum;
+
+	return true;
 }
 
 void Sensors::readFromBmp280() {
