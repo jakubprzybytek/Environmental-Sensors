@@ -76,7 +76,7 @@ public:
 	SSD1306(I2C_HandleTypeDef &hi2c) : hi2c(hi2c) {
 	}
 
-	uint8_t init();
+	void init();
 
 	void setDisplayOffset(uint8_t offsetLine);
 	void setDrawingArea(uint8_t startCol, uint8_t endCol, uint8_t startPage, uint8_t endPage);

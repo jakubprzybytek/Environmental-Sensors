@@ -34,8 +34,17 @@ bool switch2Pressed = false;
 bool switch3Pressed = false;
 bool switch4Pressed = false;
 
-bool measureRequested = false;
-bool readoutRetry = false;
+bool performScd30Measurement = false;
+bool performBmp280Measurement = false;
+
+uint8_t *blackBuffer;
+uint8_t *redBuffer;
+
+enum class DisplayAction {
+	None, Init, Transfer, Sleep
+};
+
+DisplayAction nextDisplayAction;
 
 EnvState envState;
 
@@ -51,6 +60,10 @@ void EnvSensor_Init() {
 }
 
 void EnvSensor_Loop() {
+	HAL_SuspendTick();
+	HAL_PWR_EnterSLEEPMode(PWR_MAINREGULATOR_ON, PWR_SLEEPENTRY_WFI);
+	HAL_ResumeTick();
+
 	OSWrappers::signalRenderingDone();
 
 	if (switch1Pressed) {
@@ -70,26 +83,16 @@ void EnvSensor_Loop() {
 		switch4Pressed = false;
 	}
 
-	if (measureRequested) {
+	if (performScd30Measurement || performBmp280Measurement) {
 		if (sensors.areActive()) {
 			LED_Blink(10);
 			EnvSensor_PerformMeasurements();
 		}
-		measureRequested = false;
 	}
 
-	if (readoutRetry) {
-		if (sensors.areActive()) {
-
-		}
-		readoutRetry = false;
+	if (nextDisplayAction != DisplayAction::None && !E_INK_BUSY) {
+		EnvSensor_PerformNextDisplayAction();
 	}
-
-	LED_Blink(2);
-
-	HAL_SuspendTick();
-	HAL_PWR_EnterSLEEPMode(PWR_MAINREGULATOR_ON, PWR_SLEEPENTRY_WFI);
-	HAL_ResumeTick();
 }
 
 void EnvSensor_Switch1() {
@@ -106,21 +109,63 @@ void EnvSensor_Switch3() {
 void EnvSensor_Switch4() {
 	sensors.sleep();
 
-	/*eInk.init();
-	 eInk.clear();
-	 eInk.sleep();*/
+	eInk.init(true);
+	eInk.clear(true);
+	eInk.sleep(true);
 }
 
 void EnvSensor_PerformMeasurements() {
-	if (SCD30_DATA_READY) {
-		if (!sensors.readFromScd30()) {
-			// start the readout retry timer
-			htim15.Instance->CNT = 0;
-			HAL_TIM_Base_Start_IT(&htim15);
+	if (performScd30Measurement) {
+		if (!SCD30_DATA_READY || sensors.readFromScd30()) {
+			performScd30Measurement = false;
 		}
 	}
 
-	sensors.readFromBmp280();
+	if (performBmp280Measurement) {
+		if (sensors.readFromBmp280()) {
+			performBmp280Measurement = false;
+		}
+	}
+
+	// start the readout retry timer
+	if (performScd30Measurement || performBmp280Measurement) {
+		htim15.Instance->CNT = 0;
+		HAL_TIM_Base_Start_IT(&htim15);
+	}
+
+}
+
+void EnvSensor_RequestTransferFramebufferToDisplay(uint8_t *blackBufferParam, uint8_t *redBufferParam) {
+	blackBuffer = blackBufferParam;
+	redBuffer = redBufferParam;
+
+	if (nextDisplayAction == DisplayAction::None) {
+		nextDisplayAction = DisplayAction::Init;
+		EnvSensor_PerformNextDisplayAction();
+	}
+}
+
+void EnvSensor_PerformNextDisplayAction() {
+	switch (nextDisplayAction) {
+
+	case DisplayAction::Init:
+		eInk.init(false);
+		nextDisplayAction = DisplayAction::Transfer;
+		break;
+
+	case DisplayAction::Transfer:
+		eInk.display(blackBuffer, redBuffer, false);
+		nextDisplayAction = DisplayAction::Sleep;
+		break;
+
+	case DisplayAction::Sleep:
+		eInk.sleep(false);
+		nextDisplayAction = DisplayAction::None;
+		break;
+
+	default:
+		break;
+	}
 }
 
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin) {
@@ -137,20 +182,23 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin) {
 	case Switch4_Pin:
 		switch4Pressed = true;
 		break;
-	case SCD30_Ready_Pin:
-		//HAL_GPIO_WritePin(LED_GPIO_Port, LED_Pin, HAL_GPIO_ReadPin(SCD30_Ready_GPIO_Port, SCD30_Ready_Pin));
+	case E_INK_Busy_Pin:
+		// when eInk busy pin is down - just wake up and perform next display action
 		break;
+//	case SCD30_Ready_Pin:
+//		//HAL_GPIO_WritePin(LED_GPIO_Port, LED_Pin, HAL_GPIO_ReadPin(SCD30_Ready_GPIO_Port, SCD30_Ready_Pin));
+//		break;
 	}
 }
 
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
 	// Main measurement request
 	if (htim == &htim2) {
-		measureRequested = true;
+		performScd30Measurement = true;
+		performBmp280Measurement = true;
 	}
-	// readout retry
+	// readout retry - just wake up
 	if (htim == &htim15) {
 		HAL_TIM_Base_Stop_IT(&htim15);
-		readoutRetry = true;
 	}
 }

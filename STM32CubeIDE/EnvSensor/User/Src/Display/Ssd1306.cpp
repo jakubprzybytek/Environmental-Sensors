@@ -28,7 +28,7 @@
 #include <stdint.h>
 #include "Display/Ssd1306.hpp"
 
-uint8_t SSD1306::init() {
+void SSD1306::init() {
 	// Turn display off
 	sendCommand(SSD1306_DISPLAYOFF);
 

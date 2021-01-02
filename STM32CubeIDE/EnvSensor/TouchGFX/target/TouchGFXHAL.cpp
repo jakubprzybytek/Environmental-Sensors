@@ -4,7 +4,7 @@
   ******************************************************************************
   * @attention
   *
-  * <h2><center>&copy; Copyright (c) 2020 STMicroelectronics.
+  * <h2><center>&copy; Copyright (c) 2021 STMicroelectronics.
   * All rights reserved.</center></h2>
   *
   * This software component is licensed by ST under Ultimate Liberty license
@@ -21,6 +21,7 @@
 #include "stm32l4xx.h"
 
 #include "Display/EPD_4in2b.hpp"
+#include "EnvSensor.hpp"
 
 using namespace touchgfx;
 
@@ -66,8 +67,6 @@ void TouchGFXHAL::setTFTFrameBuffer(uint16_t* address)
     TouchGFXGeneratedHAL::setTFTFrameBuffer(address);
 }
 
-extern EPD_4in2B eInk;
-
 /**
  * This function is called whenever the framework has performed a partial draw.
  *
@@ -84,17 +83,9 @@ void TouchGFXHAL::flushFrameBuffer(const touchgfx::Rect& rect)
     // Please note, HAL::flushFrameBuffer(const touchgfx::Rect& rect) must
     // be called to notify the touchgfx framework that flush has been performed.
 
-    //TouchGFXGeneratedHAL::flushFrameBuffer(rect);
-	HAL::flushFrameBuffer(rect);
+    HAL::flushFrameBuffer(rect);
 
-	//frameBufferAllocator->markBlockReadyForTransfer();
-
-	eInk.init();
-	eInk.display((uint8_t*) getClientFrameBuffer(), ((uint8_t*) getClientFrameBuffer() + EPD_WIDTH_BLOCKS * EPD_HEIGHT));
-	//eInk.display((uint8_t*) frameBufferAllocator->getBlockForTransfer(rect), ((uint8_t*) frameBufferAllocator->getBlockForTransfer(rect) + EPD_WIDTH_BLOCKS * EPD_HEIGHT));
-	eInk.sleep();
-
-	//frameBufferAllocator->freeBlockAfterTransfer();
+    EnvSensor_RequestTransferFramebufferToDisplay((uint8_t*) getClientFrameBuffer(), ((uint8_t*) getClientFrameBuffer() + EPD_WIDTH_BLOCKS * EPD_HEIGHT));
 }
 
 bool TouchGFXHAL::blockCopy(void* RESTRICT dest, const void* RESTRICT src, uint32_t numBytes)

@@ -18,7 +18,9 @@
 #define AUX_POWER_ENABLE 	HAL_GPIO_WritePin(AuxPowerEnable_GPIO_Port, AuxPowerEnable_Pin, GPIO_PIN_SET)
 #define AUX_POWER_DISABLE 	HAL_GPIO_WritePin(AuxPowerEnable_GPIO_Port, AuxPowerEnable_Pin, GPIO_PIN_RESET)
 
-#define SCD30_DATA_READY	HAL_GPIO_ReadPin(SCD30_Ready_GPIO_Port, SCD30_Ready_Pin) == GPIO_PIN_SET
+#define SCD30_DATA_READY	(HAL_GPIO_ReadPin(SCD30_Ready_GPIO_Port, SCD30_Ready_Pin) == GPIO_PIN_SET)
+
+#define E_INK_BUSY			(HAL_GPIO_ReadPin(E_INK_Busy_GPIO_Port, E_INK_Busy_Pin) == GPIO_PIN_RESET)
 
 extern I2C_HandleTypeDef hi2c1;
 
@@ -41,7 +43,7 @@ public:
 	bool areActive();
 
 	bool readFromScd30();
-	void readFromBmp280();
+	bool readFromBmp280();
 };
 
 #endif /* INC_SENSOR_HPP_ */

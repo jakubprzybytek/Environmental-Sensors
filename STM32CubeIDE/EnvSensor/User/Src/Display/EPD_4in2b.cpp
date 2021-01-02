@@ -117,31 +117,31 @@ const unsigned char lut_wb_quick[] ={
 };
 
 void EPD_4in2B::SetLut() {
-    unsigned int count;
-    sendCommand(EPD_4IN2B_LUT_FOR_VCOM);                            //vcom
-    for(count = 0; count < 44; count++) {
-        sendData(lut_vcom0[count]);
-    }
+	unsigned int count;
+	sendCommand(EPD_4IN2B_LUT_FOR_VCOM);                            //vcom
+	for (count = 0; count < 44; count++) {
+		sendData(lut_vcom0[count]);
+	}
 
-    sendCommand(EPD_4IN2B_LUT_WHITE_TO_WHITE);                      //ww --
-    for(count = 0; count < 42; count++) {
-        sendData(lut_ww[count]);
-    }
+	sendCommand(EPD_4IN2B_LUT_WHITE_TO_WHITE);                      //ww --
+	for (count = 0; count < 42; count++) {
+		sendData(lut_ww[count]);
+	}
 
-    sendCommand(EPD_4IN2B_LUT_BLACK_TO_WHITE);                      //bw r
-    for(count = 0; count < 42; count++) {
-        sendData(lut_bw[count]);
-    }
+	sendCommand(EPD_4IN2B_LUT_BLACK_TO_WHITE);                      //bw r
+	for (count = 0; count < 42; count++) {
+		sendData(lut_bw[count]);
+	}
 
-    sendCommand(EPD_4IN2B_LUT_WHITE_TO_BLACK);                      //wb w
-    for(count = 0; count < 42; count++) {
-        sendData(lut_wb[count]);
-    }
+	sendCommand(EPD_4IN2B_LUT_WHITE_TO_BLACK);                      //wb w
+	for (count = 0; count < 42; count++) {
+		sendData(lut_wb[count]);
+	}
 
-    sendCommand(EPD_4IN2B_LUT_BLACK_TO_BLACK);                      //bb b
-    for(count = 0; count < 42; count++) {
-        sendData(lut_bb[count]);
-    }
+	sendCommand(EPD_4IN2B_LUT_BLACK_TO_BLACK);                      //bb b
+	for (count = 0; count < 42; count++) {
+		sendData(lut_bb[count]);
+	}
 }
 
 void EPD_4in2B::reset() {
@@ -166,22 +166,24 @@ void EPD_4in2B::sendData(const uint8_t *data, uint16_t size) {
 	HAL_SPI_Transmit(&hspi, (uint8_t*) data, size, EPD_TIMEOUT);
 }
 
-void EPD_4in2B::sendRefreshCommand() {
+void EPD_4in2B::sendRefreshCommand(bool blocking) {
 	sendCommand(EPD_4IN2B_DISPLAY_REFRESH);
-	HAL_Delay(100);
-	waitUntilIdle();
+	HAL_Delay(1);
+	if (blocking) {
+		waitUntilIdle();
+	}
 }
 
 void EPD_4in2B::waitUntilIdle() {
-	//LED_ON;
 	do {
 	} while (!EPD_BUSY_READ);
-	//HAL_Delay(200);
-	//LED_OFF;
 }
 
-void EPD_4in2B::init() {
+void EPD_4in2B::init(bool blocking) {
+	HAL_NVIC_DisableIRQ(E_INK_Busy_EXTI_IRQn);
 	reset();
+	__HAL_GPIO_EXTI_CLEAR_IT(E_INK_Busy_Pin);
+	HAL_NVIC_EnableIRQ(E_INK_Busy_EXTI_IRQn);
 
 	EPD_CHIP_SELECT_LOW;
 
@@ -192,26 +194,31 @@ void EPD_4in2B::init() {
 	//SetLut();
 
 	sendCommand(EPD_4IN2B_POWER_ON);
-	waitUntilIdle();
 
 	EPD_CHIP_SELECT_HIGH;
+
+	if (blocking) {
+		waitUntilIdle();
+	}
 }
 
-void EPD_4in2B::sleep() {
+void EPD_4in2B::sleep(bool blocking) {
 	EPD_CHIP_SELECT_LOW;
 
 	sendCommand(EPD_4IN2B_VCOM_AND_DATA_INTERVAL_SETTING);
 	sendData(0xf7);
 
 	sendCommand(EPD_4IN2B_POWER_OFF);
-	waitUntilIdle();
+
+	//waitUntilIdle();
+
 	sendCommand(EPD_4IN2B_DEEP_SLEEP);
 	sendData(0xA5);
 
 	EPD_CHIP_SELECT_HIGH;
 }
 
-void EPD_4in2B::clear() {
+void EPD_4in2B::clear(bool blocking) {
 	EPD_CHIP_SELECT_LOW;
 
 	sendCommand(EPD_4IN2B_DATA_START_TRANSMISSION_1);
@@ -230,12 +237,12 @@ void EPD_4in2B::clear() {
 		}
 	}
 
-	sendRefreshCommand();
+	sendRefreshCommand(blocking);
 
 	EPD_CHIP_SELECT_HIGH;
 }
 
-void EPD_4in2B::display(const uint8_t *blackBuffer, uint8_t *redBuffer) {
+void EPD_4in2B::display(const uint8_t *blackBuffer, uint8_t *redBuffer, bool blocking) {
 	EPD_CHIP_SELECT_LOW;
 
 	sendCommand(EPD_4IN2B_DATA_START_TRANSMISSION_1);
@@ -244,25 +251,25 @@ void EPD_4in2B::display(const uint8_t *blackBuffer, uint8_t *redBuffer) {
 	sendCommand(EPD_4IN2B_DATA_START_TRANSMISSION_2);
 	sendData(redBuffer, EPD_WIDTH_BLOCKS * EPD_HEIGHT);
 
-	sendRefreshCommand();
+	sendRefreshCommand(blocking);
 
 	EPD_CHIP_SELECT_HIGH;
 }
 
-void EPD_4in2B::displayPartial(const uint8_t *buffer, uint16_t x, uint16_t y, uint16_t width, uint16_t height) {
+void EPD_4in2B::displayPartial(const uint8_t *buffer, uint16_t x, uint16_t y, uint16_t width, uint16_t height, bool blocking) {
 	EPD_CHIP_SELECT_LOW;
 
 	sendCommand(EPD_4IN2B_PARTIAL_IN);
 	sendCommand(EPD_4IN2B_PARTIAL_WINDOW);
 	sendData(x >> 8);
-	sendData(x & 0xf8);     // x should be the multiple of 8, the last 3 bit will always be ignored
+	sendData(x & 0xf8); // x should be the multiple of 8, the last 3 bit will always be ignored
 	sendData(((x & 0xf8) + width - 1) >> 8);
 	sendData(((x & 0xf8) + width - 1) | 0x07);
 	sendData(y >> 8);
 	sendData(y & 0xff);
 	sendData((y + height - 1) >> 8);
 	sendData((y + height - 1) & 0xff);
-	sendData(0x01);         // Gates scan both inside and outside of the partial window. (default)
+	sendData(0x01); // Gates scan both inside and outside of the partial window. (default)
 	//  DelayMs(2);
 	sendCommand(EPD_4IN2B_DATA_START_TRANSMISSION_1);
 	for (uint16_t i = 0; i < width / 8 * height; i++) {
@@ -271,7 +278,7 @@ void EPD_4in2B::displayPartial(const uint8_t *buffer, uint16_t x, uint16_t y, ui
 	//   DelayMs(2);
 	sendCommand(EPD_4IN2B_PARTIAL_OUT);
 
-	sendRefreshCommand();
+	sendRefreshCommand(blocking);
 
 	EPD_CHIP_SELECT_HIGH;
 }

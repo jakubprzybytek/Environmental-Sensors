@@ -78,17 +78,17 @@ private:
 	void sendData(const uint8_t *data, uint16_t size);
 
 	void SetLut();
-	void sendRefreshCommand();
+	void sendRefreshCommand(bool blocking);
 
 public:
 	EPD_4in2B(SPI_HandleTypeDef &hspi) : hspi(hspi) {
 	}
 
-	void init();
-	void sleep();
-	void clear();
-	void display(const uint8_t *blackBuffer, uint8_t *redBuffer);
-	void displayPartial(const uint8_t *buffer, uint16_t x, uint16_t y, uint16_t width, uint16_t height);
+	void init(bool blocking);
+	void sleep(bool blocking);
+	void clear(bool blocking);
+	void display(const uint8_t *blackBuffer, uint8_t *redBuffer, bool blocking);
+	void displayPartial(const uint8_t *buffer, uint16_t x, uint16_t y, uint16_t width, uint16_t height, bool blocking);
 };
 
 #endif /* INC_DISPLAY_EPD_4IN2B_HPP2_ */

@@ -11,7 +11,8 @@
 #include "Display/font6x8.h"
 
 uint8_t Screen::init() {
-	return sdd1306.init();
+	sdd1306.init();
+	return HAL_OK;
 }
 
 void Screen::clear() {

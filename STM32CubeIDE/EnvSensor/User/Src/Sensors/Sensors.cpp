@@ -111,10 +111,10 @@ bool Sensors::readFromScd30() {
 		return false;
 	}
 
-	sprintf(screenBuffer, "CO2: %.2f", co2);
+	sprintf(screenBuffer, "CO2: %.2f", (double) co2);
 	screen.drawTextLine(0, screenBuffer);
 
-	sprintf(screenBuffer, "T: %.2f, H: %.2f", temp, hum);
+	sprintf(screenBuffer, "T: %.2f, H: %.2f", (double) temp, (double) hum);
 	screen.drawTextLine(1, screenBuffer);
 
 	envState.co2 = co2;
@@ -124,22 +124,24 @@ bool Sensors::readFromScd30() {
 	return true;
 }
 
-void Sensors::readFromBmp280() {
+bool Sensors::readFromBmp280() {
 	uint32_t pressure;
 	int32_t temperature;
 	uint8_t i2cStatus = bmp280.readMeasurements(&pressure, &temperature);
 
 	if (i2cStatus != HAL_OK) {
 		screen.appendTextLine("BMP280 I2C error");
-		return;
+		return false;
 	}
 
 	envState.pressure = pressure / 25600.0f;
 	envState.temperature = temperature / 100.0f;
 
-	sprintf(screenBuffer, "P: %.2f", envState.pressure);
+	sprintf(screenBuffer, "P: %.2f", (double) envState.pressure);
 	screen.drawTextLine(3, screenBuffer);
 
-	sprintf(screenBuffer, "T: %.2f", envState.temperature);
+	sprintf(screenBuffer, "T: %.2f", (double) envState.temperature);
 	screen.drawTextLine(4, screenBuffer);
+
+	return true;
 }
