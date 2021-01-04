@@ -107,7 +107,7 @@ void EnvSensor_Switch2() {
 }
 
 void EnvSensor_Switch3() {
-	OSWrappers::signalVSync();
+	EnvSensor_PerformDisplyRefresh();
 }
 
 void EnvSensor_Switch4() {
@@ -137,6 +137,12 @@ void EnvSensor_PerformMeasurements() {
 		HAL_TIM_Base_Start_IT(&htim15);
 	}
 
+}
+
+void EnvSensor_PerformDisplyRefresh() {
+	if (nextDisplayAction == DisplayAction::None) {
+		OSWrappers::signalVSync();
+	}
 }
 
 void EnvSensor_RequestTransferFramebufferToDisplay(uint8_t *blackBufferParam, uint8_t *redBufferParam) {
@@ -208,5 +214,5 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
 }
 
 void HAL_RTCEx_WakeUpTimerEventCallback(RTC_HandleTypeDef *hrtc) {
-	OSWrappers::signalVSync();
+	EnvSensor_PerformDisplyRefresh();
 }
