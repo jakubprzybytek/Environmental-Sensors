@@ -9,7 +9,7 @@ BigReadoutContainerBase::BigReadoutContainerBase()
 {
     setWidth(400);
     setHeight(100);
-    valueTextArea.setPosition(0, 12, 320, 88);
+    valueTextArea.setPosition(0, 6, 320, 94);
     valueTextArea.setColor(touchgfx::Color::getColorFrom24BitRGB(0, 0, 0));
     valueTextArea.setLinespacing(0);
     valueTextArea.setTypedText(touchgfx::TypedText(T_SINGLEUSEID20));

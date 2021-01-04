@@ -5,9 +5,13 @@
  *      Author: Chipotle
  */
 
+#include <string.h>
+
 #include <Display/EPD_4in2b.hpp>
 
 #include "EnvSensor.hpp"
+
+#define ZERO_BUFFER_SIZE 100
 
 const unsigned char lut_vcom0[] =
 {
@@ -30,8 +34,6 @@ const unsigned char lut_vcom0_quick[] =
 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
 };
-
-
 
 const unsigned char lut_ww[] ={
 0x40, 0x17, 0x00, 0x00, 0x00, 0x02,
@@ -219,22 +221,20 @@ void EPD_4in2B::sleep(bool blocking) {
 }
 
 void EPD_4in2B::clear(bool blocking) {
+
+	uint8_t zeroBuffer[ZERO_BUFFER_SIZE];
+	memset(zeroBuffer, 0xff, ZERO_BUFFER_SIZE);
+
 	EPD_CHIP_SELECT_LOW;
 
 	sendCommand(EPD_4IN2B_DATA_START_TRANSMISSION_1);
-	for (uint16_t i = 0; i < EPD_WIDTH_BLOCKS * EPD_HEIGHT; i++) {
-		sendData(0xff);
-		if (i % 100 == 0) {
-			LED_TOGGLE;
-		}
+	for (uint8_t i = 0; i < EPD_WIDTH_BLOCKS * EPD_HEIGHT / ZERO_BUFFER_SIZE; i++) {
+		sendData(zeroBuffer, ZERO_BUFFER_SIZE);
 	}
 
 	sendCommand(EPD_4IN2B_DATA_START_TRANSMISSION_2);
-	for (uint16_t i = 0; i < EPD_WIDTH_BLOCKS * EPD_HEIGHT; i++) {
-		sendData(0xff);
-		if (i % 100 == 0) {
-			LED_TOGGLE;
-		}
+	for (uint8_t i = 0; i < EPD_WIDTH_BLOCKS * EPD_HEIGHT / ZERO_BUFFER_SIZE; i++) {
+		sendData(zeroBuffer, ZERO_BUFFER_SIZE);
 	}
 
 	sendRefreshCommand(blocking);

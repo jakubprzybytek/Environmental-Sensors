@@ -6,14 +6,14 @@
 #include <texts/TypedTextDatabase.hpp>
 
 extern touchgfx::GeneratedFont& getFont_segoeui_20_1bpp();
-extern touchgfx::GeneratedFont& getFont_segoeuisl_46_1bpp();
-extern touchgfx::GeneratedFont& getFont_segoeuisl_74_1bpp();
+extern touchgfx::GeneratedFont& getFont_segoeuisl_54_1bpp();
+extern touchgfx::GeneratedFont& getFont_segoeuisl_84_1bpp();
 
 const touchgfx::Font* touchgfx_fonts[] =
 {
     &(getFont_segoeui_20_1bpp()),
-    &(getFont_segoeuisl_46_1bpp()),
-    &(getFont_segoeuisl_74_1bpp())
+    &(getFont_segoeuisl_54_1bpp()),
+    &(getFont_segoeuisl_84_1bpp())
 };
 
 extern const touchgfx::TypedText::TypedTextData typedText_database_DEFAULT[];
@@ -80,10 +80,10 @@ void resetFont(touchgfx::FontId fontId)
         touchgfx_fonts[0] = &(getFont_segoeui_20_1bpp());
         break;
     case 1:
-        touchgfx_fonts[1] = &(getFont_segoeuisl_46_1bpp());
+        touchgfx_fonts[1] = &(getFont_segoeuisl_54_1bpp());
         break;
     case 2:
-        touchgfx_fonts[2] = &(getFont_segoeuisl_74_1bpp());
+        touchgfx_fonts[2] = &(getFont_segoeuisl_84_1bpp());
         break;
     }
 }
