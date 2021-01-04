@@ -63,9 +63,12 @@ void EnvSensor_Loop() {
 
 	OSWrappers::signalRenderingDone();
 
-	HAL_SuspendTick();
-	HAL_PWR_EnterSLEEPMode(PWR_MAINREGULATOR_ON, PWR_SLEEPENTRY_WFI);
-	HAL_ResumeTick();
+	// don't go to sleep if next display action is ready
+	if (nextDisplayAction == DisplayAction::None || E_INK_BUSY) {
+		HAL_SuspendTick();
+		HAL_PWR_EnterSLEEPMode(PWR_MAINREGULATOR_ON, PWR_SLEEPENTRY_WFI);
+		HAL_ResumeTick();
+	}
 
 	if (switch1Pressed) {
 		EnvSensor_Switch1();
