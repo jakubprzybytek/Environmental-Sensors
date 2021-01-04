@@ -82,7 +82,7 @@ uint8_t Bmp280::init() {
 	dig_P8 = buffer[3] << 8 | buffer[2];
 	dig_P9 = buffer[5] << 8 | buffer[4];
 
-	uint8_t toWrite = 0b10110100; // t_sb = 1000ms, IIR 2
+	uint8_t toWrite = 0b11110100; // t_sb = 4000ms, IIR 2
 	return HAL_I2C_Mem_Write(&hi2c, BMP280_SLAVE_ADDRESS, BMP280_INTERNAL_CONFIG, 1, (uint8_t*) &toWrite, 1, BMP280_MAX_DELAY);
 }
 
