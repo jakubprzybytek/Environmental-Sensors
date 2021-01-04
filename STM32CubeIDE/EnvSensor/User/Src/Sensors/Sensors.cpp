@@ -23,7 +23,7 @@ uint8_t Sensors::init() {
 
 	LED_Blink(100);
 
-	uint8_t status = scd30.init(4);
+	uint8_t status = scd30.init(10);
 
 	if (status != HAL_OK) {
 		LED_Blinks(250, 2);

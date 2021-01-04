@@ -14,6 +14,6 @@ void ReadoutContainer::initialize() {
 }
 
 void ReadoutContainer::setValue(float value) {
-	Unicode::snprintfFloat(buffer, TEXTAREA_SIZE, "%.2f", value);
+	Unicode::snprintfFloat(buffer, TEXTAREA_SIZE, "%.1f", value);
 	valueTextArea.invalidate();
 }
