@@ -22,6 +22,7 @@ using namespace touchgfx;
 extern SPI_HandleTypeDef hspi2;
 extern TIM_HandleTypeDef htim2;
 extern TIM_HandleTypeDef htim15;
+extern RTC_HandleTypeDef hrtc;
 
 EPD_4in2B eInk(hspi2);
 Screen screen;
@@ -101,6 +102,9 @@ void EnvSensor_Loop() {
 
 void EnvSensor_Switch1() {
 	sensors.start();
+
+	HAL_TIM_Base_Start_IT(&htim2);
+	HAL_RTCEx_SetWakeUpTimer_IT(&hrtc, DISPLAY_REFRESH_INTERVAL - 1, RTC_WAKEUPCLOCK_CK_SPRE_16BITS);
 }
 
 void EnvSensor_Switch2() {
@@ -111,6 +115,9 @@ void EnvSensor_Switch3() {
 }
 
 void EnvSensor_Switch4() {
+	HAL_TIM_Base_Stop_IT(&htim2);
+	HAL_RTCEx_DeactivateWakeUpTimer(&hrtc);
+
 	sensors.sleep();
 
 	eInk.init(true);
