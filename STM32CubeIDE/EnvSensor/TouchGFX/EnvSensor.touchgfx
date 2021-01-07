@@ -45,6 +45,58 @@
           },
           {
             "Type": "TextArea",
+            "TextId": "SingleUseId26",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 0,
+              "Green": 0,
+              "Blue": 0
+            },
+            "Alpha": 255,
+            "AutoSize": false,
+            "LineSpacing": 0,
+            "Wildcard1": {
+              "UseBuffer": false,
+              "BufferSize": 0
+            },
+            "Name": "vddValueTextArea",
+            "X": 320,
+            "Y": 227,
+            "Width": 80,
+            "Height": 26,
+            "Visible": true,
+            "LockPosition": false,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "TextArea",
+            "TextId": "SingleUseId25",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 0,
+              "Green": 0,
+              "Blue": 0
+            },
+            "Alpha": 255,
+            "AutoSize": true,
+            "LineSpacing": 0,
+            "Name": "vddLabelTextArea",
+            "X": 365,
+            "Y": 200,
+            "Width": 35,
+            "Height": 27,
+            "Visible": true,
+            "LockPosition": false,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "TextArea",
             "TextId": "SingleUseId18",
             "TextRotation": "0",
             "Color": {
@@ -116,36 +168,12 @@
             "Moveable": false
           },
           {
-            "Type": "TextArea",
-            "TextId": "SingleUseId3",
-            "TextRotation": "0",
-            "Color": {
-              "Red": 0,
-              "Green": 0,
-              "Blue": 0
-            },
-            "Alpha": 255,
-            "AutoSize": true,
-            "LineSpacing": 0,
-            "Name": "textArea3",
-            "X": 0,
-            "Y": 575,
-            "Width": 33,
-            "Height": 27,
-            "Visible": true,
-            "LockPosition": false,
-            "Draggable": false,
-            "Clickable": false,
-            "Fadeable": false,
-            "Moveable": false
-          },
-          {
             "CustomContainerDefinitionName": "ReadoutContainer",
             "Type": "CustomContainerInstance",
             "Name": "temperatureReadoutContainer",
-            "X": 200,
+            "X": 160,
             "Y": 200,
-            "Width": 200,
+            "Width": 160,
             "Height": 80,
             "Visible": true,
             "LockPosition": false,
@@ -160,7 +188,7 @@
             "Name": "humidityReadoutContainer",
             "X": 0,
             "Y": 200,
-            "Width": 200,
+            "Width": 160,
             "Height": 80,
             "Visible": true,
             "LockPosition": false,
@@ -314,7 +342,7 @@
             "Name": "valueTextArea",
             "X": 0,
             "Y": 14,
-            "Width": 156,
+            "Width": 116,
             "Height": 66,
             "Visible": true,
             "LockPosition": false,
@@ -336,9 +364,9 @@
             "AutoSize": false,
             "LineSpacing": 0,
             "Name": "unitTextArea",
-            "X": 158,
+            "X": 118,
             "Y": 28,
-            "Width": 50,
+            "Width": 42,
             "Height": 27,
             "Visible": true,
             "LockPosition": false,
@@ -362,7 +390,7 @@
             "Name": "labelTextArea",
             "X": 0,
             "Y": 0,
-            "Width": 160,
+            "Width": 120,
             "Height": 27,
             "Visible": true,
             "LockPosition": false,
@@ -376,15 +404,11 @@
         "Name": "ReadoutContainer",
         "X": 0,
         "Y": 0,
-        "Width": 200,
+        "Width": 160,
         "Height": 80
       }
     ],
     "TextEntries": [
-      {
-        "TextEntryId": "SingleUseId3",
-        "IsResource": false
-      },
       {
         "TextEntryId": "SingleUseId16",
         "IsResource": false
@@ -452,6 +476,14 @@
       {
         "TextEntryId": "Temperature_Unit",
         "IsResource": true
+      },
+      {
+        "TextEntryId": "SingleUseId25",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId26",
+        "IsResource": false
       }
     ],
     "Name": "EnvSensor",

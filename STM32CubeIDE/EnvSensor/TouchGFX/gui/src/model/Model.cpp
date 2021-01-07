@@ -13,9 +13,11 @@ void Model::tick() {
 	preassure = envState.pressure;
 	temperature = envState.temperature;
 	humidity = envState.humidity;
+	vdd = envState.vdd;
 
 	modelListener->notifyCo2Changed(co2);
 	modelListener->notifyPreassureChanged(preassure);
 	modelListener->notifyTemperatureChanged(temperature);
 	modelListener->notifyHumidityChanged(humidity);
+	modelListener->notifyVddChanged(vdd);
 }

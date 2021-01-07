@@ -2,6 +2,7 @@
 #include <texts/TextKeysAndLanguages.hpp>
 
 MainView::MainView() {
+	vddValueTextArea.setWildcard(vddBuffer);
 }
 
 void MainView::setupScreen() {
@@ -31,4 +32,9 @@ void MainView::setTemperature(float temperature) {
 
 void MainView::setHumidity(float humidity) {
 	humidityReadoutContainer.setValue(humidity);
+}
+
+void MainView::setVdd(float vdd) {
+	Unicode::snprintfFloat(vddBuffer, TEXTAREA_SIZE, "%.2f", vdd);
+	vddValueTextArea.invalidate();
 }

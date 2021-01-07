@@ -10,6 +10,8 @@ private:
 	float temperature;
 	float humidity;
 
+	float vdd;
+
 public:
 	Model();
 
@@ -33,6 +35,10 @@ public:
 
 	float getHumidity() {
 		return humidity;
+	}
+
+	float getVdd() {
+		return vdd;
 	}
 
 protected:

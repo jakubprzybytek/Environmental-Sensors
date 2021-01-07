@@ -32,6 +32,8 @@ public:
     void notifyTemperatureChanged(float voltage);
     void notifyHumidityChanged(float humidity);
 
+    void notifyVddChanged(float vdd);
+
 private:
     MainPresenter();
 

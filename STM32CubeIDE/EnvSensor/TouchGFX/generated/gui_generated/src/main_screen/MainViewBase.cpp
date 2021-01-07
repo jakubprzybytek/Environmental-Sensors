@@ -17,6 +17,16 @@ MainViewBase::MainViewBase()
     box1.setPosition(0, 0, 400, 300);
     box1.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
 
+    vddValueTextArea.setPosition(320, 227, 80, 26);
+    vddValueTextArea.setColor(touchgfx::Color::getColorFrom24BitRGB(0, 0, 0));
+    vddValueTextArea.setLinespacing(0);
+    vddValueTextArea.setTypedText(touchgfx::TypedText(T_SINGLEUSEID26));
+
+    vddLabelTextArea.setXY(365, 200);
+    vddLabelTextArea.setColor(touchgfx::Color::getColorFrom24BitRGB(0, 0, 0));
+    vddLabelTextArea.setLinespacing(0);
+    vddLabelTextArea.setTypedText(touchgfx::TypedText(T_SINGLEUSEID25));
+
     button4.setXY(290, 274);
     button4.setColor(touchgfx::Color::getColorFrom24BitRGB(0, 0, 0));
     button4.setLinespacing(0);
@@ -32,12 +42,7 @@ MainViewBase::MainViewBase()
     button1.setLinespacing(0);
     button1.setTypedText(touchgfx::TypedText(T_SINGLEUSEID16));
 
-    textArea3.setXY(0, 575);
-    textArea3.setColor(touchgfx::Color::getColorFrom24BitRGB(0, 0, 0));
-    textArea3.setLinespacing(0);
-    textArea3.setTypedText(touchgfx::TypedText(T_SINGLEUSEID3));
-
-    temperatureReadoutContainer.setXY(200, 200);
+    temperatureReadoutContainer.setXY(160, 200);
 
     humidityReadoutContainer.setXY(0, 200);
 
@@ -48,10 +53,11 @@ MainViewBase::MainViewBase()
     add(__background);
     add(box2);
     add(box1);
+    add(vddValueTextArea);
+    add(vddLabelTextArea);
     add(button4);
     add(button2);
     add(button1);
-    add(textArea3);
     add(temperatureReadoutContainer);
     add(humidityReadoutContainer);
     add(preassureBigReadoutContainer);

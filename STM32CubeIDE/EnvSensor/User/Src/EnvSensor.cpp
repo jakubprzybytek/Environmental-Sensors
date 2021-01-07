@@ -19,6 +19,7 @@
 
 using namespace touchgfx;
 
+extern ADC_HandleTypeDef hadc1;
 extern SPI_HandleTypeDef hspi2;
 extern TIM_HandleTypeDef htim2;
 extern TIM_HandleTypeDef htim15;
@@ -38,6 +39,8 @@ bool switch4Pressed = false;
 bool performScd30Measurement = false;
 bool performBmp280Measurement = false;
 
+bool performVddRead = false;
+
 uint8_t *blackBuffer;
 uint8_t *redBuffer;
 
@@ -55,6 +58,8 @@ void EnvSensor_Init() {
 
 	sensors.init();
 	sensors.start();
+
+	HAL_ADCEx_Calibration_Start(&hadc1, ADC_SINGLE_ENDED);
 
 	// Main measurement timer
 	HAL_TIM_Base_Start_IT(&htim2);
@@ -88,6 +93,11 @@ void EnvSensor_Loop() {
 		switch4Pressed = false;
 	}
 
+	if (performVddRead) {
+		EnvSensor_PerformVddRead();
+		performVddRead = false;
+	}
+
 	if (performScd30Measurement || performBmp280Measurement) {
 		if (sensors.areActive()) {
 			LED_Blink(10);
@@ -108,6 +118,7 @@ void EnvSensor_Switch1() {
 }
 
 void EnvSensor_Switch2() {
+	EnvSensor_PerformVddRead();
 }
 
 void EnvSensor_Switch3() {
@@ -144,6 +155,18 @@ void EnvSensor_PerformMeasurements() {
 		HAL_TIM_Base_Start_IT(&htim15);
 	}
 
+}
+
+void EnvSensor_PerformVddRead() {
+	if (HAL_ADC_Start(&hadc1) != HAL_OK) {
+		return;
+	}
+
+	if (HAL_ADC_PollForConversion(&hadc1, 100) == HAL_OK) {
+		uint32_t adcVrefInt = HAL_ADC_GetValue(&hadc1);
+		uint32_t vddRaw = __LL_ADC_CALC_VREFANALOG_VOLTAGE(adcVrefInt, LL_ADC_RESOLUTION_12B);
+		envState.vdd = vddRaw / 1000.0f;
+	}
 }
 
 void EnvSensor_PerformDisplyRefresh() {
@@ -202,9 +225,6 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin) {
 	case E_INK_Busy_Pin:
 		// when eInk busy pin is down - just wake up and perform next display action
 		break;
-//	case SCD30_Ready_Pin:
-//		//HAL_GPIO_WritePin(LED_GPIO_Port, LED_Pin, HAL_GPIO_ReadPin(SCD30_Ready_GPIO_Port, SCD30_Ready_Pin));
-//		break;
 	}
 }
 
@@ -221,5 +241,6 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
 }
 
 void HAL_RTCEx_WakeUpTimerEventCallback(RTC_HandleTypeDef *hrtc) {
+	performVddRead = true;
 	EnvSensor_PerformDisplyRefresh();
 }

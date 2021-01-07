@@ -20,6 +20,8 @@ public:
     virtual void notifyTemperatureChanged(float temperature) {}
     virtual void notifyHumidityChanged(float humidity) {}
 
+    virtual void notifyVddChanged(float vdd) {}
+
 protected:
     Model* model;
 };

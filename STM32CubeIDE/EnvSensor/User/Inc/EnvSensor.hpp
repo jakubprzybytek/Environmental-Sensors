@@ -36,6 +36,8 @@ extern void EnvSensor_Switch4();
 
 extern void EnvSensor_PerformMeasurements();
 
+extern void EnvSensor_PerformVddRead();
+
 extern void EnvSensor_PerformDisplyRefresh();
 extern void EnvSensor_RequestTransferFramebufferToDisplay(uint8_t *blackBuffer, uint8_t *redBuffer);
 extern void EnvSensor_PerformNextDisplayAction();

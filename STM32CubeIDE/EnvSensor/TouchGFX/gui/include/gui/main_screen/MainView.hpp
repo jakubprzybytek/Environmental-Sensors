@@ -6,6 +6,10 @@
 
 class MainView : public MainViewBase
 {
+private:
+	static const uint8_t TEXTAREA_SIZE = 10;
+	touchgfx::Unicode::UnicodeChar vddBuffer[TEXTAREA_SIZE];
+
 public:
     MainView();
     virtual ~MainView() {}
@@ -16,6 +20,8 @@ public:
     void setPreassure(float preassure);
     void setTemperature(float temperature);
     void setHumidity(float humidity);
+
+    void setVdd(float vdd);
 
 protected:
 };

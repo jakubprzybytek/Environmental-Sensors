@@ -17,6 +17,8 @@ public:
 	float temperature;
 	float temperature2;
 	float humidity;
+
+	float vdd;
 };
 
 

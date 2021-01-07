@@ -29,3 +29,7 @@ void MainPresenter::notifyTemperatureChanged(float temperature) {
 void MainPresenter::notifyHumidityChanged(float humidity) {
 	view.setHumidity(humidity);
 }
+
+void MainPresenter::notifyVddChanged(float vdd) {
+	view.setVdd(vdd);
+}

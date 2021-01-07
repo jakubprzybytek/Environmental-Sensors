@@ -8,6 +8,7 @@
 #include <mvp/View.hpp>
 #include <gui/main_screen/MainPresenter.hpp>
 #include <touchgfx/widgets/Box.hpp>
+#include <touchgfx/widgets/TextAreaWithWildcard.hpp>
 #include <touchgfx/widgets/TextArea.hpp>
 #include <gui/containers/ReadoutContainer.hpp>
 #include <gui/containers/BigReadoutContainer.hpp>
@@ -30,10 +31,11 @@ protected:
     touchgfx::Box __background;
     touchgfx::Box box2;
     touchgfx::Box box1;
+    touchgfx::TextAreaWithOneWildcard vddValueTextArea;
+    touchgfx::TextArea vddLabelTextArea;
     touchgfx::TextArea button4;
     touchgfx::TextArea button2;
     touchgfx::TextArea button1;
-    touchgfx::TextArea textArea3;
     ReadoutContainer temperatureReadoutContainer;
     ReadoutContainer humidityReadoutContainer;
     BigReadoutContainer preassureBigReadoutContainer;

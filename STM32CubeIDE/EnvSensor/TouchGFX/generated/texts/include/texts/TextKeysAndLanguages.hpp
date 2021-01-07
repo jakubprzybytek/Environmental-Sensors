@@ -14,7 +14,6 @@ typedef enum
 
 typedef enum
 {
-    T_SINGLEUSEID3,
     T_SINGLEUSEID16,
     T_SINGLEUSEID17,
     T_SINGLEUSEID18,
@@ -32,6 +31,8 @@ typedef enum
     T_HUMIDITY_UNIT,
     T_TEMPERATURE,
     T_TEMPERATURE_UNIT,
+    T_SINGLEUSEID25,
+    T_SINGLEUSEID26,
     NUMBER_OF_TEXT_KEYS
 } TEXTS;
 
