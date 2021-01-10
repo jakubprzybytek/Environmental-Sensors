@@ -20,7 +20,7 @@
 
 #include "stm32l4xx.h"
 
-#include "Display/EPD_4in2b.hpp"
+#include "Display/EPD_4in2a.hpp"
 #include "EnvSensor.hpp"
 
 using namespace touchgfx;

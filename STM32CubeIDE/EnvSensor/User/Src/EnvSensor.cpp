@@ -11,7 +11,7 @@
 #include "EnvSensor.hpp"
 #include "EnvState.hpp"
 
-#include "Display/Epd_4in2b.hpp"
+#include "Display/Epd_4in2a.hpp"
 #include "Sensors/Sensors.hpp"
 
 #include "Display/Screen.hpp"
@@ -25,7 +25,7 @@ extern TIM_HandleTypeDef htim2;
 extern TIM_HandleTypeDef htim15;
 extern RTC_HandleTypeDef hrtc;
 
-EPD_4in2B eInk(hspi2);
+EPD_4in2A eInk(hspi2);
 Screen screen;
 char screenBuffer[20];
 
@@ -60,9 +60,14 @@ void EnvSensor_Init() {
 	sensors.start();
 
 	HAL_ADCEx_Calibration_Start(&hadc1, ADC_SINGLE_ENDED);
+	EnvSensor_PerformVddRead();
 
 	// Main measurement timer
 	HAL_TIM_Base_Start_IT(&htim2);
+
+	eInk.init(true);
+	eInk.clear(true);
+	eInk.sleep(true);
 }
 
 void EnvSensor_Loop() {
@@ -190,11 +195,13 @@ void EnvSensor_PerformNextDisplayAction() {
 
 	case DisplayAction::Init:
 		eInk.init(false);
+		//eInk.initWS(false);
 		nextDisplayAction = DisplayAction::Transfer;
 		break;
 
 	case DisplayAction::Transfer:
-		eInk.display(blackBuffer, redBuffer, false);
+		eInk.display(blackBuffer, redBuffer, true, false);
+		//eInk.displayPartialWS(0, 0, 400, 300, blackBuffer);
 		nextDisplayAction = DisplayAction::Sleep;
 		break;
 
