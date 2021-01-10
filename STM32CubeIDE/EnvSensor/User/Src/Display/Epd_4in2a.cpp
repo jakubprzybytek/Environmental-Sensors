@@ -1,6 +1,12 @@
 /*
  * EPD_4in2b.cpp
- * https://github.com/waveshare/e-Paper/tree/master/STM32/STM32-F103ZET6
+ * Waveshare repo:
+ * https://github.com/waveshare/e-Paper/blob/master/STM32/STM32-F103ZET6/User/e-Paper/EPD_4in2.c
+ *
+ * Ben Krasnow on quick refresh
+ * https://benkrasnow.blogspot.com/2017/10/fast-partial-refresh-on-42-e-paper.html
+ * https://drive.google.com/drive/folders/0B4YXWiqYWB99a1ptV1BQcTB4cjg
+ *
  *  Created on: Dec 21, 2020
  *      Author: Chipotle
  */
@@ -11,117 +17,7 @@
 
 #include "EnvSensor.hpp"
 
-static const unsigned char EPD_4IN2_lut_vcom0[] = {
-    0x00, 0x17, 0x00, 0x00, 0x00, 0x02,
-    0x00, 0x17, 0x17, 0x00, 0x00, 0x02,
-    0x00, 0x0A, 0x01, 0x00, 0x00, 0x01,
-    0x00, 0x0E, 0x0E, 0x00, 0x00, 0x02,
-    0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-    0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-};
-static const unsigned char EPD_4IN2_lut_ww[] = {
-    0x40, 0x17, 0x00, 0x00, 0x00, 0x02,
-    0x90, 0x17, 0x17, 0x00, 0x00, 0x02,
-    0x40, 0x0A, 0x01, 0x00, 0x00, 0x01,
-    0xA0, 0x0E, 0x0E, 0x00, 0x00, 0x02,
-    0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-    0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-    0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-};
-static const unsigned char EPD_4IN2_lut_bw[] = {
-    0x40, 0x17, 0x00, 0x00, 0x00, 0x02,
-    0x90, 0x17, 0x17, 0x00, 0x00, 0x02,
-    0x40, 0x0A, 0x01, 0x00, 0x00, 0x01,
-    0xA0, 0x0E, 0x0E, 0x00, 0x00, 0x02,
-    0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-    0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-    0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-};
-static const unsigned char EPD_4IN2_lut_wb[] = {
-    0x80, 0x17, 0x00, 0x00, 0x00, 0x02,
-    0x90, 0x17, 0x17, 0x00, 0x00, 0x02,
-    0x80, 0x0A, 0x01, 0x00, 0x00, 0x01,
-    0x50, 0x0E, 0x0E, 0x00, 0x00, 0x02,
-    0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-    0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-    0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-};
-static const unsigned char EPD_4IN2_lut_bb[] = {
-    0x80, 0x17, 0x00, 0x00, 0x00, 0x02,
-    0x90, 0x17, 0x17, 0x00, 0x00, 0x02,
-    0x80, 0x0A, 0x01, 0x00, 0x00, 0x01,
-    0x50, 0x0E, 0x0E, 0x00, 0x00, 0x02,
-    0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-    0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-    0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-};
-
-const unsigned char EPD_4IN2_Partial_lut_vcom0[] = {
-    0x00	,0x19	,0x01	,0x00	,0x00	,0x01,
-    0x00	,0x00	,0x00	,0x00	,0x00	,0x00,
-    0x00	,0x00	,0x00	,0x00	,0x00	,0x00,
-    0x00	,0x00	,0x00	,0x00	,0x00	,0x00,
-    0x00	,0x00	,0x00	,0x00	,0x00	,0x00,
-    0x00	,0x00	,0x00	,0x00	,0x00	,0x00,
-    0x00	,0x00	,0x00	,0x00	,0x00	,0x00,
-    0x00	,0x00,
-};
-
-const unsigned char EPD_4IN2_Partial_lut_ww[] = {
-    0x00	,0x19	,0x01	,0x00	,0x00	,0x01,
-    0x00	,0x00	,0x00	,0x00	,0x00	,0x00,
-    0x00	,0x00	,0x00	,0x00	,0x00	,0x00,
-    0x00	,0x00	,0x00	,0x00	,0x00	,0x00,
-    0x00	,0x00	,0x00	,0x00	,0x00	,0x00,
-    0x00	,0x00	,0x00	,0x00	,0x00	,0x00,
-    0x00	,0x00	,0x00	,0x00	,0x00	,0x00,
-};
-
-const unsigned char EPD_4IN2_Partial_lut_bw[] = {
-    0x80	,0x19	,0x01	,0x00	,0x00	,0x01,
-    0x00	,0x00	,0x00	,0x00	,0x00	,0x00,
-    0x00	,0x00	,0x00	,0x00	,0x00	,0x00,
-    0x00	,0x00	,0x00	,0x00	,0x00	,0x00,
-    0x00	,0x00	,0x00	,0x00	,0x00	,0x00,
-    0x00	,0x00	,0x00	,0x00	,0x00	,0x00,
-    0x00	,0x00	,0x00	,0x00	,0x00	,0x00,
-};
-
-const unsigned char EPD_4IN2_Partial_lut_wb[] = {
-    0x40	,0x19	,0x01	,0x00	,0x00	,0x01,
-    0x00	,0x00	,0x00	,0x00	,0x00	,0x00,
-    0x00	,0x00	,0x00	,0x00	,0x00	,0x00,
-    0x00	,0x00	,0x00	,0x00	,0x00	,0x00,
-    0x00	,0x00	,0x00	,0x00	,0x00	,0x00,
-    0x00	,0x00	,0x00	,0x00	,0x00	,0x00,
-    0x00	,0x00	,0x00	,0x00	,0x00	,0x00,
-};
-
-const unsigned char EPD_4IN2_Partial_lut_bb[] = {
-    0x00	,0x19	,0x01	,0x00	,0x00	,0x01,
-    0x00	,0x00	,0x00	,0x00	,0x00	,0x00,
-    0x00	,0x00	,0x00	,0x00	,0x00	,0x00,
-    0x00	,0x00	,0x00	,0x00	,0x00	,0x00,
-    0x00	,0x00	,0x00	,0x00	,0x00	,0x00,
-    0x00	,0x00	,0x00	,0x00	,0x00	,0x00,
-    0x00	,0x00	,0x00	,0x00	,0x00	,0x00,
-};
-
-
-const unsigned char lut_vcom0[] =
-{
-0x40, 0x17, 0x00, 0x00, 0x00, 0x02,
-0x00, 0x17, 0x17, 0x00, 0x00, 0x02,
-0x00, 0x0A, 0x01, 0x00, 0x00, 0x01,
-0x00, 0x0E, 0x0E, 0x00, 0x00, 0x02,
-0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-};
-
-const unsigned char lut_vcom0_quick[] =
-{
+const unsigned char lut_vcom0_quick[] = {
 0x00, 0x0E, 0x00, 0x00, 0x00, 0x01,
 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
@@ -131,17 +27,7 @@ const unsigned char lut_vcom0_quick[] =
 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
 };
 
-const unsigned char lut_ww[] ={
-0x40, 0x17, 0x00, 0x00, 0x00, 0x02,
-0x90, 0x17, 0x17, 0x00, 0x00, 0x02,
-0x40, 0x0A, 0x01, 0x00, 0x00, 0x01,
-0xA0, 0x0E, 0x0E, 0x00, 0x00, 0x02,
-0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-};
-
-const unsigned char lut_ww_quick[] ={
+const unsigned char lut_ww_quick[] = {
 0xA0, 0x0E, 0x00, 0x00, 0x00, 0x01,
 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
@@ -151,19 +37,7 @@ const unsigned char lut_ww_quick[] ={
 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
 };
 
-
-const unsigned char lut_bw[] ={
-0x40, 0x17, 0x00, 0x00, 0x00, 0x02,
-0x90, 0x17, 0x17, 0x00, 0x00, 0x02,
-0x40, 0x0A, 0x01, 0x00, 0x00, 0x01,
-0xA0, 0x0E, 0x0E, 0x00, 0x00, 0x02,
-0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-};
-
-
-const unsigned char lut_bw_quick[] ={
+const unsigned char lut_bw_quick[] = {
 0xA0, 0x0E, 0x00, 0x00, 0x00, 0x01,
 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
@@ -173,17 +47,7 @@ const unsigned char lut_bw_quick[] ={
 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
 };
 
-const unsigned char lut_bb[] ={
-0x80, 0x17, 0x00, 0x00, 0x00, 0x02,
-0x90, 0x17, 0x17, 0x00, 0x00, 0x02,
-0x80, 0x0A, 0x01, 0x00, 0x00, 0x01,
-0x50, 0x0E, 0x0E, 0x00, 0x00, 0x02,
-0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-};
-
-const unsigned char lut_bb_quick[] ={
+const unsigned char lut_bb_quick[] = {
 0x50, 0x0E, 0x00, 0x00, 0x00, 0x01,
 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
@@ -193,18 +57,7 @@ const unsigned char lut_bb_quick[] ={
 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
 };
 
-
-const unsigned char lut_wb[] ={
-0x80, 0x17, 0x00, 0x00, 0x00, 0x02,
-0x90, 0x17, 0x17, 0x00, 0x00, 0x02,
-0x80, 0x0A, 0x01, 0x00, 0x00, 0x01,
-0x50, 0x0E, 0x0E, 0x00, 0x00, 0x02,
-0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-};
-
-const unsigned char lut_wb_quick[] ={
+const unsigned char lut_wb_quick[] = {
 0x50, 0x0E, 0x00, 0x00, 0x00, 0x01,
 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
@@ -267,118 +120,6 @@ const unsigned char EPD_4IN2_4Gray_lut_bb[] = {
     0x00	,0x00	,0x00	,0x00	,0x00	,0x00,
 };
 
-void EPD_4in2A::SetLut() {
-	unsigned int count;
-	sendCommand(EPD_4IN2B_LUT_FOR_VCOM);                            //vcom
-	for (count = 0; count < 44; count++) {
-		sendData(EPD_4IN2_lut_vcom0[count]);
-	}
-
-	sendCommand(EPD_4IN2B_LUT_WHITE_TO_WHITE);                      //ww --
-	for (count = 0; count < 42; count++) {
-		sendData(EPD_4IN2_lut_ww[count]);
-	}
-
-	sendCommand(EPD_4IN2B_LUT_BLACK_TO_WHITE);                      //bw r
-	for (count = 0; count < 42; count++) {
-		sendData(EPD_4IN2_lut_bw[count]);
-	}
-
-	sendCommand(EPD_4IN2B_LUT_WHITE_TO_BLACK);                      //wb w
-	for (count = 0; count < 42; count++) {
-		sendData(EPD_4IN2_lut_wb[count]);
-	}
-
-	sendCommand(EPD_4IN2B_LUT_BLACK_TO_BLACK);                      //bb b
-	for (count = 0; count < 42; count++) {
-		sendData(EPD_4IN2_lut_bb[count]);
-	}
-}
-
-void EPD_4in2A::SetLutPartial() {
-	unsigned int count;
-	sendCommand(EPD_4IN2B_LUT_FOR_VCOM);                            //vcom
-	for (count = 0; count < 44; count++) {
-		sendData(EPD_4IN2_Partial_lut_vcom0[count]);
-	}
-
-	sendCommand(EPD_4IN2B_LUT_WHITE_TO_WHITE);                      //ww --
-	for (count = 0; count < 42; count++) {
-		sendData(EPD_4IN2_Partial_lut_ww[count]);
-	}
-
-	sendCommand(EPD_4IN2B_LUT_BLACK_TO_WHITE);                      //bw r
-	for (count = 0; count < 42; count++) {
-		sendData(EPD_4IN2_Partial_lut_bw[count]);
-	}
-
-	sendCommand(EPD_4IN2B_LUT_WHITE_TO_BLACK);                      //wb w
-	for (count = 0; count < 42; count++) {
-		sendData(EPD_4IN2_Partial_lut_wb[count]);
-	}
-
-	sendCommand(EPD_4IN2B_LUT_BLACK_TO_BLACK);                      //bb b
-	for (count = 0; count < 42; count++) {
-		sendData(EPD_4IN2_Partial_lut_bb[count]);
-	}
-}
-
-void EPD_4in2A::SetLutGray() {
-	unsigned int count;
-	sendCommand(EPD_4IN2B_LUT_FOR_VCOM);                            //vcom
-	for (count = 0; count < 44; count++) {
-		sendData(EPD_4IN2_4Gray_lut_vcom[count]);
-	}
-
-	sendCommand(EPD_4IN2B_LUT_WHITE_TO_WHITE);                      //ww --
-	for (count = 0; count < 42; count++) {
-		sendData(EPD_4IN2_4Gray_lut_ww[count]);
-	}
-
-	sendCommand(EPD_4IN2B_LUT_BLACK_TO_WHITE);                      //bw r
-	for (count = 0; count < 42; count++) {
-		sendData(EPD_4IN2_4Gray_lut_bw[count]);
-	}
-
-	sendCommand(EPD_4IN2B_LUT_WHITE_TO_BLACK);                      //wb w
-	for (count = 0; count < 42; count++) {
-		sendData(EPD_4IN2_4Gray_lut_wb[count]);
-	}
-
-	sendCommand(EPD_4IN2B_LUT_BLACK_TO_BLACK);                      //bb b
-	for (count = 0; count < 42; count++) {
-		sendData(EPD_4IN2_4Gray_lut_bb[count]);
-	}
-}
-
-void EPD_4in2A::SetLutQuick() {
-	unsigned int count;
-	sendCommand(EPD_4IN2B_LUT_FOR_VCOM);                            //vcom
-	for (count = 0; count < 44; count++) {
-		sendData(lut_vcom0_quick[count]);
-	}
-
-	sendCommand(EPD_4IN2B_LUT_WHITE_TO_WHITE);                      //ww --
-	for (count = 0; count < 42; count++) {
-		sendData(lut_ww_quick[count]);
-	}
-
-	sendCommand(EPD_4IN2B_LUT_BLACK_TO_WHITE);                      //bw r
-	for (count = 0; count < 42; count++) {
-		sendData(lut_bw_quick[count]);
-	}
-
-	sendCommand(EPD_4IN2B_LUT_WHITE_TO_BLACK);                      //wb w
-	for (count = 0; count < 42; count++) {
-		sendData(lut_wb_quick[count]);
-	}
-
-	sendCommand(EPD_4IN2B_LUT_BLACK_TO_BLACK);                      //bb b
-	for (count = 0; count < 42; count++) {
-		sendData(lut_bb_quick[count]);
-	}
-}
-
 /**
  * Performs reset of the device.
  */
@@ -437,6 +178,62 @@ void EPD_4in2A::sendRefreshCommand(bool lutFromRegister, bool blocking) {
 	}
 }
 
+void EPD_4in2A::setLutQuick() {
+	unsigned int count;
+	sendCommand(EPD_4IN2B_LUT_FOR_VCOM);
+	for (count = 0; count < 44; count++) {
+		sendData(lut_vcom0_quick[count]);
+	}
+
+	sendCommand(EPD_4IN2B_LUT_WHITE_TO_WHITE);
+	for (count = 0; count < 42; count++) {
+		sendData(lut_ww_quick[count]);
+	}
+
+	sendCommand(EPD_4IN2B_LUT_BLACK_TO_WHITE);
+	for (count = 0; count < 42; count++) {
+		sendData(lut_bw_quick[count]);
+	}
+
+	sendCommand(EPD_4IN2B_LUT_WHITE_TO_BLACK);
+	for (count = 0; count < 42; count++) {
+		sendData(lut_wb_quick[count]);
+	}
+
+	sendCommand(EPD_4IN2B_LUT_BLACK_TO_BLACK);
+	for (count = 0; count < 42; count++) {
+		sendData(lut_bb_quick[count]);
+	}
+}
+
+void EPD_4in2A::setLutGray() {
+	unsigned int count;
+	sendCommand(EPD_4IN2B_LUT_FOR_VCOM);
+	for (count = 0; count < 44; count++) {
+		sendData(EPD_4IN2_4Gray_lut_vcom[count]);
+	}
+
+	sendCommand(EPD_4IN2B_LUT_WHITE_TO_WHITE);
+	for (count = 0; count < 42; count++) {
+		sendData(EPD_4IN2_4Gray_lut_ww[count]);
+	}
+
+	sendCommand(EPD_4IN2B_LUT_BLACK_TO_WHITE);
+	for (count = 0; count < 42; count++) {
+		sendData(EPD_4IN2_4Gray_lut_bw[count]);
+	}
+
+	sendCommand(EPD_4IN2B_LUT_WHITE_TO_BLACK);
+	for (count = 0; count < 42; count++) {
+		sendData(EPD_4IN2_4Gray_lut_wb[count]);
+	}
+
+	sendCommand(EPD_4IN2B_LUT_BLACK_TO_BLACK);
+	for (count = 0; count < 42; count++) {
+		sendData(EPD_4IN2_4Gray_lut_bb[count]);
+	}
+}
+
 /**
  * Initializes the eInk display in B/W mode.
  */
@@ -460,7 +257,7 @@ void EPD_4in2A::init(bool blocking) {
 	sendData(0x17);
 	sendData(0x17);
 
-	SetLutQuick();
+	setLutQuick();
 
 	sendCommand(EPD_4IN2B_POWER_ON);
 
@@ -494,7 +291,7 @@ void EPD_4in2A::initGrey(bool blocking) {
 	sendData(0x17);
 	sendData(0x17);
 
-	SetLutGray();
+	setLutGray();
 
 	sendCommand(0x82);			//vcom_DC setting
 	sendData (0x12);
@@ -509,60 +306,6 @@ void EPD_4in2A::initGrey(bool blocking) {
 	if (blocking) {
 		waitUntilIdle();
 	}
-}
-
-void EPD_4in2A::initWS(bool blocking)
-{
-	HAL_NVIC_DisableIRQ(E_INK_Busy_EXTI_IRQn);
-		reset();
-		__HAL_GPIO_EXTI_CLEAR_IT(E_INK_Busy_Pin);
-		HAL_NVIC_EnableIRQ(E_INK_Busy_EXTI_IRQn);
-
-		EPD_CHIP_SELECT_LOW;
-
-		sendCommand(EPD_4IN2B_POWER_SETTING);
-			sendData(0x03);
-			sendData(0x00);
-			sendData(0x2b);
-			sendData(0x2b);
-			sendData(0xff);
-
-			sendCommand(EPD_4IN2B_BOOSTER_SOFT_START);
-				sendData(0x17);		//A
-				sendData(0x17);		//B
-				sendData(0x17);		//C
-
-
-				sendCommand(EPD_4IN2B_PANEL_SETTING);
-    sendData(0xbf); // KW-BF   KWR-AF	BWROTP 0f	BWOTP 1f
-    sendData(0x0d);
-
-    sendCommand(0x30); // PLL setting
-    sendData(0x3C); // 3A 100HZ   29 150Hz 39 200HZ	31 171HZ
-
-    sendCommand(0x61); // resolution setting
-    sendData(0x01);
-    sendData(0x90); //128
-    sendData(0x01); //
-    sendData(0x2c);
-
-    sendCommand(0x82); // vcom_DC setting
-    sendData(0x28);
-
-    sendCommand(0X50); // VCOM AND DATA INTERVAL SETTING
-    sendData(0x97); // 97white border 77black border		VBDF 17|D7 VBDW 97 VBDB 57		VBDF F7 VBDW 77 VBDB 37  VBDR B7
-
-
-    sendCommand(0x04); // POWER_ON
-
-    SetLut();
-
-
-	if (blocking) {
-		waitUntilIdle();
-	}
-
-    EPD_CHIP_SELECT_HIGH;
 }
 
 /**
@@ -618,8 +361,6 @@ void EPD_4in2A::display(const uint8_t *blackBuffer, uint8_t *redBuffer, bool qui
 	EPD_CHIP_SELECT_HIGH;
 }
 
-//uint8_t auxBuffer[EPD_WIDTH_BLOCKS * EPD_HEIGHT];
-
 /**
  * Sends provided buffer to the eInk display and performs full or quick refresh.
  */
@@ -661,84 +402,4 @@ void EPD_4in2A::displayGrey(const uint8_t *blackBuffer, uint8_t *redBuffer, bool
 	sendRefreshCommand(quick, blocking);
 
 	EPD_CHIP_SELECT_HIGH;
-}
-
-void EPD_4in2A::displayPartial(const uint8_t *buffer, uint16_t x, uint16_t y, uint16_t width, uint16_t height, bool blocking) {
-	EPD_CHIP_SELECT_LOW;
-
-	sendCommand(EPD_4IN2B_PARTIAL_IN);
-	sendCommand(EPD_4IN2B_PARTIAL_WINDOW);
-	sendData(x >> 8);
-	sendData(x & 0xf8); // x should be the multiple of 8, the last 3 bit will always be ignored
-	sendData(((x & 0xf8) + width - 1) >> 8);
-	sendData(((x & 0xf8) + width - 1) | 0x07);
-	sendData(y >> 8);
-	sendData(y & 0xff);
-	sendData((y + height - 1) >> 8);
-	sendData((y + height - 1) & 0xff);
-	sendData(0x01); // Gates scan both inside and outside of the partial window. (default)
-	//  DelayMs(2);
-	sendCommand(EPD_4IN2B_DATA_START_TRANSMISSION_1);
-	for (uint16_t i = 0; i < width / 8 * height; i++) {
-		sendData(buffer[i]);
-	}
-	//   DelayMs(2);
-	sendCommand(EPD_4IN2B_PARTIAL_OUT);
-
-	sendRefreshCommand(true, blocking);
-
-	EPD_CHIP_SELECT_HIGH;
-}
-
-#define EPD_4IN2_WIDTH 400
-
-void EPD_4in2A::displayPartialWS(uint16_t X_start,uint16_t Y_start,uint16_t X_end,uint16_t Y_end, uint8_t *Image)
-{
-	uint16_t Width;
-    Width = (EPD_4IN2_WIDTH % 8 == 0)? (EPD_4IN2_WIDTH / 8 ): (EPD_4IN2_WIDTH / 8 + 1);
-
-    X_start = (X_start % 8 == 0)? (X_start): (X_start/8*8+8);
-    X_end = (X_end % 8 == 0)? (X_end): (X_end/8*8+8);
-
-    sendCommand(0X50);
-    sendData(0xf7);
-    HAL_Delay(100);
-
-    sendCommand(0x82);			//vcom_DC setting
-    sendData (0x08);
-    sendCommand(0X50);
-    sendData(0x47);
-    //SetLutPartial();
-    sendCommand(0x91);		//This command makes the display enter partial mode
-    sendCommand(0x90);		//resolution setting
-    sendData ((X_start)/256);
-    sendData ((X_start)%256);   //x-start
-
-    sendData ((X_end )/256);
-    sendData ((X_end )%256-1);  //x-end
-
-    sendData (Y_start/256);
-    sendData (Y_start%256);   //y-start
-
-    sendData (Y_end/256);
-    sendData (Y_end%256-1);  //y-end
-    sendData (0x28);
-
-    sendCommand(0x10);	       //writes Old data to SRAM for programming
-    for (uint16_t j = 0; j < Y_end - Y_start; j++) {
-        for (uint16_t i = 0; i < (X_end - X_start)/8; i++) {
-            sendData(Image[(Y_start + j)*Width + X_start/8 + i]);
-        }
-    }
-    sendCommand(0x13);				 //writes New data to SRAM.
-    for (uint16_t j = 0; j < Y_end - Y_start; j++) {
-        for (uint16_t i = 0; i < (X_end - X_start)/8; i++) {
-            sendData(~Image[(Y_start + j)*Width + X_start/8 + i]);
-        }
-    }
-
-    sendCommand(0x12);		 //DISPLAY REFRESH
-    HAL_Delay(10);     //The delay here is necessary, 200uS at least!!!
-
-    sendRefreshCommand(true, false);
 }

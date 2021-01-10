@@ -79,10 +79,8 @@ private:
 	void sendData(uint8_t data);
 	void sendData(const uint8_t *data, uint16_t size);
 
-	void SetLut();
-	void SetLutPartial();
-	void SetLutQuick();
-	void SetLutGray();
+	void setLutQuick();
+	void setLutGray();
 	void sendRefreshCommand(bool lutFromRegister, bool blocking);
 
 public:
@@ -91,13 +89,10 @@ public:
 
 	void init(bool blocking);
 	void initGrey(bool blocking);
-	void initWS(bool blocking);
 	void sleep(bool blocking);
 	void clear(bool blocking);
 	void display(const uint8_t *blackBuffer, uint8_t *redBuffer, bool quick, bool blocking);
 	void displayGrey(const uint8_t *blackBuffer, uint8_t *redBuffer, bool quick, bool blocking);
-	void displayPartial(const uint8_t *buffer, uint16_t x, uint16_t y, uint16_t width, uint16_t height, bool blocking);
-	void displayPartialWS(uint16_t X_start,uint16_t Y_start,uint16_t X_end,uint16_t Y_end, uint8_t *Image);
 };
 
 #endif /* INC_DISPLAY_EPD_4IN2A_HPP2_ */
