@@ -18,7 +18,7 @@
 #include <fonts/ApplicationFontProvider.hpp>
 #include <gui/common/FrontendHeap.hpp>
 #include <BitmapDatabase.hpp>
-#include <platform/driver/lcd/LCD1bpp.hpp>
+#include <platform/driver/lcd/LCD2bpp.hpp>
 #include <touchgfx/hal/OSWrappers.hpp>
 #include <touchgfx/hal/NoDMA.hpp>
 #include <TouchGFXHAL.hpp>
@@ -30,10 +30,10 @@ extern "C" void touchgfx_taskEntry();
 
 static STM32TouchController tc;
 static NoDMA dma;
-static LCD1bpp display;
+static LCD2bpp display;
 static ApplicationFontProvider fontProvider;
 static Texts texts;
-static TouchGFXHAL hal(dma, display, tc, 400, 600);
+static TouchGFXHAL hal(dma, display, tc, 400, 300);
 
 void touchgfx_init()
 {

@@ -34,12 +34,16 @@ protected:
     touchgfx::TextAreaWithOneWildcard vddValueTextArea;
     touchgfx::TextArea vddLabelTextArea;
     touchgfx::TextArea button4;
+    touchgfx::TextArea button3;
     touchgfx::TextArea button2;
     touchgfx::TextArea button1;
     ReadoutContainer temperatureReadoutContainer;
     ReadoutContainer humidityReadoutContainer;
     BigReadoutContainer preassureBigReadoutContainer;
     BigReadoutContainer co2BigReadoutContainer;
+    touchgfx::Box box3_2;
+    touchgfx::Box box3_1;
+    touchgfx::Box box3;
 
 private:
 

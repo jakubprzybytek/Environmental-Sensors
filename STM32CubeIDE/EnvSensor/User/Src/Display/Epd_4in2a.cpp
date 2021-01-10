@@ -11,8 +11,6 @@
 
 #include "EnvSensor.hpp"
 
-#define ZERO_BUFFER_SIZE 100
-
 static const unsigned char EPD_4IN2_lut_vcom0[] = {
     0x00, 0x17, 0x00, 0x00, 0x00, 0x02,
     0x00, 0x17, 0x17, 0x00, 0x00, 0x02,
@@ -591,28 +589,20 @@ void EPD_4in2A::sleep(bool blocking) {
  */
 void EPD_4in2A::clear(bool blocking) {
 
-	uint8_t zeroBuffer[ZERO_BUFFER_SIZE];
-	memset(zeroBuffer, 0xff, ZERO_BUFFER_SIZE);
+	memset(auxBuffer, 0xff, EPD_WIDTH_BLOCKS * EPD_HEIGHT);
 
 	EPD_CHIP_SELECT_LOW;
 
 	sendCommand(EPD_4IN2B_DATA_START_TRANSMISSION_1);
-	for (uint8_t i = 0; i < EPD_WIDTH_BLOCKS * EPD_HEIGHT / ZERO_BUFFER_SIZE; i++) {
-		sendData(zeroBuffer, ZERO_BUFFER_SIZE);
-	}
-
+	sendData(auxBuffer, EPD_WIDTH_BLOCKS * EPD_HEIGHT);
 
 	sendCommand(EPD_4IN2B_DATA_START_TRANSMISSION_2);
-	for (uint8_t i = 0; i < EPD_WIDTH_BLOCKS * EPD_HEIGHT / ZERO_BUFFER_SIZE; i++) {
-		sendData(zeroBuffer, ZERO_BUFFER_SIZE);
-	}
+	sendData(auxBuffer, EPD_WIDTH_BLOCKS * EPD_HEIGHT);
 
 	sendRefreshCommand(false, blocking);
 
 	EPD_CHIP_SELECT_HIGH;
 }
-
-uint8_t auxBuffer[EPD_WIDTH_BLOCKS * EPD_HEIGHT];
 
 /**
  * Sends provided buffer to the eInk display and performs full or quick refresh.
@@ -628,41 +618,50 @@ void EPD_4in2A::display(const uint8_t *blackBuffer, uint8_t *redBuffer, bool qui
 	EPD_CHIP_SELECT_HIGH;
 }
 
+//uint8_t auxBuffer[EPD_WIDTH_BLOCKS * EPD_HEIGHT];
+
 /**
  * Sends provided buffer to the eInk display and performs full or quick refresh.
  */
 void EPD_4in2A::displayGrey(const uint8_t *blackBuffer, uint8_t *redBuffer, bool quick, bool blocking) {
 	EPD_CHIP_SELECT_LOW;
 
+	for (uint16_t i = 0; i < EPD_WIDTH_BLOCKS * EPD_HEIGHT ; i++) {
+		uint16_t toCompress = blackBuffer[i * 2 + 1] << 8 | blackBuffer[i * 2];
+		auxBuffer[i] =
+				((toCompress & 0b1000000000000000) ? 0b00000001 : 0) |
+				((toCompress & 0b0010000000000000) ? 0b00000010 : 0) |
+				((toCompress & 0b0000100000000000) ? 0b00000100 : 0) |
+				((toCompress & 0b0000001000000000) ? 0b00001000 : 0) |
+				((toCompress & 0b0000000010000000) ? 0b00010000 : 0) |
+				((toCompress & 0b0000000000100000) ? 0b00100000 : 0) |
+				((toCompress & 0b0000000000001000) ? 0b01000000 : 0) |
+				((toCompress & 0b0000000000000010) ? 0b10000000 : 0);
+	}
+
 	sendCommand(EPD_4IN2B_DATA_START_TRANSMISSION_1);
-	sendData(blackBuffer, EPD_WIDTH_BLOCKS * EPD_HEIGHT);
+	sendData(auxBuffer, EPD_WIDTH_BLOCKS * EPD_HEIGHT);
+
+	for (uint16_t i = 0; i < EPD_WIDTH_BLOCKS * EPD_HEIGHT ; i++) {
+		uint16_t toCompress = blackBuffer[i * 2] << 8 | blackBuffer[i * 2 + 1];
+		auxBuffer[i] =
+				((toCompress & 0b0100000000000000) ? 0b00010000 : 0) |
+				((toCompress & 0b0001000000000000) ? 0b00100000 : 0) |
+				((toCompress & 0b0000010000000000) ? 0b01000000 : 0) |
+				((toCompress & 0b0000000100000000) ? 0b10000000 : 0) |
+				((toCompress & 0b0000000001000000) ? 0b00000001 : 0) |
+				((toCompress & 0b0000000000010000) ? 0b00000010 : 0) |
+				((toCompress & 0b0000000000000100) ? 0b00000100 : 0) |
+				((toCompress & 0b0000000000000001) ? 0b00001000 : 0);
+	}
 
 	sendCommand(EPD_4IN2B_DATA_START_TRANSMISSION_2);
-	for (uint16_t i = 0; i < 15000; i++) {
-		sendData(0b01011010);
-	}
+	sendData(auxBuffer, EPD_WIDTH_BLOCKS * EPD_HEIGHT);
 
 	sendRefreshCommand(quick, blocking);
 
 	EPD_CHIP_SELECT_HIGH;
 }
-
-//void EPD_4in2A::displayFull(const uint8_t *blackBuffer, uint8_t *redBuffer, bool blocking) {
-//	EPD_CHIP_SELECT_LOW;
-//
-//	sendCommand(EPD_4IN2B_DATA_START_TRANSMISSION_2);
-//	sendData(blackBuffer, EPD_WIDTH_BLOCKS * EPD_HEIGHT);
-//
-//	for (uint16_t i = 0; i < EPD_WIDTH_BLOCKS * EPD_HEIGHT; i++) {
-//		auxBuffer[i] = ~blackBuffer[i];
-//	}
-//	sendCommand(EPD_4IN2B_DATA_START_TRANSMISSION_1);
-//	sendData(auxBuffer, EPD_WIDTH_BLOCKS * EPD_HEIGHT);
-//
-//	sendRefreshCommand(blocking);
-//
-//	EPD_CHIP_SELECT_HIGH;
-//}
 
 void EPD_4in2A::displayPartial(const uint8_t *buffer, uint16_t x, uint16_t y, uint16_t width, uint16_t height, bool blocking) {
 	EPD_CHIP_SELECT_LOW;

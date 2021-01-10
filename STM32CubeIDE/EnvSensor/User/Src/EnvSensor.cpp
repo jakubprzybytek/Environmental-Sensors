@@ -65,9 +65,9 @@ void EnvSensor_Init() {
 	// Main measurement timer
 	HAL_TIM_Base_Start_IT(&htim2);
 
-	eInk.init(true);
-	eInk.clear(true);
-	eInk.sleep(true);
+	//eInk.initGrey(true);
+	//eInk.clear(true);
+	//eInk.sleep(true);
 }
 
 void EnvSensor_Loop() {
@@ -194,14 +194,12 @@ void EnvSensor_PerformNextDisplayAction() {
 	switch (nextDisplayAction) {
 
 	case DisplayAction::Init:
-		eInk.init(false);
-		//eInk.initWS(false);
+		eInk.initGrey(false);
 		nextDisplayAction = DisplayAction::Transfer;
 		break;
 
 	case DisplayAction::Transfer:
-		eInk.display(blackBuffer, redBuffer, true, false);
-		//eInk.displayPartialWS(0, 0, 400, 300, blackBuffer);
+		eInk.displayGrey(blackBuffer, redBuffer, true, false);
 		nextDisplayAction = DisplayAction::Sleep;
 		break;
 

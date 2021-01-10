@@ -60,10 +60,10 @@
               "BufferSize": 0
             },
             "Name": "vddValueTextArea",
-            "X": 320,
-            "Y": 227,
-            "Width": 80,
-            "Height": 26,
+            "X": 314,
+            "Y": 228,
+            "Width": 81,
+            "Height": 32,
             "Visible": true,
             "LockPosition": false,
             "Draggable": false,
@@ -84,10 +84,10 @@
             "AutoSize": true,
             "LineSpacing": 0,
             "Name": "vddLabelTextArea",
-            "X": 365,
+            "X": 354,
             "Y": 200,
-            "Width": 35,
-            "Height": 27,
+            "Width": 41,
+            "Height": 32,
             "Visible": true,
             "LockPosition": false,
             "Draggable": false,
@@ -110,8 +110,32 @@
             "Name": "button4",
             "X": 290,
             "Y": 274,
-            "Width": 46,
-            "Height": 27,
+            "Width": 55,
+            "Height": 32,
+            "Visible": true,
+            "LockPosition": false,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "TextArea",
+            "TextId": "SingleUseId27",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 0,
+              "Green": 0,
+              "Blue": 0
+            },
+            "Alpha": 255,
+            "AutoSize": true,
+            "LineSpacing": 0,
+            "Name": "button3",
+            "X": 131,
+            "Y": 274,
+            "Width": 47,
+            "Height": 32,
             "Visible": true,
             "LockPosition": false,
             "Draggable": false,
@@ -132,10 +156,10 @@
             "AutoSize": true,
             "LineSpacing": 0,
             "Name": "button2",
-            "X": 131,
+            "X": 200,
             "Y": 274,
-            "Width": 39,
-            "Height": 27,
+            "Width": 73,
+            "Height": 32,
             "Visible": true,
             "LockPosition": false,
             "Draggable": false,
@@ -158,8 +182,8 @@
             "Name": "button1",
             "X": 45,
             "Y": 274,
-            "Width": 39,
-            "Height": 27,
+            "Width": 47,
+            "Height": 32,
             "Visible": true,
             "LockPosition": false,
             "Draggable": false,
@@ -226,6 +250,66 @@
             "Clickable": false,
             "Fadeable": false,
             "Moveable": false
+          },
+          {
+            "Type": "Box",
+            "Color": {
+              "Red": 0,
+              "Green": 0,
+              "Blue": 0
+            },
+            "Alpha": 255,
+            "Name": "box3_2",
+            "X": 12,
+            "Y": 0,
+            "Width": 4,
+            "Height": 50,
+            "Visible": true,
+            "LockPosition": false,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "Box",
+            "Color": {
+              "Red": 94,
+              "Green": 94,
+              "Blue": 94
+            },
+            "Alpha": 255,
+            "Name": "box3_1",
+            "X": 8,
+            "Y": 0,
+            "Width": 4,
+            "Height": 50,
+            "Visible": true,
+            "LockPosition": false,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "Box",
+            "Color": {
+              "Red": 175,
+              "Green": 175,
+              "Blue": 175
+            },
+            "Alpha": 255,
+            "Name": "box3",
+            "X": 4,
+            "Y": 0,
+            "Width": 4,
+            "Height": 50,
+            "Visible": true,
+            "LockPosition": false,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
           }
         ],
         "Interactions": [],
@@ -255,9 +339,9 @@
             },
             "Name": "valueTextArea",
             "X": 0,
-            "Y": 6,
+            "Y": 10,
             "Width": 320,
-            "Height": 94,
+            "Height": 90,
             "Visible": true,
             "LockPosition": false,
             "Draggable": false,
@@ -279,7 +363,7 @@
             "LineSpacing": 0,
             "Name": "unitTextArea",
             "X": 326,
-            "Y": 32,
+            "Y": 36,
             "Width": 50,
             "Height": 27,
             "Visible": true,
@@ -341,9 +425,9 @@
             },
             "Name": "valueTextArea",
             "X": 0,
-            "Y": 14,
-            "Width": 116,
-            "Height": 66,
+            "Y": 20,
+            "Width": 108,
+            "Height": 60,
             "Visible": true,
             "LockPosition": false,
             "Draggable": false,
@@ -364,9 +448,9 @@
             "AutoSize": false,
             "LineSpacing": 0,
             "Name": "unitTextArea",
-            "X": 118,
-            "Y": 28,
-            "Width": 42,
+            "X": 110,
+            "Y": 34,
+            "Width": 50,
             "Height": 27,
             "Visible": true,
             "LockPosition": false,
@@ -390,7 +474,7 @@
             "Name": "labelTextArea",
             "X": 0,
             "Y": 0,
-            "Width": 120,
+            "Width": 114,
             "Height": 27,
             "Visible": true,
             "LockPosition": false,
@@ -484,21 +568,25 @@
       {
         "TextEntryId": "SingleUseId26",
         "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId27",
+        "IsResource": false
       }
     ],
     "Name": "EnvSensor",
     "Resolution": {
       "Width": 400,
-      "Height": 600
+      "Height": 300
     },
-    "SelectedColorDepth": 1,
+    "SelectedColorDepth": 2,
     "StartupScreenName": "Main",
     "SelectedStartupLanguage": "GB",
     "Skin": "Blue",
     "TouchGfxPath": "../Middlewares/ST/touchgfx",
     "UIPath": ".",
     "AvailableColorDepths": [
-      1
+      2
     ],
     "AvailableLCDs": {
       "2": "LCD2bpp",
@@ -511,10 +599,16 @@
     "AvailableResolutions": [
       {
         "Width": 400,
-        "Height": 600
+        "Height": 300
       }
     ],
     "PhysicalButtons": [],
+    "FrameworkFeatures": {
+      "LCD2bpp": {
+        "Id": "LCD2bpp",
+        "IsEnabled": true
+      }
+    },
     "GenerateAssetsCommand": "make -f simulator/gcc/Makefile assets -j8",
     "PostGenerateCommand": "touchgfx update_project --project-file=simulator/msvs/Application.vcxproj",
     "PostGenerateTargetCommand": "touchgfx update_project --project-file=../EnvSensor.ioc --platform=m4",
@@ -524,7 +618,7 @@
     "LandscapeSkinY": 0,
     "PortraitSkinX": 0,
     "PortraitSkinY": 0,
-    "DisplayOrientation": "Portrait",
+    "DisplayOrientation": "Landscape",
     "Family": "STM32L4"
   },
   "Version": "4.15.0"

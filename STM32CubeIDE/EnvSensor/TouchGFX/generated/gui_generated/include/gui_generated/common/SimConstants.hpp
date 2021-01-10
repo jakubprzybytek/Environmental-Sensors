@@ -5,7 +5,7 @@
 #define SIMCONSTANTS_HPP
 
 static unsigned short SIM_WIDTH = 400;
-static unsigned short SIM_HEIGHT = 600;
+static unsigned short SIM_HEIGHT = 300;
 #define SIM_TITLE "EnvSensor"
 
 #endif // SIMCONSTANTS_HPP

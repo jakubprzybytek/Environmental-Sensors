@@ -26,7 +26,7 @@ using namespace touchgfx;
 namespace {
     // Use the section "TouchGFX_Framebuffer" in the linker to specify the placement of the buffer
     LOCATION_PRAGMA("TouchGFX_Framebuffer")
-    uint32_t frameBuf[(((400 + 7) / 8) * 600 + 3) / 4] LOCATION_ATTRIBUTE("TouchGFX_Framebuffer");
+    uint32_t frameBuf[(((400 + 3) / 4) * 300 + 3) / 4] LOCATION_ATTRIBUTE("TouchGFX_Framebuffer");
 }
 
 void TouchGFXGeneratedHAL::initialize()
@@ -65,7 +65,7 @@ void TouchGFXGeneratedHAL::enableLCDControllerInterrupt()
 inline uint8_t* TouchGFXGeneratedHAL::advanceFrameBufferToRect(uint8_t* fbPtr, const touchgfx::Rect& rect) const
 {
     //       Advance vertically                   Advance horizontally
-    fbPtr += rect.y * lcd().framebufferStride() + rect.x / 8;
+    fbPtr += rect.y * lcd().framebufferStride() + rect.x / 4;
     return fbPtr;
 }
 

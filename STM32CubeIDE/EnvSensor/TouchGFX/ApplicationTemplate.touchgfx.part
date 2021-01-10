@@ -3,15 +3,15 @@
   "Application": {
     "Name": "EnvSensor",
     "TouchGfxPath": "../Middlewares/ST/touchgfx",
-    "AvailableColorDepths": [ 1 ],
+    "AvailableColorDepths": [ 2 ],
     "AvailableLCDs":
     {
-      "1": "LCD1bpp"
+      "2": "LCD2bpp"
     },
     "AvailableResolutions" : [
       {
         "Width": 400,
-        "Height": 600
+        "Height": 300
       }
     ],
     "PostGenerateTargetCommand" : "touchgfx update_project --project-file=../EnvSensor.ioc --platform=m4",

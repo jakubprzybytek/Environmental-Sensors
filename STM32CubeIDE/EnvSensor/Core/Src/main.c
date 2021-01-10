@@ -126,6 +126,10 @@ int main(void)
 
   EnvSensor_Init();
 
+  // make initial draw
+  EnvSensor_PerformDisplyRefresh();
+  MX_TouchGFX_Process();
+
   /* USER CODE END 2 */
 
   /* Infinite loop */

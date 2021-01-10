@@ -70,6 +70,8 @@ class EPD_4in2A {
 private:
 	SPI_HandleTypeDef &hspi;
 
+	uint8_t auxBuffer[EPD_WIDTH_BLOCKS * EPD_HEIGHT];
+
 	void reset();
 	void waitUntilIdle();
 

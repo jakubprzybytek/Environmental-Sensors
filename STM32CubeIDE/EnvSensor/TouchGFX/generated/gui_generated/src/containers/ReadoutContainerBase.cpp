@@ -9,17 +9,17 @@ ReadoutContainerBase::ReadoutContainerBase()
 {
     setWidth(160);
     setHeight(80);
-    valueTextArea.setPosition(0, 14, 116, 66);
+    valueTextArea.setPosition(0, 20, 108, 60);
     valueTextArea.setColor(touchgfx::Color::getColorFrom24BitRGB(0, 0, 0));
     valueTextArea.setLinespacing(0);
     valueTextArea.setTypedText(touchgfx::TypedText(T_SINGLEUSEID23));
 
-    unitTextArea.setPosition(118, 28, 42, 27);
+    unitTextArea.setPosition(110, 34, 50, 27);
     unitTextArea.setColor(touchgfx::Color::getColorFrom24BitRGB(0, 0, 0));
     unitTextArea.setLinespacing(0);
     unitTextArea.setTypedText(touchgfx::TypedText(T_SINGLEUSEID24));
 
-    labelTextArea.setPosition(0, 0, 120, 27);
+    labelTextArea.setPosition(0, 0, 114, 27);
     labelTextArea.setColor(touchgfx::Color::getColorFrom24BitRGB(0, 0, 0));
     labelTextArea.setLinespacing(0);
     labelTextArea.setTypedText(touchgfx::TypedText(T_SINGLEUSEID22));

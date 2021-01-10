@@ -8,7 +8,7 @@
 MainViewBase::MainViewBase()
 {
 
-    __background.setPosition(0, 0, 400, 600);
+    __background.setPosition(0, 0, 400, 300);
     __background.setColor(touchgfx::Color::getColorFrom24BitRGB(0, 0, 0));
 
     box2.setPosition(0, 300, 400, 300);
@@ -17,12 +17,12 @@ MainViewBase::MainViewBase()
     box1.setPosition(0, 0, 400, 300);
     box1.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
 
-    vddValueTextArea.setPosition(320, 227, 80, 26);
+    vddValueTextArea.setPosition(314, 228, 81, 32);
     vddValueTextArea.setColor(touchgfx::Color::getColorFrom24BitRGB(0, 0, 0));
     vddValueTextArea.setLinespacing(0);
     vddValueTextArea.setTypedText(touchgfx::TypedText(T_SINGLEUSEID26));
 
-    vddLabelTextArea.setXY(365, 200);
+    vddLabelTextArea.setXY(354, 200);
     vddLabelTextArea.setColor(touchgfx::Color::getColorFrom24BitRGB(0, 0, 0));
     vddLabelTextArea.setLinespacing(0);
     vddLabelTextArea.setTypedText(touchgfx::TypedText(T_SINGLEUSEID25));
@@ -32,7 +32,12 @@ MainViewBase::MainViewBase()
     button4.setLinespacing(0);
     button4.setTypedText(touchgfx::TypedText(T_SINGLEUSEID18));
 
-    button2.setXY(131, 274);
+    button3.setXY(131, 274);
+    button3.setColor(touchgfx::Color::getColorFrom24BitRGB(0, 0, 0));
+    button3.setLinespacing(0);
+    button3.setTypedText(touchgfx::TypedText(T_SINGLEUSEID27));
+
+    button2.setXY(200, 274);
     button2.setColor(touchgfx::Color::getColorFrom24BitRGB(0, 0, 0));
     button2.setLinespacing(0);
     button2.setTypedText(touchgfx::TypedText(T_SINGLEUSEID17));
@@ -50,18 +55,31 @@ MainViewBase::MainViewBase()
 
     co2BigReadoutContainer.setXY(0, 0);
 
+    box3_2.setPosition(12, 0, 4, 50);
+    box3_2.setColor(touchgfx::Color::getColorFrom24BitRGB(0, 0, 0));
+
+    box3_1.setPosition(8, 0, 4, 50);
+    box3_1.setColor(touchgfx::Color::getColorFrom24BitRGB(94, 94, 94));
+
+    box3.setPosition(4, 0, 4, 50);
+    box3.setColor(touchgfx::Color::getColorFrom24BitRGB(175, 175, 175));
+
     add(__background);
     add(box2);
     add(box1);
     add(vddValueTextArea);
     add(vddLabelTextArea);
     add(button4);
+    add(button3);
     add(button2);
     add(button1);
     add(temperatureReadoutContainer);
     add(humidityReadoutContainer);
     add(preassureBigReadoutContainer);
     add(co2BigReadoutContainer);
+    add(box3_2);
+    add(box3_1);
+    add(box3);
 }
 
 void MainViewBase::setupScreen()

@@ -4,7 +4,7 @@
 #include <simulator/mainBase.hpp>
 #include <platform/hal/simulator/sdl2/HALSDL2.hpp>
 #include <common/TouchGFXInit.hpp>
-#include <platform/driver/lcd/LCD1bpp.hpp>
+#include <platform/driver/lcd/LCD2bpp.hpp>
 
 
 void setupSimulator(int argc, char** argv, touchgfx::HAL& hal) {
@@ -18,7 +18,7 @@ void setupSimulator(int argc, char** argv, touchgfx::HAL& hal) {
 
 }
 
-touchgfx::LCD1bpp lcd;
+touchgfx::LCD2bpp lcd;
 touchgfx::LCD& setupLCD() {
   return lcd;
 }

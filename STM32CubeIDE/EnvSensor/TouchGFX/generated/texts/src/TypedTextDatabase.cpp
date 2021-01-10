@@ -5,15 +5,15 @@
 #include <fonts/GeneratedFont.hpp>
 #include <texts/TypedTextDatabase.hpp>
 
-extern touchgfx::GeneratedFont& getFont_segoeui_20_1bpp();
-extern touchgfx::GeneratedFont& getFont_segoeuisl_54_1bpp();
-extern touchgfx::GeneratedFont& getFont_segoeuisl_84_1bpp();
+extern touchgfx::GeneratedFont& getFont_segoeui_24_2bpp();
+extern touchgfx::GeneratedFont& getFont_segoeuisl_52_2bpp();
+extern touchgfx::GeneratedFont& getFont_segoeuisl_80_2bpp();
 
 const touchgfx::Font* touchgfx_fonts[] =
 {
-    &(getFont_segoeui_20_1bpp()),
-    &(getFont_segoeuisl_54_1bpp()),
-    &(getFont_segoeuisl_84_1bpp())
+    &(getFont_segoeui_24_2bpp()),
+    &(getFont_segoeuisl_52_2bpp()),
+    &(getFont_segoeuisl_80_2bpp())
 };
 
 extern const touchgfx::TypedText::TypedTextData typedText_database_DEFAULT[];
@@ -23,7 +23,7 @@ TEXT_LOCATION_FLASH_PRAGMA
 const touchgfx::TypedText::TypedTextData typedText_database_DEFAULT[] TEXT_LOCATION_FLASH_ATTRIBUTE =
 {
     { 0, touchgfx::LEFT, touchgfx::TEXT_DIRECTION_LTR },
-    { 0, touchgfx::LEFT, touchgfx::TEXT_DIRECTION_LTR },
+    { 0, touchgfx::CENTER, touchgfx::TEXT_DIRECTION_LTR },
     { 0, touchgfx::LEFT, touchgfx::TEXT_DIRECTION_LTR },
     { 0, touchgfx::RIGHT, touchgfx::TEXT_DIRECTION_LTR },
     { 2, touchgfx::RIGHT, touchgfx::TEXT_DIRECTION_LTR },
@@ -40,7 +40,8 @@ const touchgfx::TypedText::TypedTextData typedText_database_DEFAULT[] TEXT_LOCAT
     { 0, touchgfx::RIGHT, touchgfx::TEXT_DIRECTION_LTR },
     { 0, touchgfx::LEFT, touchgfx::TEXT_DIRECTION_LTR },
     { 0, touchgfx::RIGHT, touchgfx::TEXT_DIRECTION_LTR },
-    { 0, touchgfx::RIGHT, touchgfx::TEXT_DIRECTION_LTR }
+    { 0, touchgfx::RIGHT, touchgfx::TEXT_DIRECTION_LTR },
+    { 0, touchgfx::LEFT, touchgfx::TEXT_DIRECTION_LTR }
 };
 
 TEXT_LOCATION_FLASH_PRAGMA
@@ -78,13 +79,13 @@ void resetFont(touchgfx::FontId fontId)
     switch (fontId)
     {
     case 0:
-        touchgfx_fonts[0] = &(getFont_segoeui_20_1bpp());
+        touchgfx_fonts[0] = &(getFont_segoeui_24_2bpp());
         break;
     case 1:
-        touchgfx_fonts[1] = &(getFont_segoeuisl_54_1bpp());
+        touchgfx_fonts[1] = &(getFont_segoeuisl_52_2bpp());
         break;
     case 2:
-        touchgfx_fonts[2] = &(getFont_segoeuisl_84_1bpp());
+        touchgfx_fonts[2] = &(getFont_segoeuisl_80_2bpp());
         break;
     }
 }
