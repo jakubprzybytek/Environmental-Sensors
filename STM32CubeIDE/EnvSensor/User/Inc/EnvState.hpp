@@ -20,7 +20,8 @@ public:
 
 	float vdd;
 
-	uint32_t sdAvailableSpace;
+	bool sdActive;
+	uint32_t sdAvailableSpaceKilobytes;
 };
 
 

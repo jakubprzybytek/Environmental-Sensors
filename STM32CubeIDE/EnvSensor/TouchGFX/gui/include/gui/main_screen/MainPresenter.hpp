@@ -33,7 +33,7 @@ public:
     void notifyHumidityChanged(float humidity);
 
     void notifyVddChanged(float vdd);
-    void notifySdAvailableSpaceChanged(uint32_t availableSpaceKilobytes);
+    void notifySdChanged(bool sdActive, uint32_t availableSpaceKilobytes);
 
 private:
     MainPresenter();

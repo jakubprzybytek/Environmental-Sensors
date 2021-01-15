@@ -54,8 +54,13 @@ void EnvSensor_Init() {
 	sensors.init();
 	sensors.start();
 
-	logger.init();
-	envState.sdAvailableSpace = logger.getAvailableSpace();
+	if (logger.init() == FR_OK) {
+		envState.sdActive = true;
+		envState.sdAvailableSpaceKilobytes = logger.getAvailableSpace();
+	} else {
+		envState.sdActive = false;
+	}
+
 	logger.read();
 
 	vddSensor.init();
@@ -106,8 +111,13 @@ void EnvSensor_Loop() {
 
 		sprintf(logMessageBuffer, "%.2f,%.2f,%.1f,%.1f,%.1f,%.2f", (double) envState.co2, (double) envState.pressure, (double) envState.humidity,
 				(double) envState.temperature, (double) envState.temperature2, (double) envState.vdd);
-		logger.log(logMessageBuffer);
-		envState.sdAvailableSpace = logger.getAvailableSpace();
+
+		if (logger.log(logMessageBuffer) == FR_OK) {
+			envState.sdActive = true;
+			envState.sdAvailableSpaceKilobytes = logger.getAvailableSpace();
+		} else {
+			envState.sdActive = false;
+		}
 	}
 
 	display.process();

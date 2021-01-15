@@ -28,7 +28,7 @@ private:
 public:
 	uint8_t init();
 
-	void log(char *line);
+	FRESULT log(char *line);
 
 	void read();
 	uint32_t getAvailableSpace();

@@ -8,12 +8,14 @@ class ModelListener;
 class Model {
 private:
 	float co2;
-	float preassure;
+	float pressure;
 	float temperature;
 	float humidity;
 
 	float vdd;
-	uint32_t availableSpaceKilobytes;
+
+	bool sdActive;
+	uint32_t sdAvailableSpaceKilobytes;
 
 public:
 	Model();
@@ -29,7 +31,7 @@ public:
 	}
 
 	float getPreassure() {
-		return preassure;
+		return pressure;
 	}
 
 	float getTemperature() {
@@ -45,7 +47,7 @@ public:
 	}
 
 	uint32_t getAvailableSpaceKilobytes() {
-		return availableSpaceKilobytes;
+		return sdAvailableSpaceKilobytes;
 	}
 
 protected:

@@ -36,6 +36,7 @@ typedef enum
     T_SINGLEUSEID27,
     T_SINGLEUSEID28,
     T_SINGLEUSEID29,
+    T_ERR,
     NUMBER_OF_TEXT_KEYS
 } TEXTS;
 

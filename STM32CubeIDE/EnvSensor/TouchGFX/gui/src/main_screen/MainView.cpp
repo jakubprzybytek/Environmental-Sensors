@@ -40,13 +40,18 @@ void MainView::setVdd(float vdd) {
 	vddValueTextArea.invalidate();
 }
 
-void MainView::setSdAvailableSpace(uint32_t availableSpaceKilobytes) {
-	if (availableSpaceKilobytes > 1024 * 1024) { // > 1 GB
-		Unicode::snprintfFloat(sdBuffer, TEXTAREA_SIZE, "%.1fGB", availableSpaceKilobytes / (1024.0f * 1024.0f));
-	} else if (availableSpaceKilobytes > 1024) { // > 1 MB
-		Unicode::snprintfFloat(sdBuffer, TEXTAREA_SIZE, "%.1fMB", availableSpaceKilobytes / 1024.0f);
-	} else { // > 1 kB
-		Unicode::snprintfFloat(sdBuffer, TEXTAREA_SIZE, "%dkB", availableSpaceKilobytes);
+void MainView::setSdState(bool sdActive, uint32_t availableSpaceKilobytes) {
+
+	if (!sdActive) {
+		Unicode::strncpy(sdBuffer, "Err", 5);
+	} else {
+		if (availableSpaceKilobytes > 1024 * 1024) { // > 1 GB
+			Unicode::snprintfFloat(sdBuffer, TEXTAREA_SIZE, "%.1fGB", availableSpaceKilobytes / (1024.0f * 1024.0f));
+		} else if (availableSpaceKilobytes > 1024) { // > 1 MB
+			Unicode::snprintfFloat(sdBuffer, TEXTAREA_SIZE, "%.1fMB", availableSpaceKilobytes / 1024.0f);
+		} else { // > 1 kB
+			Unicode::snprintfFloat(sdBuffer, TEXTAREA_SIZE, "%dkB", availableSpaceKilobytes);
+		}
 	}
 
 	sdValueTextArea.invalidate();

@@ -37,17 +37,21 @@ FRESULT FileLogger::readAvailableSpace(FATFS *fatfs) {
 	return fresult;
 }
 
-void FileLogger::log(char *line) {
+FRESULT FileLogger::log(char *line) {
+
+	FRESULT fresult = FR_OK;
 
 	if (logSize + strlen(line) < LOG_BUFFER_SIZE) {
 		strcpy(logBuffer + logSize, line);
 		logSize += strlen(line);
 	} else {
-		saveToFile();
+		fresult = saveToFile();
 
 		strcpy(logBuffer, line);
 		logSize = strlen(line);
 	}
+
+	return fresult;
 }
 
 FRESULT FileLogger::saveToFile() {
