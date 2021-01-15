@@ -14,10 +14,12 @@ void Model::tick() {
 	temperature = envState.temperature;
 	humidity = envState.humidity;
 	vdd = envState.vdd;
+	availableSpaceKilobytes = envState.sdAvailableSpace;
 
 	modelListener->notifyCo2Changed(co2);
 	modelListener->notifyPreassureChanged(preassure);
 	modelListener->notifyTemperatureChanged(temperature);
 	modelListener->notifyHumidityChanged(humidity);
 	modelListener->notifyVddChanged(vdd);
+	modelListener->notifySdAvailableSpaceChanged(availableSpaceKilobytes);
 }

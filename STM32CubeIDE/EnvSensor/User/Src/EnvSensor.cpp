@@ -5,7 +5,7 @@
  *      Author: Chipotle
  */
 #include <stdlib.h>
-#include <SD/FileLogger.hpp>
+#include <stdio.h>
 
 #include <touchgfx/hal/OSWrappers.hpp>
 
@@ -15,9 +15,9 @@
 #include "Display/Display.hpp"
 #include "Sensors/Sensors.hpp"
 #include "Sensors/VddSensor.hpp"
+#include <SD/FileLogger.hpp>
 
 //#include "Display/Screen.hpp"
-//#include <stdio.h>
 
 using namespace touchgfx;
 
@@ -32,6 +32,7 @@ Display display;
 Sensors sensors;
 VddSensor vddSensor;
 
+char logMessageBuffer[100];
 FileLogger logger;
 
 bool switch1Pressed = false;
@@ -54,16 +55,14 @@ void EnvSensor_Init() {
 	sensors.start();
 
 	logger.init();
+	envState.sdAvailableSpace = logger.getAvailableSpace();
+	logger.read();
 
 	vddSensor.init();
 	EnvSensor_PerformVddRead();
 
 	// Main measurement timer
 	HAL_TIM_Base_Start_IT(&htim2);
-
-	logger.log("First line\n");
-	logger.log("Second line\n");
-	logger.log("Third line\n");
 }
 
 void EnvSensor_Loop() {
@@ -104,6 +103,11 @@ void EnvSensor_Loop() {
 			LED_Blink(10);
 			EnvSensor_PerformMeasurements();
 		}
+
+		sprintf(logMessageBuffer, "%.2f,%.2f,%.1f,%.1f,%.1f,%.2f", (double) envState.co2, (double) envState.pressure, (double) envState.humidity,
+				(double) envState.temperature, (double) envState.temperature2, (double) envState.vdd);
+		logger.log(logMessageBuffer);
+		envState.sdAvailableSpace = logger.getAvailableSpace();
 	}
 
 	display.process();

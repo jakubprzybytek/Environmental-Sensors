@@ -19,6 +19,8 @@ public:
 	float humidity;
 
 	float vdd;
+
+	uint32_t sdAvailableSpace;
 };
 
 

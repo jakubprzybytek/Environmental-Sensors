@@ -12,7 +12,7 @@
 
 #include "fatfs.h"
 
-#define LOG_BUFFER_SIZE 30
+#define LOG_BUFFER_SIZE 1024
 
 class FileLogger {
 
@@ -20,12 +20,18 @@ private:
 	char logBuffer[LOG_BUFFER_SIZE];
 	uint16_t logSize;
 
+	uint32_t availableSpace; // in kilobytes
+
 	FRESULT saveToFile();
+	FRESULT readAvailableSpace(FATFS *fatfs);
 
 public:
 	uint8_t init();
 
 	void log(char *line);
+
+	void read();
+	uint32_t getAvailableSpace();
 };
 
 #endif /* INC_SD_FILELOGGER_HPP_ */

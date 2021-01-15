@@ -1,6 +1,8 @@
 #ifndef MODEL_HPP
 #define MODEL_HPP
 
+#include "stm32l4xx_hal.h"
+
 class ModelListener;
 
 class Model {
@@ -11,6 +13,7 @@ private:
 	float humidity;
 
 	float vdd;
+	uint32_t availableSpaceKilobytes;
 
 public:
 	Model();
@@ -39,6 +42,10 @@ public:
 
 	float getVdd() {
 		return vdd;
+	}
+
+	uint32_t getAvailableSpaceKilobytes() {
+		return availableSpaceKilobytes;
 	}
 
 protected:

@@ -33,3 +33,7 @@ void MainPresenter::notifyHumidityChanged(float humidity) {
 void MainPresenter::notifyVddChanged(float vdd) {
 	view.setVdd(vdd);
 }
+
+void MainPresenter::notifySdAvailableSpaceChanged(uint32_t availableSpaceKilobytes) {
+	view.setSdAvailableSpace(availableSpaceKilobytes);
+}

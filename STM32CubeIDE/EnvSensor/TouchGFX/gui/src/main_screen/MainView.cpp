@@ -3,6 +3,7 @@
 
 MainView::MainView() {
 	vddValueTextArea.setWildcard(vddBuffer);
+	sdValueTextArea.setWildcard(sdBuffer);
 }
 
 void MainView::setupScreen() {
@@ -37,4 +38,16 @@ void MainView::setHumidity(float humidity) {
 void MainView::setVdd(float vdd) {
 	Unicode::snprintfFloat(vddBuffer, TEXTAREA_SIZE, "%.2f", vdd);
 	vddValueTextArea.invalidate();
+}
+
+void MainView::setSdAvailableSpace(uint32_t availableSpaceKilobytes) {
+	if (availableSpaceKilobytes > 1024 * 1024) { // > 1 GB
+		Unicode::snprintfFloat(sdBuffer, TEXTAREA_SIZE, "%.1fGB", availableSpaceKilobytes / (1024.0f * 1024.0f));
+	} else if (availableSpaceKilobytes > 1024) { // > 1 MB
+		Unicode::snprintfFloat(sdBuffer, TEXTAREA_SIZE, "%.1fMB", availableSpaceKilobytes / 1024.0f);
+	} else { // > 1 kB
+		Unicode::snprintfFloat(sdBuffer, TEXTAREA_SIZE, "%dkB", availableSpaceKilobytes);
+	}
+
+	sdValueTextArea.invalidate();
 }

@@ -9,6 +9,7 @@ class MainView : public MainViewBase
 private:
 	static const uint8_t TEXTAREA_SIZE = 10;
 	touchgfx::Unicode::UnicodeChar vddBuffer[TEXTAREA_SIZE];
+	touchgfx::Unicode::UnicodeChar sdBuffer[TEXTAREA_SIZE];
 
 public:
     MainView();
@@ -22,6 +23,7 @@ public:
     void setHumidity(float humidity);
 
     void setVdd(float vdd);
+    void setSdAvailableSpace(uint32_t availableSpaceKilobytes);
 
 protected:
 };

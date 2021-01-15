@@ -17,32 +17,42 @@ MainViewBase::MainViewBase()
     box1.setPosition(0, 0, 400, 300);
     box1.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
 
-    vddValueTextArea.setPosition(314, 228, 81, 32);
+    sdValueTextArea.setPosition(352, 257, 46, 24);
+    sdValueTextArea.setColor(touchgfx::Color::getColorFrom24BitRGB(0, 0, 0));
+    sdValueTextArea.setLinespacing(0);
+    sdValueTextArea.setTypedText(touchgfx::TypedText(T_SINGLEUSEID29));
+
+    sdLabelTextArea.setXY(325, 257);
+    sdLabelTextArea.setColor(touchgfx::Color::getColorFrom24BitRGB(0, 0, 0));
+    sdLabelTextArea.setLinespacing(0);
+    sdLabelTextArea.setTypedText(touchgfx::TypedText(T_SINGLEUSEID28));
+
+    vddValueTextArea.setPosition(352, 233, 46, 24);
     vddValueTextArea.setColor(touchgfx::Color::getColorFrom24BitRGB(0, 0, 0));
     vddValueTextArea.setLinespacing(0);
     vddValueTextArea.setTypedText(touchgfx::TypedText(T_SINGLEUSEID26));
 
-    vddLabelTextArea.setXY(354, 200);
+    vddLabelTextArea.setXY(316, 233);
     vddLabelTextArea.setColor(touchgfx::Color::getColorFrom24BitRGB(0, 0, 0));
     vddLabelTextArea.setLinespacing(0);
     vddLabelTextArea.setTypedText(touchgfx::TypedText(T_SINGLEUSEID25));
 
-    button4.setXY(290, 274);
+    button4.setXY(284, 276);
     button4.setColor(touchgfx::Color::getColorFrom24BitRGB(0, 0, 0));
     button4.setLinespacing(0);
     button4.setTypedText(touchgfx::TypedText(T_SINGLEUSEID18));
 
-    button3.setXY(131, 274);
+    button3.setXY(132, 276);
     button3.setColor(touchgfx::Color::getColorFrom24BitRGB(0, 0, 0));
     button3.setLinespacing(0);
     button3.setTypedText(touchgfx::TypedText(T_SINGLEUSEID27));
 
-    button2.setXY(200, 274);
+    button2.setXY(202, 276);
     button2.setColor(touchgfx::Color::getColorFrom24BitRGB(0, 0, 0));
     button2.setLinespacing(0);
     button2.setTypedText(touchgfx::TypedText(T_SINGLEUSEID17));
 
-    button1.setXY(45, 274);
+    button1.setXY(63, 276);
     button1.setColor(touchgfx::Color::getColorFrom24BitRGB(0, 0, 0));
     button1.setLinespacing(0);
     button1.setTypedText(touchgfx::TypedText(T_SINGLEUSEID16));
@@ -67,6 +77,8 @@ MainViewBase::MainViewBase()
     add(__background);
     add(box2);
     add(box1);
+    add(sdValueTextArea);
+    add(sdLabelTextArea);
     add(vddValueTextArea);
     add(vddLabelTextArea);
     add(button4);

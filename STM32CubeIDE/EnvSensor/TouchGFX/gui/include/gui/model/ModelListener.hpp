@@ -21,6 +21,7 @@ public:
     virtual void notifyHumidityChanged(float humidity) {}
 
     virtual void notifyVddChanged(float vdd) {}
+    virtual void notifySdAvailableSpaceChanged(uint32_t availableSpaceKilobytes) {}
 
 protected:
     Model* model;
