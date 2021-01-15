@@ -14,15 +14,13 @@
 
 #include "Display/Display.hpp"
 #include "Sensors/Sensors.hpp"
-
+#include "Sensors/VddSensor.hpp"
 
 //#include "Display/Screen.hpp"
 //#include <stdio.h>
 
 using namespace touchgfx;
 
-extern ADC_HandleTypeDef hadc1;
-//extern SPI_HandleTypeDef hspi2;
 extern TIM_HandleTypeDef htim2;
 extern TIM_HandleTypeDef htim15;
 extern RTC_HandleTypeDef hrtc;
@@ -32,6 +30,7 @@ Display display;
 //char screenBuffer[20];
 
 Sensors sensors;
+VddSensor vddSensor;
 
 FileLogger logger;
 
@@ -56,7 +55,7 @@ void EnvSensor_Init() {
 
 	logger.init();
 
-	HAL_ADCEx_Calibration_Start(&hadc1, ADC_SINGLE_ENDED);
+	vddSensor.init();
 	EnvSensor_PerformVddRead();
 
 	// Main measurement timer
@@ -156,14 +155,10 @@ void EnvSensor_PerformMeasurements() {
 }
 
 void EnvSensor_PerformVddRead() {
-	if (HAL_ADC_Start(&hadc1) != HAL_OK) {
-		return;
-	}
-
-	if (HAL_ADC_PollForConversion(&hadc1, 100) == HAL_OK) {
-		uint32_t adcVrefInt = HAL_ADC_GetValue(&hadc1);
-		uint32_t vddRaw = __LL_ADC_CALC_VREFANALOG_VOLTAGE(adcVrefInt, LL_ADC_RESOLUTION_12B);
-		envState.vdd = vddRaw / 1000.0f;
+	float vddReadout;
+	uint8_t result = vddSensor.read(&vddReadout);
+	if (result == HAL_OK) {
+		envState.vdd = vddReadout;
 	}
 }
 
