@@ -20,10 +20,11 @@
 
 #include "stm32l4xx.h"
 
-#include "Display/EPD_4in2a.hpp"
-#include "EnvSensor.hpp"
+#include "Display/Display.hpp"
 
 using namespace touchgfx;
+
+extern Display display;
 
 void TouchGFXHAL::initialize()
 {
@@ -85,7 +86,8 @@ void TouchGFXHAL::flushFrameBuffer(const touchgfx::Rect& rect)
 
     HAL::flushFrameBuffer(rect);
 
-    EnvSensor_RequestTransferFramebufferToDisplay((uint8_t*) getClientFrameBuffer(), ((uint8_t*) getClientFrameBuffer() + EPD_WIDTH_BLOCKS * EPD_HEIGHT));
+    display.requestTransferFramebufferToDisplay((uint8_t*) getClientFrameBuffer());
+    //EnvSensor_RequestTransferFramebufferToDisplay((uint8_t*) getClientFrameBuffer(), ((uint8_t*) getClientFrameBuffer() + EPD_WIDTH_BLOCKS * EPD_HEIGHT));
 }
 
 bool TouchGFXHAL::blockCopy(void* RESTRICT dest, const void* RESTRICT src, uint32_t numBytes)

@@ -19,6 +19,7 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
+#include "fatfs.h"
 #include "app_touchgfx.h"
 
 /* Private includes ----------------------------------------------------------*/
@@ -118,6 +119,7 @@ int main(void)
   MX_TIM15_Init();
   MX_RTC_Init();
   MX_ADC1_Init();
+  MX_FATFS_Init();
   MX_TouchGFX_Init();
   /* USER CODE BEGIN 2 */
 
@@ -127,7 +129,7 @@ int main(void)
   EnvSensor_Init();
 
   // make initial draw
-  EnvSensor_PerformDisplyRefresh();
+  //EnvSensor_PerformDisplyRefresh();
   MX_TouchGFX_Process();
 
   /* USER CODE END 2 */
@@ -403,7 +405,7 @@ static void MX_SPI2_Init(void)
   hspi2.Init.CLKPolarity = SPI_POLARITY_LOW;
   hspi2.Init.CLKPhase = SPI_PHASE_1EDGE;
   hspi2.Init.NSS = SPI_NSS_SOFT;
-  hspi2.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_4;
+  hspi2.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_2;
   hspi2.Init.FirstBit = SPI_FIRSTBIT_MSB;
   hspi2.Init.TIMode = SPI_TIMODE_DISABLE;
   hspi2.Init.CRCCalculation = SPI_CRCCALCULATION_DISABLE;
@@ -560,7 +562,7 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOB_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(E_INK_Select_GPIO_Port, E_INK_Select_Pin, GPIO_PIN_SET);
+  HAL_GPIO_WritePin(GPIOA, E_INK_Select_Pin|SD_Select_Pin, GPIO_PIN_SET);
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOA, E_INK_DC_Pin|E_INK_Reset_Pin|AuxPowerEnable_Pin, GPIO_PIN_RESET);
@@ -568,8 +570,10 @@ static void MX_GPIO_Init(void)
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOB, LED_Pin|Buzzer_Pin, GPIO_PIN_RESET);
 
-  /*Configure GPIO pins : E_INK_Select_Pin E_INK_DC_Pin E_INK_Reset_Pin AuxPowerEnable_Pin */
-  GPIO_InitStruct.Pin = E_INK_Select_Pin|E_INK_DC_Pin|E_INK_Reset_Pin|AuxPowerEnable_Pin;
+  /*Configure GPIO pins : E_INK_Select_Pin E_INK_DC_Pin E_INK_Reset_Pin SD_Select_Pin
+                           AuxPowerEnable_Pin */
+  GPIO_InitStruct.Pin = E_INK_Select_Pin|E_INK_DC_Pin|E_INK_Reset_Pin|SD_Select_Pin
+                          |AuxPowerEnable_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;

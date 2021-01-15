@@ -20,8 +20,6 @@
 
 #define SCD30_DATA_READY	(HAL_GPIO_ReadPin(SCD30_Ready_GPIO_Port, SCD30_Ready_Pin) == GPIO_PIN_SET)
 
-#define E_INK_BUSY			(HAL_GPIO_ReadPin(E_INK_Busy_GPIO_Port, E_INK_Busy_Pin) == GPIO_PIN_RESET)
-
 extern I2C_HandleTypeDef hi2c1;
 
 class Sensors {

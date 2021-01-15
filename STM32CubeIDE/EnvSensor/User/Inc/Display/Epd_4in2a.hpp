@@ -92,7 +92,7 @@ public:
 	void sleep(bool blocking);
 	void clear(bool blocking);
 	void display(const uint8_t *blackBuffer, uint8_t *redBuffer, bool quick, bool blocking);
-	void displayGrey(const uint8_t *blackBuffer, uint8_t *redBuffer, bool quick, bool blocking);
+	void displayGrey(const uint8_t *buffer, bool quick, bool blocking);
 };
 
 #endif /* INC_DISPLAY_EPD_4IN2A_HPP2_ */

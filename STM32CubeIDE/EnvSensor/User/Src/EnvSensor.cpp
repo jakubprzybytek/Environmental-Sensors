@@ -5,31 +5,35 @@
  *      Author: Chipotle
  */
 #include <stdlib.h>
+#include <SD/FileLogger.hpp>
 
 #include <touchgfx/hal/OSWrappers.hpp>
 
 #include "EnvSensor.hpp"
 #include "EnvState.hpp"
 
-#include "Display/Epd_4in2a.hpp"
+#include "Display/Display.hpp"
 #include "Sensors/Sensors.hpp"
 
-#include "Display/Screen.hpp"
-#include <stdio.h>
+
+//#include "Display/Screen.hpp"
+//#include <stdio.h>
 
 using namespace touchgfx;
 
 extern ADC_HandleTypeDef hadc1;
-extern SPI_HandleTypeDef hspi2;
+//extern SPI_HandleTypeDef hspi2;
 extern TIM_HandleTypeDef htim2;
 extern TIM_HandleTypeDef htim15;
 extern RTC_HandleTypeDef hrtc;
 
-EPD_4in2A eInk(hspi2);
-Screen screen;
-char screenBuffer[20];
+Display display;
+//Screen screen;
+//char screenBuffer[20];
 
 Sensors sensors;
+
+FileLogger logger;
 
 bool switch1Pressed = false;
 bool switch2Pressed = false;
@@ -41,23 +45,16 @@ bool performBmp280Measurement = false;
 
 bool performVddRead = false;
 
-uint8_t *blackBuffer;
-uint8_t *redBuffer;
-
-enum class DisplayAction {
-	None, Init, Transfer, Sleep
-};
-
-DisplayAction nextDisplayAction;
-
 EnvState envState;
 
 void EnvSensor_Init() {
-	screen.init();
-	screen.clear();
+	//screen.init();
+	//screen.clear();
 
 	sensors.init();
 	sensors.start();
+
+	logger.init();
 
 	HAL_ADCEx_Calibration_Start(&hadc1, ADC_SINGLE_ENDED);
 	EnvSensor_PerformVddRead();
@@ -65,9 +62,9 @@ void EnvSensor_Init() {
 	// Main measurement timer
 	HAL_TIM_Base_Start_IT(&htim2);
 
-	//eInk.initGrey(true);
-	//eInk.clear(true);
-	//eInk.sleep(true);
+	logger.log("First line\n");
+	logger.log("Second line\n");
+	logger.log("Third line\n");
 }
 
 void EnvSensor_Loop() {
@@ -75,7 +72,7 @@ void EnvSensor_Loop() {
 	OSWrappers::signalRenderingDone();
 
 	// don't go to sleep if next display action is ready
-	if (nextDisplayAction == DisplayAction::None || E_INK_BUSY) {
+	if (display.isIdle()) {
 		HAL_SuspendTick();
 		HAL_PWR_EnterSLEEPMode(PWR_MAINREGULATOR_ON, PWR_SLEEPENTRY_WFI);
 		HAL_ResumeTick();
@@ -110,9 +107,7 @@ void EnvSensor_Loop() {
 		}
 	}
 
-	if (nextDisplayAction != DisplayAction::None && !E_INK_BUSY) {
-		EnvSensor_PerformNextDisplayAction();
-	}
+	display.process();
 }
 
 void EnvSensor_Switch1() {
@@ -127,7 +122,7 @@ void EnvSensor_Switch2() {
 }
 
 void EnvSensor_Switch3() {
-	EnvSensor_PerformDisplyRefresh();
+	EnvSensor_MarkAsReadyForDisplayRefresh();
 }
 
 void EnvSensor_Switch4() {
@@ -136,9 +131,7 @@ void EnvSensor_Switch4() {
 
 	sensors.sleep();
 
-	eInk.init(true);
-	eInk.clear(true);
-	eInk.sleep(true);
+	display.clear();
 }
 
 void EnvSensor_PerformMeasurements() {
@@ -174,42 +167,9 @@ void EnvSensor_PerformVddRead() {
 	}
 }
 
-void EnvSensor_PerformDisplyRefresh() {
-	if (nextDisplayAction == DisplayAction::None) {
+void EnvSensor_MarkAsReadyForDisplayRefresh() {
+	if (display.isIdle()) {
 		OSWrappers::signalVSync();
-	}
-}
-
-void EnvSensor_RequestTransferFramebufferToDisplay(uint8_t *blackBufferParam, uint8_t *redBufferParam) {
-	blackBuffer = blackBufferParam;
-	redBuffer = redBufferParam;
-
-	if (nextDisplayAction == DisplayAction::None) {
-		nextDisplayAction = DisplayAction::Init;
-		EnvSensor_PerformNextDisplayAction();
-	}
-}
-
-void EnvSensor_PerformNextDisplayAction() {
-	switch (nextDisplayAction) {
-
-	case DisplayAction::Init:
-		eInk.initGrey(false);
-		nextDisplayAction = DisplayAction::Transfer;
-		break;
-
-	case DisplayAction::Transfer:
-		eInk.displayGrey(blackBuffer, redBuffer, true, false);
-		nextDisplayAction = DisplayAction::Sleep;
-		break;
-
-	case DisplayAction::Sleep:
-		eInk.sleep(false);
-		nextDisplayAction = DisplayAction::None;
-		break;
-
-	default:
-		break;
 	}
 }
 
@@ -247,5 +207,5 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
 
 void HAL_RTCEx_WakeUpTimerEventCallback(RTC_HandleTypeDef *hrtc) {
 	performVddRead = true;
-	EnvSensor_PerformDisplyRefresh();
+	EnvSensor_MarkAsReadyForDisplayRefresh();
 }

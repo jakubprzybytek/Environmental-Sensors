@@ -364,11 +364,11 @@ void EPD_4in2A::display(const uint8_t *blackBuffer, uint8_t *redBuffer, bool qui
 /**
  * Sends provided buffer to the eInk display and performs full or quick refresh.
  */
-void EPD_4in2A::displayGrey(const uint8_t *blackBuffer, uint8_t *redBuffer, bool quick, bool blocking) {
+void EPD_4in2A::displayGrey(const uint8_t *buffer, bool quick, bool blocking) {
 	EPD_CHIP_SELECT_LOW;
 
 	for (uint16_t i = 0; i < EPD_WIDTH_BLOCKS * EPD_HEIGHT ; i++) {
-		uint16_t toCompress = blackBuffer[i * 2 + 1] << 8 | blackBuffer[i * 2];
+		uint16_t toCompress = buffer[i * 2 + 1] << 8 | buffer[i * 2];
 		auxBuffer[i] =
 				((toCompress & 0b1000000000000000) ? 0b00000001 : 0) |
 				((toCompress & 0b0010000000000000) ? 0b00000010 : 0) |
@@ -384,7 +384,7 @@ void EPD_4in2A::displayGrey(const uint8_t *blackBuffer, uint8_t *redBuffer, bool
 	sendData(auxBuffer, EPD_WIDTH_BLOCKS * EPD_HEIGHT);
 
 	for (uint16_t i = 0; i < EPD_WIDTH_BLOCKS * EPD_HEIGHT ; i++) {
-		uint16_t toCompress = blackBuffer[i * 2] << 8 | blackBuffer[i * 2 + 1];
+		uint16_t toCompress = buffer[i * 2] << 8 | buffer[i * 2 + 1];
 		auxBuffer[i] =
 				((toCompress & 0b0100000000000000) ? 0b00010000 : 0) |
 				((toCompress & 0b0001000000000000) ? 0b00100000 : 0) |

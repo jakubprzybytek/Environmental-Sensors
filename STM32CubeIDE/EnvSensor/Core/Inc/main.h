@@ -86,6 +86,8 @@ void Error_Handler(void);
 #define LED_GPIO_Port GPIOB
 #define Buzzer_Pin GPIO_PIN_12
 #define Buzzer_GPIO_Port GPIOB
+#define SD_Select_Pin GPIO_PIN_8
+#define SD_Select_GPIO_Port GPIOA
 #define SCD30_Ready_Pin GPIO_PIN_11
 #define SCD30_Ready_GPIO_Port GPIOA
 #define AuxPowerEnable_Pin GPIO_PIN_12
