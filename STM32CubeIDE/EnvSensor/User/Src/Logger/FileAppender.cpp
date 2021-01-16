@@ -5,12 +5,11 @@
  *      Author: Chipotle
  */
 
+#include <Logger/FileAppender.hpp>
 #include <stdio.h>
 #include <string.h>
 
-#include <SD/FileLogger.hpp>
-
-uint8_t FileLogger::init() {
+FRESULT FileAppender::init() {
 	FATFS fatfs;
 
 	FRESULT fresult = f_mount(&fatfs, "", 1);
@@ -19,42 +18,24 @@ uint8_t FileLogger::init() {
 		return fresult;
 	}
 
-	//FATFS *fsPtr = &fatfs;
 	readAvailableSpace(&fatfs);
 
 	return f_mount(NULL, "", 1);;
 }
 
-FRESULT FileLogger::readAvailableSpace(FATFS *fatfs) {
+FRESULT FileAppender::readAvailableSpace(FATFS *fatfs) {
 	uint32_t freeClusters;
 	FRESULT fresult = f_getfree("", &freeClusters, &fatfs);
 
 	if (fresult == FR_OK) {
 		uint64_t availableSpaceBytes = fatfs->csize * fatfs->ssize * freeClusters;
-		availableSpace = availableSpaceBytes / 1024;
+		availableSpaceKilobytes = availableSpaceBytes / 1024;
 	}
 
 	return fresult;
 }
 
-FRESULT FileLogger::log(char *line) {
-
-	FRESULT fresult = FR_OK;
-
-	if (logSize + strlen(line) < LOG_BUFFER_SIZE) {
-		strcpy(logBuffer + logSize, line);
-		logSize += strlen(line);
-	} else {
-		fresult = saveToFile();
-
-		strcpy(logBuffer, line);
-		logSize = strlen(line);
-	}
-
-	return fresult;
-}
-
-FRESULT FileLogger::saveToFile() {
+FRESULT FileAppender::append(char *buffer, uint16_t bufferSize) {
 	FATFS fatfs;
 	FIL file;
 
@@ -71,7 +52,7 @@ FRESULT FileLogger::saveToFile() {
 	}
 
 	UINT bytesWritten;
-	fresult = f_write(&file, logBuffer, logSize, &bytesWritten);
+	fresult = f_write(&file, buffer, bufferSize, &bytesWritten);
 
 	readAvailableSpace(&fatfs);
 
@@ -81,7 +62,7 @@ FRESULT FileLogger::saveToFile() {
 	return fresult;
 }
 
-void FileLogger::read() {
+void FileAppender::read() {
 	FATFS fatfs;
 
 	FRESULT fresult = f_mount(&fatfs, "", 1);
@@ -103,6 +84,6 @@ void FileLogger::read() {
 	f_mount(NULL, "", 1);
 }
 
-uint32_t FileLogger::getAvailableSpace() {
-	return availableSpace;
+uint32_t FileAppender::getAvailableSpace() {
+	return availableSpaceKilobytes;
 }
