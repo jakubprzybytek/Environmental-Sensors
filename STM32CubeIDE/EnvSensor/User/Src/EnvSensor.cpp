@@ -4,10 +4,7 @@
  *  Created on: Dec 20, 2020
  *      Author: Chipotle
  */
-#include <Logger/FileLogger.hpp>
-#include <stdlib.h>
-#include <stdio.h>
-
+#include <Logger/Logger.hpp>
 #include <touchgfx/hal/OSWrappers.hpp>
 
 #include "EnvSensor.hpp"
@@ -32,8 +29,7 @@ Display display;
 Sensors sensors;
 VddSensor vddSensor;
 
-char logMessageBuffer[100];
-FileLogger logger;
+Logger logger;
 
 bool switch1Pressed = false;
 bool switch2Pressed = false;
@@ -108,16 +104,6 @@ void EnvSensor_Loop() {
 			LED_Blink(10);
 			EnvSensor_PerformMeasurements();
 		}
-
-		sprintf(logMessageBuffer, "%.2f,%.2f,%.1f,%.1f,%.1f,%.2f", (double) envState.co2, (double) envState.pressure, (double) envState.humidity,
-				(double) envState.temperature, (double) envState.temperature2, (double) envState.vdd);
-
-		if (logger.log(logMessageBuffer) == FR_OK) {
-			envState.sdActive = true;
-			envState.sdAvailableSpaceKilobytes = logger.getAvailableSpace();
-		} else {
-			envState.sdActive = false;
-		}
 	}
 
 	display.process();
@@ -148,16 +134,28 @@ void EnvSensor_Switch4() {
 }
 
 void EnvSensor_PerformMeasurements() {
+	bool readSuccessfully = false;
+
 	if (performScd30Measurement) {
 		if (!SCD30_DATA_READY || sensors.readFromScd30()) {
 			performScd30Measurement = false;
+			readSuccessfully = true;
 		}
 	}
 
 	if (performBmp280Measurement) {
 		if (sensors.readFromBmp280()) {
 			performBmp280Measurement = false;
+			readSuccessfully = true;
 		}
+	}
+
+	if (readSuccessfully
+			&& logger.log(envState.co2, envState.pressure, envState.humidity, envState.temperature, envState.temperature2, envState.vdd) == HAL_OK) {
+		envState.sdActive = true;
+		envState.sdAvailableSpaceKilobytes = logger.getAvailableSpace();
+	} else {
+		envState.sdActive = false;
 	}
 
 	// start the readout retry timer
