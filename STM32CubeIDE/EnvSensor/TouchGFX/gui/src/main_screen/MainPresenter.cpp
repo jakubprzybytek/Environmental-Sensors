@@ -9,6 +9,8 @@ void MainPresenter::activate() {
 	view.setPreassure(model->getPreassure());
 	view.setTemperature(model->getTemperature());
 	view.setHumidity(model->getHumidity());
+	view.setVdd(model->getVdd());
+	view.setSdState(model->getSdActive(), model->getSdAvailableSpaceKilobytes());
 }
 
 void MainPresenter::deactivate() {

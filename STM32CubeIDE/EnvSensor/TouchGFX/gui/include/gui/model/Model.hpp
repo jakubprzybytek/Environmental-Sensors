@@ -46,7 +46,11 @@ public:
 		return vdd;
 	}
 
-	uint32_t getAvailableSpaceKilobytes() {
+	bool getSdActive() {
+		return sdActive;
+	}
+
+	uint32_t getSdAvailableSpaceKilobytes() {
 		return sdAvailableSpaceKilobytes;
 	}
 
