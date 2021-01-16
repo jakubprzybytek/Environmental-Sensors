@@ -18,6 +18,9 @@ public:
     // Main
     void gotoMainScreenNoTransition();
 
+    // FileViewer
+    void gotoFileViewerScreenNoTransition();
+
 protected:
     touchgfx::Callback<FrontendApplicationBase> transitionCallback;
     FrontendHeap& frontendHeap;
@@ -25,6 +28,9 @@ protected:
 
     // Main
     void gotoMainScreenNoTransitionImpl();
+
+    // FileViewer
+    void gotoFileViewerScreenNoTransitionImpl();
 };
 
 #endif // FRONTENDAPPLICATIONBASE_HPP

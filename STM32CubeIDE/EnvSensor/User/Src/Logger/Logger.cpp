@@ -5,6 +5,8 @@
  *      Author: Chipotle
  */
 
+#include <touchgfx/Unicode.hpp>
+
 #include <Logger/Logger.hpp>
 #include <string.h>
 #include <stdio.h>
@@ -24,6 +26,7 @@ uint8_t Logger::log(float co2, float pressure, float humidity, float temperature
 
 	sprintf(logMessageBuffer, "20%02d.%02d.%02d-%02d:%02d:%02d,%.2f,%.2f,%.1f,%.1f,%.1f,%.2f", rtcDate.Year, rtcDate.Month, rtcDate.Date, rtcTime.Hours,
 			rtcTime.Minutes, rtcTime.Seconds, (double) co2, (double) pressure, (double) humidity, (double) temperature1, (double) temperature2, (double) vdd);
+
 	return logLine(logMessageBuffer);
 }
 

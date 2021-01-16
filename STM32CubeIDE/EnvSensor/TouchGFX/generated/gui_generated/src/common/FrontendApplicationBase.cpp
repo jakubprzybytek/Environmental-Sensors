@@ -11,6 +11,8 @@
 #include <platform/driver/lcd/LCD2bpp.hpp>
 #include <gui/main_screen/MainView.hpp>
 #include <gui/main_screen/MainPresenter.hpp>
+#include <gui/fileviewer_screen/FileViewerView.hpp>
+#include <gui/fileviewer_screen/FileViewerPresenter.hpp>
 
 using namespace touchgfx;
 
@@ -40,4 +42,17 @@ void FrontendApplicationBase::gotoMainScreenNoTransition()
 void FrontendApplicationBase::gotoMainScreenNoTransitionImpl()
 {
     touchgfx::makeTransition<MainView, MainPresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
+}
+
+// FileViewer
+
+void FrontendApplicationBase::gotoFileViewerScreenNoTransition()
+{
+    transitionCallback = touchgfx::Callback<FrontendApplicationBase>(this, &FrontendApplication::gotoFileViewerScreenNoTransitionImpl);
+    pendingScreenTransitionCallback = &transitionCallback;
+}
+
+void FrontendApplicationBase::gotoFileViewerScreenNoTransitionImpl()
+{
+    touchgfx::makeTransition<FileViewerView, FileViewerPresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
 }

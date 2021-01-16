@@ -184,6 +184,18 @@
     <Filter Include="Header Files\generated\gui_generated\containers">
       <UniqueIdentifier>2BAAEC0A-8622-3D2C-BA33-38994D3FA73D</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\gui\fileviewer_screen">
+      <UniqueIdentifier>93D055E4-8FE0-368B-D88F-9C16A8B3735E</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\gui\fileviewer_screen">
+      <UniqueIdentifier>08A90588-6281-F116-997E-178553D46281</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\generated\gui_generated\fileviewer_screen">
+      <UniqueIdentifier>71860C93-4BE9-82A8-1135-C6B6C17ED2FE</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\generated\gui_generated\fileviewer_screen">
+      <UniqueIdentifier>77EEEC4D-5F3C-8944-AA96-18724CD8607D</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(TouchGFXReleasePath)\framework\source\platform\driver\touch\SDL2TouchController.cpp">
@@ -233,6 +245,15 @@
     </ClCompile>
     <ClCompile Include="..\..\generated\gui_generated\src\containers\ReadoutContainerBase.cpp">
       <Filter>Source Files\generated\gui_generated\containers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\fileviewer_screen\FileViewerPresenter.cpp">
+      <Filter>Source Files\gui\fileviewer_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\fileviewer_screen\FileViewerView.cpp">
+      <Filter>Source Files\gui\fileviewer_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\generated\gui_generated\src\fileviewer_screen\FileViewerViewBase.cpp">
+      <Filter>Source Files\generated\gui_generated\fileviewer_screen</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -687,6 +708,15 @@
     </ClInclude>
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\ReadoutContainerBase.hpp">
       <Filter>Header Files\generated\gui_generated\containers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\fileviewer_screen\FileViewerPresenter.hpp">
+      <Filter>Header Files\gui\fileviewer_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\fileviewer_screen\FileViewerView.hpp">
+      <Filter>Header Files\gui\fileviewer_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\fileviewer_screen\FileViewerViewBase.hpp">
+      <Filter>Header Files\generated\gui_generated\fileviewer_screen</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

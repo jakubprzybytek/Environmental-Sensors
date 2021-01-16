@@ -42,15 +42,15 @@ MainViewBase::MainViewBase()
     button4.setLinespacing(0);
     button4.setTypedText(touchgfx::TypedText(T_SINGLEUSEID18));
 
-    button3.setXY(132, 276);
+    button3.setXY(202, 276);
     button3.setColor(touchgfx::Color::getColorFrom24BitRGB(0, 0, 0));
     button3.setLinespacing(0);
-    button3.setTypedText(touchgfx::TypedText(T_SINGLEUSEID27));
+    button3.setTypedText(touchgfx::TypedText(T_SINGLEUSEID17));
 
-    button2.setXY(202, 276);
+    button2.setXY(132, 276);
     button2.setColor(touchgfx::Color::getColorFrom24BitRGB(0, 0, 0));
     button2.setLinespacing(0);
-    button2.setTypedText(touchgfx::TypedText(T_SINGLEUSEID17));
+    button2.setTypedText(touchgfx::TypedText(T_SINGLEUSEID27));
 
     button1.setXY(63, 276);
     button1.setColor(touchgfx::Color::getColorFrom24BitRGB(0, 0, 0));

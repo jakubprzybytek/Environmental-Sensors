@@ -4,25 +4,23 @@
  *  Created on: Dec 20, 2020
  *      Author: Chipotle
  */
-#include <Logger/Logger.hpp>
-#include <touchgfx/hal/OSWrappers.hpp>
-
 #include "EnvSensor.hpp"
 #include "EnvState.hpp"
 
+#include "Display/TouchGFXScreen.hpp"
 #include "Display/Display.hpp"
 #include "Sensors/Sensors.hpp"
 #include "Sensors/VddSensor.hpp"
+#include <Logger/Logger.hpp>
 
 //#include "Display/Screen.hpp"
-
-using namespace touchgfx;
 
 extern TIM_HandleTypeDef htim2;
 extern TIM_HandleTypeDef htim15;
 extern RTC_HandleTypeDef hrtc;
 
 Display display;
+TouchGFXScreen screen;
 //Screen screen;
 //char screenBuffer[20];
 
@@ -30,6 +28,12 @@ Sensors sensors;
 VddSensor vddSensor;
 
 Logger logger;
+
+enum class Mode {
+	Main, FileViewer
+};
+
+Mode mode = Mode::Main;
 
 bool switch1Pressed = false;
 bool switch2Pressed = false;
@@ -68,7 +72,7 @@ void EnvSensor_Init() {
 
 void EnvSensor_Loop() {
 
-	OSWrappers::signalRenderingDone();
+	screen.signalRenderingDone();
 
 	// don't go to sleep if next display action is ready
 	if (display.isIdle()) {
@@ -117,7 +121,17 @@ void EnvSensor_Switch1() {
 }
 
 void EnvSensor_Switch2() {
-	EnvSensor_PerformVddRead();
+	switch (mode) {
+	case Mode::Main:
+		screen.gotoFileViewerScreen();
+		mode = Mode::FileViewer;
+		break;
+	case Mode::FileViewer:
+		screen.gotoMainScreen();
+		mode = Mode::Main;
+		break;
+	}
+	EnvSensor_MarkAsReadyForDisplayRefresh();
 }
 
 void EnvSensor_Switch3() {
@@ -176,7 +190,7 @@ void EnvSensor_PerformVddRead() {
 
 void EnvSensor_MarkAsReadyForDisplayRefresh() {
 	if (display.isIdle()) {
-		OSWrappers::signalVSync();
+		screen.refreshScreen();
 	}
 }
 
