@@ -14,13 +14,13 @@
   *
   ******************************************************************************
   */
+#include <Screen/Display.hpp>
 #include <TouchGFXHAL.hpp>
 
 /* USER CODE BEGIN TouchGFXHAL.cpp */
 
 #include "stm32l4xx.h"
 
-#include "Display/Display.hpp"
 
 using namespace touchgfx;
 

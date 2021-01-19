@@ -5,8 +5,8 @@
  *      Author: Chipotle
  */
 
-#ifndef INC_DISPLAY_SCREENCONTROLLER_HPP_
-#define INC_DISPLAY_SCREENCONTROLLER_HPP_
+#ifndef INC_SCREEN_SCREENCONTROLLER_HPP_
+#define INC_SCREEN_SCREENCONTROLLER_HPP_
 
 class ScreenController {
 
@@ -22,4 +22,4 @@ public:
 };
 
 
-#endif /* INC_DISPLAY_SCREENCONTROLLER_HPP_ */
+#endif /* INC_SCREEN_SCREENCONTROLLER_HPP_ */

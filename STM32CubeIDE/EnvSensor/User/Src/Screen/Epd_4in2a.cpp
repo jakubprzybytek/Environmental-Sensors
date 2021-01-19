@@ -12,8 +12,7 @@
  */
 
 #include <string.h>
-
-#include <Display/EPD_4in2a.hpp>
+#include <Screen/Epd_4in2a.hpp>
 
 #include "EnvSensor.hpp"
 

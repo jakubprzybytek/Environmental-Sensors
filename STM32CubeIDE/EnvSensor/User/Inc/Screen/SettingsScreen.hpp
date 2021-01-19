@@ -5,10 +5,10 @@
  *      Author: Chipotle
  */
 
-#ifndef INC_DISPLAY_SETTINGSSCREEN_HPP_
-#define INC_DISPLAY_SETTINGSSCREEN_HPP_
+#ifndef INC_SCREEN_SETTINGSSCREEN_HPP_
+#define INC_SCREEN_SETTINGSSCREEN_HPP_
 
-#include "ScreenController.hpp"
+#include <Screen/ScreenController.hpp>
 
 class SettingsScreen: public ScreenController {
 
@@ -22,4 +22,4 @@ class SettingsScreen: public ScreenController {
 
 };
 
-#endif /* INC_DISPLAY_SETTINGSSCREEN_HPP_ */
+#endif /* INC_SCREEN_SETTINGSSCREEN_HPP_ */

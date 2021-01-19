@@ -5,10 +5,10 @@
  *      Author: Chipotle
  */
 
-#ifndef INC_DISPLAY_MAINSCREEN_HPP_
-#define INC_DISPLAY_MAINSCREEN_HPP_
+#ifndef INC_SCREEN_MAINSCREEN_HPP_
+#define INC_SCREEN_MAINSCREEN_HPP_
 
-#include "ScreenController.hpp"
+#include <Screen/ScreenController.hpp>
 
 class MainScreen: public ScreenController {
 
@@ -20,4 +20,4 @@ public:
 	void processFourthSwitchPressed();
 };
 
-#endif /* INC_DISPLAY_MAINSCREEN_HPP_ */
+#endif /* INC_SCREEN_MAINSCREEN_HPP_ */

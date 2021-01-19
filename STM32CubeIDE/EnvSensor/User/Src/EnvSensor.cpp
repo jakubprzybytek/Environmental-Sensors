@@ -4,16 +4,14 @@
  *  Created on: Dec 20, 2020
  *      Author: Chipotle
  */
+#include <Screen/Display.hpp>
+#include <Screen/MainScreen.hpp>
+#include <Screen/OffScreen.hpp>
+#include <Screen/ScreenController.hpp>
+#include <Screen/SettingsScreen.hpp>
+#include <Screen/TouchGFXScreen.hpp>
 #include "EnvSensor.hpp"
 #include "EnvState.hpp"
-
-#include "Display/TouchGFXScreen.hpp"
-#include "Display/Display.hpp"
-
-#include "Display/ScreenController.hpp"
-#include "Display/OffScreen.hpp"
-#include "Display/SettingsScreen.hpp"
-#include "Display/MainScreen.hpp"
 
 #include "Sensors/Sensors.hpp"
 #include "Sensors/VddSensor.hpp"

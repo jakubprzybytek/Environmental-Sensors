@@ -6,13 +6,12 @@
  */
 #include <touchgfx/hal/OSWrappers.hpp>
 #include <gui/common/FrontendApplication.hpp>
-
-#include "Display/OffScreen.hpp"
+#include <Screen/MainScreen.hpp>
+#include <Screen/OffScreen.hpp>
+#include <Screen/SettingsScreen.hpp>
 
 #include "Sensors/Sensors.hpp"
 
-#include "Display/MainScreen.hpp"
-#include "Display/SettingsScreen.hpp"
 
 extern Sensors sensors;
 

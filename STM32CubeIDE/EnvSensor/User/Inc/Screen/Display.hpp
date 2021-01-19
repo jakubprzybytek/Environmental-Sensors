@@ -5,14 +5,14 @@
  *      Author: Chipotle
  */
 
-#ifndef INC_DISPLAY_DISPLAY_HPP_
-#define INC_DISPLAY_DISPLAY_HPP_
+#ifndef INC_SCREEN_DISPLAY_HPP_
+#define INC_SCREEN_DISPLAY_HPP_
 
+#include <Screen/Epd_4in2a.hpp>
 #include "stm32l4xx_hal.h"
 
 #include "main.h"
 
-#include "Epd_4in2a.hpp"
 
 #define E_INK_BUSY			(HAL_GPIO_ReadPin(E_INK_Busy_GPIO_Port, E_INK_Busy_Pin) == GPIO_PIN_RESET)
 
@@ -42,4 +42,4 @@ public:
 	void clear();
 };
 
-#endif /* INC_DISPLAY_DISPLAY_HPP_ */
+#endif /* INC_SCREEN_DISPLAY_HPP_ */

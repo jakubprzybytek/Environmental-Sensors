@@ -5,8 +5,8 @@
  *      Author: Chipotle
  */
 
-#ifndef INC_DISPLAY_TOUCHGFXSCREEN_HPP_
-#define INC_DISPLAY_TOUCHGFXSCREEN_HPP_
+#ifndef INC_SCREEN_TOUCHGFXSCREEN_HPP_
+#define INC_SCREEN_TOUCHGFXSCREEN_HPP_
 
 class TouchGFXScreen {
 public:
@@ -17,4 +17,4 @@ public:
 	void signalRenderingDone();
 };
 
-#endif /* INC_DISPLAY_TOUCHGFXSCREEN_HPP_ */
+#endif /* INC_SCREEN_TOUCHGFXSCREEN_HPP_ */

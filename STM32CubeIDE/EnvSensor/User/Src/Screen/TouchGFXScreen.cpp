@@ -7,7 +7,7 @@
 #include <touchgfx/hal/OSWrappers.hpp>
 #include <gui/common/FrontendApplication.hpp>
 
-#include "Display/TouchGFXScreen.hpp"
+#include <Screen/TouchGFXScreen.hpp>
 
 void TouchGFXScreen::gotoMainScreen() {
 	static_cast<FrontendApplication*>(Application::getInstance())->gotoMainScreenNoTransition();

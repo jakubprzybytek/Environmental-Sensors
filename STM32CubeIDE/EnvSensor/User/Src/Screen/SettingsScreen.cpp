@@ -6,11 +6,11 @@
  */
 #include <touchgfx/hal/OSWrappers.hpp>
 #include <gui/common/FrontendApplication.hpp>
+#include <Screen/MainScreen.hpp>
+#include <Screen/SettingsScreen.hpp>
 
 #include "EnvState.hpp"
 
-#include "Display/MainScreen.hpp"
-#include "Display/SettingsScreen.hpp"
 
 extern MainScreen mainScreen;
 extern ScreenController *currentScreen;
