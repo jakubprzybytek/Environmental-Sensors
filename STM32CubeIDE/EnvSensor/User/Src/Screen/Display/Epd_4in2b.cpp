@@ -6,7 +6,7 @@
  */
 
 #include <string.h>
-#include <Screen/Epd_4in2b.hpp>
+#include <Screen/Display/Epd_4in2b.hpp>
 
 #include "EnvSensor.hpp"
 

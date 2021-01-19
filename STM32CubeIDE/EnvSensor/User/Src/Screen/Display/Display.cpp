@@ -4,7 +4,7 @@
  *  Created on: Jan 15, 2021
  *      Author: Chipotle
  */
-#include <Screen/Display.hpp>
+#include <Screen/Display/Display.hpp>
 
 void Display::requestTransferFramebufferToDisplay(uint8_t *framebufferParam) {
 	framebuffer = framebufferParam;

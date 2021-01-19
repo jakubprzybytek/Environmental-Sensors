@@ -14,7 +14,7 @@
   *
   ******************************************************************************
   */
-#include <Screen/Display.hpp>
+#include <Screen/Display/Display.hpp>
 #include <TouchGFXHAL.hpp>
 
 /* USER CODE BEGIN TouchGFXHAL.cpp */

@@ -8,7 +8,7 @@
 #ifndef INC_SCREEN_DISPLAY_HPP_
 #define INC_SCREEN_DISPLAY_HPP_
 
-#include <Screen/Epd_4in2a.hpp>
+#include <Screen/Display/Epd_4in2a.hpp>
 #include "stm32l4xx_hal.h"
 
 #include "main.h"

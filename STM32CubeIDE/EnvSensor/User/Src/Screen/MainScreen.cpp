@@ -6,7 +6,9 @@
  */
 #include <touchgfx/hal/OSWrappers.hpp>
 #include <gui/common/FrontendApplication.hpp>
-#include <Screen/Display.hpp>
+
+#include <Screen/Display/Display.hpp>
+
 #include <Screen/MainScreen.hpp>
 #include <Screen/OffScreen.hpp>
 #include <Screen/SettingsScreen.hpp>
