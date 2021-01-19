@@ -47,7 +47,7 @@ MainViewBase::MainViewBase()
     button3.setLinespacing(0);
     button3.setTypedText(touchgfx::TypedText(T_SINGLEUSEID17));
 
-    button2.setXY(132, 276);
+    button2.setXY(117, 276);
     button2.setColor(touchgfx::Color::getColorFrom24BitRGB(0, 0, 0));
     button2.setLinespacing(0);
     button2.setTypedText(touchgfx::TypedText(T_SINGLEUSEID27));
@@ -65,15 +65,6 @@ MainViewBase::MainViewBase()
 
     co2BigReadoutContainer.setXY(0, 0);
 
-    box3_2.setPosition(12, 0, 4, 50);
-    box3_2.setColor(touchgfx::Color::getColorFrom24BitRGB(0, 0, 0));
-
-    box3_1.setPosition(8, 0, 4, 50);
-    box3_1.setColor(touchgfx::Color::getColorFrom24BitRGB(94, 94, 94));
-
-    box3.setPosition(4, 0, 4, 50);
-    box3.setColor(touchgfx::Color::getColorFrom24BitRGB(175, 175, 175));
-
     add(__background);
     add(box2);
     add(box1);
@@ -89,9 +80,6 @@ MainViewBase::MainViewBase()
     add(humidityReadoutContainer);
     add(preassureBigReadoutContainer);
     add(co2BigReadoutContainer);
-    add(box3_2);
-    add(box3_1);
-    add(box3);
 }
 
 void MainViewBase::setupScreen()

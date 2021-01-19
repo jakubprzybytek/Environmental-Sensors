@@ -24,6 +24,8 @@ public:
 
     virtual void notifySdChanged(bool sdActive, uint32_t availableSpaceKilobytes) {}
 
+    virtual void notifyFileContentChanged(char *fileContent) {}
+
 protected:
     Model* model;
 };

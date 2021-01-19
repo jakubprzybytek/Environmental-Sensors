@@ -37,4 +37,7 @@ void Model::tick() {
 		sdAvailableSpaceKilobytes = envState.sdAvailableSpaceKilobytes;
 		modelListener->notifySdChanged(sdActive, sdAvailableSpaceKilobytes);
 	}
+
+	fileContent = envState.fileContent;
+	modelListener->notifyFileContentChanged(fileContent);
 }

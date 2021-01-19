@@ -9,9 +9,16 @@
 
 #include "Display/TouchGFXScreen.hpp"
 #include "Display/Display.hpp"
+
+#include "Display/ScreenController.hpp"
+#include "Display/OffScreen.hpp"
+#include "Display/SettingsScreen.hpp"
+#include "Display/MainScreen.hpp"
+
 #include "Sensors/Sensors.hpp"
 #include "Sensors/VddSensor.hpp"
-#include <Logger/Logger.hpp>
+
+#include "Logger/Logger.hpp"
 
 //#include "Display/Screen.hpp"
 
@@ -21,6 +28,12 @@ extern RTC_HandleTypeDef hrtc;
 
 Display display;
 TouchGFXScreen screen;
+
+OffScreen offScreen;
+MainScreen mainScreen;
+SettingsScreen settingsScreen;
+ScreenController *currentScreen = &mainScreen;
+
 //Screen screen;
 //char screenBuffer[20];
 
@@ -28,12 +41,6 @@ Sensors sensors;
 VddSensor vddSensor;
 
 Logger logger;
-
-enum class Mode {
-	Main, FileViewer
-};
-
-Mode mode = Mode::Main;
 
 bool switch1Pressed = false;
 bool switch2Pressed = false;
@@ -61,13 +68,13 @@ void EnvSensor_Init() {
 		envState.sdActive = false;
 	}
 
-	logger.read();
-
 	vddSensor.init();
 	EnvSensor_PerformVddRead();
 
 	// Main measurement timer
 	HAL_TIM_Base_Start_IT(&htim2);
+
+	EnvSensor_MarkAsReadyForDisplayRefresh();
 }
 
 void EnvSensor_Loop() {
@@ -82,19 +89,19 @@ void EnvSensor_Loop() {
 	}
 
 	if (switch1Pressed) {
-		EnvSensor_Switch1();
+		currentScreen->processFirstSwitchPressed();
 		switch1Pressed = false;
 	}
 	if (switch2Pressed) {
-		EnvSensor_Switch2();
+		currentScreen->processSecondSwitchPressed();
 		switch2Pressed = false;
 	}
 	if (switch3Pressed) {
-		EnvSensor_Switch3();
+		currentScreen->processThirdSwitchPressed();
 		switch3Pressed = false;
 	}
 	if (switch4Pressed) {
-		EnvSensor_Switch4();
+		currentScreen->processFourthSwitchPressed();
 		switch4Pressed = false;
 	}
 
@@ -113,39 +120,16 @@ void EnvSensor_Loop() {
 	display.process();
 }
 
-void EnvSensor_Switch1() {
-	sensors.start();
-
+void EnvSensor_StartTimers() {
 	HAL_TIM_Base_Start_IT(&htim2);
 	HAL_RTCEx_SetWakeUpTimer_IT(&hrtc, DISPLAY_REFRESH_INTERVAL - 1, RTC_WAKEUPCLOCK_CK_SPRE_16BITS);
 }
 
-void EnvSensor_Switch2() {
-	switch (mode) {
-	case Mode::Main:
-		screen.gotoFileViewerScreen();
-		mode = Mode::FileViewer;
-		break;
-	case Mode::FileViewer:
-		screen.gotoMainScreen();
-		mode = Mode::Main;
-		break;
-	}
-	EnvSensor_MarkAsReadyForDisplayRefresh();
-}
-
-void EnvSensor_Switch3() {
-	EnvSensor_MarkAsReadyForDisplayRefresh();
-}
-
-void EnvSensor_Switch4() {
+void EnvSensor_StopTimers() {
 	HAL_TIM_Base_Stop_IT(&htim2);
 	HAL_RTCEx_DeactivateWakeUpTimer(&hrtc);
-
-	sensors.sleep();
-
-	display.clear();
 }
+
 
 void EnvSensor_PerformMeasurements() {
 	bool readSuccessfully = false;

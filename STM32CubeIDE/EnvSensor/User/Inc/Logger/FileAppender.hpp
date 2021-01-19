@@ -24,7 +24,7 @@ public:
 
 	FRESULT append(char *buffer, uint16_t bufferSize);
 
-	void read();
+	void readTail(char * buffer, uint16_t bufferSize);
 	uint32_t getAvailableSpace();
 };
 

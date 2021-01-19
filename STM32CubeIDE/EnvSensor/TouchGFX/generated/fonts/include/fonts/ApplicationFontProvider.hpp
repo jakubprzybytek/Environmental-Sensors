@@ -17,17 +17,19 @@ struct Typography
     static const touchgfx::FontId LARGE = 1;
     static const touchgfx::FontId HUGE = 2;
     static const touchgfx::FontId TINY = 3;
-    static const touchgfx::FontId MONOSPACE = 4;
+    static const touchgfx::FontId MONOSPACETINY = 4;
+    static const touchgfx::FontId MONOSPACELARGE = 5;
 };
 
 struct TypographyFontIndex
 {
-    static const touchgfx::FontId DEFAULT = 0;   // segoeui_24_2bpp
-    static const touchgfx::FontId LARGE = 1;     // segoeuisl_52_2bpp
-    static const touchgfx::FontId HUGE = 2;      // segoeuisl_80_2bpp
-    static const touchgfx::FontId TINY = 3;      // segoeui_18_2bpp
-    static const touchgfx::FontId MONOSPACE = 4; // consola_16_2bpp
-    static const uint16_t NUMBER_OF_FONTS = 5;
+    static const touchgfx::FontId DEFAULT = 0;        // segoeui_24_2bpp
+    static const touchgfx::FontId LARGE = 1;          // segoeuisl_52_2bpp
+    static const touchgfx::FontId HUGE = 2;           // segoeuisl_80_2bpp
+    static const touchgfx::FontId TINY = 3;           // segoeui_18_2bpp
+    static const touchgfx::FontId MONOSPACETINY = 4;  // consola_16_2bpp
+    static const touchgfx::FontId MONOSPACELARGE = 5; // consola_36_2bpp
+    static const uint16_t NUMBER_OF_FONTS = 6;
 };
 
 class ApplicationFontProvider : public touchgfx::FontProvider

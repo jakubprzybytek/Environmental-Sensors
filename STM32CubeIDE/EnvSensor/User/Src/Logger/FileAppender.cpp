@@ -6,8 +6,8 @@
  */
 
 #include <Logger/FileAppender.hpp>
-#include <stdio.h>
-#include <string.h>
+//#include <stdio.h>
+//#include <string.h>
 
 FRESULT FileAppender::init() {
 	FATFS fatfs;
@@ -62,7 +62,7 @@ FRESULT FileAppender::append(char *buffer, uint16_t bufferSize) {
 	return fresult;
 }
 
-void FileAppender::read() {
+void FileAppender::readTail(char *buffer, uint16_t bufferSize) {
 	FATFS fatfs;
 
 	FRESULT fresult = f_mount(&fatfs, "", 1);
@@ -74,11 +74,17 @@ void FileAppender::read() {
 		return;
 	}
 
-	char buff[1000];
+	DWORD fileSize = f_size(&rfile);
+	if (fileSize > bufferSize) {
+		fresult = f_lseek(&rfile, fileSize - bufferSize);
+	}
+
+	if (fresult != FR_OK) {
+		return;
+	}
 
 	UINT bytesRead;
-	//UINT rSize = f_size(&rfile);
-	fresult = f_read(&rfile, buff, 1000, &bytesRead);
+	fresult = f_read(&rfile, buffer, bufferSize, &bytesRead);
 
 	f_close(&rfile);
 	f_mount(NULL, "", 1);

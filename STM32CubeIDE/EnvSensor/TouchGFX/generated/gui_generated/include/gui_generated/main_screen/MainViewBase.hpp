@@ -43,9 +43,6 @@ protected:
     ReadoutContainer humidityReadoutContainer;
     BigReadoutContainer preassureBigReadoutContainer;
     BigReadoutContainer co2BigReadoutContainer;
-    touchgfx::Box box3_2;
-    touchgfx::Box box3_1;
-    touchgfx::Box box3;
 
 private:
 

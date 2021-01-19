@@ -30,7 +30,7 @@ protected:
     touchgfx::Box background;
     touchgfx::TextArea button2;
     touchgfx::TextAreaWithOneWildcard fileInfoTextArea;
-    touchgfx::TextArea fileContentTextArea;
+    touchgfx::TextAreaWithOneWildcard fileContentTextArea;
 
 private:
 

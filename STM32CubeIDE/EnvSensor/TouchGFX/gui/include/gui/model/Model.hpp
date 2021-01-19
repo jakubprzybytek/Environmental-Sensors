@@ -17,6 +17,8 @@ private:
 	bool sdActive;
 	uint32_t sdAvailableSpaceKilobytes;
 
+	char *fileContent;
+
 public:
 	Model();
 
@@ -52,6 +54,10 @@ public:
 
 	uint32_t getSdAvailableSpaceKilobytes() {
 		return sdAvailableSpaceKilobytes;
+	}
+
+	char* getFileContent() {
+		return fileContent;
 	}
 
 protected:

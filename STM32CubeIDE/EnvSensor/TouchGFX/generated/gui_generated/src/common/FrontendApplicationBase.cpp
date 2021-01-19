@@ -13,6 +13,8 @@
 #include <gui/main_screen/MainPresenter.hpp>
 #include <gui/fileviewer_screen/FileViewerView.hpp>
 #include <gui/fileviewer_screen/FileViewerPresenter.hpp>
+#include <gui/settings_screen/SettingsView.hpp>
+#include <gui/settings_screen/SettingsPresenter.hpp>
 
 using namespace touchgfx;
 
@@ -55,4 +57,17 @@ void FrontendApplicationBase::gotoFileViewerScreenNoTransition()
 void FrontendApplicationBase::gotoFileViewerScreenNoTransitionImpl()
 {
     touchgfx::makeTransition<FileViewerView, FileViewerPresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
+}
+
+// Settings
+
+void FrontendApplicationBase::gotoSettingsScreenNoTransition()
+{
+    transitionCallback = touchgfx::Callback<FrontendApplicationBase>(this, &FrontendApplication::gotoSettingsScreenNoTransitionImpl);
+    pendingScreenTransitionCallback = &transitionCallback;
+}
+
+void FrontendApplicationBase::gotoSettingsScreenNoTransitionImpl()
+{
+    touchgfx::makeTransition<SettingsView, SettingsPresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
 }

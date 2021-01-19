@@ -9,8 +9,8 @@
 
 #include "EnvState.hpp"
 
-#include <stdio.h>
-#include "Display/Screen.hpp"
+//#include <stdio.h>
+//#include "Debug/Screen.hpp"
 
 //extern Screen screen;
 //extern char screenBuffer[20];

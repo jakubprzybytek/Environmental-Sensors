@@ -16,6 +16,8 @@
 #include <gui/main_screen/MainPresenter.hpp>
 #include <gui/fileviewer_screen/FileViewerView.hpp>
 #include <gui/fileviewer_screen/FileViewerPresenter.hpp>
+#include <gui/settings_screen/SettingsView.hpp>
+#include <gui/settings_screen/SettingsPresenter.hpp>
 
 
 /**
@@ -40,7 +42,8 @@ public:
      */
     typedef touchgfx::meta::TypeList< MainView,
             touchgfx::meta::TypeList< FileViewerView,
-            touchgfx::meta::Nil >
+            touchgfx::meta::TypeList< SettingsView,
+            touchgfx::meta::Nil > >
             > GeneratedViewTypes;
 
     /**
@@ -54,7 +57,8 @@ public:
      */
     typedef touchgfx::meta::TypeList< MainPresenter,
             touchgfx::meta::TypeList< FileViewerPresenter,
-            touchgfx::meta::Nil >
+            touchgfx::meta::TypeList< SettingsPresenter,
+            touchgfx::meta::Nil > >
             > GeneratedPresenterTypes;
 
     /**

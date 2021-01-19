@@ -10,6 +10,8 @@
 
 #include <stm32l4xx.h>
 
+#define FILE_CONTENT_SIZE 400
+
 class EnvState {
 public:
 	float co2;
@@ -22,6 +24,8 @@ public:
 
 	bool sdActive;
 	uint32_t sdAvailableSpaceKilobytes;
+
+	char fileContent[FILE_CONTENT_SIZE];
 };
 
 

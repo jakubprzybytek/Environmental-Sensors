@@ -208,9 +208,9 @@
             "AutoSize": true,
             "LineSpacing": 0,
             "Name": "button2",
-            "X": 132,
+            "X": 117,
             "Y": 276,
-            "Width": 24,
+            "Width": 62,
             "Height": 24,
             "Visible": true,
             "LockPosition": false,
@@ -302,66 +302,6 @@
             "Clickable": false,
             "Fadeable": false,
             "Moveable": false
-          },
-          {
-            "Type": "Box",
-            "Color": {
-              "Red": 0,
-              "Green": 0,
-              "Blue": 0
-            },
-            "Alpha": 255,
-            "Name": "box3_2",
-            "X": 12,
-            "Y": 0,
-            "Width": 4,
-            "Height": 50,
-            "Visible": true,
-            "LockPosition": false,
-            "Draggable": false,
-            "Clickable": false,
-            "Fadeable": false,
-            "Moveable": false
-          },
-          {
-            "Type": "Box",
-            "Color": {
-              "Red": 94,
-              "Green": 94,
-              "Blue": 94
-            },
-            "Alpha": 255,
-            "Name": "box3_1",
-            "X": 8,
-            "Y": 0,
-            "Width": 4,
-            "Height": 50,
-            "Visible": true,
-            "LockPosition": false,
-            "Draggable": false,
-            "Clickable": false,
-            "Fadeable": false,
-            "Moveable": false
-          },
-          {
-            "Type": "Box",
-            "Color": {
-              "Red": 175,
-              "Green": 175,
-              "Blue": 175
-            },
-            "Alpha": 255,
-            "Name": "box3",
-            "X": 4,
-            "Y": 0,
-            "Width": 4,
-            "Height": 50,
-            "Visible": true,
-            "LockPosition": false,
-            "Draggable": false,
-            "Clickable": false,
-            "Fadeable": false,
-            "Moveable": false
           }
         ],
         "Interactions": [
@@ -375,6 +315,18 @@
               "Type": "ActionGotoScreen",
               "ScreenTransitionType": "ScreenTransitionNone",
               "ActionComponent": "FileViewer"
+            }
+          },
+          {
+            "InteractionName": "gotoSettings",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerNone"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "Settings"
             }
           }
         ],
@@ -445,7 +397,7 @@
               "BufferSize": 0
             },
             "Name": "fileInfoTextArea",
-            "X": 0,
+            "X": 2,
             "Y": 0,
             "Width": 48,
             "Height": 32,
@@ -468,10 +420,14 @@
             "Alpha": 255,
             "AutoSize": false,
             "LineSpacing": 0,
+            "Wildcard1": {
+              "UseBuffer": false,
+              "BufferSize": 0
+            },
             "Name": "fileContentTextArea",
-            "X": 0,
+            "X": 2,
             "Y": 32,
-            "Width": 400,
+            "Width": 396,
             "Height": 242,
             "Visible": true,
             "LockPosition": false,
@@ -483,6 +439,308 @@
         ],
         "Interactions": [],
         "Name": "FileViewer",
+        "OverrideDefaultBufferSize": false,
+        "CanvasBufferSize": 0
+      },
+      {
+        "Components": [
+          {
+            "Type": "Box",
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "Alpha": 255,
+            "Name": "background",
+            "X": 0,
+            "Y": 0,
+            "Width": 400,
+            "Height": 300,
+            "Visible": true,
+            "LockPosition": false,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "TextArea",
+            "TextId": "SingleUseId38",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 0,
+              "Green": 0,
+              "Blue": 0
+            },
+            "Alpha": 255,
+            "AutoSize": true,
+            "LineSpacing": 0,
+            "Name": "button4",
+            "X": 284,
+            "Y": 276,
+            "Width": 43,
+            "Height": 24,
+            "Visible": true,
+            "LockPosition": false,
+            "Draggable": false,
+            "Clickable": true,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "TextArea",
+            "TextId": "SingleUseId37",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 0,
+              "Green": 0,
+              "Blue": 0
+            },
+            "Alpha": 255,
+            "AutoSize": true,
+            "LineSpacing": 0,
+            "Name": "button3",
+            "X": 206,
+            "Y": 276,
+            "Width": 37,
+            "Height": 24,
+            "Visible": true,
+            "LockPosition": false,
+            "Draggable": false,
+            "Clickable": true,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "TextArea",
+            "TextId": "SingleUseId36",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 0,
+              "Green": 0,
+              "Blue": 0
+            },
+            "Alpha": 255,
+            "AutoSize": true,
+            "LineSpacing": 0,
+            "Name": "button2",
+            "X": 134,
+            "Y": 276,
+            "Width": 22,
+            "Height": 24,
+            "Visible": true,
+            "LockPosition": false,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "TextArea",
+            "TextId": "SingleUseId35",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 0,
+              "Green": 0,
+              "Blue": 0
+            },
+            "Alpha": 255,
+            "AutoSize": true,
+            "LineSpacing": 0,
+            "Name": "button1",
+            "X": 63,
+            "Y": 276,
+            "Width": 32,
+            "Height": 24,
+            "Visible": true,
+            "LockPosition": false,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "BoxWithBorder",
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "BorderColor": {
+              "Red": 0,
+              "Green": 0,
+              "Blue": 0
+            },
+            "BorderSize": 2,
+            "Alpha": 255,
+            "Name": "minutesSelectionBox",
+            "X": 310,
+            "Y": 48,
+            "Width": 44,
+            "Height": 37,
+            "Visible": true,
+            "LockPosition": false,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "BoxWithBorder",
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "BorderColor": {
+              "Red": 0,
+              "Green": 0,
+              "Blue": 0
+            },
+            "BorderSize": 2,
+            "Alpha": 255,
+            "Name": "hourSelectionBox",
+            "X": 251,
+            "Y": 48,
+            "Width": 44,
+            "Height": 37,
+            "Visible": true,
+            "LockPosition": false,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "BoxWithBorder",
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "BorderColor": {
+              "Red": 0,
+              "Green": 0,
+              "Blue": 0
+            },
+            "BorderSize": 2,
+            "Alpha": 255,
+            "Name": "daySelectionBox",
+            "X": 191,
+            "Y": 48,
+            "Width": 44,
+            "Height": 37,
+            "Visible": true,
+            "LockPosition": false,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "BoxWithBorder",
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "BorderColor": {
+              "Red": 0,
+              "Green": 0,
+              "Blue": 0
+            },
+            "BorderSize": 2,
+            "Alpha": 255,
+            "Name": "monthSelectionBox",
+            "X": 131,
+            "Y": 48,
+            "Width": 44,
+            "Height": 37,
+            "Visible": true,
+            "LockPosition": false,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "BoxWithBorder",
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "BorderColor": {
+              "Red": 0,
+              "Green": 0,
+              "Blue": 0
+            },
+            "BorderSize": 2,
+            "Alpha": 255,
+            "Name": "yearSelectionBox",
+            "X": 33,
+            "Y": 48,
+            "Width": 83,
+            "Height": 37,
+            "Visible": true,
+            "LockPosition": false,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "TextArea",
+            "TextId": "SingleUseId33",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 0,
+              "Green": 0,
+              "Blue": 0
+            },
+            "Alpha": 255,
+            "AutoSize": true,
+            "LineSpacing": 0,
+            "Name": "timeDateTextArea",
+            "X": 34,
+            "Y": 43,
+            "Width": 317,
+            "Height": 43,
+            "Visible": true,
+            "LockPosition": false,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "TextArea",
+            "TextId": "SingleUseId34",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 0,
+              "Green": 0,
+              "Blue": 0
+            },
+            "Alpha": 255,
+            "AutoSize": true,
+            "LineSpacing": 0,
+            "Name": "timeDateSetupLabelTextArea",
+            "X": 2,
+            "Y": 0,
+            "Width": 215,
+            "Height": 32,
+            "Visible": true,
+            "LockPosition": false,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          }
+        ],
+        "Interactions": [],
+        "Name": "Settings",
         "OverrideDefaultBufferSize": false,
         "CanvasBufferSize": 0
       }
@@ -760,6 +1018,30 @@
       },
       {
         "TextEntryId": "SingleUseId32",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId33",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId34",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId35",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId36",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId37",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId38",
         "IsResource": false
       }
     ],

@@ -26,7 +26,7 @@
  */
 
 #include <stdint.h>
-#include "Display/Ssd1306.hpp"
+#include "Debug/Ssd1306.hpp"
 
 void SSD1306::init() {
 	// Turn display off

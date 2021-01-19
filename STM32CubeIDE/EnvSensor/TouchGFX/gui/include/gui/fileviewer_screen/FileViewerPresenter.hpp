@@ -27,6 +27,8 @@ public:
 
     virtual ~FileViewerPresenter() {};
 
+    void notifyFileContentChanged(char *fileContent);
+
 private:
     FileViewerPresenter();
 

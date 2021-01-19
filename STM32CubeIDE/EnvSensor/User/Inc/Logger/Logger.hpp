@@ -30,7 +30,7 @@ public:
 
 	uint8_t log(float co2, float pressure, float humidity, float temperature1, float temperature2, float vdd);
 
-	void read();
+	void readTail(char *buffer, uint16_t bufferSize);
 	uint32_t getAvailableSpace();
 };
 

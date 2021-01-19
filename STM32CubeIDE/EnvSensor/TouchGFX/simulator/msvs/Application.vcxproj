@@ -30,6 +30,9 @@
     <ClCompile Include="..\..\gui\src\fileviewer_screen\FileViewerPresenter.cpp"/>
     <ClCompile Include="..\..\gui\src\fileviewer_screen\FileViewerView.cpp"/>
     <ClCompile Include="..\..\generated\gui_generated\src\fileviewer_screen\FileViewerViewBase.cpp"/>
+    <ClCompile Include="..\..\gui\src\settings_screen\SettingsPresenter.cpp"/>
+    <ClCompile Include="..\..\gui\src\settings_screen\SettingsView.cpp"/>
+    <ClCompile Include="..\..\generated\gui_generated\src\settings_screen\SettingsViewBase.cpp"/>
   </ItemGroup>
   <ItemGroup>
     <None Include="$(ApplicationRoot)\assets\texts\texts.xlsx"/>
@@ -187,6 +190,9 @@
     <ClInclude Include="..\..\gui\include\gui\fileviewer_screen\FileViewerPresenter.hpp"/>
     <ClInclude Include="..\..\gui\include\gui\fileviewer_screen\FileViewerView.hpp"/>
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\fileviewer_screen\FileViewerViewBase.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\settings_screen\SettingsPresenter.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\settings_screen\SettingsView.hpp"/>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\settings_screen\SettingsViewBase.hpp"/>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="$(ApplicationRoot)\generated\simulator\touchgfx.rc"/>

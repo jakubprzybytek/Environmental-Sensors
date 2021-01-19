@@ -19,12 +19,12 @@ FileViewerViewBase::FileViewerViewBase()
     button2.setLinespacing(0);
     button2.setTypedText(touchgfx::TypedText(T_SINGLEUSEID32));
 
-    fileInfoTextArea.setXY(0, 0);
+    fileInfoTextArea.setXY(2, 0);
     fileInfoTextArea.setColor(touchgfx::Color::getColorFrom24BitRGB(0, 0, 0));
     fileInfoTextArea.setLinespacing(0);
     fileInfoTextArea.setTypedText(touchgfx::TypedText(T_SINGLEUSEID30));
 
-    fileContentTextArea.setPosition(0, 32, 400, 242);
+    fileContentTextArea.setPosition(2, 32, 396, 242);
     fileContentTextArea.setColor(touchgfx::Color::getColorFrom24BitRGB(0, 0, 0));
     fileContentTextArea.setLinespacing(0);
     fileContentTextArea.setTypedText(touchgfx::TypedText(T_SINGLEUSEID31));

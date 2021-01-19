@@ -10,7 +10,7 @@
 
 #include <stm32l4xx_hal.h>
 
-#include "Display/SSD1306.hpp"
+#include "Debug/SSD1306.hpp"
 
 extern I2C_HandleTypeDef hi2c1;
 

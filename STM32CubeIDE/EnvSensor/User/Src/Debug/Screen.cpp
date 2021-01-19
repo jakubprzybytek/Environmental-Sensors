@@ -7,8 +7,8 @@
 
 #include <string.h>
 
-#include "Display/Screen.hpp"
-#include "Display/font6x8.h"
+#include "Debug/Screen.hpp"
+#include "Debug/font6x8.h"
 
 uint8_t Screen::init() {
 	sdd1306.init();

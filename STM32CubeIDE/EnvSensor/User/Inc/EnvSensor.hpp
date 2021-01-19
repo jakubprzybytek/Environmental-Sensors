@@ -29,10 +29,8 @@ extern void EnvSensor_Init();
 
 extern void EnvSensor_Loop();
 
-extern void EnvSensor_Switch1();
-extern void EnvSensor_Switch2();
-extern void EnvSensor_Switch3();
-extern void EnvSensor_Switch4();
+extern void EnvSensor_StartTimers();
+extern void EnvSensor_StopTimers();
 
 extern void EnvSensor_PerformMeasurements();
 
