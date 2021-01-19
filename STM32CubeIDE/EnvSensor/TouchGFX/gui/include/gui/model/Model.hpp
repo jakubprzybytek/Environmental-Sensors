@@ -3,6 +3,8 @@
 
 #include "stm32l4xx_hal.h"
 
+#include "EnvState.hpp"
+
 class ModelListener;
 
 class Model {
@@ -18,6 +20,8 @@ private:
 	uint32_t sdAvailableSpaceKilobytes;
 
 	char *fileContent;
+
+	SettingsEditField settingsEditField;
 
 public:
 	Model();
@@ -58,6 +62,10 @@ public:
 
 	char* getFileContent() {
 		return fileContent;
+	}
+
+	SettingsEditField getSettingsEditField() {
+		return settingsEditField;
 	}
 
 protected:

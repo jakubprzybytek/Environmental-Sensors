@@ -27,6 +27,8 @@ public:
 
     virtual ~SettingsPresenter() {};
 
+    void notifySettingsEditFieldChanged(SettingsEditField settingsEditField);
+
 private:
     SettingsPresenter();
 

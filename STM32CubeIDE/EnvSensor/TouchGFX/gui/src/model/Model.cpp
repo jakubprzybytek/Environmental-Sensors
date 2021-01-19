@@ -1,8 +1,6 @@
 #include <gui/model/Model.hpp>
 #include <gui/model/ModelListener.hpp>
 
-#include "EnvState.hpp"
-
 extern EnvState envState;
 
 Model::Model() :
@@ -40,4 +38,9 @@ void Model::tick() {
 
 	fileContent = envState.fileContent;
 	modelListener->notifyFileContentChanged(fileContent);
+
+	if (settingsEditField != envState.settingsEditField) {
+		settingsEditField = envState.settingsEditField;
+		modelListener->notifySettingsEditFieldChanged(settingsEditField);
+	}
 }

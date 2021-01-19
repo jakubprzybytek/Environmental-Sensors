@@ -12,6 +12,10 @@
 
 #define FILE_CONTENT_SIZE 400
 
+enum class SettingsEditField {
+	Year, Month, Day, Hour, Minutes
+};
+
 class EnvState {
 public:
 	float co2;
@@ -26,6 +30,8 @@ public:
 	uint32_t sdAvailableSpaceKilobytes;
 
 	char fileContent[FILE_CONTENT_SIZE];
+
+	SettingsEditField settingsEditField = SettingsEditField::Year;
 };
 
 

@@ -26,6 +26,8 @@ public:
 
     virtual void notifyFileContentChanged(char *fileContent) {}
 
+    virtual void notifySettingsEditFieldChanged(SettingsEditField settingsEditField) {}
+
 protected:
     Model* model;
 };

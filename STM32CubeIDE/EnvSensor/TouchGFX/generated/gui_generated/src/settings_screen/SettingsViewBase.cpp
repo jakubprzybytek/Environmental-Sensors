@@ -34,27 +34,27 @@ SettingsViewBase::SettingsViewBase()
     button1.setLinespacing(0);
     button1.setTypedText(touchgfx::TypedText(T_SINGLEUSEID35));
 
-    minutesSelectionBox.setPosition(310, 48, 44, 37);
+    minutesSelectionBox.setPosition(311, 48, 44, 38);
     minutesSelectionBox.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
     minutesSelectionBox.setBorderColor(touchgfx::Color::getColorFrom24BitRGB(0, 0, 0));
     minutesSelectionBox.setBorderSize(2);
 
-    hourSelectionBox.setPosition(251, 48, 44, 37);
+    hourSelectionBox.setPosition(252, 48, 44, 38);
     hourSelectionBox.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
     hourSelectionBox.setBorderColor(touchgfx::Color::getColorFrom24BitRGB(0, 0, 0));
     hourSelectionBox.setBorderSize(2);
 
-    daySelectionBox.setPosition(191, 48, 44, 37);
+    daySelectionBox.setPosition(191, 48, 44, 38);
     daySelectionBox.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
     daySelectionBox.setBorderColor(touchgfx::Color::getColorFrom24BitRGB(0, 0, 0));
     daySelectionBox.setBorderSize(2);
 
-    monthSelectionBox.setPosition(131, 48, 44, 37);
+    monthSelectionBox.setPosition(131, 48, 44, 38);
     monthSelectionBox.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
     monthSelectionBox.setBorderColor(touchgfx::Color::getColorFrom24BitRGB(0, 0, 0));
     monthSelectionBox.setBorderSize(2);
 
-    yearSelectionBox.setPosition(33, 48, 83, 37);
+    yearSelectionBox.setPosition(33, 48, 83, 38);
     yearSelectionBox.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
     yearSelectionBox.setBorderColor(touchgfx::Color::getColorFrom24BitRGB(0, 0, 0));
     yearSelectionBox.setBorderSize(2);

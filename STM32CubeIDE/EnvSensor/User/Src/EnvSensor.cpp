@@ -130,7 +130,6 @@ void EnvSensor_StopTimers() {
 	HAL_RTCEx_DeactivateWakeUpTimer(&hrtc);
 }
 
-
 void EnvSensor_PerformMeasurements() {
 	bool readSuccessfully = false;
 
