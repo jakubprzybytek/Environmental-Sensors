@@ -4,13 +4,12 @@
  *  Created on: Jan 18, 2021
  *      Author: Chipotle
  */
-#include <touchgfx/hal/OSWrappers.hpp>
 #include <gui/common/FrontendApplication.hpp>
+
 #include <Screen/MainScreen.hpp>
 #include <Screen/SettingsScreen.hpp>
 
 #include "EnvState.hpp"
-
 
 extern MainScreen mainScreen;
 extern ScreenController *currentScreen;
@@ -18,7 +17,6 @@ extern ScreenController *currentScreen;
 extern EnvState envState;
 
 void SettingsScreen::processSecondSwitchPressed() {
-
 }
 
 /*
@@ -42,11 +40,14 @@ void SettingsScreen::processThirdSwitchPressed() {
 		envState.settingsEditField = SettingsEditField::Year;
 		break;
 	}
-	OSWrappers::signalVSync();
+	requestDisplayRefresh();
 }
 
+/*
+ * Button 4: Back to main screen
+ */
 void SettingsScreen::processFourthSwitchPressed() {
 	currentScreen = &mainScreen;
 	static_cast<FrontendApplication*>(Application::getInstance())->gotoMainScreenNoTransition();
-	OSWrappers::signalVSync();
+	requestDisplayRefresh();
 }

@@ -52,7 +52,7 @@ MainViewBase::MainViewBase()
     button2.setLinespacing(0);
     button2.setTypedText(touchgfx::TypedText(T_SINGLEUSEID27));
 
-    button1.setXY(63, 276);
+    button1.setXY(57, 276);
     button1.setColor(touchgfx::Color::getColorFrom24BitRGB(0, 0, 0));
     button1.setLinespacing(0);
     button1.setTypedText(touchgfx::TypedText(T_SINGLEUSEID16));

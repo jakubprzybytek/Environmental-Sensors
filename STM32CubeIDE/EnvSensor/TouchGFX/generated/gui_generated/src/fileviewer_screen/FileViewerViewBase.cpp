@@ -14,6 +14,11 @@ FileViewerViewBase::FileViewerViewBase()
     background.setPosition(-1, 0, 401, 300);
     background.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
 
+    button4.setXY(284, 276);
+    button4.setColor(touchgfx::Color::getColorFrom24BitRGB(0, 0, 0));
+    button4.setLinespacing(0);
+    button4.setTypedText(touchgfx::TypedText(T_SINGLEUSEID39));
+
     button2.setXY(127, 276);
     button2.setColor(touchgfx::Color::getColorFrom24BitRGB(0, 0, 0));
     button2.setLinespacing(0);
@@ -31,6 +36,7 @@ FileViewerViewBase::FileViewerViewBase()
 
     add(__background);
     add(background);
+    add(button4);
     add(button2);
     add(fileInfoTextArea);
     add(fileContentTextArea);

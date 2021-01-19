@@ -13,6 +13,8 @@
 class MainScreen: public ScreenController {
 
 public:
+	void processFirstSwitchPressed();
+
 	void processSecondSwitchPressed();
 
 	void processThirdSwitchPressed();

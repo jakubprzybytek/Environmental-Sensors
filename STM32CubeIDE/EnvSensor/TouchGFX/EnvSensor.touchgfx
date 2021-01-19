@@ -232,9 +232,9 @@
             "AutoSize": true,
             "LineSpacing": 0,
             "Name": "button1",
-            "X": 63,
+            "X": 57,
             "Y": 276,
-            "Width": 35,
+            "Width": 47,
             "Height": 24,
             "Visible": true,
             "LockPosition": false,
@@ -358,6 +358,30 @@
           },
           {
             "Type": "TextArea",
+            "TextId": "SingleUseId39",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 0,
+              "Green": 0,
+              "Blue": 0
+            },
+            "Alpha": 255,
+            "AutoSize": true,
+            "LineSpacing": 0,
+            "Name": "button4",
+            "X": 284,
+            "Y": 276,
+            "Width": 37,
+            "Height": 24,
+            "Visible": true,
+            "LockPosition": false,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "TextArea",
             "TextId": "SingleUseId32",
             "TextRotation": "0",
             "Color": {
@@ -371,7 +395,7 @@
             "Name": "button2",
             "X": 127,
             "Y": 276,
-            "Width": 37,
+            "Width": 25,
             "Height": 24,
             "Visible": true,
             "LockPosition": false,
@@ -1042,6 +1066,10 @@
       },
       {
         "TextEntryId": "SingleUseId38",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId39",
         "IsResource": false
       }
     ],

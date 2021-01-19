@@ -8,6 +8,7 @@
 #include <EnvState.hpp>
 
 #include <Screen/Display/Display.hpp>
+#include <Screen/ChartScreen.hpp>
 #include <Screen/MainScreen.hpp>
 #include <Screen/OffScreen.hpp>
 #include <Screen/ScreenController.hpp>
@@ -27,6 +28,7 @@ extern RTC_HandleTypeDef hrtc;
 Display display;
 
 OffScreen offScreen;
+ChartScreen chartScreen;
 MainScreen mainScreen;
 SettingsScreen settingsScreen;
 ScreenController *currentScreen = &mainScreen;

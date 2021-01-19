@@ -28,6 +28,7 @@ protected:
      */
     touchgfx::Box __background;
     touchgfx::Box background;
+    touchgfx::TextArea button4;
     touchgfx::TextArea button2;
     touchgfx::TextAreaWithOneWildcard fileInfoTextArea;
     touchgfx::TextAreaWithOneWildcard fileContentTextArea;

@@ -4,11 +4,11 @@
  *  Created on: Jan 18, 2021
  *      Author: Chipotle
  */
-#include <touchgfx/hal/OSWrappers.hpp>
 #include <gui/common/FrontendApplication.hpp>
 
 #include <Screen/Display/Display.hpp>
 
+#include <Screen/ChartScreen.hpp>
 #include <Screen/MainScreen.hpp>
 #include <Screen/OffScreen.hpp>
 #include <Screen/SettingsScreen.hpp>
@@ -20,9 +20,19 @@
 extern Sensors sensors;
 extern Display display;
 
+extern ChartScreen chartScreen;
 extern OffScreen offScreen;
 extern SettingsScreen settingsScreen;
 extern ScreenController *currentScreen;
+
+/*
+ * Button 1: Switch to chart screen.
+ */
+void MainScreen::processFirstSwitchPressed() {
+	currentScreen = &chartScreen;
+	static_cast<FrontendApplication*>(Application::getInstance())->gotoFileViewerScreenNoTransition();
+	requestDisplayRefresh();
+}
 
 /*
  * Button 2: Switch to settings screen.
@@ -30,14 +40,14 @@ extern ScreenController *currentScreen;
 void MainScreen::processSecondSwitchPressed() {
 	currentScreen = &settingsScreen;
 	static_cast<FrontendApplication*>(Application::getInstance())->gotoSettingsScreenNoTransition();
-	OSWrappers::signalVSync();
+	requestDisplayRefresh();
 }
 
 /*
  * Button 3: Refresh screen.
  */
 void MainScreen::processThirdSwitchPressed() {
-	OSWrappers::signalVSync();
+	requestDisplayRefresh();
 }
 
 /*
