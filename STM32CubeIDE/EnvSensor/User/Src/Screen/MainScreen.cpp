@@ -17,7 +17,6 @@
 
 #include "Sensors/Sensors.hpp"
 
-
 extern Sensors sensors;
 extern Display display;
 

@@ -12,7 +12,6 @@
 #include <Screen/OffScreen.hpp>
 #include <Screen/ScreenController.hpp>
 #include <Screen/SettingsScreen.hpp>
-#include <Screen/TouchGFXScreen.hpp>
 
 #include <Sensors/Sensors.hpp>
 #include <Sensors/VddSensor.hpp>
@@ -26,7 +25,6 @@ extern TIM_HandleTypeDef htim15;
 extern RTC_HandleTypeDef hrtc;
 
 Display display;
-TouchGFXScreen screen;
 
 OffScreen offScreen;
 MainScreen mainScreen;
@@ -78,7 +76,7 @@ void EnvSensor_Init() {
 
 void EnvSensor_Loop() {
 
-	screen.signalRenderingDone();
+	currentScreen->signalRenderingDone();
 
 	// don't go to sleep if next display action is ready
 	if (display.isIdle()) {
@@ -159,7 +157,6 @@ void EnvSensor_PerformMeasurements() {
 		htim15.Instance->CNT = 0;
 		HAL_TIM_Base_Start_IT(&htim15);
 	}
-
 }
 
 void EnvSensor_PerformVddRead() {
@@ -172,7 +169,7 @@ void EnvSensor_PerformVddRead() {
 
 void EnvSensor_MarkAsReadyForDisplayRefresh() {
 	if (display.isIdle()) {
-		screen.refreshScreen();
+		currentScreen->requestDisplayRefresh();
 	}
 }
 

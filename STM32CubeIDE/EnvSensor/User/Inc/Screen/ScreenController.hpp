@@ -11,6 +11,10 @@
 class ScreenController {
 
 public:
+
+	void requestDisplayRefresh();
+	void signalRenderingDone();
+
 	virtual void processFirstSwitchPressed() {}
 
 	virtual void processSecondSwitchPressed() {}
@@ -18,8 +22,6 @@ public:
 	virtual void processThirdSwitchPressed() {}
 
 	virtual void processFourthSwitchPressed() {}
-
 };
-
 
 #endif /* INC_SCREEN_SCREENCONTROLLER_HPP_ */
