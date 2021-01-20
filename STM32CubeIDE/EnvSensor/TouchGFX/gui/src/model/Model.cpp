@@ -4,7 +4,7 @@
 extern EnvState envState;
 
 Model::Model() :
-		modelListener(0) {
+		dateTime(0, 0, 0, 0, 0, 0), modelListener(0) {
 }
 
 void Model::tick() {
@@ -38,6 +38,9 @@ void Model::tick() {
 
 	fileContent = envState.fileContent;
 	modelListener->notifyFileContentChanged(fileContent);
+
+	dateTime = envState.getCurrentDateTime();
+	modelListener->notifyDateTimeChanged(dateTime);
 
 	if (settingsEditField != envState.settingsEditField) {
 		settingsEditField = envState.settingsEditField;

@@ -26,6 +26,8 @@ public:
 
     virtual void notifyFileContentChanged(char *fileContent) {}
 
+    virtual void notifyDateTimeChanged(DateTime dateTime) {}
+
     virtual void notifySettingsEditFieldChanged(SettingsEditField settingsEditField) {}
 
 protected:

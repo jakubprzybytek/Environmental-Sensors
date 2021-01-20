@@ -21,6 +21,8 @@ private:
 
 	char *fileContent;
 
+	DateTime dateTime;
+
 	SettingsEditField settingsEditField;
 
 public:
@@ -62,6 +64,10 @@ public:
 
 	char* getFileContent() {
 		return fileContent;
+	}
+
+	DateTime getDateTime() {
+		return dateTime;
 	}
 
 	SettingsEditField getSettingsEditField() {

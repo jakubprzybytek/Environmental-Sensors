@@ -4,14 +4,16 @@
  *  Created on: Jan 11, 2021
  *      Author: Chipotle
  */
-
-#include <touchgfx/Unicode.hpp>
-
-#include <Logger/Logger.hpp>
 #include <string.h>
 #include <stdio.h>
 
+#include <EnvState.hpp>
+
+#include <Logger/Logger.hpp>
+
 extern RTC_HandleTypeDef hrtc;
+
+extern EnvState envState;
 
 uint8_t Logger::init() {
 	return fileAppender.init() == FR_OK ? HAL_OK : HAL_ERROR;
@@ -22,14 +24,10 @@ uint32_t Logger::getAvailableSpace() {
 }
 
 uint8_t Logger::log(float co2, float pressure, float humidity, float temperature1, float temperature2, float vdd) {
-	RTC_TimeTypeDef rtcTime;
-	RTC_DateTypeDef rtcDate;
+	DateTime dateTime = envState.getCurrentDateTime();
 
-	HAL_RTC_GetTime(&hrtc, &rtcTime, RTC_FORMAT_BIN);
-	HAL_RTC_GetDate(&hrtc, &rtcDate, RTC_FORMAT_BIN);
-
-	sprintf(logMessageBuffer, "20%02d.%02d.%02d %02d:%02d:%02d,%.2f,%.2f,%.1f,%.1f,%.1f,%.2f\n", rtcDate.Year, rtcDate.Month, rtcDate.Date, rtcTime.Hours,
-			rtcTime.Minutes, rtcTime.Seconds, (double) co2, (double) pressure, (double) humidity, (double) temperature1, (double) temperature2, (double) vdd);
+	sprintf(logMessageBuffer, "20%02d.%02d.%02d %02d:%02d:%02d,%.2f,%.2f,%.1f,%.1f,%.1f,%.2f\n", dateTime.year, dateTime.month, dateTime.day, dateTime.hour,
+			dateTime.minutes, dateTime.seconds, (double) co2, (double) pressure, (double) humidity, (double) temperature1, (double) temperature2, (double) vdd);
 
 	return logLine(logMessageBuffer);
 }

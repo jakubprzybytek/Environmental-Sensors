@@ -16,6 +16,20 @@ enum class SettingsEditField {
 	Year, Month, Day, Hour, Minutes
 };
 
+class DateTime {
+public:
+	uint8_t year;
+	uint8_t month;
+	uint8_t day;
+	uint8_t hour;
+	uint8_t minutes;
+	uint8_t seconds;
+
+	DateTime(uint8_t year, uint8_t month, uint8_t day, uint8_t hour, uint8_t minutes, uint8_t seconds) :
+			year(year), month(month), day(day), hour(hour), minutes(minutes), seconds(seconds) {
+	}
+};
+
 class EnvState {
 public:
 	float co2;
@@ -31,8 +45,9 @@ public:
 
 	char fileContent[FILE_CONTENT_SIZE];
 
+	DateTime getCurrentDateTime();
+
 	SettingsEditField settingsEditField = SettingsEditField::Year;
 };
-
 
 #endif /* ENVSTATE_HPP_ */

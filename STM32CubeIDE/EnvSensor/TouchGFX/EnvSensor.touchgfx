@@ -724,12 +724,16 @@
               "Blue": 0
             },
             "Alpha": 255,
-            "AutoSize": true,
+            "AutoSize": false,
             "LineSpacing": 0,
-            "Name": "timeDateTextArea",
+            "Wildcard1": {
+              "UseBuffer": false,
+              "BufferSize": 0
+            },
+            "Name": "dateTimeTextArea",
             "X": 34,
             "Y": 43,
-            "Width": 317,
+            "Width": 327,
             "Height": 43,
             "Visible": true,
             "LockPosition": false,

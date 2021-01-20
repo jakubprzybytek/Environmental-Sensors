@@ -5,12 +5,17 @@
 #include <gui/settings_screen/SettingsPresenter.hpp>
 
 class SettingsView: public SettingsViewBase {
+private:
+	static const uint16_t TEXTAREA_SIZE = 20;
+	touchgfx::Unicode::UnicodeChar dateTimeBuffer[TEXTAREA_SIZE];
 public:
 	SettingsView();
 	virtual ~SettingsView() {
 	}
 	virtual void setupScreen();
 	virtual void tearDownScreen();
+
+	void setDateTime(DateTime dateTime);
 
 	void setSettingsEditField(SettingsEditField settingsEditField);
 

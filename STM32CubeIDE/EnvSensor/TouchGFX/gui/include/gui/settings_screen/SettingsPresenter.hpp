@@ -27,6 +27,8 @@ public:
 
     virtual ~SettingsPresenter() {};
 
+    void notifyDateTimeChanged(DateTime dateTime);
+
     void notifySettingsEditFieldChanged(SettingsEditField settingsEditField);
 
 private:

@@ -59,10 +59,10 @@ SettingsViewBase::SettingsViewBase()
     yearSelectionBox.setBorderColor(touchgfx::Color::getColorFrom24BitRGB(0, 0, 0));
     yearSelectionBox.setBorderSize(2);
 
-    timeDateTextArea.setXY(34, 43);
-    timeDateTextArea.setColor(touchgfx::Color::getColorFrom24BitRGB(0, 0, 0));
-    timeDateTextArea.setLinespacing(0);
-    timeDateTextArea.setTypedText(touchgfx::TypedText(T_SINGLEUSEID33));
+    dateTimeTextArea.setPosition(34, 43, 327, 43);
+    dateTimeTextArea.setColor(touchgfx::Color::getColorFrom24BitRGB(0, 0, 0));
+    dateTimeTextArea.setLinespacing(0);
+    dateTimeTextArea.setTypedText(touchgfx::TypedText(T_SINGLEUSEID33));
 
     timeDateSetupLabelTextArea.setXY(2, 0);
     timeDateSetupLabelTextArea.setColor(touchgfx::Color::getColorFrom24BitRGB(0, 0, 0));
@@ -80,7 +80,7 @@ SettingsViewBase::SettingsViewBase()
     add(daySelectionBox);
     add(monthSelectionBox);
     add(yearSelectionBox);
-    add(timeDateTextArea);
+    add(dateTimeTextArea);
     add(timeDateSetupLabelTextArea);
 }
 

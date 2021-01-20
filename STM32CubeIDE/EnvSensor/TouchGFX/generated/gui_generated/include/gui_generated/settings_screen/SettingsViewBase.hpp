@@ -10,6 +10,7 @@
 #include <touchgfx/widgets/Box.hpp>
 #include <touchgfx/widgets/TextArea.hpp>
 #include <touchgfx/widgets/BoxWithBorder.hpp>
+#include <touchgfx/widgets/TextAreaWithWildcard.hpp>
 #include <touchgfx/mixins/ClickListener.hpp>
 
 class SettingsViewBase : public touchgfx::View<SettingsPresenter>
@@ -38,7 +39,7 @@ protected:
     touchgfx::BoxWithBorder daySelectionBox;
     touchgfx::BoxWithBorder monthSelectionBox;
     touchgfx::BoxWithBorder yearSelectionBox;
-    touchgfx::TextArea timeDateTextArea;
+    touchgfx::TextAreaWithOneWildcard dateTimeTextArea;
     touchgfx::TextArea timeDateSetupLabelTextArea;
 
 private:
