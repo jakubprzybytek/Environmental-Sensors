@@ -12,7 +12,7 @@
 #include "EnvState.hpp"
 
 extern MainScreen mainScreen;
-extern ScreenController *currentScreen;
+extern BaseScreen *currentScreen;
 
 extern EnvState envState;
 

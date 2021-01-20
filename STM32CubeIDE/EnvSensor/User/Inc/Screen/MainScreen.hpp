@@ -8,9 +8,9 @@
 #ifndef INC_SCREEN_MAINSCREEN_HPP_
 #define INC_SCREEN_MAINSCREEN_HPP_
 
-#include <Screen/ScreenController.hpp>
+#include <Screen/Screen.hpp>
 
-class MainScreen: public ScreenController {
+class MainScreen: public BaseScreen {
 
 public:
 	void processFirstSwitchPressed();

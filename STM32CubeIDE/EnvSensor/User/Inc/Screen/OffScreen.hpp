@@ -8,9 +8,9 @@
 #ifndef INC_SCREEN_OFFSCREEN_HPP_
 #define INC_SCREEN_OFFSCREEN_HPP_
 
-#include <Screen/ScreenController.hpp>
+#include <Screen/Screen.hpp>
 
-class OffScreen: public ScreenController {
+class OffScreen: public BaseScreen {
 
 public:
 	void processFourthSwitchPressed();

@@ -8,9 +8,9 @@
 #ifndef INC_SCREEN_CHARTSCREEN_HPP_
 #define INC_SCREEN_CHARTSCREEN_HPP_
 
-#include <Screen/ScreenController.hpp>
+#include <Screen/Screen.hpp>
 
-class ChartScreen: public ScreenController {
+class ChartScreen: public BaseScreen {
 
 public:
 	void processFourthSwitchPressed();

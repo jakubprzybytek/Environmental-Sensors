@@ -5,10 +5,10 @@
  *      Author: Chipotle
  */
 
-#ifndef INC_SCREEN_SCREENCONTROLLER_HPP_
-#define INC_SCREEN_SCREENCONTROLLER_HPP_
+#ifndef INC_SCREEN_SCREEN_HPP_
+#define INC_SCREEN_SCREEN_HPP_
 
-class ScreenController {
+class BaseScreen {
 
 public:
 
@@ -24,4 +24,4 @@ public:
 	virtual void processFourthSwitchPressed() {}
 };
 
-#endif /* INC_SCREEN_SCREENCONTROLLER_HPP_ */
+#endif /* INC_SCREEN_SCREEN_HPP_ */

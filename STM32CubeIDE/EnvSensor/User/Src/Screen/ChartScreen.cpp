@@ -10,7 +10,7 @@
 #include <Screen/MainScreen.hpp>
 
 extern MainScreen mainScreen;
-extern ScreenController *currentScreen;
+extern BaseScreen *currentScreen;
 
 /*
  * Button 4: Wake up!

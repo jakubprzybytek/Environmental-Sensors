@@ -5,14 +5,15 @@
  *      Author: Chipotle
  */
 #include <touchgfx/hal/OSWrappers.hpp>
-#include <gui/common/FrontendApplication.hpp>
 
-#include <Screen/ScreenController.hpp>
+#include <Screen/Screen.hpp>
 
-void ScreenController::requestDisplayRefresh() {
+using namespace touchgfx;
+
+void BaseScreen::requestDisplayRefresh() {
 	OSWrappers::signalVSync();
 }
 
-void ScreenController::signalRenderingDone() {
+void BaseScreen::signalRenderingDone() {
 	OSWrappers::signalRenderingDone();
 }

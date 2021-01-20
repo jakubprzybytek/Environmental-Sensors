@@ -11,13 +11,13 @@
 #include <Screen/ChartScreen.hpp>
 #include <Screen/MainScreen.hpp>
 #include <Screen/OffScreen.hpp>
-#include <Screen/ScreenController.hpp>
 #include <Screen/SettingsScreen.hpp>
 
 #include <Sensors/Sensors.hpp>
 #include <Sensors/VddSensor.hpp>
 
 #include <Logger/Logger.hpp>
+#include <Screen/Screen.hpp>
 
 //#include "Display/Screen.hpp"
 
@@ -31,7 +31,7 @@ OffScreen offScreen;
 ChartScreen chartScreen;
 MainScreen mainScreen;
 SettingsScreen settingsScreen;
-ScreenController *currentScreen = &mainScreen;
+BaseScreen *currentScreen = &mainScreen;
 
 //Screen screen;
 //char screenBuffer[20];

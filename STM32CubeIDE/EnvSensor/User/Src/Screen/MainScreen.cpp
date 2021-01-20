@@ -23,7 +23,7 @@ extern Display display;
 extern ChartScreen chartScreen;
 extern OffScreen offScreen;
 extern SettingsScreen settingsScreen;
-extern ScreenController *currentScreen;
+extern BaseScreen *currentScreen;
 
 /*
  * Button 1: Switch to chart screen.

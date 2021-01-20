@@ -8,9 +8,9 @@
 #ifndef INC_SCREEN_SETTINGSSCREEN_HPP_
 #define INC_SCREEN_SETTINGSSCREEN_HPP_
 
-#include <Screen/ScreenController.hpp>
+#include <Screen/Screen.hpp>
 
-class SettingsScreen: public ScreenController {
+class SettingsScreen: public BaseScreen {
 
 	//void processFirstSwitchPressed();
 

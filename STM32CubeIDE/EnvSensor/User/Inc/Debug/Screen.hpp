@@ -14,7 +14,7 @@
 
 extern I2C_HandleTypeDef hi2c1;
 
-class Screen {
+class BaseScreen {
 
 private:
 	SSD1306 sdd1306;
@@ -23,7 +23,7 @@ private:
 	uint8_t buffer[128];
 
 public:
-	Screen() : sdd1306(hi2c1), currentLineNumber(0) {
+	BaseScreen() : sdd1306(hi2c1), currentLineNumber(0) {
 	}
 
 	uint8_t init();

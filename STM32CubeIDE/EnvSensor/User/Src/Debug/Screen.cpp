@@ -10,12 +10,12 @@
 #include "Debug/Screen.hpp"
 #include "Debug/font6x8.h"
 
-uint8_t Screen::init() {
+uint8_t BaseScreen::init() {
 	sdd1306.init();
 	return HAL_OK;
 }
 
-void Screen::clear() {
+void BaseScreen::clear() {
 	sdd1306.setDrawingArea(0, 127, 0, 7);
 
 	memset(buffer, 0, 128);
@@ -24,7 +24,7 @@ void Screen::clear() {
 	}
 }
 
-void Screen::drawTextLine(uint8_t lineNumber, const char *textLine) {
+void BaseScreen::drawTextLine(uint8_t lineNumber, const char *textLine) {
 	sdd1306.setDrawingArea(0, 127, lineNumber, lineNumber);
 
 	uint8_t col = 0;
@@ -38,7 +38,7 @@ void Screen::drawTextLine(uint8_t lineNumber, const char *textLine) {
 	sdd1306.sendFramebuffer(buffer, 128);
 }
 
-void Screen::appendTextLine(const char *textLine) {
+void BaseScreen::appendTextLine(const char *textLine) {
 
 	memset(buffer, 0, 128);
 	sdd1306.setDrawingArea(0, 127, currentLineNumber, currentLineNumber);
