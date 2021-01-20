@@ -8,18 +8,17 @@
 #ifndef INC_SCREEN_MAINSCREEN_HPP_
 #define INC_SCREEN_MAINSCREEN_HPP_
 
-#include <Screen/Screen.hpp>
+#include <Screen/BaseScreen.hpp>
 
 class MainScreen: public BaseScreen {
 
 public:
-	void processFirstSwitchPressed();
+	void handleScreenEnter();
 
-	void processSecondSwitchPressed();
-
-	void processThirdSwitchPressed();
-
-	void processFourthSwitchPressed();
+	void handleFirstSwitchPressed();
+	void handleSecondSwitchPressed();
+	void handleThirdSwitchPressed();
+	void handleFourthSwitchPressed();
 };
 
 #endif /* INC_SCREEN_MAINSCREEN_HPP_ */

@@ -8,12 +8,14 @@
 #ifndef INC_SCREEN_CHARTSCREEN_HPP_
 #define INC_SCREEN_CHARTSCREEN_HPP_
 
-#include <Screen/Screen.hpp>
+#include <Screen/BaseScreen.hpp>
 
 class ChartScreen: public BaseScreen {
 
 public:
-	void processFourthSwitchPressed();
+	void handleScreenEnter();
+
+	void handleFourthSwitchPressed();
 };
 
 #endif /* INC_SCREEN_CHARTSCREEN_HPP_ */

@@ -8,17 +8,16 @@
 #ifndef INC_SCREEN_SETTINGSSCREEN_HPP_
 #define INC_SCREEN_SETTINGSSCREEN_HPP_
 
-#include <Screen/Screen.hpp>
+#include <Screen/BaseScreen.hpp>
 
 class SettingsScreen: public BaseScreen {
 
-	//void processFirstSwitchPressed();
+public:
+	void handleScreenEnter();
 
-	void processSecondSwitchPressed();
-
-	void processThirdSwitchPressed();
-
-	void processFourthSwitchPressed();
+	void handleSecondSwitchPressed();
+	void handleThirdSwitchPressed();
+	void handleFourthSwitchPressed();
 
 };
 

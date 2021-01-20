@@ -8,12 +8,14 @@
 #ifndef INC_SCREEN_OFFSCREEN_HPP_
 #define INC_SCREEN_OFFSCREEN_HPP_
 
-#include <Screen/Screen.hpp>
+#include <Screen/BaseScreen.hpp>
 
 class OffScreen: public BaseScreen {
 
 public:
-	void processFourthSwitchPressed();
+	void handleScreenEnter();
+
+	void handleFourthSwitchPressed();
 };
 
 #endif /* INC_SCREEN_OFFSCREEN_HPP_ */

@@ -17,7 +17,7 @@
 #include <Sensors/VddSensor.hpp>
 
 #include <Logger/Logger.hpp>
-#include <Screen/Screen.hpp>
+#include <Screen/BaseScreen.hpp>
 
 //#include "Display/Screen.hpp"
 
@@ -88,19 +88,19 @@ void EnvSensor_Loop() {
 	}
 
 	if (switch1Pressed) {
-		currentScreen->processFirstSwitchPressed();
+		currentScreen->handleFirstSwitchPressed();
 		switch1Pressed = false;
 	}
 	if (switch2Pressed) {
-		currentScreen->processSecondSwitchPressed();
+		currentScreen->handleSecondSwitchPressed();
 		switch2Pressed = false;
 	}
 	if (switch3Pressed) {
-		currentScreen->processThirdSwitchPressed();
+		currentScreen->handleThirdSwitchPressed();
 		switch3Pressed = false;
 	}
 	if (switch4Pressed) {
-		currentScreen->processFourthSwitchPressed();
+		currentScreen->handleFourthSwitchPressed();
 		switch4Pressed = false;
 	}
 

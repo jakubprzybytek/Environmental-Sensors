@@ -18,44 +18,43 @@
 #include "Sensors/Sensors.hpp"
 
 extern Sensors sensors;
-extern Display display;
 
 extern ChartScreen chartScreen;
 extern OffScreen offScreen;
 extern SettingsScreen settingsScreen;
-extern BaseScreen *currentScreen;
+
+void MainScreen::handleScreenEnter() {
+	static_cast<FrontendApplication*>(Application::getInstance())->gotoMainScreenNoTransition();
+	requestDisplayRefresh();
+}
 
 /*
  * Button 1: Switch to chart screen.
  */
-void MainScreen::processFirstSwitchPressed() {
-	currentScreen = &chartScreen;
-	static_cast<FrontendApplication*>(Application::getInstance())->gotoFileViewerScreenNoTransition();
-	requestDisplayRefresh();
+void MainScreen::handleFirstSwitchPressed() {
+	switchTo(&chartScreen);
 }
 
 /*
  * Button 2: Switch to settings screen.
  */
-void MainScreen::processSecondSwitchPressed() {
-	currentScreen = &settingsScreen;
-	static_cast<FrontendApplication*>(Application::getInstance())->gotoSettingsScreenNoTransition();
-	requestDisplayRefresh();
+void MainScreen::handleSecondSwitchPressed() {
+	switchTo(&settingsScreen);
 }
 
 /*
  * Button 3: Refresh screen.
  */
-void MainScreen::processThirdSwitchPressed() {
+void MainScreen::handleThirdSwitchPressed() {
 	requestDisplayRefresh();
 }
 
 /*
  * Button 4: Go sleep
  */
-void MainScreen::processFourthSwitchPressed() {
+void MainScreen::handleFourthSwitchPressed() {
 	EnvSensor_StopTimers();
 	sensors.sleep();
-	display.clear();
-	currentScreen = &offScreen;
+
+	switchTo(&offScreen);
 }

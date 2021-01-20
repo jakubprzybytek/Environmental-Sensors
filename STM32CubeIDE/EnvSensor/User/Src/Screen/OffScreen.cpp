@@ -6,26 +6,30 @@
  */
 #include <gui/common/FrontendApplication.hpp>
 
-#include <Screen/Screen.hpp>
+#include <Screen/Display/Display.hpp>
+
 #include <Screen/MainScreen.hpp>
 #include <Screen/OffScreen.hpp>
 #include <Screen/SettingsScreen.hpp>
 
 #include "Sensors/Sensors.hpp"
 
+extern Display display;
+
 extern Sensors sensors;
 
 extern MainScreen mainScreen;
-extern BaseScreen *currentScreen;
+
+void OffScreen::handleScreenEnter() {
+	display.clear();
+}
 
 /*
  * Button 4: Wake up!
  */
-void OffScreen::processFourthSwitchPressed() {
+void OffScreen::handleFourthSwitchPressed() {
 	sensors.start();
 	EnvSensor_StartTimers();
 
-	currentScreen = &mainScreen;
-	static_cast<FrontendApplication*>(Application::getInstance())->gotoMainScreenNoTransition();
-	requestDisplayRefresh();
+	switchTo(&mainScreen);
 }

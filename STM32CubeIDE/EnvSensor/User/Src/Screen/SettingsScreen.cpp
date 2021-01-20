@@ -12,17 +12,21 @@
 #include "EnvState.hpp"
 
 extern MainScreen mainScreen;
-extern BaseScreen *currentScreen;
 
 extern EnvState envState;
 
-void SettingsScreen::processSecondSwitchPressed() {
+void SettingsScreen::handleScreenEnter() {
+	static_cast<FrontendApplication*>(Application::getInstance())->gotoSettingsScreenNoTransition();
+	requestDisplayRefresh();
+}
+
+void SettingsScreen::handleSecondSwitchPressed() {
 }
 
 /*
  * Button 3: Next field
  */
-void SettingsScreen::processThirdSwitchPressed() {
+void SettingsScreen::handleThirdSwitchPressed() {
 	switch (envState.settingsEditField) {
 	case SettingsEditField::Year:
 		envState.settingsEditField = SettingsEditField::Month;
@@ -46,8 +50,6 @@ void SettingsScreen::processThirdSwitchPressed() {
 /*
  * Button 4: Back to main screen
  */
-void SettingsScreen::processFourthSwitchPressed() {
-	currentScreen = &mainScreen;
-	static_cast<FrontendApplication*>(Application::getInstance())->gotoMainScreenNoTransition();
-	requestDisplayRefresh();
+void SettingsScreen::handleFourthSwitchPressed() {
+	switchTo(&mainScreen);
 }

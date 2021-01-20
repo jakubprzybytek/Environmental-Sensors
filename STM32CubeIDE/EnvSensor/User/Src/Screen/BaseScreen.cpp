@@ -6,9 +6,11 @@
  */
 #include <touchgfx/hal/OSWrappers.hpp>
 
-#include <Screen/Screen.hpp>
+#include <Screen/BaseScreen.hpp>
 
 using namespace touchgfx;
+
+extern BaseScreen *currentScreen;
 
 void BaseScreen::requestDisplayRefresh() {
 	OSWrappers::signalVSync();
@@ -16,4 +18,9 @@ void BaseScreen::requestDisplayRefresh() {
 
 void BaseScreen::signalRenderingDone() {
 	OSWrappers::signalRenderingDone();
+}
+
+void BaseScreen::switchTo(BaseScreen *newScreen) {
+	currentScreen = newScreen;
+	currentScreen->handleScreenEnter();
 }
