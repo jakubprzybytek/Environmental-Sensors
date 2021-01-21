@@ -12,9 +12,13 @@
 
 class SettingsScreen: public BaseScreen {
 
+private:
+	void addToDateTime(DateTime &dateTime, SettingsEditField field, uint8_t increment);
+
 public:
 	void handleScreenEnter();
 
+	void handleFirstSwitchPressed();
 	void handleSecondSwitchPressed();
 	void handleThirdSwitchPressed();
 	void handleFourthSwitchPressed();

@@ -46,6 +46,7 @@ public:
 	char fileContent[FILE_CONTENT_SIZE];
 
 	DateTime getCurrentDateTime();
+	void updateDateTime(DateTime dateTime);
 
 	SettingsEditField settingsEditField = SettingsEditField::Year;
 };

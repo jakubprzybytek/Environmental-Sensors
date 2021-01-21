@@ -15,12 +15,49 @@ extern MainScreen mainScreen;
 
 extern EnvState envState;
 
+void SettingsScreen::addToDateTime(DateTime &dateTime, SettingsEditField field, uint8_t increment) {
+	switch (field) {
+	case SettingsEditField::Year:
+		dateTime.year = (dateTime.year + increment) % 100;
+		break;
+	case SettingsEditField::Month:
+		dateTime.month = (dateTime.month - 1 + increment) % 12 + 1;
+		break;
+	case SettingsEditField::Day:
+		dateTime.day = (dateTime.day - 1 + increment) % 31 + 1;
+		break;
+	case SettingsEditField::Hour:
+		dateTime.hour = (dateTime.hour + increment) % 24;
+		break;
+	case SettingsEditField::Minutes:
+		dateTime.minutes = (dateTime.minutes + increment) % 60;
+		break;
+	}
+}
+
 void SettingsScreen::handleScreenEnter() {
 	static_cast<FrontendApplication*>(Application::getInstance())->gotoSettingsScreenNoTransition();
 	requestDisplayRefresh();
 }
 
+/*
+ * Button 1: +10
+ */
+void SettingsScreen::handleFirstSwitchPressed() {
+	DateTime currentDateTime = envState.getCurrentDateTime();
+	addToDateTime(currentDateTime, envState.settingsEditField, 10);
+	envState.updateDateTime(currentDateTime);
+	requestDisplayRefresh();
+}
+
+/*
+ * Button 2: +1
+ */
 void SettingsScreen::handleSecondSwitchPressed() {
+	DateTime currentDateTime = envState.getCurrentDateTime();
+	addToDateTime(currentDateTime, envState.settingsEditField, 1);
+	envState.updateDateTime(currentDateTime);
+	requestDisplayRefresh();
 }
 
 /*
