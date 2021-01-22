@@ -14,13 +14,13 @@
   *
   ******************************************************************************
   */
-#include <Screen/Display/Display.hpp>
 #include <TouchGFXHAL.hpp>
 
 /* USER CODE BEGIN TouchGFXHAL.cpp */
 
-#include "stm32l4xx.h"
+#include <stm32l4xx.h>
 
+#include <Screen/Display/Display.hpp>
 
 using namespace touchgfx;
 
@@ -86,7 +86,7 @@ void TouchGFXHAL::flushFrameBuffer(const touchgfx::Rect& rect)
 
     HAL::flushFrameBuffer(rect);
 
-    display.requestTransferFramebufferToDisplay((uint8_t*) getClientFrameBuffer());
+    display.startAsyncFramebufferTransfer((uint8_t*) getClientFrameBuffer());
     //EnvSensor_RequestTransferFramebufferToDisplay((uint8_t*) getClientFrameBuffer(), ((uint8_t*) getClientFrameBuffer() + EPD_WIDTH_BLOCKS * EPD_HEIGHT));
 }
 

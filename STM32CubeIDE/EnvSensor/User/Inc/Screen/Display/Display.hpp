@@ -29,6 +29,7 @@ private:
 
 	uint8_t *framebuffer;
 	DisplayAction nextDisplayAction;
+	bool dirty;
 
 	void performNextDisplayAction();
 
@@ -38,7 +39,7 @@ public:
 	void process();
 	bool isIdle();
 
-	void requestTransferFramebufferToDisplay(uint8_t *framebuffer);
+	void startAsyncFramebufferTransfer(uint8_t *framebuffer);
 	void clear();
 };
 

@@ -6,12 +6,14 @@
  */
 #include <Screen/Display/Display.hpp>
 
-void Display::requestTransferFramebufferToDisplay(uint8_t *framebufferParam) {
+void Display::startAsyncFramebufferTransfer(uint8_t *framebufferParam) {
 	framebuffer = framebufferParam;
 
 	if (nextDisplayAction == DisplayAction::None) {
 		nextDisplayAction = DisplayAction::Init;
 		performNextDisplayAction();
+	} else {
+		dirty = true;
 	}
 }
 
@@ -32,8 +34,8 @@ void Display::clear() {
 }
 
 void Display::performNextDisplayAction() {
-	switch (nextDisplayAction) {
 
+	switch (nextDisplayAction) {
 	case DisplayAction::Init:
 		eInk.initGrey(false);
 		nextDisplayAction = DisplayAction::Transfer;
@@ -46,11 +48,13 @@ void Display::performNextDisplayAction() {
 
 	case DisplayAction::Sleep:
 		eInk.sleep(false);
-		nextDisplayAction = DisplayAction::None;
+		nextDisplayAction = dirty ? DisplayAction::Transfer : DisplayAction::None;
 		break;
 
 	default:
 		break;
 	}
+
+	dirty = false;
 }
 
