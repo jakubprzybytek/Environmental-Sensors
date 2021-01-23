@@ -17,9 +17,8 @@
 #include <Sensors/VddSensor.hpp>
 
 #include <Logger/Logger.hpp>
+#include <Logger/FileSystem/FileSystem.hpp>
 #include <Screen/BaseScreen.hpp>
-
-//#include "Display/Screen.hpp"
 
 extern TIM_HandleTypeDef htim2;
 extern TIM_HandleTypeDef htim15;
@@ -33,13 +32,11 @@ MainScreen mainScreen;
 SettingsScreen settingsScreen;
 BaseScreen *currentScreen = &mainScreen;
 
-//Screen screen;
-//char screenBuffer[20];
-
 Sensors sensors;
 VddSensor vddSensor;
 
-Logger logger;
+FileSystem fileSystem;
+Logger logger(fileSystem);
 
 bool switch1Pressed = false;
 bool switch2Pressed = false;
@@ -54,18 +51,10 @@ bool performVddRead = false;
 EnvState envState;
 
 void EnvSensor_Init() {
-	//screen.init();
-	//screen.clear();
-
 	sensors.init();
 	sensors.start();
 
-	if (logger.init() == FR_OK) {
-		envState.sdActive = true;
-		envState.sdAvailableSpaceKilobytes = logger.getAvailableSpace();
-	} else {
-		envState.sdActive = false;
-	}
+	envState.sdActive = fileSystem.readAvailableSpace(&envState.sdAvailableSpaceKilobytes) == FR_OK;
 
 	vddSensor.init();
 	EnvSensor_PerformVddRead();
@@ -148,8 +137,7 @@ void EnvSensor_PerformMeasurements() {
 
 	if (readSuccessfully
 			&& logger.log(envState.co2, envState.pressure, envState.humidity, envState.temperature, envState.temperature2, envState.vdd) == HAL_OK) {
-		envState.sdActive = true;
-		envState.sdAvailableSpaceKilobytes = logger.getAvailableSpace();
+		envState.sdActive = fileSystem.readAvailableSpace(&envState.sdAvailableSpaceKilobytes) == FR_OK;
 	} else {
 		envState.sdActive = false;
 	}

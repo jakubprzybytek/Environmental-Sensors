@@ -5,35 +5,7 @@
  *      Author: Chipotle
  */
 
-#include <Logger/FileAppender.hpp>
-//#include <stdio.h>
-//#include <string.h>
-
-FRESULT FileAppender::init() {
-	FATFS fatfs;
-
-	FRESULT fresult = f_mount(&fatfs, "", 1);
-
-	if (fresult != FR_OK) {
-		return fresult;
-	}
-
-	readAvailableSpace(&fatfs);
-
-	return f_mount(NULL, "", 1);;
-}
-
-FRESULT FileAppender::readAvailableSpace(FATFS *fatfs) {
-	uint32_t freeClusters;
-	FRESULT fresult = f_getfree("", &freeClusters, &fatfs);
-
-	if (fresult == FR_OK) {
-		uint64_t availableSpaceBytes = fatfs->csize * fatfs->ssize * freeClusters;
-		availableSpaceKilobytes = availableSpaceBytes / 1024;
-	}
-
-	return fresult;
-}
+#include <Logger/FileSystem/FileAppender.hpp>
 
 FRESULT FileAppender::append(char *buffer, uint16_t bufferSize) {
 	FATFS fatfs;
@@ -45,7 +17,7 @@ FRESULT FileAppender::append(char *buffer, uint16_t bufferSize) {
 		return fresult;
 	}
 
-	fresult = f_open(&file, "log.csv", FA_WRITE | FA_OPEN_APPEND);
+	fresult = f_open(&file, filePath, FA_WRITE | FA_OPEN_APPEND);
 
 	if (fresult != FR_OK) {
 		return fresult;
@@ -53,8 +25,6 @@ FRESULT FileAppender::append(char *buffer, uint16_t bufferSize) {
 
 	UINT bytesWritten;
 	fresult = f_write(&file, buffer, bufferSize, &bytesWritten);
-
-	readAvailableSpace(&fatfs);
 
 	f_close(&file);
 	f_mount(NULL, "", 1);
@@ -88,8 +58,4 @@ void FileAppender::readTail(char *buffer, uint16_t bufferSize) {
 
 	f_close(&rfile);
 	f_mount(NULL, "", 1);
-}
-
-uint32_t FileAppender::getAvailableSpace() {
-	return availableSpaceKilobytes;
 }

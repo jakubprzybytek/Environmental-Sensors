@@ -15,17 +15,16 @@
 class FileAppender {
 
 private:
-	uint32_t availableSpaceKilobytes;
-
-	FRESULT readAvailableSpace(FATFS *fatfs);
+	const char *filePath;
 
 public:
-	FRESULT init();
+	FileAppender(const char *filePath) :
+			filePath(filePath) {
+	}
 
 	FRESULT append(char *buffer, uint16_t bufferSize);
 
-	void readTail(char * buffer, uint16_t bufferSize);
-	uint32_t getAvailableSpace();
+	void readTail(char *buffer, uint16_t bufferSize);
 };
 
 #endif /* INC_LOGGER_FILEAPPENDER_HPP_ */
