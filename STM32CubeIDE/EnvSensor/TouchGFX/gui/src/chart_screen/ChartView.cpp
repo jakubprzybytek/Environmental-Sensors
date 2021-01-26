@@ -4,10 +4,10 @@
 
 using namespace touchgfx;
 
-ChartView::ChartView() : bars(LAST_BAR_X - FIRST_BAR_X, MIN_BAR_Y - MAX_BAR_Y, 4) {
+ChartView::ChartView() : bars(CHART_AREA_WIDTH, CHART_AREA_HEIGHT, BAR_WIDTH) {
 	greyPainter.setColor(touchgfx::Color::getColorFrom24BitRGB(64, 64, 64));
 
-	bars.setPosition(FIRST_BAR_X, MAX_BAR_Y, LAST_BAR_X - FIRST_BAR_X, MIN_BAR_Y - MAX_BAR_Y);
+	bars.setPosition(CHART_AREA_START_X, CHART_AREA_START_Y, CHART_AREA_WIDTH, CHART_AREA_HEIGHT);
 	bars.setPainter(greyPainter);
 	add(bars);
 }

@@ -6,21 +6,18 @@
 
 #include <gui/chart_screen/BarsChart.hpp>
 
-#define FIRST_BAR_X 20
-#define LAST_BAR_X 380
+#define CHART_AREA_START_X 20
+#define CHART_AREA_WIDTH 360
 
-#define MIN_BAR_Y 200
-#define MAX_BAR_Y 5
+#define CHART_AREA_START_Y 5
+#define CHART_AREA_HEIGHT 195
 
 #define BAR_WIDTH 4
-
-#define CHART_BARS 10
 
 class ChartView: public ChartViewBase {
 
 private:
 	PainterGRAY2 greyPainter;
-	Line chartLines[CHART_BARS];
 
 	BarsChart bars;
 

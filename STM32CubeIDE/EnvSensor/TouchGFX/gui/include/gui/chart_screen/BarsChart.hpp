@@ -5,7 +5,7 @@
 
 #include <Charts/ChartData.hpp>
 
-#define CHART_BARS 10
+#define CHART_BARS ChartData::DATA_SERIES_LENGTH
 
 using namespace touchgfx;
 
