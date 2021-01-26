@@ -11,10 +11,12 @@
 #include <platform/driver/lcd/LCD2bpp.hpp>
 #include <gui/main_screen/MainView.hpp>
 #include <gui/main_screen/MainPresenter.hpp>
-#include <gui/fileviewer_screen/FileViewerView.hpp>
-#include <gui/fileviewer_screen/FileViewerPresenter.hpp>
 #include <gui/settings_screen/SettingsView.hpp>
 #include <gui/settings_screen/SettingsPresenter.hpp>
+#include <gui/fileviewer_screen/FileViewerView.hpp>
+#include <gui/fileviewer_screen/FileViewerPresenter.hpp>
+#include <gui/chart_screen/ChartView.hpp>
+#include <gui/chart_screen/ChartPresenter.hpp>
 
 using namespace touchgfx;
 
@@ -46,6 +48,19 @@ void FrontendApplicationBase::gotoMainScreenNoTransitionImpl()
     touchgfx::makeTransition<MainView, MainPresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
 }
 
+// Settings
+
+void FrontendApplicationBase::gotoSettingsScreenNoTransition()
+{
+    transitionCallback = touchgfx::Callback<FrontendApplicationBase>(this, &FrontendApplication::gotoSettingsScreenNoTransitionImpl);
+    pendingScreenTransitionCallback = &transitionCallback;
+}
+
+void FrontendApplicationBase::gotoSettingsScreenNoTransitionImpl()
+{
+    touchgfx::makeTransition<SettingsView, SettingsPresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
+}
+
 // FileViewer
 
 void FrontendApplicationBase::gotoFileViewerScreenNoTransition()
@@ -59,15 +74,15 @@ void FrontendApplicationBase::gotoFileViewerScreenNoTransitionImpl()
     touchgfx::makeTransition<FileViewerView, FileViewerPresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
 }
 
-// Settings
+// Chart
 
-void FrontendApplicationBase::gotoSettingsScreenNoTransition()
+void FrontendApplicationBase::gotoChartScreenNoTransition()
 {
-    transitionCallback = touchgfx::Callback<FrontendApplicationBase>(this, &FrontendApplication::gotoSettingsScreenNoTransitionImpl);
+    transitionCallback = touchgfx::Callback<FrontendApplicationBase>(this, &FrontendApplication::gotoChartScreenNoTransitionImpl);
     pendingScreenTransitionCallback = &transitionCallback;
 }
 
-void FrontendApplicationBase::gotoSettingsScreenNoTransitionImpl()
+void FrontendApplicationBase::gotoChartScreenNoTransitionImpl()
 {
-    touchgfx::makeTransition<SettingsView, SettingsPresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
+    touchgfx::makeTransition<ChartView, ChartPresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
 }

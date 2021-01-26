@@ -14,10 +14,12 @@
 
 #include <gui/main_screen/MainView.hpp>
 #include <gui/main_screen/MainPresenter.hpp>
-#include <gui/fileviewer_screen/FileViewerView.hpp>
-#include <gui/fileviewer_screen/FileViewerPresenter.hpp>
 #include <gui/settings_screen/SettingsView.hpp>
 #include <gui/settings_screen/SettingsPresenter.hpp>
+#include <gui/fileviewer_screen/FileViewerView.hpp>
+#include <gui/fileviewer_screen/FileViewerPresenter.hpp>
+#include <gui/chart_screen/ChartView.hpp>
+#include <gui/chart_screen/ChartPresenter.hpp>
 
 
 /**
@@ -41,9 +43,10 @@ public:
      * @note All view types used in the application MUST be added to this list!
      */
     typedef touchgfx::meta::TypeList< MainView,
-            touchgfx::meta::TypeList< FileViewerView,
             touchgfx::meta::TypeList< SettingsView,
-            touchgfx::meta::Nil > >
+            touchgfx::meta::TypeList< FileViewerView,
+            touchgfx::meta::TypeList< ChartView,
+            touchgfx::meta::Nil > > >
             > GeneratedViewTypes;
 
     /**
@@ -56,9 +59,10 @@ public:
      * @note All presenter types used in the application MUST be added to this list!
      */
     typedef touchgfx::meta::TypeList< MainPresenter,
-            touchgfx::meta::TypeList< FileViewerPresenter,
             touchgfx::meta::TypeList< SettingsPresenter,
-            touchgfx::meta::Nil > >
+            touchgfx::meta::TypeList< FileViewerPresenter,
+            touchgfx::meta::TypeList< ChartPresenter,
+            touchgfx::meta::Nil > > >
             > GeneratedPresenterTypes;
 
     /**

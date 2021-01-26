@@ -3,11 +3,11 @@
 
 SettingsPresenter::SettingsPresenter(SettingsView &v) :
 		view(v) {
-	view.setDateTime(model->getDateTime());
-	view.setSettingsEditField(model->getSettingsEditField());
 }
 
 void SettingsPresenter::activate() {
+	view.setDateTime(model->getDateTime());
+	view.setSettingsEditField(model->getSettingsEditField());
 }
 
 void SettingsPresenter::deactivate() {

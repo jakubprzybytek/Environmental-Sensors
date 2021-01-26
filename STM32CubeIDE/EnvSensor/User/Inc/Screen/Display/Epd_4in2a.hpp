@@ -65,12 +65,14 @@
 #define EPD_CHIP_SELECT_LOW 	HAL_GPIO_WritePin(E_INK_Select_GPIO_Port, E_INK_Select_Pin, GPIO_PIN_RESET)
 #define EPD_BUSY_READ			HAL_GPIO_ReadPin(E_INK_Busy_GPIO_Port, E_INK_Busy_Pin)
 
+#define AUX_BUFFER_SIZE 4096
+
 class EPD_4in2A {
 
 private:
 	SPI_HandleTypeDef &hspi;
 
-	uint8_t auxBuffer[EPD_WIDTH_BLOCKS * EPD_HEIGHT];
+	uint8_t auxBuffer[AUX_BUFFER_SIZE];
 
 	void reset();
 	void waitUntilIdle();

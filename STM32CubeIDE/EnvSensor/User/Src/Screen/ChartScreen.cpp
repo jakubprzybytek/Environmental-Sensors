@@ -22,7 +22,8 @@ extern EnvState envState;
 void ChartScreen::handleScreenEnter() {
 	logger.readTail(envState.fileContent, FILE_CONTENT_SIZE);
 
-	static_cast<FrontendApplication*>(Application::getInstance())->gotoFileViewerScreenNoTransition();
+	//static_cast<FrontendApplication*>(Application::getInstance())->gotoFileViewerScreenNoTransition();
+	static_cast<FrontendApplication*>(Application::getInstance())->gotoChartScreenNoTransition();
 	requestDisplayRefresh();
 }
 

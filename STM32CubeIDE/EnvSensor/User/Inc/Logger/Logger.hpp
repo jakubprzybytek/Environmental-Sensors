@@ -15,7 +15,7 @@
 #include <Logger/FileSystem/FileSystem.hpp>
 #include <Logger/FileSystem/FileAppender.hpp>
 
-#define LOG_BUFFER_SIZE 256
+#define LOG_BUFFER_SIZE 1024
 
 class Logger {
 
@@ -23,7 +23,7 @@ private:
 	FileSystem &fileSystem;
 
 	DateTime lastDateTime;
-	char directory[20];
+	char directory[10];
 	char fileName[30];
 	FileAppender fileAppender;
 

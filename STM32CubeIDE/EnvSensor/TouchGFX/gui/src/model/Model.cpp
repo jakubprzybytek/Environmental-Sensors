@@ -2,6 +2,7 @@
 #include <gui/model/ModelListener.hpp>
 
 extern EnvState envState;
+extern ChartData chartData;
 
 Model::Model() :
 		dateTime(0, 0, 0, 0, 0, 0), modelListener(0) {
@@ -46,4 +47,10 @@ void Model::tick() {
 		settingsEditField = envState.settingsEditField;
 		modelListener->notifySettingsEditFieldChanged(settingsEditField);
 	}
+
+	//modelListener->notifyChartDataChanged(chartData);
+}
+
+ChartData& Model::getChartData() {
+	return chartData;
 }

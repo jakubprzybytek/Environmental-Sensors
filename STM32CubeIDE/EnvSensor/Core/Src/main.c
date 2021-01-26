@@ -130,7 +130,7 @@ int main(void)
 
   // make initial draw
   MX_TouchGFX_Process();
-
+uint32_t duration;
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -138,10 +138,15 @@ int main(void)
   while (1)
   {
 	  EnvSensor_Loop();
+	  uint32_t start = HAL_GetTick();
     /* USER CODE END WHILE */
 
   MX_TouchGFX_Process();
     /* USER CODE BEGIN 3 */
+  	  duration = HAL_GetTick() - start;
+  	  if (duration > 0) {
+  		  duration++;
+  	  }
   }
   /* USER CODE END 3 */
 }
@@ -665,22 +670,9 @@ void Error_Handler(void)
   /* USER CODE BEGIN Error_Handler_Debug */
   /* User can add his own implementation to report the HAL error return state */
 
-	while (1) {
-		for (uint8_t i = 0; i < 3; i++) {
-			LED_ON;
-			HAL_Delay(50);
-			LED_OFF;
-			HAL_Delay(50);
-		}
-		for (uint8_t i = 0; i < 3; i++) {
-			LED_ON;
-			HAL_Delay(250);
-			LED_OFF;
-			HAL_Delay(250);
-		}
-	}
+	LED_ON;
 
-  /* USER CODE END Error_Handler_Debug */
+	/* USER CODE END Error_Handler_Debug */
 }
 
 #ifdef  USE_FULL_ASSERT

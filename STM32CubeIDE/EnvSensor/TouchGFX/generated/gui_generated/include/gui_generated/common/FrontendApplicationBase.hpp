@@ -18,11 +18,14 @@ public:
     // Main
     void gotoMainScreenNoTransition();
 
+    // Settings
+    void gotoSettingsScreenNoTransition();
+
     // FileViewer
     void gotoFileViewerScreenNoTransition();
 
-    // Settings
-    void gotoSettingsScreenNoTransition();
+    // Chart
+    void gotoChartScreenNoTransition();
 
 protected:
     touchgfx::Callback<FrontendApplicationBase> transitionCallback;
@@ -32,11 +35,14 @@ protected:
     // Main
     void gotoMainScreenNoTransitionImpl();
 
+    // Settings
+    void gotoSettingsScreenNoTransitionImpl();
+
     // FileViewer
     void gotoFileViewerScreenNoTransitionImpl();
 
-    // Settings
-    void gotoSettingsScreenNoTransitionImpl();
+    // Chart
+    void gotoChartScreenNoTransitionImpl();
 };
 
 #endif // FRONTENDAPPLICATIONBASE_HPP

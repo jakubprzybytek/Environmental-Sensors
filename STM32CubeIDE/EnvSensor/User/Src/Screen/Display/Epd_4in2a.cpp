@@ -366,37 +366,51 @@ void EPD_4in2A::display(const uint8_t *blackBuffer, uint8_t *redBuffer, bool qui
 void EPD_4in2A::displayGrey(const uint8_t *buffer, bool quick, bool blocking) {
 	EPD_CHIP_SELECT_LOW;
 
-	for (uint16_t i = 0; i < EPD_WIDTH_BLOCKS * EPD_HEIGHT ; i++) {
-		uint16_t toCompress = buffer[i * 2 + 1] << 8 | buffer[i * 2];
-		auxBuffer[i] =
-				((toCompress & 0b1000000000000000) ? 0b00000001 : 0) |
-				((toCompress & 0b0010000000000000) ? 0b00000010 : 0) |
-				((toCompress & 0b0000100000000000) ? 0b00000100 : 0) |
-				((toCompress & 0b0000001000000000) ? 0b00001000 : 0) |
-				((toCompress & 0b0000000010000000) ? 0b00010000 : 0) |
-				((toCompress & 0b0000000000100000) ? 0b00100000 : 0) |
-				((toCompress & 0b0000000000001000) ? 0b01000000 : 0) |
-				((toCompress & 0b0000000000000010) ? 0b10000000 : 0);
-	}
-
 	sendCommand(EPD_4IN2B_DATA_START_TRANSMISSION_1);
-	sendData(auxBuffer, EPD_WIDTH_BLOCKS * EPD_HEIGHT);
 
-	for (uint16_t i = 0; i < EPD_WIDTH_BLOCKS * EPD_HEIGHT ; i++) {
-		uint16_t toCompress = buffer[i * 2] << 8 | buffer[i * 2 + 1];
-		auxBuffer[i] =
-				((toCompress & 0b0100000000000000) ? 0b00010000 : 0) |
-				((toCompress & 0b0001000000000000) ? 0b00100000 : 0) |
-				((toCompress & 0b0000010000000000) ? 0b01000000 : 0) |
-				((toCompress & 0b0000000100000000) ? 0b10000000 : 0) |
-				((toCompress & 0b0000000001000000) ? 0b00000001 : 0) |
-				((toCompress & 0b0000000000010000) ? 0b00000010 : 0) |
-				((toCompress & 0b0000000000000100) ? 0b00000100 : 0) |
-				((toCompress & 0b0000000000000001) ? 0b00001000 : 0);
+	uint16_t i = 0;
+	while (i < EPD_WIDTH_BLOCKS * EPD_HEIGHT) {
+		uint16_t j = 0;
+		while (j < AUX_BUFFER_SIZE) {
+
+			uint16_t toCompress = buffer[i * 2 + 1] << 8 | buffer[i * 2];
+			auxBuffer[j] =
+					((toCompress & 0b1000000000000000) ? 0b00000001 : 0) |
+					((toCompress & 0b0010000000000000) ? 0b00000010 : 0) |
+					((toCompress & 0b0000100000000000) ? 0b00000100 : 0) |
+					((toCompress & 0b0000001000000000) ? 0b00001000 : 0) |
+					((toCompress & 0b0000000010000000) ? 0b00010000 : 0) |
+					((toCompress & 0b0000000000100000) ? 0b00100000 : 0) |
+					((toCompress & 0b0000000000001000) ? 0b01000000 : 0) |
+					((toCompress & 0b0000000000000010) ? 0b10000000 : 0);
+			j++;
+			i++;
+		}
+		sendData(auxBuffer, AUX_BUFFER_SIZE);
 	}
 
 	sendCommand(EPD_4IN2B_DATA_START_TRANSMISSION_2);
-	sendData(auxBuffer, EPD_WIDTH_BLOCKS * EPD_HEIGHT);
+
+	i = 0;
+	while (i < EPD_WIDTH_BLOCKS * EPD_HEIGHT) {
+		uint16_t j = 0;
+		while (j < AUX_BUFFER_SIZE) {
+
+			uint16_t toCompress = buffer[i * 2] << 8 | buffer[i * 2 + 1];
+			auxBuffer[j] =
+					((toCompress & 0b0100000000000000) ? 0b00010000 : 0) |
+					((toCompress & 0b0001000000000000) ? 0b00100000 : 0) |
+					((toCompress & 0b0000010000000000) ? 0b01000000 : 0) |
+					((toCompress & 0b0000000100000000) ? 0b10000000 : 0) |
+					((toCompress & 0b0000000001000000) ? 0b00000001 : 0) |
+					((toCompress & 0b0000000000010000) ? 0b00000010 : 0) |
+					((toCompress & 0b0000000000000100) ? 0b00000100 : 0) |
+					((toCompress & 0b0000000000000001) ? 0b00001000 : 0);
+			j++;
+			i++;
+		}
+		sendData(auxBuffer, AUX_BUFFER_SIZE);
+	}
 
 	sendRefreshCommand(quick, blocking);
 

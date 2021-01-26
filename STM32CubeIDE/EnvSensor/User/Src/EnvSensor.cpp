@@ -12,13 +12,15 @@
 #include <Screen/MainScreen.hpp>
 #include <Screen/OffScreen.hpp>
 #include <Screen/SettingsScreen.hpp>
+#include <Screen/BaseScreen.hpp>
 
 #include <Sensors/Sensors.hpp>
 #include <Sensors/VddSensor.hpp>
 
 #include <Logger/Logger.hpp>
 #include <Logger/FileSystem/FileSystem.hpp>
-#include <Screen/BaseScreen.hpp>
+
+#include <Charts/ChartData.hpp>
 
 extern TIM_HandleTypeDef htim2;
 extern TIM_HandleTypeDef htim15;
@@ -37,6 +39,8 @@ VddSensor vddSensor;
 
 FileSystem fileSystem;
 Logger logger(fileSystem);
+
+ChartData chartData;
 
 bool switch1Pressed = false;
 bool switch2Pressed = false;
@@ -135,11 +139,13 @@ void EnvSensor_PerformMeasurements() {
 		}
 	}
 
-	if (readSuccessfully
-			&& logger.log(envState.co2, envState.pressure, envState.humidity, envState.temperature, envState.temperature2, envState.vdd) == HAL_OK) {
-		envState.sdActive = fileSystem.readAvailableSpace(&envState.sdAvailableSpaceKilobytes) == FR_OK;
-	} else {
-		envState.sdActive = false;
+	if (readSuccessfully) {
+		uint8_t result = logger.log(envState.co2, envState.pressure, envState.humidity, envState.temperature, envState.temperature2, envState.vdd);
+		if (result == HAL_OK) {
+			envState.sdActive = fileSystem.readAvailableSpace(&envState.sdAvailableSpaceKilobytes) == FR_OK;
+		} else {
+			envState.sdActive = false;
+		}
 	}
 
 	// start the readout retry timer

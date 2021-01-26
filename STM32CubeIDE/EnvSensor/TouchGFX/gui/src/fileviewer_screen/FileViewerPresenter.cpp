@@ -3,10 +3,10 @@
 
 FileViewerPresenter::FileViewerPresenter(FileViewerView &v) :
 		view(v) {
-	view.setFileContent(model->getFileContent());
 }
 
 void FileViewerPresenter::activate() {
+	view.setFileContent(model->getFileContent());
 }
 
 void FileViewerPresenter::deactivate() {

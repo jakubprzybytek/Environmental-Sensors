@@ -13,7 +13,6 @@
 
 #include "main.h"
 
-
 #define E_INK_BUSY			(HAL_GPIO_ReadPin(E_INK_Busy_GPIO_Port, E_INK_Busy_Pin) == GPIO_PIN_RESET)
 
 extern SPI_HandleTypeDef hspi2;

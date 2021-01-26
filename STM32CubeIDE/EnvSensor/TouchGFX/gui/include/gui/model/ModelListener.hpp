@@ -27,8 +27,9 @@ public:
     virtual void notifyFileContentChanged(char *fileContent) {}
 
     virtual void notifyDateTimeChanged(DateTime dateTime) {}
-
     virtual void notifySettingsEditFieldChanged(SettingsEditField settingsEditField) {}
+
+    virtual void notifyChartDataChanged(ChartData &chartData) {}
 
 protected:
     Model* model;

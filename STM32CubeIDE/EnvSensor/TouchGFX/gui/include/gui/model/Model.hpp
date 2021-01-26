@@ -3,7 +3,8 @@
 
 #include "stm32l4xx_hal.h"
 
-#include "EnvState.hpp"
+#include <EnvState.hpp>
+#include <Charts/ChartData.hpp>
 
 class ModelListener;
 
@@ -22,7 +23,6 @@ private:
 	char *fileContent;
 
 	DateTime dateTime;
-
 	SettingsEditField settingsEditField;
 
 public:
@@ -73,6 +73,8 @@ public:
 	SettingsEditField getSettingsEditField() {
 		return settingsEditField;
 	}
+
+	ChartData& getChartData();
 
 protected:
 	ModelListener *modelListener;
