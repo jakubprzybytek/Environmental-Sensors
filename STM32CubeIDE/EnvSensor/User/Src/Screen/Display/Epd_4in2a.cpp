@@ -331,15 +331,19 @@ void EPD_4in2A::sleep(bool blocking) {
  */
 void EPD_4in2A::clear(bool blocking) {
 
-	memset(auxBuffer, 0xff, EPD_WIDTH_BLOCKS * EPD_HEIGHT);
+	memset(auxBuffer, 0xff, AUX_BUFFER_SIZE);
 
 	EPD_CHIP_SELECT_LOW;
 
 	sendCommand(EPD_4IN2B_DATA_START_TRANSMISSION_1);
-	sendData(auxBuffer, EPD_WIDTH_BLOCKS * EPD_HEIGHT);
+	for (uint16_t j = 0; j < EPD_WIDTH_BLOCKS * EPD_HEIGHT; j += AUX_BUFFER_SIZE) {
+		sendData(auxBuffer, AUX_BUFFER_SIZE);
+	}
 
 	sendCommand(EPD_4IN2B_DATA_START_TRANSMISSION_2);
-	sendData(auxBuffer, EPD_WIDTH_BLOCKS * EPD_HEIGHT);
+	for (uint16_t j = 0; j < EPD_WIDTH_BLOCKS * EPD_HEIGHT; j += AUX_BUFFER_SIZE) {
+		sendData(auxBuffer, AUX_BUFFER_SIZE);
+	}
 
 	sendRefreshCommand(false, blocking);
 
