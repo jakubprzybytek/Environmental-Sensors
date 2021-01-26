@@ -9,20 +9,27 @@
 
 using namespace touchgfx;
 
-class BarSeries: public CanvasWidget {
+class BarsChart: public CanvasWidget {
 
 private:
-	ChartData *chartData;
+	uint16_t width;
+	uint16_t height;
+	uint8_t barWidth;
+
 	bool barVisible[CHART_BARS];
 	uint16_t barX[CHART_BARS];
 	uint16_t barMaxY[CHART_BARS];
 	uint16_t barHeight[CHART_BARS];
 
 public:
+	BarsChart(uint16_t width, uint16_t height, uint8_t barWidth) :
+			width(width), height(height), barWidth(barWidth) {
+	}
+
 	virtual Rect getMinimalRect() const;
 	virtual bool drawCanvasWidget(const Rect &invalidatedArea) const;
 
-	void setChartData(ChartData *chartDataParam);
+	void setChartData(ChartData &chartDataParam);
 };
 
 #endif // BARS_HPP
