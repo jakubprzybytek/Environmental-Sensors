@@ -15,7 +15,6 @@ class LoggerFileName {
 public:
 	static void getDirectory(char *buffer, DateTime dateTime);
 	static void getFileName(char *buffer, DateTime dateTime);
-
 };
 
 #endif /* INC_LOGGER_LOGGERFILENAME_HPP_ */

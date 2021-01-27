@@ -140,7 +140,7 @@ void EnvSensor_PerformMeasurements() {
 	}
 
 	if (readSuccessfully) {
-		uint8_t result = logger.log(envState.co2, envState.pressure, envState.humidity, envState.temperature, envState.temperature2, envState.vdd);
+		uint8_t result = logger.log(envState);
 		if (result == HAL_OK) {
 			envState.sdActive = fileSystem.readAvailableSpace(&envState.sdAvailableSpaceKilobytes) == FR_OK;
 		} else {

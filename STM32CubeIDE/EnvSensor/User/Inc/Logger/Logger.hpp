@@ -39,7 +39,7 @@ public:
 			fileSystem(fileSystem), lastDateTime(0, 0, 0, 0, 0, 0), fileAppender(0) {
 	}
 
-	uint8_t log(float co2, float pressure, float humidity, float temperature1, float temperature2, float vdd);
+	uint8_t log(EnvState &envState);
 
 	void readTail(char *buffer, uint16_t bufferSize);
 };

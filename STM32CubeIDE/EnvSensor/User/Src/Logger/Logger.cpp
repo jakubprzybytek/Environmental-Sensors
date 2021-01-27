@@ -5,17 +5,10 @@
  *      Author: Chipotle
  */
 #include <string.h>
-#include <stdio.h>
 
 #include <Logger/Logger.hpp>
-
+#include <Logger/EnvStateCsvFormat.hpp>
 #include <Logger/LoggerFileName.hpp>
-
-#include <ftoa.h>
-
-extern RTC_HandleTypeDef hrtc;
-
-extern EnvState envState;
 
 uint8_t Logger::logLine(char *line) {
 
@@ -38,7 +31,7 @@ bool Logger::sameLogFile(DateTime first, DateTime second) {
 	return first.year == second.year && first.month == second.month && first.day == second.day;
 }
 
-uint8_t Logger::log(float co2, float pressure, float humidity, float temperature1, float temperature2, float vdd) {
+uint8_t Logger::log(EnvState &envState) {
 	DateTime dateTime = envState.getCurrentDateTime();
 
 	// check if log file needs to be rotated
@@ -55,42 +48,7 @@ uint8_t Logger::log(float co2, float pressure, float humidity, float temperature
 
 	lastDateTime = dateTime;
 
-//	sprintf(logMessageBuffer, "20%02d.%02d.%02d %02d:%02d:%02d,%.2f,%.2f,%.1f,%.1f,%.1f,%.2f\n", dateTime.year, dateTime.month, dateTime.day, dateTime.hour,
-//			dateTime.minutes, dateTime.seconds, (double) co2, (double) pressure, (double) humidity, (double) temperature1, (double) temperature2, (double) vdd);
-	uint16_t length = sprintf(logMessageBuffer, "20%02d.%02d.%02d %02d:%02d:%02d,", dateTime.year, dateTime.month, dateTime.day, dateTime.hour,
-			dateTime.minutes, dateTime.seconds);
-
-	char *tempBuffer = logMessageBuffer + length;
-	ftoa(co2, tempBuffer, 2);
-	tempBuffer += strlen(tempBuffer);
-
-	*(tempBuffer) = ',';
-	tempBuffer++;
-	ftoa(pressure, tempBuffer, 2);
-	tempBuffer += strlen(tempBuffer);
-
-	*(tempBuffer) = ',';
-	tempBuffer++;
-	ftoa(humidity, tempBuffer, 2);
-	tempBuffer += strlen(tempBuffer);
-
-	*(tempBuffer) = ',';
-	tempBuffer++;
-	ftoa(temperature1, tempBuffer, 2);
-	tempBuffer += strlen(tempBuffer);
-
-	*(tempBuffer) = ',';
-	tempBuffer++;
-	ftoa(temperature2, tempBuffer, 2);
-	tempBuffer += strlen(tempBuffer);
-
-	*(tempBuffer) = ',';
-	tempBuffer++;
-	ftoa(vdd, tempBuffer, 2);
-	tempBuffer += strlen(tempBuffer);
-
-	strcpy(tempBuffer, "\n");
-
+	EnvStateCsvFormat::toCsv(logMessageBuffer, dateTime, envState);
  	return logLine(logMessageBuffer);
 }
 
