@@ -21,6 +21,7 @@ void ChartScreen::handleScreenEnter() {
 	DateTime to(21, 1, 1, 0, 2, 0);
 
 	ChartDataLoader loader;
+	loader.setup();
 	loader.load();
 
 	//static_cast<FrontendApplication*>(Application::getInstance())->gotoFileViewerScreenNoTransition();
