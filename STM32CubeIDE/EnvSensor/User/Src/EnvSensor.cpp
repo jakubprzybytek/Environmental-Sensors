@@ -37,8 +37,7 @@ BaseScreen *currentScreen = &mainScreen;
 Sensors sensors;
 VddSensor vddSensor;
 
-FileSystem fileSystem;
-Logger logger(fileSystem);
+Logger logger;
 
 ChartData chartData;
 
@@ -54,11 +53,13 @@ bool performVddRead = false;
 
 EnvState envState;
 
+#include <Logger/FileSystem/SpeedTest.hpp>
+
 void EnvSensor_Init() {
 	sensors.init();
 	sensors.start();
 
-	envState.sdActive = fileSystem.readAvailableSpace(&envState.sdAvailableSpaceKilobytes) == FR_OK;
+	envState.sdActive = FileSystem::readAvailableSpace(&envState.sdAvailableSpaceKilobytes) == FR_OK;
 
 	vddSensor.init();
 	EnvSensor_PerformVddRead();
@@ -67,6 +68,8 @@ void EnvSensor_Init() {
 	HAL_TIM_Base_Start_IT(&htim2);
 
 	EnvSensor_MarkAsReadyForDisplayRefresh();
+
+	SpeedTest::test();
 }
 
 void EnvSensor_Loop() {
@@ -142,7 +145,7 @@ void EnvSensor_PerformMeasurements() {
 	if (readSuccessfully) {
 		uint8_t result = logger.log(envState);
 		if (result == HAL_OK) {
-			envState.sdActive = fileSystem.readAvailableSpace(&envState.sdAvailableSpaceKilobytes) == FR_OK;
+			envState.sdActive = FileSystem::readAvailableSpace(&envState.sdAvailableSpaceKilobytes) == FR_OK;
 		} else {
 			envState.sdActive = false;
 		}

@@ -9,16 +9,18 @@
 #define INC_LOGGER_FILESYSTEM_HPP_
 
 #include <Logger/FileSystem/FileAppender.hpp>
+#include <Logger/FileSystem/FileReader.hpp>
 
 class FileSystem {
 
 private:
-	FRESULT ensureDirectory(const char *directoryPath);
+	static FRESULT ensureDirectory(const char *directoryPath);
 
 public:
-	FRESULT readAvailableSpace(uint32_t *availableSpaceKilobytes);
+	static FRESULT readAvailableSpace(uint32_t *availableSpaceKilobytes);
 
-	FileAppender getFileAppender(const char *directory, const char *fileName);
+	static FileAppender getFileAppender(const char *directory, const char *fileName);
+	static FileReader getFileReader(const char *fileName);
 };
 
 #endif /* INC_LOGGER_FILESYSTEM_HPP_ */

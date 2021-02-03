@@ -8,7 +8,7 @@
 
 #include <Logger/Logger.hpp>
 #include <Logger/EnvStateCsvFormat.hpp>
-#include <Logger/LoggerFileName.hpp>
+#include <Logger/LogFileName.hpp>
 
 uint8_t Logger::logLine(char *line) {
 
@@ -41,17 +41,13 @@ uint8_t Logger::log(EnvState &envState) {
 			fileAppender.append(logBuffer, logContentSize);
 		}
 
-		LoggerFileName::getDirectory(directory, dateTime);
-		LoggerFileName::getFileName(fileName, dateTime);
-		fileAppender = fileSystem.getFileAppender(directory, fileName);
+		LogFileName::getDirectory(directory, dateTime);
+		LogFileName::getFileName(fileName, dateTime);
+		fileAppender = FileSystem::getFileAppender(directory, fileName);
 	}
 
 	lastDateTime = dateTime;
 
 	EnvStateCsvFormat::toCsv(logMessageBuffer, dateTime, envState);
  	return logLine(logMessageBuffer);
-}
-
-void Logger::readTail(char *buffer, uint16_t bufferSize) {
-	fileAppender.readTail(buffer, bufferSize);
 }

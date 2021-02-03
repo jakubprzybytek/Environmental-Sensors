@@ -7,20 +7,21 @@
 #include <gui/common/FrontendApplication.hpp>
 
 #include <EnvState.hpp>
-
+#include <Charts/ChartDataLoader.hpp>
 #include <Screen/ChartScreen.hpp>
 #include <Screen/MainScreen.hpp>
 
-#include <Logger/Logger.hpp>
 
 extern MainScreen mainScreen;
-
-extern Logger logger;
 
 extern EnvState envState;
 
 void ChartScreen::handleScreenEnter() {
-	logger.readTail(envState.fileContent, FILE_CONTENT_SIZE);
+	DateTime from(21, 1, 1, 0, 0, 0);
+	DateTime to(21, 1, 1, 0, 2, 0);
+
+	ChartDataLoader loader;
+	loader.load();
 
 	//static_cast<FrontendApplication*>(Application::getInstance())->gotoFileViewerScreenNoTransition();
 	static_cast<FrontendApplication*>(Application::getInstance())->gotoChartScreenNoTransition();

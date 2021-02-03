@@ -156,6 +156,10 @@ static bool SD_RxDataBlock(BYTE *buff, UINT len)
 		SPI_RxBytePtr(buff++);
 	} while(len--);
 
+//	uint8_t dummy = 0xFF;
+//	while(!__HAL_SPI_GET_FLAG(HSPI_SDCARD, SPI_FLAG_TXE));
+//	HAL_SPI_TransmitReceive(HSPI_SDCARD, &dummy, buff, len, SPI_TIMEOUT);
+
 	/* discard CRC */
 	SPI_RxByte();
 	SPI_RxByte();

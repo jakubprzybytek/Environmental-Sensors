@@ -17,7 +17,11 @@ FRESULT FileSystem::readAvailableSpace(uint32_t *availableSpaceKilobytes) {
 	fresult = f_getfree("", &freeClusters, &fatfsptr);
 
 	if (fresult == FR_OK) {
+#if _MAX_SS != _MIN_SS
 		uint64_t availableSpaceBytes = fatfs.csize * fatfs.ssize * freeClusters;
+#else
+		uint64_t availableSpaceBytes = fatfs.csize * 512 * freeClusters;
+#endif
 		*availableSpaceKilobytes = availableSpaceBytes / 1024;
 	}
 
@@ -47,3 +51,6 @@ FileAppender FileSystem::getFileAppender(const char *directory, const char *file
 	return FileAppender(fileName);
 }
 
+FileReader FileSystem::getFileReader(const char *fileName) {
+	return FileReader(fileName);
+}

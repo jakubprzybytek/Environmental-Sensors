@@ -23,8 +23,6 @@ public:
 	}
 
 	FRESULT append(char *buffer, uint16_t bufferSize);
-
-	void readTail(char *buffer, uint16_t bufferSize);
 };
 
 #endif /* INC_LOGGER_FILEAPPENDER_HPP_ */

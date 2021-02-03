@@ -20,8 +20,6 @@
 class Logger {
 
 private:
-	FileSystem &fileSystem;
-
 	DateTime lastDateTime;
 	char directory[10];
 	char fileName[30];
@@ -35,13 +33,11 @@ private:
 	uint8_t logLine(char *line);
 
 public:
-	Logger(FileSystem &fileSystem) :
-			fileSystem(fileSystem), lastDateTime(0, 0, 0, 0, 0, 0), fileAppender(0) {
+	Logger() :
+			lastDateTime(0, 0, 0, 0, 0, 0), fileAppender(0) {
 	}
 
 	uint8_t log(EnvState &envState);
-
-	void readTail(char *buffer, uint16_t bufferSize);
 };
 
 #endif /* INC_LOGGER_LOGGER_HPP_ */
