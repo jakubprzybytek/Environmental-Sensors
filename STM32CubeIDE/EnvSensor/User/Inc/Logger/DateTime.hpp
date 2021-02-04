@@ -1,0 +1,28 @@
+/*
+ * EnvState.hpp
+ *
+ *  Created on: Dec 23, 2020
+ *      Author: Chipotle
+ */
+
+#ifndef DATETIME_HPP_
+#define DATETIME_HPP_
+
+#include <stm32l4xx.h>
+
+class DateTime {
+public:
+	uint8_t year;
+	uint8_t month;
+	uint8_t day;
+	uint8_t hour;
+	uint8_t minutes;
+	uint8_t seconds;
+
+	DateTime();
+	DateTime(uint8_t year, uint8_t month, uint8_t day, uint8_t hour, uint8_t minutes, uint8_t seconds);
+
+	bool afterOrSame(DateTime other);
+};
+
+#endif /* DATETIME_HPP_ */

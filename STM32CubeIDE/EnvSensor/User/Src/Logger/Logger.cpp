@@ -44,6 +44,8 @@ uint8_t Logger::log(EnvState &envState) {
 		LogFileName::getDirectory(directory, dateTime);
 		LogFileName::getFileName(fileName, dateTime);
 		fileAppender = FileSystem::getFileAppender(directory, fileName);
+
+		logContentSize = 0;
 	}
 
 	lastDateTime = dateTime;
