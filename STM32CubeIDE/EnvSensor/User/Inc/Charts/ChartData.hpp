@@ -32,7 +32,7 @@ public:
 class ChartData {
 
 public:
-	static const uint8_t DATA_SERIES_LENGTH = 10;
+	static const uint8_t DATA_SERIES_LENGTH = 20;
 	DataPoint dataSeries[DATA_SERIES_LENGTH];
 
 	ChartData() {

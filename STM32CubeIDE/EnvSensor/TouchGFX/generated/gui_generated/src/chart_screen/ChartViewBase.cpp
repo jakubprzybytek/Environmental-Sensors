@@ -21,27 +21,87 @@ ChartViewBase::ChartViewBase()
     button4.setLinespacing(0);
     button4.setTypedText(touchgfx::TypedText(T_SINGLEUSEID40));
 
-    yAxisLine.setPosition(8, 255, 384, 1);
+    yAxisLine.setPosition(54, 255, 338, 1);
     yAxisLinePainter.setColor(touchgfx::Color::getColorFrom24BitRGB(0, 0, 0));
     yAxisLine.setPainter(yAxisLinePainter);
     yAxisLine.setStart(0, 0);
-    yAxisLine.setEnd(384, 0);
+    yAxisLine.setEnd(338, 0);
     yAxisLine.setLineWidth(2);
     yAxisLine.setLineEndingStyle(touchgfx::Line::BUTT_CAP_ENDING);
 
-    xAxisLine.setPosition(8, 5, 1, 250);
+    xAxisLine.setPosition(54, 25, 1, 230);
     xAxisLinePainter.setColor(touchgfx::Color::getColorFrom24BitRGB(0, 0, 0));
     xAxisLine.setPainter(xAxisLinePainter);
     xAxisLine.setStart(0, 0);
-    xAxisLine.setEnd(0, 250);
+    xAxisLine.setEnd(0, 230);
     xAxisLine.setLineWidth(2);
     xAxisLine.setLineEndingStyle(touchgfx::Line::BUTT_CAP_ENDING);
+
+    xAsisLabel4.setPosition(332, 255, 60, 24);
+    xAsisLabel4.setColor(touchgfx::Color::getColorFrom24BitRGB(0, 0, 0));
+    xAsisLabel4.setLinespacing(0);
+    xAsisLabel4.setTypedText(touchgfx::TypedText(T_SINGLEUSEID42));
+
+    xAsisLabel3.setPosition(240, 255, 60, 24);
+    xAsisLabel3.setColor(touchgfx::Color::getColorFrom24BitRGB(0, 0, 0));
+    xAsisLabel3.setLinespacing(0);
+    xAsisLabel3.setTypedText(touchgfx::TypedText(T_SINGLEUSEID45));
+
+    xAsisLabel2.setPosition(147, 255, 60, 24);
+    xAsisLabel2.setColor(touchgfx::Color::getColorFrom24BitRGB(0, 0, 0));
+    xAsisLabel2.setLinespacing(0);
+    xAsisLabel2.setTypedText(touchgfx::TypedText(T_SINGLEUSEID44));
+
+    xAsisLabel1.setPosition(54, 255, 60, 24);
+    xAsisLabel1.setColor(touchgfx::Color::getColorFrom24BitRGB(0, 0, 0));
+    xAsisLabel1.setLinespacing(0);
+    xAsisLabel1.setTypedText(touchgfx::TypedText(T_SINGLEUSEID43));
+
+    yAsisLabel5.setPosition(0, 24, 54, 24);
+    yAsisLabel5.setColor(touchgfx::Color::getColorFrom24BitRGB(0, 0, 0));
+    yAsisLabel5.setLinespacing(0);
+    yAsisLabel5.setTypedText(touchgfx::TypedText(T_SINGLEUSEID46));
+
+    yAsisLabel4.setPosition(0, 75, 54, 24);
+    yAsisLabel4.setColor(touchgfx::Color::getColorFrom24BitRGB(0, 0, 0));
+    yAsisLabel4.setLinespacing(0);
+    yAsisLabel4.setTypedText(touchgfx::TypedText(T_SINGLEUSEID47));
+
+    yAsisLabel3.setPosition(0, 130, 54, 24);
+    yAsisLabel3.setColor(touchgfx::Color::getColorFrom24BitRGB(0, 0, 0));
+    yAsisLabel3.setLinespacing(0);
+    yAsisLabel3.setTypedText(touchgfx::TypedText(T_SINGLEUSEID48));
+
+    yAsisLabel2.setPosition(0, 181, 54, 24);
+    yAsisLabel2.setColor(touchgfx::Color::getColorFrom24BitRGB(0, 0, 0));
+    yAsisLabel2.setLinespacing(0);
+    yAsisLabel2.setTypedText(touchgfx::TypedText(T_SINGLEUSEID49));
+
+    yAsisLabel1.setPosition(0, 231, 54, 24);
+    yAsisLabel1.setColor(touchgfx::Color::getColorFrom24BitRGB(0, 0, 0));
+    yAsisLabel1.setLinespacing(0);
+    yAsisLabel1.setTypedText(touchgfx::TypedText(T_SINGLEUSEID50));
+
+    titleTextArea.setPosition(121, 0, 200, 24);
+    titleTextArea.setColor(touchgfx::Color::getColorFrom24BitRGB(0, 0, 0));
+    titleTextArea.setLinespacing(0);
+    titleTextArea.setTypedText(touchgfx::TypedText(T_SINGLEUSEID41));
 
     add(__background);
     add(background);
     add(button4);
     add(yAxisLine);
     add(xAxisLine);
+    add(xAsisLabel4);
+    add(xAsisLabel3);
+    add(xAsisLabel2);
+    add(xAsisLabel1);
+    add(yAsisLabel5);
+    add(yAsisLabel4);
+    add(yAsisLabel3);
+    add(yAsisLabel2);
+    add(yAsisLabel1);
+    add(titleTextArea);
 }
 
 void ChartViewBase::setupScreen()

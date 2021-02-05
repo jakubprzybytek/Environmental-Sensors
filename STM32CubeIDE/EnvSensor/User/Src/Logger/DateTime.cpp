@@ -48,5 +48,10 @@ DateTime DateTime::minusMinutes(uint8_t delta) {
 }
 
 bool DateTime::afterOrSame(DateTime other) {
-	return year >= other.year && month >= other.month && day >= other.day && hour >= other.hour && minutes >= other.minutes && seconds >= other.seconds;
+	return year > other.year
+			|| (year == other.year && month > other.month)
+			|| (month == other.month && day > other.day)
+			|| (day == other.day && hour > other.hour)
+			|| (hour == other.hour && minutes > other.minutes)
+			|| (minutes == other.minutes && seconds >= other.seconds);
 }

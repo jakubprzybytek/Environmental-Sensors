@@ -21,7 +21,7 @@ extern EnvState envState;
 
 void ChartScreen::handleScreenEnter() {
 	//DateTime referenceDateTime = envState.getCurrentDateTime();
-	DateTime referenceDateTime = DateTime(21, 2, 4, 2, 0, 0);
+	DateTime referenceDateTime = DateTime(21, 2, 3, 1, 56, 0);
 
 	ChartDataLoader loader;
 	loader.setup(referenceDateTime);

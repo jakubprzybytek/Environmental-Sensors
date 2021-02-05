@@ -53,7 +53,7 @@ bool ChartDataLoader::load(ChartData &chartData) {
 				barIndex++;
 			}
 
-			if (barIndex < 5) {
+			if (barIndex < ChartData::DATA_SERIES_LENGTH) {
 				if (envState.co2 < chartData.dataSeries[barIndex].min) {
 					chartData.dataSeries[barIndex].min = envState.co2;
 				}

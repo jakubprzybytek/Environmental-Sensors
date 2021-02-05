@@ -35,6 +35,16 @@ protected:
     touchgfx::PainterGRAY2 yAxisLinePainter;
     touchgfx::Line xAxisLine;
     touchgfx::PainterGRAY2 xAxisLinePainter;
+    touchgfx::TextArea xAsisLabel4;
+    touchgfx::TextArea xAsisLabel3;
+    touchgfx::TextArea xAsisLabel2;
+    touchgfx::TextArea xAsisLabel1;
+    touchgfx::TextArea yAsisLabel5;
+    touchgfx::TextArea yAsisLabel4;
+    touchgfx::TextArea yAsisLabel3;
+    touchgfx::TextArea yAsisLabel2;
+    touchgfx::TextArea yAsisLabel1;
+    touchgfx::TextArea titleTextArea;
 
 private:
 
