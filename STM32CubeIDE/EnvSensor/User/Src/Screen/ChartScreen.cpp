@@ -6,23 +6,26 @@
  */
 #include <gui/common/FrontendApplication.hpp>
 
-#include <EnvState.hpp>
-#include <Charts/ChartDataLoader.hpp>
 #include <Screen/ChartScreen.hpp>
 #include <Screen/MainScreen.hpp>
 
+#include <Charts/ChartData.hpp>
+#include <Charts/ChartDataLoader.hpp>
+
+#include <EnvState.hpp>
 
 extern MainScreen mainScreen;
 
+extern ChartData chartData;
 extern EnvState envState;
 
 void ChartScreen::handleScreenEnter() {
-	DateTime from(21, 1, 1, 0, 0, 0);
-	DateTime to(21, 1, 1, 0, 2, 0);
+	//DateTime referenceDateTime = envState.getCurrentDateTime();
+	DateTime referenceDateTime = DateTime(21, 2, 4, 2, 0, 0);
 
 	ChartDataLoader loader;
-	loader.setup();
-	loader.load();
+	loader.setup(referenceDateTime);
+	loader.load(chartData);
 
 	//static_cast<FrontendApplication*>(Application::getInstance())->gotoFileViewerScreenNoTransition();
 	static_cast<FrontendApplication*>(Application::getInstance())->gotoChartScreenNoTransition();

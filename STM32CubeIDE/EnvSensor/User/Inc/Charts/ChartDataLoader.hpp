@@ -10,11 +10,16 @@
 
 #include <Charts/ChartData.hpp>
 
+#include <Logger/DateTime.hpp>
+
 class ChartDataLoader {
 
+private:
+	DateTime timeLimits[ChartData::DATA_SERIES_LENGTH];
+
 public:
-	void setup();
-	bool load();
+	void setup(DateTime &referenceDateTime);
+	bool load(ChartData &chartData);
 };
 
 #endif /* INC_CHARTS_CHARTDATALOADER_HPP_ */

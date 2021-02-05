@@ -69,7 +69,8 @@ void EnvSensor_Init() {
 
 	EnvSensor_MarkAsReadyForDisplayRefresh();
 
-	SpeedTest::test();
+	//SpeedTest::test();
+	//FileSystem::format();
 }
 
 void EnvSensor_Loop() {

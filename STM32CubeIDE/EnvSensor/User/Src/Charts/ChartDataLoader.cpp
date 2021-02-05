@@ -10,27 +10,23 @@
 
 using namespace std;
 
-extern ChartData chartData;
+void ChartDataLoader::setup(DateTime &referenceDateTime) {
+	timeLimits[ChartData::DATA_SERIES_LENGTH - 1] = DateTime(referenceDateTime.year, referenceDateTime.month, referenceDateTime.day, referenceDateTime.hour,
+			referenceDateTime.minutes / 5 * 5, 0);
+	for (int8_t i = ChartData::DATA_SERIES_LENGTH - 2; i >= 0; i--) {
+		timeLimits[i] = timeLimits[i + 1].minusMinutes(5);
+	}
+}
 
-void ChartDataLoader::setup() {
+bool ChartDataLoader::load(ChartData &chartData) {
 	for (uint8_t i = 0; i < ChartData::DATA_SERIES_LENGTH; i++) {
 		chartData.dataSeries[i].min = numeric_limits<float>::max();
 		chartData.dataSeries[i].max = numeric_limits<float>::lowest();
 		chartData.dataSeries[i].isEmpty = true;
 	}
-}
-
-bool ChartDataLoader::load() {
-	DateTime timeLimits[ChartData::DATA_SERIES_LENGTH];
-	timeLimits[0] = DateTime(21, 1, 4, 0, 2, 0);
-	timeLimits[1] = DateTime(21, 1, 4, 0, 10, 0);
-	timeLimits[2] = DateTime(21, 1, 4, 0, 20, 0);
-	timeLimits[3] = DateTime(21, 1, 4, 0, 30, 0);
-	timeLimits[4] = DateTime(21, 1, 4, 0, 40, 0);
-	timeLimits[5] = DateTime(21, 1, 4, 0, 50, 0);
 
 	uint8_t barIndex = 0;
-	while (barIndex < 5) {
+	while (barIndex < ChartData::DATA_SERIES_LENGTH) {
 
 		char fileName[30];
 		LogFileName::getFileName(fileName, timeLimits[barIndex]);
@@ -51,9 +47,9 @@ bool ChartDataLoader::load() {
 		DateTime timestamp;
 		EnvState envState;
 
-		while (barIndex < 5 && logReader.readEntry(timestamp, envState)) {
+		while (barIndex < ChartData::DATA_SERIES_LENGTH && logReader.readEntry(timestamp, envState)) {
 
-			while (barIndex < 5 && timestamp.afterOrSame(timeLimits[barIndex + 1])) {
+			while (barIndex < (ChartData::DATA_SERIES_LENGTH - 1) && timestamp.afterOrSame(timeLimits[barIndex + 1])) {
 				barIndex++;
 			}
 

@@ -17,6 +17,8 @@ private:
 	static FRESULT ensureDirectory(const char *directoryPath);
 
 public:
+	static FRESULT format();
+
 	static FRESULT readAvailableSpace(uint32_t *availableSpaceKilobytes);
 
 	static FileAppender getFileAppender(const char *directory, const char *fileName);

@@ -8,6 +8,11 @@
 
 #include <Logger/FileSystem/FileSystem.hpp>
 
+FRESULT FileSystem::format() {
+	BYTE work[1024];
+	return f_mkfs("", FM_FAT32, 2048, work, 1024);
+}
+
 FRESULT FileSystem::readAvailableSpace(uint32_t *availableSpaceKilobytes) {
 	FATFS fatfs;
 	FRESULT fresult = f_mount(&fatfs, "", 1);

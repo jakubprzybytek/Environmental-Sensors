@@ -11,6 +11,10 @@
 #include <stm32l4xx.h>
 
 class DateTime {
+
+private:
+	static const uint8_t monthDays[];
+
 public:
 	uint8_t year;
 	uint8_t month;
@@ -21,6 +25,8 @@ public:
 
 	DateTime();
 	DateTime(uint8_t year, uint8_t month, uint8_t day, uint8_t hour, uint8_t minutes, uint8_t seconds);
+
+	DateTime minusMinutes(uint8_t delta);
 
 	bool afterOrSame(DateTime other);
 };

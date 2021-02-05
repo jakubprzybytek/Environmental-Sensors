@@ -11,9 +11,6 @@
 #include <Logger/LogFileName.hpp>
 
 uint8_t Logger::logLine(char *line) {
-
-	uint8_t result = HAL_OK;
-
 	if (logContentSize + strlen(line) < LOG_BUFFER_SIZE) {
 		strcpy(logBuffer + logContentSize, line);
 		logContentSize += strlen(line);

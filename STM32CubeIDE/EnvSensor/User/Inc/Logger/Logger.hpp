@@ -25,6 +25,8 @@ private:
 	char fileName[30];
 	FileAppender fileAppender;
 
+	uint8_t result;
+
 	char logMessageBuffer[100];
 	char logBuffer[LOG_BUFFER_SIZE];
 	uint16_t logContentSize;
