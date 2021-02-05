@@ -17,6 +17,13 @@
 class ChartView: public ChartViewBase {
 
 private:
+	static const uint16_t TEXTAREA_SIZE = 10;
+	touchgfx::Unicode::UnicodeChar yAxisLabel1Buffer[TEXTAREA_SIZE];
+	touchgfx::Unicode::UnicodeChar yAxisLabel2Buffer[TEXTAREA_SIZE];
+	touchgfx::Unicode::UnicodeChar yAxisLabel3Buffer[TEXTAREA_SIZE];
+	touchgfx::Unicode::UnicodeChar yAxisLabel4Buffer[TEXTAREA_SIZE];
+	touchgfx::Unicode::UnicodeChar yAxisLabel5Buffer[TEXTAREA_SIZE];
+
 	PainterGRAY2 greyPainter;
 
 	BarsChart bars;

@@ -990,9 +990,13 @@
             "Alpha": 255,
             "AutoSize": false,
             "LineSpacing": 0,
+            "Wildcard1": {
+              "UseBuffer": false,
+              "BufferSize": 0
+            },
             "Name": "yAsisLabel5",
             "X": 0,
-            "Y": 24,
+            "Y": 20,
             "Width": 54,
             "Height": 24,
             "Visible": true,
@@ -1014,9 +1018,13 @@
             "Alpha": 255,
             "AutoSize": false,
             "LineSpacing": 0,
+            "Wildcard1": {
+              "UseBuffer": false,
+              "BufferSize": 0
+            },
             "Name": "yAsisLabel4",
             "X": 0,
-            "Y": 75,
+            "Y": 72,
             "Width": 54,
             "Height": 24,
             "Visible": true,
@@ -1038,9 +1046,13 @@
             "Alpha": 255,
             "AutoSize": false,
             "LineSpacing": 0,
+            "Wildcard1": {
+              "UseBuffer": false,
+              "BufferSize": 0
+            },
             "Name": "yAsisLabel3",
             "X": 0,
-            "Y": 130,
+            "Y": 125,
             "Width": 54,
             "Height": 24,
             "Visible": true,
@@ -1062,9 +1074,13 @@
             "Alpha": 255,
             "AutoSize": false,
             "LineSpacing": 0,
+            "Wildcard1": {
+              "UseBuffer": false,
+              "BufferSize": 0
+            },
             "Name": "yAsisLabel2",
             "X": 0,
-            "Y": 181,
+            "Y": 178,
             "Width": 54,
             "Height": 24,
             "Visible": true,
@@ -1086,9 +1102,13 @@
             "Alpha": 255,
             "AutoSize": false,
             "LineSpacing": 0,
+            "Wildcard1": {
+              "UseBuffer": false,
+              "BufferSize": 0
+            },
             "Name": "yAsisLabel1",
             "X": 0,
-            "Y": 231,
+            "Y": 230,
             "Width": 54,
             "Height": 24,
             "Visible": true,

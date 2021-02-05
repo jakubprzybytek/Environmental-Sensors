@@ -57,27 +57,27 @@ ChartViewBase::ChartViewBase()
     xAsisLabel1.setLinespacing(0);
     xAsisLabel1.setTypedText(touchgfx::TypedText(T_SINGLEUSEID43));
 
-    yAsisLabel5.setPosition(0, 24, 54, 24);
+    yAsisLabel5.setPosition(0, 20, 54, 24);
     yAsisLabel5.setColor(touchgfx::Color::getColorFrom24BitRGB(0, 0, 0));
     yAsisLabel5.setLinespacing(0);
     yAsisLabel5.setTypedText(touchgfx::TypedText(T_SINGLEUSEID46));
 
-    yAsisLabel4.setPosition(0, 75, 54, 24);
+    yAsisLabel4.setPosition(0, 72, 54, 24);
     yAsisLabel4.setColor(touchgfx::Color::getColorFrom24BitRGB(0, 0, 0));
     yAsisLabel4.setLinespacing(0);
     yAsisLabel4.setTypedText(touchgfx::TypedText(T_SINGLEUSEID47));
 
-    yAsisLabel3.setPosition(0, 130, 54, 24);
+    yAsisLabel3.setPosition(0, 125, 54, 24);
     yAsisLabel3.setColor(touchgfx::Color::getColorFrom24BitRGB(0, 0, 0));
     yAsisLabel3.setLinespacing(0);
     yAsisLabel3.setTypedText(touchgfx::TypedText(T_SINGLEUSEID48));
 
-    yAsisLabel2.setPosition(0, 181, 54, 24);
+    yAsisLabel2.setPosition(0, 178, 54, 24);
     yAsisLabel2.setColor(touchgfx::Color::getColorFrom24BitRGB(0, 0, 0));
     yAsisLabel2.setLinespacing(0);
     yAsisLabel2.setTypedText(touchgfx::TypedText(T_SINGLEUSEID49));
 
-    yAsisLabel1.setPosition(0, 231, 54, 24);
+    yAsisLabel1.setPosition(0, 230, 54, 24);
     yAsisLabel1.setColor(touchgfx::Color::getColorFrom24BitRGB(0, 0, 0));
     yAsisLabel1.setLinespacing(0);
     yAsisLabel1.setTypedText(touchgfx::TypedText(T_SINGLEUSEID50));

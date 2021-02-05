@@ -11,6 +11,7 @@
 #include <touchgfx/widgets/TextArea.hpp>
 #include <touchgfx/widgets/canvas/Line.hpp>
 #include <touchgfx/widgets/canvas/PainterGRAY2.hpp>
+#include <touchgfx/widgets/TextAreaWithWildcard.hpp>
 #include <touchgfx/canvas_widget_renderer/CanvasWidgetRenderer.hpp>
 
 class ChartViewBase : public touchgfx::View<ChartPresenter>
@@ -39,11 +40,11 @@ protected:
     touchgfx::TextArea xAsisLabel3;
     touchgfx::TextArea xAsisLabel2;
     touchgfx::TextArea xAsisLabel1;
-    touchgfx::TextArea yAsisLabel5;
-    touchgfx::TextArea yAsisLabel4;
-    touchgfx::TextArea yAsisLabel3;
-    touchgfx::TextArea yAsisLabel2;
-    touchgfx::TextArea yAsisLabel1;
+    touchgfx::TextAreaWithOneWildcard yAsisLabel5;
+    touchgfx::TextAreaWithOneWildcard yAsisLabel4;
+    touchgfx::TextAreaWithOneWildcard yAsisLabel3;
+    touchgfx::TextAreaWithOneWildcard yAsisLabel2;
+    touchgfx::TextAreaWithOneWildcard yAsisLabel1;
     touchgfx::TextArea titleTextArea;
 
 private:
