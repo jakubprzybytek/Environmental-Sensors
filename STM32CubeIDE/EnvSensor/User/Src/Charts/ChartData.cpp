@@ -16,11 +16,11 @@ bool ChartData::getStatistics(float *min, float *max) {
 
 	for (uint8_t i = 0; i < DATA_SERIES_LENGTH; i++) {
 		if (!dataSeries[i].isEmpty) {
-			if (dataSeries[i].min < globalMin) {
-				globalMin = dataSeries[i].min;
+			if (dataSeries[i].co2Min < globalMin) {
+				globalMin = dataSeries[i].co2Min;
 			}
-			if (dataSeries[i].max > globalMax) {
-				globalMax = dataSeries[i].max;
+			if (dataSeries[i].co2Max > globalMax) {
+				globalMax = dataSeries[i].co2Max;
 			}
 		}
 	}

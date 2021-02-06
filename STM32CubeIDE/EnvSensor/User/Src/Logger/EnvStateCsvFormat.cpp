@@ -73,5 +73,13 @@ const char* EnvStateCsvFormat::parseEnvState(const char *lineBuffer, EnvState &e
 	envState.co2 = strtof(nextValue, &nextValue);
 	nextValue++;
 	envState.pressure = strtof(nextValue, &nextValue);
+	nextValue++;
+	envState.humidity = strtof(nextValue, &nextValue);
+	nextValue++;
+	envState.temperature = strtof(nextValue, &nextValue);
+	nextValue++;
+	envState.temperature2 = strtof(nextValue, &nextValue);
+	nextValue++;
+	envState.vdd = strtof(nextValue, &nextValue);
 	return ++nextValue;
 }

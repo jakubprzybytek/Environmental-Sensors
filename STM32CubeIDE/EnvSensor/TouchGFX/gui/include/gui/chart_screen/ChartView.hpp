@@ -18,6 +18,12 @@ class ChartView: public ChartViewBase {
 
 private:
 	static const uint16_t TEXTAREA_SIZE = 10;
+
+	touchgfx::Unicode::UnicodeChar xAxisLabel1Buffer[TEXTAREA_SIZE];
+	touchgfx::Unicode::UnicodeChar xAxisLabel2Buffer[TEXTAREA_SIZE];
+	touchgfx::Unicode::UnicodeChar xAxisLabel3Buffer[TEXTAREA_SIZE];
+	touchgfx::Unicode::UnicodeChar xAxisLabel4Buffer[TEXTAREA_SIZE];
+
 	touchgfx::Unicode::UnicodeChar yAxisLabel1Buffer[TEXTAREA_SIZE];
 	touchgfx::Unicode::UnicodeChar yAxisLabel2Buffer[TEXTAREA_SIZE];
 	touchgfx::Unicode::UnicodeChar yAxisLabel3Buffer[TEXTAREA_SIZE];
@@ -27,6 +33,8 @@ private:
 	PainterGRAY2 greyPainter;
 
 	BarsChart bars;
+
+	void formatTime(touchgfx::Unicode::UnicodeChar* buffer, DateTime dateTime);
 
 public:
 	ChartView();

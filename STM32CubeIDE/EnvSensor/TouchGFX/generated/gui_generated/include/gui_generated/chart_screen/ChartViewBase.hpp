@@ -36,10 +36,10 @@ protected:
     touchgfx::PainterGRAY2 yAxisLinePainter;
     touchgfx::Line xAxisLine;
     touchgfx::PainterGRAY2 xAxisLinePainter;
-    touchgfx::TextArea xAsisLabel4;
-    touchgfx::TextArea xAsisLabel3;
-    touchgfx::TextArea xAsisLabel2;
-    touchgfx::TextArea xAsisLabel1;
+    touchgfx::TextAreaWithOneWildcard xAsisLabel4;
+    touchgfx::TextAreaWithOneWildcard xAsisLabel3;
+    touchgfx::TextAreaWithOneWildcard xAsisLabel2;
+    touchgfx::TextAreaWithOneWildcard xAsisLabel1;
     touchgfx::TextAreaWithOneWildcard yAsisLabel5;
     touchgfx::TextAreaWithOneWildcard yAsisLabel4;
     touchgfx::TextAreaWithOneWildcard yAsisLabel3;

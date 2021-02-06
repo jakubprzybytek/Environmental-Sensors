@@ -894,8 +894,12 @@
             "Alpha": 255,
             "AutoSize": false,
             "LineSpacing": 0,
+            "Wildcard1": {
+              "UseBuffer": false,
+              "BufferSize": 0
+            },
             "Name": "xAsisLabel4",
-            "X": 332,
+            "X": 336,
             "Y": 255,
             "Width": 60,
             "Height": 24,
@@ -918,8 +922,12 @@
             "Alpha": 255,
             "AutoSize": false,
             "LineSpacing": 0,
+            "Wildcard1": {
+              "UseBuffer": false,
+              "BufferSize": 0
+            },
             "Name": "xAsisLabel3",
-            "X": 240,
+            "X": 241,
             "Y": 255,
             "Width": 60,
             "Height": 24,
@@ -942,8 +950,12 @@
             "Alpha": 255,
             "AutoSize": false,
             "LineSpacing": 0,
+            "Wildcard1": {
+              "UseBuffer": false,
+              "BufferSize": 0
+            },
             "Name": "xAsisLabel2",
-            "X": 147,
+            "X": 146,
             "Y": 255,
             "Width": 60,
             "Height": 24,
@@ -966,8 +978,12 @@
             "Alpha": 255,
             "AutoSize": false,
             "LineSpacing": 0,
+            "Wildcard1": {
+              "UseBuffer": false,
+              "BufferSize": 0
+            },
             "Name": "xAsisLabel1",
-            "X": 54,
+            "X": 50,
             "Y": 255,
             "Width": 60,
             "Height": 24,

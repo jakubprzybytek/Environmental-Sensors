@@ -13,41 +13,41 @@ KEEP extern const uint32_t indicesGb[] TEXT_LOCATION_FLASH_ATTRIBUTE =
     67, // T_SingleUseId16
     59, // T_SingleUseId17
     74, // T_SingleUseId18
-    86, // T_SingleUseId19
+    80, // T_SingleUseId19
     26, // T_SingleUseId20
-    104, // T_SingleUseId21
-    128, // T_CO2
-    136, // T_CO2_Unit
+    92, // T_SingleUseId21
+    116, // T_CO2
+    112, // T_CO2_Unit
     28, // T_Preassure
-    140, // T_Preassure_Unit
-    86, // T_SingleUseId22
+    128, // T_Preassure_Unit
+    80, // T_SingleUseId22
     26, // T_SingleUseId23
-    104, // T_SingleUseId24
+    92, // T_SingleUseId24
     41, // T_Humidity
-    144, // T_Humidity_Unit
-    80, // T_Temperature
-    155, // T_Temperature_Unit
-    124, // T_SingleUseId25
+    124, // T_Humidity_Unit
+    86, // T_Temperature
+    143, // T_Temperature_Unit
+    132, // T_SingleUseId25
     38, // T_SingleUseId26
     50, // T_SingleUseId27
-    152, // T_SingleUseId28
+    146, // T_SingleUseId28
     26, // T_SingleUseId29
     20, // T_SingleUseId30
     26, // T_SingleUseId31
-    148, // T_SingleUseId32
+    136, // T_SingleUseId32
     26, // T_SingleUseId33
     0, // T_SingleUseId34
-    132, // T_SingleUseId35
-    158, // T_SingleUseId36
-    114, // T_SingleUseId37
-    119, // T_SingleUseId38
-    109, // T_SingleUseId39
-    109, // T_SingleUseId40
-    128, // T_SingleUseId41
-    92, // T_SingleUseId42
-    92, // T_SingleUseId43
-    98, // T_SingleUseId44
-    92, // T_SingleUseId45
+    120, // T_SingleUseId35
+    140, // T_SingleUseId36
+    102, // T_SingleUseId37
+    107, // T_SingleUseId38
+    97, // T_SingleUseId39
+    97, // T_SingleUseId40
+    116, // T_SingleUseId41
+    26, // T_SingleUseId42
+    26, // T_SingleUseId43
+    26, // T_SingleUseId44
+    26, // T_SingleUseId45
     26, // T_SingleUseId46
     26, // T_SingleUseId47
     26, // T_SingleUseId48

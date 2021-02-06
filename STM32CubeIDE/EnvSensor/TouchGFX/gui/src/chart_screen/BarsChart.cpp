@@ -18,8 +18,8 @@ void BarsChart::setChartData(ChartData &chartData) {
 			if (!chartData.dataSeries[i].isEmpty) {
 				barVisible[i] = true;
 				barX[i] = (width - barWidth) * i / (CHART_BARS - 1);
-				barMaxY[i] = height * (max - chartData.dataSeries[i].max) / delta;
-				barHeight[i] = height * (chartData.dataSeries[i].max - chartData.dataSeries[i].min) / delta;
+				barMaxY[i] = height * (max - chartData.dataSeries[i].co2Max) / delta;
+				barHeight[i] = height * (chartData.dataSeries[i].co2Max - chartData.dataSeries[i].co2Min) / delta;
 			} else {
 				barVisible[i] = false;
 			}

@@ -37,22 +37,22 @@ ChartViewBase::ChartViewBase()
     xAxisLine.setLineWidth(2);
     xAxisLine.setLineEndingStyle(touchgfx::Line::BUTT_CAP_ENDING);
 
-    xAsisLabel4.setPosition(332, 255, 60, 24);
+    xAsisLabel4.setPosition(336, 255, 60, 24);
     xAsisLabel4.setColor(touchgfx::Color::getColorFrom24BitRGB(0, 0, 0));
     xAsisLabel4.setLinespacing(0);
     xAsisLabel4.setTypedText(touchgfx::TypedText(T_SINGLEUSEID42));
 
-    xAsisLabel3.setPosition(240, 255, 60, 24);
+    xAsisLabel3.setPosition(241, 255, 60, 24);
     xAsisLabel3.setColor(touchgfx::Color::getColorFrom24BitRGB(0, 0, 0));
     xAsisLabel3.setLinespacing(0);
     xAsisLabel3.setTypedText(touchgfx::TypedText(T_SINGLEUSEID45));
 
-    xAsisLabel2.setPosition(147, 255, 60, 24);
+    xAsisLabel2.setPosition(146, 255, 60, 24);
     xAsisLabel2.setColor(touchgfx::Color::getColorFrom24BitRGB(0, 0, 0));
     xAsisLabel2.setLinespacing(0);
     xAsisLabel2.setTypedText(touchgfx::TypedText(T_SINGLEUSEID44));
 
-    xAsisLabel1.setPosition(54, 255, 60, 24);
+    xAsisLabel1.setPosition(50, 255, 60, 24);
     xAsisLabel1.setColor(touchgfx::Color::getColorFrom24BitRGB(0, 0, 0));
     xAsisLabel1.setLinespacing(0);
     xAsisLabel1.setTypedText(touchgfx::TypedText(T_SINGLEUSEID43));
