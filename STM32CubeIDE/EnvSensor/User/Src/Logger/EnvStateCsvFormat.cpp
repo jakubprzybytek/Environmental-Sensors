@@ -10,43 +10,44 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#include <Readout.hpp>
 #include <Logger/EnvStateCsvFormat.hpp>
 
 #include <ftoa.h>
 
 using namespace std;
 
-void EnvStateCsvFormat::toCsv(char *lineBuffer, DateTime &dateTime, EnvState &envState) {
+void EnvStateCsvFormat::toCsv(char *lineBuffer, DateTime &dateTime, Readout &readout) {
 	uint16_t length = sprintf(lineBuffer, "20%02d.%02d.%02d %02d:%02d:%02d,", dateTime.year, dateTime.month, dateTime.day, dateTime.hour, dateTime.minutes,
 			dateTime.seconds);
 
 	char *tempBuffer = lineBuffer + length;
-	ftoa(envState.co2, tempBuffer, 2);
+	ftoa(readout.co2, tempBuffer, 2);
 	tempBuffer += strlen(tempBuffer);
 
 	*(tempBuffer) = ',';
 	tempBuffer++;
-	ftoa(envState.pressure, tempBuffer, 2);
+	ftoa(readout.pressure, tempBuffer, 2);
 	tempBuffer += strlen(tempBuffer);
 
 	*(tempBuffer) = ',';
 	tempBuffer++;
-	ftoa(envState.humidity, tempBuffer, 2);
+	ftoa(readout.humidity, tempBuffer, 2);
 	tempBuffer += strlen(tempBuffer);
 
 	*(tempBuffer) = ',';
 	tempBuffer++;
-	ftoa(envState.temperature, tempBuffer, 2);
+	ftoa(readout.temperature, tempBuffer, 2);
 	tempBuffer += strlen(tempBuffer);
 
 	*(tempBuffer) = ',';
 	tempBuffer++;
-	ftoa(envState.temperature2, tempBuffer, 2);
+	ftoa(readout.temperature2, tempBuffer, 2);
 	tempBuffer += strlen(tempBuffer);
 
 	*(tempBuffer) = ',';
 	tempBuffer++;
-	ftoa(envState.vdd, tempBuffer, 2);
+	ftoa(readout.vdd, tempBuffer, 2);
 	tempBuffer += strlen(tempBuffer);
 
 	strcpy(tempBuffer, "\n");
@@ -68,18 +69,18 @@ const char* EnvStateCsvFormat::parseTimeStamp(const char *lineBuffer, DateTime &
 	return ++nextValue;
 }
 
-const char* EnvStateCsvFormat::parseEnvState(const char *lineBuffer, EnvState &envState) {
+const char* EnvStateCsvFormat::parseEnvState(const char *lineBuffer, Readout &readout) {
 	char *nextValue = (char*) lineBuffer;
-	envState.co2 = strtof(nextValue, &nextValue);
+	readout.co2 = strtof(nextValue, &nextValue);
 	nextValue++;
-	envState.pressure = strtof(nextValue, &nextValue);
+	readout.pressure = strtof(nextValue, &nextValue);
 	nextValue++;
-	envState.humidity = strtof(nextValue, &nextValue);
+	readout.humidity = strtof(nextValue, &nextValue);
 	nextValue++;
-	envState.temperature = strtof(nextValue, &nextValue);
+	readout.temperature = strtof(nextValue, &nextValue);
 	nextValue++;
-	envState.temperature2 = strtof(nextValue, &nextValue);
+	readout.temperature2 = strtof(nextValue, &nextValue);
 	nextValue++;
-	envState.vdd = strtof(nextValue, &nextValue);
+	readout.vdd = strtof(nextValue, &nextValue);
 	return ++nextValue;
 }

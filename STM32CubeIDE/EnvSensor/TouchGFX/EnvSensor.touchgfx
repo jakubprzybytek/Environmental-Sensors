@@ -831,6 +831,30 @@
             "Moveable": false
           },
           {
+            "Type": "TextArea",
+            "TextId": "SingleUseId51",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 0,
+              "Green": 0,
+              "Blue": 0
+            },
+            "Alpha": 255,
+            "AutoSize": true,
+            "LineSpacing": 0,
+            "Name": "button1",
+            "X": 57,
+            "Y": 276,
+            "Width": 52,
+            "Height": 24,
+            "Visible": true,
+            "LockPosition": false,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
             "Type": "Line",
             "Color": {
               "Red": 0,
@@ -1510,6 +1534,26 @@
       },
       {
         "TextEntryId": "SingleUseId50",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "co2Tiny",
+        "IsResource": true
+      },
+      {
+        "TextEntryId": "pressureTiny",
+        "IsResource": true
+      },
+      {
+        "TextEntryId": "temperatureTiny",
+        "IsResource": true
+      },
+      {
+        "TextEntryId": "humidityTiny",
+        "IsResource": true
+      },
+      {
+        "TextEntryId": "SingleUseId51",
         "IsResource": false
       }
     ],

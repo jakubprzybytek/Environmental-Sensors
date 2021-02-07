@@ -9,7 +9,8 @@
 #include <Screen/MainScreen.hpp>
 #include <Screen/SettingsScreen.hpp>
 
-#include "EnvState.hpp"
+#include <RtcUtils.hpp>
+#include <EnvState.hpp>
 
 extern MainScreen mainScreen;
 
@@ -44,9 +45,9 @@ void SettingsScreen::handleScreenEnter() {
  * Button 1: +10
  */
 void SettingsScreen::handleFirstSwitchPressed() {
-	DateTime currentDateTime = envState.getCurrentDateTime();
+	DateTime currentDateTime = RtcUtils::getCurrentDateTime();
 	addToDateTime(currentDateTime, envState.settingsEditField, 10);
-	envState.updateDateTime(currentDateTime);
+	RtcUtils::updateDateTime(currentDateTime);
 	requestDisplayRefresh();
 }
 
@@ -54,9 +55,9 @@ void SettingsScreen::handleFirstSwitchPressed() {
  * Button 2: +1
  */
 void SettingsScreen::handleSecondSwitchPressed() {
-	DateTime currentDateTime = envState.getCurrentDateTime();
+	DateTime currentDateTime = RtcUtils::getCurrentDateTime();
 	addToDateTime(currentDateTime, envState.settingsEditField, 1);
-	envState.updateDateTime(currentDateTime);
+	RtcUtils::updateDateTime(currentDateTime);
 	requestDisplayRefresh();
 }
 

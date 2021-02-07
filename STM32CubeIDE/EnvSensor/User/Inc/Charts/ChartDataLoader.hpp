@@ -10,14 +10,14 @@
 
 #include <Charts/ChartData.hpp>
 
-#include <EnvState.hpp>
+#include <Readout.hpp>
 #include <Logger/DateTime.hpp>
 
 class ChartDataLoader {
 
 private:
 	static void setup(ChartData &chartData, DateTime &referenceDateTime);
-	static void feedStats(DataPoint &dataPoint, EnvState &envState);
+	static void feedStats(DataPoint &co2, DataPoint &pressure, DataPoint &temperature, DataPoint &humidity, Readout &envState);
 
 public:
 	static bool load(ChartData &chartData, DateTime &referenceDateTime);

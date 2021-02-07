@@ -15,16 +15,9 @@
 class DataPoint {
 
 public:
-	bool isEmpty;
-	float co2Min, co2Max;
-	float pressureMin, pressureMax;
-	float temperatureMin, temperatureMax;
-	float humidityMin, humidityMax;
+	float min, max;
 
-	DataPoint() :
-			isEmpty(true) {
-	}
-
+	DataPoint();
 };
 
 class ChartData {
@@ -32,10 +25,16 @@ class ChartData {
 public:
 	static const uint8_t DATA_SERIES_LENGTH = 20;
 
-	DateTime timeSeries[DATA_SERIES_LENGTH];
-	DataPoint dataSeries[DATA_SERIES_LENGTH];
+	bool valid[DATA_SERIES_LENGTH];
 
-	bool getStatistics(float *min, float *max);
+	DateTime timeSeries[DATA_SERIES_LENGTH];
+
+	DataPoint co2Series[DATA_SERIES_LENGTH];
+	DataPoint pressureSeries[DATA_SERIES_LENGTH];
+	DataPoint temperatureSeries[DATA_SERIES_LENGTH];
+	DataPoint humiditySeries[DATA_SERIES_LENGTH];
+
+	static bool getStatistics(DataPoint (&dataSeries)[ChartData::DATA_SERIES_LENGTH], bool (&valid)[ChartData::DATA_SERIES_LENGTH], float *min, float *max);
 };
 
 #endif /* INC_CHARTS_CHARTDATA_HPP_ */

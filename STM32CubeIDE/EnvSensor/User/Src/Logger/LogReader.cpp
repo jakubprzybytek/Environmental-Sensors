@@ -33,7 +33,7 @@ bool LogReader::skipTo(DateTime &to) {
 	return cachedLine != nullptr;
 }
 
-bool LogReader::readEntry(DateTime &timestamp, EnvState &envState) {
+bool LogReader::readEntry(DateTime &timestamp, Readout &readout) {
 	const char *line;
 
 	if (cachedLine != nullptr) {
@@ -48,7 +48,7 @@ bool LogReader::readEntry(DateTime &timestamp, EnvState &envState) {
 	}
 
 	const char *remainingLinePart = EnvStateCsvFormat::parseTimeStamp(line, timestamp);
-	EnvStateCsvFormat::parseEnvState(remainingLinePart, envState);
+	EnvStateCsvFormat::parseEnvState(remainingLinePart, readout);
 
 	return true;
 }

@@ -6,6 +6,8 @@
  */
 #include <string.h>
 
+#include <RtcUtils.hpp>
+
 #include <Logger/Logger.hpp>
 #include <Logger/EnvStateCsvFormat.hpp>
 #include <Logger/LogFileName.hpp>
@@ -28,8 +30,8 @@ bool Logger::sameLogFile(DateTime first, DateTime second) {
 	return first.year == second.year && first.month == second.month && first.day == second.day;
 }
 
-uint8_t Logger::log(EnvState &envState) {
-	DateTime dateTime = envState.getCurrentDateTime();
+uint8_t Logger::log(Readout &readout) {
+	DateTime dateTime = RtcUtils::getCurrentDateTime();
 
 	// check if log file needs to be rotated
 	if (!sameLogFile(lastDateTime, dateTime)) {
@@ -47,6 +49,6 @@ uint8_t Logger::log(EnvState &envState) {
 
 	lastDateTime = dateTime;
 
-	EnvStateCsvFormat::toCsv(logMessageBuffer, dateTime, envState);
+	EnvStateCsvFormat::toCsv(logMessageBuffer, dateTime, readout);
  	return logLine(logMessageBuffer);
 }

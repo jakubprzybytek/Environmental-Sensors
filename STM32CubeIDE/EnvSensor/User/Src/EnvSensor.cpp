@@ -144,7 +144,7 @@ void EnvSensor_PerformMeasurements() {
 	}
 
 	if (readSuccessfully) {
-		uint8_t result = logger.log(envState);
+		uint8_t result = logger.log(envState.readout);
 		if (result == HAL_OK) {
 			envState.sdActive = FileSystem::readAvailableSpace(&envState.sdAvailableSpaceKilobytes) == FR_OK;
 		} else {
@@ -163,7 +163,7 @@ void EnvSensor_PerformVddRead() {
 	float vddReadout;
 	uint8_t result = vddSensor.read(&vddReadout);
 	if (result == HAL_OK) {
-		envState.vdd = vddReadout;
+		envState.readout.vdd = vddReadout;
 	}
 }
 

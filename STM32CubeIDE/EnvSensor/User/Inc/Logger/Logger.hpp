@@ -10,7 +10,8 @@
 
 #include "stm32l4xx_hal.h"
 
-#include <EnvState.hpp>
+#include <Readout.hpp>
+#include <Logger/DateTime.hpp>
 
 #include <Logger/FileSystem/FileSystem.hpp>
 #include <Logger/FileSystem/FileAppender.hpp>
@@ -39,7 +40,7 @@ public:
 			lastDateTime(0, 0, 0, 0, 0, 0), fileAppender(0) {
 	}
 
-	uint8_t log(EnvState &envState);
+	uint8_t log(Readout &readout);
 };
 
 #endif /* INC_LOGGER_LOGGER_HPP_ */

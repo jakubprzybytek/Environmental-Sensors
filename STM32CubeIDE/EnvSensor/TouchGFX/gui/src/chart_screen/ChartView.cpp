@@ -1,4 +1,5 @@
 #include <touchgfx/Color.hpp>
+#include <texts/TextKeysAndLanguages.hpp>
 
 #include <gui/chart_screen/ChartView.hpp>
 
@@ -33,23 +34,42 @@ void ChartView::tearDownScreen() {
 	ChartViewBase::tearDownScreen();
 }
 
+void ChartView::setTitle(SensorName chartSensor) {
+	switch (chartSensor) {
+	case SensorName::CO2:
+		titleTextArea.setTypedText(touchgfx::TypedText(T_CO2TINY));
+		break;
+	case SensorName::Pressure:
+		titleTextArea.setTypedText(touchgfx::TypedText(T_PRESSURETINY));
+		break;
+	case SensorName::Temperature:
+		titleTextArea.setTypedText(touchgfx::TypedText(T_TEMPERATURETINY));
+		break;
+	case SensorName::Humidity:
+		titleTextArea.setTypedText(touchgfx::TypedText(T_HUMIDITYTINY));
+		break;
+	}
+	titleTextArea.invalidate();
+}
+
 void ChartView::formatTime(touchgfx::Unicode::UnicodeChar *buffer, DateTime dateTime) {
 	Unicode::snprintf(buffer, TEXTAREA_SIZE, "%02d:%02d", dateTime.hour, dateTime.minutes);
 }
 
-void ChartView::setChartData(ChartData &chartData) {
-
-	formatTime(xAxisLabel1Buffer, chartData.timeSeries[0]);
+void ChartView::setupXAxis(DateTime (&timeSeries)[ChartData::DATA_SERIES_LENGTH]) {
+	formatTime(xAxisLabel1Buffer, timeSeries[0]);
 	xAsisLabel1.invalidate();
-	formatTime(xAxisLabel2Buffer, chartData.timeSeries[ChartData::DATA_SERIES_LENGTH / 3 - 1]);
+	formatTime(xAxisLabel2Buffer, timeSeries[ChartData::DATA_SERIES_LENGTH / 3 - 1]);
 	xAsisLabel2.invalidate();
-	formatTime(xAxisLabel3Buffer, chartData.timeSeries[ChartData::DATA_SERIES_LENGTH * 2 / 3]);
+	formatTime(xAxisLabel3Buffer, timeSeries[ChartData::DATA_SERIES_LENGTH * 2 / 3]);
 	xAsisLabel3.invalidate();
-	formatTime(xAxisLabel4Buffer, chartData.timeSeries[ChartData::DATA_SERIES_LENGTH - 1]);
+	formatTime(xAxisLabel4Buffer, timeSeries[ChartData::DATA_SERIES_LENGTH - 1]);
 	xAsisLabel4.invalidate();
+}
 
+void ChartView::setupYAxis(DataPoint (&dataSeries)[ChartData::DATA_SERIES_LENGTH], bool (&valid)[ChartData::DATA_SERIES_LENGTH]) {
 	float min, max;
-	if (chartData.getStatistics(&min, &max)) {
+	if (ChartData::getStatistics(dataSeries, valid, &min, &max)) {
 		float delta = max - min;
 		Unicode::snprintfFloat(yAxisLabel1Buffer, TEXTAREA_SIZE, "%.1f", min);
 		yAsisLabel1.invalidate();
@@ -62,7 +82,9 @@ void ChartView::setChartData(ChartData &chartData) {
 		Unicode::snprintfFloat(yAxisLabel5Buffer, TEXTAREA_SIZE, "%.1f", max);
 		yAsisLabel5.invalidate();
 	}
+}
 
-	bars.setChartData(chartData);
+void ChartView::setChartData(DataPoint (&dataSeries)[ChartData::DATA_SERIES_LENGTH], bool (&valid)[ChartData::DATA_SERIES_LENGTH]) {
+	bars.setChartData(dataSeries, valid);
 	bars.invalidate();
 }

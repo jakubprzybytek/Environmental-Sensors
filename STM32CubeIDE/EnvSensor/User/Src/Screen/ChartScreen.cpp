@@ -29,9 +29,29 @@ void ChartScreen::handleScreenEnter() {
 	static_cast<FrontendApplication*>(Application::getInstance())->gotoChartScreenNoTransition();
 	requestDisplayRefresh();
 }
+/*
+ * Button 4: Cchange chart view to another sensor
+ */
+void ChartScreen::handleFirstSwitchPressed() {
+	switch (envState.chartSensor) {
+	case SensorName::CO2:
+		envState.chartSensor = SensorName::Pressure;
+		break;
+	case SensorName::Pressure:
+		envState.chartSensor = SensorName::Temperature;
+		break;
+	case SensorName::Temperature:
+		envState.chartSensor = SensorName::Humidity;
+		break;
+	case SensorName::Humidity:
+		envState.chartSensor = SensorName::CO2;
+		break;
+	}
+	requestDisplayRefresh();
+}
 
 /*
- * Button 4: Wake up!
+ * Button 4: Back
  */
 void ChartScreen::handleFourthSwitchPressed() {
 	switchTo(&mainScreen);

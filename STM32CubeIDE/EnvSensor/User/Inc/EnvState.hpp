@@ -10,9 +10,14 @@
 
 #include <stm32l4xx.h>
 
+#include <Readout.hpp>
 #include <Logger/DateTime.hpp>
 
 #define FILE_CONTENT_SIZE 400
+
+enum class SensorName {
+	CO2, Pressure, Temperature, Humidity
+};
 
 enum class SettingsEditField {
 	Year, Month, Day, Hour, Minutes
@@ -20,16 +25,12 @@ enum class SettingsEditField {
 
 class EnvState {
 public:
-	float co2;
-	float pressure;
-	float temperature;
-	float temperature2;
-	float humidity;
-
-	float vdd;
+	Readout readout;
 
 	bool sdActive;
 	uint32_t sdAvailableSpaceKilobytes;
+
+	SensorName chartSensor = SensorName::CO2;
 
 	char fileContent[FILE_CONTENT_SIZE];
 

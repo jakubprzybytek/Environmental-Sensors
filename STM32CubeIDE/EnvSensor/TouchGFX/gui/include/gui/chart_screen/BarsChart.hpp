@@ -29,7 +29,7 @@ public:
 	virtual Rect getMinimalRect() const;
 	virtual bool drawCanvasWidget(const Rect &invalidatedArea) const;
 
-	void setChartData(ChartData &chartDataParam);
+	void setChartData(DataPoint (&dataSeries)[ChartData::DATA_SERIES_LENGTH], bool (&valid)[ChartData::DATA_SERIES_LENGTH]);
 };
 
 #endif // BARS_HPP

@@ -8,7 +8,7 @@
 #ifndef INC_LOGGER_LOGREADER_HPP_
 #define INC_LOGGER_LOGREADER_HPP_
 
-#include <EnvState.hpp>
+#include <Readout.hpp>
 
 #include <Logger/BufferedReader.hpp>
 
@@ -28,7 +28,7 @@ public:
 	bool close();
 
 	bool skipTo(DateTime &to);
-	bool readEntry(DateTime &timestamp, EnvState &envState);
+	bool readEntry(DateTime &timestamp, Readout &readout);
 };
 
 #endif /* INC_LOGGER_LOGREADER_HPP_ */

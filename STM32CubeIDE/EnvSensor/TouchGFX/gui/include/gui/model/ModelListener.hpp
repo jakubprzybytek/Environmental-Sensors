@@ -29,7 +29,7 @@ public:
     virtual void notifyDateTimeChanged(DateTime dateTime) {}
     virtual void notifySettingsEditFieldChanged(SettingsEditField settingsEditField) {}
 
-    virtual void notifyChartDataChanged(ChartData &chartData) {}
+    virtual void notifyChartDataChanged(ChartData &chartData, SensorName chartSensor) {}
 
 protected:
     Model* model;

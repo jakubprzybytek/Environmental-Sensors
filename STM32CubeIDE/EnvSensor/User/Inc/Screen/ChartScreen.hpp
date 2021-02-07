@@ -15,6 +15,7 @@ class ChartScreen: public BaseScreen {
 public:
 	void handleScreenEnter();
 
+	void handleFirstSwitchPressed();
 	void handleFourthSwitchPressed();
 };
 

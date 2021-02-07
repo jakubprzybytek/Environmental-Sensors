@@ -10,6 +10,33 @@
 
 using namespace std;
 
+void ChartDataLoader::feedStats(DataPoint &co2, DataPoint &pressure, DataPoint &temperature, DataPoint &humidity, Readout &readout) {
+	if (readout.co2 < co2.min) {
+		co2.min = readout.co2;
+	}
+	if (readout.co2 > co2.max) {
+		co2.max = readout.co2;
+	}
+	if (readout.pressure < pressure.min) {
+		pressure.min = readout.pressure;
+	}
+	if (readout.pressure > pressure.max) {
+		pressure.max = readout.pressure;
+	}
+	if (readout.temperature < temperature.min) {
+		temperature.min = readout.temperature;
+	}
+	if (readout.temperature > temperature.max) {
+		temperature.max = readout.temperature;
+	}
+	if (readout.humidity < humidity.min) {
+		humidity.min = readout.humidity;
+	}
+	if (readout.humidity > humidity.max) {
+		humidity.max = readout.humidity;
+	}
+}
+
 void ChartDataLoader::setup(ChartData &chartData, DateTime &referenceDateTime) {
 	chartData.timeSeries[ChartData::DATA_SERIES_LENGTH - 1] = DateTime(referenceDateTime.year, referenceDateTime.month, referenceDateTime.day,
 			referenceDateTime.hour, referenceDateTime.minutes / 5 * 5, 0);
@@ -18,39 +45,12 @@ void ChartDataLoader::setup(ChartData &chartData, DateTime &referenceDateTime) {
 	}
 
 	for (uint8_t i = 0; i < ChartData::DATA_SERIES_LENGTH; i++) {
-		chartData.dataSeries[i].co2Min = numeric_limits<float>::max();
-		chartData.dataSeries[i].co2Max = numeric_limits<float>::lowest();
-		chartData.dataSeries[i].isEmpty = true;
+		chartData.co2Series[i] = DataPoint();
+		chartData.pressureSeries[i] = DataPoint();
+		chartData.temperatureSeries[i] = DataPoint();
+		chartData.humiditySeries[i] = DataPoint();
+		chartData.valid[i] = false;
 	}
-}
-
-void ChartDataLoader::feedStats(DataPoint &dataPoint, EnvState &envState) {
-	if (envState.co2 < dataPoint.co2Min) {
-		dataPoint.co2Min = envState.co2;
-	}
-	if (envState.co2 > dataPoint.co2Max) {
-		dataPoint.co2Max = envState.co2;
-	}
-	if (envState.pressure < dataPoint.pressureMin) {
-		dataPoint.pressureMin = envState.pressure;
-	}
-	if (envState.pressure > dataPoint.pressureMax) {
-		dataPoint.pressureMax = envState.pressure;
-	}
-	if (envState.temperature < dataPoint.temperatureMin) {
-		dataPoint.temperatureMin = envState.temperature;
-	}
-	if (envState.temperature > dataPoint.temperatureMax) {
-		dataPoint.temperatureMax = envState.temperature;
-	}
-	if (envState.humidity < dataPoint.humidityMin) {
-		dataPoint.humidityMin = envState.humidity;
-	}
-	if (envState.humidity > dataPoint.humidityMax) {
-		dataPoint.humidityMax = envState.humidity;
-	}
-
-	dataPoint.isEmpty = false;
 }
 
 bool ChartDataLoader::load(ChartData &chartData, DateTime &referenceDateTime) {
@@ -70,16 +70,17 @@ bool ChartDataLoader::load(ChartData &chartData, DateTime &referenceDateTime) {
 			if (logReader.skipTo(chartData.timeSeries[barIndex])) {
 
 				DateTime timestamp;
-				EnvState envState;
+				Readout readout;
 
-				while (barIndex < ChartData::DATA_SERIES_LENGTH && logReader.readEntry(timestamp, envState)) {
+				while (barIndex < ChartData::DATA_SERIES_LENGTH && logReader.readEntry(timestamp, readout)) {
 
 					while (barIndex < (ChartData::DATA_SERIES_LENGTH - 1) && timestamp.afterOrSame(chartData.timeSeries[barIndex + 1])) {
 						barIndex++;
 					}
 
 					if (barIndex < ChartData::DATA_SERIES_LENGTH) {
-						feedStats(chartData.dataSeries[barIndex], envState);
+						feedStats(chartData.co2Series[barIndex], chartData.pressureSeries[barIndex], chartData.temperatureSeries[barIndex], chartData.humiditySeries[barIndex], readout);
+						chartData.valid[barIndex] = true;
 					}
 				}
 			}

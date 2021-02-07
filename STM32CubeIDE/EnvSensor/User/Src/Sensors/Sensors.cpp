@@ -9,12 +9,6 @@
 
 #include "EnvState.hpp"
 
-//#include <stdio.h>
-//#include "Debug/Screen.hpp"
-
-//extern Screen screen;
-//extern char screenBuffer[20];
-
 extern EnvState envState;
 
 uint8_t Sensors::init() {
@@ -100,26 +94,18 @@ bool Sensors::readFromScd30() {
 	bool dataReady = scd30.isDataReady();
 
 	if (!dataReady) {
-		//screen.drawTextLine(0, "SCD30 no data");
 		return false;
 	}
 
 	uint8_t i2cStatus = scd30.readMeasurements(&co2, &temp, &hum);
 
 	if (i2cStatus != HAL_OK) {
-		//screen.drawTextLine(0, "SCD30 I2C error");
 		return false;
 	}
 
-	//sprintf(screenBuffer, "CO2: %.2f", (double) co2);
-	//screen.drawTextLine(0, screenBuffer);
-
-	//sprintf(screenBuffer, "T: %.2f, H: %.2f", (double) temp, (double) hum);
-	//screen.drawTextLine(1, screenBuffer);
-
-	envState.co2 = co2;
-	envState.temperature2 = temp;
-	envState.humidity = hum;
+	envState.readout.co2 = co2;
+	envState.readout.temperature2 = temp;
+	envState.readout.humidity = hum;
 
 	return true;
 }
@@ -134,14 +120,8 @@ bool Sensors::readFromBmp280() {
 		return false;
 	}
 
-	envState.pressure = pressure / 25600.0f;
-	envState.temperature = temperature / 100.0f;
-
-	//sprintf(screenBuffer, "P: %.2f", (double) envState.pressure);
-	//screen.drawTextLine(3, screenBuffer);
-
-	//sprintf(screenBuffer, "T: %.2f", (double) envState.temperature);
-	//screen.drawTextLine(4, screenBuffer);
+	envState.readout.pressure = pressure / 25600.0f;
+	envState.readout.temperature = temperature / 100.0f;
 
 	return true;
 }

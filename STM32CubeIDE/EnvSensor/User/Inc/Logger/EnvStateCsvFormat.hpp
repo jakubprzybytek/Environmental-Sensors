@@ -13,9 +13,9 @@
 class EnvStateCsvFormat {
 
 public:
-	static void toCsv(char *lineBuffer, DateTime &dateTime, EnvState &envState);
+	static void toCsv(char *lineBuffer, DateTime &dateTime, Readout &readout);
 	static const char* parseTimeStamp(const char *lineBuffer, DateTime &dateTime);
-	static const char* parseEnvState(const char *lineBuffer, EnvState &envState);
+	static const char* parseEnvState(const char *lineBuffer, Readout &readout);
 };
 
 #endif /* INC_LOGGER_ENVSTATECSVFORMAT_HPP_ */

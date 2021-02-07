@@ -16,7 +16,6 @@ void SettingsView::setDateTime(DateTime dateTime) {
 	Unicode::snprintf(dateTimeBuffer, TEXTAREA_SIZE, "20%02d.%02d.%02d %02d:%02d", dateTime.year, dateTime.month, dateTime.day, dateTime.hour,
 			dateTime.minutes);
 	dateTimeTextArea.invalidate();
-
 }
 
 void SettingsView::setSettingsEditField(SettingsEditField settingsEditField) {

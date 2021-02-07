@@ -27,7 +27,7 @@ public:
 
     virtual ~ChartPresenter() {};
 
-    void notifyChartDataChanged(ChartData &chartData);
+    void notifyChartDataChanged(ChartData &chartData, SensorName chartSensor);
 
 private:
     ChartPresenter();

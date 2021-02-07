@@ -4,9 +4,9 @@
 
 using namespace touchgfx;
 
-void BarsChart::setChartData(ChartData &chartData) {
+void BarsChart::setChartData(DataPoint (&dataSeries)[ChartData::DATA_SERIES_LENGTH], bool (&valid)[ChartData::DATA_SERIES_LENGTH]) {
 	float min, max;
-	if (chartData.getStatistics(&min, &max)) {
+	if (ChartData::getStatistics(dataSeries, valid, &min, &max)) {
 
 		// create margin on y axis
 		float delta = max - min;
@@ -15,11 +15,11 @@ void BarsChart::setChartData(ChartData &chartData) {
 		delta = max - min;
 
 		for (uint8_t i = 0; i < CHART_BARS; i++) {
-			if (!chartData.dataSeries[i].isEmpty) {
+			if (valid[i]) {
 				barVisible[i] = true;
 				barX[i] = (width - barWidth) * i / (CHART_BARS - 1);
-				barMaxY[i] = height * (max - chartData.dataSeries[i].co2Max) / delta;
-				barHeight[i] = height * (chartData.dataSeries[i].co2Max - chartData.dataSeries[i].co2Min) / delta;
+				barMaxY[i] = height * (max - dataSeries[i].max) / delta;
+				barHeight[i] = height * (dataSeries[i].max - dataSeries[i].min) / delta;
 			} else {
 				barVisible[i] = false;
 			}
