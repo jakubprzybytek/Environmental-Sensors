@@ -37,22 +37,22 @@ MainViewBase::MainViewBase()
     vddLabelTextArea.setLinespacing(0);
     vddLabelTextArea.setTypedText(touchgfx::TypedText(T_SINGLEUSEID25));
 
-    button4.setXY(284, 276);
+    button4.setPosition(276, 276, 62, 24);
     button4.setColor(touchgfx::Color::getColorFrom24BitRGB(0, 0, 0));
     button4.setLinespacing(0);
     button4.setTypedText(touchgfx::TypedText(T_SINGLEUSEID18));
 
-    button3.setXY(202, 276);
+    button3.setPosition(201, 276, 62, 24);
     button3.setColor(touchgfx::Color::getColorFrom24BitRGB(0, 0, 0));
     button3.setLinespacing(0);
     button3.setTypedText(touchgfx::TypedText(T_SINGLEUSEID17));
 
-    button2.setXY(117, 276);
+    button2.setPosition(125, 276, 62, 24);
     button2.setColor(touchgfx::Color::getColorFrom24BitRGB(0, 0, 0));
     button2.setLinespacing(0);
     button2.setTypedText(touchgfx::TypedText(T_SINGLEUSEID27));
 
-    button1.setXY(57, 276);
+    button1.setPosition(50, 276, 62, 24);
     button1.setColor(touchgfx::Color::getColorFrom24BitRGB(0, 0, 0));
     button1.setLinespacing(0);
     button1.setTypedText(touchgfx::TypedText(T_SINGLEUSEID16));

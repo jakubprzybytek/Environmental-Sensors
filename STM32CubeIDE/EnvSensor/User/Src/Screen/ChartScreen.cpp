@@ -19,18 +19,22 @@ extern MainScreen mainScreen;
 extern ChartData chartData;
 extern EnvState envState;
 
-void ChartScreen::handleScreenEnter() {
+void ChartScreen::loadChartData() {
 	//DateTime referenceDateTime = envState.getCurrentDateTime();
 	DateTime referenceDateTime = DateTime(21, 2, 3, 1, 56, 0);
 
-	ChartDataLoader::load(chartData, referenceDateTime);
+	ChartDataLoader::load(chartData, referenceDateTime, envState.barTimeSpan);
+}
 
+void ChartScreen::handleScreenEnter() {
+	loadChartData();
 	//static_cast<FrontendApplication*>(Application::getInstance())->gotoFileViewerScreenNoTransition();
 	static_cast<FrontendApplication*>(Application::getInstance())->gotoChartScreenNoTransition();
 	requestDisplayRefresh();
 }
+
 /*
- * Button 4: Cchange chart view to another sensor
+ * Button 1: Change chart view to another sensor
  */
 void ChartScreen::handleFirstSwitchPressed() {
 	switch (envState.chartSensor) {
@@ -47,6 +51,25 @@ void ChartScreen::handleFirstSwitchPressed() {
 		envState.chartSensor = SensorName::CO2;
 		break;
 	}
+	requestDisplayRefresh();
+}
+
+/*
+ * Button 2: Change bar time span
+ */
+void ChartScreen::handleSecondSwitchPressed() {
+	switch (envState.barTimeSpan) {
+	case TimeSpan::Minutes5:
+		envState.barTimeSpan = TimeSpan::Hour;
+		break;
+	case TimeSpan::Hour:
+		envState.barTimeSpan = TimeSpan::Day;
+		break;
+	case TimeSpan::Day:
+		envState.barTimeSpan = TimeSpan::Minutes5;
+		break;
+	}
+	loadChartData();
 	requestDisplayRefresh();
 }
 

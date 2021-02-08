@@ -32,6 +32,7 @@ protected:
     touchgfx::Box __background;
     touchgfx::Box background;
     touchgfx::TextArea button4;
+    touchgfx::TextArea button2;
     touchgfx::TextArea button1;
     touchgfx::Line yAxisLine;
     touchgfx::PainterGRAY2 yAxisLinePainter;

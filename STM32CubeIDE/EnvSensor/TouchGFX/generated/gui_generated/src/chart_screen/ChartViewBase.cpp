@@ -16,12 +16,17 @@ ChartViewBase::ChartViewBase()
     background.setPosition(0, 0, 400, 300);
     background.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
 
-    button4.setXY(284, 276);
+    button4.setPosition(276, 276, 62, 24);
     button4.setColor(touchgfx::Color::getColorFrom24BitRGB(0, 0, 0));
     button4.setLinespacing(0);
     button4.setTypedText(touchgfx::TypedText(T_SINGLEUSEID40));
 
-    button1.setXY(57, 276);
+    button2.setPosition(125, 276, 62, 24);
+    button2.setColor(touchgfx::Color::getColorFrom24BitRGB(0, 0, 0));
+    button2.setLinespacing(0);
+    button2.setTypedText(touchgfx::TypedText(T_SINGLEUSEID52));
+
+    button1.setPosition(50, 276, 62, 24);
     button1.setColor(touchgfx::Color::getColorFrom24BitRGB(0, 0, 0));
     button1.setLinespacing(0);
     button1.setTypedText(touchgfx::TypedText(T_SINGLEUSEID51));
@@ -95,6 +100,7 @@ ChartViewBase::ChartViewBase()
     add(__background);
     add(background);
     add(button4);
+    add(button2);
     add(button1);
     add(yAxisLine);
     add(xAxisLine);

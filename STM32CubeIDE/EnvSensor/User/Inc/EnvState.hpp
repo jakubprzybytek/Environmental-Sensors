@@ -19,6 +19,10 @@ enum class SensorName {
 	CO2, Pressure, Temperature, Humidity
 };
 
+enum class TimeSpan {
+	Minutes5, Hour, Day
+};
+
 enum class SettingsEditField {
 	Year, Month, Day, Hour, Minutes
 };
@@ -31,6 +35,7 @@ public:
 	uint32_t sdAvailableSpaceKilobytes;
 
 	SensorName chartSensor = SensorName::CO2;
+	TimeSpan barTimeSpan = TimeSpan::Minutes5;
 
 	char fileContent[FILE_CONTENT_SIZE];
 

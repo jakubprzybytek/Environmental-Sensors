@@ -50,7 +50,7 @@ void Model::tick() {
 		modelListener->notifySettingsEditFieldChanged(settingsEditField);
 	}
 
-	modelListener->notifyChartDataChanged(chartData, envState.chartSensor);
+	modelListener->notifyChartDataChanged(chartData, envState.chartSensor, envState.barTimeSpan);
 }
 
 ChartData& Model::getChartData() {

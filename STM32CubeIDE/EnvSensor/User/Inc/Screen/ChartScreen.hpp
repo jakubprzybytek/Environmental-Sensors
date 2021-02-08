@@ -12,10 +12,14 @@
 
 class ChartScreen: public BaseScreen {
 
+private:
+	void loadChartData();
+
 public:
 	void handleScreenEnter();
 
 	void handleFirstSwitchPressed();
+	void handleSecondSwitchPressed();
 	void handleFourthSwitchPressed();
 };
 

@@ -34,7 +34,7 @@ private:
 
 	BarsChart bars;
 
-	void formatTime(touchgfx::Unicode::UnicodeChar *buffer, DateTime dateTime);
+	void formatTime(touchgfx::Unicode::UnicodeChar *buffer, DateTime dateTime, TimeSpan barTimeSpan);
 
 public:
 	ChartView();
@@ -44,7 +44,7 @@ public:
 	virtual void tearDownScreen();
 
 	void setTitle(SensorName chartSensor);
-	void setupXAxis(DateTime (&timeSeries)[ChartData::DATA_SERIES_LENGTH]);
+	void setupXAxis(DateTime (&timeSeries)[ChartData::DATA_SERIES_LENGTH], TimeSpan barTimeSpan);
 	void setupYAxis(DataPoint (&dataSeries)[ChartData::DATA_SERIES_LENGTH], bool (&valid)[ChartData::DATA_SERIES_LENGTH]);
 	void setChartData(DataPoint (&dataSeries)[ChartData::DATA_SERIES_LENGTH], bool (&valid)[ChartData::DATA_SERIES_LENGTH]);
 

@@ -12,9 +12,9 @@ void ChartPresenter::activate() {
 void ChartPresenter::deactivate() {
 }
 
-void ChartPresenter::notifyChartDataChanged(ChartData &chartData, SensorName chartSensor) {
+void ChartPresenter::notifyChartDataChanged(ChartData &chartData, SensorName chartSensor, TimeSpan barTimeSpan) {
 	view.setTitle(chartSensor);
-	view.setupXAxis(chartData.timeSeries);
+	view.setupXAxis(chartData.timeSeries, barTimeSpan);
 
 	switch (chartSensor) {
 	case SensorName::CO2:

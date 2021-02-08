@@ -37,12 +37,33 @@ void ChartDataLoader::feedStats(DataPoint &co2, DataPoint &pressure, DataPoint &
 	}
 }
 
-void ChartDataLoader::setup(ChartData &chartData, DateTime &referenceDateTime) {
-	chartData.timeSeries[ChartData::DATA_SERIES_LENGTH - 1] = DateTime(referenceDateTime.year, referenceDateTime.month, referenceDateTime.day,
-			referenceDateTime.hour, referenceDateTime.minutes / 5 * 5, 0);
-	for (int8_t i = ChartData::DATA_SERIES_LENGTH - 2; i >= 0; i--) {
-		chartData.timeSeries[i] = chartData.timeSeries[i + 1].minusMinutes(5);
+void ChartDataLoader::setupTimeSeries(ChartData &chartData, DateTime &referenceDateTime, TimeSpan barTimeSpan) {
+	switch (barTimeSpan) {
+	case TimeSpan::Minutes5:
+		chartData.timeSeries[ChartData::DATA_SERIES_LENGTH - 1] = DateTime(referenceDateTime.year, referenceDateTime.month, referenceDateTime.day,
+				referenceDateTime.hour, referenceDateTime.minutes / 5 * 5, 0);
+		for (int8_t i = ChartData::DATA_SERIES_LENGTH - 2; i >= 0; i--) {
+			chartData.timeSeries[i] = chartData.timeSeries[i + 1].minusMinutes(5);
+		}
+		break;
+	case TimeSpan::Hour:
+		chartData.timeSeries[ChartData::DATA_SERIES_LENGTH - 1] = DateTime(referenceDateTime.year, referenceDateTime.month, referenceDateTime.day,
+				referenceDateTime.hour, 0, 0);
+		for (int8_t i = ChartData::DATA_SERIES_LENGTH - 2; i >= 0; i--) {
+			chartData.timeSeries[i] = chartData.timeSeries[i + 1].minusHours(1);
+		}
+		break;
+	case TimeSpan::Day:
+		chartData.timeSeries[ChartData::DATA_SERIES_LENGTH - 1] = DateTime(referenceDateTime.year, referenceDateTime.month, referenceDateTime.day, 0, 0, 0);
+		for (int8_t i = ChartData::DATA_SERIES_LENGTH - 2; i >= 0; i--) {
+			chartData.timeSeries[i] = chartData.timeSeries[i + 1].minusDays(1);
+		}
+		break;
 	}
+}
+
+bool ChartDataLoader::load(ChartData &chartData, DateTime &referenceDateTime, TimeSpan barTimeSpan) {
+	setupTimeSeries(chartData, referenceDateTime, barTimeSpan);
 
 	for (uint8_t i = 0; i < ChartData::DATA_SERIES_LENGTH; i++) {
 		chartData.co2Series[i] = DataPoint();
@@ -51,10 +72,6 @@ void ChartDataLoader::setup(ChartData &chartData, DateTime &referenceDateTime) {
 		chartData.humiditySeries[i] = DataPoint();
 		chartData.valid[i] = false;
 	}
-}
-
-bool ChartDataLoader::load(ChartData &chartData, DateTime &referenceDateTime) {
-	setup(chartData, referenceDateTime);
 
 	uint8_t barIndex = 0;
 	while (barIndex < ChartData::DATA_SERIES_LENGTH) {
@@ -79,7 +96,8 @@ bool ChartDataLoader::load(ChartData &chartData, DateTime &referenceDateTime) {
 					}
 
 					if (barIndex < ChartData::DATA_SERIES_LENGTH) {
-						feedStats(chartData.co2Series[barIndex], chartData.pressureSeries[barIndex], chartData.temperatureSeries[barIndex], chartData.humiditySeries[barIndex], readout);
+						feedStats(chartData.co2Series[barIndex], chartData.pressureSeries[barIndex], chartData.temperatureSeries[barIndex],
+								chartData.humiditySeries[barIndex], readout);
 						chartData.valid[barIndex] = true;
 					}
 				}

@@ -52,18 +52,26 @@ void ChartView::setTitle(SensorName chartSensor) {
 	titleTextArea.invalidate();
 }
 
-void ChartView::formatTime(touchgfx::Unicode::UnicodeChar *buffer, DateTime dateTime) {
-	Unicode::snprintf(buffer, TEXTAREA_SIZE, "%02d:%02d", dateTime.hour, dateTime.minutes);
+void ChartView::formatTime(touchgfx::Unicode::UnicodeChar *buffer, DateTime dateTime, TimeSpan barTimeSpan) {
+	switch (barTimeSpan) {
+	case TimeSpan::Minutes5:
+	case TimeSpan::Hour:
+		Unicode::snprintf(buffer, TEXTAREA_SIZE, "%02d:%02d", dateTime.hour, dateTime.minutes);
+		break;
+	case TimeSpan::Day:
+		Unicode::snprintf(buffer, TEXTAREA_SIZE, "%02d.%02d", dateTime.month, dateTime.day);
+		break;
+	}
 }
 
-void ChartView::setupXAxis(DateTime (&timeSeries)[ChartData::DATA_SERIES_LENGTH]) {
-	formatTime(xAxisLabel1Buffer, timeSeries[0]);
+void ChartView::setupXAxis(DateTime (&timeSeries)[ChartData::DATA_SERIES_LENGTH], TimeSpan barTimeSpan) {
+	formatTime(xAxisLabel1Buffer, timeSeries[0], barTimeSpan);
 	xAsisLabel1.invalidate();
-	formatTime(xAxisLabel2Buffer, timeSeries[ChartData::DATA_SERIES_LENGTH / 3 - 1]);
+	formatTime(xAxisLabel2Buffer, timeSeries[ChartData::DATA_SERIES_LENGTH / 3 - 1], barTimeSpan);
 	xAsisLabel2.invalidate();
-	formatTime(xAxisLabel3Buffer, timeSeries[ChartData::DATA_SERIES_LENGTH * 2 / 3]);
+	formatTime(xAxisLabel3Buffer, timeSeries[ChartData::DATA_SERIES_LENGTH * 2 / 3], barTimeSpan);
 	xAsisLabel3.invalidate();
-	formatTime(xAxisLabel4Buffer, timeSeries[ChartData::DATA_SERIES_LENGTH - 1]);
+	formatTime(xAxisLabel4Buffer, timeSeries[ChartData::DATA_SERIES_LENGTH - 1], barTimeSpan);
 	xAsisLabel4.invalidate();
 }
 

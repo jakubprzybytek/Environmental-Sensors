@@ -16,35 +16,40 @@ DateTime::DateTime(uint8_t year, uint8_t month, uint8_t day, uint8_t hour, uint8
 		year(year), month(month), day(day), hour(hour), minutes(minutes), seconds(seconds) {
 }
 
+DateTime DateTime::normalize(int8_t year, int8_t month, int8_t day, int8_t hour, int8_t minutes, int8_t seconds) {
+	if (minutes < 0) {
+		hour--;
+		minutes += 60;
+	}
+
+	if (hour < 0) {
+		day--;
+		hour += 24;
+	}
+
+	if (day < 1) {
+		month--;
+		day += month > 0 ? monthDays[month - 1] : monthDays[11];
+	}
+
+	if (month < 1) {
+		year--;
+		month += 12;
+	}
+
+	return DateTime(year, month, day, hour, minutes, seconds);
+}
+
 DateTime DateTime::minusMinutes(uint8_t delta) {
-	int8_t newSeconds = seconds;
-	int8_t newMinutes = minutes - delta;
-	int8_t newHour = hour;
-	int8_t newDay = day;
-	int8_t newMonth = month;
-	int8_t newYear = year;
+	return normalize(year, month, day, hour, minutes - delta, seconds);
+}
 
-	if (newMinutes < 0) {
-		newHour--;
-		newMinutes += 60;
-	}
+DateTime DateTime::minusHours(uint8_t delta) {
+	return normalize(year, month, day, hour - delta, minutes, seconds);
+}
 
-	if (newHour < 0) {
-		newDay--;
-		newHour += 24;
-	}
-
-	if (newDay < 1) {
-		newMonth--;
-		newDay += newMonth > 0 ? monthDays[newMonth - 1] : monthDays[11];
-	}
-
-	if (newMonth < 1) {
-		newYear--;
-		newMonth += 12;
-	}
-
-	return DateTime(newYear, newMonth, newDay, newHour, newMinutes, newSeconds);
+DateTime DateTime::minusDays(uint8_t delta) {
+	return normalize(year, month, day - delta, hour, minutes, seconds);
 }
 
 bool DateTime::afterOrSame(DateTime other) {
