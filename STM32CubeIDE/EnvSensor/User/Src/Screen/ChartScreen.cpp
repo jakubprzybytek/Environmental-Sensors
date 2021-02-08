@@ -6,13 +6,14 @@
  */
 #include <gui/common/FrontendApplication.hpp>
 
+#include <EnvState.hpp>
+#include <RtcUtils.hpp>
+
 #include <Screen/ChartScreen.hpp>
 #include <Screen/MainScreen.hpp>
 
 #include <Charts/ChartData.hpp>
 #include <Charts/ChartDataLoader.hpp>
-
-#include <EnvState.hpp>
 
 extern MainScreen mainScreen;
 
@@ -20,8 +21,8 @@ extern ChartData chartData;
 extern EnvState envState;
 
 void ChartScreen::loadChartData() {
-	//DateTime referenceDateTime = envState.getCurrentDateTime();
-	DateTime referenceDateTime = DateTime(21, 2, 3, 1, 56, 0);
+	DateTime referenceDateTime = RtcUtils::getCurrentDateTime();
+	//DateTime referenceDateTime = DateTime(21, 2, 3, 1, 56, 0);
 
 	ChartDataLoader::load(chartData, referenceDateTime, envState.barTimeSpan);
 }

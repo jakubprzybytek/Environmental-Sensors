@@ -4,6 +4,8 @@
 
 #include <Charts/ChartDataLoader.hpp>
 
+#include <EnvSensor.hpp>
+
 #include <Logger/FileSystem/FileSystem.hpp>
 #include <Logger/LogFileName.hpp>
 #include <Logger/LogReader.hpp>
@@ -63,6 +65,9 @@ void ChartDataLoader::setupTimeSeries(ChartData &chartData, DateTime &referenceD
 }
 
 bool ChartDataLoader::load(ChartData &chartData, DateTime &referenceDateTime, TimeSpan barTimeSpan) {
+
+	LED_ON;
+
 	setupTimeSeries(chartData, referenceDateTime, barTimeSpan);
 
 	for (uint8_t i = 0; i < ChartData::DATA_SERIES_LENGTH; i++) {
@@ -109,6 +114,8 @@ bool ChartDataLoader::load(ChartData &chartData, DateTime &referenceDateTime, Ti
 		// end of file means next bar
 		barIndex++;
 	}
+
+	LED_OFF;
 
 	return true;
 }

@@ -37,6 +37,7 @@ void SettingsScreen::addToDateTime(DateTime &dateTime, SettingsEditField field, 
 }
 
 void SettingsScreen::handleScreenEnter() {
+	envState.sdStatus = SdStatus::Off;
 	static_cast<FrontendApplication*>(Application::getInstance())->gotoSettingsScreenNoTransition();
 	requestDisplayRefresh();
 }

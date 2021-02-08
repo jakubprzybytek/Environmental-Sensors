@@ -10,7 +10,7 @@
 
 #include "stm32l4xx_hal.h"
 
-#include "Logger/DateTime.hpp"
+#include "DateTime.hpp"
 
 class DataPoint {
 

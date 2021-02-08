@@ -10,8 +10,9 @@
 
 #include "stm32l4xx_hal.h"
 
+#include <DateTime.hpp>
+
 #include <Sensors/Readout.hpp>
-#include <Logger/DateTime.hpp>
 
 #include <Logger/FileSystem/FileSystem.hpp>
 #include <Logger/FileSystem/FileAppender.hpp>

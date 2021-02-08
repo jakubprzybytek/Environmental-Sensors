@@ -87,18 +87,22 @@ void EnvSensor_Loop() {
 	}
 
 	if (switch1Pressed) {
+		LED_Blink(5);
 		currentScreen->handleFirstSwitchPressed();
 		switch1Pressed = false;
 	}
 	if (switch2Pressed) {
+		LED_Blink(5);
 		currentScreen->handleSecondSwitchPressed();
 		switch2Pressed = false;
 	}
 	if (switch3Pressed) {
+		LED_Blink(5);
 		currentScreen->handleThirdSwitchPressed();
 		switch3Pressed = false;
 	}
 	if (switch4Pressed) {
+		LED_Blink(5);
 		currentScreen->handleFourthSwitchPressed();
 		switch4Pressed = false;
 	}
@@ -110,7 +114,7 @@ void EnvSensor_Loop() {
 
 	if (performScd30Measurement || performBmp280Measurement) {
 		if (sensors.areActive()) {
-			LED_Blink(10);
+			//LED_Blink(10);
 			EnvSensor_PerformMeasurements();
 		}
 	}
