@@ -59,7 +59,9 @@ void EnvSensor_Init() {
 	sensors.init();
 	sensors.start();
 
-	envState.sdActive = FileSystem::readAvailableSpace(&envState.sdAvailableSpaceKilobytes) == FR_OK;
+	if (FileSystem::readAvailableSpace(&envState.sdAvailableSpaceKilobytes) != FR_OK) {
+		envState.sdStatus = SdStatus::Error;
+	}
 
 	vddSensor.init();
 	EnvSensor_PerformVddRead();
@@ -143,12 +145,12 @@ void EnvSensor_PerformMeasurements() {
 		}
 	}
 
-	if (readSuccessfully) {
-		uint8_t result = logger.log(envState.readout);
-		if (result == HAL_OK) {
-			envState.sdActive = FileSystem::readAvailableSpace(&envState.sdAvailableSpaceKilobytes) == FR_OK;
+	// log the readout if SD card is active (or in error state - to bring it back)
+	if (readSuccessfully && (envState.sdStatus == SdStatus::Active || envState.sdStatus == SdStatus::Error)) {
+		if (logger.log(envState.readout) == HAL_OK) {
+			envState.sdStatus = FileSystem::readAvailableSpace(&envState.sdAvailableSpaceKilobytes) == FR_OK ? SdStatus::Active : SdStatus::Error;
 		} else {
-			envState.sdActive = false;
+			envState.sdStatus = SdStatus::Error;
 		}
 	}
 

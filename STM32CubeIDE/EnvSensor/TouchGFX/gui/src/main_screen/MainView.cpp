@@ -40,11 +40,10 @@ void MainView::setVdd(float vdd) {
 	vddValueTextArea.invalidate();
 }
 
-void MainView::setSdState(bool sdActive, uint32_t availableSpaceKilobytes) {
+void MainView::setSdState(SdStatus sdStatus, uint32_t availableSpaceKilobytes) {
 
-	if (!sdActive) {
-		Unicode::strncpy(sdBuffer, "Err", 5);
-	} else {
+	switch (sdStatus) {
+	case SdStatus::Active:
 		if (availableSpaceKilobytes > 1024 * 1024) { // > 1 GB
 			Unicode::snprintfFloat(sdBuffer, TEXTAREA_SIZE, "%.1fGB", availableSpaceKilobytes / (1024.0f * 1024.0f));
 		} else if (availableSpaceKilobytes > 1024) { // > 1 MB
@@ -52,6 +51,13 @@ void MainView::setSdState(bool sdActive, uint32_t availableSpaceKilobytes) {
 		} else { // > 1 kB
 			Unicode::snprintfFloat(sdBuffer, TEXTAREA_SIZE, "%dkB", availableSpaceKilobytes);
 		}
+		break;
+	case SdStatus::Off:
+		Unicode::strncpy(sdBuffer, "Off", 5);
+		break;
+	case SdStatus::Error:
+		Unicode::strncpy(sdBuffer, "Err", 5);
+		break;
 	}
 
 	sdValueTextArea.invalidate();

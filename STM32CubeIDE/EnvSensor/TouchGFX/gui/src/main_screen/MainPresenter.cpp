@@ -10,7 +10,7 @@ void MainPresenter::activate() {
 	view.setTemperature(model->getTemperature());
 	view.setHumidity(model->getHumidity());
 	view.setVdd(model->getVdd());
-	view.setSdState(model->getSdActive(), model->getSdAvailableSpaceKilobytes());
+	view.setSdState(model->getSdStatus(), model->getSdAvailableSpaceKilobytes());
 }
 
 void MainPresenter::deactivate() {
@@ -36,6 +36,6 @@ void MainPresenter::notifyVddChanged(float vdd) {
 	view.setVdd(vdd);
 }
 
-void MainPresenter::notifySdChanged(bool sdActive, uint32_t availableSpaceKilobytes) {
-	view.setSdState(sdActive, availableSpaceKilobytes);
+void MainPresenter::notifySdChanged(SdStatus sdStatus, uint32_t availableSpaceKilobytes) {
+	view.setSdState(sdStatus, availableSpaceKilobytes);
 }

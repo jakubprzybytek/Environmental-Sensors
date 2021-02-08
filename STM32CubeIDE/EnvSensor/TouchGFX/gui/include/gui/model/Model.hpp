@@ -17,7 +17,7 @@ private:
 
 	float vdd;
 
-	bool sdActive;
+	SdStatus sdStatus;
 	uint32_t sdAvailableSpaceKilobytes;
 
 	char *fileContent;
@@ -54,8 +54,8 @@ public:
 		return vdd;
 	}
 
-	bool getSdActive() {
-		return sdActive;
+	SdStatus getSdStatus() {
+		return sdStatus;
 	}
 
 	uint32_t getSdAvailableSpaceKilobytes() {

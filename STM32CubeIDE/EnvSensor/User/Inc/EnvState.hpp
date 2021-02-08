@@ -15,6 +15,10 @@
 
 #define FILE_CONTENT_SIZE 400
 
+enum class SdStatus {
+	Off, Active, Error
+};
+
 enum class SensorName {
 	CO2, Pressure, Temperature, Humidity
 };
@@ -31,7 +35,7 @@ class EnvState {
 public:
 	Readout readout;
 
-	bool sdActive;
+	SdStatus sdStatus = SdStatus::Off;
 	uint32_t sdAvailableSpaceKilobytes;
 
 	SensorName chartSensor = SensorName::CO2;

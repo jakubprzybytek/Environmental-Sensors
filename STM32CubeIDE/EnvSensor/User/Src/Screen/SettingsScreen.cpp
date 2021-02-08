@@ -89,5 +89,6 @@ void SettingsScreen::handleThirdSwitchPressed() {
  * Button 4: Back to main screen
  */
 void SettingsScreen::handleFourthSwitchPressed() {
+	envState.sdStatus = SdStatus::Active;
 	switchTo(&mainScreen);
 }

@@ -23,7 +23,7 @@ public:
     void setHumidity(float humidity);
 
     void setVdd(float vdd);
-    void setSdState(bool sdActive, uint32_t availableSpaceKilobytes);
+    void setSdState(SdStatus sdStatus, uint32_t availableSpaceKilobytes);
 
 protected:
 };

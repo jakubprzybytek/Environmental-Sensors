@@ -22,7 +22,7 @@ public:
 
     virtual void notifyVddChanged(float vdd) {}
 
-    virtual void notifySdChanged(bool sdActive, uint32_t availableSpaceKilobytes) {}
+    virtual void notifySdChanged(SdStatus sdStatus, uint32_t availableSpaceKilobytes) {}
 
     virtual void notifyFileContentChanged(char *fileContent) {}
 

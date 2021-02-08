@@ -33,10 +33,10 @@ void Model::tick() {
 		modelListener->notifyVddChanged(vdd);
 	}
 
-	if (sdActive != envState.sdActive || sdAvailableSpaceKilobytes != envState.sdAvailableSpaceKilobytes) {
-		sdActive = envState.sdActive;
+	if (sdStatus != envState.sdStatus || sdAvailableSpaceKilobytes != envState.sdAvailableSpaceKilobytes) {
+		sdStatus = envState.sdStatus;
 		sdAvailableSpaceKilobytes = envState.sdAvailableSpaceKilobytes;
-		modelListener->notifySdChanged(sdActive, sdAvailableSpaceKilobytes);
+		modelListener->notifySdChanged(sdStatus, sdAvailableSpaceKilobytes);
 	}
 
 	fileContent = envState.fileContent;
