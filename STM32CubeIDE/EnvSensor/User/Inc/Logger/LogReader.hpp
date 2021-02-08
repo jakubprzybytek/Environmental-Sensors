@@ -8,7 +8,7 @@
 #ifndef INC_LOGGER_LOGREADER_HPP_
 #define INC_LOGGER_LOGREADER_HPP_
 
-#include <Readout.hpp>
+#include <Sensors/Readout.hpp>
 
 #include <Logger/BufferedReader.hpp>
 
