@@ -60,7 +60,7 @@ void Error_Handler(void);
 /* Private defines -----------------------------------------------------------*/
 #define READOUT_RETRY_INTERVAL 0.5
 #define DISPLAY_REFRESH_INTERVAL 5 * 60
-#define MEASUREMENT_INTERVAL 10
+#define MEASUREMENT_INTERVAL 60
 #define E_INK_Select_Pin GPIO_PIN_3
 #define E_INK_Select_GPIO_Port GPIOA
 #define E_INK_DC_Pin GPIO_PIN_4

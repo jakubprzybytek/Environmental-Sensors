@@ -34,6 +34,8 @@ void RtcUtils::updateDateTime(DateTime dateTime) {
 	rtcTime.Hours = dateTime.hour;
 	rtcTime.Minutes = dateTime.minutes;
 	rtcTime.Seconds = dateTime.seconds;
+	rtcTime.DayLightSaving = RTC_DAYLIGHTSAVING_NONE;
+	rtcTime.StoreOperation = RTC_STOREOPERATION_RESET;
 
 	HAL_RTC_SetTime(&hrtc, &rtcTime, RTC_FORMAT_BIN);
 	HAL_RTC_SetDate(&hrtc, &rtcDate, RTC_FORMAT_BIN);
