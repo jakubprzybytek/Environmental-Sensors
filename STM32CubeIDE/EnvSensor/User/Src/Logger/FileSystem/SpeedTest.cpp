@@ -63,14 +63,15 @@ FRESULT SpeedTest::testRead(const char *testFileName, char *buffer, uint16_t buf
 }
 
 FRESULT SpeedTest::test() {
-	uint16_t bufferSize = 4096;
+	uint16_t bufferSize = 1024;
 	char buffer[bufferSize];
 
 	char fileName[] = "test1";
+	FRESULT fresult = FR_OK;
 
 	uint32_t beforeWrite = HAL_GetTick();
 
-	FRESULT fresult = testWrite(fileName, buffer, bufferSize);
+	fresult = testWrite(fileName, buffer, bufferSize);
 
 	uint32_t afterWrite = HAL_GetTick();
 

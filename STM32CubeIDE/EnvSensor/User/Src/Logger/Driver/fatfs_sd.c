@@ -135,6 +135,8 @@ static uint8_t SD_CheckPower(void)
 	return PowerFlag;
 }
 
+//#define READ_BLOCKS
+
 /* receive data block */
 static bool SD_RxDataBlock(BYTE *buff, UINT len)
 {
@@ -152,13 +154,19 @@ static bool SD_RxDataBlock(BYTE *buff, UINT len)
 	if(token != 0xFE) return FALSE;
 
 	/* receive data */
+#ifndef READ_BLOCKS
 	do {
 		SPI_RxBytePtr(buff++);
 	} while(len--);
+#endif
 
+#ifdef READ_BLOCKS
 //	uint8_t dummy = 0xFF;
-//	while(!__HAL_SPI_GET_FLAG(HSPI_SDCARD, SPI_FLAG_TXE));
+	while(!__HAL_SPI_GET_FLAG(HSPI_SDCARD, SPI_FLAG_TXE));
 //	HAL_SPI_TransmitReceive(HSPI_SDCARD, &dummy, buff, len, SPI_TIMEOUT);
+	HAL_SPI_TransmitReceive(HSPI_SDCARD, buff, buff, len, SPI_TIMEOUT);
+//	HAL_SPI_Receive(HSPI_SDCARD, buff, len, SPI_TIMEOUT);
+#endif
 
 	/* discard CRC */
 	SPI_RxByte();

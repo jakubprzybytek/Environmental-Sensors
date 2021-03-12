@@ -6,8 +6,8 @@
 #include <texts/TypedTextDatabase.hpp>
 
 extern touchgfx::GeneratedFont& getFont_segoeui_24_2bpp();
-extern touchgfx::GeneratedFont& getFont_segoeuisl_52_2bpp();
-extern touchgfx::GeneratedFont& getFont_segoeuisl_80_2bpp();
+extern touchgfx::GeneratedFont& getFont_segoeuisl_66_2bpp();
+extern touchgfx::GeneratedFont& getFont_segoeuisl_90_2bpp();
 extern touchgfx::GeneratedFont& getFont_segoeui_18_2bpp();
 extern touchgfx::GeneratedFont& getFont_consola_16_2bpp();
 extern touchgfx::GeneratedFont& getFont_consola_36_2bpp();
@@ -15,8 +15,8 @@ extern touchgfx::GeneratedFont& getFont_consola_36_2bpp();
 const touchgfx::Font* touchgfx_fonts[] =
 {
     &(getFont_segoeui_24_2bpp()),
-    &(getFont_segoeuisl_52_2bpp()),
-    &(getFont_segoeuisl_80_2bpp()),
+    &(getFont_segoeuisl_66_2bpp()),
+    &(getFont_segoeuisl_90_2bpp()),
     &(getFont_segoeui_18_2bpp()),
     &(getFont_consola_16_2bpp()),
     &(getFont_consola_36_2bpp())
@@ -31,20 +31,20 @@ const touchgfx::TypedText::TypedTextData typedText_database_DEFAULT[] TEXT_LOCAT
     { 3, touchgfx::CENTER, touchgfx::TEXT_DIRECTION_LTR },
     { 3, touchgfx::CENTER, touchgfx::TEXT_DIRECTION_LTR },
     { 3, touchgfx::CENTER, touchgfx::TEXT_DIRECTION_LTR },
-    { 0, touchgfx::RIGHT, touchgfx::TEXT_DIRECTION_LTR },
+    { 3, touchgfx::RIGHT, touchgfx::TEXT_DIRECTION_LTR },
     { 2, touchgfx::RIGHT, touchgfx::TEXT_DIRECTION_LTR },
-    { 0, touchgfx::LEFT, touchgfx::TEXT_DIRECTION_LTR },
-    { 0, touchgfx::RIGHT, touchgfx::TEXT_DIRECTION_LTR },
-    { 0, touchgfx::LEFT, touchgfx::TEXT_DIRECTION_LTR },
-    { 0, touchgfx::RIGHT, touchgfx::TEXT_DIRECTION_LTR },
-    { 0, touchgfx::LEFT, touchgfx::TEXT_DIRECTION_LTR },
-    { 0, touchgfx::RIGHT, touchgfx::TEXT_DIRECTION_LTR },
+    { 3, touchgfx::LEFT, touchgfx::TEXT_DIRECTION_LTR },
+    { 3, touchgfx::RIGHT, touchgfx::TEXT_DIRECTION_LTR },
+    { 3, touchgfx::LEFT, touchgfx::TEXT_DIRECTION_LTR },
+    { 3, touchgfx::RIGHT, touchgfx::TEXT_DIRECTION_LTR },
+    { 3, touchgfx::LEFT, touchgfx::TEXT_DIRECTION_LTR },
+    { 3, touchgfx::RIGHT, touchgfx::TEXT_DIRECTION_LTR },
     { 1, touchgfx::RIGHT, touchgfx::TEXT_DIRECTION_LTR },
-    { 0, touchgfx::LEFT, touchgfx::TEXT_DIRECTION_LTR },
-    { 0, touchgfx::RIGHT, touchgfx::TEXT_DIRECTION_LTR },
-    { 0, touchgfx::LEFT, touchgfx::TEXT_DIRECTION_LTR },
-    { 0, touchgfx::RIGHT, touchgfx::TEXT_DIRECTION_LTR },
-    { 0, touchgfx::LEFT, touchgfx::TEXT_DIRECTION_LTR },
+    { 3, touchgfx::LEFT, touchgfx::TEXT_DIRECTION_LTR },
+    { 3, touchgfx::RIGHT, touchgfx::TEXT_DIRECTION_LTR },
+    { 3, touchgfx::LEFT, touchgfx::TEXT_DIRECTION_LTR },
+    { 3, touchgfx::RIGHT, touchgfx::TEXT_DIRECTION_LTR },
+    { 3, touchgfx::LEFT, touchgfx::TEXT_DIRECTION_LTR },
     { 3, touchgfx::RIGHT, touchgfx::TEXT_DIRECTION_LTR },
     { 3, touchgfx::RIGHT, touchgfx::TEXT_DIRECTION_LTR },
     { 3, touchgfx::CENTER, touchgfx::TEXT_DIRECTION_LTR },
@@ -76,7 +76,10 @@ const touchgfx::TypedText::TypedTextData typedText_database_DEFAULT[] TEXT_LOCAT
     { 3, touchgfx::CENTER, touchgfx::TEXT_DIRECTION_LTR },
     { 3, touchgfx::CENTER, touchgfx::TEXT_DIRECTION_LTR },
     { 3, touchgfx::CENTER, touchgfx::TEXT_DIRECTION_LTR },
-    { 3, touchgfx::CENTER, touchgfx::TEXT_DIRECTION_LTR }
+    { 3, touchgfx::CENTER, touchgfx::TEXT_DIRECTION_LTR },
+    { 3, touchgfx::RIGHT, touchgfx::TEXT_DIRECTION_LTR },
+    { 3, touchgfx::LEFT, touchgfx::TEXT_DIRECTION_LTR },
+    { 2, touchgfx::RIGHT, touchgfx::TEXT_DIRECTION_LTR }
 };
 
 TEXT_LOCATION_FLASH_PRAGMA
@@ -117,10 +120,10 @@ void resetFont(touchgfx::FontId fontId)
         touchgfx_fonts[0] = &(getFont_segoeui_24_2bpp());
         break;
     case 1:
-        touchgfx_fonts[1] = &(getFont_segoeuisl_52_2bpp());
+        touchgfx_fonts[1] = &(getFont_segoeuisl_66_2bpp());
         break;
     case 2:
-        touchgfx_fonts[2] = &(getFont_segoeuisl_80_2bpp());
+        touchgfx_fonts[2] = &(getFont_segoeuisl_90_2bpp());
         break;
     case 3:
         touchgfx_fonts[3] = &(getFont_segoeui_18_2bpp());

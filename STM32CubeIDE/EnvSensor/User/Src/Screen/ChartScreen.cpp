@@ -22,7 +22,7 @@ extern EnvState envState;
 
 void ChartScreen::loadChartData() {
 	DateTime referenceDateTime = RtcUtils::getCurrentDateTime();
-	//DateTime referenceDateTime = DateTime(21, 2, 3, 1, 56, 0);
+	//DateTime referenceDateTime = DateTime(21, 3, 8, 0, 2, 0);
 
 	ChartDataLoader::load(chartData, referenceDateTime, envState.barTimeSpan);
 }

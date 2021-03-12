@@ -300,6 +300,12 @@
     <ClCompile Include="..\..\gui\src\chart_screen\BarsChart.cpp">
       <Filter>Source Files\gui\chart_screen</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\gui\src\containers\BigShortContainer.cpp">
+      <Filter>Source Files\gui\containers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\generated\gui_generated\src\containers\BigShortContainerBase.cpp">
+      <Filter>Source Files\generated\gui_generated\containers</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="$(ApplicationRoot)\assets\texts\texts.xlsx">
@@ -783,6 +789,12 @@
     </ClInclude>
     <ClInclude Include="..\..\gui\include\gui\chart_screen\BarsChart.hpp">
       <Filter>Header Files\gui\chart_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\containers\BigShortContainer.hpp">
+      <Filter>Header Files\gui\containers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\BigShortContainerBase.hpp">
+      <Filter>Header Files\generated\gui_generated\containers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

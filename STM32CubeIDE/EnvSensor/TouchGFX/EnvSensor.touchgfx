@@ -11,27 +11,7 @@
               "Blue": 255
             },
             "Alpha": 255,
-            "Name": "box2",
-            "X": 0,
-            "Y": 300,
-            "Width": 400,
-            "Height": 300,
-            "Visible": true,
-            "LockPosition": false,
-            "Draggable": false,
-            "Clickable": false,
-            "Fadeable": false,
-            "Moveable": false
-          },
-          {
-            "Type": "Box",
-            "Color": {
-              "Red": 255,
-              "Green": 255,
-              "Blue": 255
-            },
-            "Alpha": 255,
-            "Name": "box1",
+            "Name": "background",
             "X": 0,
             "Y": 0,
             "Width": 400,
@@ -246,10 +226,10 @@
           {
             "CustomContainerDefinitionName": "ReadoutContainer",
             "Type": "CustomContainerInstance",
-            "Name": "temperatureReadoutContainer",
-            "X": 160,
+            "Name": "preassureBigReadoutContainer",
+            "X": 66,
             "Y": 200,
-            "Width": 160,
+            "Width": 240,
             "Height": 80,
             "Visible": true,
             "LockPosition": false,
@@ -259,27 +239,27 @@
             "Moveable": false
           },
           {
-            "CustomContainerDefinitionName": "ReadoutContainer",
+            "CustomContainerDefinitionName": "BigShortContainer",
+            "Type": "CustomContainerInstance",
+            "Name": "temperatureReadoutContainer",
+            "X": 200,
+            "Y": 100,
+            "Width": 200,
+            "Height": 100,
+            "Visible": true,
+            "LockPosition": false,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "CustomContainerDefinitionName": "BigShortContainer",
             "Type": "CustomContainerInstance",
             "Name": "humidityReadoutContainer",
             "X": 0,
-            "Y": 200,
-            "Width": 160,
-            "Height": 80,
-            "Visible": true,
-            "LockPosition": false,
-            "Draggable": false,
-            "Clickable": false,
-            "Fadeable": false,
-            "Moveable": false
-          },
-          {
-            "CustomContainerDefinitionName": "BigReadoutContainer",
-            "Type": "CustomContainerInstance",
-            "Name": "preassureBigReadoutContainer",
-            "X": 0,
             "Y": 100,
-            "Width": 400,
+            "Width": 200,
             "Height": 100,
             "Visible": true,
             "LockPosition": false,
@@ -1234,9 +1214,9 @@
             },
             "Name": "valueTextArea",
             "X": 0,
-            "Y": 10,
-            "Width": 320,
-            "Height": 90,
+            "Y": 0,
+            "Width": 370,
+            "Height": 98,
             "Visible": true,
             "LockPosition": false,
             "Draggable": false,
@@ -1247,7 +1227,7 @@
           {
             "Type": "TextArea",
             "TextId": "SingleUseId21",
-            "TextRotation": "0",
+            "TextRotation": "90",
             "Color": {
               "Red": 0,
               "Green": 0,
@@ -1257,10 +1237,10 @@
             "AutoSize": false,
             "LineSpacing": 0,
             "Name": "unitTextArea",
-            "X": 326,
-            "Y": 36,
-            "Width": 50,
-            "Height": 27,
+            "X": 370,
+            "Y": 32,
+            "Width": 22,
+            "Height": 38,
             "Visible": true,
             "LockPosition": false,
             "Draggable": false,
@@ -1281,9 +1261,9 @@
             "AutoSize": false,
             "LineSpacing": 0,
             "Name": "labelTextArea",
-            "X": 100,
+            "X": 130,
             "Y": 0,
-            "Width": 220,
+            "Width": 230,
             "Height": 27,
             "Visible": true,
             "LockPosition": false,
@@ -1298,6 +1278,92 @@
         "X": 0,
         "Y": 0,
         "Width": 400,
+        "Height": 100
+      },
+      {
+        "Components": [
+          {
+            "Type": "TextArea",
+            "TextId": "SingleUseId55",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 0,
+              "Green": 0,
+              "Blue": 0
+            },
+            "Alpha": 255,
+            "AutoSize": false,
+            "LineSpacing": 0,
+            "Wildcard1": {
+              "UseBuffer": false,
+              "BufferSize": 0
+            },
+            "Name": "valueTextArea",
+            "X": 0,
+            "Y": 0,
+            "Width": 170,
+            "Height": 98,
+            "Visible": true,
+            "LockPosition": false,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "TextArea",
+            "TextId": "SingleUseId54",
+            "TextRotation": "90",
+            "Color": {
+              "Red": 0,
+              "Green": 0,
+              "Blue": 0
+            },
+            "Alpha": 255,
+            "AutoSize": false,
+            "LineSpacing": 0,
+            "Name": "unitTextArea",
+            "X": 170,
+            "Y": 32,
+            "Width": 22,
+            "Height": 38,
+            "Visible": true,
+            "LockPosition": false,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "TextArea",
+            "TextId": "SingleUseId53",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 0,
+              "Green": 0,
+              "Blue": 0
+            },
+            "Alpha": 255,
+            "AutoSize": false,
+            "LineSpacing": 0,
+            "Name": "labelTextArea",
+            "X": 10,
+            "Y": 0,
+            "Width": 160,
+            "Height": 27,
+            "Visible": true,
+            "LockPosition": false,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          }
+        ],
+        "Interactions": [],
+        "Name": "BigShortContainer",
+        "X": 0,
+        "Y": 0,
+        "Width": 200,
         "Height": 100
       },
       {
@@ -1320,9 +1386,9 @@
             },
             "Name": "valueTextArea",
             "X": 0,
-            "Y": 20,
-            "Width": 108,
-            "Height": 60,
+            "Y": 8,
+            "Width": 210,
+            "Height": 70,
             "Visible": true,
             "LockPosition": false,
             "Draggable": false,
@@ -1333,7 +1399,7 @@
           {
             "Type": "TextArea",
             "TextId": "SingleUseId24",
-            "TextRotation": "0",
+            "TextRotation": "90",
             "Color": {
               "Red": 0,
               "Green": 0,
@@ -1343,10 +1409,10 @@
             "AutoSize": false,
             "LineSpacing": 0,
             "Name": "unitTextArea",
-            "X": 110,
+            "X": 210,
             "Y": 34,
-            "Width": 50,
-            "Height": 27,
+            "Width": 22,
+            "Height": 38,
             "Visible": true,
             "LockPosition": false,
             "Draggable": false,
@@ -1367,7 +1433,7 @@
             "AutoSize": false,
             "LineSpacing": 0,
             "Name": "labelTextArea",
-            "X": 0,
+            "X": 92,
             "Y": 0,
             "Width": 114,
             "Height": 27,
@@ -1383,7 +1449,7 @@
         "Name": "ReadoutContainer",
         "X": 0,
         "Y": 0,
-        "Width": 160,
+        "Width": 240,
         "Height": 80
       }
     ],
@@ -1582,6 +1648,18 @@
       },
       {
         "TextEntryId": "SingleUseId52",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId53",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId54",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId55",
         "IsResource": false
       }
     ],

@@ -96,7 +96,8 @@ bool ChartDataLoader::load(ChartData &chartData, DateTime &referenceDateTime, Ti
 
 				while (barIndex < ChartData::DATA_SERIES_LENGTH && logReader.readEntry(timestamp, readout)) {
 
-					while (barIndex < (ChartData::DATA_SERIES_LENGTH - 1) && timestamp.afterOrSame(chartData.timeSeries[barIndex + 1])) {
+					while ((barIndex < (ChartData::DATA_SERIES_LENGTH - 1) && timestamp.afterOrSame(chartData.timeSeries[barIndex + 1])) ||
+							(barIndex == (ChartData::DATA_SERIES_LENGTH - 1) && timestamp.afterOrSame(referenceDateTime))) {
 						barIndex++;
 					}
 

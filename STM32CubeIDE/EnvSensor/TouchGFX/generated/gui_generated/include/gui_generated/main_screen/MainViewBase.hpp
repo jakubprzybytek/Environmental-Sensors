@@ -11,6 +11,7 @@
 #include <touchgfx/widgets/TextAreaWithWildcard.hpp>
 #include <touchgfx/widgets/TextArea.hpp>
 #include <gui/containers/ReadoutContainer.hpp>
+#include <gui/containers/BigShortContainer.hpp>
 #include <gui/containers/BigReadoutContainer.hpp>
 
 class MainViewBase : public touchgfx::View<MainPresenter>
@@ -29,8 +30,7 @@ protected:
      * Member Declarations
      */
     touchgfx::Box __background;
-    touchgfx::Box box2;
-    touchgfx::Box box1;
+    touchgfx::Box background;
     touchgfx::TextAreaWithOneWildcard sdValueTextArea;
     touchgfx::TextArea sdLabelTextArea;
     touchgfx::TextAreaWithOneWildcard vddValueTextArea;
@@ -39,9 +39,9 @@ protected:
     touchgfx::TextArea button3;
     touchgfx::TextArea button2;
     touchgfx::TextArea button1;
-    ReadoutContainer temperatureReadoutContainer;
-    ReadoutContainer humidityReadoutContainer;
-    BigReadoutContainer preassureBigReadoutContainer;
+    ReadoutContainer preassureBigReadoutContainer;
+    BigShortContainer temperatureReadoutContainer;
+    BigShortContainer humidityReadoutContainer;
     BigReadoutContainer co2BigReadoutContainer;
 
 private:
