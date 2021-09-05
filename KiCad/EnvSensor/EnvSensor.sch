@@ -13,8 +13,8 @@ Comment2 ""
 Comment3 ""
 Comment4 ""
 $EndDescr
-Text Notes -2550 2000 0    50   ~ 0
-STM32L431CCTx | MTU | |  1.71-3.6 V\nUSB connectivity?\n\nMCP73843   | USB Battery charger\nAP9101      | Battery protection\nTPS782        | 500-nA IQ,150-mA, Ultra-Low Quiescent Current\nLow-Dropout Linear Regulator\n\nSCD30       | C02 sensor  | I2C 0xC2 | 3.3-5.5VV / 1-65mA, 20mA avg\nHIH8121     | Humidity     | I2c 0x27 | 2.3-5.5V / 1mA\nBME280      | Pressure    | I2C 0x76/0x77 | 1.7-3.6V\nSSD1306     | Display | I2C 0x3C << 1 | 3.3V\n             | Ink Paper    | SDI | 3.3V\n             | Data storage | SDI        | \nQuectel L86  | GPS         | UART | 3.0-4.3V 25mA IO 2.7-2.9V\nESP-12S     | WiFi         | UART | 3.3V\nWS2812D     | RGB Led\nBuzzer\n
+Text Notes -2900 1950 0    50   ~ 0
+STM32L431CCTx | MTU | |  1.71-3.6 V\nUSB connectivity?\n\nMCP73843   | USB Battery charger\nAP9101      | Battery protection\nTPS782        | 500-nA IQ,150-mA, Ultra-Low Quiescent Current\nLow-Dropout Linear Regulator\n\nSCD30       | C02 sensor  | I2C 0xC2 | 3.3-5.5V / 1-65mA, 20mA avg \n                                        (measured <5mA at idle, 60mA at readout)\nHIH8121     | Humidity     | I2c 0x27 | 2.3-5.5V / 1mA\nBME280      | Pressure    | I2C 0x76/0x77 | 1.7-3.6V\nSSD1306     | Display | I2C 0x3C << 1 | 3.3V  measured 12.5 mA\n             | Ink Paper    | SDI | 3.3V measured 2.5 mA\nmicroCard  | Data storage | SDI        | \nQuectel L86  | GPS         | UART | 3.0-4.3V 25mA IO 2.7-2.9V\nESP-12S     | WiFi         | UART | 3.3V\nWS2812D     | RGB Led\nBuzzer\n
 $Comp
 L myLib:SCD30 U5
 U 1 1 5F726402
