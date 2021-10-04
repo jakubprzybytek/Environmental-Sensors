@@ -1557,9 +1557,9 @@ Text GLabel 5600 10050 2    50   Input ~ 0
 E_INK_SELECT
 Text GLabel 5600 10150 2    50   Input ~ 0
 E_INK_CD
-Text GLabel 5600 10250 2    50   Input ~ 0
-E_INK_RESET
 Text GLabel 5600 10350 2    50   Input ~ 0
+E_INK_RESET
+Text GLabel 5600 10250 2    50   Input ~ 0
 E_INK_BUSY
 Wire Wire Line
 	9950 10850 10150 10850
