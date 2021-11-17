@@ -16,17 +16,6 @@ $EndDescr
 Text Notes -4050 300  0    50   ~ 0
 1. Each part should allow to measure its power consumption\n2.\n\nEnhancements from v1.\n1. Reset button\n2. Button to start battery protection after power loss\n3. Solution to measure voltage at battery
 $Comp
-L MCU_ST_STM32L4:STM32L451RETx U1
-U 1 1 613A4072
-P 4000 4500
-F 0 "U1" H 4350 2750 50  0000 C CNN
-F 1 "STM32L451RCT6" H 4450 2650 50  0000 C CNN
-F 2 "Package_QFP:LQFP-64_10x10mm_P0.5mm" H 3400 2800 50  0001 R CNN
-F 3 "http://www.st.com/st-web-ui/static/active/en/resource/technical/document/datasheet/DM00340475.pdf" H 4000 4500 50  0001 C CNN
-	1    4000 4500
-	1    0    0    -1  
-$EndComp
-$Comp
 L Transistor_FET:IRLML2060 Q1
 U 1 1 61413219
 P 10400 2300
@@ -419,8 +408,6 @@ Wire Wire Line
 	8200 12000 8300 12000
 Text Notes 7850 11300 0    118  ~ 0
 E-Ink Display
-Text Notes 16850 2250 0    44   ~ 0
-Replace with DMG6968UDM-7
 $Comp
 L Device:R R29
 U 1 1 61473C10
@@ -438,7 +425,7 @@ U 1 1 614741BF
 P 14700 5250
 F 0 "R28" V 14493 5250 50  0000 C CNN
 F 1 "100k" V 14584 5250 50  0000 C CNN
-F 2 "Resistor_SMD:R_0805_2012Metric" V 14630 5250 50  0001 C CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" V 14630 5250 50  0001 C CNN
 F 3 "~" H 14700 5250 50  0001 C CNN
 	1    14700 5250
 	0    1    1    0   
@@ -554,7 +541,7 @@ Wire Wire Line
 	16250 4050 17000 4050
 Connection ~ 16250 4050
 Text Notes 15850 3800 0    44   ~ 0
-Pmax=(5.0V-2.5V)*0.5A=1.25W\n
+Pmax=(5.0V-2.5V)*0.5A=1.25W\nRja=50C/W
 Wire Wire Line
 	14150 4200 14150 4050
 Wire Wire Line
@@ -1760,7 +1747,7 @@ U 1 1 61A33DA8
 P 12600 14250
 F 0 "J5" H 12550 15067 50  0000 C CNN
 F 1 "Micro_SD_Card_Det" H 12550 14976 50  0000 C CNN
-F 2 "Connector_Card:microSD_HC_Hirose_DM3BT-DSF-PEJS" H 14650 14950 50  0001 C CNN
+F 2 "Connector_Card:microSD_HC_Hirose_DM3AT-SF-PEJM5" H 14650 14950 50  0001 C CNN
 F 3 "https://www.hirose.com/product/en/download_file/key_name/DM3/category/Catalog/doc_file_id/49662/?file_category_id=4&item_id=195&is_series=1" H 12600 14350 50  0001 C CNN
 	1    12600 14250
 	1    0    0    -1  
@@ -2045,9 +2032,9 @@ Text GLabel 3100 4400 0    44   Input ~ 0
 SDIO_CMD
 Text GLabel 3100 5800 0    44   Input ~ 0
 SDIO_CLK
-Text GLabel 3100 5200 0    44   Input ~ 0
+Text GLabel 4900 5500 2    44   Input ~ 0
 SDIO_POWER_ENABLE
-Text GLabel 3100 5300 0    44   Input ~ 0
+Text GLabel 4900 5400 2    44   Input ~ 0
 SDIO_DETECT
 $Comp
 L Device:Crystal_GND24_Small Y1
@@ -4006,7 +3993,7 @@ U 1 1 62DF1849
 P 19150 1650
 F 0 "D14" H 19150 1434 50  0000 C CNN
 F 1 "PMEG2010AEJ" H 19200 1550 50  0000 C CNN
-F 2 "Diode_SMD:D_SOD-323" H 19150 1650 50  0001 C CNN
+F 2 "Diode_SMD:D_SOD-323_HandSoldering" H 19150 1650 50  0001 C CNN
 F 3 "~" H 19150 1650 50  0001 C CNN
 	1    19150 1650
 	-1   0    0    1   
@@ -4083,12 +4070,12 @@ $EndComp
 $Comp
 L power:GND #PWR0156
 U 1 1 62B2F64D
-P 19350 2650
-F 0 "#PWR0156" H 19350 2400 50  0001 C CNN
-F 1 "GND" H 19355 2477 50  0000 C CNN
-F 2 "" H 19350 2650 50  0001 C CNN
-F 3 "" H 19350 2650 50  0001 C CNN
-	1    19350 2650
+P 19350 2950
+F 0 "#PWR0156" H 19350 2700 50  0001 C CNN
+F 1 "GND" H 19355 2777 50  0000 C CNN
+F 2 "" H 19350 2950 50  0001 C CNN
+F 3 "" H 19350 2950 50  0001 C CNN
+	1    19350 2950
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
@@ -4170,7 +4157,7 @@ L Device:R R37
 U 1 1 6289AB6D
 P 21150 2400
 F 0 "R37" H 20900 2450 50  0000 L CNN
-F 1 "73k2" H 20850 2350 50  0000 L CNN
+F 1 "47k" H 20850 2350 50  0000 L CNN
 F 2 "Resistor_SMD:R_0805_2012Metric" V 21080 2400 50  0001 C CNN
 F 3 "~" H 21150 2400 50  0001 C CNN
 	1    21150 2400
@@ -4181,7 +4168,7 @@ L Device:R R32
 U 1 1 62867F9E
 P 19350 2500
 F 0 "R32" H 19420 2546 50  0000 L CNN
-F 1 "60k4" H 19420 2455 50  0000 L CNN
+F 1 "30k" H 19420 2455 50  0000 L CNN
 F 2 "Resistor_SMD:R_0805_2012Metric" V 19280 2500 50  0001 C CNN
 F 3 "~" H 19350 2500 50  0001 C CNN
 	1    19350 2500
@@ -4326,10 +4313,6 @@ Wire Wire Line
 Wire Wire Line
 	4600 3900 4900 3900
 Wire Wire Line
-	3100 5200 3300 5200
-Wire Wire Line
-	3100 5300 3300 5300
-Wire Wire Line
 	4900 5800 4600 5800
 Wire Wire Line
 	4600 5900 4900 5900
@@ -4463,4 +4446,54 @@ Wire Wire Line
 	5400 8750 5550 8750
 Text Notes 5250 7550 0    118  ~ 0
 I2C
+Text Notes 21350 3750 0    44   ~ 0
+Imax=80mA\nPmax=0.5V*80mA=40mW
+Text Notes 19750 3050 0    44   ~ 0
+Vout=1.22*(1+R1/R2)\nR1=300k, R2=173.2k, Vo=3.33\nR1=300k, R2=147k, Vo=3.71
+Text Notes 21300 1350 0    44   ~ 0
+Imax=110mA | 250mA\nPmax=0.4V*110mA | 0.4V*250mA\nPmax=44mW | 100mW 
+$Comp
+L Device:R R40
+U 1 1 6197DC55
+P 19350 2800
+F 0 "R40" H 19420 2846 50  0000 L CNN
+F 1 "30k" H 19420 2755 50  0000 L CNN
+F 2 "Resistor_SMD:R_0805_2012Metric" V 19280 2800 50  0001 C CNN
+F 3 "~" H 19350 2800 50  0001 C CNN
+	1    19350 2800
+	1    0    0    -1  
+$EndComp
+Text Label 11650 12850 2    44   ~ 0
+SD_3V3
+Text Label 3700 2200 0    44   ~ 0
+VBAT
+Wire Wire Line
+	4900 5400 4600 5400
+Wire Wire Line
+	4600 5500 4900 5500
+$Comp
+L MCU_ST_STM32L4:STM32L451RETx U1
+U 1 1 613A4072
+P 4000 4500
+F 0 "U1" H 4350 2750 50  0000 C CNN
+F 1 "STM32L451RCT6" H 4450 2650 50  0000 C CNN
+F 2 "Package_QFP:LQFP-64_10x10mm_P0.5mm" H 3400 2800 50  0001 R CNN
+F 3 "http://www.st.com/st-web-ui/static/active/en/resource/technical/document/datasheet/DM00340475.pdf" H 4000 4500 50  0001 C CNN
+	1    4000 4500
+	1    0    0    -1  
+$EndComp
+NoConn ~ 3300 5200
+NoConn ~ 3300 5300
+NoConn ~ 3300 5900
+NoConn ~ 4600 5700
+NoConn ~ 4600 5600
+NoConn ~ 4600 5300
+NoConn ~ 4600 5000
+NoConn ~ 4600 4400
+NoConn ~ 4600 4100
+NoConn ~ 4600 4000
+NoConn ~ 4600 3500
+NoConn ~ 4600 3300
+NoConn ~ 4600 3000
+NoConn ~ 4600 2900
 $EndSCHEMATC
