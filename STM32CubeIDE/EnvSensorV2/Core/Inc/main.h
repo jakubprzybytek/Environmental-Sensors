@@ -7,7 +7,7 @@
   ******************************************************************************
   * @attention
   *
-  * <h2><center>&copy; Copyright (c) 2021 STMicroelectronics.
+  * <h2><center>&copy; Copyright (c) 2022 STMicroelectronics.
   * All rights reserved.</center></h2>
   *
   * This software component is licensed by ST under BSD 3-Clause license,
@@ -66,34 +66,25 @@ void Error_Handler(void);
 #define LED_2_GPIO_Port GPIOC
 #define LED_1_Pin GPIO_PIN_3
 #define LED_1_GPIO_Port GPIOC
-#define E_INK_SELECT_Pin GPIO_PIN_4
-#define E_INK_SELECT_GPIO_Port GPIOC
-#define E_INK_CD_Pin GPIO_PIN_5
-#define E_INK_CD_GPIO_Port GPIOC
-#define E_INK_BUSY_Pin GPIO_PIN_0
-#define E_INK_BUSY_GPIO_Port GPIOB
-#define E_INK_RESET_Pin GPIO_PIN_1
-#define E_INK_RESET_GPIO_Port GPIOB
-#define POWER_5V_ENABLE_Pin GPIO_PIN_2
-#define POWER_5V_ENABLE_GPIO_Port GPIOB
 #define SWITCH_1_Pin GPIO_PIN_12
 #define SWITCH_1_GPIO_Port GPIOB
+#define SWITCH_1_EXTI_IRQn EXTI15_10_IRQn
 #define SWITCH_2_Pin GPIO_PIN_13
 #define SWITCH_2_GPIO_Port GPIOB
+#define SWITCH_2_EXTI_IRQn EXTI15_10_IRQn
 #define SWITCH_3_Pin GPIO_PIN_14
 #define SWITCH_3_GPIO_Port GPIOB
+#define SWITCH_3_EXTI_IRQn EXTI15_10_IRQn
 #define SWITCH_4_Pin GPIO_PIN_15
 #define SWITCH_4_GPIO_Port GPIOB
+#define SWITCH_4_EXTI_IRQn EXTI15_10_IRQn
 #define SCD30_READY_Pin GPIO_PIN_8
 #define SCD30_READY_GPIO_Port GPIOA
-#define BATTERY_MEASURE_ENABLE_Pin GPIO_PIN_5
-#define BATTERY_MEASURE_ENABLE_GPIO_Port GPIOB
+#define SCD30_READY_EXTI_IRQn EXTI9_5_IRQn
+#define BATTER_MEASURE_ENABLE_Pin GPIO_PIN_5
+#define BATTER_MEASURE_ENABLE_GPIO_Port GPIOB
 #define BATTERY_MEASURE_INPUT_Pin GPIO_PIN_6
 #define BATTERY_MEASURE_INPUT_GPIO_Port GPIOB
-#define SDIO_DETECT_Pin GPIO_PIN_8
-#define SDIO_DETECT_GPIO_Port GPIOB
-#define SDIO_POWER_ENABLE_Pin GPIO_PIN_9
-#define SDIO_POWER_ENABLE_GPIO_Port GPIOB
 /* USER CODE BEGIN Private defines */
 
 /* USER CODE END Private defines */

@@ -34,7 +34,7 @@
   )
 
   (setup
-    (last_trace_width 0.5)
+    (last_trace_width 0.3)
     (user_trace_width 0.3)
     (user_trace_width 0.5)
     (user_trace_width 1)
@@ -1043,7 +1043,7 @@
     (tags SOD-323)
     (path /62DF1849)
     (attr smd)
-    (fp_text reference D14 (at 0 -1.85) (layer F.SilkS)
+    (fp_text reference D14 (at 6.2 1.6) (layer F.SilkS)
       (effects (font (size 1 1) (thickness 0.15)))
     )
     (fp_text value PMEG2010AEJ (at 0.1 1.9) (layer F.Fab)
@@ -7076,7 +7076,6 @@
   (gr_line (start 170 50) (end 170 150) (layer Edge.Cuts) (width 0.05))
   (gr_line (start 50 50) (end 170 50) (layer Edge.Cuts) (width 0.05))
 
-  (segment (start 101.2 79.8) (end 101.2 81.2) (width 0.3) (layer B.Cu) (net 3))
   (segment (start 79 136.98) (end 102.2 136.98) (width 2.5) (layer B.Cu) (net 1))
   (segment (start 102.2 136.98) (end 125.6 136.98) (width 2.5) (layer B.Cu) (net 1))
   (via (at 74 136.4) (size 0.8) (drill 0.5) (layers F.Cu B.Cu) (net 1))
@@ -7211,6 +7210,7 @@
   (segment (start 121.8 77) (end 120.6 78.2) (width 0.3) (layer F.Cu) (net 2))
   (segment (start 120.6 78.2) (end 118.4 78.2) (width 0.3) (layer F.Cu) (net 2))
   (segment (start 68.3375 127.6) (end 75.4 127.6) (width 0.5) (layer F.Cu) (net 2))
+  (segment (start 101.2 79.8) (end 101.2 81.2) (width 0.3) (layer B.Cu) (net 3))
   (via (at 119.6 62.8) (size 0.8) (drill 0.5) (layers F.Cu B.Cu) (net 3) (tstamp 616869A5))
   (via (at 119.7 120.9) (size 0.8) (drill 0.5) (layers F.Cu B.Cu) (net 3) (tstamp 61AF26FD))
   (via (at 120.5 113.7) (size 0.8) (drill 0.5) (layers F.Cu B.Cu) (net 3) (tstamp 61AF2700))

@@ -1,0 +1,4 @@
+SmallScreen.cpp:13:9:uint8_t SmallScreen::init()	16	static
+SmallScreen.cpp:18:6:void SmallScreen::clear()	32	static
+SmallScreen.cpp:27:6:void SmallScreen::printLine(uint8_t, const char*)	40	static
+SmallScreen.cpp:41:6:void SmallScreen::appendLine(const char*)	32	static

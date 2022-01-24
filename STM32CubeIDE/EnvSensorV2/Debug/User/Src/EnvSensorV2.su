@@ -1,0 +1,10 @@
+Ssd1306.hpp:76:2:SSD1306::SSD1306(I2C_HandleTypeDef&)	16	static
+SmallScreen.hpp:26:2:SmallScreen::SmallScreen()	16	static
+Bmp280.hpp:48:2:Bmp280::Bmp280(I2C_HandleTypeDef&)	16	static
+EnvSensorV2.cpp:30:6:void vLEDTask(void*)	16	static
+EnvSensorV2.cpp:41:6:void vCounterTask(void*)	40	static
+EnvSensorV2.cpp:87:6:void sensorReadoutsCollectorThread(void*)	56	static
+EnvSensorV2.cpp:100:6:void EnvSensorV2_Init()	104	static
+EnvSensorV2.cpp:145:6:void HAL_GPIO_EXTI_Callback(uint16_t)	16	static
+EnvSensorV2.cpp:149:1:void __static_initialization_and_destruction_0(int, int)	16	static
+EnvSensorV2.cpp:149:1:cpp)	8	static

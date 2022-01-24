@@ -541,7 +541,7 @@ Wire Wire Line
 	16250 4050 17000 4050
 Connection ~ 16250 4050
 Text Notes 15850 3800 0    44   ~ 0
-Pmax=(5.0V-2.5V)*0.5A=1.25W\nRja=50C/W
+Pmax=(5.0V-2.5V)*0.5A=1.25W\nRja=50C/W\ndeltaT=62.5C
 Wire Wire Line
 	14150 4200 14150 4050
 Wire Wire Line
@@ -3469,7 +3469,7 @@ L Device:Q_PMOS_GDS Q3
 U 1 1 653613AD
 P 15550 4150
 F 0 "Q3" V 15892 4150 50  0000 C CNN
-F 1 "AUiRLR3110Z" V 15801 4150 50  0000 C CNN
+F 1 "IRFR9024" V 15801 4150 50  0000 C CNN
 F 2 "Package_TO_SOT_SMD:TO-252-2" H 15750 4250 50  0001 C CNN
 F 3 "~" H 15550 4150 50  0001 C CNN
 	1    15550 4150
@@ -4598,4 +4598,10 @@ Wire Wire Line
 	4600 4000 4900 4000
 Wire Wire Line
 	4600 4100 4900 4100
+Text Notes 11350 2000 0    44   ~ 0
+Vmax=4.3V\n
+Text Notes -3700 1900 0    44   ~ 0
+NO analog input at PB6/58\nAvailable inputs: 14,15,20,22
+Text Notes -3700 1600 0    118  ~ 0
+Bugs
 $EndSCHEMATC
