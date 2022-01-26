@@ -78,7 +78,6 @@ void SSD1306::init() {
 }
 
 uint8_t SSD1306::sendCommand(uint8_t command) {
-	//TWI_write_reg(SSD1306_DEFAULT_ADDRESS, 0x00, &command, 1);
 	return HAL_I2C_Mem_Write(&hi2c, SSD1306_DEFAULT_ADDRESS, 0x00, 1, &command, 1, SSD1306_MAX_DELAY);
 }
 
@@ -104,7 +103,6 @@ void SSD1306::setDrawingArea(uint8_t startCol, uint8_t endCol, uint8_t startPage
 void SSD1306::sendFramebuffer(uint8_t *buffer, uint8_t size) {
 	do {
 		uint8_t bytesToWrite = size < 16 ? size : 16;
-		//TWI_write_reg(SSD1306_DEFAULT_ADDRESS, 0x40, buffer, bytesToWrite);
 		HAL_I2C_Mem_Write(&hi2c, SSD1306_DEFAULT_ADDRESS, 0x40, 1, buffer, bytesToWrite, SSD1306_MAX_DELAY);
 		size -= bytesToWrite;
 		buffer += 16;

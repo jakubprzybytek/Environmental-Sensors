@@ -53,7 +53,7 @@ public:
 	uint8_t startContinousMeasurement();
 	uint8_t stopContinousMeasurement();
 
-	uint8_t readMeasurements(uint32_t *preassure, int32_t *temperature);
+	uint8_t readMeasurements(float *preassure, float *temperature);
 };
 
 #endif /* INC_SENSORS_BMP280_HPP_ */

@@ -95,7 +95,7 @@ uint8_t Bmp280::stopContinousMeasurement() {
 	return setMode(BMP280_MODE_SLEEP);
 }
 
-uint8_t Bmp280::readMeasurements(uint32_t *preassure, int32_t *temperature) {
+uint8_t Bmp280::readMeasurements(float *preassure, float *temperature) {
 	HAL_StatusTypeDef status = HAL_I2C_Mem_Read(&hi2c, BMP280_SLAVE_ADDRESS, BMP280_INTERNAL_MEASUREMENTS, 1, (uint8_t*) &buffer, 6, BMP280_MAX_DELAY);
 
 	if (status != HAL_OK) {
@@ -105,8 +105,8 @@ uint8_t Bmp280::readMeasurements(uint32_t *preassure, int32_t *temperature) {
 	int32_t preassureRaw = ((int32_t) buffer[0] << 12) | (buffer[1] << 4) | (buffer[2] >> 4);
 	int32_t temperatureRaw = ((int32_t) buffer[3] << 12) | (buffer[4] << 4) | (buffer[5] >> 4);
 
-	*temperature = compensate_T_int32(temperatureRaw);
-	*preassure = compensate_P_int64(preassureRaw);
+	*temperature = compensate_T_int32(temperatureRaw) / 100.0f;
+	*preassure = compensate_P_int64(preassureRaw) / 25600.0f;
 
 	return HAL_OK;
 }

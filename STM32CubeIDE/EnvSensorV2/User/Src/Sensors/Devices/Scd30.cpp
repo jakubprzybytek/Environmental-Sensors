@@ -64,8 +64,6 @@ uint8_t Scd30::readCommand(uint16_t command, uint8_t dataSize) {
 		return i2cStatus;
 	}
 
-	//HAL_Delay(1);
-
 	return HAL_I2C_Master_Receive(&hi2c, SCD30_SLAVE_ADDRESS, buffer, dataSize, SCD30_MAX_DELAY);
 }
 
@@ -126,7 +124,7 @@ uint8_t Scd30::readMeasurements(float *co2, float *temperature, float *humidity)
 	}
 
 	if (buffer[2] != computeCRC8(buffer) || buffer[5] != computeCRC8(buffer + 3) || buffer[8] != computeCRC8(buffer + 6)
-			|| buffer[11] != computeCRC8(buffer + 9) || buffer[14] != computeCRC8(buffer + 12) || buffer[17] != computeCRC8(buffer + 15)) {
+	 || buffer[11] != computeCRC8(buffer + 9) || buffer[14] != computeCRC8(buffer + 12) || buffer[17] != computeCRC8(buffer + 15)) {
 		return HAL_ERROR;
 	}
 

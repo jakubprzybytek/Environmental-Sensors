@@ -1,6 +1,0 @@
-Ssd1306.cpp:31:6:void SSD1306::init()	16	static
-Ssd1306.cpp:80:9:uint8_t SSD1306::sendCommand(uint8_t)	32	static
-Ssd1306.cpp:85:6:void SSD1306::invert(uint8_t)	16	static
-Ssd1306.cpp:89:6:void SSD1306::setDisplayOffset(uint8_t)	16	static
-Ssd1306.cpp:94:6:void SSD1306::setDrawingArea(uint8_t, uint8_t, uint8_t, uint8_t)	16	static
-Ssd1306.cpp:104:6:void SSD1306::sendFramebuffer(uint8_t*, uint8_t)	48	static

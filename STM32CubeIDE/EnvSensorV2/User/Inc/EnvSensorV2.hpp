@@ -16,7 +16,14 @@
 extern "C" {
 #endif
 
+extern osMutexId_t i2c1Mutex;
+
+#define I2C1_ACQUIRE osMutexAcquire(i2c1Mutex, portMAX_DELAY);
+#define I2C1_RELEASE osMutexRelease(i2c1Mutex);
+
 extern void EnvSensorV2_Init();
+
+void sensorReadoutsCollectorThread(void *pvParameters);
 
 #ifdef __cplusplus
 }
