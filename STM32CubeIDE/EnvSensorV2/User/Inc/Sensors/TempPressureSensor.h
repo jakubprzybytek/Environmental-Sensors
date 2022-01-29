@@ -10,7 +10,7 @@
 
 void TempPressureSensorInit();
 
-void vTempPressureReadoutThread(void *pvParameters);
-void vTempPressureReadoutThread2(void *pvParameters);
+void bmp280ReadoutThread(void *pvParameters);
+void bme280ReadoutThread(void *pvParameters);
 
 #endif /* SRC_SENSORS_TEMPPRESSURESENSOR_H_ */
