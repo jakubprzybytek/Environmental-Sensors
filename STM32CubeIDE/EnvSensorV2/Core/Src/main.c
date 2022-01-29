@@ -50,11 +50,6 @@ const osThreadAttr_t defaultTask_attributes = {
   .stack_size = 128 * 4,
   .priority = (osPriority_t) osPriorityNormal,
 };
-/* Definitions for myQueue01 */
-osMessageQueueId_t myQueue01Handle;
-const osMessageQueueAttr_t myQueue01_attributes = {
-  .name = "myQueue01"
-};
 /* USER CODE BEGIN PV */
 
 /* USER CODE END PV */
@@ -121,10 +116,6 @@ int main(void)
   /* USER CODE BEGIN RTOS_TIMERS */
   /* start timers, add new ones, ... */
   /* USER CODE END RTOS_TIMERS */
-
-  /* Create the queue(s) */
-  /* creation of myQueue01 */
-  myQueue01Handle = osMessageQueueNew (16, sizeof(uint16_t), &myQueue01_attributes);
 
   /* USER CODE BEGIN RTOS_QUEUES */
   /* add queues, ... */
@@ -265,7 +256,7 @@ static void MX_GPIO_Init(void)
   HAL_GPIO_WritePin(GPIOC, LED_4_Pin|LED_3_Pin|LED_2_Pin|LED_1_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(BATTER_MEASURE_ENABLE_GPIO_Port, BATTER_MEASURE_ENABLE_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(POWER_5V_ENABLE_GPIO_Port, POWER_5V_ENABLE_Pin, GPIO_PIN_SET);
 
   /*Configure GPIO pins : LED_4_Pin LED_3_Pin LED_2_Pin LED_1_Pin */
   GPIO_InitStruct.Pin = LED_4_Pin|LED_3_Pin|LED_2_Pin|LED_1_Pin;
@@ -273,6 +264,13 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
+
+  /*Configure GPIO pin : POWER_5V_ENABLE_Pin */
+  GPIO_InitStruct.Pin = POWER_5V_ENABLE_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  HAL_GPIO_Init(POWER_5V_ENABLE_GPIO_Port, &GPIO_InitStruct);
 
   /*Configure GPIO pins : SWITCH_1_Pin SWITCH_2_Pin SWITCH_3_Pin SWITCH_4_Pin */
   GPIO_InitStruct.Pin = SWITCH_1_Pin|SWITCH_2_Pin|SWITCH_3_Pin|SWITCH_4_Pin;
@@ -285,19 +283,6 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(SCD30_READY_GPIO_Port, &GPIO_InitStruct);
-
-  /*Configure GPIO pin : BATTER_MEASURE_ENABLE_Pin */
-  GPIO_InitStruct.Pin = BATTER_MEASURE_ENABLE_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
-  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-  HAL_GPIO_Init(BATTER_MEASURE_ENABLE_GPIO_Port, &GPIO_InitStruct);
-
-  /*Configure GPIO pin : BATTERY_MEASURE_INPUT_Pin */
-  GPIO_InitStruct.Pin = BATTERY_MEASURE_INPUT_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
-  HAL_GPIO_Init(BATTERY_MEASURE_INPUT_GPIO_Port, &GPIO_InitStruct);
 
   /* EXTI interrupt init*/
   HAL_NVIC_SetPriority(EXTI9_5_IRQn, 5, 0);

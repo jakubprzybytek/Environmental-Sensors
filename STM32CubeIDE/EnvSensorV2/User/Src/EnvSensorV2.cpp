@@ -11,6 +11,10 @@
 #include <Sensors/CO2Sensor.hpp>
 #include <Sensors/TempPressureSensor.h>
 
+#include <Sensors/Devices/Hpma115C0.hpp>
+
+//extern UART_HandleTypeDef huart2;
+
 osMessageQueueId_t sensorReadoutsQueue;
 osMutexId_t i2c1Mutex;
 
@@ -44,6 +48,9 @@ void EnvSensorV2_Init() {
 	TempPressureSensorInit();
 
 	CO2SensorInit();
+
+	//Hpma115C0 hpma(huart2);
+	//hpma.init();
 }
 
 void vLEDTask(void *pvParameters) {
