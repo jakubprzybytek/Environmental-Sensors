@@ -48,8 +48,18 @@ void EnvSensorV2_Init() {
 
 void vLEDTask(void *pvParameters) {
 	for (;;) {
-		HAL_GPIO_TogglePin(LED_2_GPIO_Port, LED_2_Pin);
+		HAL_GPIO_WritePin(LED_1_GPIO_Port, LED_1_Pin, GPIO_PIN_SET);
 		osDelay( 500 / portTICK_RATE_MS );
+		HAL_GPIO_WritePin(LED_1_GPIO_Port, LED_1_Pin, GPIO_PIN_RESET);
+		HAL_GPIO_WritePin(LED_2_GPIO_Port, LED_2_Pin, GPIO_PIN_SET);
+		osDelay( 500 / portTICK_RATE_MS );
+		HAL_GPIO_WritePin(LED_2_GPIO_Port, LED_2_Pin, GPIO_PIN_RESET);
+		HAL_GPIO_WritePin(LED_3_GPIO_Port, LED_3_Pin, GPIO_PIN_SET);
+		osDelay( 500 / portTICK_RATE_MS );
+		HAL_GPIO_WritePin(LED_3_GPIO_Port, LED_3_Pin, GPIO_PIN_RESET);
+		HAL_GPIO_WritePin(LED_4_GPIO_Port, LED_4_Pin, GPIO_PIN_SET);
+		osDelay( 500 / portTICK_RATE_MS );
+		HAL_GPIO_WritePin(LED_4_GPIO_Port, LED_4_Pin, GPIO_PIN_RESET);
 	}
 }
 
@@ -57,6 +67,18 @@ void sensorReadoutsCollectorThread(void *pvParameters) {
 
 	SmallScreen smallScreen;
 	uint8_t messageBuffer[30];
+
+	uint8_t devices = 0;
+	for (uint8_t i = 0x03u; i < 0x78u; i++)
+	  {
+	    uint8_t address = i << 1u ;
+	    /* In case there is a positive feedback, print it out. */
+	    if (HAL_OK == HAL_I2C_IsDeviceReady(&hi2c1, address, 3u, 10u))
+	    {
+	      devices++;
+	    }
+	  }
+
 
 	I2C1_ACQUIRE
 

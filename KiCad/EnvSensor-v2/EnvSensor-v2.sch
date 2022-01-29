@@ -1031,7 +1031,7 @@ L Sensor:BME280 U5
 U 1 1 61563FC7
 P 13800 8450
 F 0 "U5" H 13350 8100 50  0000 R CNN
-F 1 "BME280" H 13600 8000 50  0000 R CNN
+F 1 "BMP280" H 13600 8000 50  0000 R CNN
 F 2 "Package_LGA:Bosch_LGA-8_2.5x2.5mm_P0.65mm_ClockwisePinNumbering" H 15300 8000 50  0001 C CNN
 F 3 "https://ae-bst.resource.bosch.com/media/_tech/media/datasheets/BST-BME280-DS002.pdf" H 13800 8250 50  0001 C CNN
 	1    13800 8450
@@ -1505,7 +1505,7 @@ Comm
 Text Notes -4300 4200 0    118  ~ 0
 Power\nConsumption
 Text Notes -4300 5250 0    44   ~ 0
-Spec:\n1-75mA, 20mA avg\nMeasured:\n<5mA at idle, 60mA at readout
+Spec:\n1-75mA, 20mA avg\nMeasured:\n4.3mA at idle, 60mA at readout
 Text Notes -2750 5150 0    44   ~ 0
 I2C 0xc2
 Text Notes -4300 4800 0    44   ~ 0
@@ -4604,4 +4604,14 @@ Text Notes -3700 1900 0    44   ~ 0
 NO analog input at PB6/58\nAvailable inputs: 14,15,20,22
 Text Notes -3700 1600 0    118  ~ 0
 Bugs
+Text Notes -4300 5900 0    44   ~ 0
+Measured:\n<0.5mA\n
+Text Label 15300 7800 0    44   ~ 0
+BMP280_VCC
+Text Notes -5750 7000 2    118  ~ 0
+Oled display
+Text Notes -2750 6950 0    44   ~ 0
+I2C 0x3c
+Text Notes -3700 2150 0    44   ~ 0
+U5 - BMP280 should allow to set i2c address\nby connecting SDO to either gnd or Vcc
 $EndSCHEMATC

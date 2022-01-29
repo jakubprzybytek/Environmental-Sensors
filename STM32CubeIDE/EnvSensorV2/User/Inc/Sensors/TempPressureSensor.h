@@ -11,5 +11,6 @@
 void TempPressureSensorInit();
 
 void vTempPressureReadoutThread(void *pvParameters);
+void vTempPressureReadoutThread2(void *pvParameters);
 
 #endif /* SRC_SENSORS_TEMPPRESSURESENSOR_H_ */

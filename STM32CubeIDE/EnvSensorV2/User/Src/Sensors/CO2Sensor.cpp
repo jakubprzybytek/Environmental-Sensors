@@ -40,32 +40,6 @@ void CO2SensorInit() {
 		.priority = (osPriority_t) osPriorityNormal
 	};
 	co2ReadoutThreadHandle = osThreadNew(vCO2ReadoutThread, NULL, &co2ReadoutThreadaAttributes);
-
-	I2C1_ACQUIRE
-
-	uint8_t status = scd30.init(30);
-	if (status != HAL_OK) {
-		osMessageQueuePut(sensorReadoutsQueue, (uint8_t *) "SCD - error", 0, 0);
-
-		I2C1_RELEASE
-
-		return;
-	}
-
-	status = scd30.startContinousMeasurement(0);
-	if (status != HAL_OK) {
-		osMessageQueuePut(sensorReadoutsQueue, (uint8_t*) "SCD - error", 0, 0);
-
-		I2C1_RELEASE
-
-		return;
-	}
-
-	I2C1_RELEASE
-
-	if (SCD30_IS_READY) {
-		osSemaphoreRelease(scd30ReadySemaphore);
-	}
 }
 
 void vCO2ReadoutThread(void *pvParameters) {
@@ -77,8 +51,40 @@ void vCO2ReadoutThread(void *pvParameters) {
 	char humMessageBuffer[10];
 	char messageBuffer[40];
 
+	osDelay(100 / portTICK_RATE_MS);
+
+	I2C1_ACQUIRE
+
+	uint8_t status = scd30.init(30);
+	if (status != HAL_OK) {
+		osMessageQueuePut(sensorReadoutsQueue, (uint8_t *) "SCD - error init", 0, 0);
+
+		I2C1_RELEASE
+
+		osThreadExit();
+
+		return;
+	}
+
+	status = scd30.startContinousMeasurement(0);
+	if (status != HAL_OK) {
+		osMessageQueuePut(sensorReadoutsQueue, (uint8_t*) "SCD - error start", 0, 0);
+
+		I2C1_RELEASE
+
+		osThreadExit();
+
+		return;
+	}
+
+	I2C1_RELEASE
+
+	if (SCD30_IS_READY) {
+		osSemaphoreRelease(scd30ReadySemaphore);
+	}
+
 	for (;;) {
-		osStatus_t status = osSemaphoreAcquire(scd30ReadySemaphore, portMAX_DELAY);
+		status = osSemaphoreAcquire(scd30ReadySemaphore, portMAX_DELAY);
 		if (status == osOK) {
 
 			I2C1_ACQUIRE
@@ -124,6 +130,8 @@ void vCO2ReadoutThread(void *pvParameters) {
 			osDelay(5000 / portTICK_RATE_MS);
 		}
 	}
+
+	osThreadExit();
 }
 
 void SCD30ReadyInterrupedHandler() {
