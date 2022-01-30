@@ -10,10 +10,7 @@
 #include <Display/SmallScreen.hpp>
 #include <Sensors/CO2Sensor.hpp>
 #include <Sensors/TempPressureSensor.h>
-
-#include <Sensors/Devices/Hpma115C0.hpp>
-
-//extern UART_HandleTypeDef huart2;
+#include <Sensors/ParticlesSensor.hpp>
 
 osMessageQueueId_t sensorReadoutsQueue;
 osMutexId_t i2c1Mutex;
@@ -49,8 +46,7 @@ void EnvSensorV2_Init() {
 
 	CO2SensorInit();
 
-	//Hpma115C0 hpma(huart2);
-	//hpma.init();
+	ParticlesSensor_Init();
 }
 
 void vLEDTask(void *pvParameters) {
@@ -61,12 +57,12 @@ void vLEDTask(void *pvParameters) {
 		HAL_GPIO_WritePin(LED_2_GPIO_Port, LED_2_Pin, GPIO_PIN_SET);
 		osDelay( 500 / portTICK_RATE_MS );
 		HAL_GPIO_WritePin(LED_2_GPIO_Port, LED_2_Pin, GPIO_PIN_RESET);
-		HAL_GPIO_WritePin(LED_3_GPIO_Port, LED_3_Pin, GPIO_PIN_SET);
-		osDelay( 500 / portTICK_RATE_MS );
-		HAL_GPIO_WritePin(LED_3_GPIO_Port, LED_3_Pin, GPIO_PIN_RESET);
 		HAL_GPIO_WritePin(LED_4_GPIO_Port, LED_4_Pin, GPIO_PIN_SET);
 		osDelay( 500 / portTICK_RATE_MS );
 		HAL_GPIO_WritePin(LED_4_GPIO_Port, LED_4_Pin, GPIO_PIN_RESET);
+		HAL_GPIO_WritePin(LED_3_GPIO_Port, LED_3_Pin, GPIO_PIN_SET);
+		osDelay( 500 / portTICK_RATE_MS );
+		HAL_GPIO_WritePin(LED_3_GPIO_Port, LED_3_Pin, GPIO_PIN_RESET);
 	}
 }
 
