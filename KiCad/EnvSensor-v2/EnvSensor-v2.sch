@@ -42,7 +42,7 @@ L Device:R R18
 U 1 1 61418458
 P 10500 1900
 F 0 "R18" H 10570 1946 50  0000 L CNN
-F 1 "R" H 10570 1855 50  0000 L CNN
+F 1 "10k" H 10570 1855 50  0000 L CNN
 F 2 "Resistor_SMD:R_0805_2012Metric" V 10430 1900 50  0001 C CNN
 F 3 "~" H 10500 1900 50  0001 C CNN
 	1    10500 1900
@@ -53,7 +53,7 @@ L Device:R R17
 U 1 1 61418720
 P 10500 1500
 F 0 "R17" H 10570 1546 50  0000 L CNN
-F 1 "R" H 10570 1455 50  0000 L CNN
+F 1 "3k" H 10570 1455 50  0000 L CNN
 F 2 "Resistor_SMD:R_0805_2012Metric" V 10430 1500 50  0001 C CNN
 F 3 "~" H 10500 1500 50  0001 C CNN
 	1    10500 1500
@@ -3469,7 +3469,7 @@ L Device:Q_PMOS_GDS Q3
 U 1 1 653613AD
 P 15550 4150
 F 0 "Q3" V 15892 4150 50  0000 C CNN
-F 1 "IRFR9024" V 15801 4150 50  0000 C CNN
+F 1 "ZXMP6A16K" V 15801 4150 50  0000 C CNN
 F 2 "Package_TO_SOT_SMD:TO-252-2" H 15750 4250 50  0001 C CNN
 F 3 "~" H 15550 4150 50  0001 C CNN
 	1    15550 4150
@@ -4343,7 +4343,7 @@ L Device:C C45
 U 1 1 637E28B6
 P 10900 1900
 F 0 "C45" H 10950 2000 50  0000 L CNN
-F 1 "1u" H 10950 1800 50  0000 L CNN
+F 1 "100n" H 10950 1800 50  0000 L CNN
 F 2 "Capacitor_SMD:C_0805_2012Metric" H 10938 1750 50  0001 C CNN
 F 3 "~" H 10900 1900 50  0001 C CNN
 	1    10900 1900
@@ -4598,8 +4598,8 @@ Wire Wire Line
 	4600 4000 4900 4000
 Wire Wire Line
 	4600 4100 4900 4100
-Text Notes 11350 2000 0    44   ~ 0
-Vmax=4.3V\n
+Text Notes 11300 2050 0    44   ~ 0
+Vmax=4.3V\nVref=3.3V\nR17+R18=4.3V/3.3V*10k\n=13k
 Text Notes -3700 1900 0    44   ~ 0
 NO analog input at PB6/58\nAvailable inputs: 14,15,20,22
 Text Notes -3700 1600 0    118  ~ 0
@@ -4614,4 +4614,8 @@ Text Notes -2750 6950 0    44   ~ 0
 I2C 0x3c
 Text Notes -3700 2150 0    44   ~ 0
 U5 - BMP280 should allow to set i2c address\nby connecting SDO to either gnd or Vcc
+Text Notes 16350 5950 0    44   ~ 0
+Ctimer=?\nTfast_charge=Ctimer/100n * 1.5h\nTelapsed=Ctimer/100n * 3h
+Text Notes -3700 2350 0    44   ~ 0
+D11 - too much dropdown voltage wen charging li-ion\nreplace with mosfet?\n
 $EndSCHEMATC
