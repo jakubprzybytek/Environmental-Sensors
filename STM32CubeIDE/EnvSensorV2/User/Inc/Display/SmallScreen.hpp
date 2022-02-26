@@ -23,7 +23,7 @@ private:
 	uint8_t buffer[128];
 
 public:
-	SmallScreen() : sdd1306(hi2c1), currentLineNumber(0) {
+	SmallScreen(I2C_HandleTypeDef &hi2c) : sdd1306(hi2c), currentLineNumber(0) {
 	}
 
 	uint8_t init();

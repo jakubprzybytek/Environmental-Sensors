@@ -12,16 +12,15 @@
 
 #include "main.h"
 
+#include "EnvSensorCommon.hpp"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-extern osMutexId_t i2c1Mutex;
-
-#define I2C1_ACQUIRE osMutexAcquire(i2c1Mutex, portMAX_DELAY);
-#define I2C1_RELEASE osMutexRelease(i2c1Mutex);
-
 extern void EnvSensorV2_Init();
+
+void startSensorReadoutsCollectorThred();
 
 void sensorReadoutsCollectorThread(void *pvParameters);
 

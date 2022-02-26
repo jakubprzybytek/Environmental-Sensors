@@ -13,7 +13,7 @@
 
 #include <Sensors/TempPressureSensor.h>
 
-#include <EnvSensorV2.hpp>
+#include <EnvSensorCommon.hpp>
 #include <Sensors/Devices/Bme280.hpp>
 
 extern I2C_HandleTypeDef hi2c1;
@@ -21,20 +21,28 @@ extern I2C_HandleTypeDef hi2c1;
 extern osMessageQueueId_t sensorReadoutsQueue;
 
 void TempPressureSensorInit() {
+	startBmp280ReadoutThread();
+
+	//osDelay(1000 / portTICK_RATE_MS);
+
+	//startBme280ReadoutThread();
+}
+
+void startBmp280ReadoutThread() {
 	const osThreadAttr_t bmp280ReadoutThreadAttributes = {
 		.name = "bmp280-readout-th",
 		.stack_size = 512 * sizeof(StackType_t),
 		.priority = (osPriority_t) osPriorityNormal
 	};
 	osThreadNew(bmp280ReadoutThread, NULL, &bmp280ReadoutThreadAttributes);
+}
 
-	osDelay(1000 / portTICK_RATE_MS);
-
+void startBme280ReadoutThread() {
 	const osThreadAttr_t bme280ReadoutThreadAttributes = {
-			.name = "bme280-readout-th",
-			.stack_size = 512 * sizeof(StackType_t),
-			.priority = (osPriority_t) osPriorityNormal
-		};
+		.name = "bme280-readout-th",
+		.stack_size = 512 * sizeof(StackType_t),
+		.priority = (osPriority_t) osPriorityNormal
+	};
 	osThreadNew(bme280ReadoutThread, NULL, &bme280ReadoutThreadAttributes);
 }
 
@@ -42,7 +50,7 @@ void bmp280ReadoutThread(void *pvParameters) {
 
 	uint32_t counter = 0;
 
-	Bme280 bmp280(hi2c1, BME280_SLAVE_ADDRESS_SECONDARY, false);
+	Bme280 bmp280(hi2c1, BME280_SLAVE_ADDRESS_MAIN, false);
 
 	char temperatureBuffer[8];
 	char pressureBuffer[8];

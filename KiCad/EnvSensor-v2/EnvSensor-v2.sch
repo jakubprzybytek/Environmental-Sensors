@@ -381,7 +381,7 @@ SCK
 Text GLabel 7850 12350 0    44   Input ~ 0
 E_INK_SELECT
 Text GLabel 7850 12450 0    44   Input ~ 0
-E_INK_CD
+E_INK_DC
 Text GLabel 7850 12550 0    44   Input ~ 0
 E_INK_RESET
 Text GLabel 7850 12700 0    44   Input ~ 0
@@ -811,7 +811,7 @@ SCK
 Text GLabel 3100 5000 0    44   Input ~ 0
 E_INK_SELECT
 Text GLabel 3100 5100 0    44   Input ~ 0
-E_INK_CD
+E_INK_DC
 Text GLabel 4900 4600 2    44   Input ~ 0
 E_INK_RESET
 Text GLabel 4900 4700 2    44   Input ~ 0

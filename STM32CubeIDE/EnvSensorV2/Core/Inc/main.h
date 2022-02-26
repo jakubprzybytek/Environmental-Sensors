@@ -68,12 +68,13 @@ void Error_Handler(void);
 #define LED_1_GPIO_Port GPIOC
 #define E_INK_SELECT_Pin GPIO_PIN_4
 #define E_INK_SELECT_GPIO_Port GPIOC
-#define E_INK_CD_Pin GPIO_PIN_5
-#define E_INK_CD_GPIO_Port GPIOC
+#define E_INK_DC_Pin GPIO_PIN_5
+#define E_INK_DC_GPIO_Port GPIOC
 #define E_INK_RESET_Pin GPIO_PIN_0
 #define E_INK_RESET_GPIO_Port GPIOB
 #define E_INK_BUSY_Pin GPIO_PIN_1
 #define E_INK_BUSY_GPIO_Port GPIOB
+#define E_INK_BUSY_EXTI_IRQn EXTI1_IRQn
 #define POWER_5V_ENABLE_Pin GPIO_PIN_2
 #define POWER_5V_ENABLE_GPIO_Port GPIOB
 #define SWITCH_1_Pin GPIO_PIN_12
@@ -100,5 +101,3 @@ void Error_Handler(void);
 #endif
 
 #endif /* __MAIN_H */
-
-/************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

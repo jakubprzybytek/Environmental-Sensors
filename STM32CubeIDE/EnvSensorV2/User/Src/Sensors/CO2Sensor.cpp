@@ -79,6 +79,8 @@ void vCO2ReadoutThread(void *pvParameters) {
 
 	I2C1_RELEASE
 
+	osMessageQueuePut(sensorReadoutsQueue, (uint8_t*) "SCD - start OK", 0, 0);
+
 	if (SCD30_IS_READY) {
 		osSemaphoreRelease(scd30ReadySemaphore);
 	}

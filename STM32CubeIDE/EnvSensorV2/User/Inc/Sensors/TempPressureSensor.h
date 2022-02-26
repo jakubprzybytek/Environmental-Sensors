@@ -10,6 +10,9 @@
 
 void TempPressureSensorInit();
 
+void startBmp280ReadoutThread();
+void startBme280ReadoutThread();
+
 void bmp280ReadoutThread(void *pvParameters);
 void bme280ReadoutThread(void *pvParameters);
 
