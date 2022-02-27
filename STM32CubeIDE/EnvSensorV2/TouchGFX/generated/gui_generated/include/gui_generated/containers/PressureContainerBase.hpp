@@ -6,6 +6,7 @@
 
 #include <gui/common/FrontendApplication.hpp>
 #include <touchgfx/containers/Container.hpp>
+#include <touchgfx/widgets/TextAreaWithWildcard.hpp>
 #include <touchgfx/widgets/TextArea.hpp>
 
 class PressureContainerBase : public touchgfx::Container
@@ -23,7 +24,7 @@ protected:
     /*
      * Member Declarations
      */
-    touchgfx::TextArea valueTextArea;
+    touchgfx::TextAreaWithOneWildcard valueTextArea;
     touchgfx::TextArea unitTextArea;
     touchgfx::TextArea labelTextArea;
 

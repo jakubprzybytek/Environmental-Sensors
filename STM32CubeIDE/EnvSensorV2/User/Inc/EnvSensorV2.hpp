@@ -20,10 +20,6 @@ extern "C" {
 
 extern void EnvSensorV2_Init();
 
-void startSensorReadoutsCollectorThred();
-
-void sensorReadoutsCollectorThread(void *pvParameters);
-
 void switch1Pressed();
 void switch2Pressed();
 

@@ -3,13 +3,21 @@
 
 #include <gui_generated/containers/PressureContainerBase.hpp>
 
-class PressureContainer : public PressureContainerBase
-{
-public:
-    PressureContainer();
-    virtual ~PressureContainer() {}
+class PressureContainer: public PressureContainerBase {
 
-    virtual void initialize();
+private:
+	static const uint8_t TEXTAREA_SIZE = 10;
+	touchgfx::Unicode::UnicodeChar buffer[TEXTAREA_SIZE];
+
+public:
+	PressureContainer();
+	virtual ~PressureContainer() {
+	}
+
+	virtual void initialize();
+
+	void setValue(float value);
+
 protected:
 };
 

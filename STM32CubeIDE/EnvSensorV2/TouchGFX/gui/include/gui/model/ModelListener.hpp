@@ -14,6 +14,10 @@ public:
     {
         model = m;
     }
+
+    virtual void notifyTemperatureChanged(float newTemperature) {}
+    virtual void notifyPressureChanged(float newPressure) {}
+
 protected:
     Model* model;
 };

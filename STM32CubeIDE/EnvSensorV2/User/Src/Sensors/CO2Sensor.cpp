@@ -23,7 +23,7 @@ extern I2C_HandleTypeDef hi2c1;
 
 Scd30 scd30(hi2c1);
 
-extern osMessageQueueId_t sensorReadoutsQueue;
+extern osMessageQueueId_t debugLogQueue;
 osThreadId_t co2ReadoutThreadHandle;
 osSemaphoreId_t scd30ReadySemaphore = NULL;
 
@@ -57,7 +57,7 @@ void vCO2ReadoutThread(void *pvParameters) {
 
 	uint8_t status = scd30.init(30);
 	if (status != HAL_OK) {
-		osMessageQueuePut(sensorReadoutsQueue, (uint8_t *) "SCD - error init", 0, 0);
+		osMessageQueuePut(debugLogQueue, (uint8_t *) "SCD - error init", 0, 0);
 
 		I2C1_RELEASE
 
@@ -68,7 +68,7 @@ void vCO2ReadoutThread(void *pvParameters) {
 
 	status = scd30.startContinousMeasurement(0);
 	if (status != HAL_OK) {
-		osMessageQueuePut(sensorReadoutsQueue, (uint8_t*) "SCD - error start", 0, 0);
+		osMessageQueuePut(debugLogQueue, (uint8_t*) "SCD - error start", 0, 0);
 
 		I2C1_RELEASE
 
@@ -79,7 +79,7 @@ void vCO2ReadoutThread(void *pvParameters) {
 
 	I2C1_RELEASE
 
-	osMessageQueuePut(sensorReadoutsQueue, (uint8_t*) "SCD - start OK", 0, 0);
+	osMessageQueuePut(debugLogQueue, (uint8_t*) "SCD - start OK", 0, 0);
 
 	if (SCD30_IS_READY) {
 		osSemaphoreRelease(scd30ReadySemaphore);
@@ -101,15 +101,15 @@ void vCO2ReadoutThread(void *pvParameters) {
 				ftoa(temp, tempMessageBuffer, 1);
 				ftoa(hum, humMessageBuffer, 1);
 				sprintf(messageBuffer, "C%s T%s %s %lu", co2MessageBuffer, tempMessageBuffer, humMessageBuffer, ++counter);
-				osMessageQueuePut(sensorReadoutsQueue, (uint8_t *) messageBuffer, 0, 0);
+				osMessageQueuePut(debugLogQueue, (uint8_t *) messageBuffer, 0, 0);
 			} else {
-				osMessageQueuePut(sensorReadoutsQueue, (uint8_t *) "SCD - error", 0, 0);
+				osMessageQueuePut(debugLogQueue, (uint8_t *) "SCD - error", 0, 0);
 
 				// retry if SCD30 is still ready
 				while (SCD30_IS_READY) {
 					osDelay(500 / portTICK_RATE_MS);
 
-					osMessageQueuePut(sensorReadoutsQueue, (uint8_t *) "SCD - retry", 0, 0);
+					osMessageQueuePut(debugLogQueue, (uint8_t *) "SCD - retry", 0, 0);
 
 					I2C1_ACQUIRE
 
@@ -121,9 +121,9 @@ void vCO2ReadoutThread(void *pvParameters) {
 						ftoa(co2, co2MessageBuffer, 1);
 						ftoa(temp, tempMessageBuffer, 1);
 						sprintf(messageBuffer, "C%s T%s %lu", co2MessageBuffer, tempMessageBuffer, ++counter);
-						osMessageQueuePut(sensorReadoutsQueue, (uint8_t *) messageBuffer, 0, 0);
+						osMessageQueuePut(debugLogQueue, (uint8_t *) messageBuffer, 0, 0);
 					} else {
-						osMessageQueuePut(sensorReadoutsQueue, (uint8_t *) "SCD - error", 0, 0);
+						osMessageQueuePut(debugLogQueue, (uint8_t *) "SCD - error", 0, 0);
 					}
 				}
 			}

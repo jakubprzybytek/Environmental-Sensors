@@ -11,14 +11,14 @@
 
 #include <ftoa.h>
 
-#include <Sensors/TempPressureSensor.h>
-
 #include <EnvSensorCommon.hpp>
+#include <Readouts/SensorsReadouts.hpp>
 #include <Sensors/Devices/Bme280.hpp>
+#include <Sensors/TempPressureSensor.hpp>
 
 extern I2C_HandleTypeDef hi2c1;
 
-extern osMessageQueueId_t sensorReadoutsQueue;
+extern osMessageQueueId_t debugLogQueue;
 
 void TempPressureSensorInit() {
 	startBmp280ReadoutThread();
@@ -62,7 +62,7 @@ void bmp280ReadoutThread(void *pvParameters) {
 
 	HAL_StatusTypeDef status = bmp280.init();
 	if (status != HAL_OK) {
-		osMessageQueuePut(sensorReadoutsQueue, (uint8_t*) "BMP - error init", 0, 0);
+		osMessageQueuePut(debugLogQueue, (uint8_t*) "BMP - error init", 0, 0);
 
 		I2C1_RELEASE
 
@@ -73,7 +73,7 @@ void bmp280ReadoutThread(void *pvParameters) {
 
 	status = bmp280.startContinousMeasurement();
 	if (status != HAL_OK) {
-		osMessageQueuePut(sensorReadoutsQueue, (uint8_t*) "BMP - error start", 0, 0);
+		osMessageQueuePut(debugLogQueue, (uint8_t*) "BMP - error start", 0, 0);
 
 		I2C1_RELEASE
 
@@ -104,9 +104,12 @@ void bmp280ReadoutThread(void *pvParameters) {
 			ftoa(pressure, pressureBuffer, 2);
 
 			sprintf(messageBuffer, "T%s P%s %lu", temperatureBuffer, pressureBuffer, ++counter);
-			osMessageQueuePut(sensorReadoutsQueue, (uint8_t*) messageBuffer, 0, 0);
+			osMessageQueuePut(debugLogQueue, (uint8_t*) messageBuffer, 0, 0);
+
+			SensorsReadouts::submitTemperatureAndPressure(temperature, pressure);
+
 		} else {
-			osMessageQueuePut(sensorReadoutsQueue, (uint8_t*) "BMP - error", 0, 0);
+			osMessageQueuePut(debugLogQueue, (uint8_t*) "BMP - error", 0, 0);
 		}
 	}
 }
@@ -126,7 +129,7 @@ void bme280ReadoutThread(void *pvParameters) {
 
 	HAL_StatusTypeDef status = bme280.init();
 	if (status != HAL_OK) {
-		osMessageQueuePut(sensorReadoutsQueue, (uint8_t*) "BMP - error init", 0, 0);
+		osMessageQueuePut(debugLogQueue, (uint8_t*) "BMP - error init", 0, 0);
 
 		I2C1_RELEASE
 
@@ -137,7 +140,7 @@ void bme280ReadoutThread(void *pvParameters) {
 
 	status = bme280.startContinousMeasurement();
 	if (status != HAL_OK) {
-		osMessageQueuePut(sensorReadoutsQueue, (uint8_t*) "BMP - error start", 0, 0);
+		osMessageQueuePut(debugLogQueue, (uint8_t*) "BMP - error start", 0, 0);
 
 		I2C1_RELEASE
 
@@ -170,9 +173,9 @@ void bme280ReadoutThread(void *pvParameters) {
 			ftoa(humidity, humidityBuffer, 1);
 
 			sprintf(messageBuffer, "%s %s %s", temperatureBuffer, pressureBuffer, humidityBuffer);
-			osMessageQueuePut(sensorReadoutsQueue, (uint8_t*) messageBuffer, 0, 0);
+			osMessageQueuePut(debugLogQueue, (uint8_t*) messageBuffer, 0, 0);
 		} else {
-			osMessageQueuePut(sensorReadoutsQueue, (uint8_t*) "BMP - error", 0, 0);
+			osMessageQueuePut(debugLogQueue, (uint8_t*) "BMP - error", 0, 0);
 		}
 	}
 }

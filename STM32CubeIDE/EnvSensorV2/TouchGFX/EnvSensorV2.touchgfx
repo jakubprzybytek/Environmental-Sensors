@@ -48,7 +48,8 @@
             "Width": 200,
             "Height": 114,
             "TextId": "__SingleUse_NW8V",
-            "TextRotation": "0"
+            "TextRotation": "0",
+            "Wildcard1": {}
           },
           {
             "Type": "TextArea",
@@ -83,7 +84,8 @@
             "Width": 200,
             "Height": 78,
             "TextId": "__SingleUse_G5RA",
-            "TextRotation": "0"
+            "TextRotation": "0",
+            "Wildcard1": {}
           },
           {
             "Type": "TextArea",

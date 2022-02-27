@@ -7,14 +7,16 @@
 
 #include <EnvSensorV2.hpp>
 
+#include <DebugLog.hpp>
+#include <Readouts/SensorsReadoutsCollector.hpp>
+
 #include <Display/SmallScreen.hpp>
 #include <Sensors/CO2Sensor.hpp>
-#include <Sensors/TempPressureSensor.h>
 #include <Sensors/ParticlesSensor.hpp>
+#include <Sensors/TempPressureSensor.hpp>
 
 extern I2C_HandleTypeDef hi2c1;
 
-osMessageQueueId_t sensorReadoutsQueue;
 osMutexId_t i2c1Mutex;
 
 void vLEDTask(void *pvParameters);
@@ -27,11 +29,6 @@ void EnvSensorV2_Init() {
 	};
 	osThreadNew(vLEDTask, NULL, &ledBlinkThreadAttributes);
 
-	const osMessageQueueAttr_t sensorsReadoutsQueueAttributes = {
-		.name = "sensors-queue"
-	};
-	sensorReadoutsQueue = osMessageQueueNew(10, 30, &sensorsReadoutsQueueAttributes);
-
 	osMutexAttr_t i2c1MutexAttributes = {
 		.name = "i2c1-mutex"
 	};
@@ -39,18 +36,20 @@ void EnvSensorV2_Init() {
 
 
 
-		uint8_t devices = 0;
-		for (uint8_t i = 0x03u; i < 0x78u; i++)
-		  {
-		    uint8_t address = i << 1u ;
-		    /* In case there is a positive feedback, print it out. */
-		    if (HAL_OK == HAL_I2C_IsDeviceReady(&hi2c1, address, 3u, 10u))
-		    {
-		      devices++;
-		    }
-		  }
+//		uint8_t devices = 0;
+//		for (uint8_t i = 0x03u; i < 0x78u; i++)
+//		  {
+//		    uint8_t address = i << 1u ;
+//		    /* In case there is a positive feedback, print it out. */
+//		    if (HAL_OK == HAL_I2C_IsDeviceReady(&hi2c1, address, 3u, 10u))
+//		    {
+//		      devices++;
+//		    }
+//		  }
 
-	startSensorReadoutsCollectorThred();
+	DebugLog::init();
+
+	SensorsReadoutsCollector::init();
 
 	TempPressureSensorInit();
 
@@ -73,45 +72,6 @@ void vLEDTask(void *pvParameters) {
 		HAL_GPIO_WritePin(LED_3_GPIO_Port, LED_3_Pin, GPIO_PIN_SET);
 		osDelay( 250 / portTICK_RATE_MS );
 		HAL_GPIO_WritePin(LED_3_GPIO_Port, LED_3_Pin, GPIO_PIN_RESET);
-	}
-}
-
-void startSensorReadoutsCollectorThred() {
-	const osThreadAttr_t sensorReadoutsCollectorThreadAttributes = {
-		.name = "sensors-collect-th",
-		.stack_size = 128 * sizeof(StackType_t),
-		.priority = (osPriority_t) osPriorityNormal
-	};
-	osThreadNew(sensorReadoutsCollectorThread, NULL, &sensorReadoutsCollectorThreadAttributes);
-}
-
-void sensorReadoutsCollectorThread(void *pvParameters) {
-
-	SmallScreen smallScreen(hi2c1);
-	uint8_t messageBuffer[30];
-
-	I2C1_ACQUIRE
-
-	smallScreen.init();
-	smallScreen.clear();
-	smallScreen.appendLine("Hello world");
-
-	I2C1_RELEASE
-
-	for(;;) {
-		osStatus_t status = osMessageQueueGet(sensorReadoutsQueue, messageBuffer, NULL, portMAX_DELAY);
-
-		if (status == osOK) {
-
-			I2C1_ACQUIRE
-
-			smallScreen.appendLine((char *)messageBuffer);
-
-			I2C1_RELEASE
-
-		} else if (status != osErrorTimeout) {
-			osDelay(5000 / portTICK_RATE_MS);
-		}
 	}
 }
 
