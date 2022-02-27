@@ -30,6 +30,7 @@ void TouchGFXHAL::initialize()
     // Please note, HAL::initialize() must be called to initialize the framework.
 
     TouchGFXGeneratedHAL::initialize();
+    lockDMAToFrontPorch(false);
 }
 
 /**
@@ -62,6 +63,10 @@ void TouchGFXHAL::setTFTFrameBuffer(uint16_t* address)
     TouchGFXGeneratedHAL::setTFTFrameBuffer(address);
 }
 
+
+#include <Display/Devices/Epd_4in2a.hpp>
+extern EPD_4in2A eInk;
+
 /**
  * This function is called whenever the framework has performed a partial draw.
  *
@@ -82,6 +87,13 @@ void TouchGFXHAL::flushFrameBuffer(const touchgfx::Rect& rect)
     // defined in TouchGFXGeneratedHAL.cpp
 
     TouchGFXGeneratedHAL::flushFrameBuffer(rect);
+
+    //uint8_t *frameBuffer = advanceFrameBufferToRect(uint8_t* fbPtr, const touchgfx::Rect& rect);
+    uint8_t *frameBuffer = (uint8_t*) getClientFrameBuffer();
+
+    eInk.initGrey(true);
+	eInk.displayGrey(frameBuffer, true, true);
+	eInk.sleep(true);
 }
 
 bool TouchGFXHAL::blockCopy(void* RESTRICT dest, const void* RESTRICT src, uint32_t numBytes)

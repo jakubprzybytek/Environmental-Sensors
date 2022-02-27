@@ -12,6 +12,8 @@
 
 #include "main.h"
 
+#include "Epd_4in2Config.hpp"
+
 #define EPD_4IN2B_PANEL_SETTING                               0x00
 #define EPD_4IN2B_POWER_SETTING                               0x01
 #define EPD_4IN2B_POWER_OFF                                   0x02
@@ -56,14 +58,6 @@
 #define EPD_WIDTH			400
 #define EPD_WIDTH_BLOCKS	EPD_WIDTH / 8
 #define EPD_HEIGHT			300
-
-#define EPD_RESET_HIGH 			HAL_GPIO_WritePin(E_INK_RESET_GPIO_Port, E_INK_RESET_Pin, GPIO_PIN_SET)
-#define EPD_RESET_LOW 			HAL_GPIO_WritePin(E_INK_RESET_GPIO_Port, E_INK_RESET_Pin, GPIO_PIN_RESET)
-#define EPD_DATA_COMMAND_HIGH 	HAL_GPIO_WritePin(E_INK_DC_GPIO_Port, E_INK_DC_Pin, GPIO_PIN_SET)
-#define EPD_DATA_COMMAND_LOW 	HAL_GPIO_WritePin(E_INK_DC_GPIO_Port, E_INK_DC_Pin, GPIO_PIN_RESET)
-#define EPD_CHIP_SELECT_HIGH 	HAL_GPIO_WritePin(E_INK_SELECT_GPIO_Port, E_INK_SELECT_Pin, GPIO_PIN_SET)
-#define EPD_CHIP_SELECT_LOW 	HAL_GPIO_WritePin(E_INK_SELECT_GPIO_Port, E_INK_SELECT_Pin, GPIO_PIN_RESET)
-#define EPD_BUSY_READ			HAL_GPIO_ReadPin(E_INK_BUSY_GPIO_Port, E_INK_BUSY_Pin)
 
 #define AUX_BUFFER_SIZE 4096
 

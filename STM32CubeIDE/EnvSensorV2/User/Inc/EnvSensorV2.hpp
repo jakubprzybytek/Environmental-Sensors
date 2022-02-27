@@ -24,6 +24,9 @@ void startSensorReadoutsCollectorThred();
 
 void sensorReadoutsCollectorThread(void *pvParameters);
 
+void switch1Pressed();
+void switch2Pressed();
+
 #ifdef __cplusplus
 }
 #endif

@@ -118,6 +118,26 @@ void sensorReadoutsCollectorThread(void *pvParameters) {
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin) {
 	if (GPIO_Pin == SCD30_READY_Pin) {
 		SCD30ReadyInterrupedHandler();
+	} else if (GPIO_Pin == SWITCH_1_Pin) {
+		switch1Pressed();
+	} else if (GPIO_Pin == SWITCH_2_Pin) {
+		switch2Pressed();
 	}
 }
 
+#include <Display/Devices/Epd_4in2a.hpp>
+SPI_HandleTypeDef hspi1;
+
+EPD_4in2A eInk(hspi1);
+
+void switch1Pressed() {
+	eInk.init(true);
+	eInk.clear(true);
+	eInk.sleep(true);
+}
+
+#include <touchgfx/hal/OSWrappers.hpp>
+using namespace touchgfx;
+void switch2Pressed() {
+	OSWrappers::signalVSync();
+}

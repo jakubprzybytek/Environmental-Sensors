@@ -445,6 +445,8 @@ static void MX_GPIO_Init(void)
 void StartDefaultTask(void *argument)
 {
   /* USER CODE BEGIN 5 */
+	  MX_TouchGFX_Process();
+
   /* Infinite loop */
   for(;;)
   {
