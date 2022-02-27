@@ -2,13 +2,13 @@
   "Application": {
     "Screens": [
       {
-        "Name": "Main",
+        "Name": "MainReadouts",
         "Components": [
           {
             "Type": "Box",
-            "Name": "box1",
-            "Width": 211,
-            "Height": 182,
+            "Name": "background",
+            "Width": 400,
+            "Height": 300,
             "Color": {
               "Red": 255,
               "Green": 255,
@@ -16,28 +16,104 @@
             }
           },
           {
-            "Type": "TextArea",
-            "Name": "textArea1",
-            "X": 165,
-            "Y": 66,
-            "Width": 115,
-            "Height": 25,
-            "TextId": "__SingleUse_QYBV",
-            "TextRotation": "0",
-            "AutoSize": true
+            "Type": "CustomContainerInstance",
+            "Name": "pressureContainer",
+            "X": 20,
+            "Y": 128,
+            "Width": 200,
+            "Height": 97,
+            "CustomContainerDefinitionName": "PressureContainer"
+          },
+          {
+            "Type": "CustomContainerInstance",
+            "Name": "temperatureContainer",
+            "Width": 200,
+            "Height": 114,
+            "CustomContainerDefinitionName": "TemperatureContainer"
           }
         ],
         "Interactions": []
       }
     ],
-    "CustomContainerDefinitions": [],
+    "CustomContainerDefinitions": [
+      {
+        "Name": "TemperatureContainer",
+        "Width": 200,
+        "Height": 114,
+        "Components": [
+          {
+            "Type": "TextArea",
+            "Name": "valueTextArea",
+            "Y": 8,
+            "Width": 200,
+            "Height": 114,
+            "TextId": "__SingleUse_NW8V",
+            "TextRotation": "0"
+          },
+          {
+            "Type": "TextArea",
+            "Name": "unitTextArea",
+            "X": 167,
+            "Width": 20,
+            "Height": 28,
+            "TextId": "__SingleUse_BZKJ",
+            "TextRotation": "0"
+          },
+          {
+            "Type": "TextArea",
+            "Name": "labelTextArea",
+            "X": 38,
+            "Width": 112,
+            "Height": 28,
+            "TextId": "__SingleUse_DH8G",
+            "TextRotation": "0"
+          }
+        ],
+        "Interactions": []
+      },
+      {
+        "Name": "PressureContainer",
+        "Width": 200,
+        "Height": 97,
+        "Components": [
+          {
+            "Type": "TextArea",
+            "Name": "valueTextArea",
+            "Y": 19,
+            "Width": 200,
+            "Height": 78,
+            "TextId": "__SingleUse_G5RA",
+            "TextRotation": "0"
+          },
+          {
+            "Type": "TextArea",
+            "Name": "unitTextArea",
+            "X": 160,
+            "Width": 32,
+            "Height": 28,
+            "TextId": "__SingleUse_MU2W",
+            "TextRotation": "0"
+          },
+          {
+            "Type": "TextArea",
+            "Name": "labelTextArea",
+            "X": 30,
+            "Width": 76,
+            "Height": 28,
+            "TextId": "__SingleUse_Z9BF",
+            "TextRotation": "0"
+          }
+        ],
+        "Interactions": []
+      }
+    ],
     "Name": "MyApplication",
     "Resolution": {
       "Width": 400,
       "Height": 300
     },
     "SelectedColorDepth": 2,
-    "StartupScreenName": "Main",
+    "StartupScreenName": "MainReadouts",
     "SelectedStartupLanguage": "GB",
     "Skin": "Blue",
     "TouchGfxPath": "../Middlewares/ST/touchgfx",

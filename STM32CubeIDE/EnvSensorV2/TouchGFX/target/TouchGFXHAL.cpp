@@ -63,7 +63,7 @@ void TouchGFXHAL::setTFTFrameBuffer(uint16_t* address)
     TouchGFXGeneratedHAL::setTFTFrameBuffer(address);
 }
 
-
+#include <touchgfx/hal/OSWrappers.hpp>
 #include <Display/Devices/Epd_4in2a.hpp>
 extern EPD_4in2A eInk;
 
@@ -86,14 +86,20 @@ void TouchGFXHAL::flushFrameBuffer(const touchgfx::Rect& rect)
     // use advanceFrameBufferToRect(uint8_t* fbPtr, const touchgfx::Rect& rect)
     // defined in TouchGFXGeneratedHAL.cpp
 
-    TouchGFXGeneratedHAL::flushFrameBuffer(rect);
+    //TouchGFXGeneratedHAL::flushFrameBuffer(rect);
 
     //uint8_t *frameBuffer = advanceFrameBufferToRect(uint8_t* fbPtr, const touchgfx::Rect& rect);
     uint8_t *frameBuffer = (uint8_t*) getClientFrameBuffer();
 
     eInk.initGrey(true);
+
+    OSWrappers::takeFrameBufferSemaphore();
 	eInk.displayGrey(frameBuffer, true, true);
+	OSWrappers::giveFrameBufferSemaphore();
+
 	eInk.sleep(true);
+
+	HAL::flushFrameBuffer(rect);
 }
 
 bool TouchGFXHAL::blockCopy(void* RESTRICT dest, const void* RESTRICT src, uint32_t numBytes)
