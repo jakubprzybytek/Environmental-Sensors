@@ -14,27 +14,18 @@
 
 #include <Utils/ftoa.h>
 #include <Utils/DebugLog.hpp>
+#include <Utils/BlinkingLeds.hpp>
 
 extern I2C_HandleTypeDef hi2c1;
 
+// I2C mutex shared by all devices that are using it
 osMutexId_t i2c1Mutex;
 
-void vLEDTask(void *pvParameters);
-
 void EnvSensorV2_Init() {
-	const osThreadAttr_t ledBlinkThreadAttributes = {
-		.name = "led-blink-th",
-		.stack_size = 128,
-		.priority = (osPriority_t) osPriorityLow
-	};
-	osThreadNew(vLEDTask, NULL, &ledBlinkThreadAttributes);
-
 	osMutexAttr_t i2c1MutexAttributes = {
 		.name = "i2c1-mutex"
 	};
 	i2c1Mutex = osMutexNew(&i2c1MutexAttributes);
-
-
 
 //		uint8_t devices = 0;
 //		for (uint8_t i = 0x03u; i < 0x78u; i++)
@@ -47,6 +38,8 @@ void EnvSensorV2_Init() {
 //		    }
 //		  }
 
+	BlinkingLeds::init();
+
 	DebugLog::init();
 
 	SensorsReadoutsCollector::init();
@@ -56,23 +49,6 @@ void EnvSensorV2_Init() {
 	C02Sensor::init();
 
 	//ParticlesSensor_Init();
-}
-
-void vLEDTask(void *pvParameters) {
-	for (;;) {
-		HAL_GPIO_WritePin(LED_1_GPIO_Port, LED_1_Pin, GPIO_PIN_SET);
-		osDelay( 250 / portTICK_RATE_MS );
-		HAL_GPIO_WritePin(LED_1_GPIO_Port, LED_1_Pin, GPIO_PIN_RESET);
-		HAL_GPIO_WritePin(LED_2_GPIO_Port, LED_2_Pin, GPIO_PIN_SET);
-		osDelay( 250 / portTICK_RATE_MS );
-		HAL_GPIO_WritePin(LED_2_GPIO_Port, LED_2_Pin, GPIO_PIN_RESET);
-		HAL_GPIO_WritePin(LED_4_GPIO_Port, LED_4_Pin, GPIO_PIN_SET);
-		osDelay( 250 / portTICK_RATE_MS );
-		HAL_GPIO_WritePin(LED_4_GPIO_Port, LED_4_Pin, GPIO_PIN_RESET);
-		HAL_GPIO_WritePin(LED_3_GPIO_Port, LED_3_Pin, GPIO_PIN_SET);
-		osDelay( 250 / portTICK_RATE_MS );
-		HAL_GPIO_WritePin(LED_3_GPIO_Port, LED_3_Pin, GPIO_PIN_RESET);
-	}
 }
 
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin) {
