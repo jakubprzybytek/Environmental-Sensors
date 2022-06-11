@@ -28,6 +28,8 @@
     <ClCompile Include="..\..\gui\src\mainreadouts_screen\MainReadoutsPresenter.cpp"/>
     <ClCompile Include="..\..\gui\src\mainreadouts_screen\MainReadoutsView.cpp"/>
     <ClCompile Include="..\..\generated\gui_generated\src\mainreadouts_screen\MainReadoutsViewBase.cpp"/>
+    <ClCompile Include="..\..\gui\src\containers\CO2Container.cpp"/>
+    <ClCompile Include="..\..\generated\gui_generated\src\containers\CO2ContainerBase.cpp"/>
   </ItemGroup>
   <ItemGroup>
     <None Include="$(ApplicationRoot)\assets\texts\texts.xml"/>
@@ -185,6 +187,8 @@
     <ClInclude Include="..\..\gui\include\gui\mainreadouts_screen\MainReadoutsPresenter.hpp"/>
     <ClInclude Include="..\..\gui\include\gui\mainreadouts_screen\MainReadoutsView.hpp"/>
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\mainreadouts_screen\MainReadoutsViewBase.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\containers\CO2Container.hpp"/>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\CO2ContainerBase.hpp"/>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="$(ApplicationRoot)\generated\simulator\touchgfx.rc"/>

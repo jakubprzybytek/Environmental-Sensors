@@ -31,6 +31,8 @@ public:
 	void notifyTemperatureChanged(float newTemperature);
 	void notifyPressureChanged(float newPressure);
 
+	void notifyCO2Changed(float newCo2);
+
 private:
 	MainReadoutsPresenter();
 

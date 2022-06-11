@@ -10,6 +10,7 @@
 #include <touchgfx/widgets/Box.hpp>
 #include <gui/containers/PressureContainer.hpp>
 #include <gui/containers/TemperatureContainer.hpp>
+#include <gui/containers/CO2Container.hpp>
 
 class MainReadoutsViewBase : public touchgfx::View<MainReadoutsPresenter>
 {
@@ -30,6 +31,7 @@ protected:
     touchgfx::Box background;
     PressureContainer pressureContainer;
     TemperatureContainer temperatureContainer;
+    CO2Container cO2Container;
 
 private:
 

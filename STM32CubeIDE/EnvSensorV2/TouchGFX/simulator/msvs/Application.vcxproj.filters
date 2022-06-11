@@ -249,6 +249,12 @@
     <ClCompile Include="..\..\generated\gui_generated\src\mainreadouts_screen\MainReadoutsViewBase.cpp">
       <Filter>Source Files\generated\gui_generated\mainreadouts_screen</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\gui\src\containers\CO2Container.cpp">
+      <Filter>Source Files\gui\containers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\generated\gui_generated\src\containers\CO2ContainerBase.cpp">
+      <Filter>Source Files\generated\gui_generated\containers</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="$(ApplicationRoot)\assets\texts\texts.xml">
@@ -711,6 +717,12 @@
     </ClInclude>
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\mainreadouts_screen\MainReadoutsViewBase.hpp">
       <Filter>Header Files\generated\gui_generated\mainreadouts_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\containers\CO2Container.hpp">
+      <Filter>Header Files\gui\containers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\CO2ContainerBase.hpp">
+      <Filter>Header Files\generated\gui_generated\containers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

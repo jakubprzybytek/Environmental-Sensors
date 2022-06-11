@@ -14,7 +14,8 @@
 
 #include <Sensors/CO2Sensor.hpp>
 
-#include <EnvSensorV2.hpp>
+#include <EnvSensorCommon.hpp>
+#include <Readouts/SensorsReadouts.hpp>
 #include <Sensors/Devices/Scd30.hpp>
 
 #define SCD30_IS_READY HAL_GPIO_ReadPin(SCD30_READY_GPIO_Port, SCD30_READY_Pin)
@@ -27,22 +28,25 @@ extern osMessageQueueId_t debugLogQueue;
 osThreadId_t co2ReadoutThreadHandle;
 osSemaphoreId_t scd30ReadySemaphore = NULL;
 
-void CO2SensorInit() {
-
+void C02Sensor::init() {
 	const osSemaphoreAttr_t scd30ReadySemaphoreAttributes = {
 	  .name = "co2-sem"
 	};
 	scd30ReadySemaphore = osSemaphoreNew(1, 0, &scd30ReadySemaphoreAttributes);
 
+	startThread();
+}
+
+void C02Sensor::startThread() {
 	const osThreadAttr_t co2ReadoutThreadaAttributes = {
 		.name = "co2-readout-th",
 		.stack_size = 1024 * 4,
 		.priority = (osPriority_t) osPriorityNormal
 	};
-	co2ReadoutThreadHandle = osThreadNew(vCO2ReadoutThread, NULL, &co2ReadoutThreadaAttributes);
+	co2ReadoutThreadHandle = osThreadNew(thread, NULL, &co2ReadoutThreadaAttributes);
 }
 
-void vCO2ReadoutThread(void *pvParameters) {
+void C02Sensor::thread(void *pvParameters) {
 
 	uint32_t counter = 0;
 
@@ -102,6 +106,9 @@ void vCO2ReadoutThread(void *pvParameters) {
 				ftoa(hum, humMessageBuffer, 1);
 				sprintf(messageBuffer, "C%s T%s %s %lu", co2MessageBuffer, tempMessageBuffer, humMessageBuffer, ++counter);
 				osMessageQueuePut(debugLogQueue, (uint8_t *) messageBuffer, 0, 0);
+
+				SensorsReadouts::submitC02AndTemperature(co2, temp);
+
 			} else {
 				osMessageQueuePut(debugLogQueue, (uint8_t *) "SCD - error", 0, 0);
 
@@ -122,6 +129,9 @@ void vCO2ReadoutThread(void *pvParameters) {
 						ftoa(temp, tempMessageBuffer, 1);
 						sprintf(messageBuffer, "C%s T%s %lu", co2MessageBuffer, tempMessageBuffer, ++counter);
 						osMessageQueuePut(debugLogQueue, (uint8_t *) messageBuffer, 0, 0);
+
+						SensorsReadouts::submitC02AndTemperature(co2, temp);
+
 					} else {
 						osMessageQueuePut(debugLogQueue, (uint8_t *) "SCD - error", 0, 0);
 					}
@@ -136,7 +146,7 @@ void vCO2ReadoutThread(void *pvParameters) {
 	osThreadExit();
 }
 
-void SCD30ReadyInterrupedHandler() {
+void C02Sensor::interruptHandler() {
 	if (scd30ReadySemaphore != NULL) {
 		osSemaphoreRelease(scd30ReadySemaphore);
 	}

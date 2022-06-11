@@ -53,7 +53,7 @@ void EnvSensorV2_Init() {
 
 	TempPressureSensorInit();
 
-	//CO2SensorInit();
+	C02Sensor::init();
 
 	//ParticlesSensor_Init();
 }
@@ -77,7 +77,7 @@ void vLEDTask(void *pvParameters) {
 
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin) {
 	if (GPIO_Pin == SCD30_READY_Pin) {
-		SCD30ReadyInterrupedHandler();
+		C02Sensor::interruptHandler();
 	} else if (GPIO_Pin == SWITCH_1_Pin) {
 		switch1Pressed();
 	} else if (GPIO_Pin == SWITCH_2_Pin) {

@@ -20,4 +20,9 @@ void Model::tick() {
 		storedReadoutsState.pressure = readoutsState.pressure;
 		modelListener->notifyPressureChanged(storedReadoutsState.pressure);
 	}
+
+	if (storedReadoutsState.co2 != readoutsState.co2) {
+		storedReadoutsState.co2 = readoutsState.co2;
+		modelListener->notifyCO2Changed(storedReadoutsState.co2);
+	}
 }

@@ -8,10 +8,15 @@
 #ifndef INC_SENSORS_CO2SENSOR_HPP_
 #define INC_SENSORS_CO2SENSOR_HPP_
 
-void CO2SensorInit();
+class C02Sensor {
 
-void SCD30ReadyInterrupedHandler();
+public:
+	static void init();
 
-void vCO2ReadoutThread(void *pvParameters);
+	static void startThread();
+	static void thread(void *pvParameters);
+
+	static void interruptHandler();
+};
 
 #endif /* INC_SENSORS_CO2SENSOR_HPP_ */

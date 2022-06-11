@@ -91,13 +91,13 @@ void TouchGFXHAL::flushFrameBuffer(const touchgfx::Rect& rect)
     //uint8_t *frameBuffer = advanceFrameBufferToRect(uint8_t* fbPtr, const touchgfx::Rect& rect);
     uint8_t *frameBuffer = (uint8_t*) getClientFrameBuffer();
 
-    eInk.initGrey(true);
-
     OSWrappers::takeFrameBufferSemaphore();
-	eInk.displayGrey(frameBuffer, true, true);
-	OSWrappers::giveFrameBufferSemaphore();
 
-	eInk.sleep(true);
+//    eInk.initGrey(true);
+//	eInk.displayGrey(frameBuffer, true, true);
+//	eInk.sleep(true);
+
+	OSWrappers::giveFrameBufferSemaphore();
 
 	HAL::flushFrameBuffer(rect);
 }

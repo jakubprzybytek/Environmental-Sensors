@@ -17,6 +17,7 @@ public:
 
     virtual void notifyTemperatureChanged(float newTemperature) {}
     virtual void notifyPressureChanged(float newPressure) {}
+    virtual void notifyCO2Changed(float newCo2) {}
 
 protected:
     Model* model;

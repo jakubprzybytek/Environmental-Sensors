@@ -16,6 +16,8 @@ public:
 	void setTemperature(float temperature);
 	void setPressure(float preassure);
 
+	void setCO2(float co2);
+
 protected:
 };
 

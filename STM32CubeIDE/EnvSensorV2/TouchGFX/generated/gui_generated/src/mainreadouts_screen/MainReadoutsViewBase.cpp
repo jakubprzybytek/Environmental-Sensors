@@ -13,18 +13,22 @@ MainReadoutsViewBase::MainReadoutsViewBase()
     background.setPosition(0, 0, 400, 300);
     background.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
 
-    pressureContainer.setXY(20, 128);
+    pressureContainer.setXY(0, 128);
 
     temperatureContainer.setXY(0, 0);
+
+    cO2Container.setXY(200, 128);
 
     add(__background);
     add(background);
     add(pressureContainer);
     add(temperatureContainer);
+    add(cO2Container);
 }
 
 void MainReadoutsViewBase::setupScreen()
 {
     pressureContainer.initialize();
     temperatureContainer.initialize();
+    cO2Container.initialize();
 }

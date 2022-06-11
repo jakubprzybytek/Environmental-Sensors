@@ -18,7 +18,6 @@
           {
             "Type": "CustomContainerInstance",
             "Name": "pressureContainer",
-            "X": 20,
             "Y": 128,
             "Width": 200,
             "Height": 97,
@@ -30,6 +29,15 @@
             "Width": 200,
             "Height": 114,
             "CustomContainerDefinitionName": "TemperatureContainer"
+          },
+          {
+            "Type": "CustomContainerInstance",
+            "Name": "cO2Container",
+            "X": 200,
+            "Y": 128,
+            "Width": 200,
+            "Height": 97,
+            "CustomContainerDefinitionName": "CO2Container"
           }
         ],
         "Interactions": []
@@ -103,6 +111,42 @@
             "Width": 76,
             "Height": 28,
             "TextId": "__SingleUse_Z9BF",
+            "TextRotation": "0"
+          }
+        ],
+        "Interactions": []
+      },
+      {
+        "Name": "CO2Container",
+        "Width": 200,
+        "Height": 97,
+        "Components": [
+          {
+            "Type": "TextArea",
+            "Name": "valueTextArea",
+            "Y": 19,
+            "Width": 200,
+            "Height": 78,
+            "TextId": "__SingleUse_JK9G",
+            "TextRotation": "0",
+            "Wildcard1": {}
+          },
+          {
+            "Type": "TextArea",
+            "Name": "unitTextArea",
+            "X": 160,
+            "Width": 40,
+            "Height": 28,
+            "TextId": "__SingleUse_B0L7",
+            "TextRotation": "0"
+          },
+          {
+            "Type": "TextArea",
+            "Name": "labelTextArea",
+            "X": 30,
+            "Width": 76,
+            "Height": 28,
+            "TextId": "__SingleUse_1Z19",
             "TextRotation": "0"
           }
         ],

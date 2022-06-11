@@ -17,3 +17,7 @@ void MainReadoutsPresenter::notifyTemperatureChanged(float newTemperature) {
 void MainReadoutsPresenter::notifyPressureChanged(float newPressure) {
 	view.setPressure(newPressure);
 }
+
+void MainReadoutsPresenter::notifyCO2Changed(float newCo2) {
+	view.setCO2(newCo2);
+}

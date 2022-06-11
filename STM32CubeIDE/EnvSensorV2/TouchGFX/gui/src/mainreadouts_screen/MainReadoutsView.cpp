@@ -18,3 +18,7 @@ void MainReadoutsView::setTemperature(float temperature) {
 void MainReadoutsView::setPressure(float preassure) {
 	pressureContainer.setValue(preassure);
 }
+
+void MainReadoutsView::setCO2(float co2) {
+	cO2Container.setValue(co2);
+}

@@ -5,8 +5,10 @@
 
 #include "ftoa.h"
 
-#include <Readouts/ReadoutsState.hpp>
 #include <Readouts/SensorsReadoutsCollector.hpp>
+
+#include <Readouts/ReadoutsState.hpp>
+#include <Readouts/SensorsReadouts.hpp>
 
 osMessageQueueId_t sensorReadoutsQueue;
 
@@ -41,6 +43,10 @@ void SensorsReadoutsCollector::thread(void *pvParameters) {
 		case TemperatureAndPressure:
 			readoutsState.temperature = message.tp.temperature;
 			readoutsState.pressure = message.tp.pressure;
+			break;
+		case CO2AndTemperature:
+			readoutsState.co2 = message.ct.co2;
+			readoutsState.temperature2 = message.ct.temperature;
 			break;
 		}
 
