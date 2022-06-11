@@ -3,17 +3,17 @@
 #include <stdio.h>
 #include <string.h>
 
-#include "ftoa.h"
-
 #include <EnvSensorV2.hpp>
 
-#include <DebugLog.hpp>
 #include <Readouts/SensorsReadoutsCollector.hpp>
 
 #include <Display/SmallScreen.hpp>
 #include <Sensors/CO2Sensor.hpp>
 #include <Sensors/ParticlesSensor.hpp>
 #include <Sensors/TempPressureSensor.hpp>
+
+#include <Utils/ftoa.h>
+#include <Utils/DebugLog.hpp>
 
 extern I2C_HandleTypeDef hi2c1;
 

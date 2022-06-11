@@ -3,12 +3,11 @@
 #include <stdio.h>
 #include <string.h>
 
-#include "ftoa.h"
-
-#include <DebugLog.hpp>
-
 #include <EnvSensorCommon.hpp>
 #include <Display/SmallScreen.hpp>
+
+#include <Utils/ftoa.h>
+#include <Utils/DebugLog.hpp>
 
 extern I2C_HandleTypeDef hi2c1;
 

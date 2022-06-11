@@ -3,12 +3,12 @@
 #include <stdio.h>
 #include <string.h>
 
-#include "ftoa.h"
-
 #include <Readouts/SensorsReadoutsCollector.hpp>
 
 #include <Readouts/ReadoutsState.hpp>
 #include <Readouts/SensorsReadouts.hpp>
+
+#include <Utils/ftoa.h>
 
 osMessageQueueId_t sensorReadoutsQueue;
 

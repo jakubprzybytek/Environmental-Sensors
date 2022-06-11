@@ -10,13 +10,13 @@
 #include <stdio.h>
 
 #include <main.h>
-#include <ftoa.h>
 
 #include <Sensors/CO2Sensor.hpp>
 
 #include <EnvSensorCommon.hpp>
 #include <Readouts/SensorsReadouts.hpp>
 #include <Sensors/Devices/Scd30.hpp>
+#include <Utils/ftoa.h>
 
 #define SCD30_IS_READY HAL_GPIO_ReadPin(SCD30_READY_GPIO_Port, SCD30_READY_Pin)
 

@@ -9,12 +9,11 @@
 
 #include <stdio.h>
 
-#include <ftoa.h>
-
 #include <EnvSensorCommon.hpp>
 #include <Readouts/SensorsReadouts.hpp>
 #include <Sensors/Devices/Bme280.hpp>
 #include <Sensors/TempPressureSensor.hpp>
+#include <Utils/ftoa.h>
 
 extern I2C_HandleTypeDef hi2c1;
 
