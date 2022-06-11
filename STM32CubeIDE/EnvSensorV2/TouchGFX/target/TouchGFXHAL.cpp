@@ -93,9 +93,9 @@ void TouchGFXHAL::flushFrameBuffer(const touchgfx::Rect& rect)
 
     OSWrappers::takeFrameBufferSemaphore();
 
-//    eInk.initGrey(true);
-//	eInk.displayGrey(frameBuffer, true, true);
-//	eInk.sleep(true);
+    eInk.initGrey(true);
+	eInk.displayGrey(frameBuffer, true, true);
+	eInk.sleep(true);
 
 	OSWrappers::giveFrameBufferSemaphore();
 

@@ -8,12 +8,15 @@
 #ifndef SRC_SENSORS_TEMPPRESSURESENSOR_H_
 #define SRC_SENSORS_TEMPPRESSURESENSOR_H_
 
-void TempPressureSensorInit();
+class TempPressureSensor {
 
-void startBmp280ReadoutThread();
-void startBme280ReadoutThread();
+public:
+	static void init();
 
-void bmp280ReadoutThread(void *pvParameters);
-void bme280ReadoutThread(void *pvParameters);
+	static void startBmp280Thread();
+	static void startBme280Thread();
+	static void bmp280Thread(void *pvParameters);
+	static void bme280Thread(void *pvParameters);
+};
 
 #endif /* SRC_SENSORS_TEMPPRESSURESENSOR_H_ */

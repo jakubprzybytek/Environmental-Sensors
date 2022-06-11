@@ -44,9 +44,9 @@ void EnvSensorV2_Init() {
 
 	SensorsReadoutsCollector::init();
 
-	TempPressureSensorInit();
+	TempPressureSensor::init();
 
-	C02Sensor::init();
+	//C02Sensor::init();
 
 	//ParticlesSensor_Init();
 }
