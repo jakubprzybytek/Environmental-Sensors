@@ -2,9 +2,9 @@
 
 #include <Readouts/SensorsReadouts.hpp>
 
-#include <Readouts/SensorsReadoutsCollector.hpp>
+#include <Readouts/SensorMessages.hpp>
 
-extern osMessageQueueId_t sensorReadoutsQueue;
+extern osMessageQueueId_t sensorReadoutsQueueHandle;
 
 void SensorsReadouts::submitTemperatureAndPressure(float temperature, float pressure) {
 	ReadoutMessage message;
@@ -12,7 +12,7 @@ void SensorsReadouts::submitTemperatureAndPressure(float temperature, float pres
 	message.tp.temperature = temperature;
 	message.tp.pressure = pressure;
 
-	osMessageQueuePut(sensorReadoutsQueue, &message, 0, 0);
+	osMessageQueuePut(sensorReadoutsQueueHandle, &message, 0, 0);
 }
 
 void SensorsReadouts::submitC02AndTemperature(float co2, float temperature) {
@@ -21,5 +21,5 @@ void SensorsReadouts::submitC02AndTemperature(float co2, float temperature) {
 	message.ct.co2 = co2;
 	message.ct.temperature = temperature;
 
-	osMessageQueuePut(sensorReadoutsQueue, &message, 0, 0);
+	osMessageQueuePut(sensorReadoutsQueueHandle, &message, 0, 0);
 }

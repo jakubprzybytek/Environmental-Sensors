@@ -14,19 +14,14 @@
 
 extern I2C_HandleTypeDef hi2c1;
 
-osMessageQueueId_t debugLogQueue;
+extern osMessageQueueId_t debugLogQueueHandle;
 
 void DebugLog::init() {
-	const osMessageQueueAttr_t debugLogQueueAttributes = {
-		.name = "debug-log-queue"
-	};
-	debugLogQueue = osMessageQueueNew(MESSAGES_COUNT, MESSAGE_SIZE, &debugLogQueueAttributes);
-
 	startThread();
 }
 
 void DebugLog::log(char *messageBuffer) {
-	osMessageQueuePut(debugLogQueue, (uint8_t*) messageBuffer, 0, 0);
+	osMessageQueuePut(debugLogQueueHandle, (uint8_t*) messageBuffer, 0, 0);
 }
 
 void DebugLog::startThread() {
@@ -52,7 +47,7 @@ void DebugLog::thread(void *pvParameters) {
 	I2C1_RELEASE
 
 	for(;;) {
-		osStatus_t status = osMessageQueueGet(debugLogQueue, messageBuffer, NULL, portMAX_DELAY);
+		osStatus_t status = osMessageQueueGet(debugLogQueueHandle, messageBuffer, NULL, portMAX_DELAY);
 
 		if (status == osOK) {
 

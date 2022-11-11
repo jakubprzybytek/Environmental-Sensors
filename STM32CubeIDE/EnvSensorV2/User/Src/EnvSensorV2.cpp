@@ -25,8 +25,6 @@ extern osMutexAttr_t i2c1Mutex_attributes;
 extern const osMutexAttr_t myMutex01_attributes;
 
 void EnvSensorV2_Init() {
-	i2c1MutexHandle = osMutexNew(&i2c1Mutex_attributes);
-
 //		uint8_t devices = 0;
 //		for (uint8_t i = 0x03u; i < 0x78u; i++)
 //		  {

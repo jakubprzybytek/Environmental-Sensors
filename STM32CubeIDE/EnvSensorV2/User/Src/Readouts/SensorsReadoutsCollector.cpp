@@ -6,20 +6,15 @@
 #include <Readouts/SensorsReadoutsCollector.hpp>
 
 #include <Readouts/ReadoutsState.hpp>
-#include <Readouts/SensorsReadouts.hpp>
+#include <Readouts/SensorMessages.hpp>
 
 #include <Utils/ftoa.h>
 
-osMessageQueueId_t sensorReadoutsQueue;
+extern osMessageQueueId_t sensorReadoutsQueueHandle;
 
 ReadoutsState readoutsState;
 
 void SensorsReadoutsCollector::init() {
-	const osMessageQueueAttr_t sensorsReadoutsQueueAttributes = {
-		.name = "sensors-queue"
-	};
-	sensorReadoutsQueue = osMessageQueueNew(10, sizeof (ReadoutMessage), &sensorsReadoutsQueueAttributes);
-
 	startThread();
 }
 
@@ -33,11 +28,10 @@ void SensorsReadoutsCollector::startThread() {
 }
 
 void SensorsReadoutsCollector::thread(void *pvParameters) {
-
 	ReadoutMessage message;
 
 	for (;;) {
-		osStatus_t status = osMessageQueueGet(sensorReadoutsQueue, &message, NULL, portMAX_DELAY);
+		osStatus_t status = osMessageQueueGet(sensorReadoutsQueueHandle, &message, NULL, portMAX_DELAY);
 
 		switch (message.type) {
 		case TemperatureAndPressure:

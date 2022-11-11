@@ -25,6 +25,7 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "EnvSensorV2.hpp"
+#include "Readouts/SensorMessages.hpp"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -69,6 +70,17 @@ const osMessageQueueAttr_t debugLogQueue_attributes = {
   .cb_size = sizeof(debugLogQueueControlBlock),
   .mq_mem = &debugLogQueueBuffer,
   .mq_size = sizeof(debugLogQueueBuffer)
+};
+/* Definitions for sensorReadoutsQueue */
+osMessageQueueId_t sensorReadoutsQueueHandle;
+uint8_t sensorReadoutsQueueBuffer[ 6 * sizeof( ReadoutMessage_t ) ];
+osStaticMessageQDef_t sensorReadoutsQueueControlBlock;
+const osMessageQueueAttr_t sensorReadoutsQueue_attributes = {
+  .name = "sensorReadoutsQueue",
+  .cb_mem = &sensorReadoutsQueueControlBlock,
+  .cb_size = sizeof(sensorReadoutsQueueControlBlock),
+  .mq_mem = &sensorReadoutsQueueBuffer,
+  .mq_size = sizeof(sensorReadoutsQueueBuffer)
 };
 /* Definitions for i2c1Mutex */
 osMutexId_t i2c1MutexHandle;
@@ -158,6 +170,9 @@ int main(void)
   /* Create the queue(s) */
   /* creation of debugLogQueue */
   debugLogQueueHandle = osMessageQueueNew (8, 30, &debugLogQueue_attributes);
+
+  /* creation of sensorReadoutsQueue */
+  sensorReadoutsQueueHandle = osMessageQueueNew (6, sizeof(ReadoutMessage_t), &sensorReadoutsQueue_attributes);
 
   /* USER CODE BEGIN RTOS_QUEUES */
   /* add queues, ... */
