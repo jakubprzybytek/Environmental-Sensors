@@ -9,6 +9,9 @@
 #include <Utils/ftoa.h>
 #include <Utils/DebugLog.hpp>
 
+#define MESSAGES_COUNT 6
+#define MESSAGE_SIZE 30
+
 extern I2C_HandleTypeDef hi2c1;
 
 osMessageQueueId_t debugLogQueue;
@@ -17,9 +20,13 @@ void DebugLog::init() {
 	const osMessageQueueAttr_t debugLogQueueAttributes = {
 		.name = "debug-log-queue"
 	};
-	debugLogQueue = osMessageQueueNew(10, 30, &debugLogQueueAttributes);
+	debugLogQueue = osMessageQueueNew(MESSAGES_COUNT, MESSAGE_SIZE, &debugLogQueueAttributes);
 
 	startThread();
+}
+
+void DebugLog::log(char *messageBuffer) {
+	osMessageQueuePut(debugLogQueue, (uint8_t*) messageBuffer, 0, 0);
 }
 
 void DebugLog::startThread() {

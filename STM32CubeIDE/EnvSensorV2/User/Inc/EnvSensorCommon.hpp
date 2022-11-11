@@ -3,9 +3,9 @@
 
 #include "EnvSensorV2.hpp"
 
-extern osMutexId_t i2c1Mutex;
+extern osMutexId_t i2c1MutexHandle;
 
-#define I2C1_ACQUIRE osMutexAcquire(i2c1Mutex, portMAX_DELAY);
-#define I2C1_RELEASE osMutexRelease(i2c1Mutex);
+#define I2C1_ACQUIRE osMutexAcquire(i2c1MutexHandle, portMAX_DELAY);
+#define I2C1_RELEASE osMutexRelease(i2c1MutexHandle);
 
 #endif /* INC_ENVSENSORCOMMON_HPP_ */

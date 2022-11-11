@@ -19,8 +19,8 @@
 #include <fonts/ApplicationFontProvider.hpp>
 #include <gui/common/FrontendHeap.hpp>
 #include <BitmapDatabase.hpp>
-#include <STM32DMA.hpp>
 #include <platform/driver/lcd/LCD2bpp.hpp>
+#include <STM32DMA.hpp>
 #include <TouchGFXHAL.hpp>
 #include <STM32TouchController.hpp>
 #include <stm32l4xx_hal.h>

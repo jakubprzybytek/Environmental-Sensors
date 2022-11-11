@@ -28,6 +28,8 @@
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
+typedef StaticQueue_t osStaticMessageQDef_t;
+typedef StaticSemaphore_t osStaticMutexDef_t;
 /* USER CODE BEGIN PTD */
 
 /* USER CODE END PTD */
@@ -56,6 +58,25 @@ const osThreadAttr_t defaultTask_attributes = {
   .name = "defaultTask",
   .stack_size = 1024 * 4,
   .priority = (osPriority_t) osPriorityNormal,
+};
+/* Definitions for debugLogQueue */
+osMessageQueueId_t debugLogQueueHandle;
+uint8_t debugLogQueueBuffer[ 8 * 30 ];
+osStaticMessageQDef_t debugLogQueueControlBlock;
+const osMessageQueueAttr_t debugLogQueue_attributes = {
+  .name = "debugLogQueue",
+  .cb_mem = &debugLogQueueControlBlock,
+  .cb_size = sizeof(debugLogQueueControlBlock),
+  .mq_mem = &debugLogQueueBuffer,
+  .mq_size = sizeof(debugLogQueueBuffer)
+};
+/* Definitions for i2c1Mutex */
+osMutexId_t i2c1MutexHandle;
+osStaticMutexDef_t i2c1MutexControlBlock;
+const osMutexAttr_t i2c1Mutex_attributes = {
+  .name = "i2c1Mutex",
+  .cb_mem = &i2c1MutexControlBlock,
+  .cb_size = sizeof(i2c1MutexControlBlock),
 };
 /* USER CODE BEGIN PV */
 
@@ -118,6 +139,9 @@ int main(void)
 
   /* Init scheduler */
   osKernelInitialize();
+  /* Create the mutex(es) */
+  /* creation of i2c1Mutex */
+  i2c1MutexHandle = osMutexNew(&i2c1Mutex_attributes);
 
   /* USER CODE BEGIN RTOS_MUTEX */
   /* add mutexes, ... */
@@ -130,6 +154,10 @@ int main(void)
   /* USER CODE BEGIN RTOS_TIMERS */
   /* start timers, add new ones, ... */
   /* USER CODE END RTOS_TIMERS */
+
+  /* Create the queue(s) */
+  /* creation of debugLogQueue */
+  debugLogQueueHandle = osMessageQueueNew (8, 30, &debugLogQueue_attributes);
 
   /* USER CODE BEGIN RTOS_QUEUES */
   /* add queues, ... */
@@ -179,6 +207,7 @@ void SystemClock_Config(void)
   {
     Error_Handler();
   }
+
   /** Initializes the RCC Oscillators according to the specified parameters
   * in the RCC_OscInitTypeDef structure.
   */
@@ -191,6 +220,7 @@ void SystemClock_Config(void)
   {
     Error_Handler();
   }
+
   /** Initializes the CPU, AHB and APB buses clocks
   */
   RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK
@@ -265,12 +295,14 @@ static void MX_I2C1_Init(void)
   {
     Error_Handler();
   }
+
   /** Configure Analogue filter
   */
   if (HAL_I2CEx_ConfigAnalogFilter(&hi2c1, I2C_ANALOGFILTER_ENABLE) != HAL_OK)
   {
     Error_Handler();
   }
+
   /** Configure Digital filter
   */
   if (HAL_I2CEx_ConfigDigitalFilter(&hi2c1, 0) != HAL_OK)
@@ -445,6 +477,9 @@ static void MX_GPIO_Init(void)
 void StartDefaultTask(void *argument)
 {
   /* USER CODE BEGIN 5 */
+//	for (;;) {
+//		osDelay(1000 / portTICK_RATE_MS);
+//	}
   MX_TouchGFX_Process();
   /* USER CODE END 5 */
 }
@@ -502,4 +537,3 @@ void assert_failed(uint8_t *file, uint32_t line)
   /* USER CODE END 6 */
 }
 #endif /* USE_FULL_ASSERT */
-

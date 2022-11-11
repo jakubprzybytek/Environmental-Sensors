@@ -19,13 +19,13 @@
 extern I2C_HandleTypeDef hi2c1;
 
 // I2C mutex shared by all devices that are using it
-osMutexId_t i2c1Mutex;
+extern osMutexId_t i2c1MutexHandle;
+extern osMutexAttr_t i2c1Mutex_attributes;
+
+extern const osMutexAttr_t myMutex01_attributes;
 
 void EnvSensorV2_Init() {
-	osMutexAttr_t i2c1MutexAttributes = {
-		.name = "i2c1-mutex"
-	};
-	i2c1Mutex = osMutexNew(&i2c1MutexAttributes);
+	i2c1MutexHandle = osMutexNew(&i2c1Mutex_attributes);
 
 //		uint8_t devices = 0;
 //		for (uint8_t i = 0x03u; i < 0x78u; i++)
@@ -62,7 +62,7 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin) {
 }
 
 #include <Display/Devices/Epd_4in2a.hpp>
-SPI_HandleTypeDef hspi1;
+extern SPI_HandleTypeDef hspi1;
 
 EPD_4in2A eInk(hspi1);
 

@@ -4,7 +4,9 @@
 class DebugLog {
 public:
 	static void init();
+	static void log(char *messageBuffer);
 
+private:
 	static void startThread();
 	static void thread(void *pvParameters);
 };
