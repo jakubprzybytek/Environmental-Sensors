@@ -7,6 +7,8 @@ public:
 	static void log(char *messageBuffer);
 
 private:
+	static bool isInitialized;
+
 	static void startThread();
 	static void thread(void *pvParameters);
 };

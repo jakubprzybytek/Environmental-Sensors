@@ -45,7 +45,7 @@ void TempPressureSensor::bmp280Thread(void *pvParameters) {
 
 	uint32_t counter = 0;
 
-	Bme280 bmp280(hi2c1, BME280_SLAVE_ADDRESS_MAIN, false);
+	Bme280 bmp280(hi2c1, BME280_SLAVE_ADDRESS_SECONDARY, false);
 
 	char messageBuffer[22];
 
