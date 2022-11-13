@@ -3,9 +3,9 @@
 
 class SensorsReadouts {
 public:
-	static void submitBMPTemperatureAndPressure(float temperature, float pressure);
-	static void submitBMETemperaturePressureHumidity(float temperature, float pressure, float humidity);
-	static void submitC02AndTemperature(float co2, float temperature);
+	static void submitBmpTemperatureAndPressure(float temperature, float pressure);
+	static void submitBmeTemperaturePressureHumidity(float temperature, float pressure, float humidity);
+	static void submitScdCO2AndTemperature(float co2, float temperature, float humidity);
 };
 
 #endif /* INC_SENSORSREADOUTS_HPP_ */

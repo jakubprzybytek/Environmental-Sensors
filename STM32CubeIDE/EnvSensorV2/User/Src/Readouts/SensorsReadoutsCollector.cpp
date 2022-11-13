@@ -43,9 +43,10 @@ void SensorsReadoutsCollector::thread(void *pvParameters) {
 			readoutsState.bmePressure = message.tph.pressure;
 			readoutsState.bmeHumidity = message.tph.humidity;
 			break;
-		case CO2AndTemperature:
-			readoutsState.co2 = message.ct.co2;
-			readoutsState.temperature2 = message.ct.temperature;
+		case SCD:
+			readoutsState.scdCo2 = message.cth.co2;
+			readoutsState.scdTemperature = message.cth.temperature;
+			readoutsState.scdHumidity = message.cth.humidity;
 			break;
 		}
 

@@ -90,6 +90,14 @@ const osMutexAttr_t i2c1Mutex_attributes = {
   .cb_mem = &i2c1MutexControlBlock,
   .cb_size = sizeof(i2c1MutexControlBlock),
 };
+/* Definitions for scd30ReadyMutex */
+osMutexId_t scd30ReadyMutexHandle;
+osStaticMutexDef_t scd30ReadyMutexControlBlock;
+const osMutexAttr_t scd30ReadyMutex_attributes = {
+  .name = "scd30ReadyMutex",
+  .cb_mem = &scd30ReadyMutexControlBlock,
+  .cb_size = sizeof(scd30ReadyMutexControlBlock),
+};
 /* USER CODE BEGIN PV */
 
 /* USER CODE END PV */
@@ -154,6 +162,9 @@ int main(void)
   /* Create the mutex(es) */
   /* creation of i2c1Mutex */
   i2c1MutexHandle = osMutexNew(&i2c1Mutex_attributes);
+
+  /* creation of scd30ReadyMutex */
+  scd30ReadyMutexHandle = osMutexNew(&scd30ReadyMutex_attributes);
 
   /* USER CODE BEGIN RTOS_MUTEX */
   /* add mutexes, ... */

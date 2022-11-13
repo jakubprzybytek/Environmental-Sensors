@@ -6,7 +6,7 @@
 
 extern osMessageQueueId_t sensorReadoutsQueueHandle;
 
-void SensorsReadouts::submitBMPTemperatureAndPressure(float temperature, float pressure) {
+void SensorsReadouts::submitBmpTemperatureAndPressure(float temperature, float pressure) {
 	ReadoutMessage message;
 	message.type = BMP;
 	message.tp.temperature = temperature;
@@ -15,7 +15,7 @@ void SensorsReadouts::submitBMPTemperatureAndPressure(float temperature, float p
 	osMessageQueuePut(sensorReadoutsQueueHandle, &message, 0, 0);
 }
 
-void SensorsReadouts::submitBMETemperaturePressureHumidity(float temperature, float pressure, float humidity) {
+void SensorsReadouts::submitBmeTemperaturePressureHumidity(float temperature, float pressure, float humidity) {
 	ReadoutMessage message;
 	message.type = BME;
 	message.tph.temperature = temperature;
@@ -25,11 +25,12 @@ void SensorsReadouts::submitBMETemperaturePressureHumidity(float temperature, fl
 	osMessageQueuePut(sensorReadoutsQueueHandle, &message, 0, 0);
 }
 
-void SensorsReadouts::submitC02AndTemperature(float co2, float temperature) {
+void SensorsReadouts::submitScdCO2AndTemperature(float co2, float temperature, float humidity) {
 	ReadoutMessage message;
-	message.type = CO2AndTemperature;
-	message.ct.co2 = co2;
-	message.ct.temperature = temperature;
+	message.type = SCD;
+	message.cth.co2 = co2;
+	message.cth.temperature = temperature;
+	message.cth.humidity = humidity;
 
 	osMessageQueuePut(sensorReadoutsQueueHandle, &message, 0, 0);
 }

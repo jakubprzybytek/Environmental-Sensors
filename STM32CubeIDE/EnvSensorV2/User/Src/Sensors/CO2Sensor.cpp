@@ -8,6 +8,7 @@
 #include "cmsis_os.h"
 
 #include <stdio.h>
+#include <string.h>
 
 #include <main.h>
 
@@ -23,19 +24,10 @@
 
 extern I2C_HandleTypeDef hi2c1;
 
-// ToDo: move it to a method
-Scd30 scd30(hi2c1);
-
 osThreadId_t co2ReadoutThreadHandle;
-osSemaphoreId_t scd30ReadySemaphore = NULL;
+extern osMutexId_t scd30ReadyMutexHandle;
 
 void CO2Sensor::init() {
-	// ToDo: make it static
-	const osSemaphoreAttr_t scd30ReadySemaphoreAttributes = {
-	  .name = "co2-sem"
-	};
-	scd30ReadySemaphore = osSemaphoreNew(1, 0, &scd30ReadySemaphoreAttributes);
-
 	startThread();
 }
 
@@ -50,14 +42,13 @@ void CO2Sensor::startThread() {
 
 void CO2Sensor::thread(void *pvParameters) {
 
-	uint32_t counter = 0;
+	char messageBuffer[22];
 
-	char co2MessageBuffer[10];
-	char tempMessageBuffer[10];
-	char humMessageBuffer[10];
-	char messageBuffer[40];
+	Scd30 scd30(hi2c1);
 
 	osDelay(100 / portTICK_RATE_MS);
+
+	osMutexAcquire(scd30ReadyMutexHandle, portMAX_DELAY);
 
 	I2C1_ACQUIRE
 
@@ -88,11 +79,11 @@ void CO2Sensor::thread(void *pvParameters) {
 	DebugLog::log((char*) "SCD - start OK");
 
 	if (SCD30_IS_READY) {
-		osSemaphoreRelease(scd30ReadySemaphore);
+		osMutexRelease(scd30ReadyMutexHandle);
 	}
 
 	for (;;) {
-		status = osSemaphoreAcquire(scd30ReadySemaphore, portMAX_DELAY);
+		status = osMutexAcquire(scd30ReadyMutexHandle, portMAX_DELAY);
 		if (status == osOK) {
 
 			I2C1_ACQUIRE
@@ -103,16 +94,12 @@ void CO2Sensor::thread(void *pvParameters) {
 			I2C1_RELEASE
 
 			if (i2cStatus == HAL_OK) {
-/*
-				ftoa(co2, co2MessageBuffer, 1);
-				ftoa(temp, tempMessageBuffer, 1);
-				ftoa(hum, humMessageBuffer, 1);
-				// ToDo: get rid of sprintf
-				sprintf(messageBuffer, "C%s T%s %s %lu", co2MessageBuffer, tempMessageBuffer, humMessageBuffer, ++counter);
-				osMessageQueuePut(debugLogQueue, (uint8_t *) messageBuffer, 0, 0);
-*/
+				if (DebugLog::isInitialized()) {
+					printf(messageBuffer, co2, temp, hum);
+					DebugLog::log(messageBuffer);
+				}
 
-				SensorsReadouts::submitC02AndTemperature(co2, temp);
+				SensorsReadouts::submitScdCO2AndTemperature(co2, temp, hum);
 
 			} else {
 				DebugLog::log((char*) "SCD - error start");
@@ -130,15 +117,12 @@ void CO2Sensor::thread(void *pvParameters) {
 					I2C1_RELEASE
 
 					if (i2cStatus == HAL_OK) {
-/*
-						ftoa(co2, co2MessageBuffer, 1);
-						ftoa(temp, tempMessageBuffer, 1);
-						sprintf(messageBuffer, "C%s T%s %lu", co2MessageBuffer, tempMessageBuffer, ++counter);
-						osMessageQueuePut(debugLogQueue, (uint8_t *) messageBuffer, 0, 0);
-*/
+						if (DebugLog::isInitialized()) {
+							printf(messageBuffer, co2, temp, hum);
+							DebugLog::log(messageBuffer);
+						}
 
-						// ToDo: rename fields in readouts state
-						SensorsReadouts::submitC02AndTemperature(co2, temp);
+						SensorsReadouts::submitScdCO2AndTemperature(co2, temp, hum);
 
 					} else {
 						DebugLog::log((char*) "SCD - error on retry");
@@ -155,11 +139,23 @@ void CO2Sensor::thread(void *pvParameters) {
 }
 
 void CO2Sensor::interruptHandler() {
-	if (scd30ReadySemaphore != NULL) {
-		osSemaphoreRelease(scd30ReadySemaphore);
+	if (scd30ReadyMutexHandle != NULL) {
+		osMutexRelease(scd30ReadyMutexHandle);
 	}
 }
 
 void CO2Sensor::printf(char *buffer, float co2, float temperature, float humidity) {
+	*(buffer++) = 'C';
+	ftoa(co2, buffer, 1);
 
+	buffer += strlen(buffer);
+	*(buffer++) = ' ';
+
+	*(buffer++) = 'T';
+	ftoa(temperature, buffer, 1);
+
+	buffer += strlen(buffer);
+	*(buffer++) = ' ';
+
+	ftoa(humidity, buffer, 1);
 }

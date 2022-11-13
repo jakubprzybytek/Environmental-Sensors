@@ -8,6 +8,7 @@ public:
 	float bmePressure;
 	float bmeHumidity;
 
-	float co2;
-	float temperature2;
+	float scdCo2;
+	float scdTemperature;
+	float scdHumidity;
 };

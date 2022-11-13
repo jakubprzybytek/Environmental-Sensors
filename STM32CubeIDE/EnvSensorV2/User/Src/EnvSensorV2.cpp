@@ -18,12 +18,6 @@
 
 extern I2C_HandleTypeDef hi2c1;
 
-// I2C mutex shared by all devices that are using it
-extern osMutexId_t i2c1MutexHandle;
-extern osMutexAttr_t i2c1Mutex_attributes;
-
-extern const osMutexAttr_t myMutex01_attributes;
-
 void EnvSensorV2_Init() {
 //		uint8_t devices = 0;
 //		for (uint8_t i = 0x03u; i < 0x78u; i++)
@@ -44,7 +38,7 @@ void EnvSensorV2_Init() {
 
 	TempPressureSensor::init();
 
-	//C02Sensor::init();
+	CO2Sensor::init();
 
 	//ParticlesSensor_Init();
 }

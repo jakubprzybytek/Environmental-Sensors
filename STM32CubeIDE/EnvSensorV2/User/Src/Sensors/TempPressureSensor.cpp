@@ -95,7 +95,7 @@ void TempPressureSensor::bmp280Thread(void *pvParameters) {
 				DebugLog::log(messageBuffer);
 			}
 
-			SensorsReadouts::submitBMPTemperatureAndPressure(temperature, pressure);
+			SensorsReadouts::submitBmpTemperatureAndPressure(temperature, pressure);
 
 		} else {
 			DebugLog::log((char*) "BMP - read error");
@@ -159,7 +159,7 @@ void TempPressureSensor::bme280Thread(void *pvParameters) {
 				DebugLog::log(messageBuffer);
 			}
 
-			SensorsReadouts::submitBMETemperaturePressureHumidity(temperature, pressure, humidity);
+			SensorsReadouts::submitBmeTemperaturePressureHumidity(temperature, pressure, humidity);
 
 		} else {
 			DebugLog::log((char*) "BME - read error");

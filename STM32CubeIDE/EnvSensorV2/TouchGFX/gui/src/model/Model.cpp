@@ -21,8 +21,8 @@ void Model::tick() {
 		modelListener->notifyPressureChanged(storedReadoutsState.bmpPressure);
 	}
 
-	if (storedReadoutsState.co2 != readoutsState.co2) {
-		storedReadoutsState.co2 = readoutsState.co2;
-		modelListener->notifyCO2Changed(storedReadoutsState.co2);
+	if (storedReadoutsState.scdCo2 != readoutsState.scdCo2) {
+		storedReadoutsState.scdCo2 = readoutsState.scdCo2;
+		modelListener->notifyCO2Changed(storedReadoutsState.scdCo2);
 	}
 }
