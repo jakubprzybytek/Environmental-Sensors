@@ -44,8 +44,6 @@ void TempPressureSensor::bmp280Thread(void *pvParameters) {
 
 	Bme280 bmp280(hi2c1, BME280_SLAVE_ADDRESS_SECONDARY, false);
 
-	char messageBuffer[22];
-
 	osDelay(50 / portTICK_RATE_MS);
 
 	I2C1_ACQUIRE
@@ -77,7 +75,6 @@ void TempPressureSensor::bmp280Thread(void *pvParameters) {
 	uint32_t wakeTime = osKernelGetTickCount();
 
 	for (;;) {
-
 		wakeTime += 2000 / portTICK_RATE_MS;
 		osDelayUntil(wakeTime);
 
@@ -91,7 +88,9 @@ void TempPressureSensor::bmp280Thread(void *pvParameters) {
 
 		if (status == HAL_OK) {
 			if (DebugLog::isInitialized()) {
+				char messageBuffer[22];
 				printf(messageBuffer, temperature, pressure);
+
 				DebugLog::log(messageBuffer);
 			}
 
@@ -106,8 +105,6 @@ void TempPressureSensor::bmp280Thread(void *pvParameters) {
 void TempPressureSensor::bme280Thread(void *pvParameters) {
 
 	Bme280 bme280(hi2c1, BME280_SLAVE_ADDRESS_MAIN, true);
-
-	char messageBuffer[22];
 
 	osDelay(50 / portTICK_RATE_MS);
 
@@ -140,7 +137,6 @@ void TempPressureSensor::bme280Thread(void *pvParameters) {
 	uint32_t wakeTime = osKernelGetTickCount();
 
 	for (;;) {
-
 		wakeTime += 2000 / portTICK_RATE_MS;
 		osDelayUntil(wakeTime);
 
@@ -155,7 +151,9 @@ void TempPressureSensor::bme280Thread(void *pvParameters) {
 
 		if (status == HAL_OK) {
 			if (DebugLog::isInitialized()) {
+				char messageBuffer[22];
 				printf(messageBuffer, temperature, pressure, humidity);
+
 				DebugLog::log(messageBuffer);
 			}
 
