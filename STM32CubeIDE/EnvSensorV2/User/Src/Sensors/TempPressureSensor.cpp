@@ -18,6 +18,9 @@
 #include <Utils/ftoa.h>
 #include <Utils/DebugLog.hpp>
 
+#define RETRY_DELAY 5000
+#define READOUTS_DELAY 2000
+
 extern I2C_HandleTypeDef hi2c1;
 
 void TempPressureSensor::init() {
@@ -46,36 +49,34 @@ void TempPressureSensor::bmp280Thread(void *pvParameters) {
 
 	osDelay(50 / portTICK_RATE_MS);
 
-	I2C1_ACQUIRE
+	HAL_StatusTypeDef status;
 
-	HAL_StatusTypeDef status = bmp280.init();
-	if (status != HAL_OK) {
-		DebugLog::log((char*) "BMP - error init");
-
+	do {
+		I2C1_ACQUIRE
+		status = bmp280.init();
 		I2C1_RELEASE
 
-		osThreadExit();
+		if (status != HAL_OK) {
+			DebugLog::log((char*) "BMP - error init");
+			osDelay(RETRY_DELAY / portTICK_RATE_MS);
+		}
+	} while (status != HAL_OK);
 
-		return;
-	}
-
-	status = bmp280.startContinousMeasurement();
-	if (status != HAL_OK) {
-		DebugLog::log((char*) "BMP - error start");
-
+	do {
+		I2C1_ACQUIRE
+		status = bmp280.startContinousMeasurement();
 		I2C1_RELEASE
 
-		osThreadExit();
-
-		return;
-	}
-
-	I2C1_RELEASE
+		if (status != HAL_OK) {
+			DebugLog::log((char*) "BMP - error start");
+			osDelay(RETRY_DELAY / portTICK_RATE_MS);
+		}
+	} while (status != HAL_OK);
 
 	uint32_t wakeTime = osKernelGetTickCount();
 
 	for (;;) {
-		wakeTime += 2000 / portTICK_RATE_MS;
+		wakeTime += READOUTS_DELAY / portTICK_RATE_MS;
 		osDelayUntil(wakeTime);
 
 		I2C1_ACQUIRE
@@ -108,36 +109,34 @@ void TempPressureSensor::bme280Thread(void *pvParameters) {
 
 	osDelay(50 / portTICK_RATE_MS);
 
-	I2C1_ACQUIRE
+	HAL_StatusTypeDef status;
 
-	HAL_StatusTypeDef status = bme280.init();
-	if (status != HAL_OK) {
-		DebugLog::log((char*) "BME - error init");
-
+	do {
+		I2C1_ACQUIRE
+		status = bme280.init();
 		I2C1_RELEASE
 
-		osThreadExit();
+		if (status != HAL_OK) {
+			DebugLog::log((char*) "BME - error init");
+			osDelay(RETRY_DELAY / portTICK_RATE_MS);
+		}
+	} while (status != HAL_OK);
 
-		return;
-	}
-
-	status = bme280.startContinousMeasurement();
-	if (status != HAL_OK) {
-		DebugLog::log((char*) "BME - error start");
-
+	do {
+		I2C1_ACQUIRE
+		status = bme280.startContinousMeasurement();
 		I2C1_RELEASE
 
-		osThreadExit();
-
-		return;
-	}
-
-	I2C1_RELEASE
+		if (status != HAL_OK) {
+			DebugLog::log((char*) "BME - error start");
+			osDelay(RETRY_DELAY / portTICK_RATE_MS);
+		}
+	} while (status != HAL_OK);
 
 	uint32_t wakeTime = osKernelGetTickCount();
 
 	for (;;) {
-		wakeTime += 2000 / portTICK_RATE_MS;
+		wakeTime += READOUTS_DELAY / portTICK_RATE_MS;
 		osDelayUntil(wakeTime);
 
 		I2C1_ACQUIRE
