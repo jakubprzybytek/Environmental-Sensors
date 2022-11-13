@@ -34,9 +34,14 @@ void SensorsReadoutsCollector::thread(void *pvParameters) {
 		osStatus_t status = osMessageQueueGet(sensorReadoutsQueueHandle, &message, NULL, portMAX_DELAY);
 
 		switch (message.type) {
-		case TemperatureAndPressure:
-			readoutsState.temperature = message.tp.temperature;
-			readoutsState.pressure = message.tp.pressure;
+		case BMP:
+			readoutsState.bmpTemperature = message.tp.temperature;
+			readoutsState.bmpPressure = message.tp.pressure;
+			break;
+		case BME:
+			readoutsState.bmeTemperature = message.tph.temperature;
+			readoutsState.bmePressure = message.tph.pressure;
+			readoutsState.bmeHumidity = message.tph.humidity;
 			break;
 		case CO2AndTemperature:
 			readoutsState.co2 = message.ct.co2;

@@ -3,7 +3,8 @@
 
 class SensorsReadouts {
 public:
-	static void submitTemperatureAndPressure(float temperature, float pressure);
+	static void submitBMPTemperatureAndPressure(float temperature, float pressure);
+	static void submitBMETemperaturePressureHumidity(float temperature, float pressure, float humidity);
 	static void submitC02AndTemperature(float co2, float temperature);
 };
 

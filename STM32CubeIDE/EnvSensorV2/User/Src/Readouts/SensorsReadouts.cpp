@@ -6,11 +6,21 @@
 
 extern osMessageQueueId_t sensorReadoutsQueueHandle;
 
-void SensorsReadouts::submitTemperatureAndPressure(float temperature, float pressure) {
+void SensorsReadouts::submitBMPTemperatureAndPressure(float temperature, float pressure) {
 	ReadoutMessage message;
-	message.type = TemperatureAndPressure;
+	message.type = BMP;
 	message.tp.temperature = temperature;
 	message.tp.pressure = pressure;
+
+	osMessageQueuePut(sensorReadoutsQueueHandle, &message, 0, 0);
+}
+
+void SensorsReadouts::submitBMETemperaturePressureHumidity(float temperature, float pressure, float humidity) {
+	ReadoutMessage message;
+	message.type = BME;
+	message.tph.temperature = temperature;
+	message.tph.pressure = pressure;
+	message.tph.humidity = humidity;
 
 	osMessageQueuePut(sensorReadoutsQueueHandle, &message, 0, 0);
 }

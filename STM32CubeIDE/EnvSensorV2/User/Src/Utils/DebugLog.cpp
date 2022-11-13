@@ -16,15 +16,19 @@ extern I2C_HandleTypeDef hi2c1;
 
 extern osMessageQueueId_t debugLogQueueHandle;
 
-bool DebugLog::isInitialized = false;
+bool DebugLog::initialized = false;
 
 void DebugLog::init() {
 	startThread();
-	DebugLog::isInitialized = true;
+	initialized = true;
+}
+
+bool DebugLog::isInitialized() {
+	return initialized;
 }
 
 void DebugLog::log(char *messageBuffer) {
-	if (DebugLog::isInitialized) {
+	if (initialized) {
 		osMessageQueuePut(debugLogQueueHandle, (uint8_t*) messageBuffer, 0, 0);
 	}
 }

@@ -17,6 +17,10 @@ public:
 	static void startBme280Thread();
 	static void bmp280Thread(void *pvParameters);
 	static void bme280Thread(void *pvParameters);
+
+private:
+	static char* printf(char *buffer, float temperature, float pressure);
+	static char* printf(char *buffer, float temperature, float pressure, float humidity);
 };
 
 #endif /* SRC_SENSORS_TEMPPRESSURESENSOR_H_ */

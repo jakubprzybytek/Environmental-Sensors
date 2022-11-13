@@ -11,14 +11,14 @@ Model::Model() : modelListener(0) {
 
 void Model::tick() {
 
-	if (storedReadoutsState.temperature != readoutsState.temperature) {
-		storedReadoutsState.temperature = readoutsState.temperature;
-		modelListener->notifyTemperatureChanged(storedReadoutsState.temperature);
+	if (storedReadoutsState.bmpTemperature != readoutsState.bmpTemperature) {
+		storedReadoutsState.bmpTemperature = readoutsState.bmpTemperature;
+		modelListener->notifyTemperatureChanged(storedReadoutsState.bmpTemperature);
 	}
 
-	if (storedReadoutsState.pressure != readoutsState.pressure) {
-		storedReadoutsState.pressure = readoutsState.pressure;
-		modelListener->notifyPressureChanged(storedReadoutsState.pressure);
+	if (storedReadoutsState.bmpPressure != readoutsState.bmpPressure) {
+		storedReadoutsState.bmpPressure = readoutsState.bmpPressure;
+		modelListener->notifyPressureChanged(storedReadoutsState.bmpPressure);
 	}
 
 	if (storedReadoutsState.co2 != readoutsState.co2) {

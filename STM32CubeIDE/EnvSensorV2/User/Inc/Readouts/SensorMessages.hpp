@@ -2,12 +2,18 @@
 #define INC_SENSORMESSAGES_HPP_
 
 enum ReadoutType {
-	TemperatureAndPressure, CO2AndTemperature
+	BMP, BME, CO2AndTemperature
 };
 
 struct TemperatureAndPressure {
 	float temperature;
 	float pressure;
+};
+
+struct TemperaturePressureAndHumidity {
+	float temperature;
+	float pressure;
+	float humidity;
 };
 
 struct CO2AndTemperature {
@@ -20,6 +26,7 @@ typedef struct ReadoutMessage {
 
 	union {
 		struct TemperatureAndPressure tp;
+		struct TemperaturePressureAndHumidity tph;
 		struct CO2AndTemperature ct;
 	};
 } ReadoutMessage_t;

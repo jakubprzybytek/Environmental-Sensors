@@ -51,7 +51,7 @@ void EnvSensorV2_Init() {
 
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin) {
 	if (GPIO_Pin == SCD30_READY_Pin) {
-		C02Sensor::interruptHandler();
+		CO2Sensor::interruptHandler();
 	} else if (GPIO_Pin == SWITCH_1_Pin) {
 		switch1Pressed();
 	} else if (GPIO_Pin == SWITCH_2_Pin) {

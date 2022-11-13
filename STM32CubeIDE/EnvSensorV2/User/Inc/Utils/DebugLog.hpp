@@ -5,9 +5,10 @@ class DebugLog {
 public:
 	static void init();
 	static void log(char *messageBuffer);
+	static bool isInitialized();
 
 private:
-	static bool isInitialized;
+	static bool initialized;
 
 	static void startThread();
 	static void thread(void *pvParameters);

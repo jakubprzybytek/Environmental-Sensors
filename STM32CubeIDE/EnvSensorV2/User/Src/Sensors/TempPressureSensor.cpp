@@ -7,7 +7,6 @@
 #include "stm32l4xx_hal.h"
 #include "cmsis_os.h"
 
-#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
@@ -42,8 +41,6 @@ void TempPressureSensor::startBme280Thread() {
 }
 
 void TempPressureSensor::bmp280Thread(void *pvParameters) {
-
-	uint32_t counter = 0;
 
 	Bme280 bmp280(hi2c1, BME280_SLAVE_ADDRESS_SECONDARY, false);
 
@@ -93,25 +90,12 @@ void TempPressureSensor::bmp280Thread(void *pvParameters) {
 		I2C1_RELEASE
 
 		if (status == HAL_OK) {
-			char *buffer = messageBuffer;
+			if (DebugLog::isInitialized()) {
+				printf(messageBuffer, temperature, pressure);
+				DebugLog::log(messageBuffer);
+			}
 
-			*(buffer++) = 'T';
-			ftoa(temperature, buffer, 1);
-
-			buffer += strlen(buffer);
-			*(buffer++) = ' ';
-
-			*(buffer++) = 'P';
-			ftoa(pressure, buffer, 2);
-
-			buffer += strlen(buffer);
-			*(buffer++) = ' ';
-
-			utoa(counter++, buffer, 10);
-
-			DebugLog::log(messageBuffer);
-
-			SensorsReadouts::submitTemperatureAndPressure(temperature, pressure);
+			SensorsReadouts::submitBMPTemperatureAndPressure(temperature, pressure);
 
 		} else {
 			DebugLog::log((char*) "BMP - read error");
@@ -170,23 +154,39 @@ void TempPressureSensor::bme280Thread(void *pvParameters) {
 		I2C1_RELEASE
 
 		if (status == HAL_OK) {
-			char *buffer = messageBuffer;
+			if (DebugLog::isInitialized()) {
+				printf(messageBuffer, temperature, pressure, humidity);
+				DebugLog::log(messageBuffer);
+			}
 
-			ftoa(temperature, buffer, 1);
+			SensorsReadouts::submitBMETemperaturePressureHumidity(temperature, pressure, humidity);
 
-			buffer += strlen(buffer);
-			*(buffer++) = ' ';
-
-			ftoa(pressure, buffer, 2);
-
-			buffer += strlen(buffer);
-			*(buffer++) = ' ';
-
-			ftoa(humidity, buffer, 1);
-
-			DebugLog::log(messageBuffer);
 		} else {
 			DebugLog::log((char*) "BME - read error");
 		}
 	}
+}
+
+char* TempPressureSensor::printf(char *buffer, float temperature, float pressure) {
+	*(buffer++) = 'T';
+	ftoa(temperature, buffer, 1);
+
+	buffer += strlen(buffer);
+	*(buffer++) = ' ';
+
+	*(buffer++) = 'P';
+	ftoa(pressure, buffer, 2);
+
+	return buffer + strlen(buffer);
+}
+
+char* TempPressureSensor::printf(char *buffer, float temperature, float pressure, float humidity) {
+	buffer = printf(buffer, temperature, pressure);
+
+	*(buffer++) = ' ';
+
+	*(buffer++) = 'H';
+	ftoa(humidity, buffer, 1);
+
+	return buffer + strlen(buffer);
 }
