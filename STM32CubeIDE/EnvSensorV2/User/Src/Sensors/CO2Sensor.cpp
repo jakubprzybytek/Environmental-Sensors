@@ -20,12 +20,13 @@
 #include <Utils/ftoa.h>
 #include <Utils/DebugLog.hpp>
 
+#define RETRY_DELAY 5000
 #define SCD30_IS_READY HAL_GPIO_ReadPin(SCD30_READY_GPIO_Port, SCD30_READY_Pin)
 
 extern I2C_HandleTypeDef hi2c1;
 
 osThreadId_t co2ReadoutThreadHandle;
-extern osMutexId_t scd30ReadyMutexHandle;
+extern osSemaphoreId_t scd30ReadySemaphoreHandle;
 
 void CO2Sensor::init() {
 	startThread();
@@ -48,42 +49,41 @@ void CO2Sensor::thread(void *pvParameters) {
 
 	osDelay(100 / portTICK_RATE_MS);
 
-	osMutexAcquire(scd30ReadyMutexHandle, portMAX_DELAY);
+	// set semaphore to 0
+	osSemaphoreAcquire(scd30ReadySemaphoreHandle, portMAX_DELAY);
 
-	I2C1_ACQUIRE
+	uint8_t status;
 
-	uint8_t status = scd30.init(30);
-	if (status != HAL_OK) {
-		DebugLog::log((char*) "SCD - error init");
-
+	do {
+		I2C1_ACQUIRE
+		status = scd30.init(30);
 		I2C1_RELEASE
 
-		osThreadExit();
+		if (status != HAL_OK) {
+			DebugLog::log((char*) "SCD - error init");
+			osDelay(RETRY_DELAY / portTICK_RATE_MS);
+		}
+	} while (status != HAL_OK);
 
-		return;
-	}
-
-	status = scd30.startContinousMeasurement(0);
-	if (status != HAL_OK) {
-		DebugLog::log((char*) "SCD - error start");
-
+	do {
+		I2C1_ACQUIRE
+		status = scd30.startContinousMeasurement(0);
 		I2C1_RELEASE
 
-		osThreadExit();
-
-		return;
-	}
-
-	I2C1_RELEASE
+		if (status != HAL_OK) {
+			DebugLog::log((char*) "SCD - error start");
+			osDelay(RETRY_DELAY / portTICK_RATE_MS);
+		}
+	} while (status != HAL_OK);
 
 	DebugLog::log((char*) "SCD - start OK");
 
 	if (SCD30_IS_READY) {
-		osMutexRelease(scd30ReadyMutexHandle);
+		osSemaphoreRelease(scd30ReadySemaphoreHandle);
 	}
 
 	for (;;) {
-		status = osMutexAcquire(scd30ReadyMutexHandle, portMAX_DELAY);
+		status = osSemaphoreAcquire(scd30ReadySemaphoreHandle, portMAX_DELAY);
 		if (status == osOK) {
 
 			I2C1_ACQUIRE
@@ -102,7 +102,7 @@ void CO2Sensor::thread(void *pvParameters) {
 				SensorsReadouts::submitScdCO2AndTemperature(co2, temp, hum);
 
 			} else {
-				DebugLog::log((char*) "SCD - error start");
+				DebugLog::log((char*) "SCD - error read");
 
 				// retry if SCD30 is still ready
 				while (SCD30_IS_READY) {
@@ -139,8 +139,8 @@ void CO2Sensor::thread(void *pvParameters) {
 }
 
 void CO2Sensor::interruptHandler() {
-	if (scd30ReadyMutexHandle != NULL) {
-		osMutexRelease(scd30ReadyMutexHandle);
+	if (scd30ReadySemaphoreHandle != NULL) {
+		osSemaphoreRelease(scd30ReadySemaphoreHandle);
 	}
 }
 
