@@ -13,12 +13,12 @@ class CO2Sensor {
 public:
 	static void init();
 
-	static void startThread();
-	static void thread(void *pvParameters);
-
 	static void interruptHandler();
 
 private:
+	static void startThread();
+	static void thread(void *pvParameters);
+
 	static void printf(char *buffer, float co2, float temperature, float humidity);
 };
 

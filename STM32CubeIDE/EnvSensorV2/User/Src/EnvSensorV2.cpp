@@ -8,9 +8,10 @@
 #include <Readouts/SensorsReadoutsCollector.hpp>
 
 #include <Display/SmallScreen.hpp>
+#include <Sensors/VoltageSensor.hpp>
+#include <Sensors/TempPressureSensor.hpp>
 #include <Sensors/CO2Sensor.hpp>
 #include <Sensors/ParticlesSensor.hpp>
-#include <Sensors/TempPressureSensor.hpp>
 
 #include <Utils/ftoa.h>
 #include <Utils/DebugLog.hpp>
@@ -36,7 +37,9 @@ void EnvSensorV2_Init() {
 
 	SensorsReadoutsCollector::init();
 
-	TempPressureSensor::init();
+	VoltageSensor::init();
+
+	//TempPressureSensor::init();
 
 	CO2Sensor::init();
 

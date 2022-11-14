@@ -7,7 +7,6 @@
 #include "stm32l4xx_hal.h"
 #include "cmsis_os.h"
 
-#include <stdlib.h>
 #include <string.h>
 
 #include <Sensors/TempPressureSensor.hpp>
