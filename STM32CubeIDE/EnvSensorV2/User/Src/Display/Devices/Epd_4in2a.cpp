@@ -10,6 +10,7 @@
  *  Created on: Dec 21, 2020
  *      Author: Chipotle
  */
+#include "cmsis_os.h"
 
 #include <string.h>
 #include <Display/Devices/Epd_4in2a.hpp>
@@ -122,9 +123,11 @@ const unsigned char EPD_4IN2_4Gray_lut_bb[] = {
  */
 void EPD_4in2A::reset() {
 	EPD_RESET_LOW;
-	HAL_Delay(200);
+	//HAL_Delay(200);
+	osDelay(200 / portTICK_RATE_MS);
 	EPD_RESET_HIGH;
-	HAL_Delay(200);
+	//HAL_Delay(200);
+	osDelay(200 / portTICK_RATE_MS);
 }
 
 /**
@@ -132,6 +135,7 @@ void EPD_4in2A::reset() {
  */
 void EPD_4in2A::waitUntilIdle() {
 	do {
+		osDelay(10 / portTICK_RATE_MS);
 	} while (!EPD_BUSY_READ);
 }
 
@@ -168,7 +172,8 @@ void EPD_4in2A::sendRefreshCommand(bool lutFromRegister, bool blocking) {
 	sendData(lutFromRegister ? 0b00111111 : 0b00011111); // LUT from register vs LUT from OTG
 
 	sendCommand(EPD_4IN2B_DISPLAY_REFRESH);
-	HAL_Delay(1);
+	//HAL_Delay(1);
+	osDelay(1 / portTICK_RATE_MS);
 
 	if (blocking) {
 		waitUntilIdle();
@@ -235,10 +240,10 @@ void EPD_4in2A::setLutGray() {
  * Initializes the eInk display in B/W mode.
  */
 void EPD_4in2A::init(bool blocking) {
-	HAL_NVIC_DisableIRQ(E_INK_BUSY_EXTI_IRQn);
+	//HAL_NVIC_DisableIRQ(E_INK_BUSY_EXTI_IRQn);
 	reset();
-	__HAL_GPIO_EXTI_CLEAR_IT(E_INK_BUSY_Pin);
-	HAL_NVIC_EnableIRQ(E_INK_BUSY_EXTI_IRQn);
+	//__HAL_GPIO_EXTI_CLEAR_IT(E_INK_BUSY_Pin);
+	//HAL_NVIC_EnableIRQ(E_INK_BUSY_EXTI_IRQn);
 
 	EPD_CHIP_SELECT_LOW;
 

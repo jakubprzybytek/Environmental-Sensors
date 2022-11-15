@@ -7,7 +7,7 @@
 
 #include <Readouts/SensorsReadoutsCollector.hpp>
 
-#include <Display/SmallScreen.hpp>
+#include <Display/DisplayController.hpp>
 #include <Sensors/VoltageSensor.hpp>
 #include <Sensors/TempPressureSensor.hpp>
 #include <Sensors/CO2Sensor.hpp>
@@ -34,6 +34,8 @@ void EnvSensorV2_Init() {
 	BlinkingLeds::init();
 
 	DebugLog::init();
+
+	DisplayController::init();
 
 	SensorsReadoutsCollector::init();
 
