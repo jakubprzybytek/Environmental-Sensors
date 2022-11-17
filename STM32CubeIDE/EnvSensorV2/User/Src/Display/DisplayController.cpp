@@ -2,8 +2,14 @@
 #include "cmsis_os.h"
 
 #include <Display/DisplayController.hpp>
+#include <Display/DisplayCommands.hpp>
 
-uint32_t displayControllerThreadBuffer[ 128 ];
+#include <Display/Devices/Epd_4in2a.hpp>
+
+extern SPI_HandleTypeDef hspi1;
+extern osMessageQueueId_t displayCommandsQueueHandle;
+
+uint32_t displayControllerThreadBuffer[128];
 StaticTask_t displayControllerThreadControlBlock;
 
 void DisplayController::init() {
@@ -11,6 +17,7 @@ void DisplayController::init() {
 }
 
 void DisplayController::startThread() {
+// @formatter:off
 	const osThreadAttr_t displayControllerThreadaAttributes = {
 		.name = "display-controller-th",
 		.cb_mem = &displayControllerThreadControlBlock,
@@ -19,24 +26,33 @@ void DisplayController::startThread() {
 		.stack_size = sizeof(displayControllerThreadBuffer),
 		.priority = (osPriority_t) osPriorityNormal
 	};
+// @formatter:on
 	osThreadNew(thread, NULL, &displayControllerThreadaAttributes);
 }
 
-
-#include <Display/Devices/Epd_4in2a.hpp>
-extern SPI_HandleTypeDef hspi1;
-
-EPD_4in2A eInk2(hspi1);
+EPD_4in2A eInk(hspi1);
 
 void DisplayController::thread(void *pvParameters) {
 
-	osDelay(4500 / portTICK_RATE_MS);
+	DisplayCommandMessage message;
 
-	eInk2.init(true);
-	eInk2.clear(true);
-	eInk2.sleep(true);
+	for (;;) {
+		osStatus_t status = osMessageQueueGet(displayCommandsQueueHandle, &message, NULL, portMAX_DELAY);
 
-	UBaseType_t uxHighWaterMark = uxTaskGetStackHighWaterMark( NULL );
+		switch (message.command) {
+		case Clear:
+			eInk.init(true);
+			eInk.clear(true);
+			eInk.sleep(true);
+			break;
+		}
+
+		if (status != osOK && status != osErrorTimeout) {
+			osDelay(5000 / portTICK_RATE_MS);
+		}
+
+		UBaseType_t uxHighWaterMark = uxTaskGetStackHighWaterMark( NULL);
+	}
 
 	osThreadExit();
 }

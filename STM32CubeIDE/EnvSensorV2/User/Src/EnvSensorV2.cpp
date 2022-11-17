@@ -8,6 +8,7 @@
 #include <Readouts/SensorsReadoutsCollector.hpp>
 
 #include <Display/DisplayController.hpp>
+#include <Display/DisplayCommands.hpp>
 #include <Sensors/VoltageSensor.hpp>
 #include <Sensors/TempPressureSensor.hpp>
 #include <Sensors/CO2Sensor.hpp>
@@ -58,15 +59,8 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin) {
 	}
 }
 
-#include <Display/Devices/Epd_4in2a.hpp>
-extern SPI_HandleTypeDef hspi1;
-
-EPD_4in2A eInk(hspi1);
-
 void switch1Pressed() {
-	eInk.init(true);
-	eInk.clear(true);
-	eInk.sleep(true);
+	DisplayCommands::submitDisplayClear();
 }
 
 #include <touchgfx/hal/OSWrappers.hpp>
