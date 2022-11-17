@@ -12,15 +12,21 @@
 
 #include <Utils/BlinkingLeds.hpp>
 
+uint32_t ledBlinkBuffer[ 128 ];
+StaticTask_t ledBlinkControlBlock;
+
 void BlinkingLeds::init() {
 	startThread();
 }
 
 void BlinkingLeds::startThread() {
 	const osThreadAttr_t ledBlinkThreadAttributes = {
-		.name = "led-blink-th",
-		.stack_size = 128,
-		.priority = (osPriority_t) osPriorityLow
+	  .name = "led-blink-th",
+	  .cb_mem = &ledBlinkControlBlock,
+	  .cb_size = sizeof(ledBlinkControlBlock),
+	  .stack_mem = &ledBlinkBuffer[0],
+	  .stack_size = sizeof(ledBlinkBuffer),
+	  .priority = (osPriority_t) osPriorityLow,
 	};
 	osThreadNew(thread, NULL, &ledBlinkThreadAttributes);
 }

@@ -25,34 +25,41 @@
 
 extern I2C_HandleTypeDef hi2c1;
 
-osThreadId_t co2ReadoutThreadHandle;
 extern osSemaphoreId_t scd30ReadySemaphoreHandle;
+
+uint32_t co2ReadoutThreadBuffer[ 256 ];
+StaticTask_t co2ReadoutThreadControlBlock;
 
 void CO2Sensor::init() {
 	startThread();
 }
 
 void CO2Sensor::startThread() {
+// @formatter:off
 	const osThreadAttr_t co2ReadoutThreadaAttributes = {
 		.name = "co2-readout-th",
-		.stack_size = 1024 * 4,
+		.cb_mem = &co2ReadoutThreadControlBlock,
+		.cb_size = sizeof(co2ReadoutThreadControlBlock),
+		.stack_mem = &co2ReadoutThreadBuffer[0],
+		.stack_size = sizeof(co2ReadoutThreadBuffer),
 		.priority = (osPriority_t) osPriorityNormal
 	};
-	co2ReadoutThreadHandle = osThreadNew(thread, NULL, &co2ReadoutThreadaAttributes);
+// @formatter:on
+	osThreadNew(thread, NULL, &co2ReadoutThreadaAttributes);
 }
 
 void CO2Sensor::thread(void *pvParameters) {
 
-	char messageBuffer[22];
-
 	Scd30 scd30(hi2c1);
+	char messageBuffer[22];
+	uint8_t status;
 
 	osDelay(100 / portTICK_RATE_MS);
 
 	// set semaphore to 0
 	osSemaphoreAcquire(scd30ReadySemaphoreHandle, portMAX_DELAY);
 
-	uint8_t status;
+	UBaseType_t uxHighWaterMark;
 
 	do {
 		I2C1_ACQUIRE
@@ -129,6 +136,8 @@ void CO2Sensor::thread(void *pvParameters) {
 					}
 				}
 			}
+
+			uxHighWaterMark = uxTaskGetStackHighWaterMark( NULL );
 
 		} else if (status != osErrorTimeout) {
 			osDelay(5000 / portTICK_RATE_MS);

@@ -3,7 +3,8 @@
 
 #include <Display/DisplayController.hpp>
 
-osThreadId_t displayControllerThreadHandle;
+uint32_t displayControllerThreadBuffer[ 128 ];
+StaticTask_t displayControllerThreadControlBlock;
 
 void DisplayController::init() {
 	startThread();
@@ -12,10 +13,13 @@ void DisplayController::init() {
 void DisplayController::startThread() {
 	const osThreadAttr_t displayControllerThreadaAttributes = {
 		.name = "display-controller-th",
-		.stack_size = 512 * 4,
+		.cb_mem = &displayControllerThreadControlBlock,
+		.cb_size = sizeof(displayControllerThreadControlBlock),
+		.stack_mem = &displayControllerThreadBuffer[0],
+		.stack_size = sizeof(displayControllerThreadBuffer),
 		.priority = (osPriority_t) osPriorityNormal
 	};
-	displayControllerThreadHandle = osThreadNew(thread, NULL, &displayControllerThreadaAttributes);
+	osThreadNew(thread, NULL, &displayControllerThreadaAttributes);
 }
 
 
@@ -31,6 +35,8 @@ void DisplayController::thread(void *pvParameters) {
 	eInk2.init(true);
 	eInk2.clear(true);
 	eInk2.sleep(true);
+
+	UBaseType_t uxHighWaterMark = uxTaskGetStackHighWaterMark( NULL );
 
 	osThreadExit();
 }

@@ -19,7 +19,8 @@
 
 extern ADC_HandleTypeDef hadc1;
 
-osThreadId_t voltageReadoutThreadHandle;
+uint32_t voltageReadoutThreadBuffer[ 128 ];
+StaticTask_t voltageReadoutThreadControlBlock;
 
 void VoltageSensor::init() {
 	startThread();
@@ -28,10 +29,13 @@ void VoltageSensor::init() {
 void VoltageSensor::startThread() {
 	const osThreadAttr_t voltageReadoutThreadaAttributes = {
 		.name = "voltage-readout-th",
-		.stack_size = 512 * 4,
+		.cb_mem = &voltageReadoutThreadControlBlock,
+		.cb_size = sizeof(voltageReadoutThreadControlBlock),
+		.stack_mem = &voltageReadoutThreadBuffer[0],
+		.stack_size = sizeof(voltageReadoutThreadBuffer),
 		.priority = (osPriority_t) osPriorityNormal
 	};
-	voltageReadoutThreadHandle = osThreadNew(thread, NULL, &voltageReadoutThreadaAttributes);
+	osThreadNew(thread, NULL, &voltageReadoutThreadaAttributes);
 }
 
 void VoltageSensor::thread(void *pvParameters) {

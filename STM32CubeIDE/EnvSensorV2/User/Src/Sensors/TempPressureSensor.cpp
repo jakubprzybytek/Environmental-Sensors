@@ -22,6 +22,12 @@
 
 extern I2C_HandleTypeDef hi2c1;
 
+uint32_t bmp280ReadoutThreadBuffer[ 512 ];
+StaticTask_t bmp280ReadoutThreadControlBlock;
+
+uint32_t bme280ReadoutThreadBuffer[ 512 ];
+StaticTask_t bme280ReadoutThreadControlBlock;
+
 void TempPressureSensor::init() {
 	startBmp280Thread();
 
@@ -31,14 +37,30 @@ void TempPressureSensor::init() {
 }
 
 void TempPressureSensor::startBmp280Thread() {
-	const osThreadAttr_t bmp280ReadoutThreadAttributes = { .name = "bmp280-readout-th", .stack_size = 512 * sizeof(StackType_t), .priority =
-			(osPriority_t) osPriorityNormal };
+// @formatter:off
+	const osThreadAttr_t bmp280ReadoutThreadAttributes = {
+		.name = "bmp280-readout-th",
+		.cb_mem = &bmp280ReadoutThreadControlBlock,
+		.cb_size = sizeof(bmp280ReadoutThreadControlBlock),
+		.stack_mem = &bmp280ReadoutThreadBuffer[0],
+		.stack_size = sizeof(bmp280ReadoutThreadBuffer),
+		.priority = (osPriority_t) osPriorityNormal
+	};
+// @formatter:on
 	osThreadNew(bmp280Thread, NULL, &bmp280ReadoutThreadAttributes);
 }
 
 void TempPressureSensor::startBme280Thread() {
-	const osThreadAttr_t bme280ReadoutThreadAttributes = { .name = "bme280-readout-th", .stack_size = 512 * sizeof(StackType_t), .priority =
-			(osPriority_t) osPriorityNormal };
+// @formatter:off
+	const osThreadAttr_t bme280ReadoutThreadAttributes = {
+		.name = "bme280-readout-th",
+		.cb_mem = &bme280ReadoutThreadControlBlock,
+		.cb_size = sizeof(bme280ReadoutThreadControlBlock),
+		.stack_mem = &bme280ReadoutThreadBuffer[0],
+		.stack_size = sizeof(bme280ReadoutThreadBuffer),
+		.priority = (osPriority_t) osPriorityNormal
+	};
+// @formatter:on
 	osThreadNew(bme280Thread, NULL, &bme280ReadoutThreadAttributes);
 }
 

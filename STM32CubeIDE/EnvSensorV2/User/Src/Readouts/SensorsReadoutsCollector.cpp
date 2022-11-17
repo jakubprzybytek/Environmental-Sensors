@@ -12,6 +12,9 @@
 
 extern osMessageQueueId_t sensorReadoutsQueueHandle;
 
+uint32_t sensorReadoutsThreadBuffer[ 128 ];
+StaticTask_t sensorReadoutsThreadControlBlock;
+
 ReadoutsState readoutsState;
 
 void SensorsReadoutsCollector::init() {
@@ -21,7 +24,10 @@ void SensorsReadoutsCollector::init() {
 void SensorsReadoutsCollector::startThread() {
 	const osThreadAttr_t sensorReadoutsCollectorThreadAttributes = {
 		.name = "sensors-collect-th",
-		.stack_size = 128 * sizeof(StackType_t),
+		.cb_mem = &sensorReadoutsThreadControlBlock,
+		.cb_size = sizeof(sensorReadoutsThreadControlBlock),
+		.stack_mem = &sensorReadoutsThreadBuffer[0],
+		.stack_size = sizeof(sensorReadoutsThreadBuffer),
 		.priority = (osPriority_t) osPriorityNormal
 	};
 	osThreadNew(thread, NULL, &sensorReadoutsCollectorThreadAttributes);

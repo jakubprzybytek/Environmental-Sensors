@@ -29,6 +29,7 @@
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
+typedef StaticTask_t osStaticThreadDef_t;
 typedef StaticQueue_t osStaticMessageQDef_t;
 typedef StaticSemaphore_t osStaticMutexDef_t;
 typedef StaticSemaphore_t osStaticSemaphoreDef_t;
@@ -58,9 +59,14 @@ UART_HandleTypeDef huart2;
 
 /* Definitions for defaultTask */
 osThreadId_t defaultTaskHandle;
+uint32_t defaultTaskBuffer[ 10240 ];
+osStaticThreadDef_t defaultTaskControlBlock;
 const osThreadAttr_t defaultTask_attributes = {
   .name = "defaultTask",
-  .stack_size = 1024 * 4,
+  .cb_mem = &defaultTaskControlBlock,
+  .cb_size = sizeof(defaultTaskControlBlock),
+  .stack_mem = &defaultTaskBuffer[0],
+  .stack_size = sizeof(defaultTaskBuffer),
   .priority = (osPriority_t) osPriorityNormal,
 };
 /* Definitions for debugLogQueue */
@@ -159,7 +165,6 @@ int main(void)
   MX_TouchGFX_Init();
   /* USER CODE BEGIN 2 */
   HAL_GPIO_WritePin(LED_2_GPIO_Port, LED_2_Pin, GPIO_PIN_SET);
-  EnvSensorV2_Init();
   /* USER CODE END 2 */
 
   /* Init scheduler */
@@ -200,6 +205,7 @@ int main(void)
   defaultTaskHandle = osThreadNew(StartDefaultTask, NULL, &defaultTask_attributes);
 
   /* USER CODE BEGIN RTOS_THREADS */
+  EnvSensorV2_Init();
   /* add threads, ... */
   /* USER CODE END RTOS_THREADS */
 
