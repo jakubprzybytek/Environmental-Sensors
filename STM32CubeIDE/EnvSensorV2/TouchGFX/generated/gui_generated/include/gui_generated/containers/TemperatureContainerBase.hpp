@@ -13,7 +13,7 @@ class TemperatureContainerBase : public touchgfx::Container
 {
 public:
     TemperatureContainerBase();
-    virtual ~TemperatureContainerBase() {}
+    virtual ~TemperatureContainerBase();
     virtual void initialize();
 
 protected:

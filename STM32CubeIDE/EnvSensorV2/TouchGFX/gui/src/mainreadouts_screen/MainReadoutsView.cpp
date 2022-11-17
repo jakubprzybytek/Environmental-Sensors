@@ -11,6 +11,10 @@ void MainReadoutsView::tearDownScreen() {
 	MainReadoutsViewBase::tearDownScreen();
 }
 
+void MainReadoutsView::setVoltage(float voltage) {
+	voltageContainer.setValue(voltage);
+}
+
 void MainReadoutsView::setTemperature(float temperature) {
 	temperatureContainer.setValue(temperature);
 }
@@ -21,4 +25,8 @@ void MainReadoutsView::setPressure(float preassure) {
 
 void MainReadoutsView::setCO2(float co2) {
 	cO2Container.setValue(co2);
+}
+
+void MainReadoutsView::setHumidity(float humidity) {
+	humidityContainer.setValue(humidity);
 }

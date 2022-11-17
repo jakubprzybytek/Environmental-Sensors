@@ -29,6 +29,11 @@ TemperatureContainerBase::TemperatureContainerBase()
     add(labelTextArea);
 }
 
+TemperatureContainerBase::~TemperatureContainerBase()
+{
+
+}
+
 void TemperatureContainerBase::initialize()
 {
 

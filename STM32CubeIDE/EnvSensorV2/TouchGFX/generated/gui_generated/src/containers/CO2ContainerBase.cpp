@@ -29,6 +29,11 @@ CO2ContainerBase::CO2ContainerBase()
     add(labelTextArea);
 }
 
+CO2ContainerBase::~CO2ContainerBase()
+{
+
+}
+
 void CO2ContainerBase::initialize()
 {
 

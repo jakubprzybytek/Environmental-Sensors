@@ -30,6 +30,10 @@
     <ClCompile Include="..\..\generated\gui_generated\src\mainreadouts_screen\MainReadoutsViewBase.cpp"/>
     <ClCompile Include="..\..\gui\src\containers\CO2Container.cpp"/>
     <ClCompile Include="..\..\generated\gui_generated\src\containers\CO2ContainerBase.cpp"/>
+    <ClCompile Include="..\..\gui\src\containers\HumidityContainer.cpp"/>
+    <ClCompile Include="..\..\generated\gui_generated\src\containers\HumidityContainerBase.cpp"/>
+    <ClCompile Include="..\..\gui\src\containers\VoltageContainer.cpp"/>
+    <ClCompile Include="..\..\generated\gui_generated\src\containers\VoltageContainerBase.cpp"/>
   </ItemGroup>
   <ItemGroup>
     <None Include="$(ApplicationRoot)\assets\texts\texts.xml"/>
@@ -189,6 +193,10 @@
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\mainreadouts_screen\MainReadoutsViewBase.hpp"/>
     <ClInclude Include="..\..\gui\include\gui\containers\CO2Container.hpp"/>
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\CO2ContainerBase.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\containers\HumidityContainer.hpp"/>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\HumidityContainerBase.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\containers\VoltageContainer.hpp"/>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\VoltageContainerBase.hpp"/>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="$(ApplicationRoot)\generated\simulator\touchgfx.rc"/>

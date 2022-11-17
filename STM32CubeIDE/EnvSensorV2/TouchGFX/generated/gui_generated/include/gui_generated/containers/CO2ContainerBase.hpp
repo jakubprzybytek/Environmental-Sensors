@@ -13,7 +13,7 @@ class CO2ContainerBase : public touchgfx::Container
 {
 public:
     CO2ContainerBase();
-    virtual ~CO2ContainerBase() {}
+    virtual ~CO2ContainerBase();
     virtual void initialize();
 
 protected:

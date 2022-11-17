@@ -1,0 +1,203 @@
+{
+  "Application": {
+    "Screens": [
+      {
+        "Name": "MainReadouts",
+        "Components": [
+          {
+            "Type": "Box",
+            "Name": "background",
+            "Width": 400,
+            "Height": 300,
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            }
+          },
+          {
+            "Type": "CustomContainerInstance",
+            "Name": "pressureContainer",
+            "Y": 128,
+            "Width": 200,
+            "Height": 97,
+            "CustomContainerDefinitionName": "PressureContainer"
+          },
+          {
+            "Type": "CustomContainerInstance",
+            "Name": "temperatureContainer",
+            "Width": 200,
+            "Height": 114,
+            "CustomContainerDefinitionName": "TemperatureContainer"
+          },
+          {
+            "Type": "CustomContainerInstance",
+            "Name": "cO2Container",
+            "X": 200,
+            "Y": 128,
+            "Width": 200,
+            "Height": 97,
+            "CustomContainerDefinitionName": "CO2Container"
+          }
+        ],
+        "Interactions": []
+      }
+    ],
+    "CustomContainerDefinitions": [
+      {
+        "Name": "TemperatureContainer",
+        "Width": 200,
+        "Height": 114,
+        "Components": [
+          {
+            "Type": "TextArea",
+            "Name": "valueTextArea",
+            "Y": 8,
+            "Width": 200,
+            "Height": 114,
+            "TextId": "__SingleUse_NW8V",
+            "TextRotation": "0",
+            "Wildcard1": {}
+          },
+          {
+            "Type": "TextArea",
+            "Name": "unitTextArea",
+            "X": 167,
+            "Width": 20,
+            "Height": 28,
+            "TextId": "__SingleUse_BZKJ",
+            "TextRotation": "0"
+          },
+          {
+            "Type": "TextArea",
+            "Name": "labelTextArea",
+            "X": 38,
+            "Width": 112,
+            "Height": 28,
+            "TextId": "__SingleUse_DH8G",
+            "TextRotation": "0"
+          }
+        ],
+        "Interactions": []
+      },
+      {
+        "Name": "PressureContainer",
+        "Width": 200,
+        "Height": 97,
+        "Components": [
+          {
+            "Type": "TextArea",
+            "Name": "valueTextArea",
+            "Y": 19,
+            "Width": 200,
+            "Height": 78,
+            "TextId": "__SingleUse_G5RA",
+            "TextRotation": "0",
+            "Wildcard1": {}
+          },
+          {
+            "Type": "TextArea",
+            "Name": "unitTextArea",
+            "X": 160,
+            "Width": 32,
+            "Height": 28,
+            "TextId": "__SingleUse_MU2W",
+            "TextRotation": "0"
+          },
+          {
+            "Type": "TextArea",
+            "Name": "labelTextArea",
+            "X": 30,
+            "Width": 76,
+            "Height": 28,
+            "TextId": "__SingleUse_Z9BF",
+            "TextRotation": "0"
+          }
+        ],
+        "Interactions": []
+      },
+      {
+        "Name": "CO2Container",
+        "Width": 200,
+        "Height": 97,
+        "Components": [
+          {
+            "Type": "TextArea",
+            "Name": "valueTextArea",
+            "Y": 19,
+            "Width": 200,
+            "Height": 78,
+            "TextId": "__SingleUse_JK9G",
+            "TextRotation": "0",
+            "Wildcard1": {}
+          },
+          {
+            "Type": "TextArea",
+            "Name": "unitTextArea",
+            "X": 160,
+            "Width": 40,
+            "Height": 28,
+            "TextId": "__SingleUse_B0L7",
+            "TextRotation": "0"
+          },
+          {
+            "Type": "TextArea",
+            "Name": "labelTextArea",
+            "X": 30,
+            "Width": 76,
+            "Height": 28,
+            "TextId": "__SingleUse_1Z19",
+            "TextRotation": "0"
+          }
+        ],
+        "Interactions": []
+      }
+    ],
+    "Name": "MyApplication",
+    "Resolution": {
+      "Width": 400,
+      "Height": 300
+    },
+    "SelectedColorDepth": 2,
+    "StartupScreenName": "MainReadouts",
+    "SelectedStartupLanguage": "GB",
+    "Skin": "Blue",
+    "TouchGfxPath": "../Middlewares/ST/touchgfx",
+    "UIPath": ".",
+    "AvailableColorDepths": [
+      2
+    ],
+    "AvailableLCDs": {
+      "2": "LCD2bpp"
+    },
+    "AvailableSections": [
+      "ExtFlashSection",
+      "IntFlashSection"
+    ],
+    "AvailableResolutions": [
+      {
+        "Width": 400,
+        "Height": 300
+      }
+    ],
+    "PhysicalButtons": [],
+    "FrameworkFeatures": {
+      "LCD2bpp": {
+        "Id": "LCD2bpp",
+        "IsEnabled": true
+      }
+    },
+    "GenerateAssetsCommand": "make -f simulator/gcc/Makefile assets -j8",
+    "PostGenerateCommand": "touchgfx update_project --project-file=simulator/msvs/Application.vcxproj",
+    "PostGenerateTargetCommand": "touchgfx update_project --project-file=../EnvSensorV2.ioc --platform=m4",
+    "CompileSimulatorCommand": "make -f simulator/gcc/Makefile -j8",
+    "RunSimulatorCommand": "build\\bin\\simulator.exe",
+    "LandscapeSkinX": 0,
+    "LandscapeSkinY": 0,
+    "PortraitSkinX": 0,
+    "PortraitSkinY": 0,
+    "DisplayOrientation": "Landscape",
+    "Family": "STM32L4"
+  },
+  "Version": "4.18.1"
+}

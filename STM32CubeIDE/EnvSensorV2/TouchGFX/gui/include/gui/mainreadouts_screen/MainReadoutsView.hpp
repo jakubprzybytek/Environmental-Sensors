@@ -13,10 +13,11 @@ public:
 	virtual void setupScreen();
 	virtual void tearDownScreen();
 
+	void setVoltage(float voltage);
 	void setTemperature(float temperature);
 	void setPressure(float preassure);
-
 	void setCO2(float co2);
+	void setHumidity(float humidity);
 
 protected:
 };

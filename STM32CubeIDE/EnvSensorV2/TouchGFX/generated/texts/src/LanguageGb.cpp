@@ -7,18 +7,25 @@
 TEXT_LOCATION_FLASH_PRAGMA
 KEEP extern const uint32_t indicesGb[] TEXT_LOCATION_FLASH_ATTRIBUTE;
 
+// Remap all strings
 TEXT_LOCATION_FLASH_PRAGMA
 KEEP extern const uint32_t indicesGb[] TEXT_LOCATION_FLASH_ATTRIBUTE = {
-    0, // T___SingleUse_DH8G
-    21, // T___SingleUse_NW8V
-    41, // T___SingleUse_BZKJ
-    23, // T___SingleUse_UD7B
-    41, // T___SingleUse_PAZ3
-    0, // T___SingleUse_V2DZ
-    21, // T___SingleUse_G5RA
-    33, // T___SingleUse_MU2W
-    12, // T___SingleUse_Z9BF
-    21, // T___SingleUse_JK9G
-    37, // T___SingleUse_B0L7
-    29 // T___SingleUse_1Z19
+    0,  // T___SINGLEUSE_DH8G: "Temperature"
+    30, // T___SINGLEUSE_NW8V: "<>"
+    58, // T___SINGLEUSE_BZKJ: "?C"
+    40, // T___SINGLEUSE_UD7B: "-24.2"
+    58, // T___SINGLEUSE_PAZ3: "?C"
+    0,  // T___SINGLEUSE_V2DZ: "Temperature"
+    30, // T___SINGLEUSE_G5RA: "<>"
+    50, // T___SINGLEUSE_MU2W: "hPa"
+    21, // T___SINGLEUSE_Z9BF: "Pressure"
+    30, // T___SINGLEUSE_JK9G: "<>"
+    54, // T___SINGLEUSE_B0L7: "ppm"
+    46, // T___SINGLEUSE_1Z19: "CO2"
+    32, // T___SINGLEUSE_VFNW: "Voltage"
+    63, // T___SINGLEUSE_H3QZ: "V"
+    30, // T___SINGLEUSE_3GYP: "<>"
+    12, // T___SINGLEUSE_OQMQ: "Humidity"
+    61, // T___SINGLEUSE_X58L: "%"
+    30  // T___SINGLEUSE_B4ZP: "<>"
 };

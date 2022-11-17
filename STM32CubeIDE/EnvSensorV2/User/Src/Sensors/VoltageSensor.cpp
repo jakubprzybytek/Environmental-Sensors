@@ -7,6 +7,7 @@
 #include <main.h>
 
 #include <Sensors/VoltageSensor.hpp>
+#include <Readouts/SensorsReadouts.hpp>
 
 #include <Utils/ftoa.h>
 #include <Utils/DebugLog.hpp>
@@ -19,7 +20,7 @@
 
 extern ADC_HandleTypeDef hadc1;
 
-uint32_t voltageReadoutThreadBuffer[ 128 ];
+uint32_t voltageReadoutThreadBuffer[128];
 StaticTask_t voltageReadoutThreadControlBlock;
 
 void VoltageSensor::init() {
@@ -27,6 +28,7 @@ void VoltageSensor::init() {
 }
 
 void VoltageSensor::startThread() {
+// @formatter:off
 	const osThreadAttr_t voltageReadoutThreadaAttributes = {
 		.name = "voltage-readout-th",
 		.cb_mem = &voltageReadoutThreadControlBlock,
@@ -35,6 +37,7 @@ void VoltageSensor::startThread() {
 		.stack_size = sizeof(voltageReadoutThreadBuffer),
 		.priority = (osPriority_t) osPriorityNormal
 	};
+// @formatter:on
 	osThreadNew(thread, NULL, &voltageReadoutThreadaAttributes);
 }
 
@@ -68,7 +71,11 @@ void VoltageSensor::thread(void *pvParameters) {
 			char messageBuffer[22];
 			printf(messageBuffer, adcValue, voltage);
 
-			DebugLog::log(messageBuffer);
+			if (DebugLog::isInitialized()) {
+				DebugLog::log(messageBuffer);
+			}
+
+			SensorsReadouts::submitVoltage(voltage);
 		}
 	}
 }

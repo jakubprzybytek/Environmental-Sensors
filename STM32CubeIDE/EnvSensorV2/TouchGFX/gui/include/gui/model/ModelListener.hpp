@@ -15,9 +15,12 @@ public:
         model = m;
     }
 
+    virtual void notifyVoltageChanged(float newVoltage) {}
+
     virtual void notifyTemperatureChanged(float newTemperature) {}
     virtual void notifyPressureChanged(float newPressure) {}
     virtual void notifyCO2Changed(float newCo2) {}
+    virtual void notifyHumidityChanged(float newHumidity) {}
 
 protected:
     Model* model;

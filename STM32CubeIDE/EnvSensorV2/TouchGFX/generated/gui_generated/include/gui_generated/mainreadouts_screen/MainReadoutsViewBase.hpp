@@ -11,6 +11,8 @@
 #include <gui/containers/PressureContainer.hpp>
 #include <gui/containers/TemperatureContainer.hpp>
 #include <gui/containers/CO2Container.hpp>
+#include <gui/containers/HumidityContainer.hpp>
+#include <gui/containers/VoltageContainer.hpp>
 
 class MainReadoutsViewBase : public touchgfx::View<MainReadoutsPresenter>
 {
@@ -32,6 +34,8 @@ protected:
     PressureContainer pressureContainer;
     TemperatureContainer temperatureContainer;
     CO2Container cO2Container;
+    HumidityContainer humidityContainer;
+    VoltageContainer voltageContainer;
 
 private:
 

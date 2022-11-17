@@ -38,6 +38,23 @@
             "Width": 200,
             "Height": 97,
             "CustomContainerDefinitionName": "CO2Container"
+          },
+          {
+            "Type": "CustomContainerInstance",
+            "Name": "humidityContainer",
+            "X": 200,
+            "Width": 200,
+            "Height": 114,
+            "CustomContainerDefinitionName": "HumidityContainer"
+          },
+          {
+            "Type": "CustomContainerInstance",
+            "Name": "voltageContainer",
+            "X": 300,
+            "Y": 225,
+            "Width": 100,
+            "Height": 52,
+            "CustomContainerDefinitionName": "VoltageContainer"
           }
         ],
         "Interactions": []
@@ -151,6 +168,77 @@
           }
         ],
         "Interactions": []
+      },
+      {
+        "Name": "HumidityContainer",
+        "Width": 200,
+        "Height": 114,
+        "Components": [
+          {
+            "Type": "TextArea",
+            "Name": "valueTextArea",
+            "Y": 8,
+            "Width": 200,
+            "Height": 114,
+            "TextId": "__SingleUse_B4ZP",
+            "TextRotation": "0",
+            "Wildcard1": {}
+          },
+          {
+            "Type": "TextArea",
+            "Name": "unitTextArea",
+            "X": 160,
+            "Width": 40,
+            "Height": 28,
+            "TextId": "__SingleUse_X58L",
+            "TextRotation": "0"
+          },
+          {
+            "Type": "TextArea",
+            "Name": "labelTextArea",
+            "X": 30,
+            "Width": 82,
+            "Height": 28,
+            "TextId": "__SingleUse_OQMQ",
+            "TextRotation": "0"
+          }
+        ],
+        "Interactions": []
+      },
+      {
+        "Name": "VoltageContainer",
+        "Width": 100,
+        "Height": 52,
+        "Components": [
+          {
+            "Type": "TextArea",
+            "Name": "valueTextArea",
+            "Y": 28,
+            "Width": 100,
+            "Height": 24,
+            "TextId": "__SingleUse_3GYP",
+            "TextRotation": "0",
+            "Wildcard1": {}
+          },
+          {
+            "Type": "TextArea",
+            "Name": "unitTextArea",
+            "X": 82,
+            "Width": 18,
+            "Height": 28,
+            "TextId": "__SingleUse_H3QZ",
+            "TextRotation": "0"
+          },
+          {
+            "Type": "TextArea",
+            "Name": "labelTextArea",
+            "Width": 82,
+            "Height": 28,
+            "TextId": "__SingleUse_VFNW",
+            "TextRotation": "0"
+          }
+        ],
+        "Interactions": []
       }
     ],
     "Name": "MyApplication",
@@ -199,5 +287,5 @@
     "DisplayOrientation": "Landscape",
     "Family": "STM32L4"
   },
-  "Version": "4.18.1"
+  "Version": "4.20.0"
 }

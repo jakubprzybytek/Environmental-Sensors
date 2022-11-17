@@ -19,11 +19,17 @@ MainReadoutsViewBase::MainReadoutsViewBase()
 
     cO2Container.setXY(200, 128);
 
+    humidityContainer.setXY(200, 0);
+
+    voltageContainer.setXY(300, 225);
+
     add(__background);
     add(background);
     add(pressureContainer);
     add(temperatureContainer);
     add(cO2Container);
+    add(humidityContainer);
+    add(voltageContainer);
 }
 
 void MainReadoutsViewBase::setupScreen()
@@ -31,4 +37,6 @@ void MainReadoutsViewBase::setupScreen()
     pressureContainer.initialize();
     temperatureContainer.initialize();
     cO2Container.initialize();
+    humidityContainer.initialize();
+    voltageContainer.initialize();
 }

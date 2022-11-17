@@ -29,6 +29,11 @@ PressureContainerBase::PressureContainerBase()
     add(labelTextArea);
 }
 
+PressureContainerBase::~PressureContainerBase()
+{
+
+}
+
 void PressureContainerBase::initialize()
 {
 

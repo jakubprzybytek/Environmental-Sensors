@@ -28,10 +28,12 @@ public:
 	virtual ~MainReadoutsPresenter() {
 	};
 
+	void notifyVoltageChanged(float newVoltage);
+
 	void notifyTemperatureChanged(float newTemperature);
 	void notifyPressureChanged(float newPressure);
-
 	void notifyCO2Changed(float newCo2);
+	void notifyHumidityChanged(float newHumidity);
 
 private:
 	MainReadoutsPresenter();

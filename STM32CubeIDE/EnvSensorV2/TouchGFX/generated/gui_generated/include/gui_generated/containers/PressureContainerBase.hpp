@@ -13,7 +13,7 @@ class PressureContainerBase : public touchgfx::Container
 {
 public:
     PressureContainerBase();
-    virtual ~PressureContainerBase() {}
+    virtual ~PressureContainerBase();
     virtual void initialize();
 
 protected:
