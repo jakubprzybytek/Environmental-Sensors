@@ -13,6 +13,7 @@
 #include <Sensors/TempPressureSensor.hpp>
 #include <Sensors/CO2Sensor.hpp>
 #include <Sensors/ParticlesSensor.hpp>
+#include <Timer.hpp>
 
 #include <Utils/ftoa.h>
 #include <Utils/DebugLog.hpp>
@@ -47,6 +48,8 @@ void EnvSensorV2_Init() {
 	CO2Sensor::init();
 
 	//ParticlesSensor_Init();
+
+	Timer::init();
 }
 
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin) {
