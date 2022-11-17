@@ -2,7 +2,7 @@
 #define INC_SENSORMESSAGES_HPP_
 
 enum ReadoutType {
-	BMP, BME, SCD
+	Voltage, BMP, BME, SCD
 };
 
 struct TemperatureAndPressure {
@@ -26,6 +26,9 @@ typedef struct ReadoutMessage {
 	enum ReadoutType type;
 
 	union {
+		struct {
+			float voltage;
+		} v;
 		struct TemperatureAndPressure tp;
 		struct TemperaturePressureAndHumidity tph;
 		struct CO2TemperatureAndHumidity cth;

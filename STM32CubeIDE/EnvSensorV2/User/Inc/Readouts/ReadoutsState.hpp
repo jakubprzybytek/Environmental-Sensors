@@ -1,6 +1,8 @@
 class ReadoutsState {
 
 public:
+	float voltage;
+
 	float bmpTemperature;
 	float bmpPressure;
 

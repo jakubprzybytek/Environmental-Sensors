@@ -12,7 +12,7 @@
 
 extern osMessageQueueId_t sensorReadoutsQueueHandle;
 
-uint32_t sensorReadoutsThreadBuffer[ 128 ];
+uint32_t sensorReadoutsThreadBuffer[128];
 StaticTask_t sensorReadoutsThreadControlBlock;
 
 ReadoutsState readoutsState;
@@ -22,6 +22,7 @@ void SensorsReadoutsCollector::init() {
 }
 
 void SensorsReadoutsCollector::startThread() {
+// @formatter:off
 	const osThreadAttr_t sensorReadoutsCollectorThreadAttributes = {
 		.name = "sensors-collect-th",
 		.cb_mem = &sensorReadoutsThreadControlBlock,
@@ -30,6 +31,7 @@ void SensorsReadoutsCollector::startThread() {
 		.stack_size = sizeof(sensorReadoutsThreadBuffer),
 		.priority = (osPriority_t) osPriorityNormal
 	};
+// @formatter:on
 	osThreadNew(thread, NULL, &sensorReadoutsCollectorThreadAttributes);
 }
 
@@ -40,6 +42,9 @@ void SensorsReadoutsCollector::thread(void *pvParameters) {
 		osStatus_t status = osMessageQueueGet(sensorReadoutsQueueHandle, &message, NULL, portMAX_DELAY);
 
 		switch (message.type) {
+		case Voltage:
+			readoutsState.voltage = message.v.voltage;
+			break;
 		case BMP:
 			readoutsState.bmpTemperature = message.tp.temperature;
 			readoutsState.bmpPressure = message.tp.pressure;
@@ -56,9 +61,7 @@ void SensorsReadoutsCollector::thread(void *pvParameters) {
 			break;
 		}
 
-		if (status == osOK) {
-
-		} else if (status != osErrorTimeout) {
+		if (status != osOK && status != osErrorTimeout) {
 			osDelay(5000 / portTICK_RATE_MS);
 		}
 	}

@@ -6,6 +6,14 @@
 
 extern osMessageQueueId_t sensorReadoutsQueueHandle;
 
+void SensorsReadouts::submitVoltage(float voltage) {
+	ReadoutMessage message;
+	message.type = Voltage;
+	message.v.voltage = voltage;
+
+	osMessageQueuePut(sensorReadoutsQueueHandle, &message, 0, 0);
+}
+
 void SensorsReadouts::submitBmpTemperatureAndPressure(float temperature, float pressure) {
 	ReadoutMessage message;
 	message.type = BMP;
