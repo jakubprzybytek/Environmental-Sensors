@@ -12,6 +12,7 @@
 
 #include <Timer.hpp>
 
+#define FIRST_DELAY 20 * 1000
 #define TIMER_DELAY 5 * 60 * 1000
 
 uint32_t timerThreadBuffer[128];
@@ -39,7 +40,10 @@ void Timer::startThread() {
 using namespace touchgfx;
 
 void Timer::thread(void *pvParameters) {
-	uint32_t wakeTime = osKernelGetTickCount();
+	uint32_t wakeTime = osKernelGetTickCount() + FIRST_DELAY / portTICK_RATE_MS;
+	osDelayUntil(wakeTime);
+
+	OSWrappers::signalVSync();
 
 	for (;;) {
 		wakeTime += TIMER_DELAY / portTICK_RATE_MS;

@@ -59,6 +59,8 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin) {
 		switch1Pressed();
 	} else if (GPIO_Pin == SWITCH_2_Pin) {
 		switch2Pressed();
+	} else if (GPIO_Pin == SWITCH_3_Pin) {
+		switch3Pressed();
 	}
 }
 
@@ -70,4 +72,10 @@ void switch1Pressed() {
 using namespace touchgfx;
 void switch2Pressed() {
 	OSWrappers::signalVSync();
+}
+
+extern osThreadId_t defaultTaskHandle;
+void switch3Pressed() {
+	//TaskHandle_t task = xTaskGetHandle("defaultTask");
+	UBaseType_t uxHighWaterMark = uxTaskGetStackHighWaterMark((TaskHandle_t)defaultTaskHandle);
 }

@@ -22,6 +22,7 @@ extern void EnvSensorV2_Init();
 
 void switch1Pressed();
 void switch2Pressed();
+void switch3Pressed();
 
 #ifdef __cplusplus
 }
