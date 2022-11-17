@@ -8,15 +8,20 @@
     {
       "2": "LCD2bpp"
     },
-    "AvailableResolutions" : [
+    "AvailableResolutions": [
       {
         "Width": 400,
         "Height": 300
       }
     ],
-    "PostGenerateTargetCommand" : "touchgfx update_project --project-file=../EnvSensorV2.ioc --platform=m4",
-    "Family" : "STM32L4",
-    "SubFamily" : "STM32L4x1"
+    "PostGenerateTargetCommand": "touchgfx update_project",
+    "Family": "STM32L4",
+    "SubFamily": "STM32L4x1",
+    "Platform": "m4",
+    "ProjectFile": "../EnvSensorV2.ioc",
+    "OptionalComponentsRoot": "../Middlewares/ST/touchgfx_components",
+    "OptionalComponents": [
+    ]
   },
-  "Version": "4.18.1"
+  "Version": "4.20.0"
 }

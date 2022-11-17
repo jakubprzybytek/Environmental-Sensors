@@ -59,7 +59,7 @@ UART_HandleTypeDef huart2;
 
 /* Definitions for defaultTask */
 osThreadId_t defaultTaskHandle;
-uint32_t defaultTaskBuffer[ 10240 ];
+uint32_t defaultTaskBuffer[ 10242 ];
 osStaticThreadDef_t defaultTaskControlBlock;
 const osThreadAttr_t defaultTask_attributes = {
   .name = "defaultTask",
@@ -90,6 +90,17 @@ const osMessageQueueAttr_t sensorReadoutsQueue_attributes = {
   .cb_size = sizeof(sensorReadoutsQueueControlBlock),
   .mq_mem = &sensorReadoutsQueueBuffer,
   .mq_size = sizeof(sensorReadoutsQueueBuffer)
+};
+/* Definitions for displayCommandsQueue */
+osMessageQueueId_t displayCommandsQueueHandle;
+uint8_t displayCommandsQueueBuffer[ 6 * sizeof( uint16_t ) ];
+osStaticMessageQDef_t displayCommandsQueueControlBlock;
+const osMessageQueueAttr_t displayCommandsQueue_attributes = {
+  .name = "displayCommandsQueue",
+  .cb_mem = &displayCommandsQueueControlBlock,
+  .cb_size = sizeof(displayCommandsQueueControlBlock),
+  .mq_mem = &displayCommandsQueueBuffer,
+  .mq_size = sizeof(displayCommandsQueueBuffer)
 };
 /* Definitions for i2c1Mutex */
 osMutexId_t i2c1MutexHandle;
@@ -163,6 +174,8 @@ int main(void)
   MX_CRC_Init();
   MX_ADC1_Init();
   MX_TouchGFX_Init();
+  /* Call PreOsInit function */
+  MX_TouchGFX_PreOSInit();
   /* USER CODE BEGIN 2 */
   HAL_GPIO_WritePin(LED_2_GPIO_Port, LED_2_Pin, GPIO_PIN_SET);
   /* USER CODE END 2 */
@@ -195,6 +208,9 @@ int main(void)
 
   /* creation of sensorReadoutsQueue */
   sensorReadoutsQueueHandle = osMessageQueueNew (6, sizeof(ReadoutMessage_t), &sensorReadoutsQueue_attributes);
+
+  /* creation of displayCommandsQueue */
+  displayCommandsQueueHandle = osMessageQueueNew (6, sizeof(uint16_t), &displayCommandsQueue_attributes);
 
   /* USER CODE BEGIN RTOS_QUEUES */
   /* add queues, ... */
