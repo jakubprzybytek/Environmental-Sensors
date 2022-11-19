@@ -24,8 +24,9 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include "EnvSensorV2.hpp"
-#include "Readouts/SensorMessages.hpp"
+#include <EnvSensorV2.hpp>
+#include <Readouts/SensorMessages.hpp>
+#include <Display/DisplayCommandMessage.hpp>
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -93,7 +94,7 @@ const osMessageQueueAttr_t sensorReadoutsQueue_attributes = {
 };
 /* Definitions for displayCommandsQueue */
 osMessageQueueId_t displayCommandsQueueHandle;
-uint8_t displayCommandsQueueBuffer[ 6 * sizeof( uint16_t ) ];
+uint8_t displayCommandsQueueBuffer[ 6 * sizeof( DisplayCommandMessage_t ) ];
 osStaticMessageQDef_t displayCommandsQueueControlBlock;
 const osMessageQueueAttr_t displayCommandsQueue_attributes = {
   .name = "displayCommandsQueue",
@@ -210,7 +211,7 @@ int main(void)
   sensorReadoutsQueueHandle = osMessageQueueNew (6, sizeof(ReadoutMessage_t), &sensorReadoutsQueue_attributes);
 
   /* creation of displayCommandsQueue */
-  displayCommandsQueueHandle = osMessageQueueNew (6, sizeof(uint16_t), &displayCommandsQueue_attributes);
+  displayCommandsQueueHandle = osMessageQueueNew (6, sizeof(DisplayCommandMessage_t), &displayCommandsQueue_attributes);
 
   /* USER CODE BEGIN RTOS_QUEUES */
   /* add queues, ... */

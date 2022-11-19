@@ -1,18 +1,13 @@
 #ifndef INC_SCREEN_DISPLAYCOMMANDS_HPP_
 #define INC_SCREEN_DISPLAYCOMMANDS_HPP_
 
-enum DisplayCommand {
-	Clear
-};
-
-typedef struct DisplayCommandMessage {
-	enum DisplayCommand command;
-} DisplayCommandMessage_t;
+#include <Display/DisplayCommandMessage.hpp>
 
 class DisplayCommands {
 
 public:
 	static void submitDisplayClear();
+	static void submitFlushFrameBuffer(uint8_t* frameBuffer);
 };
 
 #endif /* INC_SCREEN_DISPLAYCOMMANDS_HPP_ */

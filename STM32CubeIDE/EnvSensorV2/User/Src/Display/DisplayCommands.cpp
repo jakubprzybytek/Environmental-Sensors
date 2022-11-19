@@ -11,3 +11,11 @@ void DisplayCommands::submitDisplayClear() {
 
 	osMessageQueuePut(displayCommandsQueueHandle, &message, 0, 0);
 }
+
+void DisplayCommands::submitFlushFrameBuffer(uint8_t *framebuffer) {
+	DisplayCommandMessage message;
+	message.command = Flush;
+	message.frameBuffer = framebuffer;
+
+	osMessageQueuePut(displayCommandsQueueHandle, &message, 0, 0);
+}

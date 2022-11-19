@@ -22,6 +22,8 @@
 
 /* USER CODE BEGIN TouchGFXHAL.cpp */
 
+#include <Display/DisplayCommands.hpp>
+
 using namespace touchgfx;
 
 void TouchGFXHAL::initialize()
@@ -66,10 +68,6 @@ void TouchGFXHAL::setTFTFrameBuffer(uint16_t* address)
     TouchGFXGeneratedHAL::setTFTFrameBuffer(address);
 }
 
-#include <touchgfx/hal/OSWrappers.hpp>
-#include <Display/Devices/Epd_4in2a.hpp>
-extern EPD_4in2A eInk;
-
 /**
  * This function is called whenever the framework has performed a partial draw.
  *
@@ -94,13 +92,7 @@ void TouchGFXHAL::flushFrameBuffer(const touchgfx::Rect& rect)
     //uint8_t *frameBuffer = advanceFrameBufferToRect(uint8_t* fbPtr, const touchgfx::Rect& rect);
     uint8_t *frameBuffer = (uint8_t*) getClientFrameBuffer();
 
-    OSWrappers::takeFrameBufferSemaphore();
-
-    eInk.initGrey(true);
-	eInk.displayGrey(frameBuffer, true, true);
-	eInk.sleep(true);
-
-	OSWrappers::giveFrameBufferSemaphore();
+	DisplayCommands::submitFlushFrameBuffer(frameBuffer);
 
 	HAL::flushFrameBuffer(rect);
 }
