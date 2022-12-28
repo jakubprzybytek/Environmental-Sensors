@@ -416,6 +416,7 @@
           "/5V_FILTERED",
           "/5V_IN",
           "/5V_NOT_REG",
+          "/5V_REG",
           "/5V_SW",
           "/BATT_3V3_FILTER",
           "/PROT_DRAIN",
@@ -445,6 +446,7 @@
           "/BATT2-",
           "/BATT3-",
           "/BATT_BARE",
+          "/BATT_SW",
           "/L_CHRG_POWER",
           "/L_CHRG_SENSE",
           "VBUS"
