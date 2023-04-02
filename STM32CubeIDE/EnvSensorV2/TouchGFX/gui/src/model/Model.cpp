@@ -1,6 +1,8 @@
 #include <gui/model/Model.hpp>
 #include <gui/model/ModelListener.hpp>
 
+#include <math.h>
+
 #ifndef Simulator
 
 #include <Readouts/ReadoutsState.hpp>
@@ -12,8 +14,9 @@ Model::Model() : modelListener(0) {
 }
 
 void Model::tick() {
-	if (storedReadoutsState.voltage != readoutsState.voltage) {
-		storedReadoutsState.voltage = readoutsState.voltage;
+	float roundedVoltage = round(readoutsState.voltage * 100.0) / 100.0;
+	if (storedReadoutsState.voltage != roundedVoltage) {
+		storedReadoutsState.voltage = roundedVoltage;
 		modelListener->notifyVoltageChanged(storedReadoutsState.voltage);
 	}
 
