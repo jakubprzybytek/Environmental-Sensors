@@ -168,6 +168,10 @@ standard names. */
 
 /* USER CODE BEGIN Defines */
 /* Section where parameter definitions can be added (for instance, to override default ones in FreeRTOS.h) */
-/* USER CODE END Defines */
+#include <main.h>
+#include <Leds.hpp>
+
+#define traceTASK_SWITCHED_IN() if ((UBaseType_t)pxCurrentTCB->uxPriority > 0) { CPU_LED_On(); }
+#define traceTASK_SWITCHED_OUT() CPU_LED_Off();
 
 #endif /* FREERTOS_CONFIG_H */
