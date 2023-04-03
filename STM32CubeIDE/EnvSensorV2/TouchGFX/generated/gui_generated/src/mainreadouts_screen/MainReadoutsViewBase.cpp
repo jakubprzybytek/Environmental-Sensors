@@ -13,6 +13,8 @@ MainReadoutsViewBase::MainReadoutsViewBase()
     background.setPosition(0, 0, 400, 300);
     background.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
 
+    dateTimeContainer.setXY(0, 225);
+
     pressureContainer.setXY(0, 128);
 
     temperatureContainer.setXY(0, 0);
@@ -25,6 +27,7 @@ MainReadoutsViewBase::MainReadoutsViewBase()
 
     add(__background);
     add(background);
+    add(dateTimeContainer);
     add(pressureContainer);
     add(temperatureContainer);
     add(cO2Container);
@@ -34,6 +37,7 @@ MainReadoutsViewBase::MainReadoutsViewBase()
 
 void MainReadoutsViewBase::setupScreen()
 {
+    dateTimeContainer.initialize();
     pressureContainer.initialize();
     temperatureContainer.initialize();
     cO2Container.initialize();

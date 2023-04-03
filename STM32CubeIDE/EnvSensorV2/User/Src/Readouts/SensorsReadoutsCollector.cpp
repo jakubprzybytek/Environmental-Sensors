@@ -9,6 +9,7 @@
 #include <Readouts/SensorMessages.hpp>
 
 #include <Utils/ftoa.h>
+#include <Utils/RtcUtils.hpp>
 
 extern osMessageQueueId_t sensorReadoutsQueueHandle;
 
@@ -60,6 +61,12 @@ void SensorsReadoutsCollector::thread(void *pvParameters) {
 			readoutsState.scdHumidity = message.cth.humidity;
 			break;
 		}
+
+		//readoutsState.dateTime = RtcUtils::getCurrentDateTime();
+		DateTime dt = RtcUtils::getCurrentDateTime();
+//		uint8_t secs = RtcUtils::getCurrentDateTime();
+
+		uint8_t secs = dt.seconds;
 
 		if (status != osOK && status != osErrorTimeout) {
 			osDelay(5000 / portTICK_RATE_MS);

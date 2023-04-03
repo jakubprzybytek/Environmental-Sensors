@@ -1,7 +1,10 @@
+#include <Utils/DateTime.hpp>
+
 class ReadoutsState {
 
 public:
 	float voltage;
+//	DateTime dateTime;
 
 	float bmpTemperature;
 	float bmpPressure;
@@ -13,4 +16,7 @@ public:
 	float scdCo2;
 	float scdTemperature;
 	float scdHumidity;
+
+//	ReadoutsState() : dateTime(DateTime()) {
+//	}
 };

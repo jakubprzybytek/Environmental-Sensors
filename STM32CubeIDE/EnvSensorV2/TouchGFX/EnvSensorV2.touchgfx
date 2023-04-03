@@ -17,6 +17,14 @@
           },
           {
             "Type": "CustomContainerInstance",
+            "Name": "dateTimeContainer",
+            "Y": 225,
+            "Width": 100,
+            "Height": 52,
+            "CustomContainerDefinitionName": "TimeDateContainer"
+          },
+          {
+            "Type": "CustomContainerInstance",
             "Name": "pressureContainer",
             "Y": 128,
             "Width": 200,
@@ -239,6 +247,32 @@
           }
         ],
         "Interactions": []
+      },
+      {
+        "Name": "TimeDateContainer",
+        "Width": 100,
+        "Height": 52,
+        "Components": [
+          {
+            "Type": "TextArea",
+            "Name": "valueTextArea",
+            "Y": 28,
+            "Width": 100,
+            "Height": 24,
+            "TextId": "__SingleUse_ZMLC",
+            "TextRotation": "0",
+            "Wildcard1": {}
+          },
+          {
+            "Type": "TextArea",
+            "Name": "labelTextArea",
+            "Width": 100,
+            "Height": 28,
+            "TextId": "__SingleUse_SXVX",
+            "TextRotation": "0"
+          }
+        ],
+        "Interactions": []
       }
     ],
     "Name": "MyApplication",
@@ -277,7 +311,7 @@
     },
     "GenerateAssetsCommand": "make -f simulator/gcc/Makefile assets -j8",
     "PostGenerateCommand": "touchgfx update_project --project-file=simulator/msvs/Application.vcxproj",
-    "PostGenerateTargetCommand": "touchgfx update_project --project-file=../EnvSensorV2.ioc --platform=m4",
+    "PostGenerateTargetCommand": "touchgfx update_project",
     "CompileSimulatorCommand": "make -f simulator/gcc/Makefile -j8",
     "RunSimulatorCommand": "build\\bin\\simulator.exe",
     "LandscapeSkinX": 0,
@@ -285,7 +319,11 @@
     "PortraitSkinX": 0,
     "PortraitSkinY": 0,
     "DisplayOrientation": "Landscape",
-    "Family": "STM32L4"
+    "Family": "STM32L4",
+    "Platform": "m4",
+    "ProjectFile": "../EnvSensorV2.ioc",
+    "OptionalComponentsRoot": "../Middlewares/ST/touchgfx_components",
+    "OptionalComponents": []
   },
   "Version": "4.20.0"
 }

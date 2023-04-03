@@ -36,6 +36,11 @@ void Model::tick() {
 		storedReadoutsState.scdHumidity = readoutsState.scdHumidity;
 		modelListener->notifyHumidityChanged(storedReadoutsState.scdHumidity);
 	}
+
+//	if (!storedReadoutsState.dateTime.equals(readoutsState.dateTime)) {
+//		storedReadoutsState.dateTime = readoutsState.dateTime;
+//		modelListener->notifyDateTimeChanged(storedReadoutsState.dateTime);
+//	}
 }
 
 #endif
