@@ -143,24 +143,36 @@ void EPD_4in2A::waitUntilIdle() {
  * Sends a command to eInk display.
  */
 void EPD_4in2A::sendCommand(uint8_t command) {
+	TRANSMISSION_START();
+
 	EPD_DATA_COMMAND_LOW;
 	HAL_SPI_Transmit(&hspi, &command, 1, EPD_TIMEOUT);
+
+	TRANSMISSION_END();
 }
 
 /**
  * Sends single byte of data to eInk display.
  */
 void EPD_4in2A::sendData(uint8_t data) {
+	TRANSMISSION_START();
+
 	EPD_DATA_COMMAND_HIGH;
 	HAL_SPI_Transmit(&hspi, &data, 1, EPD_TIMEOUT);
+
+	TRANSMISSION_END();
 }
 
 /**
  * Sends array of bytes to eInk display.
  */
 void EPD_4in2A::sendData(const uint8_t *data, uint16_t size) {
+	TRANSMISSION_START();
+
 	EPD_DATA_COMMAND_HIGH;
 	HAL_SPI_Transmit(&hspi, (uint8_t*) data, size, EPD_TIMEOUT);
+
+	TRANSMISSION_END();
 }
 
 /**

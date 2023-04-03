@@ -4,8 +4,6 @@
 #include <touchgfx/hal/OSWrappers.hpp>
 using namespace touchgfx;
 
-#include <Leds.hpp>
-
 #include <Display/DisplayController.hpp>
 #include <Display/DisplayCommands.hpp>
 
@@ -62,13 +60,9 @@ void DisplayController::thread(void *pvParameters) {
 		case Flush:
 			OSWrappers::takeFrameBufferSemaphore();
 
-			DISPLAY_LED_On();
-
 			eInk.initGrey(true);
 			eInk.displayGrey(message.frameBuffer, true, true);
 			eInk.sleep(true);
-
-			DISPLAY_LED_Off();
 
 			OSWrappers::giveFrameBufferSemaphore();
 			break;
