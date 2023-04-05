@@ -13,6 +13,7 @@
 #include <gui/containers/CO2Container.hpp>
 #include <gui/containers/HumidityContainer.hpp>
 #include <gui/containers/VoltageContainer.hpp>
+#include <gui/containers/TimeContainer.hpp>
 
 class MainReadoutsViewBase : public touchgfx::View<MainReadoutsPresenter>
 {
@@ -36,6 +37,7 @@ protected:
     CO2Container cO2Container;
     HumidityContainer humidityContainer;
     VoltageContainer voltageContainer;
+    TimeContainer timeContainer;
 
 private:
 

@@ -29,3 +29,7 @@ void MainReadoutsPresenter::notifyCO2Changed(float newCo2) {
 void MainReadoutsPresenter::notifyHumidityChanged(float newHumidity) {
 	view.setHumidity(newHumidity);
 }
+
+void MainReadoutsPresenter::notifyDateTimeChanged(DateTime newDateTime) {
+	view.setDateTime(newDateTime);
+}

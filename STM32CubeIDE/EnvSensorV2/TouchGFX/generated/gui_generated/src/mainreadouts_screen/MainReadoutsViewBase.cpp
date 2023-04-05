@@ -23,6 +23,8 @@ MainReadoutsViewBase::MainReadoutsViewBase()
 
     voltageContainer.setXY(300, 225);
 
+    timeContainer.setXY(0, 225);
+
     add(__background);
     add(background);
     add(pressureContainer);
@@ -30,6 +32,7 @@ MainReadoutsViewBase::MainReadoutsViewBase()
     add(cO2Container);
     add(humidityContainer);
     add(voltageContainer);
+    add(timeContainer);
 }
 
 void MainReadoutsViewBase::setupScreen()
@@ -39,4 +42,5 @@ void MainReadoutsViewBase::setupScreen()
     cO2Container.initialize();
     humidityContainer.initialize();
     voltageContainer.initialize();
+    timeContainer.initialize();
 }

@@ -34,6 +34,8 @@
     <ClCompile Include="..\..\generated\gui_generated\src\containers\HumidityContainerBase.cpp"/>
     <ClCompile Include="..\..\gui\src\containers\VoltageContainer.cpp"/>
     <ClCompile Include="..\..\generated\gui_generated\src\containers\VoltageContainerBase.cpp"/>
+    <ClCompile Include="..\..\gui\src\containers\TimeContainer.cpp"/>
+    <ClCompile Include="..\..\generated\gui_generated\src\containers\TimeContainerBase.cpp"/>
   </ItemGroup>
   <ItemGroup>
     <None Include="$(ApplicationRoot)\assets\texts\texts.xml"/>
@@ -197,6 +199,8 @@
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\HumidityContainerBase.hpp"/>
     <ClInclude Include="..\..\gui\include\gui\containers\VoltageContainer.hpp"/>
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\VoltageContainerBase.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\containers\TimeContainer.hpp"/>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\TimeContainerBase.hpp"/>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="$(ApplicationRoot)\generated\simulator\touchgfx.rc"/>

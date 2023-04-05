@@ -18,6 +18,7 @@
 #include <Utils/ftoa.h>
 #include <Utils/DebugLog.hpp>
 #include <Utils/BlinkingLeds.hpp>
+#include <Utils/RtcUtils.hpp>
 
 extern I2C_HandleTypeDef hi2c1;
 
@@ -61,6 +62,8 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin) {
 		switch2Pressed();
 	} else if (GPIO_Pin == SWITCH_3_Pin) {
 		switch3Pressed();
+	} else if (GPIO_Pin == SWITCH_4_Pin) {
+		switch4Pressed();
 	}
 }
 
@@ -77,5 +80,10 @@ void switch2Pressed() {
 extern osThreadId_t defaultTaskHandle;
 void switch3Pressed() {
 	//TaskHandle_t task = xTaskGetHandle("defaultTask");
-	UBaseType_t uxHighWaterMark = uxTaskGetStackHighWaterMark((TaskHandle_t)defaultTaskHandle);
+	UBaseType_t uxHighWaterMark = uxTaskGetStackHighWaterMark((TaskHandle_t) defaultTaskHandle);
+}
+
+void switch4Pressed() {
+	//DateTime dateTime = RtcUtils::getCurrentDateTime();
+	//dateTime.seconds = 0;
 }

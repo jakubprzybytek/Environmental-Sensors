@@ -30,3 +30,7 @@ void MainReadoutsView::setCO2(float co2) {
 void MainReadoutsView::setHumidity(float humidity) {
 	humidityContainer.setValue(humidity);
 }
+
+void MainReadoutsView::setDateTime(DateTime dateTime) {
+	timeContainer.setDateTime(dateTime);
+}

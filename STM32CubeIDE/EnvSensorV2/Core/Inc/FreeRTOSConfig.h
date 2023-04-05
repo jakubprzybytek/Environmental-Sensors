@@ -173,5 +173,6 @@ standard names. */
 
 #define traceTASK_SWITCHED_IN() if ((UBaseType_t)pxCurrentTCB->uxPriority > 0) { CPU_LED_On(); }
 #define traceTASK_SWITCHED_OUT() CPU_LED_Off();
+/* USER CODE END Defines */
 
 #endif /* FREERTOS_CONFIG_H */

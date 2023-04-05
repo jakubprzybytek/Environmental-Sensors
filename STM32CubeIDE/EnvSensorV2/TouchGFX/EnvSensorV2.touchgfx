@@ -55,6 +55,14 @@
             "Width": 100,
             "Height": 52,
             "CustomContainerDefinitionName": "VoltageContainer"
+          },
+          {
+            "Type": "CustomContainerInstance",
+            "Name": "timeContainer",
+            "Y": 225,
+            "Width": 100,
+            "Height": 52,
+            "CustomContainerDefinitionName": "TimeContainer"
           }
         ],
         "Interactions": []
@@ -239,6 +247,32 @@
           }
         ],
         "Interactions": []
+      },
+      {
+        "Name": "TimeContainer",
+        "Width": 100,
+        "Height": 52,
+        "Components": [
+          {
+            "Type": "TextArea",
+            "Name": "hourTextArea",
+            "Y": 28,
+            "Width": 100,
+            "Height": 24,
+            "TextId": "__SingleUse_42GU",
+            "TextRotation": "0",
+            "Wildcard1": {}
+          },
+          {
+            "Type": "TextArea",
+            "Name": "labelTextArea",
+            "Width": 82,
+            "Height": 28,
+            "TextId": "__SingleUse_D46E",
+            "TextRotation": "0"
+          }
+        ],
+        "Interactions": []
       }
     ],
     "Name": "MyApplication",
@@ -277,7 +311,7 @@
     },
     "GenerateAssetsCommand": "make -f simulator/gcc/Makefile assets -j8",
     "PostGenerateCommand": "touchgfx update_project --project-file=simulator/msvs/Application.vcxproj",
-    "PostGenerateTargetCommand": "touchgfx update_project --project-file=../EnvSensorV2.ioc --platform=m4",
+    "PostGenerateTargetCommand": "touchgfx update_project",
     "CompileSimulatorCommand": "make -f simulator/gcc/Makefile -j8",
     "RunSimulatorCommand": "build\\bin\\simulator.exe",
     "LandscapeSkinX": 0,
@@ -285,7 +319,11 @@
     "PortraitSkinX": 0,
     "PortraitSkinY": 0,
     "DisplayOrientation": "Landscape",
-    "Family": "STM32L4"
+    "Family": "STM32L4",
+    "Platform": "m4",
+    "ProjectFile": "../EnvSensorV2.ioc",
+    "OptionalComponentsRoot": "../Middlewares/ST/touchgfx_components",
+    "OptionalComponents": []
   },
   "Version": "4.20.0"
 }

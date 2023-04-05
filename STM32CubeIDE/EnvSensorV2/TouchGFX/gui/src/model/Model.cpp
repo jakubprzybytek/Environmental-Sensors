@@ -6,6 +6,7 @@
 #ifndef Simulator
 
 #include <Readouts/ReadoutsState.hpp>
+#include <Utils/RtcUtils.hpp>
 
 extern ReadoutsState readoutsState;
 ReadoutsState storedReadoutsState;
@@ -43,6 +44,10 @@ void Model::tick() {
 		storedReadoutsState.scdHumidity = roundedScdHumidity;
 		modelListener->notifyHumidityChanged(storedReadoutsState.scdHumidity);
 	}
+
+//	DateTime currentDateTime = RtcUtils::getCurrentDateTime();
+	uint8_t currentDateTime = RtcUtils::getCurrentDateTime();
+	//modelListener->notifyDateTimeChanged(currentDateTime);
 }
 
 #endif

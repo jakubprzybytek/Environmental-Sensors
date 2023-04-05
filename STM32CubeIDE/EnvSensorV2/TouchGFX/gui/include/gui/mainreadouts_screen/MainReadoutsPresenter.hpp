@@ -4,6 +4,8 @@
 #include <gui/model/ModelListener.hpp>
 #include <mvp/Presenter.hpp>
 
+#include <Utils/DateTime.hpp>
+
 using namespace touchgfx;
 
 class MainReadoutsView;
@@ -26,7 +28,8 @@ public:
 	virtual void deactivate();
 
 	virtual ~MainReadoutsPresenter() {
-	};
+	}
+	;
 
 	void notifyVoltageChanged(float newVoltage);
 
@@ -34,6 +37,8 @@ public:
 	void notifyPressureChanged(float newPressure);
 	void notifyCO2Changed(float newCo2);
 	void notifyHumidityChanged(float newHumidity);
+
+	void notifyDateTimeChanged(DateTime dateTime);
 
 private:
 	MainReadoutsPresenter();
