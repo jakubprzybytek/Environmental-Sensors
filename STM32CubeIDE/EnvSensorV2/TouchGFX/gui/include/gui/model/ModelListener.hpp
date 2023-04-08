@@ -3,6 +3,8 @@
 
 #include <gui/model/Model.hpp>
 
+#include <Utils/DateTime.hpp>
+
 class ModelListener
 {
 public:
@@ -21,6 +23,8 @@ public:
     virtual void notifyPressureChanged(float newPressure) {}
     virtual void notifyCO2Changed(float newCo2) {}
     virtual void notifyHumidityChanged(float newHumidity) {}
+
+    virtual void notifyDateTimeChanged(DateTime newDateTime) {}
 
 protected:
     Model* model;

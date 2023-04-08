@@ -6,6 +6,7 @@
 #ifndef Simulator
 
 #include <Readouts/ReadoutsState.hpp>
+#include <Utils/RtcUtils.hpp>
 
 extern ReadoutsState readoutsState;
 ReadoutsState storedReadoutsState;
@@ -20,25 +21,33 @@ void Model::tick() {
 		modelListener->notifyVoltageChanged(storedReadoutsState.voltage);
 	}
 
-	if (storedReadoutsState.scdTemperature != readoutsState.scdTemperature) {
-		storedReadoutsState.scdTemperature = readoutsState.scdTemperature;
+	float roundedScdTemperature = round(readoutsState.scdTemperature * 10.0) / 10.0;
+	if (storedReadoutsState.scdTemperature != roundedScdTemperature) {
+		storedReadoutsState.scdTemperature = roundedScdTemperature;
 		modelListener->notifyTemperatureChanged(storedReadoutsState.scdTemperature);
 	}
 
-	if (storedReadoutsState.bmpPressure != readoutsState.bmpPressure) {
-		storedReadoutsState.bmpPressure = readoutsState.bmpPressure;
+	float roundedBmpTemperature = round(readoutsState.bmpPressure * 10.0) / 10.0;
+	if (storedReadoutsState.bmpPressure != roundedBmpTemperature) {
+		storedReadoutsState.bmpPressure = roundedBmpTemperature;
 		modelListener->notifyPressureChanged(storedReadoutsState.bmpPressure);
 	}
 
-	if (storedReadoutsState.scdCo2 != readoutsState.scdCo2) {
-		storedReadoutsState.scdCo2 = readoutsState.scdCo2;
+	float roundedScdCo2 = round(readoutsState.scdCo2 * 10.0) / 10.0;
+	if (storedReadoutsState.scdCo2 != roundedScdCo2) {
+		storedReadoutsState.scdCo2 = roundedScdCo2;
 		modelListener->notifyCO2Changed(storedReadoutsState.scdCo2);
 	}
 
-	if (storedReadoutsState.scdHumidity != readoutsState.scdHumidity) {
-		storedReadoutsState.scdHumidity = readoutsState.scdHumidity;
+	float roundedScdHumidity = round(readoutsState.scdHumidity * 10.0) / 10.0;
+	if (storedReadoutsState.scdHumidity != roundedScdHumidity) {
+		storedReadoutsState.scdHumidity = roundedScdHumidity;
 		modelListener->notifyHumidityChanged(storedReadoutsState.scdHumidity);
 	}
+
+//	DateTime currentDateTime = RtcUtils::getCurrentDateTime();
+	uint8_t currentDateTime = RtcUtils::getCurrentDateTime();
+	//modelListener->notifyDateTimeChanged(currentDateTime);
 }
 
 #endif

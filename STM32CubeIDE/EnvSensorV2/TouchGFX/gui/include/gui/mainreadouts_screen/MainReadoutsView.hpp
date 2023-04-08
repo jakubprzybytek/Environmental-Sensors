@@ -4,6 +4,8 @@
 #include <gui_generated/mainreadouts_screen/MainReadoutsViewBase.hpp>
 #include <gui/mainreadouts_screen/MainReadoutsPresenter.hpp>
 
+#include <Utils/DateTime.hpp>
+
 class MainReadoutsView: public MainReadoutsViewBase {
 
 public:
@@ -18,6 +20,8 @@ public:
 	void setPressure(float preassure);
 	void setCO2(float co2);
 	void setHumidity(float humidity);
+
+	void setDateTime(DateTime dateTime);
 
 protected:
 };
