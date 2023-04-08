@@ -382,6 +382,8 @@
         "microvia_drill": 0.1,
         "name": "Default 0.4",
         "nets": [
+          "/I_CHRG_GATE",
+          "/I_CHRG_SENSE",
           "/L_CHRG_DRV",
           "/L_CHRG_EN",
           "/L_CHRG_TIMER"
@@ -420,6 +422,10 @@
           "/5V_SW",
           "/BATT_3V3_FILTER",
           "/PROT_DRAIN",
+          "/T100",
+          "/T12.5",
+          "/T25",
+          "/T50",
           "GND"
         ],
         "pcb_color": "rgba(0, 0, 0, 0.000)",
