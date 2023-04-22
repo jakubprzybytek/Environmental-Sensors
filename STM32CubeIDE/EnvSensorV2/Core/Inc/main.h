@@ -66,6 +66,8 @@ void Error_Handler(void);
 #define LED_2_GPIO_Port GPIOC
 #define LED_1_Pin GPIO_PIN_3
 #define LED_1_GPIO_Port GPIOC
+#define BATTERY_MEASURE_INPUT_Pin GPIO_PIN_0
+#define BATTERY_MEASURE_INPUT_GPIO_Port GPIOA
 #define E_INK_SELECT_Pin GPIO_PIN_4
 #define E_INK_SELECT_GPIO_Port GPIOC
 #define E_INK_DC_Pin GPIO_PIN_5

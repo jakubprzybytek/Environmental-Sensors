@@ -1,7 +1,6 @@
 #include <gui/containers/TimeContainer.hpp>
 
 TimeContainer::TimeContainer() {
-	hourTextArea.setWildcard(buffer);
 }
 
 void TimeContainer::initialize() {
@@ -9,6 +8,6 @@ void TimeContainer::initialize() {
 }
 
 void TimeContainer::setDateTime(DateTime dateTime) {
-	Unicode::snprintfFloat(buffer, TEXTAREA_SIZE, "%.1f", dateTime.minutes);
-	hourTextArea.invalidate();
+	Unicode::snprintf(timeTextAreaBuffer, TIMETEXTAREA_SIZE, "%02u:%02u:%02u", dateTime.hour, dateTime.minutes, dateTime.seconds);
+	timeTextArea.invalidate();
 }

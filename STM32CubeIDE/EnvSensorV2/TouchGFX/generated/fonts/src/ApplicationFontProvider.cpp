@@ -12,12 +12,15 @@ touchgfx::Font* ApplicationFontProvider::getFont(touchgfx::FontId typography)
     case Typography::DEFAULT:
         // segoeui_20_2bpp
         return const_cast<touchgfx::Font*>(TypedTextDatabase::getFonts()[0]);
-    case Typography::VALUEBIG:
-        // segoeuil_90_2bpp
+    case Typography::LARGE:
+        // segoeuil_70_2bpp
         return const_cast<touchgfx::Font*>(TypedTextDatabase::getFonts()[1]);
-    case Typography::VALUEMEDIUM:
-        // segoeuil_66_2bpp
+    case Typography::SMALL:
+        // segoeui_12_2bpp
         return const_cast<touchgfx::Font*>(TypedTextDatabase::getFonts()[2]);
+    case Typography::XLARGE:
+        // segoeuil_96_2bpp
+        return const_cast<touchgfx::Font*>(TypedTextDatabase::getFonts()[3]);
     default:
         return 0;
     }

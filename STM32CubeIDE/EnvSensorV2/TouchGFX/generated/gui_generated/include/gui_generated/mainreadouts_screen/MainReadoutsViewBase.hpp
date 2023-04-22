@@ -14,12 +14,13 @@
 #include <gui/containers/HumidityContainer.hpp>
 #include <gui/containers/VoltageContainer.hpp>
 #include <gui/containers/TimeContainer.hpp>
+#include <touchgfx/widgets/TextArea.hpp>
 
 class MainReadoutsViewBase : public touchgfx::View<MainReadoutsPresenter>
 {
 public:
     MainReadoutsViewBase();
-    virtual ~MainReadoutsViewBase() {}
+    virtual ~MainReadoutsViewBase();
     virtual void setupScreen();
 
 protected:
@@ -38,6 +39,8 @@ protected:
     HumidityContainer humidityContainer;
     VoltageContainer voltageContainer;
     TimeContainer timeContainer;
+    touchgfx::TextArea button1TextArea;
+    touchgfx::TextArea button2TextArea;
 
 private:
 

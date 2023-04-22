@@ -5,10 +5,6 @@
 
 class CO2Container: public CO2ContainerBase {
 
-private:
-	static const uint8_t TEXTAREA_SIZE = 10;
-	touchgfx::Unicode::UnicodeChar buffer[TEXTAREA_SIZE];
-
 public:
 	CO2Container();
 	virtual ~CO2Container() {

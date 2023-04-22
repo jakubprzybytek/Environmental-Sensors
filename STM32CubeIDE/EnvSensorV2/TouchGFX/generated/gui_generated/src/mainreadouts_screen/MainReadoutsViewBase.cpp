@@ -3,36 +3,52 @@
 /*********************************************************************************/
 #include <gui_generated/mainreadouts_screen/MainReadoutsViewBase.hpp>
 #include <touchgfx/Color.hpp>
+#include <texts/TextKeysAndLanguages.hpp>
 
 MainReadoutsViewBase::MainReadoutsViewBase()
 {
-
     __background.setPosition(0, 0, 400, 300);
     __background.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+    add(__background);
 
     background.setPosition(0, 0, 400, 300);
     background.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
+    add(background);
 
     pressureContainer.setXY(0, 128);
+    add(pressureContainer);
 
     temperatureContainer.setXY(0, 0);
+    add(temperatureContainer);
 
     cO2Container.setXY(200, 128);
+    add(cO2Container);
 
     humidityContainer.setXY(200, 0);
+    add(humidityContainer);
 
     voltageContainer.setXY(300, 225);
+    add(voltageContainer);
 
     timeContainer.setXY(0, 225);
-
-    add(__background);
-    add(background);
-    add(pressureContainer);
-    add(temperatureContainer);
-    add(cO2Container);
-    add(humidityContainer);
-    add(voltageContainer);
     add(timeContainer);
+
+    button1TextArea.setPosition(11, 287, 46, 12);
+    button1TextArea.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+    button1TextArea.setLinespacing(0);
+    button1TextArea.setTypedText(touchgfx::TypedText(T___SINGLEUSE_QLDI));
+    add(button1TextArea);
+
+    button2TextArea.setPosition(77, 287, 46, 12);
+    button2TextArea.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+    button2TextArea.setLinespacing(0);
+    button2TextArea.setTypedText(touchgfx::TypedText(T___SINGLEUSE_JC1X));
+    add(button2TextArea);
+}
+
+MainReadoutsViewBase::~MainReadoutsViewBase()
+{
+
 }
 
 void MainReadoutsViewBase::setupScreen()

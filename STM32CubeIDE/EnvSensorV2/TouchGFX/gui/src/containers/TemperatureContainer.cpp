@@ -1,7 +1,6 @@
 #include <gui/containers/TemperatureContainer.hpp>
 
 TemperatureContainer::TemperatureContainer() {
-	valueTextArea.setWildcard(buffer);
 }
 
 void TemperatureContainer::initialize() {
@@ -9,6 +8,6 @@ void TemperatureContainer::initialize() {
 }
 
 void TemperatureContainer::setValue(float value) {
-	Unicode::snprintfFloat(buffer, TEXTAREA_SIZE, "%.1f", value);
+	Unicode::snprintfFloat(valueTextAreaBuffer, VALUETEXTAREA_SIZE, "%.1f", value);
 	valueTextArea.invalidate();
 }

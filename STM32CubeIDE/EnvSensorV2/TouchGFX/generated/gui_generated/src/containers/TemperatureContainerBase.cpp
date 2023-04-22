@@ -12,20 +12,21 @@ TemperatureContainerBase::TemperatureContainerBase()
     valueTextArea.setPosition(0, 8, 200, 114);
     valueTextArea.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     valueTextArea.setLinespacing(0);
-    valueTextArea.setTypedText(touchgfx::TypedText(T___SINGLEUSE_NW8V));
+    Unicode::snprintf(valueTextAreaBuffer, VALUETEXTAREA_SIZE, "%s", touchgfx::TypedText(T___SINGLEUSE_ZVXF).getText());
+    valueTextArea.setWildcard(valueTextAreaBuffer);
+    valueTextArea.setTypedText(touchgfx::TypedText(T___SINGLEUSE_8Q5Y));
+    add(valueTextArea);
 
-    unitTextArea.setPosition(167, 0, 20, 28);
+    unitTextArea.setPosition(160, 0, 40, 28);
     unitTextArea.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     unitTextArea.setLinespacing(0);
-    unitTextArea.setTypedText(touchgfx::TypedText(T___SINGLEUSE_BZKJ));
+    unitTextArea.setTypedText(touchgfx::TypedText(T___SINGLEUSE_6OS6));
+    add(unitTextArea);
 
-    labelTextArea.setPosition(38, 0, 112, 28);
+    labelTextArea.setPosition(0, 0, 150, 28);
     labelTextArea.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     labelTextArea.setLinespacing(0);
-    labelTextArea.setTypedText(touchgfx::TypedText(T___SINGLEUSE_DH8G));
-
-    add(valueTextArea);
-    add(unitTextArea);
+    labelTextArea.setTypedText(touchgfx::TypedText(T___SINGLEUSE_2MZM));
     add(labelTextArea);
 }
 
@@ -38,4 +39,3 @@ void TemperatureContainerBase::initialize()
 {
 
 }
-

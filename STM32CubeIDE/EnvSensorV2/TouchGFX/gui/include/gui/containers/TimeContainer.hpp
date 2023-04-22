@@ -7,10 +7,6 @@
 
 class TimeContainer: public TimeContainerBase {
 
-private:
-	static const uint8_t TEXTAREA_SIZE = 10;
-	touchgfx::Unicode::UnicodeChar buffer[TEXTAREA_SIZE];
-
 public:
 	TimeContainer();
 	virtual ~TimeContainer() {

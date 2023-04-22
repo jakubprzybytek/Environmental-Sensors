@@ -9,17 +9,18 @@ TimeContainerBase::TimeContainerBase()
 {
     setWidth(100);
     setHeight(52);
-    hourTextArea.setPosition(0, 28, 100, 24);
-    hourTextArea.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
-    hourTextArea.setLinespacing(0);
-    hourTextArea.setTypedText(touchgfx::TypedText(T___SINGLEUSE_42GU));
+    timeTextArea.setPosition(0, 28, 100, 24);
+    timeTextArea.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+    timeTextArea.setLinespacing(0);
+    Unicode::snprintf(timeTextAreaBuffer, TIMETEXTAREA_SIZE, "%s", touchgfx::TypedText(T___SINGLEUSE_UKDP).getText());
+    timeTextArea.setWildcard(timeTextAreaBuffer);
+    timeTextArea.setTypedText(touchgfx::TypedText(T___SINGLEUSE_O4NC));
+    add(timeTextArea);
 
-    labelTextArea.setPosition(0, 0, 82, 28);
+    labelTextArea.setPosition(0, 0, 100, 28);
     labelTextArea.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     labelTextArea.setLinespacing(0);
-    labelTextArea.setTypedText(touchgfx::TypedText(T___SINGLEUSE_D46E));
-
-    add(hourTextArea);
+    labelTextArea.setTypedText(touchgfx::TypedText(T___SINGLEUSE_HZ9N));
     add(labelTextArea);
 }
 
@@ -32,4 +33,3 @@ void TimeContainerBase::initialize()
 {
 
 }
-

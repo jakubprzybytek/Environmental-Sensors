@@ -12,20 +12,21 @@ VoltageContainerBase::VoltageContainerBase()
     valueTextArea.setPosition(0, 28, 100, 24);
     valueTextArea.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     valueTextArea.setLinespacing(0);
-    valueTextArea.setTypedText(touchgfx::TypedText(T___SINGLEUSE_3GYP));
+    Unicode::snprintf(valueTextAreaBuffer, VALUETEXTAREA_SIZE, "%s", touchgfx::TypedText(T___SINGLEUSE_IXTO).getText());
+    valueTextArea.setWildcard(valueTextAreaBuffer);
+    valueTextArea.setTypedText(touchgfx::TypedText(T___SINGLEUSE_94JU));
+    add(valueTextArea);
 
     unitTextArea.setPosition(82, 0, 18, 28);
     unitTextArea.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     unitTextArea.setLinespacing(0);
-    unitTextArea.setTypedText(touchgfx::TypedText(T___SINGLEUSE_H3QZ));
+    unitTextArea.setTypedText(touchgfx::TypedText(T___SINGLEUSE_CR7E));
+    add(unitTextArea);
 
     labelTextArea.setPosition(0, 0, 82, 28);
     labelTextArea.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     labelTextArea.setLinespacing(0);
-    labelTextArea.setTypedText(touchgfx::TypedText(T___SINGLEUSE_VFNW));
-
-    add(valueTextArea);
-    add(unitTextArea);
+    labelTextArea.setTypedText(touchgfx::TypedText(T___SINGLEUSE_S6EA));
     add(labelTextArea);
 }
 
@@ -38,4 +39,3 @@ void VoltageContainerBase::initialize()
 {
 
 }
-

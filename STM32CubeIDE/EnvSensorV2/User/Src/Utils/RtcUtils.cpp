@@ -11,16 +11,15 @@
 
 extern RTC_HandleTypeDef hrtc;
 
-//DateTime RtcUtils::getCurrentDateTime() {
-uint8_t RtcUtils::getCurrentDateTime() {
+DateTime RtcUtils::getCurrentDateTime() {
+//uint8_t RtcUtils::getCurrentDateTime() {
 	RTC_TimeTypeDef rtcTime;
 	RTC_DateTypeDef rtcDate;
 
 	HAL_RTC_GetTime(&hrtc, &rtcTime, RTC_FORMAT_BIN);
 	HAL_RTC_GetDate(&hrtc, &rtcDate, RTC_FORMAT_BIN);
 
-	DateTime a = DateTime(rtcDate.Year, rtcDate.Month, rtcDate.Date, rtcTime.Hours, rtcTime.Minutes, rtcTime.Seconds);
-	return a.minutes;//rtcTime.Seconds;
+	return DateTime(rtcDate.Year, rtcDate.Month, rtcDate.Date, rtcTime.Hours, rtcTime.Minutes, rtcTime.Seconds);
 }
 
 void RtcUtils::updateDateTime(DateTime dateTime) {

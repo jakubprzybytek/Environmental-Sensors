@@ -8,6 +8,7 @@ KEEP extern const touchgfx::KerningNode kerning_segoeui_20_2bpp[] FONT_KERNING_L
     { 0x0056, -2 },  // (First char = [0x0056, V], Second char = [0x002E, .], Kerning dist = -2)
     { 0x0072, -1 },  // (First char = [0x0072, r], Second char = [0x002E, .], Kerning dist = -1)
     { 0x0079, -1 },  // (First char = [0x0079, y], Second char = [0x002E, .], Kerning dist = -1)
+    { 0x0072,  1 },  // (First char = [0x0072, r], Second char = [0x003A, :], Kerning dist = 1)
     { 0x0079, -1 },  // (First char = [0x0079, y], Second char = [0x003F, ?], Kerning dist = -1)
     { 0x0054, -1 },  // (First char = [0x0054, T], Second char = [0x0043, C], Kerning dist = -1)
     { 0x0054, -1 },  // (First char = [0x0054, T], Second char = [0x004F, O], Kerning dist = -1)

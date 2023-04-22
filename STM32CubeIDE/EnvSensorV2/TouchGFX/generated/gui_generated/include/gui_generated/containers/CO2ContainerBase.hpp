@@ -28,6 +28,12 @@ protected:
     touchgfx::TextArea unitTextArea;
     touchgfx::TextArea labelTextArea;
 
+    /*
+     * Wildcard Buffers
+     */
+    static const uint16_t VALUETEXTAREA_SIZE = 8;
+    touchgfx::Unicode::UnicodeChar valueTextAreaBuffer[VALUETEXTAREA_SIZE];
+
 private:
 
 };

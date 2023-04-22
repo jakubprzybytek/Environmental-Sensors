@@ -24,8 +24,14 @@ protected:
     /*
      * Member Declarations
      */
-    touchgfx::TextAreaWithOneWildcard hourTextArea;
+    touchgfx::TextAreaWithOneWildcard timeTextArea;
     touchgfx::TextArea labelTextArea;
+
+    /*
+     * Wildcard Buffers
+     */
+    static const uint16_t TIMETEXTAREA_SIZE = 10;
+    touchgfx::Unicode::UnicodeChar timeTextAreaBuffer[TIMETEXTAREA_SIZE];
 
 private:
 

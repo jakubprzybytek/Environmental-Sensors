@@ -12,20 +12,21 @@ PressureContainerBase::PressureContainerBase()
     valueTextArea.setPosition(0, 19, 200, 78);
     valueTextArea.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     valueTextArea.setLinespacing(0);
-    valueTextArea.setTypedText(touchgfx::TypedText(T___SINGLEUSE_G5RA));
+    Unicode::snprintf(valueTextAreaBuffer, VALUETEXTAREA_SIZE, "%s", touchgfx::TypedText(T___SINGLEUSE_Q2NK).getText());
+    valueTextArea.setWildcard(valueTextAreaBuffer);
+    valueTextArea.setTypedText(touchgfx::TypedText(T___SINGLEUSE_HQWB));
+    add(valueTextArea);
 
-    unitTextArea.setPosition(160, 0, 32, 28);
+    unitTextArea.setPosition(160, 0, 40, 28);
     unitTextArea.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     unitTextArea.setLinespacing(0);
-    unitTextArea.setTypedText(touchgfx::TypedText(T___SINGLEUSE_MU2W));
+    unitTextArea.setTypedText(touchgfx::TypedText(T___SINGLEUSE_PB6I));
+    add(unitTextArea);
 
-    labelTextArea.setPosition(30, 0, 76, 28);
+    labelTextArea.setPosition(0, 0, 150, 28);
     labelTextArea.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     labelTextArea.setLinespacing(0);
-    labelTextArea.setTypedText(touchgfx::TypedText(T___SINGLEUSE_Z9BF));
-
-    add(valueTextArea);
-    add(unitTextArea);
+    labelTextArea.setTypedText(touchgfx::TypedText(T___SINGLEUSE_BSZ2));
     add(labelTextArea);
 }
 
@@ -38,4 +39,3 @@ void PressureContainerBase::initialize()
 {
 
 }
-

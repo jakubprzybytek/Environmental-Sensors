@@ -5,10 +5,6 @@
 
 class TemperatureContainer: public TemperatureContainerBase {
 
-private:
-	static const uint8_t TEXTAREA_SIZE = 10;
-	touchgfx::Unicode::UnicodeChar buffer[TEXTAREA_SIZE];
-
 public:
 	TemperatureContainer();
 	virtual ~TemperatureContainer() {

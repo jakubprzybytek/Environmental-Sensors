@@ -5,8 +5,8 @@
 
 class RtcUtils {
 public:
-//	static DateTime getCurrentDateTime();
-	static uint8_t getCurrentDateTime();
+	static DateTime getCurrentDateTime();
+//	static uint8_t getCurrentDateTime();
 	static void updateDateTime(DateTime dateTime);
 };
 
