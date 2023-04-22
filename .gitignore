@@ -8,6 +8,8 @@
 *.kicad_pcb-bak
 *.sch-bak
 *~
+touchgfx_backup
+backup_*
 _autosave-*
 *#auto_saved_files#
 *.tmp
