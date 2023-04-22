@@ -9,7 +9,7 @@ PressureContainerBase::PressureContainerBase()
 {
     setWidth(200);
     setHeight(97);
-    valueTextArea.setPosition(0, 19, 200, 78);
+    valueTextArea.setPosition(0, 14, 198, 78);
     valueTextArea.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     valueTextArea.setLinespacing(0);
     Unicode::snprintf(valueTextAreaBuffer, VALUETEXTAREA_SIZE, "%s", touchgfx::TypedText(T___SINGLEUSE_Q2NK).getText());

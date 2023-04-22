@@ -9,7 +9,7 @@ HumidityContainerBase::HumidityContainerBase()
 {
     setWidth(200);
     setHeight(114);
-    valueTextArea.setPosition(0, 8, 200, 114);
+    valueTextArea.setPosition(0, 6, 198, 114);
     valueTextArea.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     valueTextArea.setLinespacing(0);
     Unicode::snprintf(valueTextAreaBuffer, VALUETEXTAREA_SIZE, "%s", touchgfx::TypedText(T___SINGLEUSE_NBBE).getText());

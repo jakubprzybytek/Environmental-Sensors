@@ -97,8 +97,8 @@
           {
             "Type": "TextArea",
             "Name": "valueTextArea",
-            "Y": 8,
-            "Width": 200,
+            "Y": 6,
+            "Width": 198,
             "Height": 114,
             "TextId": "__SingleUse_8Q5Y",
             "TextRotation": "0",
@@ -136,8 +136,8 @@
           {
             "Type": "TextArea",
             "Name": "valueTextArea",
-            "Y": 19,
-            "Width": 200,
+            "Y": 14,
+            "Width": 198,
             "Height": 78,
             "TextId": "__SingleUse_HQWB",
             "TextRotation": "0",
@@ -175,9 +175,9 @@
           {
             "Type": "TextArea",
             "Name": "valueTextArea",
-            "Y": 19,
-            "Width": 200,
-            "Height": 78,
+            "Y": 14,
+            "Width": 198,
+            "Height": 88,
             "TextId": "__SingleUse_C2UD",
             "TextRotation": "0",
             "Wildcard1": {
@@ -214,8 +214,8 @@
           {
             "Type": "TextArea",
             "Name": "valueTextArea",
-            "Y": 8,
-            "Width": 200,
+            "Y": 6,
+            "Width": 198,
             "Height": 114,
             "TextId": "__SingleUse_184G",
             "TextRotation": "0",
@@ -254,7 +254,7 @@
             "Type": "TextArea",
             "Name": "valueTextArea",
             "Y": 28,
-            "Width": 100,
+            "Width": 92,
             "Height": 24,
             "TextId": "__SingleUse_94JU",
             "TextRotation": "0",
@@ -276,7 +276,7 @@
           {
             "Type": "TextArea",
             "Name": "labelTextArea",
-            "Width": 82,
+            "Width": 76,
             "Height": 28,
             "TextId": "__SingleUse_S6EA",
             "TextRotation": "0"

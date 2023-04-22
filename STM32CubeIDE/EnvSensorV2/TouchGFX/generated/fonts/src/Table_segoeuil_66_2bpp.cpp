@@ -3,32 +3,32 @@
 #include <fonts/GeneratedFont.hpp>
 
 FONT_TABLE_LOCATION_FLASH_PRAGMA
-KEEP extern const touchgfx::GlyphNode glyphs_segoeuil_70_2bpp[] FONT_TABLE_LOCATION_FLASH_ATTRIBUTE = {
-    {     0, 0x002E,   6,   6,   5,   5,  16,   0,   0, 0x00 },
-    {     9, 0x0030,  30,  51,  50,   3,  36,   0,   0, 0x00 },
-    {   392, 0x0031,  15,  51,  51,   3,  25,   0,   0, 0x00 },
-    {   584, 0x0032,  28,  50,  50,   3,  36,   0,   0, 0x00 },
-    {   934, 0x0033,  27,  51,  50,   4,  36,   0,   0, 0x00 },
-    {  1279, 0x0034,  35,  50,  50,   1,  37,   0,   0, 0x00 },
-    {  1717, 0x0035,  26,  50,  49,   5,  36,   0,   0, 0x00 },
-    {  2042, 0x0036,  30,  51,  50,   4,  36,   0,   0, 0x00 },
-    {  2425, 0x0037,  31,  50,  49,   2,  35,   0,   0, 0x00 },
-    {  2813, 0x0038,  30,  51,  50,   3,  36,   0,   0, 0x00 },
-    {  3196, 0x0039,  30,  51,  50,   3,  36,   0,   0, 0x00 },
-    {  3579, 0x003F,  23,  51,  50,   4,  30,   0,   0, 0x00 }
+KEEP extern const touchgfx::GlyphNode glyphs_segoeuil_66_2bpp[] FONT_TABLE_LOCATION_FLASH_ATTRIBUTE = {
+    {     0, 0x002E,   6,   5,   4,   4,  15,   0,   0, 0x00 },
+    {     8, 0x0030,  28,  48,  47,   3,  34,   0,   0, 0x00 },
+    {   344, 0x0031,  15,  48,  48,   2,  24,   0,   0, 0x00 },
+    {   524, 0x0032,  27,  47,  47,   3,  34,   0,   0, 0x00 },
+    {   842, 0x0033,  26,  48,  47,   3,  34,   0,   0, 0x00 },
+    {  1154, 0x0034,  33,  47,  47,   1,  35,   0,   0, 0x00 },
+    {  1542, 0x0035,  24,  47,  46,   5,  34,   0,   0, 0x00 },
+    {  1824, 0x0036,  28,  48,  47,   4,  34,   0,   0, 0x00 },
+    {  2160, 0x0037,  29,  47,  47,   2,  33,   0,   0, 0x00 },
+    {  2501, 0x0038,  28,  48,  47,   3,  34,   0,   0, 0x00 },
+    {  2837, 0x0039,  28,  48,  47,   3,  34,   0,   0, 0x00 },
+    {  3173, 0x003F,  23,  48,  47,   3,  28,   0,   0, 0x00 }
 };
 
-// segoeuil_70_2bpp
+// segoeuil_66_2bpp
 FONT_TABLE_LOCATION_FLASH_PRAGMA
-KEEP extern const touchgfx::GlyphNode glyphs_segoeuil_70_2bpp[] FONT_TABLE_LOCATION_FLASH_ATTRIBUTE;
+KEEP extern const touchgfx::GlyphNode glyphs_segoeuil_66_2bpp[] FONT_TABLE_LOCATION_FLASH_ATTRIBUTE;
 FONT_GLYPH_LOCATION_FLASH_PRAGMA
-KEEP extern const uint8_t unicodes_segoeuil_70_2bpp_0[] FONT_GLYPH_LOCATION_FLASH_ATTRIBUTE;
+KEEP extern const uint8_t unicodes_segoeuil_66_2bpp_0[] FONT_GLYPH_LOCATION_FLASH_ATTRIBUTE;
 FONT_SEARCHTABLE_LOCATION_FLASH_PRAGMA
-KEEP extern const uint8_t* const unicodes_segoeuil_70_2bpp[] FONT_SEARCHTABLE_LOCATION_FLASH_ATTRIBUTE = {
-    unicodes_segoeuil_70_2bpp_0
+KEEP extern const uint8_t* const unicodes_segoeuil_66_2bpp[] FONT_SEARCHTABLE_LOCATION_FLASH_ATTRIBUTE = {
+    unicodes_segoeuil_66_2bpp_0
 };
 FONT_KERNING_LOCATION_FLASH_PRAGMA
-KEEP extern const touchgfx::KerningNode kerning_segoeuil_70_2bpp[] FONT_KERNING_LOCATION_FLASH_ATTRIBUTE;
+KEEP extern const touchgfx::KerningNode kerning_segoeuil_66_2bpp[] FONT_KERNING_LOCATION_FLASH_ATTRIBUTE;
 static const touchgfx::Unicode::UnicodeChar contextualForms4Long[][5] = {
     //                        key,    isol,   key2
     { /*0627 0644 0644 0647*/ 0x02ED, 0xFDF2, 0x0644, 0x0000, 0x0000 }, // ARABIC LIGATURE ALLAH
@@ -185,10 +185,10 @@ const touchgfx::FontContextualFormsTable segoeuil_contextualFormsTable =
     sizeof(contextualForms06XX)/sizeof(contextualForms06XX[0])
 };
 
-touchgfx::GeneratedFont& getFont_segoeuil_70_2bpp();
+touchgfx::GeneratedFont& getFont_segoeuil_66_2bpp();
 
-touchgfx::GeneratedFont& getFont_segoeuil_70_2bpp()
+touchgfx::GeneratedFont& getFont_segoeuil_66_2bpp()
 {
-    static touchgfx::GeneratedFont segoeuil_70_2bpp(glyphs_segoeuil_70_2bpp, 12, 71, 70, 0, 0, 2, 0, 0, 0, unicodes_segoeuil_70_2bpp, kerning_segoeuil_70_2bpp, 63, 0, 0, &segoeuil_contextualFormsTable);
-    return segoeuil_70_2bpp;
+    static touchgfx::GeneratedFont segoeuil_66_2bpp(glyphs_segoeuil_66_2bpp, 12, 67, 66, 0, 0, 2, 0, 0, 0, unicodes_segoeuil_66_2bpp, kerning_segoeuil_66_2bpp, 63, 0, 0, &segoeuil_contextualFormsTable);
+    return segoeuil_66_2bpp;
 }

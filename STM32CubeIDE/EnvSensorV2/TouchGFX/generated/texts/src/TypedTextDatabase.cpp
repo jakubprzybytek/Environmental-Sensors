@@ -6,14 +6,14 @@
 #include <texts/TypedTextDatabase.hpp>
 
 extern touchgfx::GeneratedFont& getFont_segoeui_20_2bpp();
-extern touchgfx::GeneratedFont& getFont_segoeuil_70_2bpp();
-extern touchgfx::GeneratedFont& getFont_segoeui_12_2bpp();
+extern touchgfx::GeneratedFont& getFont_segoeuil_66_2bpp();
+extern touchgfx::GeneratedFont& getFont_seguisb_12_2bpp();
 extern touchgfx::GeneratedFont& getFont_segoeuil_96_2bpp();
 
 const touchgfx::Font* touchgfx_fonts[] = {
     &(getFont_segoeui_20_2bpp()),
-    &(getFont_segoeuil_70_2bpp()),
-    &(getFont_segoeui_12_2bpp()),
+    &(getFont_segoeuil_66_2bpp()),
+    &(getFont_seguisb_12_2bpp()),
     &(getFont_segoeuil_96_2bpp())
 };
 
@@ -43,7 +43,7 @@ const touchgfx::TypedText::TypedTextData typedText_database_DEFAULT[] TEXT_LOCAT
     { 0, touchgfx::RIGHT, touchgfx::TEXT_DIRECTION_LTR },
     { 0, touchgfx::LEFT, touchgfx::TEXT_DIRECTION_LTR },
     { 0, touchgfx::LEFT, touchgfx::TEXT_DIRECTION_LTR },
-    { 0, touchgfx::LEFT, touchgfx::TEXT_DIRECTION_LTR },
+    { 0, touchgfx::RIGHT, touchgfx::TEXT_DIRECTION_LTR },
     { 0, touchgfx::CENTER, touchgfx::TEXT_DIRECTION_LTR },
     { 0, touchgfx::LEFT, touchgfx::TEXT_DIRECTION_LTR },
     { 0, touchgfx::LEFT, touchgfx::TEXT_DIRECTION_LTR },
@@ -92,10 +92,10 @@ void resetFont(touchgfx::FontId fontId)
         touchgfx_fonts[0] = &(getFont_segoeui_20_2bpp());
         break;
     case 1:
-        touchgfx_fonts[1] = &(getFont_segoeuil_70_2bpp());
+        touchgfx_fonts[1] = &(getFont_segoeuil_66_2bpp());
         break;
     case 2:
-        touchgfx_fonts[2] = &(getFont_segoeui_12_2bpp());
+        touchgfx_fonts[2] = &(getFont_seguisb_12_2bpp());
         break;
     case 3:
         touchgfx_fonts[3] = &(getFont_segoeuil_96_2bpp());

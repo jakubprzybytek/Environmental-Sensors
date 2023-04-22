@@ -3,30 +3,30 @@
 #include <fonts/GeneratedFont.hpp>
 
 FONT_TABLE_LOCATION_FLASH_PRAGMA
-KEEP extern const touchgfx::GlyphNode glyphs_segoeui_12_2bpp[] FONT_TABLE_LOCATION_FLASH_ATTRIBUTE = {
-    {     0, 0x003F,   4,   8,   8,   1,   5,   0,   0, 0x00 },
-    {     8, 0x0043,   7,   8,   8,   0,   7,   0,   0, 0x00 },
-    {    22, 0x0052,   6,   8,   8,   1,   7,   0,   0, 0x00 },
-    {    34, 0x0061,   6,   6,   6,   0,   6,   0,   0, 0x00 },
-    {    43, 0x0065,   6,   6,   6,   0,   6,   0,   0, 0x00 },
-    {    52, 0x0066,   4,   9,   9,   0,   4,   0,   0, 0x00 },
-    {    61, 0x0068,   5,   9,   9,   1,   7,   0,   0, 0x00 },
-    {    73, 0x006C,   1,   9,   9,   1,   3,   0,   0, 0x00 },
-    {    76, 0x0072,   3,   6,   6,   1,   4,   0,   0, 0x00 },
-    {    81, 0x0073,   5,   6,   6,   0,   5,   0,   0, 0x00 }
+KEEP extern const touchgfx::GlyphNode glyphs_seguisb_12_2bpp[] FONT_TABLE_LOCATION_FLASH_ATTRIBUTE = {
+    {     0, 0x003F,   5,   8,   8,   0,   5,   0,   0, 0x00 },
+    {    10, 0x0043,   7,   8,   8,   0,   7,   0,   0, 0x00 },
+    {    24, 0x0052,   7,   8,   8,   1,   7,   0,   0, 0x00 },
+    {    38, 0x0061,   6,   6,   6,   0,   6,   0,   0, 0x00 },
+    {    47, 0x0065,   6,   6,   6,   0,   6,   0,   0, 0x00 },
+    {    56, 0x0066,   5,   9,   9,   0,   4,   0,   0, 0x00 },
+    {    68, 0x0068,   6,   9,   9,   1,   7,   0,   0, 0x00 },
+    {    82, 0x006C,   2,   9,   9,   1,   3,   0,   0, 0x00 },
+    {    87, 0x0072,   4,   6,   6,   1,   4,   0,   0, 0x00 },
+    {    93, 0x0073,   5,   6,   6,   0,   5,   0,   0, 0x00 }
 };
 
-// segoeui_12_2bpp
+// seguisb_12_2bpp
 FONT_TABLE_LOCATION_FLASH_PRAGMA
-KEEP extern const touchgfx::GlyphNode glyphs_segoeui_12_2bpp[] FONT_TABLE_LOCATION_FLASH_ATTRIBUTE;
+KEEP extern const touchgfx::GlyphNode glyphs_seguisb_12_2bpp[] FONT_TABLE_LOCATION_FLASH_ATTRIBUTE;
 FONT_GLYPH_LOCATION_FLASH_PRAGMA
-KEEP extern const uint8_t unicodes_segoeui_12_2bpp_0[] FONT_GLYPH_LOCATION_FLASH_ATTRIBUTE;
+KEEP extern const uint8_t unicodes_seguisb_12_2bpp_0[] FONT_GLYPH_LOCATION_FLASH_ATTRIBUTE;
 FONT_SEARCHTABLE_LOCATION_FLASH_PRAGMA
-KEEP extern const uint8_t* const unicodes_segoeui_12_2bpp[] FONT_SEARCHTABLE_LOCATION_FLASH_ATTRIBUTE = {
-    unicodes_segoeui_12_2bpp_0
+KEEP extern const uint8_t* const unicodes_seguisb_12_2bpp[] FONT_SEARCHTABLE_LOCATION_FLASH_ATTRIBUTE = {
+    unicodes_seguisb_12_2bpp_0
 };
 FONT_KERNING_LOCATION_FLASH_PRAGMA
-KEEP extern const touchgfx::KerningNode kerning_segoeui_12_2bpp[] FONT_KERNING_LOCATION_FLASH_ATTRIBUTE;
+KEEP extern const touchgfx::KerningNode kerning_seguisb_12_2bpp[] FONT_KERNING_LOCATION_FLASH_ATTRIBUTE;
 static const touchgfx::Unicode::UnicodeChar contextualForms4Long[][5] = {
     //                        key,    isol,   key2
     { /*0627 0644 0644 0647*/ 0x02ED, 0xFDF2, 0x0644, 0x0000, 0x0000 }, // ARABIC LIGATURE ALLAH
@@ -166,9 +166,9 @@ static const touchgfx::Unicode::UnicodeChar contextualForms06XX[][5] = {
     { /*06D3*/ 0x06D3, 0xFBB0, 0xFBB1, 0x0000, 0x0000 }  // ARABIC LETTER YEH BARREE WITH HAMZA ABOVE
 };
 
-extern const touchgfx::FontContextualFormsTable segoeui_contextualFormsTable;
+extern const touchgfx::FontContextualFormsTable seguisb_contextualFormsTable;
 
-const touchgfx::FontContextualFormsTable segoeui_contextualFormsTable =
+const touchgfx::FontContextualFormsTable seguisb_contextualFormsTable =
 {
     contextualForms4Long,
     contextualForms3Long,
@@ -183,10 +183,10 @@ const touchgfx::FontContextualFormsTable segoeui_contextualFormsTable =
     sizeof(contextualForms06XX)/sizeof(contextualForms06XX[0])
 };
 
-touchgfx::GeneratedFont& getFont_segoeui_12_2bpp();
+touchgfx::GeneratedFont& getFont_seguisb_12_2bpp();
 
-touchgfx::GeneratedFont& getFont_segoeui_12_2bpp()
+touchgfx::GeneratedFont& getFont_seguisb_12_2bpp()
 {
-    static touchgfx::GeneratedFont segoeui_12_2bpp(glyphs_segoeui_12_2bpp, 10, 12, 12, 0, 0, 2, 0, 0, 0, unicodes_segoeui_12_2bpp, kerning_segoeui_12_2bpp, 63, 0, 0, &segoeui_contextualFormsTable);
-    return segoeui_12_2bpp;
+    static touchgfx::GeneratedFont seguisb_12_2bpp(glyphs_seguisb_12_2bpp, 10, 12, 12, 0, 0, 2, 0, 0, 1, unicodes_seguisb_12_2bpp, kerning_seguisb_12_2bpp, 63, 0, 0, &seguisb_contextualFormsTable);
+    return seguisb_12_2bpp;
 }
