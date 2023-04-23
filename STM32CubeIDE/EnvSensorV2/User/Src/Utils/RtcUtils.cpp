@@ -12,7 +12,6 @@
 extern RTC_HandleTypeDef hrtc;
 
 DateTime RtcUtils::getCurrentDateTime() {
-//uint8_t RtcUtils::getCurrentDateTime() {
 	RTC_TimeTypeDef rtcTime;
 	RTC_DateTypeDef rtcDate;
 

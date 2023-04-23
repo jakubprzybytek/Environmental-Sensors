@@ -11,7 +11,8 @@
 extern ReadoutsState readoutsState;
 ReadoutsState storedReadoutsState;
 
-Model::Model() : modelListener(0) {
+Model::Model() :
+		modelListener(0) {
 }
 
 void Model::tick() {
@@ -45,13 +46,7 @@ void Model::tick() {
 		modelListener->notifyHumidityChanged(storedReadoutsState.scdHumidity);
 	}
 
-	//DateTime dt = DateTime(23, rand() % 12, rand() % 28, rand() %24, rand() % 60, rand() % 60);
-	//uint8_t temp = uint8_t(storedReadoutsState.scdTemperature);
-	//DateTime dt = DateTime(23, temp % 12, temp % 28, temp %24, temp % 60, temp % 60);
-	//modelListener->notifyDateTimeChanged(dt);
-
 	DateTime currentDateTime = RtcUtils::getCurrentDateTime();
-	//uint8_t currentDateTime = RtcUtils::getCurrentDateTime();
 	modelListener->notifyDateTimeChanged(currentDateTime);
 }
 
