@@ -21,7 +21,7 @@ using namespace touchgfx;
 extern SPI_HandleTypeDef hspi1;
 extern osMessageQueueId_t displayCommandsQueueHandle;
 
-uint32_t displayControllerThreadBuffer[128];
+uint32_t displayControllerThreadBuffer[100];
 StaticTask_t displayControllerThreadControlBlock;
 
 void DisplayController::init() {

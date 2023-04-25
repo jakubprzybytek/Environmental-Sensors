@@ -30,7 +30,7 @@ extern I2C_HandleTypeDef hi2c1;
 
 extern osSemaphoreId_t scd30ReadySemaphoreHandle;
 
-uint32_t co2ReadoutThreadBuffer[ 256 ];
+uint32_t co2ReadoutThreadBuffer[150];
 StaticTask_t co2ReadoutThreadControlBlock;
 
 void CO2Sensor::init() {
