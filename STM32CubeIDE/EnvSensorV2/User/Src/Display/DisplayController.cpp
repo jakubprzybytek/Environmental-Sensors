@@ -3,6 +3,11 @@
 
 #include <EnvSensorConfig.hpp>
 
+#ifdef DISPLAY_CONTROLLER_DEBUG
+#include <stdlib.h>
+#include <string.h>
+#endif
+
 #include <touchgfx/hal/OSWrappers.hpp>
 using namespace touchgfx;
 
@@ -42,7 +47,6 @@ EPD_4in2A eInk(hspi1);
 void DisplayController::thread(void *pvParameters) {
 
 	DisplayCommandMessage message;
-	UBaseType_t uxHighWaterMark;
 
 	for (;;) {
 		osStatus_t status = osMessageQueueGet(displayCommandsQueueHandle, &message, NULL, portMAX_DELAY);
@@ -86,7 +90,14 @@ void DisplayController::thread(void *pvParameters) {
 			osDelay(5000 / portTICK_RATE_MS);
 		}
 
-		uxHighWaterMark = uxTaskGetStackHighWaterMark(NULL);
+
+#ifdef DISPLAY_CONTROLLER_DEBUG
+		UBaseType_t uxHighWaterMark = uxTaskGetStackHighWaterMark( NULL );
+		char messageBuffer[22];
+		strcpy(messageBuffer, "Display - stack: ");
+		utoa(uxHighWaterMark, messageBuffer + strlen(messageBuffer), 10);
+		DebugLog::log(messageBuffer);
+#endif
 	}
 
 	osThreadExit();

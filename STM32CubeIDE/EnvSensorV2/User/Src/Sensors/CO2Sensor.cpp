@@ -8,9 +8,12 @@
 #include "cmsis_os.h"
 
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 
 #include <main.h>
+
+#include <EnvSensorConfig.hpp>
 
 #include <Sensors/CO2Sensor.hpp>
 
@@ -59,15 +62,15 @@ void CO2Sensor::thread(void *pvParameters) {
 	// set semaphore to 0
 	osSemaphoreAcquire(scd30ReadySemaphoreHandle, portMAX_DELAY);
 
-	UBaseType_t uxHighWaterMark;
-
 	do {
 		I2C1_ACQUIRE
 		status = scd30.init(30);
 		I2C1_RELEASE
 
 		if (status != HAL_OK) {
+#ifdef CO2_SENSOR_DEBUG
 			DebugLog::log((char*) "SCD - error init");
+#endif
 			osDelay(RETRY_DELAY / portTICK_RATE_MS);
 		}
 	} while (status != HAL_OK);
@@ -78,12 +81,16 @@ void CO2Sensor::thread(void *pvParameters) {
 		I2C1_RELEASE
 
 		if (status != HAL_OK) {
+#ifdef CO2_SENSOR_DEBUG
 			DebugLog::log((char*) "SCD - error start");
+#endif
 			osDelay(RETRY_DELAY / portTICK_RATE_MS);
 		}
 	} while (status != HAL_OK);
 
+#ifdef CO2_SENSOR_DEBUG
 	DebugLog::log((char*) "SCD - start OK");
+#endif
 
 	if (SCD30_IS_READY) {
 		osSemaphoreRelease(scd30ReadySemaphoreHandle);
@@ -101,21 +108,27 @@ void CO2Sensor::thread(void *pvParameters) {
 			I2C1_RELEASE
 
 			if (i2cStatus == HAL_OK) {
+#ifdef CO2_SENSOR_DEBUG
 				if (DebugLog::isInitialized()) {
 					printf(messageBuffer, co2, temp, hum);
 					DebugLog::log(messageBuffer);
 				}
+#endif
 
 				SensorsReadouts::submitScdCO2AndTemperature(co2, temp, hum);
 
 			} else {
+#ifdef CO2_SENSOR_DEBUG
 				DebugLog::log((char*) "SCD - error read");
+#endif
 
 				// retry if SCD30 is still ready
 				while (SCD30_IS_READY) {
 					osDelay(500 / portTICK_RATE_MS);
 
+#ifdef CO2_SENSOR_DEBUG
 					DebugLog::log((char*) "SCD - retry");
+#endif
 
 					I2C1_ACQUIRE
 
@@ -124,20 +137,29 @@ void CO2Sensor::thread(void *pvParameters) {
 					I2C1_RELEASE
 
 					if (i2cStatus == HAL_OK) {
+#ifdef CO2_SENSOR_DEBUG
 						if (DebugLog::isInitialized()) {
 							printf(messageBuffer, co2, temp, hum);
 							DebugLog::log(messageBuffer);
 						}
+#endif
 
 						SensorsReadouts::submitScdCO2AndTemperature(co2, temp, hum);
 
 					} else {
+#ifdef CO2_SENSOR_DEBUG
 						DebugLog::log((char*) "SCD - error on retry");
+#endif
 					}
 				}
 			}
 
-			uxHighWaterMark = uxTaskGetStackHighWaterMark( NULL );
+#ifdef CO2_SENSOR_DEBUG
+			UBaseType_t uxHighWaterMark = uxTaskGetStackHighWaterMark( NULL );
+			strcpy(messageBuffer, "SCD - stack: ");
+			utoa(uxHighWaterMark, messageBuffer + strlen(messageBuffer), 10);
+			DebugLog::log(messageBuffer);
+#endif
 
 		} else if (status != osErrorTimeout) {
 			osDelay(5000 / portTICK_RATE_MS);
