@@ -132,6 +132,10 @@ uint8_t Scd30::readMeasurements(float *co2, float *temperature, float *humidity)
 	uint32_t temperatureRaw = buffer[6] << 24 | buffer[7] << 16 | buffer[9] << 8 | buffer[10];
 	uint32_t humidityRaw = buffer[12] << 24 | buffer[13] << 16 | buffer[15] << 8 | buffer[16];
 
+	if (co2Raw == 0 || temperatureRaw == 0 || humidityRaw == 0) {
+		return HAL_ERROR;
+	}
+
 	*co2 = *((float*) &co2Raw);
 	*temperature = *((float*) &temperatureRaw);
 	*humidity = *((float*) &humidityRaw);

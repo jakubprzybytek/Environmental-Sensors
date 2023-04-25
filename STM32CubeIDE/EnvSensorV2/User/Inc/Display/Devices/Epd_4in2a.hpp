@@ -59,7 +59,7 @@
 #define EPD_WIDTH_BLOCKS	EPD_WIDTH / 8
 #define EPD_HEIGHT			300
 
-#define AUX_BUFFER_SIZE 4096
+#define AUX_BUFFER_SIZE 15000
 
 class EPD_4in2A {
 

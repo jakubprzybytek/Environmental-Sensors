@@ -1,6 +1,8 @@
 #include "stm32l4xx_hal.h"
 #include "cmsis_os.h"
 
+#include <EnvSensorConfig.hpp>
+
 #include <touchgfx/hal/OSWrappers.hpp>
 using namespace touchgfx;
 
@@ -8,6 +10,8 @@ using namespace touchgfx;
 #include <Display/DisplayCommands.hpp>
 
 #include <Display/Devices/Epd_4in2a.hpp>
+
+#include <Utils/DebugLog.hpp>
 
 extern SPI_HandleTypeDef hspi1;
 extern osMessageQueueId_t displayCommandsQueueHandle;
@@ -52,12 +56,22 @@ void DisplayController::thread(void *pvParameters) {
 
 		switch (message.command) {
 		case Clear:
+
+#ifdef DISPLAY_CONTROLLER_DEBUG
+			DebugLog::log((char*) "Display - clear");
+#endif
+
 			eInk.init(true);
 			eInk.clear(true);
 			eInk.sleep(true);
 			break;
 
 		case Flush:
+
+#ifdef DISPLAY_CONTROLLER_DEBUG
+			DebugLog::log((char*) "Display - flush");
+#endif
+
 			OSWrappers::takeFrameBufferSemaphore();
 
 			eInk.initGrey(true);
@@ -72,7 +86,7 @@ void DisplayController::thread(void *pvParameters) {
 			osDelay(5000 / portTICK_RATE_MS);
 		}
 
-		uxHighWaterMark = uxTaskGetStackHighWaterMark( NULL);
+		uxHighWaterMark = uxTaskGetStackHighWaterMark(NULL);
 	}
 
 	osThreadExit();

@@ -143,36 +143,36 @@ void EPD_4in2A::waitUntilIdle() {
  * Sends a command to eInk display.
  */
 void EPD_4in2A::sendCommand(uint8_t command) {
-	TRANSMISSION_START();
+	TRACE_TRANSMISSION_START();
 
 	EPD_DATA_COMMAND_LOW;
 	HAL_SPI_Transmit(&hspi, &command, 1, EPD_TIMEOUT);
 
-	TRANSMISSION_END();
+	TRACE_TRANSMISSION_END();
 }
 
 /**
  * Sends single byte of data to eInk display.
  */
 void EPD_4in2A::sendData(uint8_t data) {
-	TRANSMISSION_START();
+	TRACE_TRANSMISSION_START();
 
 	EPD_DATA_COMMAND_HIGH;
 	HAL_SPI_Transmit(&hspi, &data, 1, EPD_TIMEOUT);
 
-	TRANSMISSION_END();
+	TRACE_TRANSMISSION_END();
 }
 
 /**
  * Sends array of bytes to eInk display.
  */
 void EPD_4in2A::sendData(const uint8_t *data, uint16_t size) {
-	TRANSMISSION_START();
+	TRACE_TRANSMISSION_START();
 
 	EPD_DATA_COMMAND_HIGH;
 	HAL_SPI_Transmit(&hspi, (uint8_t*) data, size, EPD_TIMEOUT);
 
-	TRANSMISSION_END();
+	TRACE_TRANSMISSION_END();
 }
 
 /**
@@ -415,16 +415,16 @@ void EPD_4in2A::displayGrey(const uint8_t *buffer, bool quick, bool blocking) {
 		uint16_t j = 0;
 		while (j < AUX_BUFFER_SIZE) {
 
-			uint16_t toCompress = buffer[i * 2] << 8 | buffer[i * 2 + 1];
+			uint16_t toCompress = buffer[i * 2 + 1] << 8 | buffer[i * 2];
 			auxBuffer[j] =
-					((toCompress & 0b0100000000000000) ? 0b00010000 : 0) |
-					((toCompress & 0b0001000000000000) ? 0b00100000 : 0) |
-					((toCompress & 0b0000010000000000) ? 0b01000000 : 0) |
-					((toCompress & 0b0000000100000000) ? 0b10000000 : 0) |
-					((toCompress & 0b0000000001000000) ? 0b00000001 : 0) |
-					((toCompress & 0b0000000000010000) ? 0b00000010 : 0) |
-					((toCompress & 0b0000000000000100) ? 0b00000100 : 0) |
-					((toCompress & 0b0000000000000001) ? 0b00001000 : 0);
+					((toCompress & 0b0100000000000000) ? 0b00000001 : 0) |
+					((toCompress & 0b0001000000000000) ? 0b00000010 : 0) |
+					((toCompress & 0b0000010000000000) ? 0b00000100 : 0) |
+					((toCompress & 0b0000000100000000) ? 0b00001000 : 0) |
+					((toCompress & 0b0000000001000000) ? 0b00010000 : 0) |
+					((toCompress & 0b0000000000010000) ? 0b00100000 : 0) |
+					((toCompress & 0b0000000000000100) ? 0b01000000 : 0) |
+					((toCompress & 0b0000000000000001) ? 0b10000000 : 0);
 			j++;
 			i++;
 		}
