@@ -22,7 +22,13 @@
 
 extern I2C_HandleTypeDef hi2c1;
 
+//#include <Logger/FileSystem/FileSystem.hpp>
+
 void EnvSensorV2_Init() {
+//	HAL_GPIO_WritePin(SDIO_POWER_ENABLE_GPIO_Port, SDIO_POWER_ENABLE_Pin, GPIO_PIN_SET);
+//	uint32_t available;
+//	FileSystem::readAvailableSpace(&available);
+
 //		uint8_t devices = 0;
 //		for (uint8_t i = 0x03u; i < 0x78u; i++)
 //		  {
@@ -77,13 +83,8 @@ void switch2Pressed() {
 	OSWrappers::signalVSync();
 }
 
-extern osThreadId_t defaultTaskHandle;
 void switch3Pressed() {
-	//TaskHandle_t task = xTaskGetHandle("defaultTask");
-	UBaseType_t uxHighWaterMark = uxTaskGetStackHighWaterMark((TaskHandle_t) defaultTaskHandle);
 }
 
 void switch4Pressed() {
-	//DateTime dateTime = RtcUtils::getCurrentDateTime();
-	//dateTime.seconds = 0;
 }

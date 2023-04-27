@@ -18,10 +18,13 @@
     "Family": "STM32L4",
     "SubFamily": "STM32L4x1",
     "Platform": "m4",
+    "Toolchain": "STM32CubeIDE",
     "ProjectFile": "../EnvSensorV2.ioc",
     "OptionalComponentsRoot": "../Middlewares/ST/touchgfx_components",
     "OptionalComponents": [
-    ]
+    ],
+    "AdditionalFeatures": [
+    ],
   },
-  "Version": "4.20.0"
+  "Version": "4.21.3"
 }

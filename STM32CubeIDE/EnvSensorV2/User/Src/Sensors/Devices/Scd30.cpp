@@ -140,9 +140,5 @@ uint8_t Scd30::readMeasurements(float *co2, float *temperature, float *humidity)
 	*temperature = *((float*) &temperatureRaw);
 	*humidity = *((float*) &humidityRaw);
 
-	if (*co2 != *co2 || *temperature != *temperature || *humidity != *humidity) {
-		return HAL_ERROR;
-	}
-
 	return HAL_OK;
 }

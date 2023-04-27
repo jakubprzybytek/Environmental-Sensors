@@ -360,10 +360,12 @@
     "DisplayOrientation": "Landscape",
     "Family": "STM32L4",
     "SubFamily": "STM32L4x1",
+    "Toolchain": "STM32CubeIDE",
     "Platform": "m4",
     "ProjectFile": "../EnvSensorV2.ioc",
     "OptionalComponentsRoot": "../Middlewares/ST/touchgfx_components",
-    "OptionalComponents": []
+    "OptionalComponents": [],
+    "AdditionalFeatures": []
   },
   "Version": "4.21.3"
 }
