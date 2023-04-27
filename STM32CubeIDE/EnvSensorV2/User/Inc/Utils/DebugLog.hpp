@@ -4,8 +4,10 @@
 class DebugLog {
 public:
 	static void init();
-	static void log(char *messageBuffer);
 	static bool isInitialized();
+
+	static void log(char *messageBuffer);
+	static void logWithStackHighWaterMark(const char *messagePrefix);
 
 private:
 	static bool initialized;

@@ -3,11 +3,6 @@
 
 #include <EnvSensorConfig.hpp>
 
-#ifdef DISPLAY_CONTROLLER_DEBUG
-#include <stdlib.h>
-#include <string.h>
-#endif
-
 #include <touchgfx/hal/OSWrappers.hpp>
 using namespace touchgfx;
 
@@ -61,7 +56,7 @@ void DisplayController::thread(void *pvParameters) {
 		switch (message.command) {
 		case Clear:
 
-#ifdef DISPLAY_CONTROLLER_DEBUG
+#ifdef DISPLAY_CONTROLLER_INFO
 			DebugLog::log((char*) "Display - clear");
 #endif
 
@@ -72,7 +67,7 @@ void DisplayController::thread(void *pvParameters) {
 
 		case Flush:
 
-#ifdef DISPLAY_CONTROLLER_DEBUG
+#ifdef DISPLAY_CONTROLLER_INFO
 			DebugLog::log((char*) "Display - flush");
 #endif
 
@@ -90,13 +85,8 @@ void DisplayController::thread(void *pvParameters) {
 			osDelay(5000 / portTICK_RATE_MS);
 		}
 
-
-#ifdef DISPLAY_CONTROLLER_DEBUG
-		UBaseType_t uxHighWaterMark = uxTaskGetStackHighWaterMark( NULL );
-		char messageBuffer[22];
-		strcpy(messageBuffer, "Display - stack: ");
-		utoa(uxHighWaterMark, messageBuffer + strlen(messageBuffer), 10);
-		DebugLog::log(messageBuffer);
+#ifdef DISPLAY_CONTROLLER_TRACE
+		DebugLog::logWithStackHighWaterMark("Display - stack: ");
 #endif
 	}
 

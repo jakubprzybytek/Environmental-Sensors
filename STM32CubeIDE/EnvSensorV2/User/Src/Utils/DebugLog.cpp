@@ -1,5 +1,6 @@
 #include "cmsis_os.h"
 
+#include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
 
@@ -33,6 +34,16 @@ bool DebugLog::isInitialized() {
 void DebugLog::log(char *messageBuffer) {
 	if (initialized) {
 		osMessageQueuePut(debugLogQueueHandle, (uint8_t*) messageBuffer, 0, 0);
+	}
+}
+
+void DebugLog::logWithStackHighWaterMark(const char *messagePrefix) {
+	if (initialized) {
+		UBaseType_t uxHighWaterMark = uxTaskGetStackHighWaterMark(NULL);
+		char messageBuffer[22];
+		strcpy(messageBuffer, messagePrefix);
+		utoa(uxHighWaterMark, messageBuffer + strlen(messageBuffer), 10);
+		log(messageBuffer);
 	}
 }
 

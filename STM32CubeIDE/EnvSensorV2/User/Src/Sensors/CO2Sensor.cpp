@@ -68,7 +68,7 @@ void CO2Sensor::thread(void *pvParameters) {
 		I2C1_RELEASE
 
 		if (status != HAL_OK) {
-#ifdef CO2_SENSOR_DEBUG
+#ifdef CO2_SENSOR_INFO
 			DebugLog::log((char*) "SCD - error init");
 #endif
 			osDelay(RETRY_DELAY / portTICK_RATE_MS);
@@ -81,14 +81,14 @@ void CO2Sensor::thread(void *pvParameters) {
 		I2C1_RELEASE
 
 		if (status != HAL_OK) {
-#ifdef CO2_SENSOR_DEBUG
+#ifdef CO2_SENSOR_INFO
 			DebugLog::log((char*) "SCD - error start");
 #endif
 			osDelay(RETRY_DELAY / portTICK_RATE_MS);
 		}
 	} while (status != HAL_OK);
 
-#ifdef CO2_SENSOR_DEBUG
+#ifdef CO2_SENSOR_INFO
 	DebugLog::log((char*) "SCD - start OK");
 #endif
 
@@ -108,7 +108,7 @@ void CO2Sensor::thread(void *pvParameters) {
 			I2C1_RELEASE
 
 			if (i2cStatus == HAL_OK) {
-#ifdef CO2_SENSOR_DEBUG
+#ifdef CO2_SENSOR_INFO
 				if (DebugLog::isInitialized()) {
 					printf(messageBuffer, co2, temp, hum);
 					DebugLog::log(messageBuffer);
@@ -118,7 +118,7 @@ void CO2Sensor::thread(void *pvParameters) {
 				SensorsReadouts::submitScdCO2AndTemperature(co2, temp, hum);
 
 			} else {
-#ifdef CO2_SENSOR_DEBUG
+#ifdef CO2_SENSOR_INFO
 				DebugLog::log((char*) "SCD - error read");
 #endif
 
@@ -126,7 +126,7 @@ void CO2Sensor::thread(void *pvParameters) {
 				while (SCD30_IS_READY) {
 					osDelay(500 / portTICK_RATE_MS);
 
-#ifdef CO2_SENSOR_DEBUG
+#ifdef CO2_SENSOR_INFO
 					DebugLog::log((char*) "SCD - retry");
 #endif
 
@@ -137,7 +137,7 @@ void CO2Sensor::thread(void *pvParameters) {
 					I2C1_RELEASE
 
 					if (i2cStatus == HAL_OK) {
-#ifdef CO2_SENSOR_DEBUG
+#ifdef CO2_SENSOR_INFO
 						if (DebugLog::isInitialized()) {
 							printf(messageBuffer, co2, temp, hum);
 							DebugLog::log(messageBuffer);
@@ -147,18 +147,15 @@ void CO2Sensor::thread(void *pvParameters) {
 						SensorsReadouts::submitScdCO2AndTemperature(co2, temp, hum);
 
 					} else {
-#ifdef CO2_SENSOR_DEBUG
+#ifdef CO2_SENSOR_INFO
 						DebugLog::log((char*) "SCD - error on retry");
 #endif
 					}
 				}
 			}
 
-#ifdef CO2_SENSOR_DEBUG
-			UBaseType_t uxHighWaterMark = uxTaskGetStackHighWaterMark( NULL );
-			strcpy(messageBuffer, "SCD - stack: ");
-			utoa(uxHighWaterMark, messageBuffer + strlen(messageBuffer), 10);
-			DebugLog::log(messageBuffer);
+#ifdef CO2_SENSOR_TRACE
+			DebugLog::logWithStackHighWaterMark("SCD - stack: ");
 #endif
 
 		} else if (status != osErrorTimeout) {

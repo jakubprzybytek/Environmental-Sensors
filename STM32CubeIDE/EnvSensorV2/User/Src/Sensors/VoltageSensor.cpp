@@ -6,6 +6,8 @@
 
 #include <main.h>
 
+#include <EnvSensorConfig.hpp>
+
 #include <Sensors/VoltageSensor.hpp>
 #include <Readouts/SensorsReadouts.hpp>
 
@@ -67,16 +69,17 @@ void VoltageSensor::thread(void *pvParameters) {
 
 		float voltage = adcValue / (float) OVERSAMPLING_READOUTS * 4.4732 / 4096.0;
 
-		if (DebugLog::isInitialized()) {
-			char messageBuffer[22];
-			printf(messageBuffer, adcValue, voltage);
+#ifdef VOLTAGE_SENSOR_INFO
+		char messageBuffer[22];
+		printf(messageBuffer, adcValue, voltage);
+		DebugLog::log(messageBuffer);
+#endif
 
-			if (DebugLog::isInitialized()) {
-				DebugLog::log(messageBuffer);
-			}
+#ifdef VOLTAGE_SENSOR_TRACE
+		DebugLog::logWithStackHighWaterMark("Batt - stack: ");
+#endif
 
-			SensorsReadouts::submitVoltage(voltage);
-		}
+		SensorsReadouts::submitVoltage(voltage);
 	}
 }
 
