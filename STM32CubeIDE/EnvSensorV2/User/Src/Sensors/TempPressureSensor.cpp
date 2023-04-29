@@ -9,6 +9,8 @@
 
 #include <string.h>
 
+#include <EnvSensorConfig.hpp>
+
 #include <Sensors/TempPressureSensor.hpp>
 
 #include <EnvSensorCommon.hpp>
@@ -22,10 +24,10 @@
 
 extern I2C_HandleTypeDef hi2c1;
 
-uint32_t bmp280ReadoutThreadBuffer[ 512 ];
+uint32_t bmp280ReadoutThreadBuffer[200];
 StaticTask_t bmp280ReadoutThreadControlBlock;
 
-uint32_t bme280ReadoutThreadBuffer[ 512 ];
+uint32_t bme280ReadoutThreadBuffer[200];
 StaticTask_t bme280ReadoutThreadControlBlock;
 
 void TempPressureSensor::init() {
@@ -78,7 +80,9 @@ void TempPressureSensor::bmp280Thread(void *pvParameters) {
 		I2C1_RELEASE
 
 		if (status != HAL_OK) {
+#ifdef PRESSURE_SENSOR_INFO
 			DebugLog::log((char*) "BMP - error init");
+#endif
 			osDelay(RETRY_DELAY / portTICK_RATE_MS);
 		}
 	} while (status != HAL_OK);
@@ -89,7 +93,9 @@ void TempPressureSensor::bmp280Thread(void *pvParameters) {
 		I2C1_RELEASE
 
 		if (status != HAL_OK) {
+#ifdef PRESSURE_SENSOR_INFO
 			DebugLog::log((char*) "BMP - error start");
+#endif
 			osDelay(RETRY_DELAY / portTICK_RATE_MS);
 		}
 	} while (status != HAL_OK);
@@ -109,18 +115,23 @@ void TempPressureSensor::bmp280Thread(void *pvParameters) {
 		I2C1_RELEASE
 
 		if (status == HAL_OK) {
-			if (DebugLog::isInitialized()) {
-				char messageBuffer[22];
-				printf(messageBuffer, temperature, pressure);
-
-				DebugLog::log(messageBuffer);
-			}
+#ifdef PRESSURE_SENSOR_INFO
+			char messageBuffer[22];
+			printf(messageBuffer, temperature, pressure);
+			DebugLog::log(messageBuffer);
+#endif
 
 			SensorsReadouts::submitBmpTemperatureAndPressure(temperature, pressure);
 
 		} else {
+#ifdef PRESSURE_SENSOR_INFO
 			DebugLog::log((char*) "BMP - read error");
+#endif
 		}
+
+#ifdef PRESSURE_SENSOR_TRACE
+		DebugLog::logWithStackHighWaterMark((char*) "BMP - stack: ");
+#endif
 	}
 }
 
@@ -138,7 +149,9 @@ void TempPressureSensor::bme280Thread(void *pvParameters) {
 		I2C1_RELEASE
 
 		if (status != HAL_OK) {
+#ifdef PRESSURE_SENSOR_INFO
 			DebugLog::log((char*) "BME - error init");
+#endif
 			osDelay(RETRY_DELAY / portTICK_RATE_MS);
 		}
 	} while (status != HAL_OK);
@@ -149,7 +162,9 @@ void TempPressureSensor::bme280Thread(void *pvParameters) {
 		I2C1_RELEASE
 
 		if (status != HAL_OK) {
+#ifdef PRESSURE_SENSOR_INFO
 			DebugLog::log((char*) "BME - error start");
+#endif
 			osDelay(RETRY_DELAY / portTICK_RATE_MS);
 		}
 	} while (status != HAL_OK);
@@ -170,18 +185,23 @@ void TempPressureSensor::bme280Thread(void *pvParameters) {
 		I2C1_RELEASE
 
 		if (status == HAL_OK) {
-			if (DebugLog::isInitialized()) {
-				char messageBuffer[22];
-				printf(messageBuffer, temperature, pressure, humidity);
-
-				DebugLog::log(messageBuffer);
-			}
+#ifdef PRESSURE_SENSOR_INFO
+			char messageBuffer[22];
+			printf(messageBuffer, temperature, pressure, humidity);
+			DebugLog::log(messageBuffer);
+#endif
 
 			SensorsReadouts::submitBmeTemperaturePressureHumidity(temperature, pressure, humidity);
 
 		} else {
+#ifdef PRESSURE_SENSOR_INFO
 			DebugLog::log((char*) "BME - read error");
+#endif
 		}
+
+#ifdef PRESSURE_SENSOR_TRACE
+		DebugLog::logWithStackHighWaterMark((char*) "BME - stack: ");
+#endif
 	}
 }
 

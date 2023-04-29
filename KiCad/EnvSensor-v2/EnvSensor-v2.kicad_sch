@@ -6839,7 +6839,7 @@
     (effects (font (size 2.9972 2.9972)) (justify left bottom))
     (uuid 111430cb-4ea4-4340-93cd-7c598098caa8)
   )
-  (text "Vdd and Vss swapped in SD card" (at -93.98 64.77 0)
+  (text "Vdd and Vss swapped in SD card\nQ2 zonk!" (at -93.98 64.77 0)
     (effects (font (size 1.1176 1.1176)) (justify left bottom))
     (uuid 115ab253-8887-4b22-bf60-5e1111f95436)
   )
