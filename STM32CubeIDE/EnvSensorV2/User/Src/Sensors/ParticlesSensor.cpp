@@ -19,7 +19,7 @@
 
 extern UART_HandleTypeDef huart2;
 
-uint32_t particlesReadoutThreadBuffer[256];
+uint32_t particlesReadoutThreadBuffer[128];
 StaticTask_t particlesReadoutThreadControlBlock;
 
 Hpma115C0 hpma(huart2);
