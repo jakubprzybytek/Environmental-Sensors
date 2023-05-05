@@ -6,38 +6,52 @@
  */
 #include "cmsis_os.h"
 
-#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+#include <EnvSensorConfig.hpp>
 
 #include <Sensors/ParticlesSensor.hpp>
 
 #include <Sensors/Devices/Hpma115C0.hpp>
 
+#include <Utils/DebugLog.hpp>
+
 extern UART_HandleTypeDef huart2;
 
-extern osMessageQueueId_t debugLogQueue;
+uint32_t particlesReadoutThreadBuffer[256];
+StaticTask_t particlesReadoutThreadControlBlock;
 
 Hpma115C0 hpma(huart2);
 
-void ParticlesSensor_Init() {
-
-	const osThreadAttr_t hpma115C0ReadoutThreadAttributes = {
-		.name = "hpma115C0-readout-th",
-		.stack_size = 512 * sizeof(StackType_t),
-		.priority = (osPriority_t) osPriorityNormal
-	};
-	osThreadNew(hpma115c0ReadoutThread, NULL, &hpma115C0ReadoutThreadAttributes);
+void ParticlesSensor::init() {
+	startThread();
 }
 
-void hpma115c0ReadoutThread(void *pvParameters) {
+void ParticlesSensor::startThread() {
+// @formatter:off
+	const osThreadAttr_t particlesReadoutThreadaAttributes = {
+		.name = "hpma115C0-readout-th",
+		.cb_mem = &particlesReadoutThreadControlBlock,
+		.cb_size = sizeof(particlesReadoutThreadControlBlock),
+		.stack_mem = &particlesReadoutThreadBuffer[0],
+		.stack_size = sizeof(particlesReadoutThreadBuffer),
+		.priority = (osPriority_t) osPriorityNormal
+	};
+// @formatter:on
+	osThreadNew(thread, NULL, &particlesReadoutThreadaAttributes);
+}
 
-	char messageBuffer[40];
-
+void ParticlesSensor::thread(void *pvParameters) {
+	char messageBuffer[25];
 	bool keepRunning = true;
 
 	HAL_StatusTypeDef status = hpma.init();
 
 	if (status != HAL_OK) {
-		osMessageQueuePut(debugLogQueue, (uint8_t*) "HPMA - error init", 0, 0);
+#ifdef PARTICLES_SENSOR_INFO
+		DebugLog::log((char*) "HPMA - error init");
+#endif
 
 		keepRunning = false;
 	}
@@ -48,7 +62,9 @@ void hpma115c0ReadoutThread(void *pvParameters) {
 		status = hpma.stopAutoSend();
 
 		if (status != HAL_OK) {
-			osMessageQueuePut(debugLogQueue, (uint8_t*) "HPMA - error no auto", 0, 0);
+#ifdef PARTICLES_SENSOR_INFO
+			DebugLog::log((char*) "HPMA - error no auto");
+#endif
 
 			keepRunning = false;
 		}
@@ -60,37 +76,79 @@ void hpma115c0ReadoutThread(void *pvParameters) {
 		status = hpma.startMeasurements();
 
 		if (status != HAL_OK) {
-			osMessageQueuePut(debugLogQueue, (uint8_t*) "HPMA - error start", 0, 0);
+#ifdef PARTICLES_SENSOR_INFO
+		DebugLog::log((char*) "HPMA - error start");
+#endif
 
 			keepRunning = false;
 		}
 	}
 
-	if (keepRunning) {
+	while (keepRunning) {
 		osDelay(10000 / portTICK_RATE_MS);
 
 		uint16_t pm1, pm2_5, pm4, pm10;
 		status = hpma.readMeasurements(&pm1, &pm2_5, &pm4, &pm10);
 
+#ifdef PARTICLES_SENSOR_INFO
 		if (status != HAL_OK) {
-			osMessageQueuePut(debugLogQueue, (uint8_t*) "HPMA - error", 0, 0);
+			DebugLog::log((char*) "HPMA - error");
+			keepRunning = false;
 		}
+#endif
 
-		sprintf(messageBuffer, "1:%u 2.5:%u", pm1, pm2_5);
-		osMessageQueuePut(debugLogQueue, (uint8_t*) messageBuffer, 0, 0);
-		sprintf(messageBuffer, "4:%u 10:%u", pm4, pm10);
-		osMessageQueuePut(debugLogQueue, (uint8_t*) messageBuffer, 0, 0);
+#ifdef PARTICLES_SENSOR_INFO
+		ParticlesSensor::printf1(messageBuffer, pm1, pm2_5);
+		DebugLog::log(messageBuffer);
+		ParticlesSensor::printf2(messageBuffer, pm4, pm10);
+		DebugLog::log(messageBuffer);
+#endif
+
+#ifdef PARTICLES_SENSOR_TRACE
+		DebugLog::logWithStackHighWaterMark("HPMA - stack: ");
+#endif
 	}
 
 	hpma.stopMeasurements();
 
+#ifdef PARTICLES_SENSOR_INFO
 	if (status != HAL_OK) {
-		osMessageQueuePut(debugLogQueue, (uint8_t*) "HPMA - error stop", 0, 0);
+		DebugLog::log((char*) "HPMA - error stop");
 	}
+#endif
 
 	osDelay(1000 / portTICK_RATE_MS);
 
 	hpma.deinit();
 
 	osThreadExit();
+}
+
+void ParticlesSensor::printf1(char *buffer, uint16_t pm1, uint16_t pm25) {
+	*(buffer++) = '1';
+	*(buffer++) = ':';
+	utoa(pm1, buffer, 10);
+
+	buffer += strlen(buffer);
+	*(buffer++) = ' ';
+
+	*(buffer++) = '2';
+	*(buffer++) = '.';
+	*(buffer++) = '5';
+	*(buffer++) = ':';
+	utoa(pm25, buffer, 10);
+}
+
+void ParticlesSensor::printf2(char *buffer, uint16_t pm4, uint16_t pm10) {
+	*(buffer++) = '4';
+	*(buffer++) = ':';
+	utoa(pm4, buffer, 10);
+
+	buffer += strlen(buffer);
+	*(buffer++) = ' ';
+
+	*(buffer++) = '1';
+	*(buffer++) = '0';
+	*(buffer++) = ':';
+	utoa(pm10, buffer, 10);
 }

@@ -54,7 +54,7 @@ void EnvSensorV2_Init() {
 
 	CO2Sensor::init();
 
-	//ParticlesSensor_Init();
+	ParticlesSensor::init();
 
 	Timer::init();
 }

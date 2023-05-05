@@ -8,8 +8,17 @@
 #ifndef INC_SENSORS_PARTICLESSENSOR_HPP_
 #define INC_SENSORS_PARTICLESSENSOR_HPP_
 
-void ParticlesSensor_Init();
+class ParticlesSensor {
 
-void hpma115c0ReadoutThread(void *pvParameters);
+public:
+	static void init();
+
+private:
+	static void startThread();
+	static void thread(void *pvParameters);
+
+	static void printf1(char *buffer, uint16_t pm1, uint16_t pm25);
+	static void printf2(char *buffer, uint16_t pm4, uint16_t pm10);
+};
 
 #endif /* INC_SENSORS_PARTICLESSENSOR_HPP_ */
