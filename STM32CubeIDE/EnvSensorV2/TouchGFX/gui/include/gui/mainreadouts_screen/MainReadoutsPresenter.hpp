@@ -37,6 +37,7 @@ public:
 	void notifyPressureChanged(float newPressure);
 	void notifyCO2Changed(float newCo2);
 	void notifyHumidityChanged(float newHumidity);
+	void notifyParticlesChanged(uint16_t pm1, uint16_t pm2_5, uint16_t pm4, uint16_t pm10);
 
 	void notifyDateTimeChanged(DateTime dateTime);
 

@@ -12,8 +12,9 @@
 #include <EnvSensorConfig.hpp>
 
 #include <Sensors/ParticlesSensor.hpp>
-
 #include <Sensors/Devices/Hpma115C0.hpp>
+
+#include <Readouts/SensorsReadouts.hpp>
 
 #include <Utils/DebugLog.hpp>
 
@@ -85,7 +86,7 @@ void ParticlesSensor::thread(void *pvParameters) {
 	}
 
 	while (keepRunning) {
-		osDelay(10000 / portTICK_RATE_MS);
+		osDelay(20000 / portTICK_RATE_MS);
 
 		uint16_t pm1, pm2_5, pm4, pm10;
 		status = hpma.readMeasurements(&pm1, &pm2_5, &pm4, &pm10);
@@ -107,6 +108,8 @@ void ParticlesSensor::thread(void *pvParameters) {
 #ifdef PARTICLES_SENSOR_TRACE
 		DebugLog::logWithStackHighWaterMark("HPMA - stack: ");
 #endif
+
+		SensorsReadouts::submitParticles(pm1, pm2_5, pm4, pm10);
 	}
 
 	hpma.stopMeasurements();

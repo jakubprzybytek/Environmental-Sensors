@@ -42,3 +42,14 @@ void SensorsReadouts::submitScdCO2AndTemperature(float co2, float temperature, f
 
 	osMessageQueuePut(sensorReadoutsQueueHandle, &message, 0, 0);
 }
+
+void SensorsReadouts::submitParticles(uint16_t pm1, uint16_t pm2_5, uint16_t pm4, uint16_t pm10) {
+	ReadoutMessage message;
+	message.type = HPMA;
+	message.p.pm1 = pm1;
+	message.p.pm2_5 = pm2_5;
+	message.p.pm4 = pm4;
+	message.p.pm10 = pm10;
+
+	osMessageQueuePut(sensorReadoutsQueueHandle, &message, 0, 0);
+}

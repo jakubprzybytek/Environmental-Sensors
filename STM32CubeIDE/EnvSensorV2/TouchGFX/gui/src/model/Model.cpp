@@ -46,6 +46,15 @@ void Model::tick() {
 		modelListener->notifyHumidityChanged(storedReadoutsState.scdHumidity);
 	}
 
+	if (storedReadoutsState.pm1 != readoutsState.pm1 || storedReadoutsState.pm2_5 != readoutsState.pm2_5
+			|| storedReadoutsState.pm4 != readoutsState.pm4 || storedReadoutsState.pm10 != readoutsState.pm10) {
+		storedReadoutsState.pm1 = readoutsState.pm1;
+		storedReadoutsState.pm2_5 = readoutsState.pm2_5;
+		storedReadoutsState.pm4 = readoutsState.pm4;
+		storedReadoutsState.pm10 = readoutsState.pm10;
+		modelListener->notifyParticlesChanged(storedReadoutsState.pm1, storedReadoutsState.pm2_5, storedReadoutsState.pm4, storedReadoutsState.pm10);
+	}
+
 	DateTime currentDateTime = RtcUtils::getCurrentDateTime();
 	modelListener->notifyDateTimeChanged(currentDateTime);
 }

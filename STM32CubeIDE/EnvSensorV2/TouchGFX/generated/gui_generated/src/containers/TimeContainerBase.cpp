@@ -7,9 +7,9 @@
 
 TimeContainerBase::TimeContainerBase()
 {
-    setWidth(100);
+    setWidth(80);
     setHeight(52);
-    timeTextArea.setPosition(0, 28, 100, 24);
+    timeTextArea.setPosition(0, 26, 80, 26);
     timeTextArea.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     timeTextArea.setLinespacing(0);
     Unicode::snprintf(timeTextAreaBuffer, TIMETEXTAREA_SIZE, "%s", touchgfx::TypedText(T___SINGLEUSE_UKDP).getText());
@@ -17,7 +17,7 @@ TimeContainerBase::TimeContainerBase()
     timeTextArea.setTypedText(touchgfx::TypedText(T___SINGLEUSE_O4NC));
     add(timeTextArea);
 
-    labelTextArea.setPosition(0, 0, 100, 28);
+    labelTextArea.setPosition(0, 0, 80, 26);
     labelTextArea.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     labelTextArea.setLinespacing(0);
     labelTextArea.setTypedText(touchgfx::TypedText(T___SINGLEUSE_HZ9N));

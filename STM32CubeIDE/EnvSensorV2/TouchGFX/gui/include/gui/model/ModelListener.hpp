@@ -23,6 +23,7 @@ public:
     virtual void notifyPressureChanged(float newPressure) {}
     virtual void notifyCO2Changed(float newCo2) {}
     virtual void notifyHumidityChanged(float newHumidity) {}
+    virtual void notifyParticlesChanged(uint16_t pm1, uint16_t pm2_5, uint16_t pm4, uint16_t pm10) {}
 
     virtual void notifyDateTimeChanged(DateTime newDateTime) {}
 

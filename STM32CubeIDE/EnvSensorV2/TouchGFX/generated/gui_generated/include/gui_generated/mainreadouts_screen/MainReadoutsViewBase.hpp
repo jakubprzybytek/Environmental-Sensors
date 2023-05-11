@@ -8,6 +8,7 @@
 #include <mvp/View.hpp>
 #include <gui/mainreadouts_screen/MainReadoutsPresenter.hpp>
 #include <touchgfx/widgets/Box.hpp>
+#include <gui/containers/ParticlesContainer.hpp>
 #include <gui/containers/PressureContainer.hpp>
 #include <gui/containers/TemperatureContainer.hpp>
 #include <gui/containers/CO2Container.hpp>
@@ -33,6 +34,7 @@ protected:
      */
     touchgfx::Box __background;
     touchgfx::Box background;
+    ParticlesContainer particlesContainer;
     PressureContainer pressureContainer;
     TemperatureContainer temperatureContainer;
     CO2Container cO2Container;

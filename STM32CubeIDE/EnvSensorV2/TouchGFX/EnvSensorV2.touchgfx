@@ -17,6 +17,15 @@
           },
           {
             "Type": "CustomContainerInstance",
+            "Name": "particlesContainer",
+            "X": 80,
+            "Y": 225,
+            "Width": 250,
+            "Height": 52,
+            "CustomContainerDefinitionName": "ParticlesContainer"
+          },
+          {
+            "Type": "CustomContainerInstance",
             "Name": "pressureContainer",
             "Y": 128,
             "Width": 200,
@@ -50,9 +59,9 @@
           {
             "Type": "CustomContainerInstance",
             "Name": "voltageContainer",
-            "X": 300,
+            "X": 326,
             "Y": 225,
-            "Width": 100,
+            "Width": 70,
             "Height": 52,
             "CustomContainerDefinitionName": "VoltageContainer"
           },
@@ -60,7 +69,7 @@
             "Type": "CustomContainerInstance",
             "Name": "timeContainer",
             "Y": 225,
-            "Width": 100,
+            "Width": 80,
             "Height": 52,
             "CustomContainerDefinitionName": "TimeContainer"
           },
@@ -247,15 +256,15 @@
       },
       {
         "Name": "VoltageContainer",
-        "Width": 100,
+        "Width": 70,
         "Height": 52,
         "Components": [
           {
             "Type": "TextArea",
             "Name": "valueTextArea",
-            "Y": 28,
-            "Width": 92,
-            "Height": 24,
+            "Y": 26,
+            "Width": 58,
+            "Height": 26,
             "TextId": "__SingleUse_94JU",
             "TextRotation": "0",
             "Wildcard1": {
@@ -267,7 +276,7 @@
           {
             "Type": "TextArea",
             "Name": "unitTextArea",
-            "X": 82,
+            "X": 54,
             "Width": 18,
             "Height": 28,
             "TextId": "__SingleUse_CR7E",
@@ -276,8 +285,8 @@
           {
             "Type": "TextArea",
             "Name": "labelTextArea",
-            "Width": 76,
-            "Height": 28,
+            "Width": 50,
+            "Height": 26,
             "TextId": "__SingleUse_S6EA",
             "TextRotation": "0"
           }
@@ -286,15 +295,15 @@
       },
       {
         "Name": "TimeContainer",
-        "Width": 100,
+        "Width": 80,
         "Height": 52,
         "Components": [
           {
             "Type": "TextArea",
             "Name": "timeTextArea",
-            "Y": 28,
-            "Width": 100,
-            "Height": 24,
+            "Y": 26,
+            "Width": 80,
+            "Height": 26,
             "TextId": "__SingleUse_O4NC",
             "TextRotation": "0",
             "Wildcard1": {
@@ -306,9 +315,121 @@
           {
             "Type": "TextArea",
             "Name": "labelTextArea",
-            "Width": 100,
-            "Height": 28,
+            "Width": 80,
+            "Height": 26,
             "TextId": "__SingleUse_HZ9N",
+            "TextRotation": "0"
+          }
+        ],
+        "Interactions": []
+      },
+      {
+        "Name": "ParticlesContainer",
+        "Width": 250,
+        "Height": 52,
+        "Components": [
+          {
+            "Type": "TextArea",
+            "Name": "unitLabelTextArea",
+            "X": 216,
+            "Y": 6,
+            "Width": 34,
+            "Height": 18,
+            "TextId": "__SingleUse_6P4T",
+            "TextRotation": "0"
+          },
+          {
+            "Type": "TextArea",
+            "Name": "pm10ValueTextArea",
+            "X": 162,
+            "Y": 26,
+            "Width": 46,
+            "Height": 26,
+            "TextId": "__SingleUse_XXYV",
+            "TextRotation": "0",
+            "Wildcard1": {
+              "TextId": "__SingleUse_8G54",
+              "UseBuffer": true,
+              "BufferSize": 6
+            }
+          },
+          {
+            "Type": "TextArea",
+            "Name": "pm10LabelTextArea",
+            "X": 162,
+            "Width": 54,
+            "Height": 26,
+            "TextId": "__SingleUse_789C",
+            "TextRotation": "0"
+          },
+          {
+            "Type": "TextArea",
+            "Name": "pm4ValueTextArea",
+            "X": 108,
+            "Y": 26,
+            "Width": 46,
+            "Height": 26,
+            "TextId": "__SingleUse_GRH3",
+            "TextRotation": "0",
+            "Wildcard1": {
+              "TextId": "__SingleUse_BXHZ",
+              "UseBuffer": true,
+              "BufferSize": 6
+            }
+          },
+          {
+            "Type": "TextArea",
+            "Name": "pm4LabelTextArea",
+            "X": 108,
+            "Width": 54,
+            "Height": 26,
+            "TextId": "__SingleUse_EUOT",
+            "TextRotation": "0"
+          },
+          {
+            "Type": "TextArea",
+            "Name": "pm2_5ValueTextArea",
+            "X": 54,
+            "Y": 26,
+            "Width": 46,
+            "Height": 26,
+            "TextId": "__SingleUse_ORX3",
+            "TextRotation": "0",
+            "Wildcard1": {
+              "TextId": "__SingleUse_BDMF",
+              "UseBuffer": true,
+              "BufferSize": 6
+            }
+          },
+          {
+            "Type": "TextArea",
+            "Name": "pm2_5LabelTextArea",
+            "X": 54,
+            "Width": 54,
+            "Height": 26,
+            "TextId": "__SingleUse_W47G",
+            "TextRotation": "0"
+          },
+          {
+            "Type": "TextArea",
+            "Name": "pm1ValueTextArea",
+            "Y": 26,
+            "Width": 46,
+            "Height": 26,
+            "TextId": "__SingleUse_DI1B",
+            "TextRotation": "0",
+            "Wildcard1": {
+              "TextId": "__SingleUse_EDSM",
+              "UseBuffer": true,
+              "BufferSize": 6
+            }
+          },
+          {
+            "Type": "TextArea",
+            "Name": "pm1LabelTextArea",
+            "Width": 54,
+            "Height": 26,
+            "TextId": "__SingleUse_1DZC",
             "TextRotation": "0"
           }
         ],
@@ -367,5 +488,5 @@
     "OptionalComponents": [],
     "AdditionalFeatures": []
   },
-  "Version": "4.21.3"
+  "Version": "4.21.4"
 }

@@ -13,4 +13,10 @@ public:
 	float scdCo2;
 	float scdTemperature;
 	float scdHumidity;
+
+	uint16_t pm1;
+	uint16_t pm2_5;
+	uint16_t pm4;
+	uint16_t pm10;
+
 };

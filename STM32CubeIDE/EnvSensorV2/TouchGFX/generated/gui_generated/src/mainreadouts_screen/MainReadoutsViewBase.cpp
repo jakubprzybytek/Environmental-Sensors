@@ -15,6 +15,9 @@ MainReadoutsViewBase::MainReadoutsViewBase()
     background.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
     add(background);
 
+    particlesContainer.setXY(80, 225);
+    add(particlesContainer);
+
     pressureContainer.setXY(0, 128);
     add(pressureContainer);
 
@@ -27,7 +30,7 @@ MainReadoutsViewBase::MainReadoutsViewBase()
     humidityContainer.setXY(200, 0);
     add(humidityContainer);
 
-    voltageContainer.setXY(300, 225);
+    voltageContainer.setXY(326, 225);
     add(voltageContainer);
 
     timeContainer.setXY(0, 225);
@@ -53,6 +56,7 @@ MainReadoutsViewBase::~MainReadoutsViewBase()
 
 void MainReadoutsViewBase::setupScreen()
 {
+    particlesContainer.initialize();
     pressureContainer.initialize();
     temperatureContainer.initialize();
     cO2Container.initialize();

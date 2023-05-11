@@ -4,16 +4,22 @@
 
 FONT_TABLE_LOCATION_FLASH_PRAGMA
 KEEP extern const touchgfx::GlyphNode glyphs_seguisb_12_2bpp[] FONT_TABLE_LOCATION_FLASH_ATTRIBUTE = {
-    {     0, 0x003F,   5,   8,   8,   0,   5,   0,   0, 0x00 },
-    {    10, 0x0043,   7,   8,   8,   0,   7,   0,   0, 0x00 },
-    {    24, 0x0052,   7,   8,   8,   1,   7,   0,   0, 0x00 },
-    {    38, 0x0061,   6,   6,   6,   0,   6,   0,   0, 0x00 },
-    {    47, 0x0065,   6,   6,   6,   0,   6,   0,   0, 0x00 },
-    {    56, 0x0066,   5,   9,   9,   0,   4,   0,   0, 0x00 },
-    {    68, 0x0068,   6,   9,   9,   1,   7,   0,   0, 0x00 },
-    {    82, 0x006C,   2,   9,   9,   1,   3,   0,   0, 0x00 },
-    {    87, 0x0072,   4,   6,   6,   1,   4,   0,   0, 0x00 },
-    {    93, 0x0073,   5,   6,   6,   0,   5,   0,   0, 0x00 }
+    {     0, 0x002F,   5,  10,   8,   0,   5,   0,   0, 0x00 },
+    {    13, 0x0030,   7,   8,   8,   0,   7,   0,   0, 0x00 },
+    {    27, 0x003F,   5,   8,   8,   0,   5,   0,   0, 0x00 },
+    {    37, 0x0043,   7,   8,   8,   0,   7,   0,   0, 0x00 },
+    {    51, 0x0052,   7,   8,   8,   1,   7,   0,   0, 0x00 },
+    {    65, 0x0061,   6,   6,   6,   0,   6,   0,   0, 0x00 },
+    {    74, 0x0065,   6,   6,   6,   0,   6,   0,   0, 0x00 },
+    {    83, 0x0066,   5,   9,   9,   0,   4,   0,   0, 0x00 },
+    {    95, 0x0067,   7,   9,   6,   0,   7,   0,   0, 0x00 },
+    {   111, 0x0068,   6,   9,   9,   1,   7,   0,   0, 0x00 },
+    {   125, 0x006C,   2,   9,   9,   1,   3,   0,   0, 0x00 },
+    {   130, 0x006D,   9,   6,   6,   1,  11,   0,   0, 0x00 },
+    {   144, 0x0072,   4,   6,   6,   1,   4,   0,   0, 0x00 },
+    {   150, 0x0073,   5,   6,   6,   0,   5,   0,   0, 0x00 },
+    {   158, 0x00B3,   4,   5,  10,   0,   5,   0,   0, 0x00 },
+    {   163, 0x03BC,   6,   9,   6,   1,   7,   0,   0, 0x00 }
 };
 
 // seguisb_12_2bpp
@@ -187,6 +193,6 @@ touchgfx::GeneratedFont& getFont_seguisb_12_2bpp();
 
 touchgfx::GeneratedFont& getFont_seguisb_12_2bpp()
 {
-    static touchgfx::GeneratedFont seguisb_12_2bpp(glyphs_seguisb_12_2bpp, 10, 12, 12, 0, 0, 2, 0, 0, 1, unicodes_seguisb_12_2bpp, kerning_seguisb_12_2bpp, 63, 0, 0, &seguisb_contextualFormsTable);
+    static touchgfx::GeneratedFont seguisb_12_2bpp(glyphs_seguisb_12_2bpp, 16, 15, 12, 0, 0, 2, 0, 0, 1, unicodes_seguisb_12_2bpp, kerning_seguisb_12_2bpp, 63, 0, 0, &seguisb_contextualFormsTable);
     return seguisb_12_2bpp;
 }

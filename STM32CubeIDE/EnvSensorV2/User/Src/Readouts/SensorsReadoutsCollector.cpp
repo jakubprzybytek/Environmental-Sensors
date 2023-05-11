@@ -59,6 +59,12 @@ void SensorsReadoutsCollector::thread(void *pvParameters) {
 			readoutsState.scdTemperature = message.cth.temperature;
 			readoutsState.scdHumidity = message.cth.humidity;
 			break;
+		case HPMA:
+			readoutsState.pm1 = message.p.pm1;
+			readoutsState.pm2_5 = message.p.pm2_5;
+			readoutsState.pm4 = message.p.pm4;
+			readoutsState.pm10 = message.p.pm10;
+			break;
 		}
 
 		if (status != osOK && status != osErrorTimeout) {

@@ -63,6 +63,26 @@
             "Width": 100,
             "Height": 52,
             "CustomContainerDefinitionName": "TimeContainer"
+          },
+          {
+            "Type": "TextArea",
+            "Name": "button1TextArea",
+            "X": 11,
+            "Y": 287,
+            "Width": 46,
+            "Height": 12,
+            "TextId": "__SingleUse_QLDI",
+            "TextRotation": "0"
+          },
+          {
+            "Type": "TextArea",
+            "Name": "button2TextArea",
+            "X": 77,
+            "Y": 287,
+            "Width": 46,
+            "Height": 12,
+            "TextId": "__SingleUse_JC1X",
+            "TextRotation": "0"
           }
         ],
         "Interactions": []
@@ -77,29 +97,32 @@
           {
             "Type": "TextArea",
             "Name": "valueTextArea",
-            "Y": 8,
-            "Width": 200,
+            "Y": 6,
+            "Width": 198,
             "Height": 114,
-            "TextId": "__SingleUse_NW8V",
+            "TextId": "__SingleUse_8Q5Y",
             "TextRotation": "0",
-            "Wildcard1": {}
+            "Wildcard1": {
+              "TextId": "__SingleUse_ZVXF",
+              "UseBuffer": true,
+              "BufferSize": 6
+            }
           },
           {
             "Type": "TextArea",
             "Name": "unitTextArea",
-            "X": 167,
-            "Width": 20,
+            "X": 160,
+            "Width": 40,
             "Height": 28,
-            "TextId": "__SingleUse_BZKJ",
+            "TextId": "__SingleUse_6OS6",
             "TextRotation": "0"
           },
           {
             "Type": "TextArea",
             "Name": "labelTextArea",
-            "X": 38,
-            "Width": 112,
+            "Width": 150,
             "Height": 28,
-            "TextId": "__SingleUse_DH8G",
+            "TextId": "__SingleUse_2MZM",
             "TextRotation": "0"
           }
         ],
@@ -113,29 +136,32 @@
           {
             "Type": "TextArea",
             "Name": "valueTextArea",
-            "Y": 19,
-            "Width": 200,
+            "Y": 14,
+            "Width": 198,
             "Height": 78,
-            "TextId": "__SingleUse_G5RA",
+            "TextId": "__SingleUse_HQWB",
             "TextRotation": "0",
-            "Wildcard1": {}
+            "Wildcard1": {
+              "TextId": "__SingleUse_Q2NK",
+              "UseBuffer": true,
+              "BufferSize": 8
+            }
           },
           {
             "Type": "TextArea",
             "Name": "unitTextArea",
             "X": 160,
-            "Width": 32,
+            "Width": 40,
             "Height": 28,
-            "TextId": "__SingleUse_MU2W",
+            "TextId": "__SingleUse_PB6I",
             "TextRotation": "0"
           },
           {
             "Type": "TextArea",
             "Name": "labelTextArea",
-            "X": 30,
-            "Width": 76,
+            "Width": 150,
             "Height": 28,
-            "TextId": "__SingleUse_Z9BF",
+            "TextId": "__SingleUse_BSZ2",
             "TextRotation": "0"
           }
         ],
@@ -149,12 +175,16 @@
           {
             "Type": "TextArea",
             "Name": "valueTextArea",
-            "Y": 19,
-            "Width": 200,
-            "Height": 78,
-            "TextId": "__SingleUse_JK9G",
+            "Y": 14,
+            "Width": 198,
+            "Height": 88,
+            "TextId": "__SingleUse_C2UD",
             "TextRotation": "0",
-            "Wildcard1": {}
+            "Wildcard1": {
+              "TextId": "__SingleUse_AHUZ",
+              "UseBuffer": true,
+              "BufferSize": 8
+            }
           },
           {
             "Type": "TextArea",
@@ -162,16 +192,15 @@
             "X": 160,
             "Width": 40,
             "Height": 28,
-            "TextId": "__SingleUse_B0L7",
+            "TextId": "__SingleUse_B3Q3",
             "TextRotation": "0"
           },
           {
             "Type": "TextArea",
             "Name": "labelTextArea",
-            "X": 30,
-            "Width": 76,
+            "Width": 150,
             "Height": 28,
-            "TextId": "__SingleUse_1Z19",
+            "TextId": "__SingleUse_YX85",
             "TextRotation": "0"
           }
         ],
@@ -185,12 +214,16 @@
           {
             "Type": "TextArea",
             "Name": "valueTextArea",
-            "Y": 8,
-            "Width": 200,
+            "Y": 6,
+            "Width": 198,
             "Height": 114,
-            "TextId": "__SingleUse_B4ZP",
+            "TextId": "__SingleUse_184G",
             "TextRotation": "0",
-            "Wildcard1": {}
+            "Wildcard1": {
+              "TextId": "__SingleUse_NBBE",
+              "UseBuffer": true,
+              "BufferSize": 5
+            }
           },
           {
             "Type": "TextArea",
@@ -198,16 +231,15 @@
             "X": 160,
             "Width": 40,
             "Height": 28,
-            "TextId": "__SingleUse_X58L",
+            "TextId": "__SingleUse_RKZY",
             "TextRotation": "0"
           },
           {
             "Type": "TextArea",
             "Name": "labelTextArea",
-            "X": 30,
-            "Width": 82,
+            "Width": 150,
             "Height": 28,
-            "TextId": "__SingleUse_OQMQ",
+            "TextId": "__SingleUse_0OK7",
             "TextRotation": "0"
           }
         ],
@@ -222,11 +254,15 @@
             "Type": "TextArea",
             "Name": "valueTextArea",
             "Y": 28,
-            "Width": 100,
+            "Width": 92,
             "Height": 24,
-            "TextId": "__SingleUse_3GYP",
+            "TextId": "__SingleUse_94JU",
             "TextRotation": "0",
-            "Wildcard1": {}
+            "Wildcard1": {
+              "TextId": "__SingleUse_IXTO",
+              "UseBuffer": true,
+              "BufferSize": 5
+            }
           },
           {
             "Type": "TextArea",
@@ -234,15 +270,15 @@
             "X": 82,
             "Width": 18,
             "Height": 28,
-            "TextId": "__SingleUse_H3QZ",
+            "TextId": "__SingleUse_CR7E",
             "TextRotation": "0"
           },
           {
             "Type": "TextArea",
             "Name": "labelTextArea",
-            "Width": 82,
+            "Width": 76,
             "Height": 28,
-            "TextId": "__SingleUse_VFNW",
+            "TextId": "__SingleUse_S6EA",
             "TextRotation": "0"
           }
         ],
@@ -255,20 +291,24 @@
         "Components": [
           {
             "Type": "TextArea",
-            "Name": "hourTextArea",
+            "Name": "timeTextArea",
             "Y": 28,
             "Width": 100,
             "Height": 24,
-            "TextId": "__SingleUse_42GU",
+            "TextId": "__SingleUse_O4NC",
             "TextRotation": "0",
-            "Wildcard1": {}
+            "Wildcard1": {
+              "TextId": "__SingleUse_UKDP",
+              "UseBuffer": true,
+              "BufferSize": 10
+            }
           },
           {
             "Type": "TextArea",
             "Name": "labelTextArea",
-            "Width": 82,
+            "Width": 100,
             "Height": 28,
-            "TextId": "__SingleUse_D46E",
+            "TextId": "__SingleUse_HZ9N",
             "TextRotation": "0"
           }
         ],
@@ -283,7 +323,6 @@
     "SelectedColorDepth": 2,
     "StartupScreenName": "MainReadouts",
     "SelectedStartupLanguage": "GB",
-    "Skin": "Blue",
     "TouchGfxPath": "../Middlewares/ST/touchgfx",
     "UIPath": ".",
     "AvailableColorDepths": [
@@ -320,10 +359,13 @@
     "PortraitSkinY": 0,
     "DisplayOrientation": "Landscape",
     "Family": "STM32L4",
+    "SubFamily": "STM32L4x1",
+    "Toolchain": "STM32CubeIDE",
     "Platform": "m4",
     "ProjectFile": "../EnvSensorV2.ioc",
     "OptionalComponentsRoot": "../Middlewares/ST/touchgfx_components",
-    "OptionalComponents": []
+    "OptionalComponents": [],
+    "AdditionalFeatures": []
   },
-  "Version": "4.20.0"
+  "Version": "4.21.3"
 }

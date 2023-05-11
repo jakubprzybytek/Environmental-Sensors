@@ -31,6 +31,10 @@ void MainReadoutsView::setHumidity(float humidity) {
 	humidityContainer.setValue(humidity);
 }
 
+void MainReadoutsView::setParticles(uint16_t pm1, uint16_t pm2_5, uint16_t pm4, uint16_t pm10) {
+	particlesContainer.setValues(pm1, pm2_5, pm4, pm10);
+}
+
 void MainReadoutsView::setDateTime(DateTime dateTime) {
 	timeContainer.setDateTime(dateTime);
 }
