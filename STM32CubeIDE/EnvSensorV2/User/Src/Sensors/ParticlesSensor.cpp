@@ -9,6 +9,7 @@
 #include <stdlib.h>
 #include <string.h>
 
+#include <Leds.hpp>
 #include <EnvSensorConfig.hpp>
 
 #include <Sensors/ParticlesSensor.hpp>
@@ -18,6 +19,8 @@
 
 #include <Utils/DebugLog.hpp>
 
+#define STOP_THREAD_FLAG 0x01
+
 extern UART_HandleTypeDef huart2;
 
 uint32_t particlesReadoutThreadBuffer[128];
@@ -25,8 +28,14 @@ StaticTask_t particlesReadoutThreadControlBlock;
 
 Hpma115C0 hpma(huart2);
 
-void ParticlesSensor::init() {
+osThreadId_t particlesSensorThreadHandle;
+
+void ParticlesSensor::initAndStart() {
 	startThread();
+}
+
+void ParticlesSensor::stopAndTerminate() {
+	osThreadFlagsSet(particlesSensorThreadHandle, STOP_THREAD_FLAG);
 }
 
 void ParticlesSensor::startThread() {
@@ -40,14 +49,18 @@ void ParticlesSensor::startThread() {
 		.priority = (osPriority_t) osPriorityNormal
 	};
 // @formatter:on
-	osThreadNew(thread, NULL, &particlesReadoutThreadaAttributes);
+	particlesSensorThreadHandle = osThreadNew(thread, NULL, &particlesReadoutThreadaAttributes);
 }
 
 void ParticlesSensor::thread(void *pvParameters) {
+	HAL_StatusTypeDef status;
+	uint32_t osStatus;
 	char messageBuffer[25];
 	bool keepRunning = true;
 
-	HAL_StatusTypeDef status = hpma.init();
+	PARTICLES_SENSOR_LED_On();
+
+	status = hpma.init();
 
 	if (status != HAL_OK) {
 #ifdef PARTICLES_SENSOR_INFO
@@ -58,35 +71,50 @@ void ParticlesSensor::thread(void *pvParameters) {
 	}
 
 	if (keepRunning) {
-		osDelay(1000 / portTICK_RATE_MS);
+		osStatus = osThreadFlagsWait(STOP_THREAD_FLAG, osFlagsWaitAny, 2000 / portTICK_RATE_MS);
 
-		status = hpma.stopAutoSend();
+		// check if thread has to stop
+		if (osStatus & STOP_THREAD_FLAG) {
+			keepRunning = false;
+		} else {
+			status = hpma.stopAutoSend();
 
-		if (status != HAL_OK) {
+			if (status != HAL_OK) {
 #ifdef PARTICLES_SENSOR_INFO
-			DebugLog::log((char*) "HPMA - error no auto");
+				DebugLog::log((char*) "HPMA - error no auto");
 #endif
 
-			keepRunning = false;
+				keepRunning = false;
+			}
 		}
 	}
 
 	if (keepRunning) {
-		osDelay(200 / portTICK_RATE_MS);
+		osStatus = osThreadFlagsWait(STOP_THREAD_FLAG, osFlagsWaitAny, 200 / portTICK_RATE_MS);
 
-		status = hpma.startMeasurements();
+		// check if thread has to stop
+		if (osStatus & STOP_THREAD_FLAG) {
+			keepRunning = false;
+		} else {
+			status = hpma.startMeasurements();
 
-		if (status != HAL_OK) {
+			if (status != HAL_OK) {
 #ifdef PARTICLES_SENSOR_INFO
-		DebugLog::log((char*) "HPMA - error start");
+				DebugLog::log((char*) "HPMA - error start");
 #endif
 
-			keepRunning = false;
+				keepRunning = false;
+			}
 		}
 	}
 
 	while (keepRunning) {
-		osDelay(20000 / portTICK_RATE_MS);
+		osStatus = osThreadFlagsWait(STOP_THREAD_FLAG, osFlagsWaitAny, 10000 / portTICK_RATE_MS);
+
+		if (osStatus & STOP_THREAD_FLAG) {
+			keepRunning = false;
+			continue;
+		}
 
 		uint16_t pm1, pm2_5, pm4, pm10;
 		status = hpma.readMeasurements(&pm1, &pm2_5, &pm4, &pm10);
@@ -112,7 +140,7 @@ void ParticlesSensor::thread(void *pvParameters) {
 		SensorsReadouts::submitParticles(pm1, pm2_5, pm4, pm10);
 	}
 
-	hpma.stopMeasurements();
+	status = hpma.stopMeasurements();
 
 #ifdef PARTICLES_SENSOR_INFO
 	if (status != HAL_OK) {
@@ -120,9 +148,11 @@ void ParticlesSensor::thread(void *pvParameters) {
 	}
 #endif
 
-	osDelay(1000 / portTICK_RATE_MS);
+	osThreadFlagsWait(STOP_THREAD_FLAG, osFlagsWaitAny, 1000 / portTICK_RATE_MS);
 
 	hpma.deinit();
+
+	PARTICLES_SENSOR_LED_Off();
 
 	osThreadExit();
 }

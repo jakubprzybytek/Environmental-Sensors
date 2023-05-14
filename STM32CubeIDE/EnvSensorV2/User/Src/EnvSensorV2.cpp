@@ -54,7 +54,7 @@ void EnvSensorV2_Init() {
 
 	CO2Sensor::init();
 
-	ParticlesSensor::init();
+	ParticlesSensor::initAndStart();
 
 	Timer::init();
 }
@@ -87,4 +87,5 @@ void switch3Pressed() {
 }
 
 void switch4Pressed() {
+	ParticlesSensor::stopAndTerminate();
 }
