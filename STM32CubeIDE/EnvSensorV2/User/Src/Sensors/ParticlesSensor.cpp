@@ -55,10 +55,12 @@ void ParticlesSensor::startThread() {
 void ParticlesSensor::thread(void *pvParameters) {
 	HAL_StatusTypeDef status;
 	uint32_t osStatus;
+
 	char messageBuffer[25];
 	bool keepRunning = true;
 
 	PARTICLES_SENSOR_LED_On();
+	POWER_5V_ENABLE();
 
 	status = hpma.init();
 
@@ -90,7 +92,7 @@ void ParticlesSensor::thread(void *pvParameters) {
 	}
 
 	if (keepRunning) {
-		osStatus = osThreadFlagsWait(STOP_THREAD_FLAG, osFlagsWaitAny, 200 / portTICK_RATE_MS);
+		osStatus = osThreadFlagsWait(STOP_THREAD_FLAG, osFlagsWaitAny, 100 / portTICK_RATE_MS);
 
 		// check if thread has to stop
 		if (osStatus & STOP_THREAD_FLAG) {
@@ -148,10 +150,11 @@ void ParticlesSensor::thread(void *pvParameters) {
 	}
 #endif
 
-	osThreadFlagsWait(STOP_THREAD_FLAG, osFlagsWaitAny, 1000 / portTICK_RATE_MS);
+	osThreadFlagsWait(STOP_THREAD_FLAG, osFlagsWaitAny, 100 / portTICK_RATE_MS);
 
 	hpma.deinit();
 
+	POWER_5V_DISABLE();
 	PARTICLES_SENSOR_LED_Off();
 
 	osThreadExit();

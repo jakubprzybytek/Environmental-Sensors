@@ -17,15 +17,11 @@ HAL_StatusTypeDef Hpma115C0::init() {
 	};
 	uartReadSemaphore = osSemaphoreNew(1, 0, &uartReadSemaphoreAttributes);
 
-	POWER_5V_ENABLE
-
 	return HAL_OK;
 }
 
 HAL_StatusTypeDef Hpma115C0::deinit() {
 	osSemaphoreDelete(uartReadSemaphore);
-
-	POWER_5V_DISABLE
 
 	return HAL_OK;
 }
