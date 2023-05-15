@@ -8,6 +8,7 @@
 #include <mvp/View.hpp>
 #include <gui/mainreadouts_screen/MainReadoutsPresenter.hpp>
 #include <touchgfx/widgets/Box.hpp>
+#include <touchgfx/widgets/TextArea.hpp>
 #include <gui/containers/ParticlesContainer.hpp>
 #include <gui/containers/PressureContainer.hpp>
 #include <gui/containers/TemperatureContainer.hpp>
@@ -15,7 +16,6 @@
 #include <gui/containers/HumidityContainer.hpp>
 #include <gui/containers/VoltageContainer.hpp>
 #include <gui/containers/TimeContainer.hpp>
-#include <touchgfx/widgets/TextArea.hpp>
 
 class MainReadoutsViewBase : public touchgfx::View<MainReadoutsPresenter>
 {
@@ -34,6 +34,9 @@ protected:
      */
     touchgfx::Box __background;
     touchgfx::Box background;
+    touchgfx::TextArea button3TextArea;
+    touchgfx::TextArea button2TextArea;
+    touchgfx::TextArea button1TextArea;
     ParticlesContainer particlesContainer;
     PressureContainer pressureContainer;
     TemperatureContainer temperatureContainer;
@@ -41,8 +44,6 @@ protected:
     HumidityContainer humidityContainer;
     VoltageContainer voltageContainer;
     TimeContainer timeContainer;
-    touchgfx::TextArea button1TextArea;
-    touchgfx::TextArea button2TextArea;
 
 private:
 

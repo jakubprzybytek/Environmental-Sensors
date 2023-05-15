@@ -15,6 +15,24 @@ MainReadoutsViewBase::MainReadoutsViewBase()
     background.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
     add(background);
 
+    button3TextArea.setPosition(209, 287, 46, 12);
+    button3TextArea.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+    button3TextArea.setLinespacing(0);
+    button3TextArea.setTypedText(touchgfx::TypedText(T___SINGLEUSE_K8A6));
+    add(button3TextArea);
+
+    button2TextArea.setPosition(77, 287, 46, 12);
+    button2TextArea.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+    button2TextArea.setLinespacing(0);
+    button2TextArea.setTypedText(touchgfx::TypedText(T___SINGLEUSE_JC1X));
+    add(button2TextArea);
+
+    button1TextArea.setPosition(11, 287, 46, 12);
+    button1TextArea.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+    button1TextArea.setLinespacing(0);
+    button1TextArea.setTypedText(touchgfx::TypedText(T___SINGLEUSE_QLDI));
+    add(button1TextArea);
+
     particlesContainer.setXY(80, 225);
     add(particlesContainer);
 
@@ -35,18 +53,6 @@ MainReadoutsViewBase::MainReadoutsViewBase()
 
     timeContainer.setXY(0, 225);
     add(timeContainer);
-
-    button1TextArea.setPosition(11, 287, 46, 12);
-    button1TextArea.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
-    button1TextArea.setLinespacing(0);
-    button1TextArea.setTypedText(touchgfx::TypedText(T___SINGLEUSE_QLDI));
-    add(button1TextArea);
-
-    button2TextArea.setPosition(77, 287, 46, 12);
-    button2TextArea.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
-    button2TextArea.setLinespacing(0);
-    button2TextArea.setTypedText(touchgfx::TypedText(T___SINGLEUSE_JC1X));
-    add(button2TextArea);
 }
 
 MainReadoutsViewBase::~MainReadoutsViewBase()
