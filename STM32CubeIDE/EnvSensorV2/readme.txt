@@ -13,6 +13,7 @@ particles sensor
 * get rid of keepRunning
 * calibration?
 * log start and stop
+* get rid of semaphore
 
 Hardware
 Fix dc converters squeak
