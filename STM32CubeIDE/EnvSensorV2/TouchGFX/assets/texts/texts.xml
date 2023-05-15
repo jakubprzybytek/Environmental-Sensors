@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextDatabase xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="texts.xsd" Version="4.20.0">
+  <Languages>
+    <Language Id="GB" />
+  </Languages>
+  <Texts>
+    <TextGroup Id="Group1">
+      <Text Id="__SingleUse_DH8G" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">Temperature</Translation>
+      </Text>
+      <Text Id="__SingleUse_NW8V" Alignment="Right" TypographyId="ValueBig">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_BZKJ" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">°C</Translation>
+      </Text>
+      <Text Id="__SingleUse_UD7B" Alignment="Right" TypographyId="ValueBig">
+        <Translation Language="GB">-24.2</Translation>
+      </Text>
+      <Text Id="__SingleUse_PAZ3" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">°C</Translation>
+      </Text>
+      <Text Id="__SingleUse_V2DZ" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">Temperature</Translation>
+      </Text>
+      <Text Id="__SingleUse_G5RA" Alignment="Right" TypographyId="ValueMedium">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_MU2W" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">hPa</Translation>
+      </Text>
+      <Text Id="__SingleUse_Z9BF" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">Pressure</Translation>
+      </Text>
+      <Text Id="__SingleUse_JK9G" Alignment="Right" TypographyId="ValueMedium">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_B0L7" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">ppm</Translation>
+      </Text>
+      <Text Id="__SingleUse_1Z19" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">CO2</Translation>
+      </Text>
+    </TextGroup>
+    <TextGroup Id="Unsorted">
+      <Text Id="__SingleUse_D46E" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">Time</Translation>
+      </Text>
+      <Text Id="__SingleUse_42GU" Alignment="Right" TypographyId="Default">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_SXVX" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">Time</Translation>
+      </Text>
+      <Text Id="__SingleUse_ZMLC" Alignment="Right" TypographyId="Default">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_VFNW" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">Voltage</Translation>
+      </Text>
+      <Text Id="__SingleUse_H3QZ" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">V</Translation>
+      </Text>
+      <Text Id="__SingleUse_3GYP" Alignment="Right" TypographyId="Default">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_OQMQ" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">Humidity</Translation>
+      </Text>
+      <Text Id="__SingleUse_X58L" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">%</Translation>
+      </Text>
+      <Text Id="__SingleUse_B4ZP" Alignment="Right" TypographyId="ValueBig">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+    </TextGroup>
+  </Texts>
+  <Typographies>
+    <Typography Id="Default" Font="segoeui.ttf" Size="20" Bpp="2" Direction="LTR" FallbackCharacter="?" WildcardCharacters="." WildcardCharacterRanges="0-9" />
+    <Typography Id="ValueBig" Font="segoeuil.ttf" Size="90" Bpp="2" Direction="LTR" FallbackCharacter="?" WildcardCharacters="." WildcardCharacterRanges="0-9,a-z,A-Z" />
+    <Typography Id="ValueMedium" Font="segoeuil.ttf" Size="66" Bpp="2" Direction="LTR" FallbackCharacter="?" WildcardCharacters="." WildcardCharacterRanges="0-9" />
+  </Typographies>
+</TextDatabase>
