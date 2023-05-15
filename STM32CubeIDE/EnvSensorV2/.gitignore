@@ -4,3 +4,4 @@
 build
 touchgfx_backup
 backup_*.ioc
+*_backup.touchgfx
