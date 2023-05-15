@@ -12,6 +12,7 @@ particles sensor
 * stopAutoSend really needed?
 * get rid of keepRunning
 * calibration?
+* log start and stop
 
 Hardware
 Fix dc converters squeak
