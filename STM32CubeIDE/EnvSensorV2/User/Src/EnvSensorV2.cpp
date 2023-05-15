@@ -20,7 +20,14 @@
 #include <Utils/BlinkingLeds.hpp>
 #include <Utils/RtcUtils.hpp>
 
+#define SWITCH_4_PRESSED_FLAG 0x01
+
 extern I2C_HandleTypeDef hi2c1;
+
+uint32_t mainStateThreadBuffer[128];
+StaticTask_t mainStateThreadControlBlock;
+
+osThreadId_t mainStateThreadHandle;
 
 //#include <Logger/FileSystem/FileSystem.hpp>
 
@@ -40,6 +47,8 @@ void EnvSensorV2_Init() {
 //		    }
 //		  }
 
+	mainStateThreadStart();
+
 	BlinkingLeds::init();
 
 	DebugLog::init();
@@ -57,6 +66,39 @@ void EnvSensorV2_Init() {
 	ParticlesSensor::initAndStart();
 
 	Timer::init();
+}
+
+void mainStateThreadStart() {
+	// @formatter:off
+		const osThreadAttr_t mainStateThreadaAttributes = {
+			.name = "mainState-th",
+			.cb_mem = &mainStateThreadControlBlock,
+			.cb_size = sizeof(mainStateThreadControlBlock),
+			.stack_mem = &mainStateThreadBuffer[0],
+			.stack_size = sizeof(mainStateThreadBuffer),
+			.priority = (osPriority_t) osPriorityNormal
+		};
+					// @formatter:on
+	mainStateThreadHandle = osThreadNew(mainStateThread, NULL, &mainStateThreadaAttributes);
+}
+
+void mainStateThread(void *pvParameters) {
+
+	uint32_t flag;
+
+	while (true) {
+		flag = osThreadFlagsWait(SWITCH_4_PRESSED_FLAG, osFlagsWaitAny, osWaitForever);
+
+		if (flag & SWITCH_4_PRESSED_FLAG) {
+			if (ParticlesSensor::isRunning()) {
+				ParticlesSensor::stopAndTerminate();
+			} else {
+				ParticlesSensor::initAndStart();
+			}
+		}
+	}
+
+	osThreadExit();
 }
 
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin) {
@@ -87,5 +129,5 @@ void switch3Pressed() {
 }
 
 void switch4Pressed() {
-	ParticlesSensor::stopAndTerminate();
+	osThreadFlagsSet(mainStateThreadHandle, SWITCH_4_PRESSED_FLAG);
 }

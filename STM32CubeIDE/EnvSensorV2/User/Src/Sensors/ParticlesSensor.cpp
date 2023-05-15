@@ -38,6 +38,11 @@ void ParticlesSensor::stopAndTerminate() {
 	osThreadFlagsSet(particlesSensorThreadHandle, STOP_THREAD_FLAG);
 }
 
+bool ParticlesSensor::isRunning() {
+	osThreadState_t state = osThreadGetState(particlesSensorThreadHandle);
+	return state != osThreadTerminated && state != osThreadError;
+}
+
 void ParticlesSensor::startThread() {
 // @formatter:off
 	const osThreadAttr_t particlesReadoutThreadaAttributes = {
@@ -54,7 +59,7 @@ void ParticlesSensor::startThread() {
 
 void ParticlesSensor::thread(void *pvParameters) {
 	HAL_StatusTypeDef status;
-	uint32_t osStatus;
+	uint32_t threadFlag;
 
 	char messageBuffer[25];
 	bool keepRunning = true;
@@ -73,10 +78,10 @@ void ParticlesSensor::thread(void *pvParameters) {
 	}
 
 	if (keepRunning) {
-		osStatus = osThreadFlagsWait(STOP_THREAD_FLAG, osFlagsWaitAny, 2000 / portTICK_RATE_MS);
+		threadFlag = osThreadFlagsWait(STOP_THREAD_FLAG, osFlagsWaitAny, 2000 / portTICK_RATE_MS);
 
 		// check if thread has to stop
-		if (osStatus & STOP_THREAD_FLAG) {
+		if (threadFlag & STOP_THREAD_FLAG) {
 			keepRunning = false;
 		} else {
 			status = hpma.stopAutoSend();
@@ -92,10 +97,10 @@ void ParticlesSensor::thread(void *pvParameters) {
 	}
 
 	if (keepRunning) {
-		osStatus = osThreadFlagsWait(STOP_THREAD_FLAG, osFlagsWaitAny, 100 / portTICK_RATE_MS);
+		threadFlag = osThreadFlagsWait(STOP_THREAD_FLAG, osFlagsWaitAny, 100 / portTICK_RATE_MS);
 
 		// check if thread has to stop
-		if (osStatus & STOP_THREAD_FLAG) {
+		if (threadFlag & STOP_THREAD_FLAG) {
 			keepRunning = false;
 		} else {
 			status = hpma.startMeasurements();
@@ -111,9 +116,9 @@ void ParticlesSensor::thread(void *pvParameters) {
 	}
 
 	while (keepRunning) {
-		osStatus = osThreadFlagsWait(STOP_THREAD_FLAG, osFlagsWaitAny, 10000 / portTICK_RATE_MS);
+		threadFlag = osThreadFlagsWait(STOP_THREAD_FLAG, osFlagsWaitAny, 10000 / portTICK_RATE_MS);
 
-		if (osStatus & STOP_THREAD_FLAG) {
+		if (threadFlag & STOP_THREAD_FLAG) {
 			keepRunning = false;
 			continue;
 		}

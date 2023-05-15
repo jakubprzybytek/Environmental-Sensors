@@ -20,6 +20,9 @@ extern "C" {
 
 extern void EnvSensorV2_Init();
 
+void mainStateThreadStart();
+void mainStateThread(void *pvParameters);
+
 void switch1Pressed();
 void switch2Pressed();
 void switch3Pressed();

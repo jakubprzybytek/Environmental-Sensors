@@ -13,6 +13,7 @@ class ParticlesSensor {
 public:
 	static void initAndStart();
 	static void stopAndTerminate();
+	static bool isRunning();
 
 private:
 	static void startThread();
