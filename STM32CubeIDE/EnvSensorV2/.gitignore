@@ -1,2 +1,6 @@
+.settings
+
 /Debug/
 build
+touchgfx_backup
+backup_*.ioc
