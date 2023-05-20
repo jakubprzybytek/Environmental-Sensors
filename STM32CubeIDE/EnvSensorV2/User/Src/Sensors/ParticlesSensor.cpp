@@ -82,7 +82,7 @@ void ParticlesSensor::thread(void *pvParameters) {
 	}
 
 	if (keepRunning) {
-		keepRunning = !WAIT_FOR_INTERRUPT(1000);
+		keepRunning = !WAIT_FOR_INTERRUPT(6000);
 	}
 
 	if (keepRunning) {
@@ -98,7 +98,7 @@ void ParticlesSensor::thread(void *pvParameters) {
 	}
 
 	if (keepRunning) {
-		keepRunning = !WAIT_FOR_INTERRUPT(1000);
+		keepRunning = !WAIT_FOR_INTERRUPT(100);
 	}
 
 	if (keepRunning) {
