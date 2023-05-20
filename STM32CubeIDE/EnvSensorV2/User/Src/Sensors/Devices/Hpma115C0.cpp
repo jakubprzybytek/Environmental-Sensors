@@ -7,22 +7,13 @@
 #include "cmsis_os.h"
 
 #include <Sensors/Devices/Hpma115C0.hpp>
-
-osSemaphoreId_t uartReadSemaphore = NULL;
+#include <Sensors/Devices/Hpma115C0Config.hpp>
 
 HAL_StatusTypeDef Hpma115C0::init() {
-
-	const osSemaphoreAttr_t uartReadSemaphoreAttributes = {
-	  .name = "uart-sem"
-	};
-	uartReadSemaphore = osSemaphoreNew(1, 0, &uartReadSemaphoreAttributes);
-
 	return HAL_OK;
 }
 
 HAL_StatusTypeDef Hpma115C0::deinit() {
-	osSemaphoreDelete(uartReadSemaphore);
-
 	return HAL_OK;
 }
 
@@ -43,11 +34,7 @@ HAL_StatusTypeDef Hpma115C0::sendCommand(uint8_t command) {
 		return status;
 	}
 
-	osStatus_t semStatus = osSemaphoreAcquire(uartReadSemaphore, HPMA115C0_MAX_DELAY);
-
-	if (semStatus != osOK) {
-		return HAL_ERROR;
-	}
+	UART_WAIT();
 
 	return buffer[0] == HPMA115C0_SUCCESS && buffer[1] == HPMA115C0_SUCCESS ? HAL_OK : HAL_ERROR;
 }
@@ -82,11 +69,7 @@ HAL_StatusTypeDef Hpma115C0::readMeasurements(uint16_t *pm1, uint16_t *pm2_5, ui
 		return status;
 	}
 
-	osStatus_t semStatus = osSemaphoreAcquire(uartReadSemaphore, HPMA115C0_MAX_DELAY);
-
-	if (semStatus != osOK) {
-		return HAL_ERROR;
-	}
+	UART_WAIT();
 
 	if (buffer[0] != 0x40 || buffer[1] != 0x0d) {
 		return HAL_ERROR;
@@ -99,11 +82,7 @@ HAL_StatusTypeDef Hpma115C0::readMeasurements(uint16_t *pm1, uint16_t *pm2_5, ui
 		return status;
 	}
 
-	semStatus = osSemaphoreAcquire(uartReadSemaphore, HPMA115C0_MAX_DELAY);
-
-	if (semStatus != osOK) {
-		return HAL_ERROR;
-	}
+	UART_WAIT();
 
 	if (buffer[15] != checkSum(buffer, 15)) {
 		return HAL_ERROR;
@@ -126,8 +105,5 @@ uint8_t Hpma115C0::checkSum(uint8_t *data, uint8_t length) {
 }
 
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart) {
-	if (uartReadSemaphore != NULL) {
-		osSemaphoreRelease(uartReadSemaphore);
-	}
+	UART_NOTIFY();
 }
-

@@ -3,6 +3,6 @@
 touchgfx_path := ../Middlewares/ST/touchgfx
 
 # Location of the TouchGFX Environment
-touchgfx_env := C:/Progs/TouchGFX/4.21.4/env
+touchgfx_env := ../../../../../../Progs/TouchGFX/4.21.4/env
 # Optional additional compiler flags
 user_cflags := -DUSE_BPP=2

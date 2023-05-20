@@ -8,12 +8,9 @@ use dma mode to talk with display
 Get rid of synchronisation over I2C
 particles sensor
 * fix issue with auto start failure
-* indicate in gui if sensor is off
 * stopAutoSend really needed?
-* get rid of keepRunning
 * calibration?
-* log start and stop
-* get rid of semaphore
+* indicate in gui if sensor is off
 
 Hardware
 Fix dc converters squeak

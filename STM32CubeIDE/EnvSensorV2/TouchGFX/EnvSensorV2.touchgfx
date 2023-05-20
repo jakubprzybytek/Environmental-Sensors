@@ -18,7 +18,7 @@
           {
             "Type": "TextArea",
             "Name": "button3TextArea",
-            "X": 209,
+            "X": 224,
             "Y": 287,
             "Width": 46,
             "Height": 12,
@@ -28,7 +28,7 @@
           {
             "Type": "TextArea",
             "Name": "button2TextArea",
-            "X": 77,
+            "X": 80,
             "Y": 287,
             "Width": 46,
             "Height": 12,
@@ -38,7 +38,7 @@
           {
             "Type": "TextArea",
             "Name": "button1TextArea",
-            "X": 11,
+            "X": 8,
             "Y": 287,
             "Width": 46,
             "Height": 12,
