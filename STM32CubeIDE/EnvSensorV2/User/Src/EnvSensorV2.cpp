@@ -10,11 +10,8 @@
 
 #include <Display/DisplayController.hpp>
 #include <Display/DisplayCommands.hpp>
-#include <Sensors/VoltageSensor.hpp>
-#include <Sensors/TempPressureSensor.hpp>
-#include <Sensors/CO2Sensor.hpp>
-#include <Sensors/ParticlesSensor.hpp>
 #include <Sensors/SensorsController.hpp>
+#include <Sensors/CO2Sensor.hpp>
 #include <Utils/ftoa.h>
 #include <Utils/DebugLog.hpp>
 #include <Utils/BlinkingLeds.hpp>
@@ -57,14 +54,6 @@ void EnvSensorV2_Init() {
 
 	SensorsReadoutsCollector::init();
 
-	VoltageSensor::init();
-
-	//TempPressureSensor::init();
-
-	CO2Sensor::init();
-
-	//ParticlesSensor::initAndStart();
-
 	SensorsController::init();
 }
 
@@ -89,13 +78,7 @@ void mainStateThread(void *pvParameters) {
 	while (true) {
 		flag = osThreadFlagsWait(SWITCH_4_PRESSED_FLAG, osFlagsWaitAny, osWaitForever);
 
-		if (flag & SWITCH_4_PRESSED_FLAG) {
-			if (ParticlesSensor::isRunning()) {
-				ParticlesSensor::stopAndTerminate();
-			} else {
-				ParticlesSensor::initAndStart();
-			}
-		}
+		// do something
 	}
 
 	osThreadExit();

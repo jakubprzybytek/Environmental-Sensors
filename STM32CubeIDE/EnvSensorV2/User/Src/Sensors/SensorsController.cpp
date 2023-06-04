@@ -14,6 +14,9 @@
 
 #include <Sensors/SensorsController.hpp>
 
+#include <Sensors/VoltageSensor.hpp>
+#include <Sensors/TempPressureSensor.hpp>
+#include <Sensors/CO2Sensor.hpp>
 #include <Sensors/ParticlesSensor.hpp>
 
 #define TRIGGER_HIGH_MEASUREMENTS_FLAG 0x01
@@ -22,8 +25,8 @@
 #define MINUTES(x) (x * 60 * 1000)
 
 #define INITIAL_DELAY SECONDS(20)
-#define LOW_MEASUREMENTS_PERIOD MINUTES(4)
-#define HIGH_MEASUREMENTS_PERIOD MINUTES(1)
+#define LOW_MEASUREMENTS_PERIOD (MINUTES(4) + SECONDS(30))
+#define HIGH_MEASUREMENTS_PERIOD SECONDS(30)
 
 uint32_t sensorsControllerThreadBuffer[128];
 StaticTask_t sensorsControllerThreadControlBlock;
@@ -48,6 +51,12 @@ void SensorsController::startThread() {
 }
 
 void SensorsController::thread(void *pvParameters) {
+	VoltageSensor::init();
+
+	//TempPressureSensor::init();
+
+	CO2Sensor::init();
+
 	osDelay(INITIAL_DELAY / portTICK_RATE_MS);
 
 	TRIGGER_DISPLAY_REFRESH();
