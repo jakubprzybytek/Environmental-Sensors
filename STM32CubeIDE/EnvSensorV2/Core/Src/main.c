@@ -34,7 +34,6 @@
 typedef StaticTask_t osStaticThreadDef_t;
 typedef StaticQueue_t osStaticMessageQDef_t;
 typedef StaticSemaphore_t osStaticMutexDef_t;
-typedef StaticSemaphore_t osStaticSemaphoreDef_t;
 /* USER CODE BEGIN PTD */
 
 /* USER CODE END PTD */
@@ -116,14 +115,6 @@ const osMutexAttr_t i2c1Mutex_attributes = {
   .cb_mem = &i2c1MutexControlBlock,
   .cb_size = sizeof(i2c1MutexControlBlock),
 };
-/* Definitions for scd30ReadySemaphore */
-osSemaphoreId_t scd30ReadySemaphoreHandle;
-osStaticSemaphoreDef_t scd30ReadySemaphoreControlBlock;
-const osSemaphoreAttr_t scd30ReadySemaphore_attributes = {
-  .name = "scd30ReadySemaphore",
-  .cb_mem = &scd30ReadySemaphoreControlBlock,
-  .cb_size = sizeof(scd30ReadySemaphoreControlBlock),
-};
 /* USER CODE BEGIN PV */
 
 /* USER CODE END PV */
@@ -204,10 +195,6 @@ int main(void)
   /* USER CODE BEGIN RTOS_MUTEX */
   /* add mutexes, ... */
   /* USER CODE END RTOS_MUTEX */
-
-  /* Create the semaphores(s) */
-  /* creation of scd30ReadySemaphore */
-  scd30ReadySemaphoreHandle = osSemaphoreNew(1, 1, &scd30ReadySemaphore_attributes);
 
   /* USER CODE BEGIN RTOS_SEMAPHORES */
   /* add semaphores, ... */

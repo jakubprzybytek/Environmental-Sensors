@@ -12,7 +12,6 @@ particles sensor
 * fix issue with auto start failure
 * stopAutoSend really needed?
 * calibration?
-Replace 'scd30ReadySemaphore' with flag
 
 ### Hardware
 Fix dc converters squeak

@@ -33,8 +33,6 @@
 
 extern I2C_HandleTypeDef hi2c1;
 
-extern osSemaphoreId_t scd30ReadySemaphoreHandle;
-
 uint32_t co2ReadoutThreadBuffer[150];
 StaticTask_t co2ReadoutThreadControlBlock;
 osThreadId_t co2ReadoutThreadHandle;
@@ -64,9 +62,6 @@ void CO2Sensor::thread(void *pvParameters) {
 	uint8_t status;
 
 	osDelay(100 / portTICK_RATE_MS);
-
-	// set semaphore to 0
-	osSemaphoreAcquire(scd30ReadySemaphoreHandle, portMAX_DELAY);
 
 	do {
 		I2C1_ACQUIRE
@@ -99,12 +94,10 @@ void CO2Sensor::thread(void *pvParameters) {
 #endif
 
 	if (SCD30_IS_READY()) {
-		//osSemaphoreRelease(scd30ReadySemaphoreHandle);
 		NOTIFY_READY();
 	}
 
 	for (;;) {
-		//status = osSemaphoreAcquire(scd30ReadySemaphoreHandle, portMAX_DELAY);
 		WAIT_FOR_READY();
 		if (status == osOK) {
 
@@ -176,9 +169,6 @@ void CO2Sensor::thread(void *pvParameters) {
 
 void CO2Sensor::interruptHandler() {
 	NOTIFY_READY();
-//	if (scd30ReadySemaphoreHandle != NULL) {
-//		osSemaphoreRelease(scd30ReadySemaphoreHandle);
-//	}
 }
 
 void CO2Sensor::printf(char *buffer, float co2, float temperature, float humidity) {
