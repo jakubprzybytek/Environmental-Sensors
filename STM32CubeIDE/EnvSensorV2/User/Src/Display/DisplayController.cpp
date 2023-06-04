@@ -66,11 +66,23 @@ void DisplayController::thread(void *pvParameters) {
 #endif
 
 			eInk.init(true);
+
+#ifdef DISPLAY_CONTROLLER_INFO
+			DebugLog::log((char*) "D - init - ", HAL_GetTick() - started);
+			started = HAL_GetTick();
+#endif
+
 			eInk.clear(true);
+
+#ifdef DISPLAY_CONTROLLER_INFO
+			DebugLog::log((char*) "D - clear - ", HAL_GetTick() - started);
+			started = HAL_GetTick();
+#endif
+
 			eInk.sleep(true);
 
 #ifdef DISPLAY_CONTROLLER_INFO
-			DebugLog::log("Display - ", HAL_GetTick() - started);
+			DebugLog::log("D - sleep -  ", HAL_GetTick() - started);
 #endif
 
 			break;
@@ -85,14 +97,26 @@ void DisplayController::thread(void *pvParameters) {
 			OSWrappers::takeFrameBufferSemaphore();
 
 			eInk.initGrey(true);
-			eInk.displayGrey(message.frameBuffer, true, true);
-			eInk.sleep(true);
-
-			OSWrappers::giveFrameBufferSemaphore();
 
 #ifdef DISPLAY_CONTROLLER_INFO
-			DebugLog::log("Display - ", HAL_GetTick() - started);
+			DebugLog::log((char*) "D - init - ", HAL_GetTick() - started);
+			started = HAL_GetTick();
 #endif
+
+			eInk.displayGrey(message.frameBuffer, true, true);
+
+#ifdef DISPLAY_CONTROLLER_INFO
+			DebugLog::log((char*) "D - display - ", HAL_GetTick() - started);
+			started = HAL_GetTick();
+#endif
+
+			eInk.sleep(true);
+
+#ifdef DISPLAY_CONTROLLER_INFO
+			DebugLog::log("D - sleep -  ", HAL_GetTick() - started);
+#endif
+
+			OSWrappers::giveFrameBufferSemaphore();
 
 			break;
 		}
