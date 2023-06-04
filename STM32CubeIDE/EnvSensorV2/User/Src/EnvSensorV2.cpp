@@ -13,8 +13,7 @@
 #include <Sensors/TempPressureSensor.hpp>
 #include <Sensors/CO2Sensor.hpp>
 #include <Sensors/ParticlesSensor.hpp>
-#include <Timer.hpp>
-
+#include <Sensors/SensorsController.hpp>
 #include <Utils/ftoa.h>
 #include <Utils/DebugLog.hpp>
 #include <Utils/BlinkingLeds.hpp>
@@ -65,7 +64,7 @@ void EnvSensorV2_Init() {
 
 	ParticlesSensor::initAndStart();
 
-	Timer::init();
+	SensorsController::init();
 }
 
 void mainStateThreadStart() {

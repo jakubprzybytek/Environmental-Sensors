@@ -5,10 +5,10 @@
  *      Author: Chipotle
  */
 
-#ifndef INC_TIMER_HPP_
-#define INC_TIMER_HPP_
+#ifndef INC_SENSORSCONTROLLER_HPP_
+#define INC_SENSORSCONTROLLER_HPP_
 
-class Timer {
+class SensorsController {
 
 public:
 	static void init();
@@ -18,4 +18,4 @@ private:
 	static void thread(void *pvParameters);
 };
 
-#endif /* INC_TIMER_HPP_ */
+#endif /* INC_SENSORSCONTROLLER_HPP_ */
