@@ -1,6 +1,6 @@
-ToDo:
+## ToDo
 
-Software
+### Software
 Logging data to sd card
 Displaying data from sd card using graphs
 Adjust stack size for threads
@@ -12,9 +12,9 @@ particles sensor
 * fix issue with auto start failure
 * stopAutoSend really needed?
 * calibration?
-Measure routine thread
+Replace 'scd30ReadySemaphore' with flag
 
-Hardware
+### Hardware
 Fix dc converters squeak
 Enable super capacitor as battery supply for RTC
 Run RTC on cristal

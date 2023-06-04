@@ -23,8 +23,13 @@
 #include <Utils/ftoa.h>
 #include <Utils/DebugLog.hpp>
 
+#define CO2_READY_FLAG 0x01
+
+#define WAIT_FOR_READY() osThreadFlagsWait(CO2_READY_FLAG, osFlagsWaitAny, osWaitForever);
+#define NOTIFY_READY() osThreadFlagsSet(co2ReadoutThreadHandle, CO2_READY_FLAG);
+
 #define RETRY_DELAY 5000
-#define SCD30_IS_READY HAL_GPIO_ReadPin(SCD30_READY_GPIO_Port, SCD30_READY_Pin)
+#define SCD30_IS_READY() HAL_GPIO_ReadPin(SCD30_READY_GPIO_Port, SCD30_READY_Pin)
 
 extern I2C_HandleTypeDef hi2c1;
 
@@ -32,6 +37,7 @@ extern osSemaphoreId_t scd30ReadySemaphoreHandle;
 
 uint32_t co2ReadoutThreadBuffer[150];
 StaticTask_t co2ReadoutThreadControlBlock;
+osThreadId_t co2ReadoutThreadHandle;
 
 void CO2Sensor::init() {
 	startThread();
@@ -48,7 +54,7 @@ void CO2Sensor::startThread() {
 		.priority = (osPriority_t) osPriorityNormal
 	};
 // @formatter:on
-	osThreadNew(thread, NULL, &co2ReadoutThreadaAttributes);
+	co2ReadoutThreadHandle = osThreadNew(thread, NULL, &co2ReadoutThreadaAttributes);
 }
 
 void CO2Sensor::thread(void *pvParameters) {
@@ -92,12 +98,14 @@ void CO2Sensor::thread(void *pvParameters) {
 	DebugLog::log((char*) "SCD - start OK");
 #endif
 
-	if (SCD30_IS_READY) {
-		osSemaphoreRelease(scd30ReadySemaphoreHandle);
+	if (SCD30_IS_READY()) {
+		//osSemaphoreRelease(scd30ReadySemaphoreHandle);
+		NOTIFY_READY();
 	}
 
 	for (;;) {
-		status = osSemaphoreAcquire(scd30ReadySemaphoreHandle, portMAX_DELAY);
+		//status = osSemaphoreAcquire(scd30ReadySemaphoreHandle, portMAX_DELAY);
+		WAIT_FOR_READY();
 		if (status == osOK) {
 
 			I2C1_ACQUIRE
@@ -123,7 +131,7 @@ void CO2Sensor::thread(void *pvParameters) {
 #endif
 
 				// retry if SCD30 is still ready
-				while (SCD30_IS_READY) {
+				while (SCD30_IS_READY()) {
 					osDelay(500 / portTICK_RATE_MS);
 
 #ifdef CO2_SENSOR_INFO
@@ -167,9 +175,10 @@ void CO2Sensor::thread(void *pvParameters) {
 }
 
 void CO2Sensor::interruptHandler() {
-	if (scd30ReadySemaphoreHandle != NULL) {
-		osSemaphoreRelease(scd30ReadySemaphoreHandle);
-	}
+	NOTIFY_READY();
+//	if (scd30ReadySemaphoreHandle != NULL) {
+//		osSemaphoreRelease(scd30ReadySemaphoreHandle);
+//	}
 }
 
 void CO2Sensor::printf(char *buffer, float co2, float temperature, float humidity) {
