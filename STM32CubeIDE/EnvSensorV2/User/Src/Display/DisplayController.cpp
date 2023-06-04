@@ -41,6 +41,10 @@ EPD_4in2A eInk(hspi1);
 
 void DisplayController::thread(void *pvParameters) {
 
+#ifdef DISPLAY_CONTROLLER_INFO
+	uint32_t started;
+#endif
+
 	DisplayCommandMessage message;
 
 	for (;;) {
@@ -58,17 +62,24 @@ void DisplayController::thread(void *pvParameters) {
 
 #ifdef DISPLAY_CONTROLLER_INFO
 			DebugLog::log((char*) "Display - clear");
+			started = HAL_GetTick();
 #endif
 
 			eInk.init(true);
 			eInk.clear(true);
 			eInk.sleep(true);
+
+#ifdef DISPLAY_CONTROLLER_INFO
+			DebugLog::log("Display - ", HAL_GetTick() - started);
+#endif
+
 			break;
 
 		case Flush:
 
 #ifdef DISPLAY_CONTROLLER_INFO
 			DebugLog::log((char*) "Display - flush");
+			started = HAL_GetTick();
 #endif
 
 			OSWrappers::takeFrameBufferSemaphore();
@@ -78,6 +89,11 @@ void DisplayController::thread(void *pvParameters) {
 			eInk.sleep(true);
 
 			OSWrappers::giveFrameBufferSemaphore();
+
+#ifdef DISPLAY_CONTROLLER_INFO
+			DebugLog::log("Display - ", HAL_GetTick() - started);
+#endif
+
 			break;
 		}
 

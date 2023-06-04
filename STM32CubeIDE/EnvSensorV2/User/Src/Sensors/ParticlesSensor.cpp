@@ -23,7 +23,7 @@ extern UART_HandleTypeDef huart2;
 
 #define STOP_THREAD_FLAG 0x01
 
-uint32_t particlesReadoutThreadBuffer[128];
+uint32_t particlesReadoutThreadBuffer[100];
 StaticTask_t particlesReadoutThreadControlBlock;
 
 Hpma115C0 hpma(huart2);

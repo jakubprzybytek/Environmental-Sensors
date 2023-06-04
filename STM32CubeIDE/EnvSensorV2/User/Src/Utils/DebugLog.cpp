@@ -23,6 +23,7 @@ uint32_t debugLogCollectorThreadBuffer[128];
 StaticTask_t debugLogCollectorThreadControlBlock;
 
 bool DebugLog::initialized = false;
+char DebugLog::messageBuffer[22];
 
 void DebugLog::init() {
 	startThread();
@@ -33,20 +34,22 @@ bool DebugLog::isInitialized() {
 	return initialized;
 }
 
-void DebugLog::log(char *messageBuffer) {
+void DebugLog::log(const char *message) {
 	if (initialized) {
-		osMessageQueuePut(debugLogQueueHandle, (uint8_t*) messageBuffer, 0, 0);
+		osMessageQueuePut(debugLogQueueHandle, (uint8_t*) message, 0, 0);
+	}
+}
+
+void DebugLog::log(const char *messagePrefix, uint32_t value) {
+	if (initialized) {
+		strcpy(DebugLog::messageBuffer, messagePrefix);
+		utoa(value, DebugLog::messageBuffer + strlen(DebugLog::messageBuffer), 10);
+		log(DebugLog::messageBuffer);
 	}
 }
 
 void DebugLog::logWithStackHighWaterMark(const char *messagePrefix) {
-	if (initialized) {
-		UBaseType_t uxHighWaterMark = uxTaskGetStackHighWaterMark(NULL);
-		char messageBuffer[22];
-		strcpy(messageBuffer, messagePrefix);
-		utoa(uxHighWaterMark, messageBuffer + strlen(messageBuffer), 10);
-		log(messageBuffer);
-	}
+	log(messagePrefix, uxTaskGetStackHighWaterMark(NULL));
 }
 
 void DebugLog::startThread() {
