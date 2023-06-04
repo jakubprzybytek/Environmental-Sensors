@@ -10,13 +10,24 @@
 
 #include <main.h>
 
+#include <EnvSensorConfig.hpp>
+
 #include <Sensors/SensorsController.hpp>
 
-#define FIRST_DELAY 20 * 1000
-#define TIMER_DELAY 5 * 60 * 1000
+#include <Sensors/ParticlesSensor.hpp>
+
+#define TRIGGER_HIGH_MEASUREMENTS_FLAG 0x01
+
+#define SECONDS(x) (x * 1000)
+#define MINUTES(x) (x * 60 * 1000)
+
+#define INITIAL_DELAY SECONDS(20)
+#define LOW_MEASUREMENTS_PERIOD MINUTES(4)
+#define HIGH_MEASUREMENTS_PERIOD MINUTES(1)
 
 uint32_t sensorsControllerThreadBuffer[128];
 StaticTask_t sensorsControllerThreadControlBlock;
+osThreadId_t sensorsControllerThreadHandle;
 
 void SensorsController::init() {
 	startThread();
@@ -33,24 +44,30 @@ void SensorsController::startThread() {
 	  .priority = (osPriority_t) osPriorityLow,
 	};
 // @formatter:on
-	osThreadNew(thread, NULL, &sensorsControllerThreadAttributes);
+	sensorsControllerThreadHandle = osThreadNew(thread, NULL, &sensorsControllerThreadAttributes);
 }
 
-#include <touchgfx/hal/OSWrappers.hpp>
-using namespace touchgfx;
-
 void SensorsController::thread(void *pvParameters) {
-	uint32_t wakeTime = osKernelGetTickCount() + FIRST_DELAY / portTICK_RATE_MS;
-	osDelayUntil(wakeTime);
+	osDelay(INITIAL_DELAY / portTICK_RATE_MS);
 
-	OSWrappers::signalVSync();
+	TRIGGER_DISPLAY_REFRESH();
 
 	for (;;) {
-		wakeTime += TIMER_DELAY / portTICK_RATE_MS;
-		osDelayUntil(wakeTime);
+		osThreadFlagsClear(TRIGGER_HIGH_MEASUREMENTS_FLAG);
+		osThreadFlagsWait(TRIGGER_HIGH_MEASUREMENTS_FLAG, osFlagsWaitAny, LOW_MEASUREMENTS_PERIOD / portTICK_RATE_MS);
 
-		OSWrappers::signalVSync();
+		ParticlesSensor::initAndStart();
+
+		osDelay(HIGH_MEASUREMENTS_PERIOD / portTICK_RATE_MS);
+
+		ParticlesSensor::stopAndTerminate();
+
+		TRIGGER_DISPLAY_REFRESH();
 	}
 
 	osThreadExit();
+}
+
+void SensorsController::triggerHighMeasurements() {
+	osThreadFlagsSet(sensorsControllerThreadHandle, TRIGGER_HIGH_MEASUREMENTS_FLAG);
 }

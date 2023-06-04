@@ -4,6 +4,7 @@
 #include <string.h>
 
 #include <EnvSensorV2.hpp>
+#include <EnvSensorConfig.hpp>
 
 #include <Readouts/SensorsReadoutsCollector.hpp>
 
@@ -62,7 +63,7 @@ void EnvSensorV2_Init() {
 
 	CO2Sensor::init();
 
-	ParticlesSensor::initAndStart();
+	//ParticlesSensor::initAndStart();
 
 	SensorsController::init();
 }
@@ -118,15 +119,14 @@ void switch1Pressed() {
 	DisplayCommands::submitDisplayClear();
 }
 
-#include <touchgfx/hal/OSWrappers.hpp>
-using namespace touchgfx;
 void switch2Pressed() {
-	OSWrappers::signalVSync();
+	TRIGGER_DISPLAY_REFRESH();
 }
 
 void switch3Pressed() {
 }
 
 void switch4Pressed() {
-	osThreadFlagsSet(mainStateThreadHandle, SWITCH_4_PRESSED_FLAG);
+	//osThreadFlagsSet(mainStateThreadHandle, SWITCH_4_PRESSED_FLAG);
+	SensorsController::triggerHighMeasurements();
 }

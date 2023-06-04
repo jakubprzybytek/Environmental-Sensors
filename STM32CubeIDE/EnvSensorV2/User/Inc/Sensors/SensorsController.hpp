@@ -13,6 +13,8 @@ class SensorsController {
 public:
 	static void init();
 
+	static void triggerHighMeasurements();
+
 private:
 	static void startThread();
 	static void thread(void *pvParameters);

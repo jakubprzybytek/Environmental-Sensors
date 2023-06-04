@@ -30,4 +30,8 @@
 #define POWER_5V_ENABLE() HAL_GPIO_WritePin(POWER_5V_ENABLE_GPIO_Port, POWER_5V_ENABLE_Pin, GPIO_PIN_SET)
 #define POWER_5V_DISABLE() HAL_GPIO_WritePin(POWER_5V_ENABLE_GPIO_Port, POWER_5V_ENABLE_Pin, GPIO_PIN_RESET)
 
+#include <touchgfx/hal/OSWrappers.hpp>
+using namespace touchgfx;
+#define TRIGGER_DISPLAY_REFRESH() OSWrappers::signalVSync()
+
 #endif /* INC_ENVSENSORCONFIG_HPP_ */

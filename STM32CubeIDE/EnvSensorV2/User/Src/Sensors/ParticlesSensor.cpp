@@ -71,6 +71,10 @@ void ParticlesSensor::thread(void *pvParameters) {
 	PARTICLES_SENSOR_LED_On();
 	POWER_5V_ENABLE();
 
+#ifdef PARTICLES_SENSOR_INFO
+	DebugLog::log((char*) "HPMA - starting");
+#endif
+
 	status = hpma.init();
 
 	if (status != HAL_OK) {
