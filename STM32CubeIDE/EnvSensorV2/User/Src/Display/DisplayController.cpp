@@ -13,11 +13,17 @@ using namespace touchgfx;
 
 #include <Utils/DebugLog.hpp>
 
+#define DISPLAY_READY_FLAG 0x01
+
+#define WAIT_FOR_READY() osThreadFlagsWait(DISPLAY_READY_FLAG, osFlagsWaitAny, 10000 / portTICK_RATE_MS);
+#define NOTIFY_READY() osThreadFlagsSet(displayControllerThreadHandle, DISPLAY_READY_FLAG);
+
 extern SPI_HandleTypeDef hspi1;
 extern osMessageQueueId_t displayCommandsQueueHandle;
 
 uint32_t displayControllerThreadBuffer[100];
 StaticTask_t displayControllerThreadControlBlock;
+osThreadId_t displayControllerThreadHandle;
 
 void DisplayController::init() {
 	startThread();
@@ -34,7 +40,7 @@ void DisplayController::startThread() {
 		.priority = (osPriority_t) osPriorityNormal
 	};
 // @formatter:on
-	osThreadNew(thread, NULL, &displayControllerThreadaAttributes);
+	displayControllerThreadHandle = osThreadNew(thread, NULL, &displayControllerThreadaAttributes);
 }
 
 EPD_4in2A eInk(hspi1);
@@ -65,24 +71,34 @@ void DisplayController::thread(void *pvParameters) {
 			started = HAL_GetTick();
 #endif
 
-			eInk.init(true);
+			eInk.init(false);
 
 #ifdef DISPLAY_CONTROLLER_INFO
 			DebugLog::log((char*) "D - init - ", HAL_GetTick() - started);
+#endif
+
+			WAIT_FOR_READY();
+
+#ifdef DISPLAY_CONTROLLER_INFO
 			started = HAL_GetTick();
 #endif
 
-			eInk.clear(true);
+			eInk.clear(false);
 
 #ifdef DISPLAY_CONTROLLER_INFO
 			DebugLog::log((char*) "D - clear - ", HAL_GetTick() - started);
+#endif
+
+			WAIT_FOR_READY();
+
+#ifdef DISPLAY_CONTROLLER_INFO
 			started = HAL_GetTick();
 #endif
 
-			eInk.sleep(true);
+			eInk.sleep();
 
 #ifdef DISPLAY_CONTROLLER_INFO
-			DebugLog::log("D - sleep -  ", HAL_GetTick() - started);
+			DebugLog::log("D - sleep - ", HAL_GetTick() - started);
 #endif
 
 			break;
@@ -96,24 +112,34 @@ void DisplayController::thread(void *pvParameters) {
 
 			OSWrappers::takeFrameBufferSemaphore();
 
-			eInk.initGrey(true);
+			eInk.initGrey(false);
 
 #ifdef DISPLAY_CONTROLLER_INFO
 			DebugLog::log((char*) "D - init - ", HAL_GetTick() - started);
+#endif
+
+			WAIT_FOR_READY();
+
+#ifdef DISPLAY_CONTROLLER_INFO
 			started = HAL_GetTick();
 #endif
 
-			eInk.displayGrey(message.frameBuffer, true, true);
+			eInk.displayGrey(message.frameBuffer, true, false);
 
 #ifdef DISPLAY_CONTROLLER_INFO
 			DebugLog::log((char*) "D - display - ", HAL_GetTick() - started);
+#endif
+
+			WAIT_FOR_READY();
+
+#ifdef DISPLAY_CONTROLLER_INFO
 			started = HAL_GetTick();
 #endif
 
-			eInk.sleep(true);
+			eInk.sleep();
 
 #ifdef DISPLAY_CONTROLLER_INFO
-			DebugLog::log("D - sleep -  ", HAL_GetTick() - started);
+			DebugLog::log("D - sleep - ", HAL_GetTick() - started);
 #endif
 
 			OSWrappers::giveFrameBufferSemaphore();
@@ -131,4 +157,8 @@ void DisplayController::thread(void *pvParameters) {
 	}
 
 	osThreadExit();
+}
+
+void DisplayController::displayReadyInterrupHandler() {
+	NOTIFY_READY();
 }

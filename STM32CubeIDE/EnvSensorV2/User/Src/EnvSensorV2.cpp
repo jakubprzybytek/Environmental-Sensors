@@ -85,8 +85,10 @@ void mainStateThread(void *pvParameters) {
 }
 
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin) {
-	if (GPIO_Pin == SCD30_READY_Pin) {
-		CO2Sensor::interruptHandler();
+	if (GPIO_Pin == E_INK_BUSY_Pin) {
+		DisplayController::displayReadyInterrupHandler();
+	} else if (GPIO_Pin == SCD30_READY_Pin) {
+		CO2Sensor::sensorReadyInterruptHandler();
 	} else if (GPIO_Pin == SWITCH_1_Pin) {
 		switch1Pressed();
 	} else if (GPIO_Pin == SWITCH_2_Pin) {

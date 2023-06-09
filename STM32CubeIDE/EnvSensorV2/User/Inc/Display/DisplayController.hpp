@@ -5,6 +5,7 @@ class DisplayController {
 
 public:
 	static void init();
+	static void displayReadyInterrupHandler();
 
 private:
 	static void startThread();

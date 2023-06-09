@@ -85,7 +85,7 @@ public:
 
 	void init(bool blocking);
 	void initGrey(bool blocking);
-	void sleep(bool blocking);
+	void sleep();
 	void clear(bool blocking);
 	void display(const uint8_t *blackBuffer, uint8_t *redBuffer, bool quick, bool blocking);
 	void displayGrey(const uint8_t *buffer, bool quick, bool blocking);

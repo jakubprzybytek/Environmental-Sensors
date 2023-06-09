@@ -13,7 +13,7 @@ class CO2Sensor {
 public:
 	static void init();
 
-	static void interruptHandler();
+	static void sensorReadyInterruptHandler();
 
 private:
 	static void startThread();

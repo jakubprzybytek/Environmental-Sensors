@@ -325,7 +325,7 @@ void EPD_4in2A::initGrey(bool blocking) {
 /**
  * Puts the eInk display into sleep mode.
  */
-void EPD_4in2A::sleep(bool blocking) {
+void EPD_4in2A::sleep() {
 	EPD_CHIP_SELECT_LOW;
 
 	sendCommand(EPD_4IN2B_VCOM_AND_DATA_INTERVAL_SETTING);

@@ -167,7 +167,7 @@ void CO2Sensor::thread(void *pvParameters) {
 	osThreadExit();
 }
 
-void CO2Sensor::interruptHandler() {
+void CO2Sensor::sensorReadyInterruptHandler() {
 	NOTIFY_READY();
 }
 
