@@ -32,6 +32,6 @@
 
 #include <touchgfx/hal/OSWrappers.hpp>
 using namespace touchgfx;
-#define TRIGGER_DISPLAY_REFRESH() OSWrappers::signalVSync()
+#define TRIGGER_TOUCHGFX_REFRESH() OSWrappers::signalVSync()
 
 #endif /* INC_ENVSENSORCONFIG_HPP_ */

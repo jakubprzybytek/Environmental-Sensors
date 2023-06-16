@@ -1,6 +1,8 @@
 #ifndef INC_DEBUG_HPP_
 #define INC_DEBUG_HPP_
 
+#define DEBUG_LOG_MAX_LINE_LENGTH 21
+
 class DebugLog {
 public:
 	static void init();
@@ -12,7 +14,7 @@ public:
 
 private:
 	static bool initialized;
-	static char messageBuffer[22];
+	static char messageBuffer[DEBUG_LOG_MAX_LINE_LENGTH + 1];
 
 	static void startThread();
 	static void thread(void *pvParameters);

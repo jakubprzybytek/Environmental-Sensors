@@ -5386,6 +5386,11 @@
     (effects (font (size 1.1176 1.1176)) (justify left bottom))
     (uuid 972f8dc8-161a-466a-9020-8b23834ff460)
   )
+  (text "GPIO interrupts\n 1 e-Ink Busy\n 8 SCD30 Ready\n12 Switch 1\n13 Switch 2\n14 Switch 3\n15 Switch 4"
+    (at -69.85 223.52 0)
+    (effects (font (size 1.27 1.27)) (justify left bottom))
+    (uuid 99407c3e-826d-489a-a685-19c225b7d7d5)
+  )
   (text "Particles sensor is energised even when 5v power is off"
     (at -71.12 80.01 0)
     (effects (font (size 1.1176 1.1176)) (justify left bottom))

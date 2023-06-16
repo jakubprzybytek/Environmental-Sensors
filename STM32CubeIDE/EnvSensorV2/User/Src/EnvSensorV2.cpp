@@ -105,7 +105,7 @@ void switch1Pressed() {
 }
 
 void switch2Pressed() {
-	TRIGGER_DISPLAY_REFRESH();
+	TRIGGER_TOUCHGFX_REFRESH();
 }
 
 void switch3Pressed() {

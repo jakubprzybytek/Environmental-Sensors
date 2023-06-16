@@ -59,7 +59,7 @@ void SensorsController::thread(void *pvParameters) {
 
 	osDelay(INITIAL_DELAY / portTICK_RATE_MS);
 
-	TRIGGER_DISPLAY_REFRESH();
+	TRIGGER_TOUCHGFX_REFRESH();
 
 	for (;;) {
 		osThreadFlagsClear(TRIGGER_HIGH_MEASUREMENTS_FLAG);
@@ -71,7 +71,7 @@ void SensorsController::thread(void *pvParameters) {
 
 		ParticlesSensor::stopAndTerminate();
 
-		TRIGGER_DISPLAY_REFRESH();
+		TRIGGER_TOUCHGFX_REFRESH();
 	}
 
 	osThreadExit();

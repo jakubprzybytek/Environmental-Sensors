@@ -78,7 +78,8 @@ void SSD1306::init() {
 }
 
 uint8_t SSD1306::sendCommand(uint8_t command) {
-	return HAL_I2C_Mem_Write(&hi2c, SSD1306_DEFAULT_ADDRESS, 0x00, 1, &command, 1, SSD1306_MAX_DELAY);
+	return HAL_I2C_Master_Transmit(&hi2c, SSD1306_DEFAULT_ADDRESS, &command, 1, SSD1306_MAX_DELAY);
+	//return HAL_I2C_Mem_Write(&hi2c, SSD1306_DEFAULT_ADDRESS, 0x00, 1, &command, 1, SSD1306_MAX_DELAY);
 }
 
 void SSD1306::invert(uint8_t inverted) {

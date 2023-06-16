@@ -23,7 +23,7 @@ uint32_t debugLogCollectorThreadBuffer[128];
 StaticTask_t debugLogCollectorThreadControlBlock;
 
 bool DebugLog::initialized = false;
-char DebugLog::messageBuffer[22];
+char DebugLog::messageBuffer[DEBUG_LOG_MAX_LINE_LENGTH + 1];
 
 void DebugLog::init() {
 	startThread();
@@ -36,7 +36,14 @@ bool DebugLog::isInitialized() {
 
 void DebugLog::log(const char *message) {
 	if (initialized) {
-		osMessageQueuePut(debugLogQueueHandle, (uint8_t*) message, 0, 0);
+		if (strlen(message) > DEBUG_LOG_MAX_LINE_LENGTH) {
+			memccpy(messageBuffer, message, 0, DEBUG_LOG_MAX_LINE_LENGTH - 1);
+			messageBuffer[DEBUG_LOG_MAX_LINE_LENGTH - 1] = '*';
+			messageBuffer[DEBUG_LOG_MAX_LINE_LENGTH] = 0;
+			osMessageQueuePut(debugLogQueueHandle, (uint8_t*) messageBuffer, 0, 0);
+		} else {
+			osMessageQueuePut(debugLogQueueHandle, (uint8_t*) message, 0, 0);
+		}
 	}
 }
 
@@ -76,6 +83,7 @@ void DebugLog::thread(void *pvParameters) {
 	smallScreen.init();
 	smallScreen.clear();
 	smallScreen.appendLine("Hello world");
+	smallScreen.appendLine("123456789012345678901");
 
 	I2C1_RELEASE
 

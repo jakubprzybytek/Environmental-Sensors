@@ -123,10 +123,10 @@ const unsigned char EPD_4IN2_4Gray_lut_bb[] = {
  */
 void EPD_4in2A::reset() {
 	EPD_RESET_LOW;
-	//HAL_Delay(200);
-	osDelay(200 / portTICK_RATE_MS);
+	osDelay(100 / portTICK_RATE_MS);
+	//osDelay(20 / portTICK_RATE_MS);
 	EPD_RESET_HIGH;
-	//HAL_Delay(200);
+	//osDelay(50 / portTICK_RATE_MS);
 	osDelay(200 / portTICK_RATE_MS);
 }
 
@@ -286,10 +286,10 @@ void EPD_4in2A::init(bool blocking) {
  * Initializes the eInk display in Grey mode.
  */
 void EPD_4in2A::initGrey(bool blocking) {
-	HAL_NVIC_DisableIRQ(E_INK_BUSY_EXTI_IRQn);
+	//HAL_NVIC_DisableIRQ(E_INK_BUSY_EXTI_IRQn);
 	reset();
-	__HAL_GPIO_EXTI_CLEAR_IT(E_INK_BUSY_Pin);
-	HAL_NVIC_EnableIRQ(E_INK_BUSY_EXTI_IRQn);
+	//__HAL_GPIO_EXTI_CLEAR_IT(E_INK_BUSY_Pin);
+	//HAL_NVIC_EnableIRQ(E_INK_BUSY_EXTI_IRQn);
 
 	EPD_CHIP_SELECT_LOW;
 
@@ -385,7 +385,11 @@ void EPD_4in2A::display(const uint8_t *blackBuffer, uint8_t *redBuffer, bool qui
 void EPD_4in2A::displayGrey(const uint8_t *buffer, bool quick, bool blocking) {
 	EPD_CHIP_SELECT_LOW;
 
+	uint32_t started = HAL_GetTick();
+
 	sendCommand(EPD_4IN2B_DATA_START_TRANSMISSION_1);
+
+	uint32_t firstCommand = HAL_GetTick();
 
 	uint16_t i = 0;
 	while (i < EPD_WIDTH_BLOCKS * EPD_HEIGHT) {
@@ -408,7 +412,11 @@ void EPD_4in2A::displayGrey(const uint8_t *buffer, bool quick, bool blocking) {
 		sendData(auxBuffer, AUX_BUFFER_SIZE);
 	}
 
+	uint32_t firstDataCompute = HAL_GetTick();
+
 	sendCommand(EPD_4IN2B_DATA_START_TRANSMISSION_2);
+
+	uint32_t firstDataSend = HAL_GetTick();
 
 	i = 0;
 	while (i < EPD_WIDTH_BLOCKS * EPD_HEIGHT) {
@@ -430,6 +438,8 @@ void EPD_4in2A::displayGrey(const uint8_t *buffer, bool quick, bool blocking) {
 		}
 		sendData(auxBuffer, AUX_BUFFER_SIZE);
 	}
+
+	uint32_t secondDataCompute = HAL_GetTick();
 
 	sendRefreshCommand(quick, blocking);
 
