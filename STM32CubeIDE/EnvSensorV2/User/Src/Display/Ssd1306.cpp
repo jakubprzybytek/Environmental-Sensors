@@ -78,8 +78,17 @@ void SSD1306::init() {
 }
 
 uint8_t SSD1306::sendCommand(uint8_t command) {
-	return HAL_I2C_Master_Transmit(&hi2c, SSD1306_DEFAULT_ADDRESS, &command, 1, SSD1306_MAX_DELAY);
-	//return HAL_I2C_Mem_Write(&hi2c, SSD1306_DEFAULT_ADDRESS, 0x00, 1, &command, 1, SSD1306_MAX_DELAY);
+	return HAL_I2C_Mem_Write(&hi2c, SSD1306_DEFAULT_ADDRESS, 0x00, 1, &command, 1, SSD1306_MAX_DELAY);
+}
+
+uint8_t SSD1306::sendCommand(uint8_t command, uint8_t param1) {
+	uint8_t buffer[] = { command, param1 };
+	return HAL_I2C_Mem_Write(&hi2c, SSD1306_DEFAULT_ADDRESS, 0x00, 1, buffer, sizeof(buffer), SSD1306_MAX_DELAY);
+}
+
+uint8_t SSD1306::sendCommand(uint8_t command, uint8_t param1, uint8_t param2) {
+	uint8_t buffer[] = { command, param1, param2 };
+	return HAL_I2C_Mem_Write(&hi2c, SSD1306_DEFAULT_ADDRESS, 0x00, 1, buffer, sizeof(buffer), SSD1306_MAX_DELAY);
 }
 
 void SSD1306::invert(uint8_t inverted) {
@@ -87,25 +96,21 @@ void SSD1306::invert(uint8_t inverted) {
 }
 
 void SSD1306::setDisplayOffset(uint8_t offsetLine) {
-	sendCommand(SSD1306_SETDISPLAYOFFSET);
-	sendCommand(offsetLine << 3);
+	sendCommand(SSD1306_SETDISPLAYOFFSET, offsetLine << 3);
 }
 
 void SSD1306::setDrawingArea(uint8_t startCol, uint8_t endCol, uint8_t startPage, uint8_t endPage) {
-	sendCommand(SSD1306_COLUMNADDR);
-	sendCommand(startCol);
-	sendCommand(endCol);
-
-	sendCommand(SSD1306_PAGEADDR);
-	sendCommand(startPage);
-	sendCommand(endPage);
+	sendCommand(SSD1306_COLUMNADDR, startCol, endCol);
+	sendCommand(SSD1306_PAGEADDR, startPage, endPage);
 }
 
 void SSD1306::sendFramebuffer(uint8_t *buffer, uint8_t size) {
+	uint8_t chunk = 16;
 	do {
-		uint8_t bytesToWrite = size < 16 ? size : 16;
+		uint8_t bytesToWrite = size < chunk ? size : chunk;
 		HAL_I2C_Mem_Write(&hi2c, SSD1306_DEFAULT_ADDRESS, 0x40, 1, buffer, bytesToWrite, SSD1306_MAX_DELAY);
 		size -= bytesToWrite;
-		buffer += 16;
+		buffer += chunk;
 	} while (size > 0);
+//	HAL_I2C_Mem_Write(&hi2c, SSD1306_DEFAULT_ADDRESS, 0x40, 1, buffer, size, SSD1306_MAX_DELAY);
 }

@@ -85,5 +85,7 @@ public:
 
 private:
 	uint8_t sendCommand(uint8_t command);
+	uint8_t sendCommand(uint8_t command, uint8_t param1);
+	uint8_t sendCommand(uint8_t command, uint8_t param1, uint8_t param2);
 	void sendData(uint8_t data);
 };
