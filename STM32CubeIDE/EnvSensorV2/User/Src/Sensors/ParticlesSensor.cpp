@@ -96,8 +96,6 @@ void ParticlesSensor::thread(void *pvParameters) {
 #ifdef PARTICLES_SENSOR_INFO
 			DebugLog::log((char*) "HPMA - error no auto");
 #endif
-
-			keepRunning = false;
 		}
 	}
 
