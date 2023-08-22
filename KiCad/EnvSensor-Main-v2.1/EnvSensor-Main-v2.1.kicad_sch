@@ -8108,7 +8108,7 @@
     (property "Reference" "Y?" (at 41.7576 111.8616 90)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Value" "16Hz" (at 41.7576 114.173 90)
+    (property "Value" "16MHz" (at 41.7576 114.173 90)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Footprint" "Crystal:Crystal_SMD_Abracon_ABM3B-4Pin_5.0x3.2mm" (at 38.1 113.03 0)
