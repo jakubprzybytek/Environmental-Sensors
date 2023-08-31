@@ -52,10 +52,10 @@ HAL_StatusTypeDef Hpma115C0::stopAutoSend() {
 }
 
 HAL_StatusTypeDef Hpma115C0::readMeasurements(uint16_t *pm1, uint16_t *pm2_5, uint16_t *pm4, uint16_t *pm10) {
-	buffer[0] = 0x68;
+	buffer[0] = HPMA115C0_HEAD;
 	buffer[1] = 0x01;
-	buffer[2] = 0x04;
-	buffer[3] = 0x93;
+	buffer[2] = HPMA115C0_COMMAND_STOP_READ_MEASUREMENTS;
+	buffer[3] = 0x93; // checksum
 	HAL_StatusTypeDef status = HAL_UART_Transmit(&huart, buffer, 4, HPMA115C0_MAX_DELAY);
 
 	if (status != HAL_OK) {

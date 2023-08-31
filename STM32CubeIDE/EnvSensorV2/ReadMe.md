@@ -1,8 +1,8 @@
 ## ToDo
 
 ### Software
-* Logging data to sd card
-* Displaying data from sd card using graphs
+* Logging data to SD card
+* Displaying data from SD card using graphs
 * Display
     - use it/dma mode to talk with display
 * Get rid of synchronisation over I2C

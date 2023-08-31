@@ -82,8 +82,7 @@ void DebugLog::thread(void *pvParameters) {
 
 	smallScreen.init();
 	smallScreen.clear();
-	smallScreen.appendLine("Hello world");
-	smallScreen.appendLine("123456789012345678901");
+	smallScreen.appendLine("Hello world (21chars)");
 
 	I2C1_RELEASE
 
