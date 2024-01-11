@@ -9,14 +9,14 @@
   )
 
   (lib_symbols
-    (symbol "Battery_Management:AP9101CK" (in_bom yes) (on_board yes)
+    (symbol "Battery_Management:AP9101CK6" (in_bom yes) (on_board yes)
       (property "Reference" "U" (at -7.62 6.35 0)
         (effects (font (size 1.27 1.27)) (justify left))
       )
-      (property "Value" "AP9101CK" (at 6.35 6.35 0)
+      (property "Value" "AP9101CK6" (at 7.62 6.35 0)
         (effects (font (size 1.27 1.27)))
       )
-      (property "Footprint" "Package_TO_SOT_SMD:SOT-23-5" (at -1.27 0 0)
+      (property "Footprint" "Package_TO_SOT_SMD:SOT-23-6" (at 0 0 0)
         (effects (font (size 1.27 1.27)) hide)
       )
       (property "Datasheet" "https://www.diodes.com/assets/Datasheets/AP9101C.pdf" (at 0 1.27 0)
@@ -25,38 +25,42 @@
       (property "ki_keywords" "battery protection li-ion li-po" (at 0 0 0)
         (effects (font (size 1.27 1.27)) hide)
       )
-      (property "ki_description" "Li+ Battery Protection IC for Single Cell Pack, SOT-23-5" (at 0 0 0)
+      (property "ki_description" "Li+ Battery Protection IC for Single Cell Pack, SOT-23-6" (at 0 0 0)
         (effects (font (size 1.27 1.27)) hide)
       )
       (property "ki_fp_filters" "SOT?23*" (at 0 0 0)
         (effects (font (size 1.27 1.27)) hide)
       )
-      (symbol "AP9101CK_0_1"
+      (symbol "AP9101CK6_0_1"
         (rectangle (start -7.62 5.08) (end 7.62 -5.08)
           (stroke (width 0.254) (type default))
           (fill (type background))
         )
       )
-      (symbol "AP9101CK_1_1"
-        (pin passive line (at -10.16 0 0) (length 2.54)
-          (name "VM" (effects (font (size 1.27 1.27))))
-          (number "1" (effects (font (size 1.27 1.27))))
-        )
-        (pin power_in line (at 0 7.62 270) (length 2.54)
-          (name "VDD" (effects (font (size 1.27 1.27))))
-          (number "2" (effects (font (size 1.27 1.27))))
-        )
-        (pin power_in line (at 0 -7.62 90) (length 2.54)
-          (name "VSS" (effects (font (size 1.27 1.27))))
-          (number "3" (effects (font (size 1.27 1.27))))
-        )
+      (symbol "AP9101CK6_1_1"
         (pin output line (at 10.16 -2.54 180) (length 2.54)
           (name "DO" (effects (font (size 1.27 1.27))))
-          (number "4" (effects (font (size 1.27 1.27))))
+          (number "1" (effects (font (size 1.27 1.27))))
+        )
+        (pin passive line (at -10.16 0 0) (length 2.54)
+          (name "VM" (effects (font (size 1.27 1.27))))
+          (number "2" (effects (font (size 1.27 1.27))))
         )
         (pin output line (at 10.16 2.54 180) (length 2.54)
           (name "CO" (effects (font (size 1.27 1.27))))
+          (number "3" (effects (font (size 1.27 1.27))))
+        )
+        (pin no_connect line (at -7.62 -2.54 0) (length 2.54) hide
+          (name "NC" (effects (font (size 1.27 1.27))))
+          (number "4" (effects (font (size 1.27 1.27))))
+        )
+        (pin power_in line (at 0 7.62 270) (length 2.54)
+          (name "VDD" (effects (font (size 1.27 1.27))))
           (number "5" (effects (font (size 1.27 1.27))))
+        )
+        (pin power_in line (at 0 -7.62 90) (length 2.54)
+          (name "VSS" (effects (font (size 1.27 1.27))))
+          (number "6" (effects (font (size 1.27 1.27))))
         )
       )
     )
@@ -1271,151 +1275,6 @@
         )
       )
     )
-    (symbol "Device:Q_PMOS_GSD" (pin_names (offset 0) hide) (in_bom yes) (on_board yes)
-      (property "Reference" "Q" (at 5.08 1.27 0)
-        (effects (font (size 1.27 1.27)) (justify left))
-      )
-      (property "Value" "Q_PMOS_GSD" (at 5.08 -1.27 0)
-        (effects (font (size 1.27 1.27)) (justify left))
-      )
-      (property "Footprint" "" (at 5.08 2.54 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (property "Datasheet" "~" (at 0 0 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (property "ki_keywords" "transistor PMOS P-MOS P-MOSFET" (at 0 0 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (property "ki_description" "P-MOSFET transistor, gate/source/drain" (at 0 0 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (symbol "Q_PMOS_GSD_0_1"
-        (polyline
-          (pts
-            (xy 0.254 0)
-            (xy -2.54 0)
-          )
-          (stroke (width 0) (type default))
-          (fill (type none))
-        )
-        (polyline
-          (pts
-            (xy 0.254 1.905)
-            (xy 0.254 -1.905)
-          )
-          (stroke (width 0.254) (type default))
-          (fill (type none))
-        )
-        (polyline
-          (pts
-            (xy 0.762 -1.27)
-            (xy 0.762 -2.286)
-          )
-          (stroke (width 0.254) (type default))
-          (fill (type none))
-        )
-        (polyline
-          (pts
-            (xy 0.762 0.508)
-            (xy 0.762 -0.508)
-          )
-          (stroke (width 0.254) (type default))
-          (fill (type none))
-        )
-        (polyline
-          (pts
-            (xy 0.762 2.286)
-            (xy 0.762 1.27)
-          )
-          (stroke (width 0.254) (type default))
-          (fill (type none))
-        )
-        (polyline
-          (pts
-            (xy 2.54 2.54)
-            (xy 2.54 1.778)
-          )
-          (stroke (width 0) (type default))
-          (fill (type none))
-        )
-        (polyline
-          (pts
-            (xy 2.54 -2.54)
-            (xy 2.54 0)
-            (xy 0.762 0)
-          )
-          (stroke (width 0) (type default))
-          (fill (type none))
-        )
-        (polyline
-          (pts
-            (xy 0.762 1.778)
-            (xy 3.302 1.778)
-            (xy 3.302 -1.778)
-            (xy 0.762 -1.778)
-          )
-          (stroke (width 0) (type default))
-          (fill (type none))
-        )
-        (polyline
-          (pts
-            (xy 2.286 0)
-            (xy 1.27 0.381)
-            (xy 1.27 -0.381)
-            (xy 2.286 0)
-          )
-          (stroke (width 0) (type default))
-          (fill (type outline))
-        )
-        (polyline
-          (pts
-            (xy 2.794 -0.508)
-            (xy 2.921 -0.381)
-            (xy 3.683 -0.381)
-            (xy 3.81 -0.254)
-          )
-          (stroke (width 0) (type default))
-          (fill (type none))
-        )
-        (polyline
-          (pts
-            (xy 3.302 -0.381)
-            (xy 2.921 0.254)
-            (xy 3.683 0.254)
-            (xy 3.302 -0.381)
-          )
-          (stroke (width 0) (type default))
-          (fill (type none))
-        )
-        (circle (center 1.651 0) (radius 2.794)
-          (stroke (width 0.254) (type default))
-          (fill (type none))
-        )
-        (circle (center 2.54 -1.778) (radius 0.254)
-          (stroke (width 0) (type default))
-          (fill (type outline))
-        )
-        (circle (center 2.54 1.778) (radius 0.254)
-          (stroke (width 0) (type default))
-          (fill (type outline))
-        )
-      )
-      (symbol "Q_PMOS_GSD_1_1"
-        (pin input line (at -5.08 0 0) (length 2.54)
-          (name "G" (effects (font (size 1.27 1.27))))
-          (number "1" (effects (font (size 1.27 1.27))))
-        )
-        (pin passive line (at 2.54 -5.08 90) (length 2.54)
-          (name "S" (effects (font (size 1.27 1.27))))
-          (number "2" (effects (font (size 1.27 1.27))))
-        )
-        (pin passive line (at 2.54 5.08 270) (length 2.54)
-          (name "D" (effects (font (size 1.27 1.27))))
-          (number "3" (effects (font (size 1.27 1.27))))
-        )
-      )
-    )
     (symbol "Device:R" (pin_numbers hide) (pin_names (offset 0)) (in_bom yes) (on_board yes)
       (property "Reference" "R" (at 2.032 0 90)
         (effects (font (size 1.27 1.27)))
@@ -2222,11 +2081,11 @@
         )
       )
     )
-    (symbol "Switch:SW_SPST" (pin_names (offset 0) hide) (in_bom yes) (on_board yes)
-      (property "Reference" "SW" (at 0 3.175 0)
+    (symbol "Switch:SW_SPDT" (pin_names (offset 0) hide) (in_bom yes) (on_board yes)
+      (property "Reference" "SW" (at 0 4.318 0)
         (effects (font (size 1.27 1.27)))
       )
-      (property "Value" "SW_SPST" (at 0 -2.54 0)
+      (property "Value" "SW_SPDT" (at 0 -5.08 0)
         (effects (font (size 1.27 1.27)))
       )
       (property "Footprint" "" (at 0 0 0)
@@ -2235,38 +2094,48 @@
       (property "Datasheet" "~" (at 0 0 0)
         (effects (font (size 1.27 1.27)) hide)
       )
-      (property "ki_keywords" "switch lever" (at 0 0 0)
+      (property "ki_keywords" "switch single-pole double-throw spdt ON-ON" (at 0 0 0)
         (effects (font (size 1.27 1.27)) hide)
       )
-      (property "ki_description" "Single Pole Single Throw (SPST) switch" (at 0 0 0)
+      (property "ki_description" "Switch, single pole double throw" (at 0 0 0)
         (effects (font (size 1.27 1.27)) hide)
       )
-      (symbol "SW_SPST_0_0"
+      (symbol "SW_SPDT_0_0"
         (circle (center -2.032 0) (radius 0.508)
           (stroke (width 0) (type default))
           (fill (type none))
         )
-        (polyline
-          (pts
-            (xy -1.524 0.254)
-            (xy 1.524 1.778)
-          )
-          (stroke (width 0) (type default))
-          (fill (type none))
-        )
-        (circle (center 2.032 0) (radius 0.508)
+        (circle (center 2.032 -2.54) (radius 0.508)
           (stroke (width 0) (type default))
           (fill (type none))
         )
       )
-      (symbol "SW_SPST_1_1"
-        (pin passive line (at -5.08 0 0) (length 2.54)
+      (symbol "SW_SPDT_0_1"
+        (polyline
+          (pts
+            (xy -1.524 0.254)
+            (xy 1.651 2.286)
+          )
+          (stroke (width 0) (type default))
+          (fill (type none))
+        )
+        (circle (center 2.032 2.54) (radius 0.508)
+          (stroke (width 0) (type default))
+          (fill (type none))
+        )
+      )
+      (symbol "SW_SPDT_1_1"
+        (pin passive line (at 5.08 2.54 180) (length 2.54)
           (name "A" (effects (font (size 1.27 1.27))))
           (number "1" (effects (font (size 1.27 1.27))))
         )
-        (pin passive line (at 5.08 0 180) (length 2.54)
+        (pin passive line (at -5.08 0 0) (length 2.54)
           (name "B" (effects (font (size 1.27 1.27))))
           (number "2" (effects (font (size 1.27 1.27))))
+        )
+        (pin passive line (at 5.08 -2.54 180) (length 2.54)
+          (name "C" (effects (font (size 1.27 1.27))))
+          (number "3" (effects (font (size 1.27 1.27))))
         )
       )
     )
@@ -2984,10 +2853,13 @@
   )
 
   (no_connect (at 114.3 48.26) (uuid 32e0b9be-d6b9-4c13-b407-8bfc10e76608))
+  (no_connect (at 53.34 121.92) (uuid 39699704-94b9-4065-b7a4-817d63896130))
   (no_connect (at 57.15 46.99) (uuid 4e2e89f1-89d5-40b9-829c-9b657769d9b9))
   (no_connect (at 114.3 50.8) (uuid 67a98a63-eb45-4edf-983d-9dc41dedb66f))
   (no_connect (at 57.15 49.53) (uuid a3fdba5c-ef88-45b9-962c-9231909abcf5))
   (no_connect (at 57.15 52.07) (uuid acc487c2-c3ee-4cbf-8998-64d6c3648b8f))
+  (no_connect (at 57.15 62.23) (uuid ad769861-9dc6-4cae-b649-dc219fa216f6))
+  (no_connect (at 57.15 64.77) (uuid aedf0eb6-afb8-4b31-be58-8b593b16e0bb))
   (no_connect (at 114.3 53.34) (uuid bd9c9e76-4c9b-4119-a5a0-75f2fec97bc7))
   (no_connect (at 57.15 54.61) (uuid c88f856f-4fce-48e0-988a-eaf98bbd3f85))
 
@@ -3028,7 +2900,7 @@
     (stroke (width 0) (type default))
     (uuid 03bd944b-25aa-4069-8095-fd829b59cacd)
   )
-  (polyline (pts (xy 127 20.32) (xy 128.27 88.9))
+  (polyline (pts (xy 127 20.32) (xy 127 88.9))
     (stroke (width 0) (type default))
     (uuid 03d8e6ec-cc03-402b-825a-1b35edb0869b)
   )
@@ -3044,6 +2916,10 @@
   (wire (pts (xy 192.405 226.695) (xy 192.405 229.235))
     (stroke (width 0) (type default))
     (uuid 04690379-301a-45d1-87b6-ee02c498bd6a)
+  )
+  (wire (pts (xy 61.595 200.025) (xy 61.595 204.47))
+    (stroke (width 0) (type default))
+    (uuid 0469a4df-0d32-4f58-934e-e062d890aabd)
   )
   (wire (pts (xy 71.12 208.28) (xy 71.12 204.47))
     (stroke (width 0) (type default))
@@ -3104,10 +2980,6 @@
   (wire (pts (xy 113.03 278.13) (xy 113.03 279.4))
     (stroke (width 0) (type default))
     (uuid 0b49e9eb-656d-4a65-92da-670452d099bb)
-  )
-  (wire (pts (xy 59.69 212.09) (xy 59.69 214.63))
-    (stroke (width 0) (type default))
-    (uuid 0b502e3c-b33c-4ee3-a75a-a18145f856fd)
   )
   (wire (pts (xy 386.08 212.09) (xy 388.62 212.09))
     (stroke (width 0) (type default))
@@ -3189,10 +3061,6 @@
   (wire (pts (xy 127 289.56) (xy 127 292.1))
     (stroke (width 0) (type default))
     (uuid 1541b1de-b9d9-48a1-be27-c1df439714ed)
-  )
-  (wire (pts (xy 52.705 127) (xy 61.595 127))
-    (stroke (width 0) (type default))
-    (uuid 158bb941-2fc5-42fe-9ca1-1f24368d9c89)
   )
   (wire (pts (xy 254 62.23) (xy 254 64.77))
     (stroke (width 0) (type default))
@@ -3400,10 +3268,6 @@
     (stroke (width 0) (type default))
     (uuid 2edcdc0b-2a29-4e66-bca3-3e1aa195d8bb)
   )
-  (wire (pts (xy 41.91 127) (xy 41.91 134.62))
-    (stroke (width 0) (type default))
-    (uuid 2ee4aa1a-559a-4746-bbdf-a0397cd6a26e)
-  )
   (wire (pts (xy 342.9 298.45) (xy 351.79 298.45))
     (stroke (width 0) (type default))
     (uuid 31f5f892-6a23-462c-90b1-b3d4fc1f57a3)
@@ -3530,6 +3394,10 @@
     (stroke (width 0) (type default))
     (uuid 4042795e-a2f0-48e8-bf2c-5919aba947fd)
   )
+  (wire (pts (xy 61.595 127) (xy 64.135 127))
+    (stroke (width 0) (type default))
+    (uuid 406b1ba1-7a88-4a32-be67-6428f40d9a9f)
+  )
   (wire (pts (xy 405.13 209.55) (xy 405.13 208.28))
     (stroke (width 0) (type default))
     (uuid 4188a357-6c92-4b9f-a2c5-787d0f56dfae)
@@ -3549,10 +3417,6 @@
   (wire (pts (xy 139.7 142.24) (xy 139.7 134.62))
     (stroke (width 0) (type default))
     (uuid 433f0309-1e31-4258-b70d-bd65cf3b7a9f)
-  )
-  (wire (pts (xy 42.545 127) (xy 41.91 127))
-    (stroke (width 0) (type default))
-    (uuid 4414eee5-f66a-46d0-9c66-046fc4bcb8a5)
   )
   (wire (pts (xy 57.15 134.62) (xy 57.15 136.525))
     (stroke (width 0) (type default))
@@ -3644,10 +3508,6 @@
     (uuid 4e5aed4c-c7ff-4fa0-8ba6-106b4b248f32)
   )
 
-  (wire (pts (xy 33.02 204.47) (xy 54.61 204.47))
-    (stroke (width 0) (type default))
-    (uuid 4eccf8e9-097a-4e59-967c-7ddbd4816f8a)
-  )
   (wire (pts (xy 193.04 264.795) (xy 193.04 267.335))
     (stroke (width 0) (type default))
     (uuid 4fa088f6-faae-4ec8-b6d4-596277302409)
@@ -3994,10 +3854,6 @@
     (stroke (width 0) (type default))
     (uuid 86c645c7-5bd4-45f9-a3da-abc6603094cc)
   )
-  (wire (pts (xy 64.135 127) (xy 61.595 127))
-    (stroke (width 0) (type default))
-    (uuid 885f2bdf-5a0f-4077-8656-932996e91f7e)
-  )
   (wire (pts (xy 101.6 154.94) (xy 101.6 161.29))
     (stroke (width 0) (type default))
     (uuid 894bf2c1-12f0-484f-b70a-1f6161cad823)
@@ -4306,10 +4162,6 @@
     (stroke (width 0) (type default))
     (uuid ae9ccee0-d950-493b-b318-6f467e8adbc0)
   )
-  (wire (pts (xy 59.69 222.25) (xy 59.69 224.79))
-    (stroke (width 0) (type default))
-    (uuid af40f655-9ed4-4877-a2a6-3cc4dae1b5a8)
-  )
   (wire (pts (xy 115.57 246.38) (xy 118.11 246.38))
     (stroke (width 0) (type default))
     (uuid af5caefb-5635-4ff8-ac0c-2488d311b80d)
@@ -4478,7 +4330,7 @@
     (stroke (width 0) (type default))
     (uuid c49beb02-2cbb-4e2b-9397-d014f57a589e)
   )
-  (wire (pts (xy 64.77 204.47) (xy 71.12 204.47))
+  (wire (pts (xy 61.595 204.47) (xy 71.12 204.47))
     (stroke (width 0) (type default))
     (uuid c4b92fc0-5335-40af-90fc-5d3963eacffe)
   )
@@ -4640,10 +4492,6 @@
     (stroke (width 0) (type default))
     (uuid d8aefdd2-2ae4-46f5-ae04-37baa915c4af)
   )
-  (wire (pts (xy 33.02 200.66) (xy 33.02 204.47))
-    (stroke (width 0) (type default))
-    (uuid d8e19802-4ab0-4fdc-be88-74d6e17919e7)
-  )
   (wire (pts (xy 368.3 293.37) (xy 365.76 293.37))
     (stroke (width 0) (type default))
     (uuid d94632a5-cdf8-46be-8e6b-a538ad43648e)
@@ -4696,6 +4544,10 @@
     (stroke (width 0) (type default))
     (uuid de534011-a8e8-4e92-924d-b1bfe33aea6d)
   )
+  (wire (pts (xy 41.91 124.46) (xy 41.91 134.62))
+    (stroke (width 0) (type default))
+    (uuid df1b866e-1f9c-4762-9abd-b5759d62b902)
+  )
   (wire (pts (xy 127 266.7) (xy 127 270.51))
     (stroke (width 0) (type default))
     (uuid dff24bd6-8c49-41f8-b826-d3d269096b03)
@@ -4712,7 +4564,7 @@
     (stroke (width 0) (type default))
     (uuid e1a7ef6a-834b-4c82-8ba8-318f7859a6cc)
   )
-  (polyline (pts (xy 128.27 88.9) (xy 25.4 88.9))
+  (polyline (pts (xy 127 88.9) (xy 25.4 88.9))
     (stroke (width 0) (type default))
     (uuid e1c6498e-269b-42b2-ac93-0ae4b337991f)
   )
@@ -4745,6 +4597,10 @@
     (stroke (width 0) (type default))
     (uuid e6126c22-5ff2-4481-ba0e-dd2e4eb13286)
   )
+  (wire (pts (xy 41.91 124.46) (xy 43.18 124.46))
+    (stroke (width 0) (type default))
+    (uuid e7ecef95-a3de-4b2e-a1c4-e9a48cbcad82)
+  )
   (wire (pts (xy 510.54 314.96) (xy 511.81 314.96))
     (stroke (width 0) (type default))
     (uuid e83bdf3a-28c2-48b3-a795-90a6bb50e2ec)
@@ -4768,6 +4624,10 @@
   (wire (pts (xy 412.75 281.94) (xy 416.56 281.94))
     (stroke (width 0) (type default))
     (uuid e96fdf09-589e-4de9-9f72-a2d0e051bb12)
+  )
+  (wire (pts (xy 53.34 127) (xy 61.595 127))
+    (stroke (width 0) (type default))
+    (uuid e98f87ce-9764-43c5-93b9-dadc8cebf9ce)
   )
   (wire (pts (xy 267.97 193.04) (xy 267.97 196.85))
     (stroke (width 0) (type default))
@@ -4988,8 +4848,8 @@
     (effects (font (size 1.1176 1.1176)) (justify left bottom))
     (uuid 069243c8-c524-4a78-a63b-bf04338c4e17)
   )
-  (text "AP9101CK-AHTRG1\nVcu=4.425V\nVdl=2.5V\nVdoc=75mV\nVcoc=-75mV"
-    (at 151.13 125.73 0)
+  (text "AP9101CK-AHTRG1 (SOT25)\nVcu=4.425V Vdl=2.5V Vdoc=75mV  Vcoc=-75mV\n\nAP9101CK6-AYTRG1 (SOT26)\nVcu=4.275V Vdl=2.8V Vdoc=150mV Vcoc=-100mV"
+    (at 119.38 117.475 0)
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid 08f50ce5-3007-4dfa-954f-db3d8efc3277)
   )
@@ -5010,6 +4870,10 @@
     (at 209.55 243.205 0)
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid 13dbe7e4-5c08-4d1a-863b-196dff63c903)
+  )
+  (text "330R-470R" (at 74.93 130.175 0)
+    (effects (font (size 1.27 1.27)) (justify left bottom))
+    (uuid 19441339-e957-4433-b285-af8eb4d01e34)
   )
   (text "5V Bust Converter" (at 317.5 266.7 0)
     (effects (font (size 2.9972 2.9972)) (justify left bottom))
@@ -5041,7 +4905,7 @@
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid 46b9c11a-e077-4537-8396-cf7de45af98f)
   )
-  (text "3.3V Buck-Boost DC/DC Converter" (at 335.28 120.65 0)
+  (text "3.3V Buck-Boost DC/DC Converter with LTC3440" (at 318.77 113.03 0)
     (effects (font (size 2.9972 2.9972)) (justify left bottom))
     (uuid 4902be7b-b7ab-4a0b-b1b0-f74d39fc0ace)
   )
@@ -5065,6 +4929,10 @@
   (text "Cout=1*47u" (at 394.97 207.01 0)
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid 6c8432a2-dde0-4c51-b09c-34d8702fb9fb)
+  )
+  (text "AO6804A\nRds(on):\n30mR @ Vgs=2.5V\n23mR @ Vgs=4.5V\n" (at 154.305 144.145 0)
+    (effects (font (size 1.27 1.27)) (justify left bottom))
+    (uuid 731d2d47-02e9-4ab1-b5e2-7c7923258eac)
   )
   (text "USB Power Socket" (at 38.1 26.67 0)
     (effects (font (size 2.9972 2.9972)) (justify left bottom))
@@ -5096,6 +4964,10 @@
     (effects (font (size 2.9972 2.9972)) (justify left bottom))
     (uuid a2bab02f-d264-444c-bb64-54e6cd0c0b60)
   )
+  (text "Vreg: 4.179-4.221" (at 80.01 245.745 0)
+    (effects (font (size 1.27 1.27)) (justify left bottom))
+    (uuid b40fc5ea-7e15-484c-bdcc-97b1e372fe57)
+  )
   (text "Vdropout = 210mV typ / 350mV max\nVin(min)=3.3V + 0.35V=3.65V"
     (at 485.14 160.02 0)
     (effects (font (size 1.27 1.27)) (justify left bottom))
@@ -5121,6 +4993,10 @@
     (effects (font (size 1.1176 1.1176)) (justify left bottom))
     (uuid c73b1aaf-cf48-471d-9d8b-b88f29adcfe5)
   )
+  (text "300R-4k/2k7 typ" (at 76.835 154.305 0)
+    (effects (font (size 1.27 1.27)) (justify left bottom))
+    (uuid c82418d3-eda7-4a5d-87df-54c1af2050c3)
+  )
   (text "Vout=Vfb*((Rtop+Rbottom)/Rbottom)\nVout=0V5*((120k+73k2+30k)/30k)=3.72V\nVout=0V5*((220k+73k2+47k)/47k)=3.62V\n\nIout(max)=1A5"
     (at 406.4 201.93 0)
     (effects (font (size 1.27 1.27)) (justify left bottom))
@@ -5130,13 +5006,29 @@
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid d169c0f1-c7f0-4855-a753-d19f4f0ac9b5)
   )
+  (text "Charging limit:\nVcoc/(2*Rds(on))=75mV/23mR=3.7A" (at 154.305 151.765 0)
+    (effects (font (size 1.27 1.27)) (justify left bottom))
+    (uuid d1e75c38-d1bb-49d9-b927-7f8c015db91f)
+  )
   (text "Vout = 1.25V / (13.9/60.9) = 5.48V" (at 345.44 271.145 0)
     (effects (font (size 1.1176 1.1176)) (justify left bottom))
     (uuid eab55a04-bd1e-4578-ae1d-af277452159a)
   )
+  (text "Vreg: 4.137-4.242" (at 81.28 280.67 0)
+    (effects (font (size 1.27 1.27)) (justify left bottom))
+    (uuid f2d5f561-3e69-4a59-936f-5c2f25f2cfd2)
+  )
+  (text "NCR18650B\n2.5V - 4.2V" (at 27.94 132.715 0)
+    (effects (font (size 1.27 1.27)) (justify left bottom))
+    (uuid f5a09bcd-bc40-4e37-981e-3f40c9aa35bd)
+  )
   (text "Battery Protection" (at 69.85 115.57 0)
     (effects (font (size 2.9972 2.9972)) (justify left bottom))
     (uuid fa026fb7-29c0-4080-a8d8-46346efa05ab)
+  )
+  (text "10n-1u/100n typ\n" (at 66.675 151.13 0)
+    (effects (font (size 1.27 1.27)) (justify left bottom))
+    (uuid fa06f941-31ca-4537-9571-8cee252c6607)
   )
 
   (label "3V3_LTC_MODE" (at 342.9 148.59 0) (fields_autoplaced)
@@ -5162,6 +5054,10 @@
   (label "3V3_LTC_Rt" (at 350.52 152.4 0) (fields_autoplaced)
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid 2eee0920-3eda-4c92-933f-c65330de87f2)
+  )
+  (label "PROT_DO" (at 112.395 149.86 0) (fields_autoplaced)
+    (effects (font (size 1.27 1.27)) (justify left bottom))
+    (uuid 333a70ac-a14d-4cf4-8797-01f077b047cd)
   )
   (label "I_CHRG_SENSE" (at 118.11 293.37 0) (fields_autoplaced)
     (effects (font (size 1.27 1.27)) (justify left bottom))
@@ -5247,7 +5143,7 @@
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid 6f7a67ca-ecc6-495f-b824-d7f1c54fae7b)
   )
-  (label "3V3_NOT_REG" (at 412.75 208.28 0) (fields_autoplaced)
+  (label "3V7_NOT_REG" (at 412.75 208.28 0) (fields_autoplaced)
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid 73937cb6-a2a0-4459-8a62-dd8744862bae)
   )
@@ -5255,11 +5151,11 @@
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid 844d85ee-15e6-45e3-89e7-2ccf378eb845)
   )
-  (label "3V3_NOT_REG" (at 431.8 135.89 0) (fields_autoplaced)
+  (label "3V7_NOT_REG" (at 431.8 135.89 0) (fields_autoplaced)
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid 8a460510-d1a7-462c-8198-4e1f19943574)
   )
-  (label "3V3_NOT_REG" (at 457.2 179.07 0) (fields_autoplaced)
+  (label "3V7_NOT_REG" (at 457.2 179.07 0) (fields_autoplaced)
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid 992932b4-4356-4c04-bef0-575e43381032)
   )
@@ -5267,7 +5163,7 @@
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid a3d34ad3-2970-4ca1-baaa-d211e8d60889)
   )
-  (label "BATT_SW" (at 53.975 127 0) (fields_autoplaced)
+  (label "BATT_SW" (at 54.61 127 0) (fields_autoplaced)
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid a44c2e1e-8bde-4e62-aec0-928a4871b860)
   )
@@ -5275,7 +5171,7 @@
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid a58ba1ef-a44b-4b1b-a436-f18bf8c01e37)
   )
-  (label "5V_FILTERED" (at 400.685 281.94 0) (fields_autoplaced)
+  (label "5V5_FILTERED" (at 400.685 281.94 0) (fields_autoplaced)
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid aab8c446-b36a-4a9c-bb05-4206f69782c4)
   )
@@ -5319,11 +5215,19 @@
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid db6f8c9e-0313-4cc1-8810-ad484644af7c)
   )
+  (label "PROT_VM" (at 90.17 147.32 0) (fields_autoplaced)
+    (effects (font (size 1.27 1.27)) (justify left bottom))
+    (uuid e5a64cd4-1312-4ddb-a7f0-a05ae56795be)
+  )
+  (label "PROT_CO" (at 112.395 144.78 0) (fields_autoplaced)
+    (effects (font (size 1.27 1.27)) (justify left bottom))
+    (uuid eddbacfc-7d01-4751-89fc-5e2ffbe736c6)
+  )
   (label "BATT_3V3_FILTER" (at 322.58 208.28 0) (fields_autoplaced)
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid f46674a0-54fa-4956-8c6c-92c88c40e85b)
   )
-  (label "5V_NOT_REG" (at 342.9 281.94 0) (fields_autoplaced)
+  (label "5V5_NOT_REG" (at 342.9 281.94 0) (fields_autoplaced)
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid f4ba4ba5-b5ee-4b61-953d-bc5fd36e9b85)
   )
@@ -5375,7 +5279,7 @@
     (pin "7" (uuid a8a1087c-be7a-4f85-8ab7-3c8b5dbdd09e))
     (pin "8" (uuid 35b03d27-df5d-4616-983f-b70c368d5825))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "U5") (unit 1)
         )
@@ -5383,16 +5287,16 @@
     )
   )
 
-  (symbol (lib_id "Battery_Management:AP9101CK") (at 101.6 147.32 0) (unit 1)
+  (symbol (lib_id "Battery_Management:AP9101CK6") (at 101.6 147.32 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 00000000-0000-0000-0000-000061441b57)
     (property "Reference" "U2" (at 101.6 135.1026 0)
       (effects (font (size 1.27 1.27)))
     )
-    (property "Value" "AP9101CK" (at 101.6 137.414 0)
+    (property "Value" "AP9101CK6" (at 109.22 140.97 0)
       (effects (font (size 1.27 1.27)))
     )
-    (property "Footprint" "Package_TO_SOT_SMD:SOT-23-5" (at 100.33 147.32 0)
+    (property "Footprint" "Package_TO_SOT_SMD:SOT-23-6" (at 101.6 147.32 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "https://www.diodes.com/assets/Datasheets/AP9101C.pdf" (at 101.6 146.05 0)
@@ -5403,8 +5307,9 @@
     (pin "3" (uuid 670a4546-359d-4a4c-b5e0-aeb47029da97))
     (pin "4" (uuid 2d743bce-1804-4f45-8eed-5e92e69d8934))
     (pin "5" (uuid 5830a0ac-7855-477c-a33c-500a9e1b5d63))
+    (pin "6" (uuid 31240a0f-c5f2-40bb-a39a-8255a3963ac5))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "U2") (unit 1)
         )
@@ -5430,7 +5335,7 @@
     (pin "1" (uuid c766458a-e700-4bb6-83f9-11951e9945e8))
     (pin "2" (uuid d1ac8a71-93c0-4cd7-9633-488a1152a793))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "R7") (unit 1)
         )
@@ -5456,7 +5361,7 @@
     (pin "1" (uuid 313e942e-a29c-43dd-9386-ac23e0c92de8))
     (pin "2" (uuid 55c3dab0-e1b0-4122-9e7d-d3b22e951519))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "R9") (unit 1)
         )
@@ -5481,7 +5386,7 @@
     )
     (pin "1" (uuid b943bac2-cce3-47cd-ae72-249219f2f0cd))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "#PWR013") (unit 1)
         )
@@ -5506,7 +5411,7 @@
     )
     (pin "1" (uuid fe6a212a-a004-4759-8b65-cb27db7eed84))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "#PWR020") (unit 1)
         )
@@ -5532,7 +5437,7 @@
     (pin "1" (uuid e8fa9cd1-1602-4324-8806-2b54581fa8f1))
     (pin "2" (uuid f145a1fb-2645-43c9-8e24-f91e99868797))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "C7") (unit 1)
         )
@@ -5558,7 +5463,7 @@
     (pin "1" (uuid 9984e6c8-ca1a-490c-8269-452e2fb0f4fe))
     (pin "2" (uuid 847c7d78-5022-4d70-b852-10cd6e367b11))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "B1") (unit 1)
         )
@@ -5583,7 +5488,7 @@
     )
     (pin "1" (uuid 7b0e950b-46a5-40ea-b4cf-0a99540bf4df))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "#PWR014") (unit 1)
         )
@@ -5609,7 +5514,7 @@
     (pin "1" (uuid 04d3ba6a-98b0-465f-89d9-5cd669cdc6f5))
     (pin "2" (uuid f763622e-dc78-4357-8398-f8b60e85689d))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "R15") (unit 1)
         )
@@ -5635,7 +5540,7 @@
     (pin "1" (uuid 081acd15-4a4a-44f7-a4b2-33043c1a665e))
     (pin "2" (uuid 58b89aa8-c76c-4e40-ab72-490e5ea03595))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "R22") (unit 1)
         )
@@ -5661,7 +5566,7 @@
     (pin "1" (uuid 8b8f9a08-b476-4575-911d-8fb55c39aad3))
     (pin "2" (uuid 78f8696d-17ff-4196-ab91-2497962dfb7f))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "C18") (unit 1)
         )
@@ -5687,7 +5592,7 @@
     (pin "1" (uuid d6df7c9d-f674-4332-a05d-78490045218f))
     (pin "2" (uuid 403c7f11-aead-4732-8b54-5507306c528e))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "C23") (unit 1)
         )
@@ -5713,7 +5618,7 @@
     (pin "1" (uuid b43d8271-add8-41c1-89b5-cc213fab8b02))
     (pin "2" (uuid 152cc702-49ee-4481-95ab-a9a2b28c1e72))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "C24") (unit 1)
         )
@@ -5738,7 +5643,7 @@
     )
     (pin "1" (uuid 92dfdddb-43e1-4cd0-8724-50e435974ed5))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "#PWR043") (unit 1)
         )
@@ -5763,7 +5668,7 @@
     )
     (pin "1" (uuid e41fc738-2c16-4901-b820-0fea4e8c9975))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "#PWR042") (unit 1)
         )
@@ -5788,7 +5693,7 @@
     )
     (pin "1" (uuid facd4f4e-16ee-44b6-a2bb-6b2909855bfe))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "#PWR034") (unit 1)
         )
@@ -5813,7 +5718,7 @@
     )
     (pin "1" (uuid 31c9d41c-b04f-43b2-a79c-8a96cf3533f1))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "#PWR032") (unit 1)
         )
@@ -5838,7 +5743,7 @@
     )
     (pin "1" (uuid 1b6b372a-f4dd-4997-855f-a11b437196f0))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "#PWR033") (unit 1)
         )
@@ -5846,24 +5751,24 @@
     )
   )
 
-  (symbol (lib_id "power:VBUS") (at 33.02 200.66 0) (unit 1)
+  (symbol (lib_id "power:VBUS") (at 61.595 200.025 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 00000000-0000-0000-0000-00006148b4aa)
-    (property "Reference" "#PWR031" (at 33.02 204.47 0)
+    (property "Reference" "#PWR031" (at 61.595 203.835 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (property "Value" "VBUS" (at 33.401 197.4342 0)
+    (property "Value" "VBUS" (at 61.976 196.7992 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Footprint" "" (at 33.02 200.66 0)
+    (property "Footprint" "" (at 61.595 200.025 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (property "Datasheet" "" (at 33.02 200.66 0)
+    (property "Datasheet" "" (at 61.595 200.025 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (pin "1" (uuid 04c529f1-4526-4387-b9d6-413e48980e9b))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "#PWR031") (unit 1)
         )
@@ -5893,7 +5798,7 @@
     (pin "5" (uuid b520d336-456b-49ce-b4de-f4969a47274b))
     (pin "6" (uuid 0ba74a68-9f86-4589-9851-8adbba5cb757))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "J1") (unit 1)
         )
@@ -5917,7 +5822,7 @@
       (effects (font (size 1.27 1.27)) hide)
     )
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "H1") (unit 1)
         )
@@ -5941,7 +5846,7 @@
       (effects (font (size 1.27 1.27)) hide)
     )
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "H2") (unit 1)
         )
@@ -5965,7 +5870,7 @@
       (effects (font (size 1.27 1.27)) hide)
     )
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "H3") (unit 1)
         )
@@ -5989,7 +5894,7 @@
       (effects (font (size 1.27 1.27)) hide)
     )
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "H4") (unit 1)
         )
@@ -6015,7 +5920,7 @@
     (pin "1" (uuid fa04b2bc-acb4-4fa3-94c5-48e3a80a2a20))
     (pin "2" (uuid dde2d359-f972-4386-9cc3-109f5089e1ac))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "D6") (unit 1)
         )
@@ -6029,7 +5934,7 @@
     (property "Reference" "D5" (at 188.595 217.805 90)
       (effects (font (size 1.27 1.27)) (justify right))
     )
-    (property "Value" "POWER LED" (at 180.975 220.345 90)
+    (property "Value" "POWER LED (Red)" (at 180.975 220.345 90)
       (effects (font (size 1.27 1.27)) (justify right) hide)
     )
     (property "Footprint" "LED_SMD:LED_0805_2012Metric" (at 192.405 222.885 0)
@@ -6041,7 +5946,7 @@
     (pin "1" (uuid 7e8e8f79-dec6-41d1-be60-392791e6a138))
     (pin "2" (uuid 99fba06e-9b9f-4699-99c6-93accb9a5fbd))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "D5") (unit 1)
         )
@@ -6067,7 +5972,7 @@
     (pin "1" (uuid 11168c4f-de00-4b7f-a318-ff2b32cf3191))
     (pin "2" (uuid a82663bb-91a4-48ba-b90b-5f624f96885a))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "R19") (unit 1)
         )
@@ -6092,7 +5997,7 @@
     )
     (pin "1" (uuid 96bd2205-fb86-445c-b460-b4dc91d6399d))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "#PWR040") (unit 1)
         )
@@ -6117,7 +6022,7 @@
     )
     (pin "1" (uuid f79eaaeb-8bdb-45ec-83ce-33137f4fce19))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "#PWR065") (unit 1)
         )
@@ -6143,7 +6048,7 @@
     (pin "1" (uuid bd813084-4211-4c40-a9d2-820a4621f8b3))
     (pin "2" (uuid 1b327bcb-1fbb-42e9-9f13-937de3b709db))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "R14") (unit 1)
         )
@@ -6168,7 +6073,7 @@
     )
     (pin "1" (uuid fd743a02-19bf-42cd-aecf-3a0e04951ab3))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "#PWR025") (unit 1)
         )
@@ -6194,7 +6099,7 @@
     (pin "1" (uuid f8bb7c35-9d7b-4abe-a1cb-b822c0453db2))
     (pin "2" (uuid 4c9f76d2-15be-42cd-97f1-8f72ec4ac2a4))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "C15") (unit 1)
         )
@@ -6219,7 +6124,7 @@
     )
     (pin "1" (uuid 51fbff6e-564e-4df0-a517-aae2b1ec60ca))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "#PWR028") (unit 1)
         )
@@ -6245,7 +6150,7 @@
     (pin "1" (uuid 13f1b9d7-12af-429b-b683-45570f3a13a4))
     (pin "2" (uuid 22c56474-ab43-4030-b251-5ff6b2481e51))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "SW2") (unit 1)
         )
@@ -6274,7 +6179,7 @@
     (pin "4" (uuid d2d8189d-374a-404d-86bc-000b1a0a2465))
     (pin "5" (uuid 9f56dee8-2d18-4edf-b0f1-a705ffc41ac7))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "U8") (unit 1)
         )
@@ -6300,7 +6205,7 @@
     (pin "1" (uuid c2444849-e49e-43a1-99ce-6f3f9da63e5d))
     (pin "2" (uuid fd20accd-ceaf-45ee-8d8e-0c897f60c66a))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "L5") (unit 1)
         )
@@ -6326,7 +6231,7 @@
     (pin "1" (uuid acfef8b1-29ee-437f-befa-b8e228a3af30))
     (pin "2" (uuid 3056e42e-9569-44d8-8d01-2489259ddc2e))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "R31") (unit 1)
         )
@@ -6352,7 +6257,7 @@
     (pin "1" (uuid f495562f-a139-41f9-a381-ac8ff694eaad))
     (pin "2" (uuid 21e3b3f1-38b0-418c-ab9b-7e78ba63d302))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "R33") (unit 1)
         )
@@ -6378,7 +6283,7 @@
     (pin "1" (uuid 47168a5d-2649-41ce-a317-4cbf1e40d451))
     (pin "2" (uuid e95e0b79-c2d6-4dfc-9b1e-44045b7e03b7))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "R32") (unit 1)
         )
@@ -6404,7 +6309,7 @@
     (pin "1" (uuid 8854afbd-3810-45cd-8dd3-e789edbccbcd))
     (pin "2" (uuid 1273b4d3-f6b2-496d-8f99-02bb0041506d))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "C28") (unit 1)
         )
@@ -6438,7 +6343,7 @@
     (pin "8" (uuid dbed48d4-8b6f-4e0c-9ecf-39a4d39bc252))
     (pin "9" (uuid f4493677-8c04-42c8-8791-6fea05536467))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "U1") (unit 1)
         )
@@ -6464,7 +6369,7 @@
     (pin "1" (uuid 0bc5e275-23be-4679-8fba-e5c77f04131e))
     (pin "2" (uuid 60f96378-b238-45b4-aade-c0fa6af14165))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "L1") (unit 1)
         )
@@ -6490,7 +6395,7 @@
     (pin "1" (uuid e01df624-4966-4cc0-9222-e2f8096c0ce6))
     (pin "2" (uuid a85de9de-ec83-475e-b2c4-3d8660d23eaa))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "C10") (unit 1)
         )
@@ -6516,7 +6421,7 @@
     (pin "1" (uuid 149343fa-2cd0-42f6-bb0b-05c46579f83f))
     (pin "2" (uuid 7bd9a56c-5c9a-4161-bd6e-8547b2fbfa3f))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "C9") (unit 1)
         )
@@ -6542,7 +6447,7 @@
     (pin "1" (uuid cd0d6b4f-eb42-459b-bad8-79986ff72929))
     (pin "2" (uuid d451e297-fedb-43c4-858b-f10c3580f062))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "C3") (unit 1)
         )
@@ -6568,7 +6473,7 @@
     (pin "1" (uuid e9443186-f4a0-47c0-a241-280dfa790537))
     (pin "2" (uuid b6163ee5-854f-40aa-ba25-2beeee149886))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "C4") (unit 1)
         )
@@ -6594,7 +6499,7 @@
     (pin "1" (uuid d8f7f9a2-efea-4ba4-814d-fb906a285c70))
     (pin "2" (uuid 9c10ec84-315d-46ca-9d3e-1d9db2deaee7))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "R12") (unit 1)
         )
@@ -6620,7 +6525,7 @@
     (pin "1" (uuid a8ee734b-40fe-421f-96d2-db444d267f8d))
     (pin "2" (uuid ae2ad84a-9171-49b4-a049-a6532f8e5124))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "R11") (unit 1)
         )
@@ -6646,7 +6551,7 @@
     (pin "1" (uuid c6ad23aa-ce52-4f41-a425-b5688c3173ba))
     (pin "2" (uuid a4b114a5-2e07-4d68-b646-1a42eca5ddaa))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "R8") (unit 1)
         )
@@ -6672,7 +6577,7 @@
     (pin "1" (uuid 64198cb1-a207-46aa-9d6a-ca57861809a8))
     (pin "2" (uuid 8a10e7ff-30fd-446c-88e1-66b1bd6d9eda))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "C11") (unit 1)
         )
@@ -6698,7 +6603,7 @@
     (pin "1" (uuid b6e6b8c9-2816-4c7b-bc04-c3019366f94e))
     (pin "2" (uuid 6203e266-4f3b-496b-9f80-0569fd4b822d))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "R10") (unit 1)
         )
@@ -6723,7 +6628,7 @@
     )
     (pin "1" (uuid 63c4e38c-3f78-4503-9e8e-6265a3c2d414))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "#PWR022") (unit 1)
         )
@@ -6748,7 +6653,7 @@
     )
     (pin "1" (uuid 98c43302-f243-4ab9-82e8-4fa92e903611))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "#PWR021") (unit 1)
         )
@@ -6773,7 +6678,7 @@
     )
     (pin "1" (uuid 80965985-d989-4a9e-8954-e6086c50170a))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "#PWR019") (unit 1)
         )
@@ -6798,7 +6703,7 @@
     )
     (pin "1" (uuid acd4e16b-4de1-4123-b32f-7b474b30f26a))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "#PWR018") (unit 1)
         )
@@ -6823,7 +6728,7 @@
     )
     (pin "1" (uuid d21100e9-c1cb-4e12-9467-60244e95914d))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "#PWR016") (unit 1)
         )
@@ -6849,7 +6754,7 @@
     (pin "1" (uuid b134d5bc-9191-454b-9246-8c2f1c0b6a5f))
     (pin "2" (uuid 1238e8fe-944c-4338-b2ab-b0d613697656))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "D2") (unit 1)
         )
@@ -6875,7 +6780,7 @@
     (pin "1" (uuid c0765db6-fb52-49d1-b13c-898c45a0453e))
     (pin "2" (uuid 5786796f-05c0-4d50-b35f-be41ff4712dc))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "D3") (unit 1)
         )
@@ -6900,7 +6805,7 @@
     )
     (pin "1" (uuid c31d72a1-9cb3-4c11-9e69-7b5fea3b2f73))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "#PWR015") (unit 1)
         )
@@ -6925,7 +6830,7 @@
     )
     (pin "1" (uuid bd2ff477-6452-4d82-b49d-fd0e33a877c3))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "#PWR023") (unit 1)
         )
@@ -6950,7 +6855,7 @@
     )
     (pin "1" (uuid 709d58f6-b56e-4152-936b-eccc2da94d8a))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "#PWR024") (unit 1)
         )
@@ -6964,7 +6869,7 @@
     (property "Reference" "J4" (at 527.2532 171.958 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Value" "Conn_01x02" (at 529.5646 171.958 0)
+    (property "Value" "3V3 Sense" (at 529.5646 171.958 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical" (at 527.05 173.99 0)
@@ -6976,7 +6881,7 @@
     (pin "1" (uuid 8dc9d3a0-738f-4f04-a2ae-c354644ea3c3))
     (pin "2" (uuid 101a4edc-7479-4d8d-be31-0f064318849e))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "J4") (unit 1)
         )
@@ -6993,7 +6898,7 @@
     (property "Value" "TestPoint" (at 406.6032 133.9342 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Footprint" "TestPoint:TestPoint_Pad_D1.5mm" (at 410.21 134.62 0)
+    (property "Footprint" "TestPoint:TestPoint_THTPad_D1.5mm_Drill0.7mm" (at 410.21 134.62 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (at 410.21 134.62 0)
@@ -7001,7 +6906,7 @@
     )
     (pin "1" (uuid b491adec-db47-49a3-98ca-fd7e9a8d8ed9))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "TS3") (unit 1)
         )
@@ -7018,7 +6923,7 @@
     (property "Value" "TestPoint" (at 379.9332 127.5842 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Footprint" "TestPoint:TestPoint_Pad_D1.5mm" (at 383.54 128.27 0)
+    (property "Footprint" "TestPoint:TestPoint_THTPad_D1.5mm_Drill0.7mm" (at 383.54 128.27 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (at 383.54 128.27 0)
@@ -7026,7 +6931,7 @@
     )
     (pin "1" (uuid fba49fd1-b672-467d-9462-373cb89253e7))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "TS2") (unit 1)
         )
@@ -7043,7 +6948,7 @@
     (property "Value" "TestPoint" (at 345.44 125.73 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Footprint" "TestPoint:TestPoint_Pad_D1.5mm" (at 360.68 128.27 0)
+    (property "Footprint" "TestPoint:TestPoint_THTPad_D1.5mm_Drill0.7mm" (at 360.68 128.27 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (at 360.68 128.27 0)
@@ -7051,7 +6956,7 @@
     )
     (pin "1" (uuid 95697f37-71e8-4221-b0ca-d34ac29523d8))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "TS1") (unit 1)
         )
@@ -7068,7 +6973,7 @@
     (property "Value" "TestPoint" (at 319.405 135.89 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Footprint" "TestPoint:TestPoint_Pad_D1.5mm" (at 330.835 140.97 0)
+    (property "Footprint" "TestPoint:TestPoint_THTPad_D1.5mm_Drill0.7mm" (at 330.835 140.97 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (at 330.835 140.97 0)
@@ -7076,7 +6981,7 @@
     )
     (pin "1" (uuid 3af0ba18-af6d-474b-90f1-2c5760849d31))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "TS4") (unit 1)
         )
@@ -7102,7 +7007,7 @@
     (pin "1" (uuid d5258363-dd22-4e25-bae1-27775e7ec3f0))
     (pin "2" (uuid 42e83079-c6b2-4803-9948-c302e69bd966))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "D15") (unit 1)
         )
@@ -7127,7 +7032,7 @@
     )
     (pin "1" (uuid cdd9d0b7-d8f8-4cdc-b1fa-b78f65d9367d))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "#PWR069") (unit 1)
         )
@@ -7153,7 +7058,7 @@
     (pin "1" (uuid 253f499e-2e8c-444b-beed-71466154201c))
     (pin "2" (uuid 2abdde75-0293-4a5c-92f2-4b637b6d080e))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "C37") (unit 1)
         )
@@ -7179,7 +7084,7 @@
     (pin "1" (uuid 497cd8b8-1f8d-4d10-bbcb-bd453ecdf929))
     (pin "2" (uuid 9488ddcd-59be-4154-9fd9-61adff5f4e0c))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "C38") (unit 1)
         )
@@ -7205,7 +7110,7 @@
     (pin "1" (uuid fa2d2c7d-f3c2-4990-b1a8-c3d04323f78d))
     (pin "2" (uuid 248a6e9c-13a7-47fb-959e-22b5af737ce8))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "C29") (unit 1)
         )
@@ -7231,7 +7136,7 @@
     (pin "1" (uuid 6cee084d-3c3f-41e1-a8d0-96ebeca602dd))
     (pin "2" (uuid d984a771-1492-4f1d-83ba-70fe35e6daff))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "C30") (unit 1)
         )
@@ -7256,7 +7161,7 @@
     )
     (pin "1" (uuid 80a19541-671b-4c5b-840a-65774a7a064c))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "#PWR054") (unit 1)
         )
@@ -7282,7 +7187,7 @@
     (pin "1" (uuid 3a79438a-b411-4db1-8a5c-c71ff5f5cd44))
     (pin "2" (uuid 46d36b3e-fd31-4933-8482-f4689574bdbe))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "C8") (unit 1)
         )
@@ -7307,7 +7212,7 @@
     )
     (pin "1" (uuid ccb0fda5-82ce-48f2-aa67-b38ac44bbbe9))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "#PWR061") (unit 1)
         )
@@ -7324,7 +7229,7 @@
     (property "Value" "TestPoint" (at 294.2082 291.4142 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Footprint" "TestPoint:TestPoint_Pad_D1.5mm" (at 297.815 292.1 0)
+    (property "Footprint" "TestPoint:TestPoint_THTPad_D1.5mm_Drill0.7mm" (at 297.815 292.1 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (at 297.815 292.1 0)
@@ -7332,7 +7237,7 @@
     )
     (pin "1" (uuid 5ab2fe2b-9132-4a0c-989d-d12a319d7846))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "TS7") (unit 1)
         )
@@ -7349,7 +7254,7 @@
     (property "Value" "TestPoint" (at 334.01 275.59 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Footprint" "TestPoint:TestPoint_Pad_D1.5mm" (at 337.82 280.67 0)
+    (property "Footprint" "TestPoint:TestPoint_THTPad_D1.5mm_Drill0.7mm" (at 337.82 280.67 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (at 337.82 280.67 0)
@@ -7357,7 +7262,7 @@
     )
     (pin "1" (uuid ca781ba0-5936-4960-8553-dff414e1b6f3))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "TS5") (unit 1)
         )
@@ -7374,7 +7279,7 @@
     (property "Value" "TestPoint" (at 365.76 275.59 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Footprint" "TestPoint:TestPoint_Pad_D1.5mm" (at 381 280.67 0)
+    (property "Footprint" "TestPoint:TestPoint_THTPad_D1.5mm_Drill0.7mm" (at 381 280.67 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (at 381 280.67 0)
@@ -7382,7 +7287,7 @@
     )
     (pin "1" (uuid b77f59e3-72b5-4f3f-89f3-eb76bbb0c2cb))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "TS6") (unit 1)
         )
@@ -7396,7 +7301,7 @@
     (property "Reference" "J5" (at 440.8932 274.828 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Value" "Conn_01x02" (at 443.2046 274.828 0)
+    (property "Value" "5V Sense" (at 443.2046 274.828 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical" (at 440.69 276.86 0)
@@ -7408,7 +7313,7 @@
     (pin "1" (uuid 48c5bfe4-2f33-4428-ad62-927ed7d3bfd4))
     (pin "2" (uuid 8310eeae-2417-4333-aa34-c195c0504c5d))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "J5") (unit 1)
         )
@@ -7433,7 +7338,7 @@
     )
     (pin "1" (uuid f8e859f0-36d3-49c9-b271-f6272a0ec0db))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "#PWR047") (unit 1)
         )
@@ -7459,7 +7364,7 @@
     (pin "1" (uuid 6a6bc753-c630-4bfb-bb40-7a8e92d5c888))
     (pin "2" (uuid 8dd9d5b3-c5b5-43e7-bb43-0d72a06dc6da))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "JP2") (unit 1)
         )
@@ -7485,7 +7390,7 @@
     (pin "1" (uuid eb55ab5c-a535-4594-a059-d77b38bf7ace))
     (pin "2" (uuid 5bbb7113-9931-4cc0-868e-5a54ffe98a05))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "JP3") (unit 1)
         )
@@ -7510,7 +7415,7 @@
     )
     (pin "1" (uuid 395fb6da-f777-4346-bf20-86d4ead6b45d))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "#PWR017") (unit 1)
         )
@@ -7535,7 +7440,7 @@
     )
     (pin "1" (uuid c5314077-a30a-4ff1-828b-bc4aa3015083))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "#PWR066") (unit 1)
         )
@@ -7561,7 +7466,7 @@
     (pin "1" (uuid 38aeb9da-ef7c-4659-97ba-e845ea700be7))
     (pin "2" (uuid a847bc05-74e9-4233-8d6a-f45cd84ea108))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "JP7") (unit 1)
         )
@@ -7587,7 +7492,7 @@
     (pin "1" (uuid 54d83d66-c70b-4029-a80a-d3b324d80d3f))
     (pin "2" (uuid 7ed9a7bc-1a07-4551-a637-c56259b32ba4))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "JP4") (unit 1)
         )
@@ -7617,7 +7522,7 @@
     (pin "4" (uuid a5a2b3be-5120-434a-a721-1b782d458ccf))
     (pin "5" (uuid fbb1d71e-9e1e-4b8e-9ad9-0bf044dca200))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "Q1") (unit 2)
         )
@@ -7647,7 +7552,7 @@
     (pin "4" (uuid 436452ef-1bc8-4d85-bcf0-d25a4475ee70))
     (pin "5" (uuid d60f2d50-e942-4f8a-b6fc-9e9fb8d3a379))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "Q1") (unit 1)
         )
@@ -7674,7 +7579,7 @@
     (pin "2" (uuid f50aea23-9051-4467-8f6a-2c54eed04c61))
     (pin "3" (uuid f8f985b9-03c4-4cb0-a31d-601a1112cb66))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "Q3") (unit 1)
         )
@@ -7700,7 +7605,7 @@
     (pin "1" (uuid a6753230-d4db-44e8-9ab9-000db7913b79))
     (pin "2" (uuid 64305dfc-ba92-4260-80c3-64d7e9a65fc1))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "C5") (unit 1)
         )
@@ -7727,7 +7632,7 @@
     (pin "2" (uuid 51044499-552b-4ac8-9050-c045488ea9f3))
     (pin "3" (uuid 470527b2-9c4a-47ae-aae8-c5a4e5a98cfe))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "U6") (unit 1)
         )
@@ -7753,7 +7658,7 @@
     (pin "1" (uuid dace93d9-a433-48b7-a3d6-2c3ab306aad9))
     (pin "2" (uuid 442e9aa5-6887-4716-8e45-99192bd07f67))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "C34") (unit 1)
         )
@@ -7778,7 +7683,7 @@
     )
     (pin "1" (uuid 0121d405-b53d-467c-87ce-a09f2c8b522d))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "#PWR050") (unit 1)
         )
@@ -7803,7 +7708,7 @@
     )
     (pin "1" (uuid bb5616a0-441d-4c0d-8120-9e1513f85b38))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "#PWR051") (unit 1)
         )
@@ -7829,7 +7734,7 @@
     (pin "1" (uuid 4a09d5c5-3e25-4fc5-ba31-ab98436a8b33))
     (pin "2" (uuid 00484433-3236-443d-9dc6-b4ed2505685e))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "C25") (unit 1)
         )
@@ -7855,7 +7760,7 @@
     (pin "1" (uuid c42c3b20-5eed-408d-b705-63701004b59c))
     (pin "2" (uuid 0a2d7f37-70ce-450d-844b-f4e22e0520cd))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "R34") (unit 1)
         )
@@ -7882,7 +7787,7 @@
     (pin "2" (uuid 06a64ca7-8a8f-4c99-a55f-109e68751fe2))
     (pin "3" (uuid 220a0fc2-6d2a-4278-bd2e-545cce82e06e))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "U3") (unit 1)
         )
@@ -7908,7 +7813,7 @@
     (pin "1" (uuid 20fdeead-4c9f-4f6c-aaea-111ca14f417b))
     (pin "2" (uuid 98ea2fe3-85b0-4476-9282-7e042e7958ac))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "R13") (unit 1)
         )
@@ -7934,7 +7839,7 @@
     (pin "1" (uuid 3057b23e-749e-4354-9115-6cd0f3f530a2))
     (pin "2" (uuid 907500a6-8c1f-47cd-87f8-7e96880974ff))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "C12") (unit 1)
         )
@@ -7960,7 +7865,7 @@
     (pin "1" (uuid 21d0e09b-96ca-4c79-bb14-ab3fbf875928))
     (pin "2" (uuid 2551479f-fd1a-4c45-a617-86d9328a7f7d))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "JP9") (unit 1)
         )
@@ -7985,34 +7890,9 @@
     )
     (pin "1" (uuid ac77d8c9-5f76-4d7c-bfaa-7d8e17a0334d))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "#PWR052") (unit 1)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "power:GND") (at 59.69 224.79 0) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no)
-    (uuid 0f722321-4c5d-4ee5-894e-fb6d178daf0c)
-    (property "Reference" "#PWR037" (at 59.69 231.14 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Value" "GND" (at 59.817 229.1842 0)
-      (effects (font (size 1.27 1.27)))
-    )
-    (property "Footprint" "" (at 59.69 224.79 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "" (at 59.69 224.79 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (pin "1" (uuid 2375f339-d361-4a2b-96ef-b2229252b38d))
-    (instances
-      (project "EnvSensor-v2.1"
-        (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
-          (reference "#PWR037") (unit 1)
         )
       )
     )
@@ -8036,7 +7916,7 @@
     (pin "1" (uuid 41ea3de7-8b16-4625-9210-2b735e3274cc))
     (pin "2" (uuid a8a95780-dfbb-4f3c-8698-a7dd09b41ffc))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "R26") (unit 1)
         )
@@ -8061,7 +7941,7 @@
     )
     (pin "1" (uuid a58633bc-664c-40fa-be68-19889acf3ae0))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "#PWR0102") (unit 1)
         )
@@ -8087,7 +7967,7 @@
     (pin "1" (uuid fbdd05f9-03d1-4ca0-8aee-da2f461d241b))
     (pin "2" (uuid a2f4c6bb-18ad-4523-b77b-e974fc3d4786))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "C22") (unit 1)
         )
@@ -8112,7 +7992,7 @@
     )
     (pin "1" (uuid d089148c-99e3-4cee-b614-08557e4d3967))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "#PWR053") (unit 1)
         )
@@ -8138,7 +8018,7 @@
     (pin "1" (uuid e71b9929-7157-4cb0-a730-f660914c4785))
     (pin "2" (uuid d015591c-58f9-451f-8e27-2a47d1935f7d))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "JP6") (unit 1)
         )
@@ -8164,7 +8044,7 @@
     (pin "1" (uuid d94b1c70-b571-4e00-9c63-ec6b20154218))
     (pin "2" (uuid db0c2e8c-28e5-49ba-807c-533c8113ec5f))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "C19") (unit 1)
         )
@@ -8189,7 +8069,7 @@
     )
     (pin "1" (uuid 21758db4-79a9-49e5-a245-2931f2d74ec3))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "#PWR011") (unit 1)
         )
@@ -8214,7 +8094,7 @@
     )
     (pin "1" (uuid 885b3442-949d-4252-8a9d-04c4175131d9))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "#PWR059") (unit 1)
         )
@@ -8240,7 +8120,7 @@
     (pin "1" (uuid 33db7795-8b87-4f8e-a0b6-3a4910082d88))
     (pin "2" (uuid bed494d6-3830-4c11-9d51-27404d081ae6))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "R3") (unit 1)
         )
@@ -8266,7 +8146,7 @@
     (pin "1" (uuid 8d96d0f7-2ed4-4115-b0e2-03425eb4264f))
     (pin "2" (uuid aa9f15c9-a2c0-406d-8da1-09cf29d35f9f))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "C40") (unit 1)
         )
@@ -8292,7 +8172,7 @@
     (pin "1" (uuid c20a58ab-aa53-40cc-8846-6fc6710167cf))
     (pin "2" (uuid 4ac75928-51a0-4100-8af3-d91073c54385))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "R25") (unit 1)
         )
@@ -8318,7 +8198,7 @@
     (pin "1" (uuid cbef929e-cb6f-490d-8dba-fb4e931cc751))
     (pin "2" (uuid 0e2a2c3d-b8b6-4615-8ee2-8cb47b55da8b))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "C2") (unit 1)
         )
@@ -8343,7 +8223,7 @@
     )
     (pin "1" (uuid 97e0918b-6eeb-4978-a13e-94221d69246c))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "#PWR026") (unit 1)
         )
@@ -8368,7 +8248,7 @@
     )
     (pin "1" (uuid 69243c22-2427-4d8d-999d-1ca59439f712))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "#PWR012") (unit 1)
         )
@@ -8394,7 +8274,7 @@
     (pin "1" (uuid 809e991a-f60c-4a1a-b30a-1627a023d991))
     (pin "2" (uuid 71daf743-db26-43f7-8771-fd56f38e2dec))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "C6") (unit 1)
         )
@@ -8419,7 +8299,7 @@
     )
     (pin "1" (uuid c28d8736-eee0-4483-bc4f-c49c20b54370))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "#PWR06") (unit 1)
         )
@@ -8444,7 +8324,7 @@
     )
     (pin "1" (uuid f80d2c74-7827-4578-96a3-796791789414))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "#PWR0101") (unit 1)
         )
@@ -8470,7 +8350,7 @@
     (pin "1" (uuid b4b7d974-a613-4822-b93d-a67746d0ad5a))
     (pin "2" (uuid 6a63952d-accc-4c34-9213-fc1e6708e542))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "JP5") (unit 1)
         )
@@ -8496,7 +8376,7 @@
     (pin "1" (uuid a7367278-4deb-493b-bdd4-62f9cbff554b))
     (pin "2" (uuid 1a9a3613-a5d0-4bbd-95df-28f3f43ca613))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "L3") (unit 1)
         )
@@ -8522,7 +8402,7 @@
     (pin "1" (uuid 138bb38c-926e-4268-b9a4-90d3df7b6615))
     (pin "2" (uuid 392f1f02-6624-4721-b079-38c74b85207e))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "C14") (unit 1)
         )
@@ -8548,7 +8428,7 @@
     (pin "1" (uuid 15f93765-b873-4959-9c68-d2c2c36f477c))
     (pin "2" (uuid 567edac8-c188-4ac9-b767-ccca869ce76c))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "F3") (unit 1)
         )
@@ -8580,7 +8460,7 @@
     (pin "7" (uuid 7a52ec53-f688-4940-982f-69cabc2f4a02))
     (pin "8" (uuid 26435d90-5455-4b7b-b7f4-cf8c1bbb95f1))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "U7") (unit 1)
         )
@@ -8606,7 +8486,7 @@
     (pin "1" (uuid 5b00f3a6-46c2-4a64-9c8d-a20bfd945eaa))
     (pin "2" (uuid 91b6b0dc-838e-4d9b-b1b2-0e1bbfa3d39d))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "L4") (unit 1)
         )
@@ -8623,7 +8503,7 @@
     (property "Value" "TestPoint" (at 272.923 48.3358 0)
       (effects (font (size 1.27 1.27)) (justify right) hide)
     )
-    (property "Footprint" "TestPoint:TestPoint_Pad_D1.5mm" (at 279.4 53.34 0)
+    (property "Footprint" "TestPoint:TestPoint_THTPad_D1.5mm_Drill0.7mm" (at 279.4 53.34 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (at 279.4 53.34 0)
@@ -8631,7 +8511,7 @@
     )
     (pin "1" (uuid e9933165-c5f5-4e05-9f10-697311aeebd7))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "TP6") (unit 1)
         )
@@ -8656,7 +8536,7 @@
     )
     (pin "1" (uuid a96ecd3b-9a01-4f8f-8907-e0d37910d33b))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "#PWR038") (unit 1)
         )
@@ -8681,7 +8561,7 @@
     )
     (pin "1" (uuid 00e1ace7-8644-44ec-942c-79753055f833))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "#PWR055") (unit 1)
         )
@@ -8706,7 +8586,7 @@
     )
     (pin "1" (uuid a568fec5-13c1-4d9a-a9e5-f16c1d005d2d))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "#PWR071") (unit 1)
         )
@@ -8731,7 +8611,7 @@
     )
     (pin "1" (uuid 5cc4e471-8dc5-437c-ae8c-c9f29eedf451))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "#PWR058") (unit 1)
         )
@@ -8757,7 +8637,7 @@
     (pin "1" (uuid 8a9ecc7c-38b9-4af2-95db-ee271f4e911b))
     (pin "2" (uuid 081075b2-d1ac-44da-98fc-f2ee223c804c))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "C42") (unit 1)
         )
@@ -8783,7 +8663,7 @@
     (pin "1" (uuid 0abe1713-69c6-41ab-89eb-254513ab79d4))
     (pin "2" (uuid b0b2572e-f671-4728-ac84-8fc3afa06d59))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "C35") (unit 1)
         )
@@ -8809,7 +8689,7 @@
     (pin "1" (uuid 523fdbc1-6429-4f1a-a24b-543633121771))
     (pin "2" (uuid a9c47edb-aeca-428c-a787-648a61224502))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "R16") (unit 1)
         )
@@ -8834,7 +8714,7 @@
     )
     (pin "1" (uuid 0f9fd8bc-1fbf-4639-af1e-022fbad1c694))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "#PWR010") (unit 1)
         )
@@ -8860,7 +8740,7 @@
     (pin "1" (uuid 63a0607f-bf60-42af-b9a0-343e1ac68eac))
     (pin "2" (uuid 70803ed2-a2d6-4a4f-8eac-a1b20b0d3ffa))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "R6") (unit 1)
         )
@@ -8898,7 +8778,7 @@
     (pin "8" (uuid 34c7389d-17eb-4e51-8cd6-d092f167fa0a))
     (pin "9" (uuid ee2c7d7a-d763-4b22-83fc-57ec65c2a3b2))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "J6") (unit 1)
         )
@@ -8924,7 +8804,7 @@
     (pin "1" (uuid 4872f0a8-315b-4ac8-803a-8829dbc39e90))
     (pin "2" (uuid 7b59bc7d-680c-45fc-90b4-433b1042e2b5))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "C41") (unit 1)
         )
@@ -8949,7 +8829,7 @@
     )
     (pin "1" (uuid 54379592-78fc-41b5-a362-1034ce002e02))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "#PWR09") (unit 1)
         )
@@ -8975,7 +8855,7 @@
     (pin "1" (uuid 1b9f5efb-2781-42be-973e-bef7374294fe))
     (pin "2" (uuid 33022485-cd6f-4211-9cbe-9b419dc345d2))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "C33") (unit 1)
         )
@@ -9001,7 +8881,7 @@
     (pin "1" (uuid d3de9d9d-de19-425b-8790-89d3e2c361db))
     (pin "2" (uuid a5497755-1976-47da-aa55-fbb306fe1782))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "R24") (unit 1)
         )
@@ -9027,7 +8907,7 @@
     (pin "1" (uuid da03677b-bd21-4d92-ac99-f3ce44ff872a))
     (pin "2" (uuid 4acd28d0-0a49-42be-8834-d4646eae91e5))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "D7") (unit 1)
         )
@@ -9052,7 +8932,7 @@
     )
     (pin "1" (uuid 34284373-d801-44d1-9911-555b1e74947d))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "#PWR030") (unit 1)
         )
@@ -9077,7 +8957,7 @@
     )
     (pin "1" (uuid 1a81b7a7-4c71-4199-a49b-e357c0b45ef2))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "#PWR035") (unit 1)
         )
@@ -9102,7 +8982,7 @@
     )
     (pin "1" (uuid a7f17a01-3952-4bc4-968f-43b9722f8592))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "#PWR046") (unit 1)
         )
@@ -9119,7 +8999,7 @@
     (property "Value" "TestPoint" (at 245.237 44.3742 0)
       (effects (font (size 1.27 1.27)) (justify right) hide)
     )
-    (property "Footprint" "TestPoint:TestPoint_Pad_D1.5mm" (at 238.76 39.37 0)
+    (property "Footprint" "TestPoint:TestPoint_THTPad_D1.5mm_Drill0.7mm" (at 238.76 39.37 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (at 238.76 39.37 0)
@@ -9127,7 +9007,7 @@
     )
     (pin "1" (uuid d937d3d4-7f8f-4697-bce0-509e21246707))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "TP1") (unit 1)
         )
@@ -9152,7 +9032,7 @@
     )
     (pin "1" (uuid 8ac3ef7a-dfd4-4a6f-9f83-bfd5dc5222b1))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "#PWR044") (unit 1)
         )
@@ -9178,7 +9058,7 @@
     (pin "1" (uuid 0f229d6d-c480-453e-aceb-d2cf3958ce71))
     (pin "2" (uuid 5bac7c60-a919-46e2-a4fc-747fe65a4f92))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "C1") (unit 1)
         )
@@ -9203,7 +9083,7 @@
     )
     (pin "1" (uuid 578b8e29-f61d-4d1f-9769-51889319f890))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "#PWR068") (unit 1)
         )
@@ -9229,7 +9109,7 @@
     (pin "1" (uuid 8fce930c-18e4-4a02-a197-171944aa38ff))
     (pin "2" (uuid 86360036-41ef-4b9b-a11f-9a21c3775027))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "C17") (unit 1)
         )
@@ -9255,7 +9135,7 @@
     (pin "1" (uuid 31db8ac4-5c30-4e27-ba05-318bb49c0565))
     (pin "2" (uuid 24bfb9f4-85af-4493-a9dc-d1d1a71075d8))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "L6") (unit 1)
         )
@@ -9280,7 +9160,7 @@
     )
     (pin "1" (uuid a5e976a9-5035-499a-8b09-fe3f975a674f))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "#PWR039") (unit 1)
         )
@@ -9306,7 +9186,7 @@
     (pin "1" (uuid 05e19897-5506-4d46-b5a1-d47f3aa061d2))
     (pin "2" (uuid b0a43367-40d2-45ed-bb0a-2d91c3750938))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "J3") (unit 1)
         )
@@ -9331,7 +9211,7 @@
     )
     (pin "1" (uuid 5ffae19e-d6ed-4d16-83b0-594c99e57622))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "#PWR056") (unit 1)
         )
@@ -9357,7 +9237,7 @@
     (pin "1" (uuid 6132a15d-eaa6-4676-8b08-844aa078a421))
     (pin "2" (uuid 543e163f-1480-4d8e-a5da-9d1594f12cdd))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "R29") (unit 1)
         )
@@ -9383,7 +9263,7 @@
     (pin "1" (uuid 21f929fb-15d1-4d93-be12-6d100a38739a))
     (pin "2" (uuid d5709abe-66c3-42b4-bc3b-b2d36bcfb8f4))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "R1") (unit 1)
         )
@@ -9409,7 +9289,7 @@
     (pin "1" (uuid 32aa1ef5-1cc3-4c69-ba65-4b429292dbb6))
     (pin "2" (uuid 01c71dfc-e414-4c9e-bef7-2c815cfadf0d))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "C13") (unit 1)
         )
@@ -9435,7 +9315,7 @@
     (pin "1" (uuid 43fe4430-dbca-48c6-a7f9-8e01e72cf956))
     (pin "2" (uuid 3cb6f8cb-00f9-46e6-a08e-581580fa90d8))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "C26") (unit 1)
         )
@@ -9461,7 +9341,7 @@
     (pin "1" (uuid da00b438-f869-45cd-9eb8-a34c4ce7f98b))
     (pin "2" (uuid 09342bf3-b25d-4ea7-b75f-5b2096cdeee8))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "JP1") (unit 1)
         )
@@ -9486,7 +9366,7 @@
     )
     (pin "1" (uuid fe2f0d10-e933-4070-b84d-d42bd2dcb53b))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "#PWR05") (unit 1)
         )
@@ -9511,7 +9391,7 @@
     )
     (pin "1" (uuid 843e8885-7aac-4b8b-954a-3ceb82eba039))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "#PWR03") (unit 1)
         )
@@ -9537,7 +9417,7 @@
     (pin "1" (uuid 3cba907d-1717-40c7-b5bb-3c58500d26eb))
     (pin "2" (uuid de89d5bd-e51c-4c74-8b11-dae39ceaae68))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "C16") (unit 1)
         )
@@ -9562,7 +9442,7 @@
     )
     (pin "1" (uuid 2bc65595-5119-4023-8a1b-813b9ed5c01a))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "#PWR067") (unit 1)
         )
@@ -9579,7 +9459,7 @@
     (property "Value" "USB_C_Receptacle_USB2.0" (at 41.91 30.5871 0)
       (effects (font (size 1.27 1.27)))
     )
-    (property "Footprint" "Connector_USB:USB_C_Receptacle_HRO_TYPE-C-31-M-12" (at 45.72 49.53 0)
+    (property "Footprint" "Connector_USB:USB_C_Receptacle_GCT_USB4135-GF-A_6P_TopMnt_Horizontal" (at 45.72 49.53 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "https://www.usb.org/sites/default/files/documents/usb_type-c.zip" (at 45.72 49.53 0)
@@ -9603,7 +9483,7 @@
     (pin "B9" (uuid e76e669f-984b-40c9-9130-3b4d44f1c919))
     (pin "S1" (uuid 972d9ea9-6086-4e98-955b-e91d22b3d932))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "J2") (unit 1)
         )
@@ -9611,25 +9491,26 @@
     )
   )
 
-  (symbol (lib_id "Switch:SW_SPST") (at 47.625 127 180) (unit 1)
+  (symbol (lib_id "Switch:SW_SPDT") (at 48.26 124.46 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 8e6ffcc0-806a-4560-99a2-1645d700f50a)
-    (property "Reference" "SW1" (at 47.625 132.3508 0)
+    (property "Reference" "SW1" (at 46.99 127 0)
       (effects (font (size 1.27 1.27)))
     )
-    (property "Value" "BATT_SWITCH" (at 47.625 129.8139 0)
+    (property "Value" "BATT_SWITCH" (at 49.53 119.38 0)
       (effects (font (size 1.27 1.27)))
     )
-    (property "Footprint" "Button_Switch_THT:SW_Tactile_SPST_Angled_PTS645Vx31-2LFS" (at 47.625 127 0)
+    (property "Footprint" "Button_Switch_THT:SW_Lever_1P2T_NKK_GW12LxH" (at 48.26 124.46 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (property "Datasheet" "~" (at 47.625 127 0)
+    (property "Datasheet" "~" (at 48.26 124.46 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (pin "1" (uuid bc6fa8fa-7b19-4766-91fc-cc805b093a5a))
     (pin "2" (uuid 3b72058c-1c5c-438d-bcb3-ad9fb98264a1))
+    (pin "3" (uuid ce287440-6cf8-4aaa-8fab-9840f97d127f))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "SW1") (unit 1)
         )
@@ -9646,7 +9527,7 @@
     (property "Value" "TestPoint" (at 262.763 48.3358 0)
       (effects (font (size 1.27 1.27)) (justify right) hide)
     )
-    (property "Footprint" "TestPoint:TestPoint_Pad_D1.5mm" (at 269.24 53.34 0)
+    (property "Footprint" "TestPoint:TestPoint_THTPad_D1.5mm_Drill0.7mm" (at 269.24 53.34 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (at 269.24 53.34 0)
@@ -9654,7 +9535,7 @@
     )
     (pin "1" (uuid 41c3c0e2-eaef-48c7-bf0b-841124cdced9))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "TP5") (unit 1)
         )
@@ -9680,7 +9561,7 @@
     (pin "1" (uuid d25ca65c-d18d-408a-8e66-7ac9768fb97e))
     (pin "2" (uuid ad3c713b-1106-45d7-8071-c958fce72ba1))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "C20") (unit 1)
         )
@@ -9691,10 +9572,10 @@
   (symbol (lib_id "Device:L_Ferrite_Small") (at 475.615 179.07 90) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 969f5171-1992-4068-b6fc-cbfe5d7d6cfe)
-    (property "Reference" "L2" (at 475.615 174.4812 90)
+    (property "Reference" "L2" (at 475.615 174.0367 90)
       (effects (font (size 1.27 1.27)))
     )
-    (property "Value" "100-600" (at 475.615 177.0181 90)
+    (property "Value" "100-600R" (at 475.615 176.4609 90)
       (effects (font (size 1.27 1.27)))
     )
     (property "Footprint" "Inductor_SMD:L_0805_2012Metric" (at 475.615 179.07 0)
@@ -9706,7 +9587,7 @@
     (pin "1" (uuid 03b7c5a0-cb3e-4a9a-ba60-e8ed46ee8133))
     (pin "2" (uuid 9b470a60-e19a-4206-a8bf-a1035cf1b0e4))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "L2") (unit 1)
         )
@@ -9732,7 +9613,7 @@
     (pin "1" (uuid 75956b54-9c18-43ff-adab-f597770700b8))
     (pin "2" (uuid 8cdfcd42-d57b-462f-bbf4-23489268e3d8))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "C31") (unit 1)
         )
@@ -9749,7 +9630,7 @@
     (property "Value" "TestPoint" (at 242.443 48.3358 0)
       (effects (font (size 1.27 1.27)) (justify right) hide)
     )
-    (property "Footprint" "TestPoint:TestPoint_Pad_D1.5mm" (at 248.92 53.34 0)
+    (property "Footprint" "TestPoint:TestPoint_THTPad_D1.5mm_Drill0.7mm" (at 248.92 53.34 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (at 248.92 53.34 0)
@@ -9757,7 +9638,7 @@
     )
     (pin "1" (uuid 745fd7e6-f681-4f5d-b84a-06b08444655b))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "TP3") (unit 1)
         )
@@ -9782,7 +9663,7 @@
     )
     (pin "1" (uuid 37504554-a127-4523-b2b1-ee06ad53e152))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "#PWR045") (unit 1)
         )
@@ -9807,7 +9688,7 @@
     )
     (pin "1" (uuid 330442f3-6c1e-4f77-9de9-2e6a625d4bf1))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "#PWR02") (unit 1)
         )
@@ -9832,7 +9713,7 @@
     )
     (pin "1" (uuid e178ae22-1c1d-42d4-94a5-ed5ceb1c765f))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "#PWR04") (unit 1)
         )
@@ -9858,7 +9739,7 @@
     (pin "1" (uuid a81882a0-d730-4c3b-b17a-823da6a63697))
     (pin "2" (uuid 0eeea85a-3cba-496d-b289-7db6bbaf8d5b))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "R21") (unit 1)
         )
@@ -9875,7 +9756,7 @@
     (property "Value" "TestPoint" (at 252.603 48.3358 0)
       (effects (font (size 1.27 1.27)) (justify right) hide)
     )
-    (property "Footprint" "TestPoint:TestPoint_Pad_D1.5mm" (at 259.08 53.34 0)
+    (property "Footprint" "TestPoint:TestPoint_THTPad_D1.5mm_Drill0.7mm" (at 259.08 53.34 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (at 259.08 53.34 0)
@@ -9883,7 +9764,7 @@
     )
     (pin "1" (uuid db15b9f8-2b6b-48f5-9aa0-5fe312c45a7e))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "TP4") (unit 1)
         )
@@ -9909,7 +9790,7 @@
     (pin "1" (uuid c6ace979-9227-4dc0-9a60-c7b25fc1f7f1))
     (pin "2" (uuid db38ebbf-9c59-4dad-9069-02ba2dfac4e2))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "C27") (unit 1)
         )
@@ -9934,7 +9815,7 @@
     )
     (pin "1" (uuid 6d69300b-a82f-4163-815c-f9fcd39b51cb))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "#PWR064") (unit 1)
         )
@@ -9959,7 +9840,7 @@
     )
     (pin "1" (uuid 02a57056-5165-4edb-9725-a8c47703a5b9))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "#PWR027") (unit 1)
         )
@@ -9976,7 +9857,7 @@
     (property "Value" "TestPoint" (at 254.127 44.3742 0)
       (effects (font (size 1.27 1.27)) (justify right) hide)
     )
-    (property "Footprint" "TestPoint:TestPoint_Pad_D1.5mm" (at 247.65 39.37 0)
+    (property "Footprint" "TestPoint:TestPoint_THTPad_D1.5mm_Drill0.7mm" (at 247.65 39.37 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (at 247.65 39.37 0)
@@ -9984,7 +9865,7 @@
     )
     (pin "1" (uuid 78710f61-fa3f-4ac2-ab7e-484477abdc65))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "TP2") (unit 1)
         )
@@ -10009,7 +9890,7 @@
     )
     (pin "1" (uuid 52f7ebae-a587-4cf8-962b-b89b59a13080))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "#PWR063") (unit 1)
         )
@@ -10035,7 +9916,7 @@
     (pin "1" (uuid a81acad3-b082-47ff-bcde-5cfa6e0aa95e))
     (pin "2" (uuid 8b0e6e85-1880-4060-8637-a70a62772fe3))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "R17") (unit 1)
         )
@@ -10061,7 +9942,7 @@
     (pin "1" (uuid 32e3d00e-113b-40ce-8da7-fdd9d80aafd6))
     (pin "2" (uuid 82a7f619-5910-45e6-ac58-910b7e9b99fa))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "B2") (unit 1)
         )
@@ -10086,7 +9967,7 @@
     )
     (pin "1" (uuid 602781fd-cfa4-4c23-b132-a4d6498b5e1f))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "#PWR049") (unit 1)
         )
@@ -10111,7 +9992,7 @@
     )
     (pin "1" (uuid d8d7d7c3-99c1-4b28-9457-5232847bf01c))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "#PWR048") (unit 1)
         )
@@ -10137,7 +10018,7 @@
     (pin "1" (uuid 01bf928d-8fc6-4256-bb4c-66c5c9d66d3a))
     (pin "2" (uuid c2d990ab-48f0-4257-8bee-6c18b76e69ad))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "D13") (unit 1)
         )
@@ -10162,7 +10043,7 @@
     )
     (pin "1" (uuid bc422fac-3a1b-480e-ac82-0016de068c2d))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "#PWR072") (unit 1)
         )
@@ -10188,7 +10069,7 @@
     (pin "1" (uuid 43c3821a-17ee-4de8-870a-5a1760f4622c))
     (pin "2" (uuid 01778ab6-8b1b-4ea0-9a5f-289d6cd6938c))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "R20") (unit 1)
         )
@@ -10214,7 +10095,7 @@
     (pin "1" (uuid 1f95bd58-0a82-4552-87d7-285b7ceb8479))
     (pin "2" (uuid b17548f3-fe3a-40ad-8757-29d65c87c00b))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "C21") (unit 1)
         )
@@ -10239,7 +10120,7 @@
     )
     (pin "1" (uuid 8612b324-0541-4896-b819-5fb3b58dd793))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "#PWR041") (unit 1)
         )
@@ -10265,7 +10146,7 @@
     (pin "1" (uuid d64c678f-4186-4512-87cf-eb040ed08160))
     (pin "2" (uuid f5eab6e5-355c-42bc-83ba-5eeb9076be10))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "JP8") (unit 1)
         )
@@ -10291,7 +10172,7 @@
     (pin "1" (uuid b80fe475-d498-424d-9f4e-6dd0b6822a3d))
     (pin "2" (uuid 5d21e99b-d851-4d0a-bbb1-d2e6bab6c598))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "B3") (unit 1)
         )
@@ -10316,7 +10197,7 @@
     )
     (pin "1" (uuid 26d694af-82b4-42c9-aa86-46929b395f11))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "#PWR07") (unit 1)
         )
@@ -10348,7 +10229,7 @@
     (pin "7" (uuid ab7daef3-4310-477a-99c1-4a9c699fe511))
     (pin "8" (uuid 9ce5ec12-3f22-45ab-aab1-a06222a546d7))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "U4") (unit 1)
         )
@@ -10362,7 +10243,7 @@
     (property "Reference" "D4" (at 187.96 267.335 90)
       (effects (font (size 1.27 1.27)) (justify right))
     )
-    (property "Value" "POWER LED" (at 181.61 268.605 90)
+    (property "Value" "CHARGE LED (Red)" (at 181.61 268.605 90)
       (effects (font (size 1.27 1.27)) (justify right) hide)
     )
     (property "Footprint" "LED_SMD:LED_0805_2012Metric" (at 193.04 271.145 0)
@@ -10374,7 +10255,7 @@
     (pin "1" (uuid 5a9f058e-842f-4430-9210-9abef26352d1))
     (pin "2" (uuid 28fbc444-4191-4fec-b8c3-f3a9a2f44a8c))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "D4") (unit 1)
         )
@@ -10400,7 +10281,7 @@
     (pin "1" (uuid ecfc1541-afc4-4645-9cc3-dbd218d26f0e))
     (pin "2" (uuid de3e69b6-793c-4d1a-a5ed-bcb598b644f9))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "D14") (unit 1)
         )
@@ -10425,7 +10306,7 @@
     )
     (pin "1" (uuid 0e96566a-3b0f-4a28-9d2b-98f6d224f530))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "#PWR01") (unit 1)
         )
@@ -10450,7 +10331,7 @@
     )
     (pin "1" (uuid 45aa656a-55b1-4258-a5f4-8d15e093c01f))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "#PWR060") (unit 1)
         )
@@ -10475,7 +10356,7 @@
     )
     (pin "1" (uuid 72ea7fde-a5f6-44bc-a691-d070b4f9d708))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "#PWR08") (unit 1)
         )
@@ -10501,7 +10382,7 @@
     (pin "1" (uuid 84f06771-522e-40c6-b1d2-98f0af43d05e))
     (pin "2" (uuid 3e717005-4589-417f-b17c-70dbe6046c14))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "F1") (unit 1)
         )
@@ -10526,7 +10407,7 @@
     )
     (pin "1" (uuid cefaedf8-6af3-40cf-acda-76233e7086e3))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "#PWR029") (unit 1)
         )
@@ -10552,7 +10433,7 @@
     (pin "1" (uuid ce96de59-b709-42a3-8b80-93fa6670e82d))
     (pin "2" (uuid 56fc9185-ad11-4b5a-9ebe-99e86fc633f2))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "D1") (unit 1)
         )
@@ -10577,7 +10458,7 @@
     )
     (pin "1" (uuid cab0420a-9471-492e-8663-931441469627))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "#PWR062") (unit 1)
         )
@@ -10603,7 +10484,7 @@
     (pin "1" (uuid e9eb328f-fd4f-448b-86c7-e968de876268))
     (pin "2" (uuid 57442ecc-99c3-4fb5-a376-3060907b4298))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "L7") (unit 1)
         )
@@ -10629,7 +10510,7 @@
     (pin "1" (uuid 0988d86b-377e-4c32-9689-f5b9c86d41fc))
     (pin "2" (uuid 0722a260-b551-4a17-b347-1bfdaa8627d2))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "R30") (unit 1)
         )
@@ -10655,7 +10536,7 @@
     (pin "1" (uuid 33d5be95-987c-4f4c-a5f4-1bbdc78cba58))
     (pin "2" (uuid b7d913cd-9e07-4136-82b0-bf3e96d7ecce))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "R5") (unit 1)
         )
@@ -10680,62 +10561,9 @@
     )
     (pin "1" (uuid fc833aa3-8ce0-4003-bf55-117da2aad492))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "#PWR057") (unit 1)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "Device:Q_PMOS_GSD") (at 59.69 207.01 90) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
-    (uuid eb1699c2-d1a6-433f-ad0e-d5502e3c1a77)
-    (property "Reference" "Q2" (at 59.69 198.8652 90)
-      (effects (font (size 1.27 1.27)))
-    )
-    (property "Value" "IRLML2244" (at 59.69 201.4021 90)
-      (effects (font (size 1.27 1.27)))
-    )
-    (property "Footprint" "Package_TO_SOT_SMD:SOT-23" (at 57.15 201.93 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "~" (at 59.69 207.01 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (pin "1" (uuid 1ffe2b0b-1e77-48d0-b200-41c82cb4f67d))
-    (pin "2" (uuid 23198847-10b0-45aa-a149-78033f16883f))
-    (pin "3" (uuid 420d9fd6-32a6-4e62-8137-316709c8823a))
-    (instances
-      (project "EnvSensor-v2.1"
-        (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
-          (reference "Q2") (unit 1)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "Device:R") (at 59.69 218.44 180) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no)
-    (uuid ec29c61d-577b-4e27-8f2c-33983dca4bd1)
-    (property "Reference" "R18" (at 61.468 217.2716 0)
-      (effects (font (size 1.27 1.27)) (justify right))
-    )
-    (property "Value" "3k3" (at 61.468 219.583 0)
-      (effects (font (size 1.27 1.27)) (justify right))
-    )
-    (property "Footprint" "Resistor_SMD:R_0805_2012Metric" (at 61.468 218.44 90)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "~" (at 59.69 218.44 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (pin "1" (uuid eb1598a2-599d-4967-87f7-a013feba1fcd))
-    (pin "2" (uuid d771d765-8179-4f67-9d09-1c596256783c))
-    (instances
-      (project "EnvSensor-v2.1"
-        (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
-          (reference "R18") (unit 1)
         )
       )
     )
@@ -10758,7 +10586,7 @@
     )
     (pin "1" (uuid 3784eb1b-da27-49de-9ac9-dca1357b5a2c))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "#PWR036") (unit 1)
         )
@@ -10784,7 +10612,7 @@
     (pin "1" (uuid c52f2eb3-7b86-4742-b95e-55de2a49b12c))
     (pin "2" (uuid 9b542872-4ceb-435e-be6c-8ea6a8661b33))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "C36") (unit 1)
         )
@@ -10810,7 +10638,7 @@
     (pin "1" (uuid 00b9ee9c-c9bb-48b7-b703-d911790c9f1f))
     (pin "2" (uuid 70dc8d19-8a36-4758-9f6d-c429a920c0b4))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "C43") (unit 1)
         )
@@ -10836,7 +10664,7 @@
     (pin "1" (uuid e8a5cfc8-6ab1-4d44-a626-5a31f4a48b21))
     (pin "2" (uuid 2c7a074f-b035-4711-87bb-c7bbf03ef394))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "F2") (unit 1)
         )
@@ -10861,7 +10689,7 @@
     )
     (pin "1" (uuid 62fb2f0d-dcb4-410b-802c-a51ac516d3fe))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "#PWR070") (unit 1)
         )
@@ -10887,7 +10715,7 @@
     (pin "1" (uuid 90b4d130-2787-4a72-a366-23595ceddd70))
     (pin "2" (uuid a4990dd1-a651-418c-8829-f936ffd7d08b))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "R23") (unit 1)
         )
@@ -10913,7 +10741,7 @@
     (pin "1" (uuid 3f383646-6753-476f-bc96-25b6e19b328c))
     (pin "2" (uuid 0d4d43ca-7fe7-4d08-8707-583f874aa989))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "R4") (unit 1)
         )
@@ -10939,7 +10767,7 @@
     (pin "1" (uuid ab714dd8-d587-4acc-adb1-0786d5a773ce))
     (pin "2" (uuid e7dbbc92-b04c-460d-827f-88ac4cc6a9d2))
     (instances
-      (project "EnvSensor-v2.1"
+      (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "R2") (unit 1)
         )
