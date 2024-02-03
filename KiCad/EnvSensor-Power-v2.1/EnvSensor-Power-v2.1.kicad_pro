@@ -178,7 +178,8 @@
         0.0,
         0.25,
         0.4,
-        0.6
+        0.6,
+        1.2
       ],
       "via_dimensions": [
         {
@@ -412,7 +413,7 @@
     "pinned_symbol_libs": []
   },
   "meta": {
-    "filename": "EnvSensor-v2.1.kicad_pro",
+    "filename": "EnvSensor-Power-v2.1.kicad_pro",
     "version": 1
   },
   "net_settings": {
