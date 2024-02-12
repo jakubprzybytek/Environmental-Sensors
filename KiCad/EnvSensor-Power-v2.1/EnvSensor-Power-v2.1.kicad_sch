@@ -2521,8 +2521,11 @@
   (junction (at 124.46 204.47) (diameter 0) (color 0 0 0 0)
     (uuid 05515a1e-86b9-4bb5-8b48-665f5dac6515)
   )
-  (junction (at 280.67 293.37) (diameter 0) (color 0 0 0 0)
-    (uuid 09c8a2f8-9751-4e0e-a295-f9e930b29411)
+  (junction (at 316.23 142.24) (diameter 0) (color 0 0 0 0)
+    (uuid 0bf105c9-d87f-45d0-8001-2601189698bb)
+  )
+  (junction (at 415.29 135.89) (diameter 0) (color 0 0 0 0)
+    (uuid 0c2d619c-2e71-45ab-b00c-7ad6df65f4b0)
   )
   (junction (at 78.74 204.47) (diameter 0) (color 0 0 0 0)
     (uuid 0e4dcafe-894c-477b-8cb5-4ba1f1f8b586)
@@ -2560,7 +2563,7 @@
   (junction (at 434.34 281.94) (diameter 0) (color 0 0 0 0)
     (uuid 29463976-288d-49a0-84d6-a19e3b08405b)
   )
-  (junction (at 412.75 135.89) (diameter 0) (color 0 0 0 0)
+  (junction (at 410.21 135.89) (diameter 0) (color 0 0 0 0)
     (uuid 2a9aace4-4d87-4955-88df-c7f2623068da)
   )
   (junction (at 325.755 154.94) (diameter 0) (color 0 0 0 0)
@@ -2649,6 +2652,9 @@
   )
   (junction (at 368.3 281.94) (diameter 0) (color 0 0 0 0)
     (uuid 705769d0-6f48-4449-8fdd-2c47de091098)
+  )
+  (junction (at 410.21 149.86) (diameter 0) (color 0 0 0 0)
+    (uuid 76762f16-5ca0-4028-a197-142d54b2cda3)
   )
   (junction (at 195.58 277.495) (diameter 0) (color 0 0 0 0)
     (uuid 77b16bf5-0bd5-4ce5-8326-1c18a7690055)
@@ -2758,6 +2764,9 @@
   (junction (at 445.77 281.94) (diameter 0) (color 0 0 0 0)
     (uuid be74d211-a9f2-4e9b-adf7-8405d92ba5a4)
   )
+  (junction (at 378.46 281.94) (diameter 0) (color 0 0 0 0)
+    (uuid bef15265-b58d-4729-999f-77a4aebfe75e)
+  )
   (junction (at 387.35 281.94) (diameter 0) (color 0 0 0 0)
     (uuid c06fd10d-59fa-4aff-8a49-31a9b88ffd36)
   )
@@ -2794,11 +2803,11 @@
   (junction (at 402.59 281.94) (diameter 0) (color 0 0 0 0)
     (uuid d1628d23-54c8-47bc-9aeb-1ee52a3ccd72)
   )
+  (junction (at 415.29 149.86) (diameter 0) (color 0 0 0 0)
+    (uuid d299f857-395e-40d0-8986-198912d4e9aa)
+  )
   (junction (at 118.11 279.4) (diameter 0) (color 0 0 0 0)
     (uuid d5725a68-4f08-43ae-8cd3-05ce7b194f01)
-  )
-  (junction (at 285.75 303.53) (diameter 0) (color 0 0 0 0)
-    (uuid d69fa27e-14e2-4bb1-8144-e9d3c4b7ad91)
   )
   (junction (at 123.19 161.29) (diameter 0) (color 0 0 0 0)
     (uuid d86eb159-79d1-46bb-962b-4e89e43dd472)
@@ -2809,14 +2818,17 @@
   (junction (at 529.59 307.34) (diameter 0) (color 0 0 0 0)
     (uuid dd2450a6-a6bc-49e9-8429-5e1964955ce0)
   )
-  (junction (at 412.75 149.86) (diameter 0) (color 0 0 0 0)
-    (uuid df5e29ef-758c-48ed-9edc-ac2508912165)
+  (junction (at 373.38 293.37) (diameter 0) (color 0 0 0 0)
+    (uuid deb422e2-33eb-4d2e-bd91-19dfc2992499)
   )
   (junction (at 104.14 266.7) (diameter 0) (color 0 0 0 0)
     (uuid e112014b-6f0a-4222-a1d1-5fe887d337fb)
   )
   (junction (at 391.16 208.28) (diameter 0) (color 0 0 0 0)
     (uuid e2fcbb2d-9f90-4a78-a8c8-1351fb3dad31)
+  )
+  (junction (at 321.945 154.94) (diameter 0) (color 0 0 0 0)
+    (uuid e5bcd874-f37a-4a69-8148-6fa313677174)
   )
   (junction (at 194.945 229.235) (diameter 0) (color 0 0 0 0)
     (uuid e90a7376-024f-4e48-8f2a-734fd2cd7258)
@@ -3004,11 +3016,7 @@
     (stroke (width 0) (type default))
     (uuid 0cb185c5-7421-4fa2-ae81-b5988642df79)
   )
-  (wire (pts (xy 321.945 154.94) (xy 325.755 154.94))
-    (stroke (width 0) (type default))
-    (uuid 0cde4af7-acd8-4c80-a857-4da993be2f35)
-  )
-  (wire (pts (xy 375.92 281.94) (xy 387.35 281.94))
+  (wire (pts (xy 375.92 281.94) (xy 378.46 281.94))
     (stroke (width 0) (type default))
     (uuid 0d562542-fde7-447c-a6df-cccb3cc2786b)
   )
@@ -3023,6 +3031,10 @@
   (wire (pts (xy 378.46 138.43) (xy 377.19 138.43))
     (stroke (width 0) (type default))
     (uuid 0ec7d182-36fa-43a2-932a-cf9de9993836)
+  )
+  (wire (pts (xy 321.945 154.94) (xy 325.755 154.94))
+    (stroke (width 0) (type default))
+    (uuid 0fca6ae6-d68e-4fa3-bf7d-d88b70d2b93d)
   )
   (wire (pts (xy 295.91 293.37) (xy 300.99 293.37))
     (stroke (width 0) (type default))
@@ -3146,6 +3158,10 @@
     (stroke (width 0) (type default))
     (uuid 1cec09fa-48fd-4aa8-9b4c-b746d71cb951)
   )
+  (wire (pts (xy 415.29 147.32) (xy 415.29 149.86))
+    (stroke (width 0) (type default))
+    (uuid 1dce6905-50ea-4b03-a1a0-d8b3d551319c)
+  )
   (wire (pts (xy 67.945 129.54) (xy 69.215 129.54))
     (stroke (width 0) (type default))
     (uuid 1e2289e3-e10b-4dfa-812a-7e2923df9d24)
@@ -3255,6 +3271,10 @@
     (stroke (width 0) (type default))
     (uuid 2b6f554c-1606-445d-b6b7-857062ee308d)
   )
+  (wire (pts (xy 378.46 281.94) (xy 378.46 284.48))
+    (stroke (width 0) (type default))
+    (uuid 2bc18391-d495-42ef-8598-e310f677a481)
+  )
   (wire (pts (xy 369.57 223.52) (xy 369.57 224.79))
     (stroke (width 0) (type default))
     (uuid 2c0471f1-115b-4d71-8ad9-f724048e2556)
@@ -3267,13 +3287,13 @@
     (stroke (width 0) (type default))
     (uuid 2cc26e29-92de-4d4f-a11a-5b7d4e4708e7)
   )
-  (wire (pts (xy 280.67 293.37) (xy 280.67 294.64))
-    (stroke (width 0) (type default))
-    (uuid 2d3fee85-38ba-421b-a23b-88a07dc850b4)
-  )
   (wire (pts (xy 243.84 53.34) (xy 243.84 54.61))
     (stroke (width 0) (type default))
     (uuid 2d513912-d87d-4cb4-bec6-0ac2352fcb48)
+  )
+  (wire (pts (xy 378.46 293.37) (xy 373.38 293.37))
+    (stroke (width 0) (type default))
+    (uuid 2da9a6ce-581f-4904-9ad8-e97179667128)
   )
   (wire (pts (xy 328.295 142.24) (xy 334.645 142.24))
     (stroke (width 0) (type default))
@@ -3433,10 +3453,6 @@
     (stroke (width 0) (type default))
     (uuid 421c41af-7260-4ade-92a5-de0c1b195694)
   )
-  (wire (pts (xy 412.75 149.86) (xy 405.13 149.86))
-    (stroke (width 0) (type default))
-    (uuid 428b2329-003c-4b58-908f-c268872cd3e8)
-  )
   (wire (pts (xy 341.63 281.94) (xy 342.9 281.94))
     (stroke (width 0) (type default))
     (uuid 42bd2c4a-815c-4ef8-bb35-238aeffa3d22)
@@ -3522,7 +3538,7 @@
     (stroke (width 0) (type default))
     (uuid 4cd1cc29-50e8-4644-8940-8935f96d10ef)
   )
-  (wire (pts (xy 412.75 135.89) (xy 412.75 139.7))
+  (wire (pts (xy 410.21 135.89) (xy 410.21 139.7))
     (stroke (width 0) (type default))
     (uuid 4d2d5773-542e-4fde-935c-92bfe2bdd642)
   )
@@ -3530,15 +3546,15 @@
     (stroke (width 0) (type default))
     (uuid 4ddd52d8-6884-46c0-bce6-2d8b4941f18f)
   )
+  (wire (pts (xy 316.23 154.94) (xy 321.945 154.94))
+    (stroke (width 0) (type default))
+    (uuid 4e3489d5-f9ee-477a-991f-a91f8d0621fa)
+  )
   (polyline (pts (xy 177.8 101.6) (xy 177.8 165.1))
     (stroke (width 0) (type default))
     (uuid 4e5aed4c-c7ff-4fa0-8ba6-106b4b248f32)
   )
 
-  (wire (pts (xy 280.67 293.37) (xy 285.75 293.37))
-    (stroke (width 0) (type default))
-    (uuid 4f1f0b0c-ad44-4ee3-9bd4-7c4375f33929)
-  )
   (wire (pts (xy 193.04 264.795) (xy 193.04 267.335))
     (stroke (width 0) (type default))
     (uuid 4fa088f6-faae-4ec8-b6d4-596277302409)
@@ -3681,6 +3697,10 @@
     (stroke (width 0) (type default))
     (uuid 661d42a0-45b9-4874-95bf-51223f1ca367)
   )
+  (wire (pts (xy 410.21 149.86) (xy 415.29 149.86))
+    (stroke (width 0) (type default))
+    (uuid 6633b512-1342-473e-806d-79c39d92f240)
+  )
   (polyline (pts (xy 25.4 254) (xy 25.4 330.2))
     (stroke (width 0) (type default))
     (uuid 664a222b-7b6c-4e82-b5df-52a3d2338eab)
@@ -3694,7 +3714,7 @@
     (stroke (width 0) (type default))
     (uuid 6761bfef-cae3-4d67-98c0-599b90a65d97)
   )
-  (wire (pts (xy 412.75 147.32) (xy 412.75 149.86))
+  (wire (pts (xy 410.21 147.32) (xy 410.21 149.86))
     (stroke (width 0) (type default))
     (uuid 6790654d-ac4b-4663-88df-cec0881edb2c)
   )
@@ -3792,7 +3812,7 @@
     (stroke (width 0) (type default))
     (uuid 72b9903b-1003-4500-b591-22d1ecea1b8a)
   )
-  (wire (pts (xy 279.4 293.37) (xy 280.67 293.37))
+  (wire (pts (xy 279.4 293.37) (xy 285.75 293.37))
     (stroke (width 0) (type default))
     (uuid 7358fbdd-e2f7-4df6-a316-40d6ad5bc059)
   )
@@ -3827,10 +3847,6 @@
   (wire (pts (xy 290.83 302.26) (xy 290.83 303.53))
     (stroke (width 0) (type default))
     (uuid 7ca05a0d-e29a-4f9b-b8f5-ce77d966a31e)
-  )
-  (wire (pts (xy 416.56 149.86) (xy 412.75 149.86))
-    (stroke (width 0) (type default))
-    (uuid 7d0c1354-090d-4121-8d7f-e8475c8ab2bc)
   )
   (wire (pts (xy 266.7 293.37) (xy 271.78 293.37))
     (stroke (width 0) (type default))
@@ -4032,7 +4048,7 @@
     (stroke (width 0) (type default))
     (uuid 9ae5a17d-b66a-43dd-ac4a-defd3fcf66f6)
   )
-  (wire (pts (xy 405.13 135.89) (xy 412.75 135.89))
+  (wire (pts (xy 405.13 135.89) (xy 410.21 135.89))
     (stroke (width 0) (type default))
     (uuid 9b1de904-6abc-4006-be0b-59e71e42e3f4)
   )
@@ -4056,6 +4072,10 @@
   (wire (pts (xy 332.74 281.94) (xy 334.01 281.94))
     (stroke (width 0) (type default))
     (uuid 9c53f9a2-40ad-4062-9847-2bbb9e744f99)
+  )
+  (wire (pts (xy 415.29 149.86) (xy 416.56 149.86))
+    (stroke (width 0) (type default))
+    (uuid 9cb40ac6-b6f8-4411-9c9b-de1189ead540)
   )
   (wire (pts (xy 378.46 152.4) (xy 377.19 152.4))
     (stroke (width 0) (type default))
@@ -4109,17 +4129,13 @@
     (stroke (width 0) (type default))
     (uuid a07574a2-2bfe-46b9-8ce0-48a7e717fa4f)
   )
-  (wire (pts (xy 412.75 135.89) (xy 420.37 135.89))
+  (wire (pts (xy 410.21 135.89) (xy 415.29 135.89))
     (stroke (width 0) (type default))
     (uuid a0ccb1c6-4a99-4695-8f3f-5086a8c75e3c)
   )
   (wire (pts (xy 351.79 215.9) (xy 351.79 217.17))
     (stroke (width 0) (type default))
     (uuid a1ca79d6-3f49-4c2f-85a8-b1de7c106435)
-  )
-  (wire (pts (xy 280.67 302.26) (xy 280.67 303.53))
-    (stroke (width 0) (type default))
-    (uuid a1d47f68-aabd-4c1b-a0cf-5c93d9af117a)
   )
   (wire (pts (xy 374.65 198.12) (xy 374.65 200.66))
     (stroke (width 0) (type default))
@@ -4249,6 +4265,10 @@
     (stroke (width 0) (type default))
     (uuid b11e787b-c721-4ae6-be7f-f1c427f65c3d)
   )
+  (wire (pts (xy 316.23 142.24) (xy 316.23 144.78))
+    (stroke (width 0) (type default))
+    (uuid b17124cb-9b14-4d72-9fdb-8fe13dc53b6e)
+  )
   (wire (pts (xy 66.04 50.8) (xy 66.04 52.07))
     (stroke (width 0) (type default))
     (uuid b1806adb-e1b4-4159-8fa4-5dafb10476a6)
@@ -4335,7 +4355,7 @@
     (stroke (width 0) (type default))
     (uuid bbf7eff6-f669-4654-af7f-529c8f04145d)
   )
-  (wire (pts (xy 307.975 142.24) (xy 321.945 142.24))
+  (wire (pts (xy 307.975 142.24) (xy 316.23 142.24))
     (stroke (width 0) (type default))
     (uuid bd093f52-1189-4355-8e51-011fd03c0ae7)
   )
@@ -4364,6 +4384,10 @@
     (uuid bff1d422-a13c-4e7b-860e-c20a325d46fb)
   )
 
+  (wire (pts (xy 316.23 142.24) (xy 321.945 142.24))
+    (stroke (width 0) (type default))
+    (uuid c0af1bef-8c7e-40aa-98dd-f1bbfe012e4f)
+  )
   (wire (pts (xy 336.55 218.44) (xy 344.17 218.44))
     (stroke (width 0) (type default))
     (uuid c0ff3a72-ac95-4d86-a452-35848351de14)
@@ -4426,6 +4450,10 @@
     (uuid c7113885-63df-4148-9aee-29be9457ce30)
   )
 
+  (wire (pts (xy 415.29 135.89) (xy 415.29 139.7))
+    (stroke (width 0) (type default))
+    (uuid c7b844a5-64c0-49a6-b454-ee1f40f89444)
+  )
   (wire (pts (xy 195.58 262.255) (xy 195.58 264.795))
     (stroke (width 0) (type default))
     (uuid c8a1d8f1-1239-4ac1-b4b4-a05723865821)
@@ -4501,6 +4529,10 @@
     (uuid d0ad6246-96cb-4b2a-ad48-7d4968a035de)
   )
 
+  (wire (pts (xy 378.46 292.1) (xy 378.46 293.37))
+    (stroke (width 0) (type default))
+    (uuid d1a0424e-738d-4dd6-8ec2-392d658769fd)
+  )
   (wire (pts (xy 307.34 275.59) (xy 303.53 275.59))
     (stroke (width 0) (type default))
     (uuid d2f718d2-9ce8-43c6-9686-01c2a6b78fc0)
@@ -4660,9 +4692,17 @@
     (stroke (width 0) (type default))
     (uuid e316d171-68a4-4689-8f81-9eb98098ec6c)
   )
+  (wire (pts (xy 316.23 152.4) (xy 316.23 154.94))
+    (stroke (width 0) (type default))
+    (uuid e320546f-cd9e-4357-882f-b052d4152c48)
+  )
   (wire (pts (xy 194.945 238.125) (xy 194.945 239.395))
     (stroke (width 0) (type default))
     (uuid e3580b00-5384-4875-b03d-5ff0e268f76a)
+  )
+  (wire (pts (xy 415.29 135.89) (xy 420.37 135.89))
+    (stroke (width 0) (type default))
+    (uuid e44970a9-ccc1-4620-beb4-20d06e39c7c1)
   )
   (wire (pts (xy 524.51 179.07) (xy 527.05 179.07))
     (stroke (width 0) (type default))
@@ -4857,9 +4897,9 @@
     (stroke (width 0) (type default))
     (uuid f9afa265-4748-429d-9c9f-faee50814f7b)
   )
-  (wire (pts (xy 280.67 303.53) (xy 285.75 303.53))
+  (wire (pts (xy 378.46 281.94) (xy 387.35 281.94))
     (stroke (width 0) (type default))
-    (uuid f9b9a6ab-a9de-474b-9287-4b3c3fe0542c)
+    (uuid fa02d83b-cddb-49c4-9174-8ae8b132fd50)
   )
   (wire (pts (xy 491.49 313.69) (xy 491.49 317.5))
     (stroke (width 0) (type default))
@@ -4910,6 +4950,10 @@
     (stroke (width 0) (type default))
     (uuid fe763baa-a75d-431f-8930-cf71a3b66cd1)
   )
+  (wire (pts (xy 410.21 149.86) (xy 405.13 149.86))
+    (stroke (width 0) (type default))
+    (uuid ff2481bb-26f7-4200-bd55-4d15ae2c925f)
+  )
   (wire (pts (xy 256.54 288.29) (xy 256.54 293.37))
     (stroke (width 0) (type default))
     (uuid ffdcab30-2875-4626-b584-0645308df041)
@@ -4924,7 +4968,7 @@
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid 08f50ce5-3007-4dfa-954f-db3d8efc3277)
   )
-  (text "Cout: min 4u7\nX7R or X5R\nbias 5V" (at 364.49 306.07 0)
+  (text "Cout: min 4u7\nX7R or X5R\nbias 5V" (at 359.41 308.61 0)
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid 0ccb454c-e7e2-45f5-a876-b4b32e6a0513)
   )
@@ -4957,10 +5001,6 @@
   (text "MMZ2012S601AT000" (at 274.32 171.45 0)
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid 27c05756-ea7f-4aae-a25a-d8dbecfdcfe4)
-  )
-  (text "Cin: 10u - 44u\nX7R or X5R" (at 290.83 285.75 0)
-    (effects (font (size 1.27 1.27)) (justify left bottom))
-    (uuid 2d74513c-87e8-4032-a880-3bcd11d69dac)
   )
   (text "Pmax=(5.0V-2.5V)*0.5A=1.25W\nRja=50C/W\ndeltaT=62.5C"
     (at 114.3 198.12 0)
@@ -4996,6 +5036,10 @@
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid 5a757b08-eb09-4ffa-aaac-1eda5eb8dd36)
   )
+  (text "Cin min 4.7uF" (at 321.31 166.37 0)
+    (effects (font (size 1.27 1.27)) (justify left bottom))
+    (uuid 5aa63562-07b5-49f7-bf6a-55b750597b9d)
+  )
   (text "Imax=500mA\n\nI=110mA | 250mA\nP=0.4V*110mA | 0.4V*250mA\nP=44mW | 100mW "
     (at 485.14 171.45 0)
     (effects (font (size 1.1176 1.1176)) (justify left bottom))
@@ -5006,7 +5050,7 @@
     (uuid 6c8432a2-dde0-4c51-b09c-34d8702fb9fb)
   )
   (text "@1.6MHz, 4.2V\nGRM21BR71C475KE51 3.5uF\nGRM21BR71C225KA12 2.1uF"
-    (at 292.1 328.93 0)
+    (at 280.67 321.31 0)
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid 7066ad3d-2249-4044-9b29-5968a41ab361)
   )
@@ -5023,7 +5067,7 @@
     (effects (font (size 1.1176 1.1176)) (justify left bottom))
     (uuid 7a7a5a50-736e-412d-b76c-4727a12a3368)
   )
-  (text "Rosc=60k  fosc=1MHz\nRosc=120k fosc=500kHz" (at 321.31 168.91 0)
+  (text "Rosc=60k  fosc=1MHz\nRosc=120k fosc=500kHz" (at 359.41 170.18 0)
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid 845dfd6a-a366-4f89-9406-91c4e1ed85e2)
   )
@@ -5061,12 +5105,12 @@
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid b5a5b999-ceb3-4161-a979-64d60d5ceb0c)
   )
-  (text "Cin: 10u - 44u\nX7R or X5R\nbias 4.2V" (at 292.1 321.31 0)
+  (text "Cin: 10u - 44u\nX7R or X5R\nbias 4.2V" (at 280.67 312.42 0)
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid b67da2eb-1e36-4962-9697-eda98f0fd1a8)
   )
   (text "Vout=1.22*(1+R1/R2)\nR1=300k, R2=173.2k, Vo=3.33\nR1=300k, R2=147k, Vo=3.71"
-    (at 364.49 171.45 0)
+    (at 403.86 172.72 0)
     (effects (font (size 1.1176 1.1176)) (justify left bottom))
     (uuid bd366f41-d9f7-42f9-9d7d-65db9e323d91)
   )
@@ -5103,11 +5147,11 @@
     (uuid d1e75c38-d1bb-49d9-b927-7f8c015db91f)
   )
   (text "@1.6MHz, 5V\nGRM21BR71C475KE51 3.5uF\nGRM21BR71C225KA12 2.1uF"
-    (at 364.49 313.69 0)
+    (at 359.41 316.23 0)
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid dcb8ab68-8df9-47eb-b4d1-088bdd961f93)
   )
-  (text "LM2735X f=1.6MHz\nLM2735Y f=520kHz" (at 317.5 317.5 0)
+  (text "LM2735X f=1.6MHz\nLM2735Y f=520kHz" (at 318.77 314.96 0)
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid e6596fd5-7661-412c-8955-13cf919a6d33)
   )
@@ -5304,7 +5348,7 @@
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid ccdfc824-a6fc-4ce7-af08-91c39720a3ef)
   )
-  (label "3V3_LTC_SW1" (at 355.6 133.35 0) (fields_autoplaced)
+  (label "3V3_LTC_SW1" (at 355.6 132.08 0) (fields_autoplaced)
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid cf921e14-a869-409b-a3ca-25ddca01f391)
   )
@@ -5473,7 +5517,7 @@
   (symbol (lib_id "power:+BATT") (at 144.78 127 270) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 00000000-0000-0000-0000-000061447599)
-    (property "Reference" "#PWR013" (at 140.97 127 0)
+    (property "Reference" "#PWR012" (at 140.97 127 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+BATT" (at 148.0312 127.381 90)
@@ -5489,7 +5533,7 @@
     (instances
       (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
-          (reference "#PWR013") (unit 1)
+          (reference "#PWR012") (unit 1)
         )
       )
     )
@@ -5498,7 +5542,7 @@
   (symbol (lib_id "power:-BATT") (at 144.78 161.29 270) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 00000000-0000-0000-0000-000061448150)
-    (property "Reference" "#PWR020" (at 140.97 161.29 0)
+    (property "Reference" "#PWR019" (at 140.97 161.29 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "-BATT" (at 148.0312 161.671 90)
@@ -5514,7 +5558,7 @@
     (instances
       (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
-          (reference "#PWR020") (unit 1)
+          (reference "#PWR019") (unit 1)
         )
       )
     )
@@ -5523,7 +5567,7 @@
   (symbol (lib_id "Device:C") (at 72.39 144.78 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 00000000-0000-0000-0000-0000614486b6)
-    (property "Reference" "C7" (at 75.311 143.6116 0)
+    (property "Reference" "C6" (at 75.311 143.6116 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "100n" (at 75.311 145.923 0)
@@ -5540,7 +5584,7 @@
     (instances
       (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
-          (reference "C7") (unit 1)
+          (reference "C6") (unit 1)
         )
       )
     )
@@ -5575,7 +5619,7 @@
   (symbol (lib_id "power:GND") (at 144.78 134.62 90) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 00000000-0000-0000-0000-000061452ff2)
-    (property "Reference" "#PWR014" (at 151.13 134.62 0)
+    (property "Reference" "#PWR013" (at 151.13 134.62 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 148.0312 134.493 90)
@@ -5591,7 +5635,7 @@
     (instances
       (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
-          (reference "#PWR014") (unit 1)
+          (reference "#PWR013") (unit 1)
         )
       )
     )
@@ -5626,7 +5670,7 @@
   (symbol (lib_id "Device:R") (at 85.09 234.95 270) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 00000000-0000-0000-0000-0000614741bf)
-    (property "Reference" "R22" (at 85.09 229.6922 90)
+    (property "Reference" "R20" (at 85.09 229.6922 90)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "100k" (at 85.09 232.0036 90)
@@ -5643,7 +5687,7 @@
     (instances
       (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
-          (reference "R22") (unit 1)
+          (reference "R20") (unit 1)
         )
       )
     )
@@ -5652,7 +5696,7 @@
   (symbol (lib_id "Device:C") (at 71.12 212.09 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 00000000-0000-0000-0000-0000614744df)
-    (property "Reference" "C18" (at 74.041 210.9216 0)
+    (property "Reference" "C19" (at 74.041 210.9216 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "10u" (at 74.041 213.233 0)
@@ -5669,7 +5713,7 @@
     (instances
       (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
-          (reference "C18") (unit 1)
+          (reference "C19") (unit 1)
         )
       )
     )
@@ -5678,7 +5722,7 @@
   (symbol (lib_id "Device:C") (at 124.46 214.63 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 00000000-0000-0000-0000-000061474ba9)
-    (property "Reference" "C23" (at 127.381 213.4616 0)
+    (property "Reference" "C24" (at 127.381 213.4616 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "10u" (at 127.381 215.773 0)
@@ -5695,7 +5739,7 @@
     (instances
       (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
-          (reference "C23") (unit 1)
+          (reference "C24") (unit 1)
         )
       )
     )
@@ -5704,7 +5748,7 @@
   (symbol (lib_id "Device:C") (at 115.57 241.3 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 00000000-0000-0000-0000-00006147505f)
-    (property "Reference" "C24" (at 116.84 237.49 0)
+    (property "Reference" "C25" (at 116.84 237.49 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "220n" (at 116.84 245.11 0)
@@ -5721,7 +5765,7 @@
     (instances
       (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
-          (reference "C24") (unit 1)
+          (reference "C25") (unit 1)
         )
       )
     )
@@ -5730,7 +5774,7 @@
   (symbol (lib_id "power:GND") (at 118.11 247.65 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 00000000-0000-0000-0000-00006147589f)
-    (property "Reference" "#PWR043" (at 118.11 254 0)
+    (property "Reference" "#PWR042" (at 118.11 254 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 118.237 252.0442 0)
@@ -5746,7 +5790,7 @@
     (instances
       (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
-          (reference "#PWR043") (unit 1)
+          (reference "#PWR042") (unit 1)
         )
       )
     )
@@ -5755,7 +5799,7 @@
   (symbol (lib_id "power:GND") (at 102.87 240.03 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 00000000-0000-0000-0000-000061476588)
-    (property "Reference" "#PWR042" (at 102.87 246.38 0)
+    (property "Reference" "#PWR041" (at 102.87 246.38 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 102.997 244.4242 0)
@@ -5771,7 +5815,7 @@
     (instances
       (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
-          (reference "#PWR042") (unit 1)
+          (reference "#PWR041") (unit 1)
         )
       )
     )
@@ -5780,7 +5824,7 @@
   (symbol (lib_id "power:GND") (at 124.46 218.44 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 00000000-0000-0000-0000-00006148136d)
-    (property "Reference" "#PWR034" (at 124.46 224.79 0)
+    (property "Reference" "#PWR035" (at 124.46 224.79 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 124.587 222.8342 0)
@@ -5796,7 +5840,7 @@
     (instances
       (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
-          (reference "#PWR034") (unit 1)
+          (reference "#PWR035") (unit 1)
         )
       )
     )
@@ -5830,7 +5874,7 @@
   (symbol (lib_id "power:GND") (at 71.12 215.9 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 00000000-0000-0000-0000-000061487bfb)
-    (property "Reference" "#PWR033" (at 71.12 222.25 0)
+    (property "Reference" "#PWR034" (at 71.12 222.25 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 71.247 220.2942 0)
@@ -5846,7 +5890,7 @@
     (instances
       (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
-          (reference "#PWR033") (unit 1)
+          (reference "#PWR034") (unit 1)
         )
       )
     )
@@ -6006,7 +6050,7 @@
   (symbol (lib_id "Device:LED") (at 197.485 222.885 90) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 00000000-0000-0000-0000-0000614e73db)
-    (property "Reference" "D6" (at 198.755 219.075 90)
+    (property "Reference" "D5" (at 198.755 219.075 90)
       (effects (font (size 1.27 1.27)) (justify right))
     )
     (property "Value" "POWER LED (Red)" (at 200.66 222.885 90)
@@ -6023,7 +6067,7 @@
     (instances
       (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
-          (reference "D6") (unit 1)
+          (reference "D5") (unit 1)
         )
       )
     )
@@ -6032,7 +6076,7 @@
   (symbol (lib_id "Device:LED") (at 192.405 222.885 90) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 00000000-0000-0000-0000-0000614e7ddc)
-    (property "Reference" "D5" (at 188.595 217.805 90)
+    (property "Reference" "D4" (at 188.595 217.805 90)
       (effects (font (size 1.27 1.27)) (justify right))
     )
     (property "Value" "POWER LED (Red)" (at 180.975 220.345 90)
@@ -6049,7 +6093,7 @@
     (instances
       (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
-          (reference "D5") (unit 1)
+          (reference "D4") (unit 1)
         )
       )
     )
@@ -6084,7 +6128,7 @@
   (symbol (lib_id "power:GND") (at 194.945 247.65 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 00000000-0000-0000-0000-0000614fba8b)
-    (property "Reference" "#PWR040" (at 194.945 254 0)
+    (property "Reference" "#PWR043" (at 194.945 254 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 195.072 252.0442 0)
@@ -6100,7 +6144,7 @@
     (instances
       (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
-          (reference "#PWR040") (unit 1)
+          (reference "#PWR043") (unit 1)
         )
       )
     )
@@ -6109,7 +6153,7 @@
   (symbol (lib_id "power:GND") (at 300.99 308.61 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 00000000-0000-0000-0000-0000616273bb)
-    (property "Reference" "#PWR065" (at 300.99 314.96 0)
+    (property "Reference" "#PWR066" (at 300.99 314.96 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 301.117 313.0042 0)
@@ -6125,7 +6169,7 @@
     (instances
       (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
-          (reference "#PWR065") (unit 1)
+          (reference "#PWR066") (unit 1)
         )
       )
     )
@@ -6160,7 +6204,7 @@
   (symbol (lib_id "power:GND") (at 506.73 186.69 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 00000000-0000-0000-0000-000061d1d39b)
-    (property "Reference" "#PWR025" (at 506.73 193.04 0)
+    (property "Reference" "#PWR024" (at 506.73 193.04 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 506.857 191.0842 0)
@@ -6176,7 +6220,7 @@
     (instances
       (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
-          (reference "#PWR025") (unit 1)
+          (reference "#PWR024") (unit 1)
         )
       )
     )
@@ -6185,7 +6229,7 @@
   (symbol (lib_id "Device:C") (at 515.62 185.42 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 00000000-0000-0000-0000-000061d1d6aa)
-    (property "Reference" "C15" (at 516.89 182.88 0)
+    (property "Reference" "C16" (at 516.89 182.88 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "22u" (at 516.89 187.96 0)
@@ -6202,7 +6246,7 @@
     (instances
       (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
-          (reference "C15") (unit 1)
+          (reference "C16") (unit 1)
         )
       )
     )
@@ -6294,10 +6338,10 @@
     (property "Reference" "L5" (at 323.85 277.114 90)
       (effects (font (size 1.27 1.27)))
     )
-    (property "Value" "MSS5131-473MLC / 47u" (at 320.04 279.4 90)
+    (property "Value" "MSS7341-473MLD / 47u" (at 320.04 279.4 90)
       (effects (font (size 1.27 1.27)))
     )
-    (property "Footprint" "Inductor_SMD:L_Coilcraft_XAL5030-XXX" (at 323.85 281.94 0)
+    (property "Footprint" "Inductor_SMD:L_Coilcraft_XAL8080-XXX" (at 323.85 281.94 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (at 323.85 281.94 0)
@@ -6317,7 +6361,7 @@
   (symbol (lib_id "Device:R") (at 342.9 288.29 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 00000000-0000-0000-0000-00006285b456)
-    (property "Reference" "R31" (at 344.678 287.1216 0)
+    (property "Reference" "R28" (at 344.678 287.1216 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "47k" (at 344.678 289.433 0)
@@ -6334,7 +6378,7 @@
     (instances
       (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
-          (reference "R31") (unit 1)
+          (reference "R28") (unit 1)
         )
       )
     )
@@ -6343,7 +6387,7 @@
   (symbol (lib_id "Device:R") (at 342.9 303.53 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 00000000-0000-0000-0000-00006285b7da)
-    (property "Reference" "R33" (at 344.678 302.3616 0)
+    (property "Reference" "R30" (at 344.678 302.3616 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "3k9" (at 344.678 304.673 0)
@@ -6360,7 +6404,7 @@
     (instances
       (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
-          (reference "R33") (unit 1)
+          (reference "R30") (unit 1)
         )
       )
     )
@@ -6369,7 +6413,7 @@
   (symbol (lib_id "Device:R") (at 307.34 303.53 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 00000000-0000-0000-0000-00006285b9b5)
-    (property "Reference" "R32" (at 309.118 302.3616 0)
+    (property "Reference" "R29" (at 309.118 302.3616 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "300k" (at 309.118 304.673 0)
@@ -6386,7 +6430,7 @@
     (instances
       (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
-          (reference "R32") (unit 1)
+          (reference "R29") (unit 1)
         )
       )
     )
@@ -6395,7 +6439,7 @@
   (symbol (lib_id "Device:C") (at 351.79 288.29 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 00000000-0000-0000-0000-00006285cbaf)
-    (property "Reference" "C28" (at 353.06 285.75 0)
+    (property "Reference" "C29" (at 353.06 285.75 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "1n" (at 353.06 290.83 0)
@@ -6412,7 +6456,7 @@
     (instances
       (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
-          (reference "C28") (unit 1)
+          (reference "C29") (unit 1)
         )
       )
     )
@@ -6455,13 +6499,13 @@
   (symbol (lib_id "Device:L") (at 365.76 129.54 90) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 00000000-0000-0000-0000-000062865145)
-    (property "Reference" "L1" (at 365.76 127 90)
+    (property "Reference" "L1" (at 365.76 124.46 90)
       (effects (font (size 1.27 1.27)))
     )
-    (property "Value" "SLF10145T-220M1R9-H / 22u" (at 372.11 123.19 90)
+    (property "Value" "MSS7341-473MLD / 47u" (at 368.3 121.92 90)
       (effects (font (size 1.27 1.27)))
     )
-    (property "Footprint" "Inductor_SMD:L_TDK_SLF10145" (at 365.76 129.54 0)
+    (property "Footprint" "Inductor_SMD:L_Coilcraft_XAL8080-XXX" (at 365.76 129.54 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (at 365.76 129.54 0)
@@ -6484,7 +6528,7 @@
     (property "Reference" "C10" (at 335.915 146.05 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Value" "10u" (at 335.915 151.13 0)
+    (property "Value" "4u7" (at 335.915 151.13 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Footprint" "Capacitor_SMD:C_0805_2012Metric" (at 335.6102 152.4 0)
@@ -6510,7 +6554,7 @@
     (property "Reference" "C9" (at 329.565 146.05 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Value" "10u" (at 329.565 151.13 0)
+    (property "Value" "4u7" (at 329.565 151.13 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Footprint" "Capacitor_SMD:C_0805_2012Metric" (at 329.2602 152.4 0)
@@ -6533,13 +6577,13 @@
   (symbol (lib_id "Device:C") (at 405.13 143.51 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 00000000-0000-0000-0000-0000628677fc)
-    (property "Reference" "C3" (at 406.4 140.97 0)
+    (property "Reference" "C2" (at 406.4 140.97 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Value" "22u" (at 406.4 146.05 0)
+    (property "Value" "4u7" (at 406.4 146.05 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Footprint" "Capacitor_SMD:C_1206_3216Metric" (at 406.0952 147.32 0)
+    (property "Footprint" "Capacitor_SMD:C_0805_2012Metric" (at 406.0952 147.32 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (at 405.13 143.51 0)
@@ -6550,25 +6594,25 @@
     (instances
       (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
-          (reference "C3") (unit 1)
+          (reference "C2") (unit 1)
         )
       )
     )
   )
 
-  (symbol (lib_id "Device:C") (at 412.75 143.51 0) (unit 1)
+  (symbol (lib_id "Device:C") (at 410.21 143.51 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 00000000-0000-0000-0000-000062867bb0)
-    (property "Reference" "C4" (at 414.02 140.97 0)
+    (property "Reference" "C3" (at 411.48 140.97 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Value" "22u" (at 414.02 146.05 0)
+    (property "Value" "4u7" (at 411.48 146.05 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Footprint" "Capacitor_SMD:C_1206_3216Metric" (at 413.7152 147.32 0)
+    (property "Footprint" "Capacitor_SMD:C_0805_2012Metric" (at 411.1752 147.32 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (property "Datasheet" "~" (at 412.75 143.51 0)
+    (property "Datasheet" "~" (at 410.21 143.51 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (pin "1" (uuid e9443186-f4a0-47c0-a241-280dfa790537))
@@ -6576,7 +6620,7 @@
     (instances
       (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
-          (reference "C4") (unit 1)
+          (reference "C3") (unit 1)
         )
       )
     )
@@ -6715,7 +6759,7 @@
   (symbol (lib_id "power:GND") (at 350.52 168.91 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 00000000-0000-0000-0000-000062b2f64d)
-    (property "Reference" "#PWR022" (at 350.52 175.26 0)
+    (property "Reference" "#PWR021" (at 350.52 175.26 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 350.647 173.3042 0)
@@ -6731,7 +6775,7 @@
     (instances
       (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
-          (reference "#PWR022") (unit 1)
+          (reference "#PWR021") (unit 1)
         )
       )
     )
@@ -6740,7 +6784,7 @@
   (symbol (lib_id "power:GND") (at 400.05 166.37 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 00000000-0000-0000-0000-000062b3085c)
-    (property "Reference" "#PWR021" (at 400.05 172.72 0)
+    (property "Reference" "#PWR020" (at 400.05 172.72 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 400.177 170.7642 0)
@@ -6756,7 +6800,7 @@
     (instances
       (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
-          (reference "#PWR021") (unit 1)
+          (reference "#PWR020") (unit 1)
         )
       )
     )
@@ -6765,7 +6809,7 @@
   (symbol (lib_id "power:GND") (at 378.46 158.75 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 00000000-0000-0000-0000-000062b30cae)
-    (property "Reference" "#PWR019" (at 378.46 165.1 0)
+    (property "Reference" "#PWR018" (at 378.46 165.1 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 378.587 163.1442 0)
@@ -6781,7 +6825,7 @@
     (instances
       (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
-          (reference "#PWR019") (unit 1)
+          (reference "#PWR018") (unit 1)
         )
       )
     )
@@ -6790,7 +6834,7 @@
   (symbol (lib_id "power:GND") (at 325.755 156.21 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 00000000-0000-0000-0000-000062b65a37)
-    (property "Reference" "#PWR018" (at 325.755 162.56 0)
+    (property "Reference" "#PWR017" (at 325.755 162.56 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 325.882 160.6042 0)
@@ -6806,7 +6850,7 @@
     (instances
       (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
-          (reference "#PWR018") (unit 1)
+          (reference "#PWR017") (unit 1)
         )
       )
     )
@@ -6815,7 +6859,7 @@
   (symbol (lib_id "power:GND") (at 416.56 152.4 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 00000000-0000-0000-0000-000062c734d6)
-    (property "Reference" "#PWR016" (at 416.56 158.75 0)
+    (property "Reference" "#PWR015" (at 416.56 158.75 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 416.687 156.7942 0)
@@ -6831,7 +6875,7 @@
     (instances
       (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
-          (reference "#PWR016") (unit 1)
+          (reference "#PWR015") (unit 1)
         )
       )
     )
@@ -6892,7 +6936,7 @@
   (symbol (lib_id "power:GND") (at 341.63 135.89 270) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 00000000-0000-0000-0000-000062df3643)
-    (property "Reference" "#PWR015" (at 335.28 135.89 0)
+    (property "Reference" "#PWR014" (at 335.28 135.89 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 333.9338 136.017 90)
@@ -6908,7 +6952,7 @@
     (instances
       (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
-          (reference "#PWR015") (unit 1)
+          (reference "#PWR014") (unit 1)
         )
       )
     )
@@ -6917,7 +6961,7 @@
   (symbol (lib_id "power:+BATT") (at 267.97 177.8 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 00000000-0000-0000-0000-000062e9b26f)
-    (property "Reference" "#PWR023" (at 267.97 181.61 0)
+    (property "Reference" "#PWR022" (at 267.97 181.61 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+BATT" (at 260.35 176.53 0)
@@ -6933,7 +6977,7 @@
     (instances
       (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
-          (reference "#PWR023") (unit 1)
+          (reference "#PWR022") (unit 1)
         )
       )
     )
@@ -6942,7 +6986,7 @@
   (symbol (lib_id "EnvSensor-v2-rescue:+3.3V-power") (at 534.67 177.8 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 00000000-0000-0000-0000-000062ed3e9c)
-    (property "Reference" "#PWR024" (at 534.67 181.61 0)
+    (property "Reference" "#PWR023" (at 534.67 181.61 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+3.3V" (at 535.051 173.4058 0)
@@ -6958,7 +7002,7 @@
     (instances
       (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
-          (reference "#PWR024") (unit 1)
+          (reference "#PWR023") (unit 1)
         )
       )
     )
@@ -7018,10 +7062,10 @@
   (symbol (lib_id "Connector:TestPoint") (at 378.46 128.27 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 00000000-0000-0000-0000-00006306631d)
-    (property "Reference" "TS2" (at 379.9332 125.2728 0)
+    (property "Reference" "TS2" (at 383.54 123.19 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Value" "TestPoint" (at 379.9332 127.5842 0)
+    (property "Value" "TestPoint" (at 383.54 125.73 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Footprint" "TestPoint:TestPoint_THTPad_D1.5mm_Drill0.7mm" (at 383.54 128.27 0)
@@ -7043,7 +7087,7 @@
   (symbol (lib_id "Connector:TestPoint") (at 355.6 128.27 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 00000000-0000-0000-0000-000063066808)
-    (property "Reference" "TS1" (at 350.52 123.19 0)
+    (property "Reference" "TS1" (at 349.25 123.19 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "TestPoint" (at 345.44 125.73 0)
@@ -7093,7 +7137,7 @@
   (symbol (lib_id "Device:D_Schottky") (at 337.82 281.94 180) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 00000000-0000-0000-0000-000063639599)
-    (property "Reference" "D15" (at 336.55 284.48 0)
+    (property "Reference" "D10" (at 336.55 284.48 0)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "PMEG3020BER" (at 341.63 279.4 0)
@@ -7110,7 +7154,7 @@
     (instances
       (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
-          (reference "D15") (unit 1)
+          (reference "D10") (unit 1)
         )
       )
     )
@@ -7119,7 +7163,7 @@
   (symbol (lib_id "power:GND") (at 342.9 317.5 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 00000000-0000-0000-0000-0000637a174e)
-    (property "Reference" "#PWR069" (at 342.9 323.85 0)
+    (property "Reference" "#PWR071" (at 342.9 323.85 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 343.027 321.8942 0)
@@ -7135,7 +7179,7 @@
     (instances
       (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
-          (reference "#PWR069") (unit 1)
+          (reference "#PWR071") (unit 1)
         )
       )
     )
@@ -7144,7 +7188,7 @@
   (symbol (lib_id "Device:C") (at 295.91 298.45 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 00000000-0000-0000-0000-00006381c54f)
-    (property "Reference" "C37" (at 295.91 295.91 0)
+    (property "Reference" "C41" (at 295.91 295.91 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "4u7" (at 295.91 300.99 0)
@@ -7161,7 +7205,7 @@
     (instances
       (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
-          (reference "C37") (unit 1)
+          (reference "C41") (unit 1)
         )
       )
     )
@@ -7170,7 +7214,7 @@
   (symbol (lib_id "Device:C") (at 300.99 298.45 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 00000000-0000-0000-0000-00006381d79b)
-    (property "Reference" "C38" (at 300.99 295.91 0)
+    (property "Reference" "C42" (at 300.99 295.91 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "4u7" (at 300.99 300.99 0)
@@ -7187,7 +7231,7 @@
     (instances
       (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
-          (reference "C38") (unit 1)
+          (reference "C42") (unit 1)
         )
       )
     )
@@ -7196,7 +7240,7 @@
   (symbol (lib_id "Device:C") (at 363.22 288.29 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 00000000-0000-0000-0000-00006381eff4)
-    (property "Reference" "C29" (at 364.49 285.75 0)
+    (property "Reference" "C30" (at 364.49 285.75 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "4u7" (at 364.49 290.83 0)
@@ -7213,7 +7257,7 @@
     (instances
       (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
-          (reference "C29") (unit 1)
+          (reference "C30") (unit 1)
         )
       )
     )
@@ -7222,7 +7266,7 @@
   (symbol (lib_id "Device:C") (at 368.3 288.29 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 00000000-0000-0000-0000-00006381effe)
-    (property "Reference" "C30" (at 369.57 285.75 0)
+    (property "Reference" "C31" (at 369.57 285.75 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "4u7" (at 369.57 290.83 0)
@@ -7239,7 +7283,7 @@
     (instances
       (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
-          (reference "C30") (unit 1)
+          (reference "C31") (unit 1)
         )
       )
     )
@@ -7248,7 +7292,7 @@
   (symbol (lib_id "power:GND") (at 365.76 294.64 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 00000000-0000-0000-0000-000063b1125f)
-    (property "Reference" "#PWR054" (at 365.76 300.99 0)
+    (property "Reference" "#PWR057" (at 365.76 300.99 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 365.887 299.0342 0)
@@ -7264,7 +7308,7 @@
     (instances
       (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
-          (reference "#PWR054") (unit 1)
+          (reference "#PWR057") (unit 1)
         )
       )
     )
@@ -7276,7 +7320,7 @@
     (property "Reference" "C8" (at 323.215 146.05 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Value" "10u" (at 323.215 151.13 0)
+    (property "Value" "4u7" (at 323.215 151.13 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Footprint" "Capacitor_SMD:C_0805_2012Metric" (at 322.9102 152.4 0)
@@ -7299,7 +7343,7 @@
   (symbol (lib_id "power:GND") (at 323.85 304.8 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 00000000-0000-0000-0000-000063b937a3)
-    (property "Reference" "#PWR061" (at 323.85 311.15 0)
+    (property "Reference" "#PWR062" (at 323.85 311.15 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 323.977 309.1942 0)
@@ -7315,7 +7359,7 @@
     (instances
       (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
-          (reference "#PWR061") (unit 1)
+          (reference "#PWR062") (unit 1)
         )
       )
     )
@@ -7324,7 +7368,7 @@
   (symbol (lib_id "Connector:TestPoint") (at 279.4 292.1 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 00000000-0000-0000-0000-000063d68f3e)
-    (property "Reference" "TS7" (at 278.13 284.48 0)
+    (property "Reference" "TS8" (at 278.13 284.48 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "TestPoint" (at 274.32 287.02 0)
@@ -7340,7 +7384,7 @@
     (instances
       (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
-          (reference "TS7") (unit 1)
+          (reference "TS8") (unit 1)
         )
       )
     )
@@ -7425,7 +7469,7 @@
   (symbol (lib_id "power:+5V") (at 448.31 280.67 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 00000000-0000-0000-0000-000063f58615)
-    (property "Reference" "#PWR047" (at 448.31 284.48 0)
+    (property "Reference" "#PWR048" (at 448.31 284.48 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+5V" (at 448.691 276.2758 0)
@@ -7441,7 +7485,7 @@
     (instances
       (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
-          (reference "#PWR047") (unit 1)
+          (reference "#PWR048") (unit 1)
         )
       )
     )
@@ -7502,7 +7546,7 @@
   (symbol (lib_id "power:GND") (at 341.63 154.94 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 00000000-0000-0000-0000-0000642eee36)
-    (property "Reference" "#PWR017" (at 341.63 161.29 0)
+    (property "Reference" "#PWR016" (at 341.63 161.29 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 341.757 159.3342 0)
@@ -7518,7 +7562,7 @@
     (instances
       (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
-          (reference "#PWR017") (unit 1)
+          (reference "#PWR016") (unit 1)
         )
       )
     )
@@ -7527,7 +7571,7 @@
   (symbol (lib_id "power:GND") (at 307.34 308.61 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 00000000-0000-0000-0000-000064526e4f)
-    (property "Reference" "#PWR066" (at 307.34 314.96 0)
+    (property "Reference" "#PWR067" (at 307.34 314.96 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 307.467 313.0042 0)
@@ -7543,7 +7587,7 @@
     (instances
       (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
-          (reference "#PWR066") (unit 1)
+          (reference "#PWR067") (unit 1)
         )
       )
     )
@@ -7552,7 +7596,7 @@
   (symbol (lib_id "EnvSensor-v2-rescue:Jumper_NO_Small-Device") (at 441.96 283.21 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 00000000-0000-0000-0000-000064733b35)
-    (property "Reference" "JP7" (at 441.96 288.29 0)
+    (property "Reference" "JP9" (at 441.96 288.29 0)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "NO" (at 441.96 285.75 0)
@@ -7569,7 +7613,7 @@
     (instances
       (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
-          (reference "JP7") (unit 1)
+          (reference "JP9") (unit 1)
         )
       )
     )
@@ -7664,7 +7708,7 @@
   (symbol (lib_id "Device:Q_PMOS_GDS") (at 106.68 207.01 270) (mirror x) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 00000000-0000-0000-0000-0000653613ad)
-    (property "Reference" "Q3" (at 106.68 198.3232 90)
+    (property "Reference" "Q2" (at 106.68 198.3232 90)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "ZXMP6A16K" (at 106.68 200.6346 90)
@@ -7682,25 +7726,25 @@
     (instances
       (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
-          (reference "Q3") (unit 1)
+          (reference "Q2") (unit 1)
         )
       )
     )
   )
 
-  (symbol (lib_id "Device:C") (at 420.37 143.51 0) (unit 1)
+  (symbol (lib_id "Device:C") (at 415.29 143.51 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 00000000-0000-0000-0000-00006555a923)
-    (property "Reference" "C5" (at 421.64 140.97 0)
+    (property "Reference" "C4" (at 416.56 140.97 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Value" "22u" (at 421.64 146.05 0)
+    (property "Value" "4u7" (at 416.56 146.05 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Footprint" "Capacitor_SMD:C_1206_3216Metric" (at 421.3352 147.32 0)
+    (property "Footprint" "Capacitor_SMD:C_0805_2012Metric" (at 416.2552 147.32 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (property "Datasheet" "~" (at 420.37 143.51 0)
+    (property "Datasheet" "~" (at 415.29 143.51 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (pin "1" (uuid a6753230-d4db-44e8-9ab9-000db7913b79))
@@ -7708,7 +7752,7 @@
     (instances
       (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
-          (reference "C5") (unit 1)
+          (reference "C4") (unit 1)
         )
       )
     )
@@ -7744,7 +7788,7 @@
   (symbol (lib_id "Device:C") (at 434.34 288.29 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 00000000-0000-0000-0000-000065a900db)
-    (property "Reference" "C34" (at 435.61 285.75 0)
+    (property "Reference" "C37" (at 435.61 285.75 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "22u" (at 435.61 290.83 0)
@@ -7761,7 +7805,7 @@
     (instances
       (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
-          (reference "C34") (unit 1)
+          (reference "C37") (unit 1)
         )
       )
     )
@@ -7770,7 +7814,7 @@
   (symbol (lib_id "power:GND") (at 424.18 289.56 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 00000000-0000-0000-0000-0000660e2730)
-    (property "Reference" "#PWR050" (at 424.18 295.91 0)
+    (property "Reference" "#PWR051" (at 424.18 295.91 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 424.307 293.9542 0)
@@ -7786,7 +7830,7 @@
     (instances
       (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
-          (reference "#PWR050") (unit 1)
+          (reference "#PWR051") (unit 1)
         )
       )
     )
@@ -7795,7 +7839,7 @@
   (symbol (lib_id "power:GND") (at 434.34 294.005 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 00000000-0000-0000-0000-0000660e29f1)
-    (property "Reference" "#PWR051" (at 434.34 300.355 0)
+    (property "Reference" "#PWR056" (at 434.34 300.355 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 434.467 298.3992 0)
@@ -7811,7 +7855,7 @@
     (instances
       (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
-          (reference "#PWR051") (unit 1)
+          (reference "#PWR056") (unit 1)
         )
       )
     )
@@ -7820,7 +7864,7 @@
   (symbol (lib_id "Device:C") (at 121.92 241.3 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 00000000-0000-0000-0000-00006637ff99)
-    (property "Reference" "C25" (at 123.19 237.49 0)
+    (property "Reference" "C26" (at 123.19 237.49 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "220n" (at 123.19 245.11 0)
@@ -7837,7 +7881,7 @@
     (instances
       (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
-          (reference "C25") (unit 1)
+          (reference "C26") (unit 1)
         )
       )
     )
@@ -7846,7 +7890,7 @@
   (symbol (lib_id "Device:R") (at 342.9 312.42 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 00000000-0000-0000-0000-0000665d8f19)
-    (property "Reference" "R34" (at 344.678 311.2516 0)
+    (property "Reference" "R31" (at 344.678 311.2516 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "10k" (at 344.678 313.563 0)
@@ -7863,7 +7907,7 @@
     (instances
       (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
-          (reference "R34") (unit 1)
+          (reference "R31") (unit 1)
         )
       )
     )
@@ -7951,7 +7995,7 @@
   (symbol (lib_id "EnvSensor-v2-rescue:Jumper_NO_Small-Device") (at 201.295 243.205 270) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 001bf6a4-b40c-4d03-9057-c8b41654ea2d)
-    (property "Reference" "JP9" (at 202.5142 242.0366 90)
+    (property "Reference" "JP8" (at 202.5142 242.0366 90)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "NO" (at 202.5142 244.348 90)
@@ -7968,7 +8012,7 @@
     (instances
       (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
-          (reference "JP9") (unit 1)
+          (reference "JP8") (unit 1)
         )
       )
     )
@@ -8002,7 +8046,7 @@
   (symbol (lib_id "Device:R") (at 127 274.32 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 0f7f3f7c-1e4d-4a77-8536-a08b8657bcb4)
-    (property "Reference" "R26" (at 128.778 273.4853 0)
+    (property "Reference" "R24" (at 128.778 273.4853 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "10k" (at 128.778 276.0222 0)
@@ -8019,7 +8063,7 @@
     (instances
       (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
-          (reference "R26") (unit 1)
+          (reference "R24") (unit 1)
         )
       )
     )
@@ -8028,7 +8072,7 @@
   (symbol (lib_id "power:VBUS") (at 194.945 213.36 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 10a08a23-a6c8-4c1b-8c94-6ff09a6c7c2f)
-    (property "Reference" "#PWR0102" (at 194.945 217.17 0)
+    (property "Reference" "#PWR033" (at 194.945 217.17 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "VBUS" (at 195.326 210.1342 0)
@@ -8044,7 +8088,7 @@
     (instances
       (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
-          (reference "#PWR0102") (unit 1)
+          (reference "#PWR033") (unit 1)
         )
       )
     )
@@ -8053,7 +8097,7 @@
   (symbol (lib_id "Device:C") (at 405.13 213.36 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 125c6695-28b0-419f-b9ba-5102efd247be)
-    (property "Reference" "C22" (at 406.4 210.82 0)
+    (property "Reference" "C23" (at 406.4 210.82 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "47u" (at 406.4 215.9 0)
@@ -8070,7 +8114,7 @@
     (instances
       (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
-          (reference "C22") (unit 1)
+          (reference "C23") (unit 1)
         )
       )
     )
@@ -8130,7 +8174,7 @@
   (symbol (lib_id "Device:C") (at 336.55 213.36 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 17e87afd-bd82-4e05-8798-2fe15769624f)
-    (property "Reference" "C19" (at 337.82 210.82 0)
+    (property "Reference" "C20" (at 337.82 210.82 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "22u" (at 337.82 215.9 0)
@@ -8147,7 +8191,7 @@
     (instances
       (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
-          (reference "C19") (unit 1)
+          (reference "C20") (unit 1)
         )
       )
     )
@@ -8181,7 +8225,7 @@
   (symbol (lib_id "power:+BATT") (at 119.38 300.99 270) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 18e7307f-e8ef-480a-8c27-880f8ee0215a)
-    (property "Reference" "#PWR059" (at 115.57 300.99 0)
+    (property "Reference" "#PWR060" (at 115.57 300.99 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+BATT" (at 116.84 303.53 90)
@@ -8197,7 +8241,7 @@
     (instances
       (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
-          (reference "#PWR059") (unit 1)
+          (reference "#PWR060") (unit 1)
         )
       )
     )
@@ -8232,7 +8276,7 @@
   (symbol (lib_id "Device:C") (at 256.54 299.72 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 1c6c49b4-c73b-486f-97bc-ad0ec2a1bd8f)
-    (property "Reference" "C40" (at 257.81 297.18 0)
+    (property "Reference" "C43" (at 257.81 297.18 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "2u2" (at 257.81 302.26 0)
@@ -8249,7 +8293,7 @@
     (instances
       (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
-          (reference "C40") (unit 1)
+          (reference "C43") (unit 1)
         )
       )
     )
@@ -8258,7 +8302,7 @@
   (symbol (lib_id "Device:R") (at 118.11 274.32 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 1d3e2a72-6044-4b44-b0bf-c4b7768e9ea7)
-    (property "Reference" "R25" (at 119.888 273.4853 0)
+    (property "Reference" "R23" (at 119.888 273.4853 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "0R05" (at 119.888 276.0222 0)
@@ -8275,7 +8319,7 @@
     (instances
       (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
-          (reference "R25") (unit 1)
+          (reference "R23") (unit 1)
         )
       )
     )
@@ -8284,7 +8328,7 @@
   (symbol (lib_id "Device:C") (at 373.38 288.29 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 202b2654-5699-4bbd-b1d3-8d39303f3895)
-    (property "Reference" "C2" (at 374.65 285.75 0)
+    (property "Reference" "C32" (at 374.65 285.75 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "4u7" (at 374.65 290.83 0)
@@ -8301,7 +8345,7 @@
     (instances
       (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
-          (reference "C2") (unit 1)
+          (reference "C32") (unit 1)
         )
       )
     )
@@ -8310,7 +8354,7 @@
   (symbol (lib_id "power:GND") (at 467.995 191.77 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 20fefc67-3de6-45ac-b7e9-aebb9475f797)
-    (property "Reference" "#PWR026" (at 467.995 198.12 0)
+    (property "Reference" "#PWR025" (at 467.995 198.12 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 468.122 196.1642 0)
@@ -8326,7 +8370,7 @@
     (instances
       (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
-          (reference "#PWR026") (unit 1)
+          (reference "#PWR025") (unit 1)
         )
       )
     )
@@ -8335,7 +8379,7 @@
   (symbol (lib_id "power:GND") (at 412.75 294.64 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 211721bf-3f17-4d44-b967-80b03cbc6fd6)
-    (property "Reference" "#PWR012" (at 412.75 300.99 0)
+    (property "Reference" "#PWR058" (at 412.75 300.99 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 412.877 299.0342 0)
@@ -8351,7 +8395,7 @@
     (instances
       (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
-          (reference "#PWR012") (unit 1)
+          (reference "#PWR058") (unit 1)
         )
       )
     )
@@ -8360,7 +8404,7 @@
   (symbol (lib_id "Device:C") (at 493.395 185.42 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 230aec13-bc06-45da-ba43-c8dc55d3b726)
-    (property "Reference" "C6" (at 494.665 182.88 0)
+    (property "Reference" "C15" (at 494.665 182.88 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "22u" (at 494.665 187.96 0)
@@ -8377,7 +8421,7 @@
     (instances
       (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
-          (reference "C6") (unit 1)
+          (reference "C15") (unit 1)
         )
       )
     )
@@ -8411,7 +8455,7 @@
   (symbol (lib_id "power:VBUS") (at 195.58 262.255 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 257d8260-9e00-4466-8bd2-7a9cf351ea13)
-    (property "Reference" "#PWR0101" (at 195.58 266.065 0)
+    (property "Reference" "#PWR044" (at 195.58 266.065 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "VBUS" (at 195.961 259.0292 0)
@@ -8427,7 +8471,7 @@
     (instances
       (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
-          (reference "#PWR0101") (unit 1)
+          (reference "#PWR044") (unit 1)
         )
       )
     )
@@ -8537,6 +8581,32 @@
     )
   )
 
+  (symbol (lib_id "Device:C") (at 316.23 148.59 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no)
+    (uuid 2a85751d-29ad-408c-bec8-0a8c5728f79f)
+    (property "Reference" "C7" (at 317.5 146.05 0)
+      (effects (font (size 1.27 1.27)) (justify left))
+    )
+    (property "Value" "4u7" (at 317.5 151.13 0)
+      (effects (font (size 1.27 1.27)) (justify left))
+    )
+    (property "Footprint" "Capacitor_SMD:C_0805_2012Metric" (at 317.1952 152.4 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datasheet" "~" (at 316.23 148.59 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (pin "1" (uuid d636be37-4c15-4cf2-83d7-d8f7c794e8e2))
+    (pin "2" (uuid 37733d99-5f76-473a-8361-b1793959a772))
+    (instances
+      (project "EnvSensor-Power-v2.1"
+        (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
+          (reference "C7") (unit 1)
+        )
+      )
+    )
+  )
+
   (symbol (lib_id "myLib:LTC4052") (at 104.14 295.91 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 2be9cbdd-9a3f-4bdd-be48-a22ec3518ee7)
@@ -8564,6 +8634,32 @@
       (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "U7") (unit 1)
+        )
+      )
+    )
+  )
+
+  (symbol (lib_id "Device:C") (at 420.37 143.51 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no)
+    (uuid 2de6c73f-2718-4e5c-bb1f-b6cdc812aa1d)
+    (property "Reference" "C5" (at 421.64 140.97 0)
+      (effects (font (size 1.27 1.27)) (justify left))
+    )
+    (property "Value" "4u7" (at 421.64 146.05 0)
+      (effects (font (size 1.27 1.27)) (justify left))
+    )
+    (property "Footprint" "Capacitor_SMD:C_0805_2012Metric" (at 421.3352 147.32 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datasheet" "~" (at 420.37 143.51 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (pin "1" (uuid 93a8c5bc-22f9-4d3d-961f-53ef7c1b919d))
+    (pin "2" (uuid b66fcefc-5745-4587-a231-2e688a0d2658))
+    (instances
+      (project "EnvSensor-Power-v2.1"
+        (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
+          (reference "C5") (unit 1)
         )
       )
     )
@@ -8648,7 +8744,7 @@
   (symbol (lib_id "power:GND") (at 387.35 294.005 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 36627000-b983-4603-aed4-2a38a4eb702c)
-    (property "Reference" "#PWR055" (at 387.35 300.355 0)
+    (property "Reference" "#PWR054" (at 387.35 300.355 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 387.477 298.3992 0)
@@ -8664,7 +8760,7 @@
     (instances
       (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
-          (reference "#PWR055") (unit 1)
+          (reference "#PWR054") (unit 1)
         )
       )
     )
@@ -8673,7 +8769,7 @@
   (symbol (lib_id "power:GND") (at 529.59 323.85 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 3e0a122f-9371-4437-bb07-ad799bd264cf)
-    (property "Reference" "#PWR071" (at 529.59 330.2 0)
+    (property "Reference" "#PWR073" (at 529.59 330.2 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 529.717 328.2442 0)
@@ -8689,7 +8785,7 @@
     (instances
       (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
-          (reference "#PWR071") (unit 1)
+          (reference "#PWR073") (unit 1)
         )
       )
     )
@@ -8698,7 +8794,7 @@
   (symbol (lib_id "power:+5V") (at 502.92 304.8 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 3e73386d-9db5-41ec-bf8e-7fd411a2d4cb)
-    (property "Reference" "#PWR058" (at 502.92 308.61 0)
+    (property "Reference" "#PWR063" (at 502.92 308.61 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+5V" (at 503.301 300.4058 0)
@@ -8714,7 +8810,7 @@
     (instances
       (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
-          (reference "#PWR058") (unit 1)
+          (reference "#PWR063") (unit 1)
         )
       )
     )
@@ -8723,7 +8819,7 @@
   (symbol (lib_id "Device:C") (at 99.06 313.69 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 40010ced-baab-4945-b294-e5cba20a53d2)
-    (property "Reference" "C42" (at 92.71 312.42 0)
+    (property "Reference" "C46" (at 92.71 312.42 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "100n" (at 91.44 314.96 0)
@@ -8740,7 +8836,7 @@
     (instances
       (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
-          (reference "C42") (unit 1)
+          (reference "C46") (unit 1)
         )
       )
     )
@@ -8767,6 +8863,32 @@
       (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
           (reference "C35") (unit 1)
+        )
+      )
+    )
+  )
+
+  (symbol (lib_id "Device:C") (at 378.46 288.29 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no)
+    (uuid 48c6da74-fe85-445e-aeae-e1d863522db5)
+    (property "Reference" "C33" (at 379.73 285.75 0)
+      (effects (font (size 1.27 1.27)) (justify left))
+    )
+    (property "Value" "4u7" (at 379.73 290.83 0)
+      (effects (font (size 1.27 1.27)) (justify left))
+    )
+    (property "Footprint" "Capacitor_SMD:C_0805_2012Metric" (at 379.4252 292.1 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datasheet" "~" (at 378.46 288.29 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (pin "1" (uuid 3b97d747-98a5-4242-8e75-a021317c30bb))
+    (pin "2" (uuid d906d279-c74a-4e1e-8856-379741f798f0))
+    (instances
+      (project "EnvSensor-Power-v2.1"
+        (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
+          (reference "C33") (unit 1)
         )
       )
     )
@@ -8890,7 +9012,7 @@
   (symbol (lib_id "Device:C") (at 271.78 300.99 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 5250b5e6-3189-4da5-be7c-17efb3c29d32)
-    (property "Reference" "C41" (at 273.05 298.45 0)
+    (property "Reference" "C44" (at 273.05 298.45 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "2u2" (at 273.05 303.53 0)
@@ -8907,7 +9029,7 @@
     (instances
       (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
-          (reference "C41") (unit 1)
+          (reference "C44") (unit 1)
         )
       )
     )
@@ -8941,7 +9063,7 @@
   (symbol (lib_id "Device:C") (at 387.35 288.29 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 551323e7-3e2f-4a1e-9d92-3211b23f10d1)
-    (property "Reference" "C33" (at 388.62 285.75 0)
+    (property "Reference" "C34" (at 388.62 285.75 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "2u2" (at 388.62 290.83 0)
@@ -8958,7 +9080,7 @@
     (instances
       (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
-          (reference "C33") (unit 1)
+          (reference "C34") (unit 1)
         )
       )
     )
@@ -8967,7 +9089,7 @@
   (symbol (lib_id "Device:R") (at 113.03 274.32 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 55aa0790-db81-4c35-95a9-46381a0ed36d)
-    (property "Reference" "R24" (at 107.95 273.05 0)
+    (property "Reference" "R22" (at 107.95 273.05 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "DNP" (at 106.68 275.59 0)
@@ -8984,7 +9106,7 @@
     (instances
       (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
-          (reference "R24") (unit 1)
+          (reference "R22") (unit 1)
         )
       )
     )
@@ -9044,7 +9166,7 @@
   (symbol (lib_id "power:GND") (at 336.55 220.98 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 5a68c2b2-e7e2-4a09-bf38-0ce563b2b488)
-    (property "Reference" "#PWR035" (at 336.55 227.33 0)
+    (property "Reference" "#PWR036" (at 336.55 227.33 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 336.677 225.3742 0)
@@ -9060,7 +9182,7 @@
     (instances
       (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
-          (reference "#PWR035") (unit 1)
+          (reference "#PWR036") (unit 1)
         )
       )
     )
@@ -9069,7 +9191,7 @@
   (symbol (lib_id "power:+5V") (at 494.03 269.24 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 5c4fec96-f2a9-4b1c-8ed5-b847d086adf0)
-    (property "Reference" "#PWR046" (at 494.03 273.05 0)
+    (property "Reference" "#PWR047" (at 494.03 273.05 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+5V" (at 494.411 264.8458 0)
@@ -9085,7 +9207,7 @@
     (instances
       (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
-          (reference "#PWR046") (unit 1)
+          (reference "#PWR047") (unit 1)
         )
       )
     )
@@ -9119,7 +9241,7 @@
   (symbol (lib_id "power:VBUS") (at 62.865 264.16 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 5f242444-032a-45d5-8a01-3f3bfd0854e8)
-    (property "Reference" "#PWR044" (at 62.865 267.97 0)
+    (property "Reference" "#PWR045" (at 62.865 267.97 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "VBUS" (at 63.246 260.9342 0)
@@ -9135,7 +9257,7 @@
     (instances
       (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
-          (reference "#PWR044") (unit 1)
+          (reference "#PWR045") (unit 1)
         )
       )
     )
@@ -9170,7 +9292,7 @@
   (symbol (lib_id "power:+BATT") (at 491.49 313.69 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 66653cc7-5c3d-4d2e-9c83-a7b32dc9493c)
-    (property "Reference" "#PWR068" (at 491.49 317.5 0)
+    (property "Reference" "#PWR070" (at 491.49 317.5 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+BATT" (at 491.871 310.4388 90)
@@ -9186,7 +9308,7 @@
     (instances
       (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
-          (reference "#PWR068") (unit 1)
+          (reference "#PWR070") (unit 1)
         )
       )
     )
@@ -9195,7 +9317,7 @@
   (symbol (lib_id "Device:C") (at 283.21 190.5 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 69b6e7f4-02b1-4b9e-854c-615d7eeece9c)
-    (property "Reference" "C17" (at 284.48 187.96 0)
+    (property "Reference" "C18" (at 284.48 187.96 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "2u2" (at 284.48 193.04 0)
@@ -9212,7 +9334,7 @@
     (instances
       (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
-          (reference "C17") (unit 1)
+          (reference "C18") (unit 1)
         )
       )
     )
@@ -9298,7 +9420,7 @@
   (symbol (lib_id "power:GND") (at 402.59 294.005 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 71de132a-61b5-4a49-a2a1-f826cb32f7ff)
-    (property "Reference" "#PWR056" (at 402.59 300.355 0)
+    (property "Reference" "#PWR055" (at 402.59 300.355 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 402.717 298.3992 0)
@@ -9314,7 +9436,7 @@
     (instances
       (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
-          (reference "#PWR056") (unit 1)
+          (reference "#PWR055") (unit 1)
         )
       )
     )
@@ -9323,7 +9445,7 @@
   (symbol (lib_id "Device:R") (at 485.14 287.02 180) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 7449a2d3-6c0a-449f-8ca5-50f8d6c0e60d)
-    (property "Reference" "R29" (at 486.918 285.8516 0)
+    (property "Reference" "R26" (at 486.918 285.8516 0)
       (effects (font (size 1.27 1.27)) (justify right))
     )
     (property "Value" "3k3" (at 486.918 288.163 0)
@@ -9340,7 +9462,7 @@
     (instances
       (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
-          (reference "R29") (unit 1)
+          (reference "R26") (unit 1)
         )
       )
     )
@@ -9401,7 +9523,7 @@
   (symbol (lib_id "Device:C") (at 66.675 280.67 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 7e4cbda5-f61c-4c4f-88c9-f9f087c94267)
-    (property "Reference" "C26" (at 69.596 279.8353 0)
+    (property "Reference" "C27" (at 69.596 279.8353 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "1u" (at 69.596 282.3722 0)
@@ -9418,7 +9540,7 @@
     (instances
       (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
-          (reference "C26") (unit 1)
+          (reference "C27") (unit 1)
         )
       )
     )
@@ -9427,7 +9549,7 @@
   (symbol (lib_id "Connector:TestPoint") (at 412.75 280.67 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 7f2be9f9-f697-4956-b25e-d02940413ba6)
-    (property "Reference" "TS8" (at 411.48 273.05 0)
+    (property "Reference" "TS7" (at 411.48 273.05 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "TestPoint" (at 406.4 275.59 0)
@@ -9443,7 +9565,7 @@
     (instances
       (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
-          (reference "TS8") (unit 1)
+          (reference "TS7") (unit 1)
         )
       )
     )
@@ -9528,7 +9650,7 @@
   (symbol (lib_id "Device:C") (at 267.97 189.23 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 8340e242-fd65-4d38-b3b9-e83dafb0ea87)
-    (property "Reference" "C16" (at 269.24 186.69 0)
+    (property "Reference" "C17" (at 269.24 186.69 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "2u2" (at 269.24 191.77 0)
@@ -9545,7 +9667,7 @@
     (instances
       (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
-          (reference "C16") (unit 1)
+          (reference "C17") (unit 1)
         )
       )
     )
@@ -9554,7 +9676,7 @@
   (symbol (lib_id "Device:C") (at 290.83 298.45 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 8836dbcb-e1b1-4915-ae08-ff0e9e1f5fb8)
-    (property "Reference" "C32" (at 290.83 295.91 0)
+    (property "Reference" "C40" (at 290.83 295.91 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "4u7" (at 290.83 300.99 0)
@@ -9571,7 +9693,7 @@
     (instances
       (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
-          (reference "C32") (unit 1)
+          (reference "C40") (unit 1)
         )
       )
     )
@@ -9580,7 +9702,7 @@
   (symbol (lib_id "power:GND") (at 104.14 309.88 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 88f8b148-425b-48de-8cc0-43c34d6777ff)
-    (property "Reference" "#PWR067" (at 104.14 316.23 0)
+    (property "Reference" "#PWR068" (at 104.14 316.23 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 104.267 314.2742 0)
@@ -9596,7 +9718,7 @@
     (instances
       (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
-          (reference "#PWR067") (unit 1)
+          (reference "#PWR068") (unit 1)
         )
       )
     )
@@ -9698,7 +9820,7 @@
   (symbol (lib_id "Device:C") (at 344.17 213.36 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 947124a2-08ae-4e98-90cb-7a40f9d15239)
-    (property "Reference" "C20" (at 345.44 210.82 0)
+    (property "Reference" "C21" (at 345.44 210.82 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "22u" (at 345.44 215.9 0)
@@ -9715,7 +9837,7 @@
     (instances
       (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
-          (reference "C20") (unit 1)
+          (reference "C21") (unit 1)
         )
       )
     )
@@ -9750,7 +9872,7 @@
   (symbol (lib_id "Device:C") (at 412.75 288.29 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 970c0961-40bb-421e-bf96-8c5500fd9700)
-    (property "Reference" "C31" (at 414.02 285.75 0)
+    (property "Reference" "C36" (at 414.02 285.75 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "22u" (at 414.02 290.83 0)
@@ -9767,7 +9889,7 @@
     (instances
       (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
-          (reference "C31") (unit 1)
+          (reference "C36") (unit 1)
         )
       )
     )
@@ -9801,7 +9923,7 @@
   (symbol (lib_id "EnvSensor-v2-rescue:+3.3V-power") (at 485.14 269.24 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 992b582e-49cd-4f6e-b453-250d26084618)
-    (property "Reference" "#PWR045" (at 485.14 273.05 0)
+    (property "Reference" "#PWR046" (at 485.14 273.05 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+3.3V" (at 485.521 264.8458 0)
@@ -9817,7 +9939,7 @@
     (instances
       (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
-          (reference "#PWR045") (unit 1)
+          (reference "#PWR046") (unit 1)
         )
       )
     )
@@ -9876,7 +9998,7 @@
   (symbol (lib_id "Device:R") (at 195.58 282.575 180) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 9e38250d-ec5f-47ca-94e1-e39fecb6a016)
-    (property "Reference" "R21" (at 197.358 281.4066 0)
+    (property "Reference" "R25" (at 197.358 281.4066 0)
       (effects (font (size 1.27 1.27)) (justify right))
     )
     (property "Value" "3k3" (at 197.358 283.718 0)
@@ -9893,7 +10015,7 @@
     (instances
       (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
-          (reference "R21") (unit 1)
+          (reference "R25") (unit 1)
         )
       )
     )
@@ -9927,7 +10049,7 @@
   (symbol (lib_id "Device:C") (at 127 284.48 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid a52069c0-a2a4-401b-b621-19fa8a79125e)
-    (property "Reference" "C27" (at 129.921 283.6453 0)
+    (property "Reference" "C28" (at 129.921 283.6453 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "47n" (at 129.921 286.1822 0)
@@ -9944,7 +10066,7 @@
     (instances
       (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
-          (reference "C27") (unit 1)
+          (reference "C28") (unit 1)
         )
       )
     )
@@ -9953,7 +10075,7 @@
   (symbol (lib_id "power:GND") (at 271.78 307.34 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid a5a25b9e-8ce9-4e42-8355-b2840f0309de)
-    (property "Reference" "#PWR064" (at 271.78 313.69 0)
+    (property "Reference" "#PWR065" (at 271.78 313.69 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 271.907 311.7342 0)
@@ -9969,7 +10091,7 @@
     (instances
       (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
-          (reference "#PWR064") (unit 1)
+          (reference "#PWR065") (unit 1)
         )
       )
     )
@@ -9978,7 +10100,7 @@
   (symbol (lib_id "power:GND") (at 481.965 191.77 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid a67940f6-6971-40ff-9515-94d4a147bc22)
-    (property "Reference" "#PWR027" (at 481.965 198.12 0)
+    (property "Reference" "#PWR026" (at 481.965 198.12 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 482.092 196.1642 0)
@@ -9994,7 +10116,7 @@
     (instances
       (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
-          (reference "#PWR027") (unit 1)
+          (reference "#PWR026") (unit 1)
         )
       )
     )
@@ -10028,7 +10150,7 @@
   (symbol (lib_id "power:GND") (at 256.54 307.34 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid afecbd33-680d-4277-bb4f-4a51107d97b7)
-    (property "Reference" "#PWR063" (at 256.54 313.69 0)
+    (property "Reference" "#PWR064" (at 256.54 313.69 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 256.667 311.7342 0)
@@ -10044,7 +10166,7 @@
     (instances
       (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
-          (reference "#PWR063") (unit 1)
+          (reference "#PWR064") (unit 1)
         )
       )
     )
@@ -10105,7 +10227,7 @@
   (symbol (lib_id "power:+BATT") (at 256.54 288.29 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid b31e8b12-c544-47fa-a212-d98bbc0203af)
-    (property "Reference" "#PWR049" (at 256.54 292.1 0)
+    (property "Reference" "#PWR050" (at 256.54 292.1 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+BATT" (at 248.92 287.02 0)
@@ -10121,7 +10243,7 @@
     (instances
       (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
-          (reference "#PWR049") (unit 1)
+          (reference "#PWR050") (unit 1)
         )
       )
     )
@@ -10130,7 +10252,7 @@
   (symbol (lib_id "power:GND") (at 66.675 287.02 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid b3571f7c-7b13-4621-92e4-7e712cf494dd)
-    (property "Reference" "#PWR048" (at 66.675 293.37 0)
+    (property "Reference" "#PWR049" (at 66.675 293.37 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 66.802 291.4142 0)
@@ -10146,7 +10268,7 @@
     (instances
       (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
-          (reference "#PWR048") (unit 1)
+          (reference "#PWR049") (unit 1)
         )
       )
     )
@@ -10155,7 +10277,7 @@
   (symbol (lib_id "Device:LED") (at 485.14 276.86 90) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid b4d79fbb-79ca-4034-9164-bdcac0c500e8)
-    (property "Reference" "D13" (at 480.06 271.78 90)
+    (property "Reference" "D8" (at 480.06 271.78 90)
       (effects (font (size 1.27 1.27)) (justify right))
     )
     (property "Value" "3.3V POWER LED" (at 467.36 274.32 90)
@@ -10172,7 +10294,7 @@
     (instances
       (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
-          (reference "D13") (unit 1)
+          (reference "D8") (unit 1)
         )
       )
     )
@@ -10181,7 +10303,7 @@
   (symbol (lib_id "power:GND") (at 493.395 191.77 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid b536747f-a809-4324-96b3-0deafbb3862b)
-    (property "Reference" "#PWR072" (at 493.395 198.12 0)
+    (property "Reference" "#PWR027" (at 493.395 198.12 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 493.522 196.1642 0)
@@ -10197,7 +10319,7 @@
     (instances
       (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
-          (reference "#PWR072") (unit 1)
+          (reference "#PWR027") (unit 1)
         )
       )
     )
@@ -10206,7 +10328,7 @@
   (symbol (lib_id "Device:R") (at 386.08 228.6 180) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid b61c70c8-4f36-4956-9c9d-b5110db68243)
-    (property "Reference" "R20" (at 392.43 227.33 0)
+    (property "Reference" "R18" (at 392.43 227.33 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "30k" (at 392.43 229.87 0)
@@ -10223,7 +10345,7 @@
     (instances
       (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
-          (reference "R20") (unit 1)
+          (reference "R18") (unit 1)
         )
       )
     )
@@ -10232,7 +10354,7 @@
   (symbol (lib_id "Device:C") (at 398.78 213.36 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid b865cc91-b1a7-4f4a-88e2-9951d62b4151)
-    (property "Reference" "C21" (at 400.05 210.82 0)
+    (property "Reference" "C22" (at 400.05 210.82 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "47u" (at 400.05 215.9 0)
@@ -10249,7 +10371,7 @@
     (instances
       (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
-          (reference "C21") (unit 1)
+          (reference "C22") (unit 1)
         )
       )
     )
@@ -10258,7 +10380,7 @@
   (symbol (lib_id "power:GND") (at 386.08 233.68 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid bc3943bb-5e7e-4ea7-9fc1-8f51564bc3ba)
-    (property "Reference" "#PWR041" (at 386.08 240.03 0)
+    (property "Reference" "#PWR040" (at 386.08 240.03 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 386.207 238.0742 0)
@@ -10274,7 +10396,7 @@
     (instances
       (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
-          (reference "#PWR041") (unit 1)
+          (reference "#PWR040") (unit 1)
         )
       )
     )
@@ -10283,7 +10405,7 @@
   (symbol (lib_id "EnvSensor-v2-rescue:Jumper_NO_Small-Device") (at 194.945 243.205 270) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid be427794-8f05-4f65-9dc3-16ab7874ebf3)
-    (property "Reference" "JP8" (at 196.1642 242.0366 90)
+    (property "Reference" "JP7" (at 196.1642 242.0366 90)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "NO" (at 196.1642 244.348 90)
@@ -10300,7 +10422,7 @@
     (instances
       (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
-          (reference "JP8") (unit 1)
+          (reference "JP7") (unit 1)
         )
       )
     )
@@ -10418,7 +10540,7 @@
   (symbol (lib_id "Device:LED") (at 193.04 271.145 90) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid cc1106bd-4bce-4e66-8f3a-055e48daa028)
-    (property "Reference" "D4" (at 187.96 267.335 90)
+    (property "Reference" "D6" (at 187.96 267.335 90)
       (effects (font (size 1.27 1.27)) (justify right))
     )
     (property "Value" "CHARGE LED (Red)" (at 181.61 268.605 90)
@@ -10435,7 +10557,7 @@
     (instances
       (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
-          (reference "D4") (unit 1)
+          (reference "D6") (unit 1)
         )
       )
     )
@@ -10444,7 +10566,7 @@
   (symbol (lib_id "Device:LED") (at 494.03 276.86 90) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid cd667d18-eada-413f-9e18-a017de2b59a2)
-    (property "Reference" "D14" (at 495.3 271.78 90)
+    (property "Reference" "D9" (at 495.3 271.78 90)
       (effects (font (size 1.27 1.27)) (justify right))
     )
     (property "Value" "5V POWER LED" (at 495.3 274.32 90)
@@ -10461,7 +10583,7 @@
     (instances
       (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
-          (reference "D14") (unit 1)
+          (reference "D9") (unit 1)
         )
       )
     )
@@ -10495,7 +10617,7 @@
   (symbol (lib_id "power:GND") (at 127 303.53 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid d6c43277-432d-4328-b91b-6518d1f62ec5)
-    (property "Reference" "#PWR060" (at 127 309.88 0)
+    (property "Reference" "#PWR061" (at 127 309.88 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 127.127 307.9242 0)
@@ -10511,7 +10633,7 @@
     (instances
       (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
-          (reference "#PWR060") (unit 1)
+          (reference "#PWR061") (unit 1)
         )
       )
     )
@@ -10622,7 +10744,7 @@
   (symbol (lib_id "EnvSensor-v2-rescue:+3.3V-power") (at 508 299.72 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid dd0db838-2881-40c1-99b6-4dabdba45cc0)
-    (property "Reference" "#PWR062" (at 508 303.53 0)
+    (property "Reference" "#PWR059" (at 508 303.53 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+3.3V" (at 508.381 295.3258 0)
@@ -10638,7 +10760,7 @@
     (instances
       (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
-          (reference "#PWR062") (unit 1)
+          (reference "#PWR059") (unit 1)
         )
       )
     )
@@ -10673,7 +10795,7 @@
   (symbol (lib_id "Device:R") (at 494.03 287.02 180) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid e3e62761-658d-498f-b4bc-9814d97e77cd)
-    (property "Reference" "R30" (at 495.808 285.8516 0)
+    (property "Reference" "R27" (at 495.808 285.8516 0)
       (effects (font (size 1.27 1.27)) (justify right))
     )
     (property "Value" "3k3" (at 495.808 288.163 0)
@@ -10690,7 +10812,7 @@
     (instances
       (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
-          (reference "R30") (unit 1)
+          (reference "R27") (unit 1)
         )
       )
     )
@@ -10725,7 +10847,7 @@
   (symbol (lib_id "power:VBUS") (at 487.68 312.42 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid e9838717-e039-465f-bea4-729015ac240b)
-    (property "Reference" "#PWR057" (at 487.68 316.23 0)
+    (property "Reference" "#PWR069" (at 487.68 316.23 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "VBUS" (at 488.061 308.0258 0)
@@ -10741,7 +10863,7 @@
     (instances
       (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
-          (reference "#PWR057") (unit 1)
+          (reference "#PWR069") (unit 1)
         )
       )
     )
@@ -10750,7 +10872,7 @@
   (symbol (lib_id "power:GND") (at 405.13 220.98 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid ed94063c-e1de-4dec-a100-e461766f5f84)
-    (property "Reference" "#PWR036" (at 405.13 227.33 0)
+    (property "Reference" "#PWR037" (at 405.13 227.33 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 405.257 225.3742 0)
@@ -10766,7 +10888,7 @@
     (instances
       (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
-          (reference "#PWR036") (unit 1)
+          (reference "#PWR037") (unit 1)
         )
       )
     )
@@ -10775,7 +10897,7 @@
   (symbol (lib_id "Device:C") (at 127 295.91 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid ee910e1a-4338-4257-8e45-0fea6fe3f07d)
-    (property "Reference" "C36" (at 129.921 295.0753 0)
+    (property "Reference" "C38" (at 129.921 295.0753 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "22n" (at 129.921 297.6122 0)
@@ -10792,7 +10914,7 @@
     (instances
       (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
-          (reference "C36") (unit 1)
+          (reference "C38") (unit 1)
         )
       )
     )
@@ -10801,7 +10923,7 @@
   (symbol (lib_id "Device:C") (at 88.9 313.69 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid efcd8230-10d0-4e8a-b496-751699737691)
-    (property "Reference" "C43" (at 82.55 312.42 0)
+    (property "Reference" "C45" (at 82.55 312.42 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "100n" (at 81.28 314.96 0)
@@ -10818,7 +10940,7 @@
     (instances
       (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
-          (reference "C43") (unit 1)
+          (reference "C45") (unit 1)
         )
       )
     )
@@ -10850,36 +10972,10 @@
     )
   )
 
-  (symbol (lib_id "Device:C") (at 280.67 298.45 0) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no)
-    (uuid f4c74eda-7ea3-4f8e-bd23-961ccd353ebd)
-    (property "Reference" "C44" (at 280.67 295.91 0)
-      (effects (font (size 1.27 1.27)) (justify left))
-    )
-    (property "Value" "4u7" (at 280.67 300.99 0)
-      (effects (font (size 1.27 1.27)) (justify left))
-    )
-    (property "Footprint" "Capacitor_SMD:C_0805_2012Metric" (at 281.6352 302.26 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "~" (at 280.67 298.45 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (pin "1" (uuid 8f90ddd2-36e7-443b-a43a-4a29f8b64e8c))
-    (pin "2" (uuid ae79ead6-4a6d-4f99-8ce0-30399e6618cd))
-    (instances
-      (project "EnvSensor-Power-v2.1"
-        (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
-          (reference "C44") (unit 1)
-        )
-      )
-    )
-  )
-
   (symbol (lib_id "power:GND") (at 93.98 320.04 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid f6f9e515-4b10-4e68-b945-a13dc4cc0836)
-    (property "Reference" "#PWR070" (at 93.98 326.39 0)
+    (property "Reference" "#PWR072" (at 93.98 326.39 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 94.107 324.4342 0)
@@ -10895,7 +10991,7 @@
     (instances
       (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
-          (reference "#PWR070") (unit 1)
+          (reference "#PWR072") (unit 1)
         )
       )
     )
@@ -10904,7 +11000,7 @@
   (symbol (lib_id "Device:R") (at 66.675 273.05 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid fb87f38f-c525-4b38-8fc1-6bf7760e33cb)
-    (property "Reference" "R23" (at 68.453 272.2153 0)
+    (property "Reference" "R21" (at 68.453 272.2153 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "4R7" (at 68.453 274.7522 0)
@@ -10921,7 +11017,7 @@
     (instances
       (project "EnvSensor-Power-v2.1"
         (path "/75844dd9-c348-4927-8288-77f5f5861fbe"
-          (reference "R23") (unit 1)
+          (reference "R21") (unit 1)
         )
       )
     )
