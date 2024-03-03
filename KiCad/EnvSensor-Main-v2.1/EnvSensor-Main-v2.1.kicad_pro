@@ -470,7 +470,7 @@
       "idf": "",
       "netlist": "",
       "specctra_dsn": "",
-      "step": "",
+      "step": "EnvSensor-Main-v2.1.step",
       "vrml": ""
     },
     "page_layout_descr_file": ""
