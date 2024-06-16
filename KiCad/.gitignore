@@ -29,3 +29,8 @@ fp-info-cache
 *.csv
 
 STM32CubeIDE/EnvSensor
+
+*for_Default*
+*for_Elecrow*
+*for_FusionPCB*
+*for_PCBWay*
