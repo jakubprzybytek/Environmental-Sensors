@@ -10700,7 +10700,7 @@
     (property "Value" "I2C" (at 98.552 222.2246 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Footprint" "Connector_PinSocket_2.54mm:PinSocket_1x04_P2.54mm_Horizontal" (at 96.52 219.71 0)
+    (property "Footprint" "JPConnectors:PinSocket_1x04_P2.54mm_Horizontal_SMD" (at 96.52 219.71 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (at 96.52 219.71 0)
