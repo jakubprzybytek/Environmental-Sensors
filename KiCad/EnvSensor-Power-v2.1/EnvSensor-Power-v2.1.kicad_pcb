@@ -13005,7 +13005,7 @@
   (gr_text "Power input" (at 27.2 84.2 -90) (layer "F.SilkS" knockout) (tstamp d4d2d413-4049-4727-a49f-1c7856c9cc0d)
     (effects (font (size 1.5 1.5) (thickness 0.2)) (justify left))
   )
-  (gr_text "Bugs:\n1. SW1 - too small holes, should be 1mm\n2. J3 Wrong diretion\n3. MCP <-> LTC next to power led\n4. Power led always on\n5. LTC3440 should be in Burst Mode off - only then it works at 1.6Hz\n6. LTC3440 close loop cap should be 2nF" (at -74.8 13.8) (layer "F.SilkS") (tstamp d6e1341a-95b4-441a-adef-a9f2b8f3f963)
+  (gr_text "Bugs:\n1. SW1 - too small holes, should be 1mm\n2. J3 Wrong diretion\n3. MCP <-> LTC next to power led\n4. Power led always on\n5. LTC3440 should be in Burst Mode off - only then it works at 1.6Hz\n6. LTC3440 close loop cap should be 2nF\n7. Power 5V always on" (at -74.8 13.8) (layer "F.SilkS") (tstamp d6e1341a-95b4-441a-adef-a9f2b8f3f963)
     (effects (font (size 1.5 1.5) (thickness 0.3) bold) (justify left bottom))
   )
   (gr_text "Keep Out" (at 111 55 90) (layer "F.SilkS") (tstamp d6e80c89-9b0b-4851-a503-53f17a89369d)

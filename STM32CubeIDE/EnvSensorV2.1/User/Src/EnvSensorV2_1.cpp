@@ -1,5 +1,7 @@
 #include <EnvSensorV2_1.hpp>
 
+#include <Utils/DebugLog.hpp>
+
 #include <Misc/BlinkingLeds.hpp>
 
 void EnvSensorV2_1_Init() {
@@ -22,8 +24,8 @@ void EnvSensorV2_1_Init() {
 
 	BlinkingLeds::init();
 
-//	DebugLog::init();
-//
+	DebugLog::init();
+
 //	DisplayController::init();
 //
 //	SensorsReadoutsCollector::init();
@@ -31,6 +33,36 @@ void EnvSensorV2_1_Init() {
 //	SensorsController::init();
 }
 
+void switch1Pressed() {
+//	DisplayCommands::submitDisplayClear();
+}
+
+void switch2Pressed() {
+//	TRIGGER_TOUCHGFX_REFRESH();
+}
+
+void switch3Pressed() {
+	DebugLog::log("Button 3 pressed");
+}
+
+void switch4Pressed() {
+	//osThreadFlagsSet(mainStateThreadHandle, SWITCH_4_PRESSED_FLAG);
+//	SensorsController::triggerHighMeasurements();
+}
 
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin) {
+//	if (GPIO_Pin == E_INK_BUSY_Pin) {
+//			DisplayController::displayReadyInterrupHandler();
+//		} else if (GPIO_Pin == SCD30_READY_Pin) {
+//			CO2Sensor::sensorReadyInterruptHandler();
+//		} else
+	if (GPIO_Pin == SWITCH_1_Pin) {
+		switch1Pressed();
+	} else if (GPIO_Pin == SWITCH_2_Pin) {
+		switch2Pressed();
+	} else if (GPIO_Pin == SWITCH_3_Pin) {
+		switch3Pressed();
+	} else if (GPIO_Pin == SWITCH_4_Pin) {
+		switch4Pressed();
+	}
 }
