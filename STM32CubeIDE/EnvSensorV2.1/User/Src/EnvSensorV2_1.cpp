@@ -2,6 +2,11 @@
 
 #include <Utils/DebugLog.hpp>
 
+#include <Sensors/SensorsController.hpp>
+#include <Sensors/CO2Sensor.hpp>
+
+#include <Readouts/SensorsReadoutsCollector.hpp>
+
 #include <Misc/BlinkingLeds.hpp>
 
 void EnvSensorV2_1_Init() {
@@ -28,9 +33,9 @@ void EnvSensorV2_1_Init() {
 
 //	DisplayController::init();
 //
-//	SensorsReadoutsCollector::init();
-//
-//	SensorsController::init();
+	SensorsReadoutsCollector::init();
+
+	SensorsController::init();
 }
 
 void switch1Pressed() {
@@ -53,10 +58,10 @@ void switch4Pressed() {
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin) {
 //	if (GPIO_Pin == E_INK_BUSY_Pin) {
 //			DisplayController::displayReadyInterrupHandler();
-//		} else if (GPIO_Pin == SCD30_READY_Pin) {
-//			CO2Sensor::sensorReadyInterruptHandler();
 //		} else
-	if (GPIO_Pin == SWITCH_1_Pin) {
+	if (GPIO_Pin == SCD30_READY_Pin) {
+		CO2Sensor::sensorReadyInterruptHandler();
+	} else if (GPIO_Pin == SWITCH_1_Pin) {
 		switch1Pressed();
 	} else if (GPIO_Pin == SWITCH_2_Pin) {
 		switch2Pressed();

@@ -65,6 +65,8 @@ void Error_Handler(void);
 #define LED_2_GPIO_Port GPIOC
 #define LED_1_Pin GPIO_PIN_3
 #define LED_1_GPIO_Port GPIOC
+#define BATTERY_MEASURE_INPUT_Pin GPIO_PIN_0
+#define BATTERY_MEASURE_INPUT_GPIO_Port GPIOA
 #define SWITCH_1_Pin GPIO_PIN_12
 #define SWITCH_1_GPIO_Port GPIOB
 #define SWITCH_1_EXTI_IRQn EXTI15_10_IRQn
@@ -77,6 +79,11 @@ void Error_Handler(void);
 #define SWITCH_4_Pin GPIO_PIN_15
 #define SWITCH_4_GPIO_Port GPIOB
 #define SWITCH_4_EXTI_IRQn EXTI15_10_IRQn
+#define BATTERY_MEASURE_ENABLE_Pin GPIO_PIN_6
+#define BATTERY_MEASURE_ENABLE_GPIO_Port GPIOC
+#define SCD30_READY_Pin GPIO_PIN_8
+#define SCD30_READY_GPIO_Port GPIOA
+#define SCD30_READY_EXTI_IRQn EXTI9_5_IRQn
 
 /* USER CODE BEGIN Private defines */
 
