@@ -19,14 +19,17 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "cmsis_os.h"
+#include "app_touchgfx.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include <EnvSensorV2_1.hpp>
 #include <Readouts/SensorMessages.hpp>
+#include <Display/DisplayCommandMessage.hpp>
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
+typedef StaticTask_t osStaticThreadDef_t;
 typedef StaticQueue_t osStaticMessageQDef_t;
 typedef StaticSemaphore_t osStaticMutexDef_t;
 /* USER CODE BEGIN PTD */
@@ -46,13 +49,22 @@ typedef StaticSemaphore_t osStaticMutexDef_t;
 /* Private variables ---------------------------------------------------------*/
 ADC_HandleTypeDef hadc1;
 
+CRC_HandleTypeDef hcrc;
+
 I2C_HandleTypeDef hi2c1;
+
+SPI_HandleTypeDef hspi1;
 
 /* Definitions for defaultTask */
 osThreadId_t defaultTaskHandle;
+uint32_t defaultTaskBuffer[ 1024 ];
+osStaticThreadDef_t defaultTaskControlBlock;
 const osThreadAttr_t defaultTask_attributes = {
   .name = "defaultTask",
-  .stack_size = 128 * 4,
+  .cb_mem = &defaultTaskControlBlock,
+  .cb_size = sizeof(defaultTaskControlBlock),
+  .stack_mem = &defaultTaskBuffer[0],
+  .stack_size = sizeof(defaultTaskBuffer),
   .priority = (osPriority_t) osPriorityNormal,
 };
 /* Definitions for debugLogQueue */
@@ -77,6 +89,17 @@ const osMessageQueueAttr_t sensorReadoutsQueue_attributes = {
   .mq_mem = &sensorReadoutsQueueBuffer,
   .mq_size = sizeof(sensorReadoutsQueueBuffer)
 };
+/* Definitions for displayCommandsQueue */
+osMessageQueueId_t displayCommandsQueueHandle;
+uint8_t displayCommandsQueueBuffer[ 6 * sizeof( DisplayCommandMessage_t ) ];
+osStaticMessageQDef_t displayCommandsQueueControlBlock;
+const osMessageQueueAttr_t displayCommandsQueue_attributes = {
+  .name = "displayCommandsQueue",
+  .cb_mem = &displayCommandsQueueControlBlock,
+  .cb_size = sizeof(displayCommandsQueueControlBlock),
+  .mq_mem = &displayCommandsQueueBuffer,
+  .mq_size = sizeof(displayCommandsQueueBuffer)
+};
 /* Definitions for i2c1Mutex */
 osMutexId_t i2c1MutexHandle;
 osStaticMutexDef_t i2c1MutexControlBlock;
@@ -94,6 +117,8 @@ void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
 static void MX_I2C1_Init(void);
 static void MX_ADC1_Init(void);
+static void MX_CRC_Init(void);
+static void MX_SPI1_Init(void);
 void StartDefaultTask(void *argument);
 
 /* USER CODE BEGIN PFP */
@@ -136,6 +161,11 @@ int main(void)
   MX_GPIO_Init();
   MX_I2C1_Init();
   MX_ADC1_Init();
+  MX_CRC_Init();
+  MX_SPI1_Init();
+  MX_TouchGFX_Init();
+  /* Call PreOsInit function */
+  MX_TouchGFX_PreOSInit();
   /* USER CODE BEGIN 2 */
 
   /* USER CODE END 2 */
@@ -164,6 +194,9 @@ int main(void)
 
   /* creation of sensorReadoutsQueue */
   sensorReadoutsQueueHandle = osMessageQueueNew (6, sizeof(ReadoutMessage_t), &sensorReadoutsQueue_attributes);
+
+  /* creation of displayCommandsQueue */
+  displayCommandsQueueHandle = osMessageQueueNew (6, sizeof(DisplayCommandMessage_t), &displayCommandsQueue_attributes);
 
   /* USER CODE BEGIN RTOS_QUEUES */
   /* add queues, ... */
@@ -317,6 +350,37 @@ static void MX_ADC1_Init(void)
 }
 
 /**
+  * @brief CRC Initialization Function
+  * @param None
+  * @retval None
+  */
+static void MX_CRC_Init(void)
+{
+
+  /* USER CODE BEGIN CRC_Init 0 */
+
+  /* USER CODE END CRC_Init 0 */
+
+  /* USER CODE BEGIN CRC_Init 1 */
+
+  /* USER CODE END CRC_Init 1 */
+  hcrc.Instance = CRC;
+  hcrc.Init.DefaultPolynomialUse = DEFAULT_POLYNOMIAL_ENABLE;
+  hcrc.Init.DefaultInitValueUse = DEFAULT_INIT_VALUE_ENABLE;
+  hcrc.Init.InputDataInversionMode = CRC_INPUTDATA_INVERSION_NONE;
+  hcrc.Init.OutputDataInversionMode = CRC_OUTPUTDATA_INVERSION_DISABLE;
+  hcrc.InputDataFormat = CRC_INPUTDATA_FORMAT_BYTES;
+  if (HAL_CRC_Init(&hcrc) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /* USER CODE BEGIN CRC_Init 2 */
+
+  /* USER CODE END CRC_Init 2 */
+
+}
+
+/**
   * @brief I2C1 Initialization Function
   * @param None
   * @retval None
@@ -365,6 +429,46 @@ static void MX_I2C1_Init(void)
 }
 
 /**
+  * @brief SPI1 Initialization Function
+  * @param None
+  * @retval None
+  */
+static void MX_SPI1_Init(void)
+{
+
+  /* USER CODE BEGIN SPI1_Init 0 */
+
+  /* USER CODE END SPI1_Init 0 */
+
+  /* USER CODE BEGIN SPI1_Init 1 */
+
+  /* USER CODE END SPI1_Init 1 */
+  /* SPI1 parameter configuration*/
+  hspi1.Instance = SPI1;
+  hspi1.Init.Mode = SPI_MODE_MASTER;
+  hspi1.Init.Direction = SPI_DIRECTION_2LINES;
+  hspi1.Init.DataSize = SPI_DATASIZE_8BIT;
+  hspi1.Init.CLKPolarity = SPI_POLARITY_LOW;
+  hspi1.Init.CLKPhase = SPI_PHASE_1EDGE;
+  hspi1.Init.NSS = SPI_NSS_SOFT;
+  hspi1.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_32;
+  hspi1.Init.FirstBit = SPI_FIRSTBIT_MSB;
+  hspi1.Init.TIMode = SPI_TIMODE_DISABLE;
+  hspi1.Init.CRCCalculation = SPI_CRCCALCULATION_DISABLE;
+  hspi1.Init.CRCPolynomial = 7;
+  hspi1.Init.CRCLength = SPI_CRC_LENGTH_DATASIZE;
+  hspi1.Init.NSSPMode = SPI_NSS_PULSE_ENABLE;
+  if (HAL_SPI_Init(&hspi1) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /* USER CODE BEGIN SPI1_Init 2 */
+
+  /* USER CODE END SPI1_Init 2 */
+
+}
+
+/**
   * @brief GPIO Initialization Function
   * @param None
   * @retval None
@@ -383,19 +487,38 @@ static void MX_GPIO_Init(void)
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOC, LED_4_Pin|LED_3_Pin|LED_2_Pin|LED_1_Pin
-                          |BATTERY_MEASURE_ENABLE_Pin, GPIO_PIN_RESET);
+                          |E_INK_SELECT_Pin|E_INK_DC_Pin|BATTERY_MEASURE_ENABLE_Pin, GPIO_PIN_RESET);
+
+  /*Configure GPIO pin Output Level */
+  HAL_GPIO_WritePin(E_INK_RESET_GPIO_Port, E_INK_RESET_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pins : LED_4_Pin LED_3_Pin LED_2_Pin LED_1_Pin
-                           BATTERY_MEASURE_ENABLE_Pin */
+                           E_INK_SELECT_Pin BATTERY_MEASURE_ENABLE_Pin */
   GPIO_InitStruct.Pin = LED_4_Pin|LED_3_Pin|LED_2_Pin|LED_1_Pin
-                          |BATTERY_MEASURE_ENABLE_Pin;
+                          |E_INK_SELECT_Pin|BATTERY_MEASURE_ENABLE_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : SWITCH_1_Pin SWITCH_2_Pin SWITCH_3_Pin SWITCH_4_Pin */
-  GPIO_InitStruct.Pin = SWITCH_1_Pin|SWITCH_2_Pin|SWITCH_3_Pin|SWITCH_4_Pin;
+  /*Configure GPIO pin : E_INK_DC_Pin */
+  GPIO_InitStruct.Pin = E_INK_DC_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
+  HAL_GPIO_Init(E_INK_DC_GPIO_Port, &GPIO_InitStruct);
+
+  /*Configure GPIO pin : E_INK_RESET_Pin */
+  GPIO_InitStruct.Pin = E_INK_RESET_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  HAL_GPIO_Init(E_INK_RESET_GPIO_Port, &GPIO_InitStruct);
+
+  /*Configure GPIO pins : E_INK_BUSY_Pin SWITCH_1_Pin SWITCH_2_Pin SWITCH_3_Pin
+                           SWITCH_4_Pin */
+  GPIO_InitStruct.Pin = E_INK_BUSY_Pin|SWITCH_1_Pin|SWITCH_2_Pin|SWITCH_3_Pin
+                          |SWITCH_4_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
@@ -407,6 +530,9 @@ static void MX_GPIO_Init(void)
   HAL_GPIO_Init(SCD30_READY_GPIO_Port, &GPIO_InitStruct);
 
   /* EXTI interrupt init*/
+  HAL_NVIC_SetPriority(EXTI1_IRQn, 5, 0);
+  HAL_NVIC_EnableIRQ(EXTI1_IRQn);
+
   HAL_NVIC_SetPriority(EXTI9_5_IRQn, 5, 0);
   HAL_NVIC_EnableIRQ(EXTI9_5_IRQn);
 
@@ -431,6 +557,7 @@ static void MX_GPIO_Init(void)
 void StartDefaultTask(void *argument)
 {
   /* USER CODE BEGIN 5 */
+	MX_TouchGFX_Process();
   /* Infinite loop */
   for(;;)
   {

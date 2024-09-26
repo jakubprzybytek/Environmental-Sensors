@@ -1,0 +1,30 @@
+
+{
+  "Application": {
+    "Name": "EnvSensorV2.1",
+    "TouchGfxPath": "../Middlewares/ST/touchgfx",
+    "AvailableColorDepths": [ 2 ],
+    "AvailableLCDs":
+    {
+      "2": "LCD2bpp"
+    },
+    "AvailableResolutions": [
+      {
+        "Width": 400,
+        "Height": 300
+      }
+    ],
+    "PostGenerateTargetCommand": "touchgfx update_project",
+    "Family": "STM32L4",
+    "SubFamily": "STM32L4x1",
+    "Platform": "m4",
+    "Toolchain": "STM32CubeIDE",
+    "ProjectFile": "../EnvSensorV2.1.ioc",
+    "OptionalComponentsRoot": "../Middlewares/ST/touchgfx_components",
+    "OptionalComponents": [
+    ],
+    "AdditionalFeatures": [
+    ]
+  },
+  "Version": "4.24.0"
+}

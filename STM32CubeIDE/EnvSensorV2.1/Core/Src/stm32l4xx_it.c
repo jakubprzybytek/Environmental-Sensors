@@ -160,16 +160,17 @@ void DebugMon_Handler(void)
 /******************************************************************************/
 
 /**
-  * @brief This function handles RCC global interrupt.
+  * @brief This function handles EXTI line1 interrupt.
   */
-void RCC_IRQHandler(void)
+void EXTI1_IRQHandler(void)
 {
-  /* USER CODE BEGIN RCC_IRQn 0 */
+  /* USER CODE BEGIN EXTI1_IRQn 0 */
 
-  /* USER CODE END RCC_IRQn 0 */
-  /* USER CODE BEGIN RCC_IRQn 1 */
+  /* USER CODE END EXTI1_IRQn 0 */
+  HAL_GPIO_EXTI_IRQHandler(E_INK_BUSY_Pin);
+  /* USER CODE BEGIN EXTI1_IRQn 1 */
 
-  /* USER CODE END RCC_IRQn 1 */
+  /* USER CODE END EXTI1_IRQn 1 */
 }
 
 /**

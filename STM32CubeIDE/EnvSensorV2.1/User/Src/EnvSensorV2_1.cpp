@@ -1,6 +1,10 @@
 #include <EnvSensorV2_1.hpp>
+#include <EnvSensorConfig.hpp>
 
 #include <Utils/DebugLog.hpp>
+
+#include <Display/DisplayController.hpp>
+#include <Display/DisplayCommands.hpp>
 
 #include <Sensors/SensorsController.hpp>
 #include <Sensors/CO2Sensor.hpp>
@@ -31,19 +35,19 @@ void EnvSensorV2_1_Init() {
 
 	DebugLog::init();
 
-//	DisplayController::init();
-//
+	DisplayController::init();
+
 	SensorsReadoutsCollector::init();
 
 	SensorsController::init();
 }
 
 void switch1Pressed() {
-//	DisplayCommands::submitDisplayClear();
+	DisplayCommands::submitDisplayClear();
 }
 
 void switch2Pressed() {
-//	TRIGGER_TOUCHGFX_REFRESH();
+	TRIGGER_TOUCHGFX_REFRESH();
 }
 
 void switch3Pressed() {
@@ -56,10 +60,9 @@ void switch4Pressed() {
 }
 
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin) {
-//	if (GPIO_Pin == E_INK_BUSY_Pin) {
-//			DisplayController::displayReadyInterrupHandler();
-//		} else
-	if (GPIO_Pin == SCD30_READY_Pin) {
+	if (GPIO_Pin == E_INK_BUSY_Pin) {
+		DisplayController::displayReadyInterrupHandler();
+	} else if (GPIO_Pin == SCD30_READY_Pin) {
 		CO2Sensor::sensorReadyInterruptHandler();
 	} else if (GPIO_Pin == SWITCH_1_Pin) {
 		switch1Pressed();
