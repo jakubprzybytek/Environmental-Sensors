@@ -22,15 +22,15 @@ void Model::tick() {
 		modelListener->notifyVoltageChanged(storedReadoutsState.voltage);
 	}
 
-	float roundedScdTemperature = round(readoutsState.scdTemperature * 10.0) / 10.0;
-	if (storedReadoutsState.scdTemperature != roundedScdTemperature) {
-		storedReadoutsState.scdTemperature = roundedScdTemperature;
-		modelListener->notifyTemperatureChanged(storedReadoutsState.scdTemperature);
+	float roundedBmeTemperature = round(readoutsState.bmeTemperature * 10.0) / 10.0;
+	if (storedReadoutsState.bmeTemperature != roundedBmeTemperature) {
+		storedReadoutsState.bmeTemperature = roundedBmeTemperature;
+		modelListener->notifyTemperatureChanged(storedReadoutsState.bmeTemperature);
 	}
 
-	float roundedBmpTemperature = round(readoutsState.bmePressure * 10.0) / 10.0;
-	if (storedReadoutsState.bmePressure != roundedBmpTemperature) {
-		storedReadoutsState.bmePressure = roundedBmpTemperature;
+	float roundedBmePressure = round(readoutsState.bmePressure * 10.0) / 10.0;
+	if (storedReadoutsState.bmePressure != roundedBmePressure) {
+		storedReadoutsState.bmePressure = roundedBmePressure;
 		modelListener->notifyPressureChanged(storedReadoutsState.bmePressure);
 	}
 
@@ -55,8 +55,8 @@ void Model::tick() {
 		modelListener->notifyParticlesChanged(storedReadoutsState.pm1, storedReadoutsState.pm2_5, storedReadoutsState.pm4, storedReadoutsState.pm10);
 	}
 
-//	DateTime currentDateTime = RtcUtils::getCurrentDateTime();
-//	modelListener->notifyDateTimeChanged(currentDateTime);
+	DateTime currentDateTime = RtcUtils::getCurrentDateTime();
+	modelListener->notifyDateTimeChanged(currentDateTime);
 }
 
 #endif
