@@ -6,14 +6,186 @@
   <Texts>
     <TextGroup Id="Group1" />
     <TextGroup Id="Unsorted">
-      <Text Id="__SingleUse_BLLY" Alignment="Center" TypographyId="Default">
-        <Translation Language="GB">New Text</Translation>
+      <Text Id="__SingleUse_K8A6" Alignment="Center" TypographyId="Small">
+        <Translation Language="GB">Particles</Translation>
+      </Text>
+      <Text Id="__SingleUse_8G54" Alignment="Left" TypographyId="Small">
+        <Translation Language="GB">0</Translation>
+      </Text>
+      <Text Id="__SingleUse_XXYV" Alignment="Right" TypographyId="Default">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_BXHZ" Alignment="Left" TypographyId="Small">
+        <Translation Language="GB">0</Translation>
+      </Text>
+      <Text Id="__SingleUse_GRH3" Alignment="Right" TypographyId="Default">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_BDMF" Alignment="Left" TypographyId="Small">
+        <Translation Language="GB">0</Translation>
+      </Text>
+      <Text Id="__SingleUse_ORX3" Alignment="Right" TypographyId="Default">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_EDSM" Alignment="Left" TypographyId="Small">
+        <Translation Language="GB">0</Translation>
+      </Text>
+      <Text Id="__SingleUse_DI1B" Alignment="Right" TypographyId="Default">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_6P4T" Alignment="Right" TypographyId="Small">
+        <Translation Language="GB">μg/m³</Translation>
+      </Text>
+      <Text Id="__SingleUse_789C" Alignment="Center" TypographyId="Default">
+        <Translation Language="GB">PM10</Translation>
+      </Text>
+      <Text Id="__SingleUse_EUOT" Alignment="Center" TypographyId="Default">
+        <Translation Language="GB">PM4</Translation>
+      </Text>
+      <Text Id="__SingleUse_W47G" Alignment="Center" TypographyId="Default">
+        <Translation Language="GB">PM2.5</Translation>
+      </Text>
+      <Text Id="__SingleUse_1DZC" Alignment="Center" TypographyId="Default">
+        <Translation Language="GB">PM1</Translation>
+      </Text>
+      <Text Id="__SingleUse_OEYK" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">0</Translation>
+      </Text>
+      <Text Id="__SingleUse_N3AI" Alignment="Right" TypographyId="Default">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_LI33" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">0</Translation>
+      </Text>
+      <Text Id="__SingleUse_T207" Alignment="Right" TypographyId="Default">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_LLXA" Alignment="Center" TypographyId="Small">
+        <Translation Language="GB">μg/m³</Translation>
+      </Text>
+      <Text Id="__SingleUse_UYB0" Alignment="Center" TypographyId="Default">
+        <Translation Language="GB">PM10</Translation>
+      </Text>
+      <Text Id="__SingleUse_NW2U" Alignment="Center" TypographyId="Default">
+        <Translation Language="GB">PM4</Translation>
+      </Text>
+      <Text Id="__SingleUse_G6RI" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">0</Translation>
+      </Text>
+      <Text Id="__SingleUse_60TG" Alignment="Right" TypographyId="Default">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_U8Q6" Alignment="Center" TypographyId="Default">
+        <Translation Language="GB">PM2.5</Translation>
+      </Text>
+      <Text Id="__SingleUse_MVL1" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">0</Translation>
+      </Text>
+      <Text Id="__SingleUse_T5EG" Alignment="Right" TypographyId="Default">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_THMQ" Alignment="Center" TypographyId="Default">
+        <Translation Language="GB">PM1</Translation>
+      </Text>
+      <Text Id="__SingleUse_JC1X" Alignment="Center" TypographyId="Small">
+        <Translation Language="GB">Refresh</Translation>
+      </Text>
+      <Text Id="__SingleUse_QLDI" Alignment="Center" TypographyId="Small">
+        <Translation Language="GB">Clear</Translation>
+      </Text>
+      <Text Id="__SingleUse_ZVXF" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">0.0</Translation>
+      </Text>
+      <Text Id="__SingleUse_8Q5Y" Alignment="Right" TypographyId="XLarge">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_6OS6" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">°C</Translation>
+      </Text>
+      <Text Id="__SingleUse_2MZM" Alignment="Right" TypographyId="Default">
+        <Translation Language="GB">Temperature</Translation>
+      </Text>
+      <Text Id="__SingleUse_Q2NK" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">0.0</Translation>
+      </Text>
+      <Text Id="__SingleUse_HQWB" Alignment="Right" TypographyId="Large">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_PB6I" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">hPa</Translation>
+      </Text>
+      <Text Id="__SingleUse_BSZ2" Alignment="Right" TypographyId="Default">
+        <Translation Language="GB">Preasure</Translation>
+      </Text>
+      <Text Id="__SingleUse_AHUZ" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">0.0</Translation>
+      </Text>
+      <Text Id="__SingleUse_C2UD" Alignment="Right" TypographyId="Large">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_B3Q3" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">ppm</Translation>
+      </Text>
+      <Text Id="__SingleUse_YX85" Alignment="Right" TypographyId="Default">
+        <Translation Language="GB">CO2</Translation>
+      </Text>
+      <Text Id="__SingleUse_184G" Alignment="Right" TypographyId="XLarge">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_NBBE" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">0.0</Translation>
+      </Text>
+      <Text Id="__SingleUse_RKZY" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">%</Translation>
+      </Text>
+      <Text Id="__SingleUse_0OK7" Alignment="Right" TypographyId="Default">
+        <Translation Language="GB">Humidity</Translation>
+      </Text>
+      <Text Id="__SingleUse_94JU" Alignment="Right" TypographyId="Default">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_IXTO" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">0.0</Translation>
+      </Text>
+      <Text Id="__SingleUse_CR7E" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">V</Translation>
+      </Text>
+      <Text Id="__SingleUse_S6EA" Alignment="Right" TypographyId="Default">
+        <Translation Language="GB">Volt.</Translation>
+      </Text>
+      <Text Id="__SingleUse_HZ9N" Alignment="Center" TypographyId="Default">
+        <Translation Language="GB">Time</Translation>
+      </Text>
+      <Text Id="__SingleUse_UKDP" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">00:00:00</Translation>
+      </Text>
+      <Text Id="voltageValue" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">0.0</Translation>
+      </Text>
+      <Text Id="voltageTextValue" Alignment="Right" TypographyId="Default">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="v" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">V</Translation>
+      </Text>
+      <Text Id="voltage" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">Voltage</Translation>
+      </Text>
+      <Text Id="__SingleUse_O4NC" Alignment="Center" TypographyId="Default">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="timeValue" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">00:00:00</Translation>
+      </Text>
+      <Text Id="time" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">Time</Translation>
       </Text>
     </TextGroup>
   </Texts>
   <Typographies>
-    <Typography Id="Default" Font="verdana.ttf" Size="20" Bpp="4" IsVector="no" Direction="LTR" FallbackCharacter="?" />
-    <Typography Id="Large" Font="verdana.ttf" Size="40" Bpp="4" IsVector="no" Direction="LTR" FallbackCharacter="?" />
-    <Typography Id="Small" Font="verdana.ttf" Size="10" Bpp="4" IsVector="no" Direction="LTR" FallbackCharacter="?" />
+    <Typography Id="Default" Font="segoeui.ttf" Size="20" Bpp="4" IsVector="no" Direction="LTR" FallbackCharacter="?" WildcardCharacters="." WildcardCharacterRanges="0-9" />
+    <Typography Id="Large" Font="segoeuil.ttf" Size="66" Bpp="4" IsVector="no" Direction="LTR" FallbackCharacter="?" WildcardCharacters="." WildcardCharacterRanges="0-9" />
+    <Typography Id="Small" Font="seguisb.ttf" Size="12" Bpp="4" IsVector="no" Direction="LTR" FallbackCharacter="?" />
+    <Typography Id="XLarge" Font="segoeuil.ttf" Size="96" Bpp="4" IsVector="no" Direction="LTR" FallbackCharacter="?" WildcardCharacters="." WildcardCharacterRanges="0-9" />
   </Typographies>
 </TextDatabase>

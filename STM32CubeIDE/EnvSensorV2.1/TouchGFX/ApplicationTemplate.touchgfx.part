@@ -1,7 +1,7 @@
 
 {
   "Application": {
-    "Name": "EnvSensorV2.1",
+    "Name": "EnvSensorV2",
     "TouchGfxPath": "../Middlewares/ST/touchgfx",
     "AvailableColorDepths": [ 2 ],
     "AvailableLCDs":
@@ -24,7 +24,7 @@
     "OptionalComponents": [
     ],
     "AdditionalFeatures": [
-    ]
+    ],
   },
-  "Version": "4.24.0"
+  "Version": "4.21.4"
 }

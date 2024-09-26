@@ -2,13 +2,13 @@
   "Application": {
     "Screens": [
       {
-        "Name": "Screen1",
+        "Name": "MainReadouts",
         "Components": [
           {
             "Type": "Box",
-            "Name": "box1",
-            "Width": 150,
-            "Height": 244,
+            "Name": "background",
+            "Width": 400,
+            "Height": 300,
             "Color": {
               "Red": 255,
               "Green": 255,
@@ -16,49 +16,443 @@
             }
           },
           {
-            "Type": "ButtonWithLabel",
-            "Name": "buttonWithLabel1",
-            "X": 30,
-            "Y": 133,
-            "Width": 240,
-            "Height": 50,
-            "Pressed": "__generated\\alternate_theme_images_widgets_button_regular_height_50_medium_rounded_pressed.png",
-            "Released": "__generated\\alternate_theme_images_widgets_button_regular_height_50_medium_rounded_normal.png",
-            "TextId": "__SingleUse_BLLY",
-            "ReleasedColor": {
-              "Red": 255,
-              "Green": 255,
-              "Blue": 255
-            },
-            "PressedColor": {
-              "Red": 255,
-              "Green": 255,
-              "Blue": 255
-            },
-            "TextRotation": "0",
-            "Preset": "alternate_theme\\presets\\button\\regular\\height_50\\medium_rounded_normal.json"
+            "Type": "TextArea",
+            "Name": "button3TextArea",
+            "X": 224,
+            "Y": 287,
+            "Width": 46,
+            "Height": 12,
+            "TextId": "__SingleUse_K8A6",
+            "TextRotation": "0"
           },
           {
-            "Type": "Container",
-            "Name": "container1",
-            "X": 65,
-            "Y": 8,
+            "Type": "TextArea",
+            "Name": "button2TextArea",
+            "X": 80,
+            "Y": 287,
+            "Width": 46,
+            "Height": 12,
+            "TextId": "__SingleUse_JC1X",
+            "TextRotation": "0"
+          },
+          {
+            "Type": "TextArea",
+            "Name": "button1TextArea",
+            "X": 8,
+            "Y": 287,
+            "Width": 46,
+            "Height": 12,
+            "TextId": "__SingleUse_QLDI",
+            "TextRotation": "0"
+          },
+          {
+            "Type": "CustomContainerInstance",
+            "Name": "particlesContainer",
+            "X": 80,
+            "Y": 225,
             "Width": 250,
-            "Height": 250,
-            "Components": []
+            "Height": 52,
+            "CustomContainerDefinitionName": "ParticlesContainer"
+          },
+          {
+            "Type": "CustomContainerInstance",
+            "Name": "pressureContainer",
+            "Y": 128,
+            "Width": 200,
+            "Height": 97,
+            "CustomContainerDefinitionName": "PressureContainer"
+          },
+          {
+            "Type": "CustomContainerInstance",
+            "Name": "temperatureContainer",
+            "Width": 200,
+            "Height": 114,
+            "CustomContainerDefinitionName": "TemperatureContainer"
+          },
+          {
+            "Type": "CustomContainerInstance",
+            "Name": "cO2Container",
+            "X": 200,
+            "Y": 128,
+            "Width": 200,
+            "Height": 97,
+            "CustomContainerDefinitionName": "CO2Container"
+          },
+          {
+            "Type": "CustomContainerInstance",
+            "Name": "humidityContainer",
+            "X": 200,
+            "Width": 200,
+            "Height": 114,
+            "CustomContainerDefinitionName": "HumidityContainer"
+          },
+          {
+            "Type": "CustomContainerInstance",
+            "Name": "voltageContainer",
+            "X": 326,
+            "Y": 225,
+            "Width": 70,
+            "Height": 52,
+            "CustomContainerDefinitionName": "VoltageContainer"
+          },
+          {
+            "Type": "CustomContainerInstance",
+            "Name": "timeContainer",
+            "Y": 225,
+            "Width": 80,
+            "Height": 52,
+            "CustomContainerDefinitionName": "TimeContainer"
           }
         ],
         "Interactions": []
       }
     ],
-    "CustomContainerDefinitions": [],
+    "CustomContainerDefinitions": [
+      {
+        "Name": "TemperatureContainer",
+        "Width": 200,
+        "Height": 114,
+        "Components": [
+          {
+            "Type": "TextArea",
+            "Name": "valueTextArea",
+            "Y": 6,
+            "Width": 198,
+            "Height": 114,
+            "TextId": "__SingleUse_8Q5Y",
+            "TextRotation": "0",
+            "Wildcard1": {
+              "TextId": "__SingleUse_ZVXF",
+              "UseBuffer": true,
+              "BufferSize": 6
+            }
+          },
+          {
+            "Type": "TextArea",
+            "Name": "unitTextArea",
+            "X": 160,
+            "Width": 40,
+            "Height": 28,
+            "TextId": "__SingleUse_6OS6",
+            "TextRotation": "0"
+          },
+          {
+            "Type": "TextArea",
+            "Name": "labelTextArea",
+            "Width": 150,
+            "Height": 28,
+            "TextId": "__SingleUse_2MZM",
+            "TextRotation": "0"
+          }
+        ],
+        "Interactions": []
+      },
+      {
+        "Name": "PressureContainer",
+        "Width": 200,
+        "Height": 97,
+        "Components": [
+          {
+            "Type": "TextArea",
+            "Name": "valueTextArea",
+            "Y": 14,
+            "Width": 198,
+            "Height": 78,
+            "TextId": "__SingleUse_HQWB",
+            "TextRotation": "0",
+            "Wildcard1": {
+              "TextId": "__SingleUse_Q2NK",
+              "UseBuffer": true,
+              "BufferSize": 8
+            }
+          },
+          {
+            "Type": "TextArea",
+            "Name": "unitTextArea",
+            "X": 160,
+            "Width": 40,
+            "Height": 28,
+            "TextId": "__SingleUse_PB6I",
+            "TextRotation": "0"
+          },
+          {
+            "Type": "TextArea",
+            "Name": "labelTextArea",
+            "Width": 150,
+            "Height": 28,
+            "TextId": "__SingleUse_BSZ2",
+            "TextRotation": "0"
+          }
+        ],
+        "Interactions": []
+      },
+      {
+        "Name": "CO2Container",
+        "Width": 200,
+        "Height": 97,
+        "Components": [
+          {
+            "Type": "TextArea",
+            "Name": "valueTextArea",
+            "Y": 14,
+            "Width": 198,
+            "Height": 88,
+            "TextId": "__SingleUse_C2UD",
+            "TextRotation": "0",
+            "Wildcard1": {
+              "TextId": "__SingleUse_AHUZ",
+              "UseBuffer": true,
+              "BufferSize": 8
+            }
+          },
+          {
+            "Type": "TextArea",
+            "Name": "unitTextArea",
+            "X": 160,
+            "Width": 40,
+            "Height": 28,
+            "TextId": "__SingleUse_B3Q3",
+            "TextRotation": "0"
+          },
+          {
+            "Type": "TextArea",
+            "Name": "labelTextArea",
+            "Width": 150,
+            "Height": 28,
+            "TextId": "__SingleUse_YX85",
+            "TextRotation": "0"
+          }
+        ],
+        "Interactions": []
+      },
+      {
+        "Name": "HumidityContainer",
+        "Width": 200,
+        "Height": 114,
+        "Components": [
+          {
+            "Type": "TextArea",
+            "Name": "valueTextArea",
+            "Y": 6,
+            "Width": 198,
+            "Height": 114,
+            "TextId": "__SingleUse_184G",
+            "TextRotation": "0",
+            "Wildcard1": {
+              "TextId": "__SingleUse_NBBE",
+              "UseBuffer": true,
+              "BufferSize": 5
+            }
+          },
+          {
+            "Type": "TextArea",
+            "Name": "unitTextArea",
+            "X": 160,
+            "Width": 40,
+            "Height": 28,
+            "TextId": "__SingleUse_RKZY",
+            "TextRotation": "0"
+          },
+          {
+            "Type": "TextArea",
+            "Name": "labelTextArea",
+            "Width": 150,
+            "Height": 28,
+            "TextId": "__SingleUse_0OK7",
+            "TextRotation": "0"
+          }
+        ],
+        "Interactions": []
+      },
+      {
+        "Name": "VoltageContainer",
+        "Width": 70,
+        "Height": 52,
+        "Components": [
+          {
+            "Type": "TextArea",
+            "Name": "valueTextArea",
+            "Y": 26,
+            "Width": 58,
+            "Height": 26,
+            "TextId": "__SingleUse_94JU",
+            "TextRotation": "0",
+            "Wildcard1": {
+              "TextId": "__SingleUse_IXTO",
+              "UseBuffer": true,
+              "BufferSize": 5
+            }
+          },
+          {
+            "Type": "TextArea",
+            "Name": "unitTextArea",
+            "X": 54,
+            "Width": 18,
+            "Height": 28,
+            "TextId": "__SingleUse_CR7E",
+            "TextRotation": "0"
+          },
+          {
+            "Type": "TextArea",
+            "Name": "labelTextArea",
+            "Width": 50,
+            "Height": 26,
+            "TextId": "__SingleUse_S6EA",
+            "TextRotation": "0"
+          }
+        ],
+        "Interactions": []
+      },
+      {
+        "Name": "TimeContainer",
+        "Width": 80,
+        "Height": 52,
+        "Components": [
+          {
+            "Type": "TextArea",
+            "Name": "timeTextArea",
+            "Y": 26,
+            "Width": 80,
+            "Height": 26,
+            "TextId": "__SingleUse_O4NC",
+            "TextRotation": "0",
+            "Wildcard1": {
+              "TextId": "__SingleUse_UKDP",
+              "UseBuffer": true,
+              "BufferSize": 10
+            }
+          },
+          {
+            "Type": "TextArea",
+            "Name": "labelTextArea",
+            "Width": 80,
+            "Height": 26,
+            "TextId": "__SingleUse_HZ9N",
+            "TextRotation": "0"
+          }
+        ],
+        "Interactions": []
+      },
+      {
+        "Name": "ParticlesContainer",
+        "Width": 250,
+        "Height": 52,
+        "Components": [
+          {
+            "Type": "TextArea",
+            "Name": "unitLabelTextArea",
+            "X": 216,
+            "Y": 6,
+            "Width": 34,
+            "Height": 18,
+            "TextId": "__SingleUse_6P4T",
+            "TextRotation": "0"
+          },
+          {
+            "Type": "TextArea",
+            "Name": "pm10ValueTextArea",
+            "X": 162,
+            "Y": 26,
+            "Width": 46,
+            "Height": 26,
+            "TextId": "__SingleUse_XXYV",
+            "TextRotation": "0",
+            "Wildcard1": {
+              "TextId": "__SingleUse_8G54",
+              "UseBuffer": true,
+              "BufferSize": 6
+            }
+          },
+          {
+            "Type": "TextArea",
+            "Name": "pm10LabelTextArea",
+            "X": 162,
+            "Width": 54,
+            "Height": 26,
+            "TextId": "__SingleUse_789C",
+            "TextRotation": "0"
+          },
+          {
+            "Type": "TextArea",
+            "Name": "pm4ValueTextArea",
+            "X": 108,
+            "Y": 26,
+            "Width": 46,
+            "Height": 26,
+            "TextId": "__SingleUse_GRH3",
+            "TextRotation": "0",
+            "Wildcard1": {
+              "TextId": "__SingleUse_BXHZ",
+              "UseBuffer": true,
+              "BufferSize": 6
+            }
+          },
+          {
+            "Type": "TextArea",
+            "Name": "pm4LabelTextArea",
+            "X": 108,
+            "Width": 54,
+            "Height": 26,
+            "TextId": "__SingleUse_EUOT",
+            "TextRotation": "0"
+          },
+          {
+            "Type": "TextArea",
+            "Name": "pm2_5ValueTextArea",
+            "X": 54,
+            "Y": 26,
+            "Width": 46,
+            "Height": 26,
+            "TextId": "__SingleUse_ORX3",
+            "TextRotation": "0",
+            "Wildcard1": {
+              "TextId": "__SingleUse_BDMF",
+              "UseBuffer": true,
+              "BufferSize": 6
+            }
+          },
+          {
+            "Type": "TextArea",
+            "Name": "pm2_5LabelTextArea",
+            "X": 54,
+            "Width": 54,
+            "Height": 26,
+            "TextId": "__SingleUse_W47G",
+            "TextRotation": "0"
+          },
+          {
+            "Type": "TextArea",
+            "Name": "pm1ValueTextArea",
+            "Y": 26,
+            "Width": 46,
+            "Height": 26,
+            "TextId": "__SingleUse_DI1B",
+            "TextRotation": "0",
+            "Wildcard1": {
+              "TextId": "__SingleUse_EDSM",
+              "UseBuffer": true,
+              "BufferSize": 6
+            }
+          },
+          {
+            "Type": "TextArea",
+            "Name": "pm1LabelTextArea",
+            "Width": 54,
+            "Height": 26,
+            "TextId": "__SingleUse_1DZC",
+            "TextRotation": "0"
+          }
+        ],
+        "Interactions": []
+      }
+    ],
     "Name": "MyApplication",
     "Resolution": {
       "Width": 400,
       "Height": 300
     },
     "SelectedColorDepth": 2,
-    "StartupScreenName": "Screen1",
+    "StartupScreenName": "MainReadouts",
     "SelectedStartupLanguage": "GB",
     "TouchGfxPath": "../Middlewares/ST/touchgfx",
     "UIPath": ".",
