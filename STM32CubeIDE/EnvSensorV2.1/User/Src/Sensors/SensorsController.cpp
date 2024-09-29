@@ -17,14 +17,14 @@
 #include <Sensors/VoltageSensor.hpp>
 #include <Sensors/TempPressureSensor.hpp>
 #include <Sensors/CO2Sensor.hpp>
-//#include <Sensors/ParticlesSensor.hpp>
+#include <Sensors/ParticlesSensor.hpp>
 
 #define TRIGGER_HIGH_MEASUREMENTS_FLAG 0x01
 
 #define SECONDS(x) (x * 1000)
 #define MINUTES(x) (x * 60 * 1000)
 
-#define INITIAL_DELAY SECONDS(20)
+#define INITIAL_DELAY SECONDS(5)
 #define LOW_MEASUREMENTS_PERIOD (MINUTES(4) + SECONDS(30))
 #define HIGH_MEASUREMENTS_PERIOD SECONDS(30)
 
@@ -59,19 +59,19 @@ void SensorsController::thread(void *pvParameters) {
 
 	osDelay(INITIAL_DELAY / portTICK_RATE_MS);
 
-//	TRIGGER_TOUCHGFX_REFRESH();
+	TRIGGER_TOUCHGFX_REFRESH();
 
 	for (;;) {
-//		osThreadFlagsClear(TRIGGER_HIGH_MEASUREMENTS_FLAG);
-//		osThreadFlagsWait(TRIGGER_HIGH_MEASUREMENTS_FLAG, osFlagsWaitAny, LOW_MEASUREMENTS_PERIOD / portTICK_RATE_MS);
-//
-//		ParticlesSensor::initAndStart();
-//
-//		osDelay(HIGH_MEASUREMENTS_PERIOD / portTICK_RATE_MS);
-//
-//		ParticlesSensor::stopAndTerminate();
-//
-//		TRIGGER_TOUCHGFX_REFRESH();
+		osThreadFlagsClear(TRIGGER_HIGH_MEASUREMENTS_FLAG);
+		osThreadFlagsWait(TRIGGER_HIGH_MEASUREMENTS_FLAG, osFlagsWaitAny, LOW_MEASUREMENTS_PERIOD / portTICK_RATE_MS);
+
+		ParticlesSensor::initAndStart();
+
+		osDelay(HIGH_MEASUREMENTS_PERIOD / portTICK_RATE_MS);
+
+		ParticlesSensor::stopAndTerminate();
+
+		TRIGGER_TOUCHGFX_REFRESH();
 	}
 
 	osThreadExit();

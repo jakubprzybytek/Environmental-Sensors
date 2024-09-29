@@ -76,6 +76,8 @@ void Error_Handler(void);
 #define E_INK_BUSY_Pin GPIO_PIN_1
 #define E_INK_BUSY_GPIO_Port GPIOB
 #define E_INK_BUSY_EXTI_IRQn EXTI1_IRQn
+#define POWER_5V_ENABLE_Pin GPIO_PIN_2
+#define POWER_5V_ENABLE_GPIO_Port GPIOB
 #define SWITCH_1_Pin GPIO_PIN_12
 #define SWITCH_1_GPIO_Port GPIOB
 #define SWITCH_1_EXTI_IRQn EXTI15_10_IRQn

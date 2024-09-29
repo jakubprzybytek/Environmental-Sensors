@@ -6450,7 +6450,7 @@
   (gr_text "GND" (at 38.55 44.4) (layer "F.SilkS") (tstamp 340beb15-6568-4295-b187-252cb94a9b85)
     (effects (font (size 1.2 1.2) (thickness 0.2) bold) (justify left))
   )
-  (gr_text "Bugs:\n1. Recompute areas\n2. C1 - wrong footprint" (at -35.6 46.2) (layer "F.SilkS") (tstamp 573166b6-95d6-4d36-9422-0cd53a7516a0)
+  (gr_text "Bugs:\n1. Recompute areas\n2. C1 - wrong footprint\n3. Power connector should have silk on top" (at -35.6 46.2) (layer "F.SilkS") (tstamp 573166b6-95d6-4d36-9422-0cd53a7516a0)
     (effects (font (size 1.5 1.5) (thickness 0.3) bold) (justify left top))
   )
   (gr_text "GND" (at 29.2 92.5) (layer "F.SilkS") (tstamp 642b006d-d5f3-43f7-a4b2-ce99b2a365e9)

@@ -56,7 +56,7 @@ void switch3Pressed() {
 
 void switch4Pressed() {
 	//osThreadFlagsSet(mainStateThreadHandle, SWITCH_4_PRESSED_FLAG);
-//	SensorsController::triggerHighMeasurements();
+	SensorsController::triggerHighMeasurements();
 }
 
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin) {
