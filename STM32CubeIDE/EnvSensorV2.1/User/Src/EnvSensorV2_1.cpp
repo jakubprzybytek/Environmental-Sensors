@@ -11,12 +11,14 @@
 
 #include <Readouts/SensorsReadoutsCollector.hpp>
 
+#include <Logger/FileSystem/FileSystem.hpp>
+
 #include <Misc/BlinkingLeds.hpp>
 
 void EnvSensorV2_1_Init() {
 //	HAL_GPIO_WritePin(SDIO_POWER_ENABLE_GPIO_Port, SDIO_POWER_ENABLE_Pin, GPIO_PIN_SET);
-//	uint32_t available;
-//	FileSystem::readAvailableSpace(&available);
+	uint32_t available;
+	FileSystem::readAvailableSpace(&available);
 
 //		uint8_t devices = 0;
 //		for (uint8_t i = 0x03u; i < 0x78u; i++)

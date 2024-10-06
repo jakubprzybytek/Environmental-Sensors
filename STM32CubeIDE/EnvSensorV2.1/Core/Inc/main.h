@@ -95,6 +95,10 @@ void Error_Handler(void);
 #define SCD30_READY_Pin GPIO_PIN_8
 #define SCD30_READY_GPIO_Port GPIOA
 #define SCD30_READY_EXTI_IRQn EXTI9_5_IRQn
+#define SDIO_POWER_ENABLE_Pin GPIO_PIN_11
+#define SDIO_POWER_ENABLE_GPIO_Port GPIOA
+#define SDIO_DETECT_Pin GPIO_PIN_12
+#define SDIO_DETECT_GPIO_Port GPIOA
 
 /* USER CODE BEGIN Private defines */
 
