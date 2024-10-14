@@ -8,8 +8,8 @@
 #ifndef INC_LOGGER_FILESYSTEM_HPP_
 #define INC_LOGGER_FILESYSTEM_HPP_
 
-#include <Logger/FileSystem/FileAppender.hpp>
-#include <Logger/FileSystem/FileReader.hpp>
+#include <Logger/FileSystem/FileAppender.hpp1>
+#include <Logger/FileSystem/FileReader.hpp1>
 
 class FileSystem {
 

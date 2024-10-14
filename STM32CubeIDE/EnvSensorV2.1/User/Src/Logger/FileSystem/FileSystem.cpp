@@ -17,18 +17,24 @@ FRESULT FileSystem::readAvailableSpace(uint32_t *availableSpaceKilobytes) {
 	FATFS fatfs;
 	FRESULT fresult = f_mount(&fatfs, "", 1);
 
+	if (fresult != FR_OK) {
+		return fresult;
+	}
+
 	uint32_t freeClusters;
 	FATFS *fatfsptr = &fatfs;
 	fresult = f_getfree("", &freeClusters, &fatfsptr);
 
-	if (fresult == FR_OK) {
+	if (fresult != FR_OK) {
+		return fresult;
+	}
+
 #if _MAX_SS != _MIN_SS
 		uint64_t availableSpaceBytes = fatfs.csize * fatfs.ssize * freeClusters;
 #else
-		uint64_t availableSpaceBytes = fatfs.csize * 512 * freeClusters;
+	uint64_t availableSpaceBytes = fatfs.csize * 512 * freeClusters;
 #endif
-		*availableSpaceKilobytes = availableSpaceBytes / 1024;
-	}
+	*availableSpaceKilobytes = availableSpaceBytes / 1024;
 
 	return f_mount(NULL, "", 1);
 }

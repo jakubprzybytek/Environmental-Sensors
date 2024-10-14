@@ -20,7 +20,7 @@
 #include <Utils/DebugLog.hpp>
 
 #define RETRY_DELAY 5000
-#define READOUTS_DELAY 2000
+#define READOUTS_DELAY 45000
 
 extern I2C_HandleTypeDef hi2c1;
 

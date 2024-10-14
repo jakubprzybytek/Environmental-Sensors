@@ -55,6 +55,14 @@ void DebugLog::log(const char *messagePrefix, uint32_t value) {
 	}
 }
 
+void DebugLog::log(const char *messagePrefix, float value, uint8_t precission) {
+	if (initialized) {
+		strcpy(DebugLog::messageBuffer, messagePrefix);
+		ftoa(value, DebugLog::messageBuffer + strlen(DebugLog::messageBuffer), precission);
+		log(DebugLog::messageBuffer);
+	}
+}
+
 void DebugLog::logWithStackHighWaterMark(const char *messagePrefix) {
 	log(messagePrefix, uxTaskGetStackHighWaterMark(NULL));
 }

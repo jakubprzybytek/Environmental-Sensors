@@ -65,7 +65,7 @@ void CO2Sensor::thread(void *pvParameters) {
 
 	do {
 		I2C1_ACQUIRE
-		status = scd30.init(30);
+		status = scd30.init(60);
 		I2C1_RELEASE
 
 		if (status != HAL_OK) {

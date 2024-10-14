@@ -4,9 +4,9 @@
  *  Created on: Jan 31, 2021
  *      Author: Chipotle
  */
-#include <Logger/FileSystem/SpeedTest.hpp>
+#include <Logger/Utils/SpeedTest.hpp>
 
-FRESULT SpeedTest::testWrite(const char *testFileName, const char *buffer, uint16_t bufferSize) {
+FRESULT SpeedTest::testWrite(const char *testFileName, const void *buffer, uint16_t bufferSize, uint32_t *duration) {
 	FATFS fatfs;
 	FIL file;
 
@@ -22,8 +22,12 @@ FRESULT SpeedTest::testWrite(const char *testFileName, const char *buffer, uint1
 		return fresult;
 	}
 
+	uint32_t start = HAL_GetTick();
+
 	UINT bytesWritten;
 	fresult = f_write(&file, buffer, bufferSize, &bytesWritten);
+
+	*duration = HAL_GetTick() - start;
 
 	f_close(&file);
 	f_mount(NULL, "", 1);
@@ -31,7 +35,7 @@ FRESULT SpeedTest::testWrite(const char *testFileName, const char *buffer, uint1
 	return fresult;
 }
 
-FRESULT SpeedTest::testRead(const char *testFileName, char *buffer, uint16_t bufferSize) {
+FRESULT SpeedTest::testRead(const char *testFileName, void *buffer, uint16_t bufferSize, uint32_t *duration) {
 	FATFS fatfs;
 	FIL rfile;
 
@@ -52,7 +56,7 @@ FRESULT SpeedTest::testRead(const char *testFileName, char *buffer, uint16_t buf
 	UINT bytesRead;
 	fresult = f_read(&rfile, buffer, bufferSize, &bytesRead);
 
-	uint32_t duration = HAL_GetTick() - start;
+	*duration = HAL_GetTick() - start;
 
 	if (fresult != FR_OK) {
 		return fresult;
@@ -62,30 +66,24 @@ FRESULT SpeedTest::testRead(const char *testFileName, char *buffer, uint16_t buf
 	return fresult;
 }
 
-FRESULT SpeedTest::test() {
-	uint16_t bufferSize = 1024;
-	char buffer[bufferSize];
+FRESULT SpeedTest::test(void *buffer, uint16_t bufferSize, float *readSpeed_kB, float *writeSpeed_kB) {
 
 	char fileName[] = "test1";
 	FRESULT fresult = FR_OK;
 
-	uint32_t beforeWrite = HAL_GetTick();
+	uint32_t readDuration;
+	uint32_t writeDuration;
 
-	fresult = testWrite(fileName, buffer, bufferSize);
-
-	uint32_t afterWrite = HAL_GetTick();
+	fresult = testWrite(fileName, buffer, bufferSize, &writeDuration);
 
 	if (fresult != FR_OK) {
 		return fresult;
 	}
 
-	fresult = testRead(fileName, buffer, bufferSize);
+	fresult = testRead(fileName, buffer, bufferSize, &readDuration);
 
-	uint32_t readDuration = HAL_GetTick() - afterWrite;
-	uint32_t writeDuration = afterWrite - beforeWrite;
-
-	float readSpeedKilobytes = bufferSize / readDuration;
-	float writeSpeedKilobytes = bufferSize / writeDuration;
+	*readSpeed_kB = bufferSize / (float)readDuration;
+	*writeSpeed_kB = bufferSize / (float)writeDuration;
 
 	return fresult;
 }

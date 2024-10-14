@@ -10,6 +10,7 @@ public:
 
 	static void log(const char *message);
 	static void log(const char *messagePrefix, uint32_t value);
+	static void log(const char *messagePrefix, float value, uint8_t precission);
 	static void logWithStackHighWaterMark(const char *messagePrefix);
 
 private:

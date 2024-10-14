@@ -5,8 +5,8 @@
  *      Author: Chipotle
  */
 
-#ifndef INC_LOGGER_FILESYSTEM_FILEREADER_HPP_
-#define INC_LOGGER_FILESYSTEM_FILEREADER_HPP_
+#ifndef INC_LOGGER_FILESYSTEM_FILEREADER_HPP1_
+#define INC_LOGGER_FILESYSTEM_FILEREADER_HPP1_
 
 #include "stm32l4xx_hal.h"
 
@@ -28,4 +28,4 @@ public:
 	bool close();
 };
 
-#endif /* INC_LOGGER_FILESYSTEM_FILEREADER_HPP_ */
+#endif /* INC_LOGGER_FILESYSTEM_FILEREADER_HPP1_ */

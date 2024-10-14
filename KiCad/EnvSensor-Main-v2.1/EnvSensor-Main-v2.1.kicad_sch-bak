@@ -6171,7 +6171,7 @@
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid 99407c3e-826d-489a-a685-19c225b7d7d5)
   )
-  (text "5V output is at batt level when 5V_POWER_ENABLE is high"
+  (text "Particles sensor is energised even when 5v power is off"
     (at -71.12 80.01 0)
     (effects (font (size 1.1176 1.1176)) (justify left bottom))
     (uuid 99d18b18-6152-44bd-8edc-0487b7e521fc)
