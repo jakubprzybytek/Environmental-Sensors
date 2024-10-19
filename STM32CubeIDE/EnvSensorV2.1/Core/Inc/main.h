@@ -99,8 +99,6 @@ void Error_Handler(void);
 #define SDIO_POWER_ENABLE_GPIO_Port GPIOA
 #define SDIO_DETECT_Pin GPIO_PIN_12
 #define SDIO_DETECT_GPIO_Port GPIOA
-#define SD_CS_Pin GPIO_PIN_2
-#define SD_CS_GPIO_Port GPIOD
 
 /* USER CODE BEGIN Private defines */
 

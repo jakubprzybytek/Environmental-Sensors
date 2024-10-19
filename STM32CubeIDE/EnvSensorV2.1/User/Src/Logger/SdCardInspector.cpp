@@ -58,7 +58,7 @@ void SdCardInspector::thread(void *pvParameters) {
 		DebugLog::log("Read [kB/s]: ", readSpeed_kB, 1);
 		DebugLog::log("Write [kB/s]: ", writeSpeed_kB, 1);
 	} else {
-		DebugLog::log("SD speed failed!");
+		DebugLog::log("SD speed 1KB failed!");
 	}
 
 	if (SpeedTest::test(buffer, 10 * 1024, &readSpeed_kB, &writeSpeed_kB) == FR_OK) {
@@ -66,7 +66,7 @@ void SdCardInspector::thread(void *pvParameters) {
 		DebugLog::log("Read [kB/s]: ", readSpeed_kB, 1);
 		DebugLog::log("Write [kB/s]: ", writeSpeed_kB, 1);
 	} else {
-		DebugLog::log("SD speed failed!");
+		DebugLog::log("SD speed 10kB failed!");
 	}
 
 	//free(buffer);

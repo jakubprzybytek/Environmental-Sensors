@@ -19,6 +19,7 @@ FRESULT SpeedTest::testWrite(const char *testFileName, const void *buffer, uint1
 	fresult = f_open(&file, testFileName, FA_WRITE | FA_CREATE_ALWAYS);
 
 	if (fresult != FR_OK) {
+		f_mount(NULL, "", 1);
 		return fresult;
 	}
 
@@ -48,6 +49,7 @@ FRESULT SpeedTest::testRead(const char *testFileName, void *buffer, uint16_t buf
 	fresult = f_open(&rfile, testFileName, FA_READ);
 
 	if (fresult != FR_OK) {
+		f_mount(NULL, "", 1);
 		return fresult;
 	}
 
@@ -58,11 +60,9 @@ FRESULT SpeedTest::testRead(const char *testFileName, void *buffer, uint16_t buf
 
 	*duration = HAL_GetTick() - start;
 
-	if (fresult != FR_OK) {
-		return fresult;
-	}
-
 	f_close(&rfile);
+	f_mount(NULL, "", 1);
+
 	return fresult;
 }
 
