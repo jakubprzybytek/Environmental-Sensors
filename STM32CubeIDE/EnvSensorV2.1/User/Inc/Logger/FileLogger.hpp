@@ -25,9 +25,7 @@ private:
 	uint16_t logBufferIndex;
 
 public:
-	FileLogger(const char *_filePath) :
-			filePath(_filePath), logBufferIndex(0) {
-	}
+	FileLogger(const char *_filePath);
 
 	LOGGER_RESULT logLine(char *line);
 

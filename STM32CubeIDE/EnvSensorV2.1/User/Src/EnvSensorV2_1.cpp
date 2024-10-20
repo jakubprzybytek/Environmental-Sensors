@@ -1,7 +1,7 @@
 #include <EnvSensorV2_1.hpp>
 #include <EnvSensorConfig.hpp>
 
-#include <Utils/DebugLog.hpp>
+#include "cmsis_os.h"
 
 #include <Display/DisplayController.hpp>
 #include <Display/DisplayCommands.hpp>
@@ -15,10 +15,7 @@
 
 #include <Misc/BlinkingLeds.hpp>
 
-
-#include <Logger/FileSystem/FileSystem.hpp>
-extern SPI_HandleTypeDef hspi3;
-#include "cmsis_os.h"
+#include <Utils/DebugLog.hpp>
 
 uint32_t mainStateThreadBuffer[128];
 StaticTask_t mainStateThreadControlBlock;
@@ -28,31 +25,6 @@ osThreadId_t mainStateThreadHandle;
 void EnvSensorV2_1_Init() {
 
 //	HAL_GPIO_WritePin(SDIO_POWER_ENABLE_GPIO_Port, SDIO_POWER_ENABLE_Pin, GPIO_PIN_RESET);
-//	HAL_GPIO_WritePin(SD_CS_GPIO_Port, SD_CS_Pin, GPIO_PIN_RESET);
-//
-//	osDelay(10 / portTICK_RATE_MS);
-
-//	uint8_t byte = 0xff;
-//		HAL_SPI_Transmit(&hspi3, &byte, 1, HAL_MAX_DELAY);
-
-//	uint8_t data[] = { 0x40, 0, 0, 0, 0, 0x95 };
-//
-//	uint8_t result[10];
-//
-//	HAL_StatusTypeDef status;
-//
-//	for (uint8_t i=0; i < 6; i++) {
-//		status = HAL_SPI_Transmit(&hspi3, (uint8_t *) &data, 6, HAL_MAX_DELAY);
-//		status = HAL_SPI_Receive(&hspi3, (uint8_t *) &result, 1, HAL_MAX_DELAY);
-//	}
-//
-//	HAL_GPIO_WritePin(SD_CS_GPIO_Port, SD_CS_Pin, GPIO_PIN_SET);
-
-//	HAL_GPIO_WritePin(SDIO_POWER_ENABLE_GPIO_Port, SDIO_POWER_ENABLE_Pin, GPIO_PIN_SET);
-//	uint32_t available;
-//	FileSystem::readAvailableSpace(&available);
-//
-//	FRESULT result = SpeedTest::test();
 
 //		uint8_t devices = 0;
 //		for (uint8_t i = 0x03u; i < 0x78u; i++)

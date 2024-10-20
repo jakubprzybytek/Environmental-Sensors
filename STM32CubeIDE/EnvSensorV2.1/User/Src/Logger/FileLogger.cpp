@@ -7,7 +7,14 @@
 #include <Logger/FileLogger.hpp>
 #include <string.h>
 
+#include <EnvSensorConfig.hpp>
 #include <Logger/Utils/SdCard.hpp>
+#include <Utils/DebugLog.hpp>
+
+FileLogger::FileLogger(const char *_filePath) :
+		filePath(_filePath), logBufferIndex(0) {
+	SdCard::ensureDirectory(filePath);
+}
 
 LOGGER_RESULT FileLogger::logLine(char *line) {
 	const uint16_t lineLength = strlen(line);
@@ -35,6 +42,8 @@ LOGGER_RESULT FileLogger::flush() {
 	}
 
 	LOGGER_RESULT result = SdCard::appendToFile(filePath, logBuffer, logBufferIndex) == FR_OK ? LOGGER_OK : LOGGER_ERROR;
+
+	DebugLog::log("Log flushed SD card");
 
 	if (result == LOGGER_OK) {
 		logBufferIndex = 0;

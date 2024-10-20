@@ -31,7 +31,7 @@ void LoggerThread::startThread() {
 }
 
 void LoggerThread::thread(void *pvParameters) {
-	ReadoutFileLogger readoutFileLogger;
+	ReadoutFileLogger readoutFileLogger("env-logs");
 
 	LOGGER_RESULT result = LOGGER_OK;
 

@@ -7,6 +7,8 @@
 
 #include <Logger/Utils/SdCard.hpp>
 
+#include <string.h>
+
 #include <Display/Leds.hpp>
 
 FRESULT SdCard::readAvailableSpace(uint32_t *availableSpace_kB) {
@@ -42,6 +44,46 @@ FRESULT SdCard::readAvailableSpace(uint32_t *availableSpace_kB) {
 	return fresult;
 }
 
+FRESULT SdCard::ensureDirectory(const char *filePath) {
+
+	if (!strchr(filePath, '/')) {
+		return FR_OK;
+	}
+
+	FATFS fatfs;
+	FILINFO filInfo;
+
+	SD_CARD_LED_On();
+
+	FRESULT fresult = f_mount(&fatfs, "", 1);
+
+	if (fresult != FR_OK) {
+		return fresult;
+	}
+
+	char directoryPathBuffer[100];
+
+	char *nextSeparator = (char*) filePath;
+	while (fresult == FR_OK && (nextSeparator = strchr(nextSeparator, '/')) != NULL) {
+		strncpy(directoryPathBuffer, filePath, nextSeparator - filePath);
+		directoryPathBuffer[nextSeparator - filePath] = '\0';
+
+		fresult = f_stat(directoryPathBuffer, &filInfo);
+
+		if (fresult == FRESULT::FR_NO_FILE) {
+			fresult = f_mkdir(directoryPathBuffer);
+		}
+
+		nextSeparator++;
+	}
+
+	fresult = f_mount(NULL, "", 1);
+
+	SD_CARD_LED_Off();
+
+	return fresult;
+}
+
 FRESULT SdCard::appendToFile(const char *filePath, char *buffer, uint16_t bufferSize) {
 	FATFS fatfs;
 	FIL file;
@@ -57,6 +99,7 @@ FRESULT SdCard::appendToFile(const char *filePath, char *buffer, uint16_t buffer
 	fresult = f_open(&file, filePath, FA_WRITE | FA_OPEN_APPEND);
 
 	if (fresult != FR_OK) {
+		f_mount(NULL, "", 1);
 		return fresult;
 	}
 

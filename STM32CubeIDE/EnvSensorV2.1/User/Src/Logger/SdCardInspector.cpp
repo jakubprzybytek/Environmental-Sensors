@@ -43,8 +43,8 @@ void SdCardInspector::thread(void *pvParameters) {
 	}
 
 //	void *buffer = malloc(10 * 1024);
-	char buffer[10*1024];
-	strcpy((char *) buffer, "Here comes the test");
+	char buffer[10 * 1024];
+	strcpy((char*) buffer, "Here comes the test");
 
 //	if (buffer == NULL) {
 //		DebugLog::log("SD speed malloc failed!");
@@ -72,8 +72,8 @@ void SdCardInspector::thread(void *pvParameters) {
 	//free(buffer);
 
 	FileLogger logger1("test2.log");
-	logger1.logLine("Hello world, line 1\n");
-	logger1.logLine("Eat my shorts, line 2\n");
+	logger1.logLine((char*) "Hello world, line 1\n");
+	logger1.logLine((char*) "Eat my shorts, line 2\n");
 	logger1.flush();
 
 	osThreadExit();

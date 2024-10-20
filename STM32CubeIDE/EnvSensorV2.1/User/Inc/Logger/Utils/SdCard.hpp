@@ -15,6 +15,8 @@ class SdCard {
 public:
 	static FRESULT readAvailableSpace(uint32_t *availableSpace_kB);
 
+	static FRESULT ensureDirectory(const char *directoryPath);
+
 	static FRESULT appendToFile(const char *filePath, char *buffer, uint16_t bufferSize);
 };
 

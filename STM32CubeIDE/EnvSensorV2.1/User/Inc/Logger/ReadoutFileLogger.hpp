@@ -13,21 +13,25 @@
 #include <Time/DateTime.hpp>
 #include <Readouts/ReadoutsState.hpp>
 
+#define LOG_FILE_NAME_BUFFER_SIZE 120
 #define LOG_MESSAGE_BUFFER_SIZE 200
 
 class ReadoutFileLogger {
 
 	DateTime lastDateTime;
 
+	char logFileName[LOG_FILE_NAME_BUFFER_SIZE];
 	char logMessageBuffer[LOG_MESSAGE_BUFFER_SIZE];
 
+	const char *directory;
 	FileLogger fileLogger;
 
+	void getLogFileName(char *buffer, DateTime dateTime);
 	bool isSameLogFile(DateTime first, DateTime second);
 
 public:
-	ReadoutFileLogger() :
-			lastDateTime(0, 0, 0, 0, 0, 0), fileLogger(0) {
+	ReadoutFileLogger(const char *_directory) :
+			lastDateTime(0, 0, 0, 0, 0, 0), directory(_directory), fileLogger(0) {
 	}
 
 	LOGGER_RESULT log(ReadoutsState &readoutState);
