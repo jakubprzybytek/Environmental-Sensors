@@ -6,7 +6,7 @@
 #ifndef Simulator
 
 #include <Readouts/ReadoutsState.hpp>
-#include <Utils/RtcUtils.hpp>
+#include <Time/RtcUtils.hpp>
 
 extern ReadoutsState readoutsState;
 ReadoutsState storedReadoutsState;

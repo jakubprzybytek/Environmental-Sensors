@@ -1,3 +1,6 @@
+#ifndef INC_READOUTS_STATE_HPP_
+#define INC_READOUTS_STATE_HPP_
+
 class ReadoutsState {
 
 public:
@@ -20,3 +23,5 @@ public:
 	uint16_t pm10;
 
 };
+
+#endif

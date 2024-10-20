@@ -11,6 +11,7 @@
 #include <Readouts/SensorsReadoutsCollector.hpp>
 
 #include <Logger/SdCardInspector.hpp>
+#include <Logger/LoggerThread.hpp>
 
 #include <Misc/BlinkingLeds.hpp>
 
@@ -77,6 +78,8 @@ void EnvSensorV2_1_Init() {
 	SensorsReadoutsCollector::init();
 
 	SensorsController::init();
+
+	LoggerThread::init();
 }
 
 void mainStateThreadStart() {

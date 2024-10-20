@@ -5,15 +5,17 @@
  *      Author: jakub
  */
 
-#ifndef INC_LOGGER_UTILS_SDCARDUTILS_HPP_
-#define INC_LOGGER_UTILS_SDCARDUTILS_HPP_
+#ifndef SDCARD_HPP_
+#define SDCARD_HPP_
 
 #include "fatfs.h"
 
-class SdCardUtils {
+class SdCard {
 
 public:
 	static FRESULT readAvailableSpace(uint32_t *availableSpace_kB);
+
+	static FRESULT appendToFile(const char *filePath, char *buffer, uint16_t bufferSize);
 };
 
-#endif /* INC_LOGGER_UTILS_SDCARDUTILS_HPP_ */
+#endif /* SDCARD_HPP_ */

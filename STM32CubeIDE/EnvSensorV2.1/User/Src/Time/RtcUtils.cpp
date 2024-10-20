@@ -7,7 +7,7 @@
 
 #include "stm32l4xx_hal.h"
 
-#include <Utils/RtcUtils.hpp>
+#include <Time/RtcUtils.hpp>
 
 extern RTC_HandleTypeDef hrtc;
 

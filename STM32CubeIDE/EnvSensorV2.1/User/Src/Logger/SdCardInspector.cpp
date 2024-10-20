@@ -1,3 +1,4 @@
+#include <Logger/FileLogger.hpp>
 #include "stm32l4xx_hal.h"
 #include "cmsis_os.h"
 
@@ -5,8 +6,7 @@
 #include <stdlib.h>
 
 #include <Logger/SdCardInspector.hpp>
-
-#include <Logger/Utils/SdCardUtils.hpp>
+#include <Logger/Utils/SdCard.hpp>
 #include <Logger/Utils/SpeedTest.hpp>
 
 #include <Utils/DebugLog.hpp>
@@ -36,7 +36,7 @@ void SdCardInspector::startThread() {
 void SdCardInspector::thread(void *pvParameters) {
 	osDelay(1000 / portTICK_RATE_MS);
 	uint32_t availableSpace_kB;
-	if (SdCardUtils::readAvailableSpace(&availableSpace_kB) == FR_OK) {
+	if (SdCard::readAvailableSpace(&availableSpace_kB) == FR_OK) {
 		DebugLog::log("SD free [MB]: ", availableSpace_kB / 1024);
 	} else {
 		DebugLog::log("SD free failed!");
@@ -70,6 +70,11 @@ void SdCardInspector::thread(void *pvParameters) {
 	}
 
 	//free(buffer);
+
+	FileLogger logger1("test2.log");
+	logger1.logLine("Hello world, line 1\n");
+	logger1.logLine("Eat my shorts, line 2\n");
+	logger1.flush();
 
 	osThreadExit();
 }
