@@ -17,7 +17,7 @@ PressureContainerBase::PressureContainerBase()
     valueTextArea.setTypedText(touchgfx::TypedText(T___SINGLEUSE_HQWB));
     add(valueTextArea);
 
-    unitTextArea.setPosition(160, 0, 40, 28);
+    unitTextArea.setPosition(158, 0, 42, 28);
     unitTextArea.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     unitTextArea.setLinespacing(0);
     unitTextArea.setTypedText(touchgfx::TypedText(T___SINGLEUSE_PB6I));

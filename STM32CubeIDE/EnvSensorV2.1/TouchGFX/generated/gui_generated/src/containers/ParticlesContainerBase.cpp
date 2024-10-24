@@ -9,7 +9,7 @@ ParticlesContainerBase::ParticlesContainerBase()
 {
     setWidth(250);
     setHeight(52);
-    unitLabelTextArea.setPosition(216, 6, 34, 18);
+    unitLabelTextArea.setPosition(216, 8, 36, 18);
     unitLabelTextArea.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     unitLabelTextArea.setLinespacing(0);
     unitLabelTextArea.setTypedText(touchgfx::TypedText(T___SINGLEUSE_6P4T));

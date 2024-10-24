@@ -11,6 +11,8 @@
 #include <platform/driver/lcd/LCD2bpp.hpp>
 #include <gui/mainreadouts_screen/MainReadoutsView.hpp>
 #include <gui/mainreadouts_screen/MainReadoutsPresenter.hpp>
+#include <gui/settings_screen/SettingsView.hpp>
+#include <gui/settings_screen/SettingsPresenter.hpp>
 
 using namespace touchgfx;
 
@@ -40,4 +42,17 @@ void FrontendApplicationBase::gotoMainReadoutsScreenNoTransition()
 void FrontendApplicationBase::gotoMainReadoutsScreenNoTransitionImpl()
 {
     touchgfx::makeTransition<MainReadoutsView, MainReadoutsPresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
+}
+
+// Settings
+
+void FrontendApplicationBase::gotoSettingsScreenNoTransition()
+{
+    transitionCallback = touchgfx::Callback<FrontendApplicationBase>(this, &FrontendApplicationBase::gotoSettingsScreenNoTransitionImpl);
+    pendingScreenTransitionCallback = &transitionCallback;
+}
+
+void FrontendApplicationBase::gotoSettingsScreenNoTransitionImpl()
+{
+    touchgfx::makeTransition<SettingsView, SettingsPresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
 }

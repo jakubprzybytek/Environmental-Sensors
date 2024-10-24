@@ -23,7 +23,7 @@ HumidityContainerBase::HumidityContainerBase()
     unitTextArea.setTypedText(touchgfx::TypedText(T___SINGLEUSE_RKZY));
     add(unitTextArea);
 
-    labelTextArea.setPosition(0, 0, 150, 28);
+    labelTextArea.setPosition(0, 0, 154, 28);
     labelTextArea.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     labelTextArea.setLinespacing(0);
     labelTextArea.setTypedText(touchgfx::TypedText(T___SINGLEUSE_0OK7));

@@ -3,6 +3,8 @@
 
 #include <gui/model/Model.hpp>
 
+#ifndef Simulator
+
 #include <Time/DateTime.hpp>
 
 class ModelListener
@@ -30,5 +32,7 @@ public:
 protected:
     Model* model;
 };
+
+#endif
 
 #endif // MODELLISTENER_HPP

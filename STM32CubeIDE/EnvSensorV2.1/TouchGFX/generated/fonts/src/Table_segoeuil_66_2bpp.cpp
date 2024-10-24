@@ -15,7 +15,8 @@ KEEP extern const touchgfx::GlyphNode glyphs_segoeuil_66_2bpp[] FONT_TABLE_LOCAT
     {  2160, 0x0037,  29,  47,  47,   2,  33,   0,   0, 0x00 },
     {  2501, 0x0038,  28,  48,  47,   3,  34,   0,   0, 0x00 },
     {  2837, 0x0039,  28,  48,  47,   3,  34,   0,   0, 0x00 },
-    {  3173, 0x003F,  23,  48,  47,   3,  28,   0,   0, 0x00 }
+    {  3173, 0x003A,   6,  34,  33,   4,  15,   0,   0, 0x00 },
+    {  3224, 0x003F,  23,  48,  47,   3,  28,   0,   0, 0x00 }
 };
 
 // segoeuil_66_2bpp
@@ -189,6 +190,6 @@ touchgfx::GeneratedFont& getFont_segoeuil_66_2bpp();
 
 touchgfx::GeneratedFont& getFont_segoeuil_66_2bpp()
 {
-    static touchgfx::GeneratedFont segoeuil_66_2bpp(glyphs_segoeuil_66_2bpp, 12, 67, 66, 0, 0, 2, 0, 0, 0, unicodes_segoeuil_66_2bpp, kerning_segoeuil_66_2bpp, 63, 0, 0, &segoeuil_contextualFormsTable);
+    static touchgfx::GeneratedFont segoeuil_66_2bpp(glyphs_segoeuil_66_2bpp, 13, 67, 66, 0, 0, 2, 0, 0, 0, unicodes_segoeuil_66_2bpp, kerning_segoeuil_66_2bpp, 63, 0, 0, &segoeuil_contextualFormsTable);
     return segoeuil_66_2bpp;
 }

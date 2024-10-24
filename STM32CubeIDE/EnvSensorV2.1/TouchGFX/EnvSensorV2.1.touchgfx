@@ -17,8 +17,18 @@
           },
           {
             "Type": "TextArea",
+            "Name": "button4TextArea",
+            "X": 175,
+            "Y": 287,
+            "Width": 46,
+            "Height": 15,
+            "TextId": "__SingleUse_EP2D",
+            "TextRotation": "0"
+          },
+          {
+            "Type": "TextArea",
             "Name": "button3TextArea",
-            "X": 224,
+            "X": 120,
             "Y": 287,
             "Width": 46,
             "Height": 12,
@@ -28,7 +38,7 @@
           {
             "Type": "TextArea",
             "Name": "button2TextArea",
-            "X": 80,
+            "X": 63,
             "Y": 287,
             "Width": 46,
             "Height": 12,
@@ -38,7 +48,7 @@
           {
             "Type": "TextArea",
             "Name": "button1TextArea",
-            "X": 8,
+            "X": 6,
             "Y": 287,
             "Width": 46,
             "Height": 12,
@@ -57,7 +67,7 @@
           {
             "Type": "CustomContainerInstance",
             "Name": "pressureContainer",
-            "Y": 128,
+            "Y": 124,
             "Width": 200,
             "Height": 97,
             "CustomContainerDefinitionName": "PressureContainer"
@@ -73,7 +83,7 @@
             "Type": "CustomContainerInstance",
             "Name": "cO2Container",
             "X": 200,
-            "Y": 128,
+            "Y": 124,
             "Width": 200,
             "Height": 97,
             "CustomContainerDefinitionName": "CO2Container"
@@ -104,6 +114,43 @@
             "CustomContainerDefinitionName": "TimeContainer"
           }
         ],
+        "Interactions": [
+          {
+            "InteractionName": "openSettings",
+            "Trigger": {
+              "Type": "TriggerPhysicalButtonClicked"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "Settings"
+            }
+          }
+        ]
+      },
+      {
+        "Name": "Settings",
+        "Components": [
+          {
+            "Type": "Box",
+            "Name": "background",
+            "Width": 400,
+            "Height": 300,
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            }
+          },
+          {
+            "Type": "CustomContainerInstance",
+            "Name": "dateTimeSettingsContainer1",
+            "Y": 28,
+            "Width": 340,
+            "Height": 193,
+            "CustomContainerDefinitionName": "DateTimeSettingsContainer"
+          }
+        ],
         "Interactions": []
       }
     ],
@@ -130,8 +177,8 @@
           {
             "Type": "TextArea",
             "Name": "unitTextArea",
-            "X": 160,
-            "Width": 40,
+            "X": 158,
+            "Width": 42,
             "Height": 28,
             "TextId": "__SingleUse_6OS6",
             "TextRotation": "0"
@@ -169,8 +216,8 @@
           {
             "Type": "TextArea",
             "Name": "unitTextArea",
-            "X": 160,
-            "Width": 40,
+            "X": 158,
+            "Width": 42,
             "Height": 28,
             "TextId": "__SingleUse_PB6I",
             "TextRotation": "0"
@@ -209,15 +256,16 @@
             "Type": "TextArea",
             "Name": "unitTextArea",
             "X": 160,
+            "Y": 7,
             "Width": 40,
-            "Height": 28,
+            "Height": 18,
             "TextId": "__SingleUse_B3Q3",
             "TextRotation": "0"
           },
           {
             "Type": "TextArea",
             "Name": "labelTextArea",
-            "Width": 150,
+            "Width": 154,
             "Height": 28,
             "TextId": "__SingleUse_YX85",
             "TextRotation": "0"
@@ -256,7 +304,7 @@
           {
             "Type": "TextArea",
             "Name": "labelTextArea",
-            "Width": 150,
+            "Width": 154,
             "Height": 28,
             "TextId": "__SingleUse_0OK7",
             "TextRotation": "0"
@@ -342,8 +390,8 @@
             "Type": "TextArea",
             "Name": "unitLabelTextArea",
             "X": 216,
-            "Y": 6,
-            "Width": 34,
+            "Y": 8,
+            "Width": 36,
             "Height": 18,
             "TextId": "__SingleUse_6P4T",
             "TextRotation": "0"
@@ -440,6 +488,59 @@
             "Width": 54,
             "Height": 26,
             "TextId": "__SingleUse_1DZC",
+            "TextRotation": "0"
+          }
+        ],
+        "Interactions": []
+      },
+      {
+        "Name": "DateTimeSettingsContainer",
+        "Width": 340,
+        "Height": 193,
+        "Components": [
+          {
+            "Type": "TextArea",
+            "Name": "timeTextArea",
+            "Y": 107,
+            "Width": 340,
+            "Height": 86,
+            "TextId": "__SingleUse_NVTJ",
+            "TextRotation": "0",
+            "Wildcard1": {
+              "TextId": "__SingleUse_01GU",
+              "UseBuffer": true,
+              "BufferSize": 10
+            }
+          },
+          {
+            "Type": "TextArea",
+            "Name": "timeLabelTextArea",
+            "Y": 95,
+            "Width": 80,
+            "Height": 26,
+            "TextId": "__SingleUse_W4SP",
+            "TextRotation": "0"
+          },
+          {
+            "Type": "TextArea",
+            "Name": "dateTextArea",
+            "Y": 16,
+            "Width": 340,
+            "Height": 78,
+            "TextId": "__SingleUse_1NL0",
+            "TextRotation": "0",
+            "Wildcard1": {
+              "TextId": "__SingleUse_W6ZY",
+              "UseBuffer": true,
+              "BufferSize": 10
+            }
+          },
+          {
+            "Type": "TextArea",
+            "Name": "dateLabelTextArea",
+            "Width": 80,
+            "Height": 26,
+            "TextId": "__SingleUse_TDUW",
             "TextRotation": "0"
           }
         ],

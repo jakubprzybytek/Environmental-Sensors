@@ -15,19 +15,25 @@ MainReadoutsViewBase::MainReadoutsViewBase()
     background.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
     add(background);
 
-    button3TextArea.setPosition(224, 287, 46, 12);
+    button4TextArea.setPosition(175, 287, 46, 15);
+    button4TextArea.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+    button4TextArea.setLinespacing(0);
+    button4TextArea.setTypedText(touchgfx::TypedText(T___SINGLEUSE_EP2D));
+    add(button4TextArea);
+
+    button3TextArea.setPosition(120, 287, 46, 12);
     button3TextArea.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     button3TextArea.setLinespacing(0);
     button3TextArea.setTypedText(touchgfx::TypedText(T___SINGLEUSE_K8A6));
     add(button3TextArea);
 
-    button2TextArea.setPosition(80, 287, 46, 12);
+    button2TextArea.setPosition(63, 287, 46, 12);
     button2TextArea.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     button2TextArea.setLinespacing(0);
     button2TextArea.setTypedText(touchgfx::TypedText(T___SINGLEUSE_JC1X));
     add(button2TextArea);
 
-    button1TextArea.setPosition(8, 287, 46, 12);
+    button1TextArea.setPosition(6, 287, 46, 12);
     button1TextArea.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     button1TextArea.setLinespacing(0);
     button1TextArea.setTypedText(touchgfx::TypedText(T___SINGLEUSE_QLDI));
@@ -36,13 +42,13 @@ MainReadoutsViewBase::MainReadoutsViewBase()
     particlesContainer.setXY(80, 225);
     add(particlesContainer);
 
-    pressureContainer.setXY(0, 128);
+    pressureContainer.setXY(0, 124);
     add(pressureContainer);
 
     temperatureContainer.setXY(0, 0);
     add(temperatureContainer);
 
-    cO2Container.setXY(200, 128);
+    cO2Container.setXY(200, 124);
     add(cO2Container);
 
     humidityContainer.setXY(200, 0);
@@ -69,4 +75,16 @@ void MainReadoutsViewBase::setupScreen()
     humidityContainer.initialize();
     voltageContainer.initialize();
     timeContainer.initialize();
+}
+
+void MainReadoutsViewBase::handleKeyEvent(uint8_t key)
+{
+    if(0 == key)
+    {
+        //openSettings
+        //When hardware button 0 clicked change screen to Settings
+        //Go to Settings with no screen transition
+        application().gotoSettingsScreenNoTransition();
+    
+    }
 }

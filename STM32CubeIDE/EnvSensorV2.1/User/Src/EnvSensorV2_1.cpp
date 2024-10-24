@@ -1,3 +1,4 @@
+#include <AppControllers/Controller.hpp>
 #include <EnvSensorV2_1.hpp>
 #include <EnvSensorConfig.hpp>
 
@@ -15,7 +16,15 @@
 
 #include <Misc/BlinkingLeds.hpp>
 
+#include <Time/RtcUtils.hpp>
 #include <Utils/DebugLog.hpp>
+
+#include <gui/common/FrontendApplication.hpp>
+
+#define SWITCH_1_PRESSED_FLAG 0x01
+#define SWITCH_2_PRESSED_FLAG 0x02
+#define SWITCH_3_PRESSED_FLAG 0x03
+#define SWITCH_4_PRESSED_FLAG 0x04
 
 uint32_t mainStateThreadBuffer[128];
 StaticTask_t mainStateThreadControlBlock;
@@ -37,6 +46,9 @@ void EnvSensorV2_1_Init() {
 //		    }
 //		  }
 
+//	DateTime now(24, 10, 23, 21, 22, 30);
+//	RtcUtils::updateDateTime(now);
+
 	SdCardInspector::init();
 
 //	mainStateThreadStart();
@@ -52,6 +64,8 @@ void EnvSensorV2_1_Init() {
 	SensorsController::init();
 
 	LoggerThread::init();
+
+	Controller::init();
 }
 
 void mainStateThreadStart() {
@@ -64,18 +78,31 @@ void mainStateThreadStart() {
 			.stack_size = sizeof(mainStateThreadBuffer),
 			.priority = (osPriority_t) osPriorityNormal
 		};
-		// @formatter:on
+					// @formatter:on
 	mainStateThreadHandle = osThreadNew(mainStateThread, NULL, &mainStateThreadaAttributes);
 }
 
 void mainStateThread(void *pvParameters) {
 
-//	uint32_t flag;
-//	while (true) {
-//		flag = osThreadFlagsWait(SWITCH_4_PRESSED_FLAG, osFlagsWaitAny, osWaitForever);
-//
-//		// do something
-//	}
+	uint32_t flag;
+	while (true) {
+		flag = osThreadFlagsWait(SWITCH_1_PRESSED_FLAG | SWITCH_2_PRESSED_FLAG | SWITCH_3_PRESSED_FLAG | SWITCH_4_PRESSED_FLAG, osFlagsWaitAny, osWaitForever);
+
+#ifdef MAIN_THREAD_TRACE
+		DebugLog::logWithStackHighWaterMark("Main - stack: ");
+#endif
+
+		switch (flag) {
+		case SWITCH_1_PRESSED_FLAG:
+			DisplayCommands::submitDisplayClear();
+			break;
+		case SWITCH_2_PRESSED_FLAG:
+			// FixMe: move to some place, DisplayCommands?
+			TRIGGER_TOUCHGFX_REFRESH();
+			break;
+		}
+		// do something
+	}
 
 	osThreadExit();
 }
@@ -90,6 +117,7 @@ void switch2Pressed() {
 
 void switch3Pressed() {
 	DebugLog::log("Button 3 pressed");
+	static_cast<FrontendApplication*>(Application::getInstance())->gotoSettingsScreenNoTransition();
 }
 
 void switch4Pressed() {
@@ -103,12 +131,12 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin) {
 	} else if (GPIO_Pin == SCD30_READY_Pin) {
 		CO2Sensor::sensorReadyInterruptHandler();
 	} else if (GPIO_Pin == SWITCH_1_Pin) {
-		switch1Pressed();
+		Controller::handleSwitchPressedInterrupt(switch1);
 	} else if (GPIO_Pin == SWITCH_2_Pin) {
-		switch2Pressed();
+		Controller::handleSwitchPressedInterrupt(switch2);
 	} else if (GPIO_Pin == SWITCH_3_Pin) {
-		switch3Pressed();
+		Controller::handleSwitchPressedInterrupt(switch3);
 	} else if (GPIO_Pin == SWITCH_4_Pin) {
-		switch4Pressed();
+		Controller::handleSwitchPressedInterrupt(switch4);
 	}
 }

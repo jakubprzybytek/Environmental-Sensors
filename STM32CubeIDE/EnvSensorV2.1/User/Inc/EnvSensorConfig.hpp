@@ -10,6 +10,9 @@
 
 #include <main.h>
 
+//#define APPLICATION_CONTROLLER_INFO
+#define APPLICATION_CONTROLLER_TRACE
+
 //#define DEBUG_LOG_TRACE
 
 #define DISPLAY_CONTROLLER_INFO

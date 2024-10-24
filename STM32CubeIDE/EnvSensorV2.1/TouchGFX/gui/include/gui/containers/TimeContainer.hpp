@@ -3,6 +3,8 @@
 
 #include <gui_generated/containers/TimeContainerBase.hpp>
 
+#ifndef Simulator
+
 #include <Time/DateTime.hpp>
 
 class TimeContainer: public TimeContainerBase {
@@ -19,3 +21,5 @@ protected:
 };
 
 #endif // TIMECONTAINER_HPP
+
+#endif

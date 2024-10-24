@@ -6,6 +6,8 @@
 #include <Logger/ReadoutFileLogger.hpp>
 #include <Utils/DebugLog.hpp>
 
+#define LOGGER_INTERVAL (60 * 1000)
+
 extern ReadoutsState readoutsState;
 
 uint32_t loggerThreadBuffer[1024];
@@ -33,10 +35,14 @@ void LoggerThread::startThread() {
 void LoggerThread::thread(void *pvParameters) {
 	ReadoutFileLogger readoutFileLogger("env-logs");
 
-	LOGGER_RESULT result = LOGGER_OK;
+	uint32_t wakeTime = osKernelGetTickCount();
 
+	LOGGER_RESULT result = LOGGER_OK;
 	while (result == LOGGER_OK) {
-		osDelay(5000 / portTICK_RATE_MS);
+
+		wakeTime += LOGGER_INTERVAL / portTICK_RATE_MS;
+		osDelayUntil(wakeTime);
+
 		readoutFileLogger.log(readoutsState);
 
 #ifdef LOGGER_TRACE

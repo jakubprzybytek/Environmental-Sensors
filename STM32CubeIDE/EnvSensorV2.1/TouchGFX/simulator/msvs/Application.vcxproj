@@ -38,6 +38,11 @@
     <ClCompile Include="..\..\generated\gui_generated\src\containers\TimeContainerBase.cpp"/>
     <ClCompile Include="..\..\gui\src\containers\ParticlesContainer.cpp"/>
     <ClCompile Include="..\..\generated\gui_generated\src\containers\ParticlesContainerBase.cpp"/>
+    <ClCompile Include="..\..\gui\src\containers\DateTimeSettingsContainer.cpp"/>
+    <ClCompile Include="..\..\generated\gui_generated\src\containers\DateTimeSettingsContainerBase.cpp"/>
+    <ClCompile Include="..\..\gui\src\settings_screen\SettingsPresenter.cpp"/>
+    <ClCompile Include="..\..\gui\src\settings_screen\SettingsView.cpp"/>
+    <ClCompile Include="..\..\generated\gui_generated\src\settings_screen\SettingsViewBase.cpp"/>
   </ItemGroup>
   <ItemGroup>
     <None Include="$(ApplicationRoot)\assets\texts\texts.xml"/>
@@ -205,6 +210,11 @@
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\TimeContainerBase.hpp"/>
     <ClInclude Include="..\..\gui\include\gui\containers\ParticlesContainer.hpp"/>
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\ParticlesContainerBase.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\containers\DateTimeSettingsContainer.hpp"/>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\DateTimeSettingsContainerBase.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\settings_screen\SettingsPresenter.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\settings_screen\SettingsView.hpp"/>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\settings_screen\SettingsViewBase.hpp"/>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="$(ApplicationRoot)\generated\simulator\touchgfx.rc"/>

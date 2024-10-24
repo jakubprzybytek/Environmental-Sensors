@@ -23,6 +23,7 @@ public:
     MainReadoutsViewBase();
     virtual ~MainReadoutsViewBase();
     virtual void setupScreen();
+    virtual void handleKeyEvent(uint8_t key);
 
 protected:
     FrontendApplication& application() {
@@ -34,6 +35,7 @@ protected:
      */
     touchgfx::Box __background;
     touchgfx::Box background;
+    touchgfx::TextArea button4TextArea;
     touchgfx::TextArea button3TextArea;
     touchgfx::TextArea button2TextArea;
     touchgfx::TextArea button1TextArea;

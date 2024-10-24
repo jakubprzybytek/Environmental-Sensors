@@ -14,6 +14,8 @@
 
 #include <gui/mainreadouts_screen/MainReadoutsView.hpp>
 #include <gui/mainreadouts_screen/MainReadoutsPresenter.hpp>
+#include <gui/settings_screen/SettingsView.hpp>
+#include <gui/settings_screen/SettingsPresenter.hpp>
 
 
 /**
@@ -37,7 +39,8 @@ public:
      * @note All view types used in the application MUST be added to this list!
      */
     typedef touchgfx::meta::TypeList< MainReadoutsView,
-            touchgfx::meta::Nil
+            touchgfx::meta::TypeList< SettingsView,
+            touchgfx::meta::Nil >
             > GeneratedViewTypes;
 
     /**
@@ -50,7 +53,8 @@ public:
      * @note All presenter types used in the application MUST be added to this list!
      */
     typedef touchgfx::meta::TypeList< MainReadoutsPresenter,
-            touchgfx::meta::Nil
+            touchgfx::meta::TypeList< SettingsPresenter,
+            touchgfx::meta::Nil >
             > GeneratedPresenterTypes;
 
     /**

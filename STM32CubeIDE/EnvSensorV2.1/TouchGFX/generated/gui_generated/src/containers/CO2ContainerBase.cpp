@@ -17,13 +17,13 @@ CO2ContainerBase::CO2ContainerBase()
     valueTextArea.setTypedText(touchgfx::TypedText(T___SINGLEUSE_C2UD));
     add(valueTextArea);
 
-    unitTextArea.setPosition(160, 0, 40, 28);
+    unitTextArea.setPosition(160, 7, 40, 18);
     unitTextArea.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     unitTextArea.setLinespacing(0);
     unitTextArea.setTypedText(touchgfx::TypedText(T___SINGLEUSE_B3Q3));
     add(unitTextArea);
 
-    labelTextArea.setPosition(0, 0, 150, 28);
+    labelTextArea.setPosition(0, 0, 154, 28);
     labelTextArea.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     labelTextArea.setLinespacing(0);
     labelTextArea.setTypedText(touchgfx::TypedText(T___SINGLEUSE_YX85));

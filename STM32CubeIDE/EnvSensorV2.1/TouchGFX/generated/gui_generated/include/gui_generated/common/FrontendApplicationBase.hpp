@@ -23,6 +23,9 @@ public:
     // MainReadouts
     void gotoMainReadoutsScreenNoTransition();
 
+    // Settings
+    void gotoSettingsScreenNoTransition();
+
 protected:
     touchgfx::Callback<FrontendApplicationBase> transitionCallback;
     FrontendHeap& frontendHeap;
@@ -30,6 +33,9 @@ protected:
 
     // MainReadouts
     void gotoMainReadoutsScreenNoTransitionImpl();
+
+    // Settings
+    void gotoSettingsScreenNoTransitionImpl();
 };
 
 #endif // FRONTENDAPPLICATIONBASE_HPP

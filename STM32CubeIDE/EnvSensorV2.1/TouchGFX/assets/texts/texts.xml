@@ -6,6 +6,27 @@
   <Texts>
     <TextGroup Id="Group1" />
     <TextGroup Id="Unsorted">
+      <Text Id="__SingleUse_W4SP" Alignment="Center" TypographyId="Default">
+        <Translation Language="GB">Time</Translation>
+      </Text>
+      <Text Id="__SingleUse_01GU" Alignment="Left" TypographyId="Large">
+        <Translation Language="GB">00:00:00</Translation>
+      </Text>
+      <Text Id="__SingleUse_NVTJ" Alignment="Center" TypographyId="Large">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_TDUW" Alignment="Center" TypographyId="Default">
+        <Translation Language="GB">Date</Translation>
+      </Text>
+      <Text Id="__SingleUse_W6ZY" Alignment="Left" TypographyId="Large">
+        <Translation Language="GB">2000.00.00</Translation>
+      </Text>
+      <Text Id="__SingleUse_1NL0" Alignment="Center" TypographyId="Large">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_EP2D" Alignment="Center" TypographyId="Small">
+        <Translation Language="GB">Settings</Translation>
+      </Text>
       <Text Id="__SingleUse_K8A6" Alignment="Center" TypographyId="Small">
         <Translation Language="GB">Particles</Translation>
       </Text>
@@ -33,7 +54,7 @@
       <Text Id="__SingleUse_DI1B" Alignment="Right" TypographyId="Default">
         <Translation Language="GB">&lt;value&gt;</Translation>
       </Text>
-      <Text Id="__SingleUse_6P4T" Alignment="Right" TypographyId="Small">
+      <Text Id="__SingleUse_6P4T" Alignment="Left" TypographyId="Small">
         <Translation Language="GB">μg/m³</Translation>
       </Text>
       <Text Id="__SingleUse_789C" Alignment="Center" TypographyId="Default">
@@ -100,7 +121,7 @@
         <Translation Language="GB">&lt;value&gt;</Translation>
       </Text>
       <Text Id="__SingleUse_6OS6" Alignment="Left" TypographyId="Default">
-        <Translation Language="GB">°C</Translation>
+        <Translation Language="GB">[°C]</Translation>
       </Text>
       <Text Id="__SingleUse_2MZM" Alignment="Right" TypographyId="Default">
         <Translation Language="GB">Temperature</Translation>
@@ -112,7 +133,7 @@
         <Translation Language="GB">&lt;value&gt;</Translation>
       </Text>
       <Text Id="__SingleUse_PB6I" Alignment="Left" TypographyId="Default">
-        <Translation Language="GB">hPa</Translation>
+        <Translation Language="GB">[hPa]</Translation>
       </Text>
       <Text Id="__SingleUse_BSZ2" Alignment="Right" TypographyId="Default">
         <Translation Language="GB">Preasure</Translation>
@@ -123,8 +144,8 @@
       <Text Id="__SingleUse_C2UD" Alignment="Right" TypographyId="Large">
         <Translation Language="GB">&lt;value&gt;</Translation>
       </Text>
-      <Text Id="__SingleUse_B3Q3" Alignment="Left" TypographyId="Default">
-        <Translation Language="GB">ppm</Translation>
+      <Text Id="__SingleUse_B3Q3" Alignment="Left" TypographyId="Small">
+        <Translation Language="GB">[ppm]</Translation>
       </Text>
       <Text Id="__SingleUse_YX85" Alignment="Right" TypographyId="Default">
         <Translation Language="GB">CO2</Translation>
@@ -136,7 +157,7 @@
         <Translation Language="GB">0.0</Translation>
       </Text>
       <Text Id="__SingleUse_RKZY" Alignment="Left" TypographyId="Default">
-        <Translation Language="GB">%</Translation>
+        <Translation Language="GB">[%]</Translation>
       </Text>
       <Text Id="__SingleUse_0OK7" Alignment="Right" TypographyId="Default">
         <Translation Language="GB">Humidity</Translation>
