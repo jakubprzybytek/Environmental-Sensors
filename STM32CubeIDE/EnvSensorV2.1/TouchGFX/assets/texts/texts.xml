@@ -6,6 +6,30 @@
   <Texts>
     <TextGroup Id="Group1" />
     <TextGroup Id="Unsorted">
+      <Text Id="__SingleUse_0GF7" Alignment="Left" TypographyId="Small">
+        <Translation Language="GB">cmd</Translation>
+      </Text>
+      <Text Id="__SingleUse_QYH5" Alignment="Left" TypographyId="Small">
+        <Translation Language="GB">cmd</Translation>
+      </Text>
+      <Text Id="__SingleUse_HYFF" Alignment="Left" TypographyId="Small">
+        <Translation Language="GB">cmd</Translation>
+      </Text>
+      <Text Id="__SingleUse_WADD" Alignment="Left" TypographyId="Small">
+        <Translation Language="GB">cmd</Translation>
+      </Text>
+      <Text Id="__SingleUse_YUOI" Alignment="Center" TypographyId="Small">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_USK8" Alignment="Center" TypographyId="Small">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_PN9E" Alignment="Center" TypographyId="Small">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_P2XZ" Alignment="Center" TypographyId="Small">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
       <Text Id="__SingleUse_W4SP" Alignment="Center" TypographyId="Default">
         <Translation Language="GB">Time</Translation>
       </Text>
@@ -23,12 +47,6 @@
       </Text>
       <Text Id="__SingleUse_1NL0" Alignment="Center" TypographyId="Large">
         <Translation Language="GB">&lt;value&gt;</Translation>
-      </Text>
-      <Text Id="__SingleUse_EP2D" Alignment="Center" TypographyId="Small">
-        <Translation Language="GB">Settings</Translation>
-      </Text>
-      <Text Id="__SingleUse_K8A6" Alignment="Center" TypographyId="Small">
-        <Translation Language="GB">Particles</Translation>
       </Text>
       <Text Id="__SingleUse_8G54" Alignment="Left" TypographyId="Small">
         <Translation Language="GB">0</Translation>
@@ -107,12 +125,6 @@
       </Text>
       <Text Id="__SingleUse_THMQ" Alignment="Center" TypographyId="Default">
         <Translation Language="GB">PM1</Translation>
-      </Text>
-      <Text Id="__SingleUse_JC1X" Alignment="Center" TypographyId="Small">
-        <Translation Language="GB">Refresh</Translation>
-      </Text>
-      <Text Id="__SingleUse_QLDI" Alignment="Center" TypographyId="Small">
-        <Translation Language="GB">Clear</Translation>
       </Text>
       <Text Id="__SingleUse_ZVXF" Alignment="Left" TypographyId="Default">
         <Translation Language="GB">0.0</Translation>
@@ -206,7 +218,7 @@
   <Typographies>
     <Typography Id="Default" Font="segoeui.ttf" Size="20" Bpp="4" IsVector="no" Direction="LTR" FallbackCharacter="?" WildcardCharacters="." WildcardCharacterRanges="0-9" />
     <Typography Id="Large" Font="segoeuil.ttf" Size="66" Bpp="4" IsVector="no" Direction="LTR" FallbackCharacter="?" WildcardCharacters="." WildcardCharacterRanges="0-9" />
-    <Typography Id="Small" Font="seguisb.ttf" Size="12" Bpp="4" IsVector="no" Direction="LTR" FallbackCharacter="?" />
+    <Typography Id="Small" Font="seguisb.ttf" Size="12" Bpp="4" IsVector="no" Direction="LTR" FallbackCharacter="?" WildcardCharacters="+-10" WildcardCharacterRanges="a-z,A-Z" />
     <Typography Id="XLarge" Font="segoeuil.ttf" Size="96" Bpp="4" IsVector="no" Direction="LTR" FallbackCharacter="?" WildcardCharacters="." WildcardCharacterRanges="0-9" />
   </Typographies>
 </TextDatabase>

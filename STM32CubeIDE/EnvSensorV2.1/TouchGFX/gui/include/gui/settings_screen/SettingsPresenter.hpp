@@ -27,6 +27,8 @@ public:
 
     virtual ~SettingsPresenter() {}
 
+    void notifyBottomButtonLabelsChanged(const char *button1Label, const char *button2Label, const char *button3Label, const char *button4Label);
+
 private:
     SettingsPresenter();
 

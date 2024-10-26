@@ -8,6 +8,7 @@
 #include <mvp/View.hpp>
 #include <gui/settings_screen/SettingsPresenter.hpp>
 #include <touchgfx/widgets/Box.hpp>
+#include <gui/containers/BottomButtons.hpp>
 #include <gui/containers/DateTimeSettingsContainer.hpp>
 
 class SettingsViewBase : public touchgfx::View<SettingsPresenter>
@@ -27,7 +28,8 @@ protected:
      */
     touchgfx::Box __background;
     touchgfx::Box background;
-    DateTimeSettingsContainer dateTimeSettingsContainer1;
+    BottomButtons bottomButtons;
+    DateTimeSettingsContainer dateTimeSettingsContainer;
 
 private:
 

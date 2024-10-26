@@ -31,6 +31,8 @@ public:
 	}
 	;
 
+	void notifyBottomButtonLabelsChanged(const char *button1Label, const char *button2Label, const char *button3Label, const char *button4Label);
+
 	void notifyVoltageChanged(float newVoltage);
 
 	void notifyTemperatureChanged(float newTemperature);

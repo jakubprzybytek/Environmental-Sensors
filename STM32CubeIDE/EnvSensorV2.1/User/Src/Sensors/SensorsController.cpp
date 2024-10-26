@@ -10,7 +10,7 @@
 
 #include <main.h>
 
-#include <EnvSensorConfig.hpp>
+#include <TouchGFX.hpp>
 
 #include <Sensors/SensorsController.hpp>
 
@@ -59,7 +59,7 @@ void SensorsController::thread(void *pvParameters) {
 
 	osDelay(INITIAL_DELAY / portTICK_RATE_MS);
 
-	TRIGGER_TOUCHGFX_REFRESH();
+//	TRIGGER_TOUCHGFX_REFRESH();
 
 	for (;;) {
 		osThreadFlagsClear(TRIGGER_HIGH_MEASUREMENTS_FLAG);

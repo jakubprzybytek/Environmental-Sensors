@@ -306,6 +306,12 @@
     <ClCompile Include="..\..\generated\gui_generated\src\settings_screen\SettingsViewBase.cpp">
       <Filter>Source Files\generated\gui_generated\settings_screen</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\gui\src\containers\BottomButtons.cpp">
+      <Filter>Source Files\gui\containers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\generated\gui_generated\src\containers\BottomButtonsBase.cpp">
+      <Filter>Source Files\generated\gui_generated\containers</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="$(ApplicationRoot)\assets\texts\texts.xml">
@@ -813,6 +819,12 @@
     </ClInclude>
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\settings_screen\SettingsViewBase.hpp">
       <Filter>Header Files\generated\gui_generated\settings_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\containers\BottomButtons.hpp">
+      <Filter>Header Files\gui\containers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\BottomButtonsBase.hpp">
+      <Filter>Header Files\generated\gui_generated\containers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

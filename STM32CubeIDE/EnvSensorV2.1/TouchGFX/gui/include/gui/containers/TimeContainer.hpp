@@ -3,7 +3,7 @@
 
 #include <gui_generated/containers/TimeContainerBase.hpp>
 
-#ifndef Simulator
+#ifndef SIMULATOR
 
 #include <Time/DateTime.hpp>
 

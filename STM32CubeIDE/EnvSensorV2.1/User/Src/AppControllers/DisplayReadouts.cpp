@@ -6,11 +6,26 @@
  */
 
 #include <AppControllers/DisplayReadouts.hpp>
-#include <EnvSensorConfig.hpp>
+#include <AppControllers/AppState.hpp>
+#include <AppControllers/Settings.hpp>
+
+#include <TouchGFX.hpp>
+
 #include <Display/DisplayCommands.hpp>
 #include <Sensors/SensorsController.hpp>
 
-void DisplayReadouts::process() {
+extern AppState appState;
+
+extern Settings settings;
+
+void DisplayReadouts::onEnter() {
+	appState.setButtonLabels("Clear", "Refresh", "Particles", "Settings");
+}
+
+Controller* DisplayReadouts::proceed() {
+	TOUCHGFX_GO_TO_READOUT_SCREEN();
+	TRIGGER_TOUCHGFX_REFRESH();
+
 	while (true) {
 		Switch switchPressed = waitForSwitchPressed();
 
@@ -25,7 +40,7 @@ void DisplayReadouts::process() {
 			SensorsController::triggerHighMeasurements();
 			break;
 		case switch4:
-			return;
+			return &settings;
 		}
 	}
 }

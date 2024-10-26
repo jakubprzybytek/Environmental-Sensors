@@ -11,6 +11,9 @@ public:
     virtual ~SettingsView() {}
     virtual void setupScreen();
     virtual void tearDownScreen();
+
+    void setBottomButtonLabels(const char *button1Label, const char *button2Label, const char *button3Label, const char *button4Label);
+
 protected:
 };
 

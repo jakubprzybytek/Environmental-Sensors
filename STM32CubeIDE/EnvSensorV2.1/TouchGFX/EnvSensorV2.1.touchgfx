@@ -16,44 +16,13 @@
             }
           },
           {
-            "Type": "TextArea",
-            "Name": "button4TextArea",
-            "X": 175,
-            "Y": 287,
-            "Width": 46,
-            "Height": 15,
-            "TextId": "__SingleUse_EP2D",
-            "TextRotation": "0"
-          },
-          {
-            "Type": "TextArea",
-            "Name": "button3TextArea",
-            "X": 120,
-            "Y": 287,
-            "Width": 46,
-            "Height": 12,
-            "TextId": "__SingleUse_K8A6",
-            "TextRotation": "0"
-          },
-          {
-            "Type": "TextArea",
-            "Name": "button2TextArea",
-            "X": 63,
-            "Y": 287,
-            "Width": 46,
-            "Height": 12,
-            "TextId": "__SingleUse_JC1X",
-            "TextRotation": "0"
-          },
-          {
-            "Type": "TextArea",
-            "Name": "button1TextArea",
+            "Type": "CustomContainerInstance",
+            "Name": "bottomButtons",
             "X": 6,
-            "Y": 287,
-            "Width": 46,
+            "Y": 288,
+            "Width": 220,
             "Height": 12,
-            "TextId": "__SingleUse_QLDI",
-            "TextRotation": "0"
+            "CustomContainerDefinitionName": "BottomButtons"
           },
           {
             "Type": "CustomContainerInstance",
@@ -144,7 +113,16 @@
           },
           {
             "Type": "CustomContainerInstance",
-            "Name": "dateTimeSettingsContainer1",
+            "Name": "bottomButtons",
+            "X": 6,
+            "Y": 288,
+            "Width": 220,
+            "Height": 12,
+            "CustomContainerDefinitionName": "BottomButtons"
+          },
+          {
+            "Type": "CustomContainerInstance",
+            "Name": "dateTimeSettingsContainer",
             "Y": 28,
             "Width": 340,
             "Height": 193,
@@ -542,6 +520,69 @@
             "Height": 26,
             "TextId": "__SingleUse_TDUW",
             "TextRotation": "0"
+          }
+        ],
+        "Interactions": []
+      },
+      {
+        "Name": "BottomButtons",
+        "Width": 220,
+        "Height": 12,
+        "Components": [
+          {
+            "Type": "TextArea",
+            "Name": "button4LabeltextArea",
+            "X": 174,
+            "Width": 46,
+            "Height": 12,
+            "TextId": "__SingleUse_YUOI",
+            "TextRotation": "0",
+            "Wildcard1": {
+              "TextId": "__SingleUse_0GF7",
+              "UseBuffer": true,
+              "BufferSize": 10
+            }
+          },
+          {
+            "Type": "TextArea",
+            "Name": "button3LabeltextArea",
+            "X": 116,
+            "Width": 46,
+            "Height": 12,
+            "TextId": "__SingleUse_USK8",
+            "TextRotation": "0",
+            "Wildcard1": {
+              "TextId": "__SingleUse_QYH5",
+              "UseBuffer": true,
+              "BufferSize": 10
+            }
+          },
+          {
+            "Type": "TextArea",
+            "Name": "button2LabeltextArea",
+            "X": 58,
+            "Width": 46,
+            "Height": 12,
+            "TextId": "__SingleUse_PN9E",
+            "TextRotation": "0",
+            "Wildcard1": {
+              "TextId": "__SingleUse_HYFF",
+              "UseBuffer": true,
+              "BufferSize": 10
+            }
+          },
+          {
+            "Type": "TextArea",
+            "Name": "button1LabeltextArea",
+            "Width": 46,
+            "Height": 12,
+            "TextId": "__SingleUse_P2XZ",
+            "TextRotation": "0",
+            "Wildcard1": {
+              "TextId": "__SingleUse_WADD",
+              "UseBuffer": true,
+              "BufferSize": 10
+            }
           }
         ],
         "Interactions": []

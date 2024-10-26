@@ -7,15 +7,23 @@
 
 #include <AppControllers/Controller.hpp>
 #include <AppControllers/DisplayReadouts.hpp>
+#include <AppControllers/Settings.hpp>
+#include <AppControllers/AppState.hpp>
+
 #include "cmsis_os.h"
 
 #include <EnvSensorConfig.hpp>
 #include <Utils/DebugLog.hpp>
 
+AppState appState;
+
 uint32_t controllerThreadBuffer[128];
 StaticTask_t controllerThreadControlBlock;
 
 osThreadId_t controllerThreadHandle;
+
+DisplayReadouts displayReadouts;
+Settings settings;
 
 Switch lastPressed;
 
@@ -33,15 +41,17 @@ void Controller::threadStart() {
 			.stack_size = sizeof(controllerThreadBuffer),
 			.priority = (osPriority_t) osPriorityNormal
 		};
-				// @formatter:on
+						// @formatter:on
 	controllerThreadHandle = osThreadNew(thread, NULL, &controllerThreadaAttributes);
 }
 
 void Controller::thread(void *pvParameters) {
-	DisplayReadouts defaultController;
+	Controller *currentController = &displayReadouts;
+	while (true) {
+		currentController->onEnter();
 
-	Controller &currentController = defaultController;
-	currentController.process();
+		currentController = currentController->proceed();
+	}
 
 	osThreadExit();
 }
@@ -49,7 +59,7 @@ void Controller::thread(void *pvParameters) {
 void Controller::handleSwitchPressedInterrupt(Switch switchPressed) {
 
 #ifdef APPLICATION_CONTROLLER_TRACE
-	DebugLog::logWithStackHighWaterMark("Main - stack: ");
+	DebugLog::logWithStackHighWaterMark("Ctrl - stack: ");
 #endif
 
 	lastPressed = switchPressed;
@@ -59,4 +69,16 @@ void Controller::handleSwitchPressedInterrupt(Switch switchPressed) {
 Switch Controller::waitForSwitchPressed() {
 	osThreadFlagsWait(SWITCH_PRESSED_FLAG, osFlagsWaitAny, osWaitForever);
 	return lastPressed;
+}
+
+void Controller::onEnter() {
+
+}
+
+Controller* Controller::proceed() {
+	return &displayReadouts;
+}
+
+void Controller::onExit() {
+
 }

@@ -3,9 +3,9 @@
 
 #include <gui/model/Model.hpp>
 
-#ifndef Simulator
-
+#ifndef SIMULATOR
 #include <Time/DateTime.hpp>
+#endif
 
 class ModelListener
 {
@@ -19,6 +19,8 @@ public:
         model = m;
     }
 
+    virtual void notifyBottomButtonLabelsChanged(const char *button1Label, const char *button2Label, const char *button3Label, const char *button4Label) {}
+
     virtual void notifyVoltageChanged(float newVoltage) {}
 
     virtual void notifyTemperatureChanged(float newTemperature) {}
@@ -27,12 +29,12 @@ public:
     virtual void notifyHumidityChanged(float newHumidity) {}
     virtual void notifyParticlesChanged(uint16_t pm1, uint16_t pm2_5, uint16_t pm4, uint16_t pm10) {}
 
+#ifndef SIMULATOR
     virtual void notifyDateTimeChanged(DateTime newDateTime) {}
+#endif
 
 protected:
     Model* model;
 };
-
-#endif
 
 #endif // MODELLISTENER_HPP

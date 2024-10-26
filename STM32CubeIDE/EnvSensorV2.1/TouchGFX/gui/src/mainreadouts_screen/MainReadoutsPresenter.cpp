@@ -10,6 +10,10 @@ void MainReadoutsPresenter::activate() {
 void MainReadoutsPresenter::deactivate() {
 }
 
+void MainReadoutsPresenter::notifyBottomButtonLabelsChanged(const char *button1Label, const char *button2Label, const char *button3Label, const char *button4Label) {
+	view.setBottomButtonLabels(button1Label, button2Label, button3Label, button4Label);
+}
+
 void MainReadoutsPresenter::notifyVoltageChanged(float newVoltage) {
 	view.setVoltage(newVoltage);
 }

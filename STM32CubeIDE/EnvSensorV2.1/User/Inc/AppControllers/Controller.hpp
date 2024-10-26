@@ -27,11 +27,17 @@ protected:
 	Switch waitForSwitchPressed();
 
 public:
+//	virtual ~Controller() {}
+
 	static void init();
 
 	static void handleSwitchPressedInterrupt(Switch switchPressed);
 
-	virtual void process();
+	virtual void onEnter();
+
+	virtual Controller* proceed();
+
+	virtual void onExit();
 };
 
 #endif /* INC_APPCONTROLLERS_CONTROLLER_HPP_ */

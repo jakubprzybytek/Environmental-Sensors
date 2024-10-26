@@ -10,10 +10,12 @@
 
 #include <AppControllers/Controller.hpp>
 
-class Settings : public Controller {
+class Settings : public virtual Controller {
 
 public:
-	void process();
+	void onEnter();
+
+	Controller* proceed();
 };
 
 #endif /* INC_APPCONTROLLERS_SETTINGS_HPP_ */

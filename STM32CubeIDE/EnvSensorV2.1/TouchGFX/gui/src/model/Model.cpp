@@ -3,11 +3,13 @@
 
 #include <math.h>
 
-#ifndef Simulator
+#ifndef SIMULATOR
 
+#include <AppControllers/AppState.hpp>
 #include <Readouts/ReadoutsState.hpp>
 #include <Time/RtcUtils.hpp>
 
+extern AppState appState;
 extern ReadoutsState readoutsState;
 ReadoutsState storedReadoutsState;
 
@@ -16,6 +18,9 @@ Model::Model() :
 }
 
 void Model::tick() {
+	modelListener->notifyBottomButtonLabelsChanged(appState.getButton1Label(), appState.getButton2Label(), appState.getButton3Label(),
+			appState.getButton4Label());
+
 	float roundedVoltage = round(readoutsState.voltage * 100.0) / 100.0;
 	if (storedReadoutsState.voltage != roundedVoltage) {
 		storedReadoutsState.voltage = roundedVoltage;
@@ -46,8 +51,8 @@ void Model::tick() {
 		modelListener->notifyHumidityChanged(storedReadoutsState.scdHumidity);
 	}
 
-	if (storedReadoutsState.pm1 != readoutsState.pm1 || storedReadoutsState.pm2_5 != readoutsState.pm2_5
-			|| storedReadoutsState.pm4 != readoutsState.pm4 || storedReadoutsState.pm10 != readoutsState.pm10) {
+	if (storedReadoutsState.pm1 != readoutsState.pm1 || storedReadoutsState.pm2_5 != readoutsState.pm2_5 || storedReadoutsState.pm4 != readoutsState.pm4
+			|| storedReadoutsState.pm10 != readoutsState.pm10) {
 		storedReadoutsState.pm1 = readoutsState.pm1;
 		storedReadoutsState.pm2_5 = readoutsState.pm2_5;
 		storedReadoutsState.pm4 = readoutsState.pm4;

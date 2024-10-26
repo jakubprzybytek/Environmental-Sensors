@@ -43,6 +43,8 @@
     <ClCompile Include="..\..\gui\src\settings_screen\SettingsPresenter.cpp"/>
     <ClCompile Include="..\..\gui\src\settings_screen\SettingsView.cpp"/>
     <ClCompile Include="..\..\generated\gui_generated\src\settings_screen\SettingsViewBase.cpp"/>
+    <ClCompile Include="..\..\gui\src\containers\BottomButtons.cpp"/>
+    <ClCompile Include="..\..\generated\gui_generated\src\containers\BottomButtonsBase.cpp"/>
   </ItemGroup>
   <ItemGroup>
     <None Include="$(ApplicationRoot)\assets\texts\texts.xml"/>
@@ -215,6 +217,8 @@
     <ClInclude Include="..\..\gui\include\gui\settings_screen\SettingsPresenter.hpp"/>
     <ClInclude Include="..\..\gui\include\gui\settings_screen\SettingsView.hpp"/>
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\settings_screen\SettingsViewBase.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\containers\BottomButtons.hpp"/>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\BottomButtonsBase.hpp"/>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="$(ApplicationRoot)\generated\simulator\touchgfx.rc"/>

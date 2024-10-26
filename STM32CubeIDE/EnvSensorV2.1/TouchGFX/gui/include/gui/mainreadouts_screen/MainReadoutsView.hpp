@@ -15,6 +15,8 @@ public:
 	virtual void setupScreen();
 	virtual void tearDownScreen();
 
+	void setBottomButtonLabels(const char *button1Label, const char *button2Label, const char *button3Label, const char *button4Label);
+
 	void setVoltage(float voltage);
 	void setTemperature(float temperature);
 	void setPressure(float preassure);

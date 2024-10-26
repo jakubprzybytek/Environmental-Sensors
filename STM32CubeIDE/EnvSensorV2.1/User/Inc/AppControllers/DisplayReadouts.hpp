@@ -10,10 +10,12 @@
 
 #include <AppControllers/Controller.hpp>
 
-class DisplayReadouts : public Controller {
+class DisplayReadouts : public virtual Controller {
 
 public:
-	void process();
+	virtual void onEnter();
+
+	Controller* proceed();
 };
 
 #endif /* INC_APPCONTROLLERS_DISPLAYREADOUTS_HPP_ */

@@ -11,6 +11,10 @@ void MainReadoutsView::tearDownScreen() {
 	MainReadoutsViewBase::tearDownScreen();
 }
 
+void MainReadoutsView::setBottomButtonLabels(const char *button1Label, const char *button2Label, const char *button3Label, const char *button4Label) {
+	bottomButtons.setLabels(button1Label, button2Label, button3Label, button4Label);
+}
+
 void MainReadoutsView::setVoltage(float voltage) {
 	voltageContainer.setValue(voltage);
 }

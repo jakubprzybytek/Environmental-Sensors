@@ -6,8 +6,23 @@
  */
 
 #include <AppControllers/Settings.hpp>
+#include <AppControllers/AppState.hpp>
+#include <AppControllers/DisplayReadouts.hpp>
 
-void Settings::process() {
+#include <TouchGFX.hpp>
+
+extern AppState appState;
+
+extern DisplayReadouts displayReadouts;
+
+void Settings::onEnter() {
+	appState.setButtonLabels("+1", "+10", "-1", "Next");
+}
+
+Controller* Settings::proceed() {
+	TOUCHGFX_GO_TO_SETTINGS();
+	TRIGGER_TOUCHGFX_REFRESH();
+
 	while (true) {
 		Switch switchPressed = waitForSwitchPressed();
 
@@ -19,7 +34,7 @@ void Settings::process() {
 		case switch3:
 			break;
 		case switch4:
-			return;
+			return &displayReadouts;
 		}
 	}
 }
