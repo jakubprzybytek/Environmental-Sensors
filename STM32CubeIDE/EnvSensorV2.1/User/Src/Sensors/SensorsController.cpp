@@ -10,14 +10,14 @@
 
 #include <main.h>
 
-#include <TouchGFX.hpp>
-
 #include <Sensors/SensorsController.hpp>
 
 #include <Sensors/VoltageSensor.hpp>
 #include <Sensors/TempPressureSensor.hpp>
 #include <Sensors/CO2Sensor.hpp>
 #include <Sensors/ParticlesSensor.hpp>
+
+#include <AppControllers/Controller.hpp>
 
 #define TRIGGER_HIGH_MEASUREMENTS_FLAG 0x01
 
@@ -59,8 +59,6 @@ void SensorsController::thread(void *pvParameters) {
 
 	osDelay(INITIAL_DELAY / portTICK_RATE_MS);
 
-//	TRIGGER_TOUCHGFX_REFRESH();
-
 	for (;;) {
 		osThreadFlagsClear(TRIGGER_HIGH_MEASUREMENTS_FLAG);
 		osThreadFlagsWait(TRIGGER_HIGH_MEASUREMENTS_FLAG, osFlagsWaitAny, LOW_MEASUREMENTS_PERIOD / portTICK_RATE_MS);
@@ -71,7 +69,7 @@ void SensorsController::thread(void *pvParameters) {
 
 		ParticlesSensor::stopAndTerminate();
 
-		TRIGGER_TOUCHGFX_REFRESH();
+		Controller::handleSensorsRoutineFinished();
 	}
 
 	osThreadExit();

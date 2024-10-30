@@ -1,6 +1,8 @@
 #ifndef INC_READOUTS_STATE_HPP_
 #define INC_READOUTS_STATE_HPP_
 
+#include "stm32l4xx_hal.h"
+
 class ReadoutsState {
 
 public:

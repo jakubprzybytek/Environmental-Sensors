@@ -1,6 +1,8 @@
 #ifndef MODEL_HPP
 #define MODEL_HPP
 
+#include <Readouts/ReadoutsState.hpp>
+
 class ModelListener;
 
 class Model {

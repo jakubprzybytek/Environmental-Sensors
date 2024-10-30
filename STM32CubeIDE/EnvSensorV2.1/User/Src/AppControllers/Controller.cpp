@@ -17,58 +17,98 @@
 
 AppState appState;
 
-uint32_t controllerThreadBuffer[128];
-StaticTask_t controllerThreadControlBlock;
+uint32_t mainControllerThreadBuffer[128];
+StaticTask_t mainControllerThreadControlBlock;
 
-osThreadId_t controllerThreadHandle;
+osThreadId_t mainControllerThreadHandle;
+
+uint32_t sensorRoutineControllerThreadBuffer[128];
+StaticTask_t sensorRoutineControllerThreadControlBlock;
+
+osThreadId_t sensorRoutineControllerThreadHandle;
 
 DisplayReadouts displayReadouts;
 Settings settings;
 
+Controller *currentController;
+
 Switch lastPressed;
 
 void Controller::init() {
-	Controller::threadStart();
+	currentController = &displayReadouts;
+
+	Controller::mainThreadStart();
+	Controller::sensorRoutineThreadStart();
 }
 
-void Controller::threadStart() {
+void Controller::mainThreadStart() {
 	// @formatter:off
-		const osThreadAttr_t controllerThreadaAttributes = {
-			.name = "controller-th",
-			.cb_mem = &controllerThreadControlBlock,
-			.cb_size = sizeof(controllerThreadControlBlock),
-			.stack_mem = &controllerThreadBuffer[0],
-			.stack_size = sizeof(controllerThreadBuffer),
-			.priority = (osPriority_t) osPriorityNormal
-		};
-						// @formatter:on
-	controllerThreadHandle = osThreadNew(thread, NULL, &controllerThreadaAttributes);
+	const osThreadAttr_t controllerThreadaAttributes = {
+		.name = "controller-th",
+		.cb_mem = &mainControllerThreadControlBlock,
+		.cb_size = sizeof(mainControllerThreadControlBlock),
+		.stack_mem = &mainControllerThreadBuffer[0],
+		.stack_size = sizeof(mainControllerThreadBuffer),
+		.priority = (osPriority_t) osPriorityNormal
+	};
+	// @formatter:on
+	mainControllerThreadHandle = osThreadNew(mainThread, NULL, &controllerThreadaAttributes);
 }
 
-void Controller::thread(void *pvParameters) {
-	Controller *currentController = &displayReadouts;
+void Controller::sensorRoutineThreadStart() {
+	// @formatter:off
+	const osThreadAttr_t controllerThreadaAttributes2 = {
+		.name = "controller-sensor-routine-th",
+		.cb_mem = &sensorRoutineControllerThreadControlBlock,
+		.cb_size = sizeof(sensorRoutineControllerThreadControlBlock),
+		.stack_mem = &sensorRoutineControllerThreadBuffer[0],
+		.stack_size = sizeof(sensorRoutineControllerThreadBuffer),
+		.priority = (osPriority_t) osPriorityNormal
+	};
+	// @formatter:on
+	sensorRoutineControllerThreadHandle = osThreadNew(sensorRoutineThread, NULL, &controllerThreadaAttributes2);
+}
+
+void Controller::mainThread(void *pvParameters) {
 	while (true) {
 		currentController->onEnter();
 
-		currentController = currentController->proceed();
+		Controller *newController = currentController->proceed();
+
+		currentController->onExit();
+
+		currentController = newController;
+
+#ifdef APPLICATION_CONTROLLER_TRACE
+	DebugLog::logWithStackHighWaterMark("Ctrl - stack: ");
+#endif
+	}
+
+	osThreadExit();
+}
+
+void Controller::sensorRoutineThread(void *pvParameters) {
+	while (true) {
+		osThreadFlagsWait(SENSORS_ROUTINE_FINISHED_FLAG, osFlagsWaitAny, osWaitForever);
+
+		currentController->onSensorsRoutineFinished();
 	}
 
 	osThreadExit();
 }
 
 void Controller::handleSwitchPressedInterrupt(Switch switchPressed) {
-
-#ifdef APPLICATION_CONTROLLER_TRACE
-	DebugLog::logWithStackHighWaterMark("Ctrl - stack: ");
-#endif
-
 	lastPressed = switchPressed;
-	osThreadFlagsSet(controllerThreadHandle, SWITCH_PRESSED_FLAG);
+	osThreadFlagsSet(mainControllerThreadHandle, MAIN_THREAD_SWITCH_PRESSED_FLAG);
 }
 
 Switch Controller::waitForSwitchPressed() {
-	osThreadFlagsWait(SWITCH_PRESSED_FLAG, osFlagsWaitAny, osWaitForever);
+	osThreadFlagsWait(MAIN_THREAD_SWITCH_PRESSED_FLAG, osFlagsWaitAny, osWaitForever);
 	return lastPressed;
+}
+
+void Controller::handleSensorsRoutineFinished() {
+	osThreadFlagsSet(sensorRoutineControllerThreadHandle, SENSORS_ROUTINE_FINISHED_FLAG);
 }
 
 void Controller::onEnter() {
@@ -81,4 +121,7 @@ Controller* Controller::proceed() {
 
 void Controller::onExit() {
 
+}
+
+void Controller::onSensorsRoutineFinished() {
 }

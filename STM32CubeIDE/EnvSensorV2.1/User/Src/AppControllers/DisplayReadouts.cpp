@@ -5,6 +5,7 @@
  *      Author: jakub
  */
 
+
 #include <AppControllers/DisplayReadouts.hpp>
 #include <AppControllers/AppState.hpp>
 #include <AppControllers/Settings.hpp>
@@ -18,14 +19,25 @@ extern AppState appState;
 
 extern Settings settings;
 
+DisplayReadouts::DisplayReadouts() {
+//	const osTimerAttr_t screenRefreshTimerAttributes = { .name = "Screen refresh" };
+//	this->screenRefreshTimerId = osTimerNew(&DisplayReadouts::refreshScreen, osTimerPeriodic, NULL, &screenRefreshTimerAttributes);
+}
+
+//void DisplayReadouts::refreshScreen(void *attr) {
+//	TRIGGER_TOUCHGFX_REFRESH();
+//}
+
 void DisplayReadouts::onEnter() {
 	appState.setButtonLabels("Clear", "Refresh", "Particles", "Settings");
+
+//	osTimerStart(this->screenRefreshTimerId, 3000 / portTICK_RATE_MS);
+
+	TOUCHGFX_GO_TO_READOUT_SCREEN();
+//	TRIGGER_TOUCHGFX_REFRESH();
 }
 
 Controller* DisplayReadouts::proceed() {
-	TOUCHGFX_GO_TO_READOUT_SCREEN();
-	TRIGGER_TOUCHGFX_REFRESH();
-
 	while (true) {
 		Switch switchPressed = waitForSwitchPressed();
 
@@ -43,4 +55,12 @@ Controller* DisplayReadouts::proceed() {
 			return &settings;
 		}
 	}
+}
+
+void DisplayReadouts::onExit() {
+//	osTimerStop(this->screenRefreshTimerId);
+}
+
+void DisplayReadouts::onSensorsRoutineFinished() {
+	TRIGGER_TOUCHGFX_REFRESH();
 }

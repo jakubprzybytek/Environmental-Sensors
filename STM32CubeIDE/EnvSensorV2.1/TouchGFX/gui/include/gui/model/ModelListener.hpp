@@ -3,6 +3,8 @@
 
 #include <gui/model/Model.hpp>
 
+#include <stm32l4xx.h>
+
 #ifndef SIMULATOR
 #include <Time/DateTime.hpp>
 #endif
@@ -19,7 +21,7 @@ public:
         model = m;
     }
 
-    virtual void notifyBottomButtonLabelsChanged(const char *button1Label, const char *button2Label, const char *button3Label, const char *button4Label) {}
+    virtual void notifyBottomButtonLabelsChanged(const char *newButton1Label, const char *newButton2Label, const char *newButton3Label, const char *newButton4Label) {}
 
     virtual void notifyVoltageChanged(float newVoltage) {}
 

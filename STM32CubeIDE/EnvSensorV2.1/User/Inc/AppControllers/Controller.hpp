@@ -10,7 +10,9 @@
 
 #include "stm32l4xx_hal.h"
 
-#define SWITCH_PRESSED_FLAG 0x01
+#define MAIN_THREAD_SWITCH_PRESSED_FLAG 0x01
+
+#define SENSORS_ROUTINE_FINISHED_FLAG 0x02
 
 typedef enum {
 	switch1, switch2, switch3, switch4
@@ -19,25 +21,33 @@ typedef enum {
 class Controller {
 
 private:
-	static void threadStart();
+	static void mainThreadStart();
 
-	static void thread(void *pvParameters);
+	static void sensorRoutineThreadStart();
+
+	static void mainThread(void *pvParameters);
+
+	static void sensorRoutineThread(void *pvParameters);
 
 protected:
 	Switch waitForSwitchPressed();
 
 public:
-//	virtual ~Controller() {}
 
 	static void init();
 
 	static void handleSwitchPressedInterrupt(Switch switchPressed);
+
+	static void handleSensorsRoutineFinished();
+
 
 	virtual void onEnter();
 
 	virtual Controller* proceed();
 
 	virtual void onExit();
+
+	virtual void onSensorsRoutineFinished();
 };
 
 #endif /* INC_APPCONTROLLERS_CONTROLLER_HPP_ */

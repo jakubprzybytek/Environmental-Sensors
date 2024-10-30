@@ -19,9 +19,9 @@
             "Type": "CustomContainerInstance",
             "Name": "bottomButtons",
             "X": 6,
-            "Y": 288,
+            "Y": 287,
             "Width": 220,
-            "Height": 12,
+            "Height": 13,
             "CustomContainerDefinitionName": "BottomButtons"
           },
           {
@@ -115,9 +115,9 @@
             "Type": "CustomContainerInstance",
             "Name": "bottomButtons",
             "X": 6,
-            "Y": 288,
+            "Y": 287,
             "Width": 220,
-            "Height": 12,
+            "Height": 13,
             "CustomContainerDefinitionName": "BottomButtons"
           },
           {
@@ -527,7 +527,7 @@
       {
         "Name": "BottomButtons",
         "Width": 220,
-        "Height": 12,
+        "Height": 13,
         "Components": [
           {
             "Type": "TextArea",

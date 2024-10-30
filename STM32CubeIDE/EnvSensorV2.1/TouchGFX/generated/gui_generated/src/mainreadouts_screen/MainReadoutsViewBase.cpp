@@ -14,7 +14,7 @@ MainReadoutsViewBase::MainReadoutsViewBase()
     background.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
     add(background);
 
-    bottomButtons.setXY(6, 288);
+    bottomButtons.setXY(6, 287);
     add(bottomButtons);
 
     particlesContainer.setXY(80, 225);

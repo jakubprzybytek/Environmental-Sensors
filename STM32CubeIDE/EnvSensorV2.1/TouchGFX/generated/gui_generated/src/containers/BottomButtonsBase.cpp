@@ -8,7 +8,7 @@
 BottomButtonsBase::BottomButtonsBase()
 {
     setWidth(220);
-    setHeight(12);
+    setHeight(13);
     button4LabeltextArea.setPosition(174, 0, 46, 12);
     button4LabeltextArea.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     button4LabeltextArea.setLinespacing(0);

@@ -19,6 +19,29 @@
 #include <Time/RtcUtils.hpp>
 #include <Utils/DebugLog.hpp>
 
+//uint32_t threadBuffer[128];
+//StaticTask_t threadControlBlock;
+//
+//osThreadId_t threadHandle;
+//
+//void hello2(void *pvParameters) {
+//	osThreadExit();
+//}
+//
+//void threadStart() {
+//	// @formatter:off
+//	const osThreadAttr_t controllerThreadaAttributes2 = {
+//		.name = "test-th",
+//		.cb_mem = &threadControlBlock,
+//		.cb_size = sizeof(threadControlBlock),
+//		.stack_mem = &threadBuffer[0],
+//		.stack_size = sizeof(threadBuffer),
+//		.priority = (osPriority_t) osPriorityNormal
+//	};
+//	// @formatter:on
+//	threadHandle = osThreadNew(hello2, NULL, &controllerThreadaAttributes2);
+//}
+
 void EnvSensorV2_1_Init() {
 
 //	HAL_GPIO_WritePin(SDIO_POWER_ENABLE_GPIO_Port, SDIO_POWER_ENABLE_Pin, GPIO_PIN_RESET);
@@ -52,6 +75,8 @@ void EnvSensorV2_1_Init() {
 	LoggerThread::init();
 
 	Controller::init();
+
+//	threadStart();
 }
 
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin) {

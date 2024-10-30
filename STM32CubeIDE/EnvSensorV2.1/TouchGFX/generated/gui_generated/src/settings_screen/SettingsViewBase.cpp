@@ -14,7 +14,7 @@ SettingsViewBase::SettingsViewBase()
     background.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
     add(background);
 
-    bottomButtons.setXY(6, 288);
+    bottomButtons.setXY(6, 287);
     add(bottomButtons);
 
     dateTimeSettingsContainer.setXY(0, 28);
