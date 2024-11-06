@@ -38,6 +38,10 @@ void MainReadoutsPresenter::notifyParticlesChanged(uint16_t pm1, uint16_t pm2_5,
 	view.setParticles(pm1, pm2_5, pm4, pm10);
 }
 
+#ifndef SIMULATOR
+
 void MainReadoutsPresenter::notifyDateTimeChanged(DateTime newDateTime) {
 	view.setDateTime(newDateTime);
 }
+
+#endif

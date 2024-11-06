@@ -70,8 +70,8 @@
             "Name": "voltageContainer",
             "X": 326,
             "Y": 225,
-            "Width": 70,
-            "Height": 52,
+            "Width": 54,
+            "Height": 32,
             "CustomContainerDefinitionName": "VoltageContainer"
           },
           {
@@ -124,7 +124,7 @@
             "Type": "CustomContainerInstance",
             "Name": "dateTimeSettingsContainer",
             "Y": 28,
-            "Width": 340,
+            "Width": 400,
             "Height": 193,
             "CustomContainerDefinitionName": "DateTimeSettingsContainer"
           }
@@ -292,15 +292,15 @@
       },
       {
         "Name": "VoltageContainer",
-        "Width": 70,
-        "Height": 52,
+        "Width": 54,
+        "Height": 32,
         "Components": [
           {
             "Type": "TextArea",
             "Name": "valueTextArea",
-            "Y": 26,
-            "Width": 58,
-            "Height": 26,
+            "Y": 16,
+            "Width": 40,
+            "Height": 16,
             "TextId": "__SingleUse_94JU",
             "TextRotation": "0",
             "Wildcard1": {
@@ -312,17 +312,17 @@
           {
             "Type": "TextArea",
             "Name": "unitTextArea",
-            "X": 54,
+            "X": 36,
             "Width": 18,
-            "Height": 28,
+            "Height": 16,
             "TextId": "__SingleUse_CR7E",
             "TextRotation": "0"
           },
           {
             "Type": "TextArea",
             "Name": "labelTextArea",
-            "Width": 50,
-            "Height": 26,
+            "Width": 32,
+            "Height": 16,
             "TextId": "__SingleUse_S6EA",
             "TextRotation": "0"
           }
@@ -473,15 +473,105 @@
       },
       {
         "Name": "DateTimeSettingsContainer",
-        "Width": 340,
+        "Width": 400,
         "Height": 193,
         "Components": [
           {
+            "Type": "BoxWithBorder",
+            "Name": "secondsBorderBox",
+            "X": 256,
+            "Y": 110,
+            "Width": 62,
+            "Height": 42,
+            "Visible": false,
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "BorderSize": 2
+          },
+          {
+            "Type": "BoxWithBorder",
+            "Name": "minutesBorderBox",
+            "X": 168,
+            "Y": 110,
+            "Width": 62,
+            "Height": 42,
+            "Visible": false,
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "BorderSize": 2
+          },
+          {
+            "Type": "BoxWithBorder",
+            "Name": "hourBorderBox",
+            "X": 81,
+            "Y": 110,
+            "Width": 62,
+            "Height": 42,
+            "Visible": false,
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "BorderSize": 2
+          },
+          {
+            "Type": "BoxWithBorder",
+            "Name": "dayBorderBox",
+            "X": 284,
+            "Y": 29,
+            "Width": 62,
+            "Height": 42,
+            "Visible": false,
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "BorderSize": 2
+          },
+          {
+            "Type": "BoxWithBorder",
+            "Name": "monthBorderBox",
+            "X": 198,
+            "Y": 29,
+            "Width": 62,
+            "Height": 42,
+            "Visible": false,
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "BorderSize": 2
+          },
+          {
+            "Type": "BoxWithBorder",
+            "Name": "yearBorderBox",
+            "X": 50,
+            "Y": 29,
+            "Width": 124,
+            "Height": 42,
+            "Visible": false,
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "BorderSize": 2
+          },
+          {
             "Type": "TextArea",
             "Name": "timeTextArea",
-            "Y": 107,
-            "Width": 340,
-            "Height": 86,
+            "Y": 97,
+            "Width": 400,
+            "Height": 64,
             "TextId": "__SingleUse_NVTJ",
             "TextRotation": "0",
             "Wildcard1": {
@@ -493,7 +583,7 @@
           {
             "Type": "TextArea",
             "Name": "timeLabelTextArea",
-            "Y": 95,
+            "Y": 80,
             "Width": 80,
             "Height": 26,
             "TextId": "__SingleUse_W4SP",
@@ -503,14 +593,14 @@
             "Type": "TextArea",
             "Name": "dateTextArea",
             "Y": 16,
-            "Width": 340,
-            "Height": 78,
+            "Width": 400,
+            "Height": 64,
             "TextId": "__SingleUse_1NL0",
             "TextRotation": "0",
             "Wildcard1": {
               "TextId": "__SingleUse_W6ZY",
               "UseBuffer": true,
-              "BufferSize": 10
+              "BufferSize": 11
             }
           },
           {

@@ -3,10 +3,13 @@
 
 #include <gui/model/Model.hpp>
 
-#include <stm32l4xx.h>
+#include <gui/common/FrontendApplication.hpp>
 
 #ifndef SIMULATOR
+
 #include <Time/DateTime.hpp>
+#include <AppControllers/AppState.hpp>
+
 #endif
 
 class ModelListener
@@ -33,6 +36,8 @@ public:
 
 #ifndef SIMULATOR
     virtual void notifyDateTimeChanged(DateTime newDateTime) {}
+    virtual void notifySettingsDateTimeChanged(DateTime settingsDateTime) {}
+    virtual void notifySettingsFieldUnderTest(SettingsField fieldUnderTest) {}
 #endif
 
 protected:

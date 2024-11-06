@@ -4,7 +4,11 @@
 #include <gui_generated/mainreadouts_screen/MainReadoutsViewBase.hpp>
 #include <gui/mainreadouts_screen/MainReadoutsPresenter.hpp>
 
+#ifndef SIMULATOR
+
 #include <Time/DateTime.hpp>
+
+#endif
 
 class MainReadoutsView: public MainReadoutsViewBase {
 
@@ -24,7 +28,11 @@ public:
 	void setHumidity(float humidity);
 	void setParticles(uint16_t pm1, uint16_t pm2_5, uint16_t pm4, uint16_t pm10);
 
+#ifndef SIMULATOR
+
 	void setDateTime(DateTime dateTime);
+
+#endif
 
 protected:
 };

@@ -29,6 +29,13 @@ public:
 
     void notifyBottomButtonLabelsChanged(const char *button1Label, const char *button2Label, const char *button3Label, const char *button4Label);
 
+#ifndef SIMULATOR
+
+    void notifySettingsDateTimeChanged(DateTime settingsDateTime);
+    void notifySettingsFieldUnderTest(SettingsField fieldUnderTest);
+
+#endif
+
 private:
     SettingsPresenter();
 

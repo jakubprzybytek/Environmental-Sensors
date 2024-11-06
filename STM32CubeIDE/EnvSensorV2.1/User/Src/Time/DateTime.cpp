@@ -6,13 +6,17 @@
  */
 #include <Time/DateTime.hpp>
 
-//uint8_t DateTime::monthDays[12] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+int8_t DateTime::monthDays[12] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
 
 DateTime::DateTime() : year(0), month(0), day(0), hour(0), minutes(0), seconds(0) {
 }
 
-DateTime::DateTime(uint8_t year, uint8_t month, uint8_t day, uint8_t hour, uint8_t minutes, uint8_t seconds) : year(year), month(month), day(day), hour(hour), minutes(
+DateTime::DateTime(int8_t year, int8_t month, int8_t day, int8_t hour, int8_t minutes, int8_t seconds) : year(year), month(month), day(day), hour(hour), minutes(
 		minutes), seconds(seconds) {
+}
+
+int8_t DateTime::daysInMonth(int8_t month) {
+	return monthDays[month - 1];
 }
 
 //DateTime DateTime::normalize(int8_t year, int8_t month, int8_t day, int8_t hour, int8_t minutes, int8_t seconds) {

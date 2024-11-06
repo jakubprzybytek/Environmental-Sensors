@@ -10,8 +10,6 @@
 #include <AppControllers/Settings.hpp>
 #include <AppControllers/AppState.hpp>
 
-#include "cmsis_os.h"
-
 #include <EnvSensorConfig.hpp>
 #include <Utils/DebugLog.hpp>
 
@@ -20,19 +18,19 @@ AppState appState;
 uint32_t mainControllerThreadBuffer[128];
 StaticTask_t mainControllerThreadControlBlock;
 
-osThreadId_t mainControllerThreadHandle;
-
 uint32_t sensorRoutineControllerThreadBuffer[128];
 StaticTask_t sensorRoutineControllerThreadControlBlock;
-
-osThreadId_t sensorRoutineControllerThreadHandle;
 
 DisplayReadouts displayReadouts;
 Settings settings;
 
-Controller *currentController;
+osThreadId_t Controller::mainControllerThreadHandle;
 
-Switch lastPressed;
+osThreadId_t Controller::sensorRoutineControllerThreadHandle;
+
+Controller *Controller::currentController;
+
+Switch Controller::lastPressed;
 
 void Controller::init() {
 	currentController = &displayReadouts;
@@ -51,7 +49,7 @@ void Controller::mainThreadStart() {
 		.stack_size = sizeof(mainControllerThreadBuffer),
 		.priority = (osPriority_t) osPriorityNormal
 	};
-	// @formatter:on
+		// @formatter:on
 	mainControllerThreadHandle = osThreadNew(mainThread, NULL, &controllerThreadaAttributes);
 }
 
@@ -65,11 +63,13 @@ void Controller::sensorRoutineThreadStart() {
 		.stack_size = sizeof(sensorRoutineControllerThreadBuffer),
 		.priority = (osPriority_t) osPriorityNormal
 	};
-	// @formatter:on
+		// @formatter:on
 	sensorRoutineControllerThreadHandle = osThreadNew(sensorRoutineThread, NULL, &controllerThreadaAttributes2);
 }
 
 void Controller::mainThread(void *pvParameters) {
+	osDelay(1000 / portTICK_RATE_MS);
+
 	while (true) {
 		currentController->onEnter();
 
@@ -80,7 +80,7 @@ void Controller::mainThread(void *pvParameters) {
 		currentController = newController;
 
 #ifdef APPLICATION_CONTROLLER_TRACE
-	DebugLog::logWithStackHighWaterMark("Ctrl - stack: ");
+		DebugLog::logWithStackHighWaterMark("Ctrl - stack: ");
 #endif
 	}
 

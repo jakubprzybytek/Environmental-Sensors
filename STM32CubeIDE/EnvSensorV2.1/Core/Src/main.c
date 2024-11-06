@@ -77,14 +77,8 @@ const osThreadAttr_t defaultTask_attributes = {
 };
 /* Definitions for debugLogQueue */
 osMessageQueueId_t debugLogQueueHandle;
-uint8_t debugLogQueueBuffer[ 16 * 30 ];
-osStaticMessageQDef_t debugLogQueueControlBlock;
 const osMessageQueueAttr_t debugLogQueue_attributes = {
-  .name = "debugLogQueue",
-  .cb_mem = &debugLogQueueControlBlock,
-  .cb_size = sizeof(debugLogQueueControlBlock),
-  .mq_mem = &debugLogQueueBuffer,
-  .mq_size = sizeof(debugLogQueueBuffer)
+  .name = "debugLogQueue"
 };
 /* Definitions for sensorReadoutsQueue */
 osMessageQueueId_t sensorReadoutsQueueHandle;

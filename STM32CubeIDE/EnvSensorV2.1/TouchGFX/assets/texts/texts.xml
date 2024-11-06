@@ -33,19 +33,19 @@
       <Text Id="__SingleUse_W4SP" Alignment="Center" TypographyId="Default">
         <Translation Language="GB">Time</Translation>
       </Text>
-      <Text Id="__SingleUse_01GU" Alignment="Left" TypographyId="Large">
+      <Text Id="__SingleUse_01GU" Alignment="Left" TypographyId="MonospaceMedium">
         <Translation Language="GB">00:00:00</Translation>
       </Text>
-      <Text Id="__SingleUse_NVTJ" Alignment="Center" TypographyId="Large">
+      <Text Id="__SingleUse_NVTJ" Alignment="Center" TypographyId="MonospaceMedium">
         <Translation Language="GB">&lt;value&gt;</Translation>
       </Text>
       <Text Id="__SingleUse_TDUW" Alignment="Center" TypographyId="Default">
         <Translation Language="GB">Date</Translation>
       </Text>
-      <Text Id="__SingleUse_W6ZY" Alignment="Left" TypographyId="Large">
+      <Text Id="__SingleUse_W6ZY" Alignment="Left" TypographyId="MonospaceMedium">
         <Translation Language="GB">2000.00.00</Translation>
       </Text>
-      <Text Id="__SingleUse_1NL0" Alignment="Center" TypographyId="Large">
+      <Text Id="__SingleUse_1NL0" Alignment="Center" TypographyId="MonospaceMedium">
         <Translation Language="GB">&lt;value&gt;</Translation>
       </Text>
       <Text Id="__SingleUse_8G54" Alignment="Left" TypographyId="Small">
@@ -174,16 +174,16 @@
       <Text Id="__SingleUse_0OK7" Alignment="Right" TypographyId="Default">
         <Translation Language="GB">Humidity</Translation>
       </Text>
-      <Text Id="__SingleUse_94JU" Alignment="Right" TypographyId="Default">
+      <Text Id="__SingleUse_94JU" Alignment="Right" TypographyId="Small">
         <Translation Language="GB">&lt;value&gt;</Translation>
       </Text>
-      <Text Id="__SingleUse_IXTO" Alignment="Left" TypographyId="Default">
+      <Text Id="__SingleUse_IXTO" Alignment="Left" TypographyId="Small">
         <Translation Language="GB">0.0</Translation>
       </Text>
-      <Text Id="__SingleUse_CR7E" Alignment="Left" TypographyId="Default">
-        <Translation Language="GB">V</Translation>
+      <Text Id="__SingleUse_CR7E" Alignment="Left" TypographyId="Small">
+        <Translation Language="GB">[V]</Translation>
       </Text>
-      <Text Id="__SingleUse_S6EA" Alignment="Right" TypographyId="Default">
+      <Text Id="__SingleUse_S6EA" Alignment="Right" TypographyId="Small">
         <Translation Language="GB">Volt.</Translation>
       </Text>
       <Text Id="__SingleUse_HZ9N" Alignment="Center" TypographyId="Default">
@@ -218,7 +218,8 @@
   <Typographies>
     <Typography Id="Default" Font="segoeui.ttf" Size="20" Bpp="4" IsVector="no" Direction="LTR" FallbackCharacter="?" WildcardCharacters="." WildcardCharacterRanges="0-9" />
     <Typography Id="Large" Font="segoeuil.ttf" Size="66" Bpp="4" IsVector="no" Direction="LTR" FallbackCharacter="?" WildcardCharacters="." WildcardCharacterRanges="0-9" />
-    <Typography Id="Small" Font="seguisb.ttf" Size="12" Bpp="4" IsVector="no" Direction="LTR" FallbackCharacter="?" WildcardCharacters="+-10" WildcardCharacterRanges="a-z,A-Z" />
+    <Typography Id="Small" Font="seguisb.ttf" Size="12" Bpp="4" IsVector="no" Direction="LTR" FallbackCharacter="?" WildcardCharacters="+-." WildcardCharacterRanges="a-z,A-Z,0-9" />
     <Typography Id="XLarge" Font="segoeuil.ttf" Size="96" Bpp="4" IsVector="no" Direction="LTR" FallbackCharacter="?" WildcardCharacters="." WildcardCharacterRanges="0-9" />
+    <Typography Id="MonospaceMedium" Font="cour.ttf" Size="48" Bpp="4" IsVector="no" Direction="LTR" FallbackCharacter="?" WildcardCharacters=":." WildcardCharacterRanges="0-9" />
   </Typographies>
 </TextDatabase>

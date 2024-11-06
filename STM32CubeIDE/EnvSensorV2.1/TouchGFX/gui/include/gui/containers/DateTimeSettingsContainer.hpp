@@ -3,13 +3,29 @@
 
 #include <gui_generated/containers/DateTimeSettingsContainerBase.hpp>
 
-class DateTimeSettingsContainer : public DateTimeSettingsContainerBase
-{
-public:
-    DateTimeSettingsContainer();
-    virtual ~DateTimeSettingsContainer() {}
+#ifndef SIMULATOR
 
-    virtual void initialize();
+#include <Time/DateTime.hpp>
+#include <AppControllers/AppState.hpp>
+
+#endif
+
+class DateTimeSettingsContainer: public DateTimeSettingsContainerBase {
+public:
+	DateTimeSettingsContainer();
+	virtual ~DateTimeSettingsContainer() {
+	}
+
+	virtual void initialize();
+
+#ifndef SIMULATOR
+
+	void setDateTime(DateTime time);
+
+	void setFieldUnderEdit(SettingsField settingsField);
+
+#endif
+
 protected:
 };
 

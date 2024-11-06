@@ -15,7 +15,7 @@
 class DisplayReadouts: public virtual Controller {
 
 private:
-	osTimerId screenRefreshTimerId;
+//	osTimerId screenRefreshTimerId;
 
 public:
 	DisplayReadouts();

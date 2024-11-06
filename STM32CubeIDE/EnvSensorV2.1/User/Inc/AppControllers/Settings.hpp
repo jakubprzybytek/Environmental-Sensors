@@ -8,11 +8,23 @@
 #ifndef INC_APPCONTROLLERS_SETTINGS_HPP_
 #define INC_APPCONTROLLERS_SETTINGS_HPP_
 
+#include "cmsis_os.h"
+
 #include <AppControllers/Controller.hpp>
 
-class Settings : public virtual Controller {
+class Settings: public virtual Controller {
+
+private:
+	osTimerId screenRefreshTimerId;
+
+	void resetDelayedScreenRefresh();
+	void stopDelayedScreenRefresh();
+
+	static void refreshScreen(void *attr);
 
 public:
+	Settings();
+
 	void onEnter();
 
 	Controller* proceed();

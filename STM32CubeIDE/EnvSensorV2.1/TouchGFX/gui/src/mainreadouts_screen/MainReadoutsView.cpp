@@ -39,6 +39,10 @@ void MainReadoutsView::setParticles(uint16_t pm1, uint16_t pm2_5, uint16_t pm4, 
 	particlesContainer.setValues(pm1, pm2_5, pm4, pm10);
 }
 
+#ifndef SIMULATOR
+
 void MainReadoutsView::setDateTime(DateTime dateTime) {
 	timeContainer.setDateTime(dateTime);
 }
+
+#endif

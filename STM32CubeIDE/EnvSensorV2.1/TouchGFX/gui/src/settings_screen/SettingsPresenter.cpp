@@ -15,3 +15,15 @@ void SettingsPresenter::notifyBottomButtonLabelsChanged(const char *button1Label
 		const char *button4Label) {
 	view.setBottomButtonLabels(button1Label, button2Label, button3Label, button4Label);
 }
+
+#ifndef SIMULATOR
+
+void SettingsPresenter::notifySettingsDateTimeChanged(DateTime settingsDateTime) {
+	view.setDateTime(settingsDateTime);
+}
+
+void SettingsPresenter::notifySettingsFieldUnderTest(SettingsField fieldUnderTest) {
+	view.setFieldUnderEdit(fieldUnderTest);
+}
+
+#endif

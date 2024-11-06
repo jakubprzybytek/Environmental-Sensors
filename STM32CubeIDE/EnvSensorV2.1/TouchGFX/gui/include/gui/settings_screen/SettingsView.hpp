@@ -4,15 +4,29 @@
 #include <gui_generated/settings_screen/SettingsViewBase.hpp>
 #include <gui/settings_screen/SettingsPresenter.hpp>
 
-class SettingsView : public SettingsViewBase
-{
-public:
-    SettingsView();
-    virtual ~SettingsView() {}
-    virtual void setupScreen();
-    virtual void tearDownScreen();
+#ifndef SIMULATOR
 
-    void setBottomButtonLabels(const char *button1Label, const char *button2Label, const char *button3Label, const char *button4Label);
+#include <Time/DateTime.hpp>
+
+#endif
+
+class SettingsView: public SettingsViewBase {
+public:
+	SettingsView();
+	virtual ~SettingsView() {
+	}
+	virtual void setupScreen();
+	virtual void tearDownScreen();
+
+	void setBottomButtonLabels(const char *button1Label, const char *button2Label, const char *button3Label, const char *button4Label);
+
+#ifndef SIMULATOR
+
+	void setDateTime(DateTime dateTime);
+
+	void setFieldUnderEdit(SettingsField fieldUnderEdit);
+
+#endif
 
 protected:
 };

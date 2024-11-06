@@ -2,7 +2,7 @@
 #include <EnvSensorV2_1.hpp>
 #include <EnvSensorConfig.hpp>
 
-#include "cmsis_os.h"
+//#include "cmsis_os.h"
 
 #include <Display/DisplayController.hpp>
 #include <Display/DisplayCommands.hpp>
@@ -18,29 +18,6 @@
 
 #include <Time/RtcUtils.hpp>
 #include <Utils/DebugLog.hpp>
-
-//uint32_t threadBuffer[128];
-//StaticTask_t threadControlBlock;
-//
-//osThreadId_t threadHandle;
-//
-//void hello2(void *pvParameters) {
-//	osThreadExit();
-//}
-//
-//void threadStart() {
-//	// @formatter:off
-//	const osThreadAttr_t controllerThreadaAttributes2 = {
-//		.name = "test-th",
-//		.cb_mem = &threadControlBlock,
-//		.cb_size = sizeof(threadControlBlock),
-//		.stack_mem = &threadBuffer[0],
-//		.stack_size = sizeof(threadBuffer),
-//		.priority = (osPriority_t) osPriorityNormal
-//	};
-//	// @formatter:on
-//	threadHandle = osThreadNew(hello2, NULL, &controllerThreadaAttributes2);
-//}
 
 void EnvSensorV2_1_Init() {
 
@@ -75,8 +52,6 @@ void EnvSensorV2_1_Init() {
 	LoggerThread::init();
 
 	Controller::init();
-
-//	threadStart();
 }
 
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin) {
@@ -85,12 +60,12 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin) {
 	} else if (GPIO_Pin == SCD30_READY_Pin) {
 		CO2Sensor::sensorReadyInterruptHandler();
 	} else if (GPIO_Pin == SWITCH_1_Pin) {
-		Controller::handleSwitchPressedInterrupt(switch1);
+		Controller::handleSwitchPressedInterrupt(Switch1);
 	} else if (GPIO_Pin == SWITCH_2_Pin) {
-		Controller::handleSwitchPressedInterrupt(switch2);
+		Controller::handleSwitchPressedInterrupt(Switch2);
 	} else if (GPIO_Pin == SWITCH_3_Pin) {
-		Controller::handleSwitchPressedInterrupt(switch3);
+		Controller::handleSwitchPressedInterrupt(Switch3);
 	} else if (GPIO_Pin == SWITCH_4_Pin) {
-		Controller::handleSwitchPressedInterrupt(switch4);
+		Controller::handleSwitchPressedInterrupt(Switch4);
 	}
 }

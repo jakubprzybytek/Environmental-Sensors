@@ -15,3 +15,15 @@ void SettingsView::tearDownScreen() {
 void SettingsView::setBottomButtonLabels(const char *button1Label, const char *button2Label, const char *button3Label, const char *button4Label) {
 	bottomButtons.setLabels(button1Label, button2Label, button3Label, button4Label);
 }
+
+#ifndef SIMULATOR
+
+void SettingsView::setDateTime(DateTime dateTime) {
+	dateTimeSettingsContainer.setDateTime(dateTime);
+}
+
+void SettingsView::setFieldUnderEdit(SettingsField fieldUnderEdit) {
+	dateTimeSettingsContainer.setFieldUnderEdit(fieldUnderEdit);
+}
+
+#endif

@@ -7,6 +7,8 @@
 
 #include <Time/DateTime.hpp>
 
+#endif
+
 class TimeContainer: public TimeContainerBase {
 
 public:
@@ -16,10 +18,11 @@ public:
 
 	virtual void initialize();
 
+#ifndef SIMULATOR
+
 	void setDateTime(DateTime time);
-protected:
+
+#endif
 };
 
 #endif // TIMECONTAINER_HPP
-
-#endif

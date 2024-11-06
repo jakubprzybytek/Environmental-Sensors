@@ -6,6 +6,7 @@
 
 #include <gui/common/FrontendApplication.hpp>
 #include <touchgfx/containers/Container.hpp>
+#include <touchgfx/widgets/BoxWithBorder.hpp>
 #include <touchgfx/widgets/TextAreaWithWildcard.hpp>
 #include <touchgfx/widgets/TextArea.hpp>
 
@@ -24,6 +25,12 @@ protected:
     /*
      * Member Declarations
      */
+    touchgfx::BoxWithBorder secondsBorderBox;
+    touchgfx::BoxWithBorder minutesBorderBox;
+    touchgfx::BoxWithBorder hourBorderBox;
+    touchgfx::BoxWithBorder dayBorderBox;
+    touchgfx::BoxWithBorder monthBorderBox;
+    touchgfx::BoxWithBorder yearBorderBox;
     touchgfx::TextAreaWithOneWildcard timeTextArea;
     touchgfx::TextArea timeLabelTextArea;
     touchgfx::TextAreaWithOneWildcard dateTextArea;
@@ -34,7 +41,7 @@ protected:
      */
     static const uint16_t TIMETEXTAREA_SIZE = 10;
     touchgfx::Unicode::UnicodeChar timeTextAreaBuffer[TIMETEXTAREA_SIZE];
-    static const uint16_t DATETEXTAREA_SIZE = 10;
+    static const uint16_t DATETEXTAREA_SIZE = 11;
     touchgfx::Unicode::UnicodeChar dateTextAreaBuffer[DATETEXTAREA_SIZE];
 
 private:

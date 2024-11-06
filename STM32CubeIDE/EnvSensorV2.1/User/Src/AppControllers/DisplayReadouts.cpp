@@ -34,7 +34,7 @@ void DisplayReadouts::onEnter() {
 //	osTimerStart(this->screenRefreshTimerId, 3000 / portTICK_RATE_MS);
 
 	TOUCHGFX_GO_TO_READOUT_SCREEN();
-//	TRIGGER_TOUCHGFX_REFRESH();
+	TRIGGER_TOUCHGFX_REFRESH();
 }
 
 Controller* DisplayReadouts::proceed() {
@@ -42,16 +42,16 @@ Controller* DisplayReadouts::proceed() {
 		Switch switchPressed = waitForSwitchPressed();
 
 		switch (switchPressed) {
-		case switch1:
+		case Switch1:
 			DisplayCommands::submitDisplayClear();
 			break;
-		case switch2:
+		case Switch2:
 			TRIGGER_TOUCHGFX_REFRESH();
 			break;
-		case switch3:
+		case Switch3:
 			SensorsController::triggerHighMeasurements();
 			break;
-		case switch4:
+		case Switch4:
 			return &settings;
 		}
 	}

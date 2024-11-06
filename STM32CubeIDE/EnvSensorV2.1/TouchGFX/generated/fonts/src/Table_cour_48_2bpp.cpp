@@ -3,32 +3,33 @@
 #include <fonts/GeneratedFont.hpp>
 
 FONT_TABLE_LOCATION_FLASH_PRAGMA
-KEEP extern const touchgfx::GlyphNode glyphs_segoeuil_66_2bpp[] FONT_TABLE_LOCATION_FLASH_ATTRIBUTE = {
-    {     0, 0x002E,   6,   5,   4,   4,  15,   0,   0, 0x00 },
-    {     8, 0x0030,  28,  48,  47,   3,  34,   0,   0, 0x00 },
-    {   344, 0x0031,  15,  48,  48,   2,  24,   0,   0, 0x00 },
-    {   524, 0x0032,  27,  47,  47,   3,  34,   0,   0, 0x00 },
-    {   842, 0x0033,  26,  48,  47,   3,  34,   0,   0, 0x00 },
-    {  1154, 0x0034,  33,  47,  47,   1,  35,   0,   0, 0x00 },
-    {  1542, 0x0035,  24,  47,  46,   5,  34,   0,   0, 0x00 },
-    {  1824, 0x0036,  28,  48,  47,   4,  34,   0,   0, 0x00 },
-    {  2160, 0x0037,  29,  47,  47,   2,  33,   0,   0, 0x00 },
-    {  2501, 0x0038,  28,  48,  47,   3,  34,   0,   0, 0x00 },
-    {  2837, 0x0039,  28,  48,  47,   3,  34,   0,   0, 0x00 },
-    {  3173, 0x003F,  23,  48,  47,   3,  28,   0,   0, 0x00 }
+KEEP extern const touchgfx::GlyphNode glyphs_cour_48_2bpp[] FONT_TABLE_LOCATION_FLASH_ATTRIBUTE = {
+    {     0, 0x002E,   7,   7,   6,  11,  29,   0,   0, 0x00 },
+    {    13, 0x0030,  19,  31,  30,   5,  29,   0,   0, 0x00 },
+    {   161, 0x0031,  19,  30,  30,   5,  29,   0,   0, 0x00 },
+    {   304, 0x0032,  19,  30,  30,   4,  29,   0,   0, 0x00 },
+    {   447, 0x0033,  20,  31,  30,   4,  29,   0,   0, 0x00 },
+    {   602, 0x0034,  18,  29,  29,   5,  29,   0,   0, 0x00 },
+    {   733, 0x0035,  20,  30,  29,   4,  29,   0,   0, 0x00 },
+    {   883, 0x0036,  19,  31,  30,   6,  29,   0,   0, 0x00 },
+    {  1031, 0x0037,  18,  30,  29,   5,  29,   0,   0, 0x00 },
+    {  1166, 0x0038,  19,  31,  30,   5,  29,   0,   0, 0x00 },
+    {  1314, 0x0039,  19,  31,  30,   6,  29,   0,   0, 0x00 },
+    {  1462, 0x003A,   7,  21,  20,  11,  29,   0,   0, 0x00 },
+    {  1499, 0x003F,  18,  29,  28,   6,  29,   0,   0, 0x00 }
 };
 
-// segoeuil_66_2bpp
+// cour_48_2bpp
 FONT_TABLE_LOCATION_FLASH_PRAGMA
-KEEP extern const touchgfx::GlyphNode glyphs_segoeuil_66_2bpp[] FONT_TABLE_LOCATION_FLASH_ATTRIBUTE;
+KEEP extern const touchgfx::GlyphNode glyphs_cour_48_2bpp[] FONT_TABLE_LOCATION_FLASH_ATTRIBUTE;
 FONT_GLYPH_LOCATION_FLASH_PRAGMA
-KEEP extern const uint8_t unicodes_segoeuil_66_2bpp_0[] FONT_GLYPH_LOCATION_FLASH_ATTRIBUTE;
+KEEP extern const uint8_t unicodes_cour_48_2bpp_0[] FONT_GLYPH_LOCATION_FLASH_ATTRIBUTE;
 FONT_SEARCHTABLE_LOCATION_FLASH_PRAGMA
-KEEP extern const uint8_t* const unicodes_segoeuil_66_2bpp[] FONT_SEARCHTABLE_LOCATION_FLASH_ATTRIBUTE = {
-    unicodes_segoeuil_66_2bpp_0
+KEEP extern const uint8_t* const unicodes_cour_48_2bpp[] FONT_SEARCHTABLE_LOCATION_FLASH_ATTRIBUTE = {
+    unicodes_cour_48_2bpp_0
 };
 FONT_KERNING_LOCATION_FLASH_PRAGMA
-KEEP extern const touchgfx::KerningNode kerning_segoeuil_66_2bpp[] FONT_KERNING_LOCATION_FLASH_ATTRIBUTE;
+KEEP extern const touchgfx::KerningNode kerning_cour_48_2bpp[] FONT_KERNING_LOCATION_FLASH_ATTRIBUTE;
 static const touchgfx::Unicode::UnicodeChar contextualForms4Long[][5] = {
     //                        key,    isol,   key2
     { /*0627 0644 0644 0647*/ 0x02ED, 0xFDF2, 0x0644, 0x0000, 0x0000 }, // ARABIC LIGATURE ALLAH
@@ -41,6 +42,7 @@ static const touchgfx::Unicode::UnicodeChar contextualForms3Long[][5] = {
     { /*0640 064E 0651*/ 0x93F5, 0x0000, 0x0000, 0x0000, 0xFCF2 }, // ARABIC LIGATURE SHADDA WITH FATHA
     { /*0640 064F 0651*/ 0x941D, 0x0000, 0x0000, 0x0000, 0xFCF3 }, // ARABIC LIGATURE SHADDA WITH DAMMA
     { /*0640 0650 0651*/ 0x9445, 0x0000, 0x0000, 0x0000, 0xFCF4 }, // ARABIC LIGATURE SHADDA WITH KASRA
+    { /*0644 0645 062D*/ 0xAA29, 0x0000, 0x0000, 0xFD88, 0x0000 }, // ARABIC LIGATURE LAM WITH MEEM WITH HAH
     { /*0020 064C 0651*/ 0xD4F5, 0xFC5E, 0x0000, 0x0000, 0x0000 }, // ARABIC LIGATURE SHADDA WITH DAMMATAN
     { /*0020 064D 0651*/ 0xD51D, 0xFC5F, 0x0000, 0x0000, 0x0000 }, // ARABIC LIGATURE SHADDA WITH KASRATAN
     { /*0020 064E 0651*/ 0xD545, 0xFC60, 0x0000, 0x0000, 0x0000 }, // ARABIC LIGATURE SHADDA WITH FATHA
@@ -68,16 +70,67 @@ static const touchgfx::Unicode::UnicodeChar contextualForms2Long[][5] = {
     { /*0626 06D0*/ 0x26D0, 0xFBF6, 0xFBF7, 0xFBF8, 0x0000 }, // ARABIC LIGATURE YEH WITH HAMZA ABOVE WITH E
     { /*0626 06D5*/ 0x26D5, 0xFBEC, 0xFBED, 0x0000, 0x0000 }, // ARABIC LIGATURE YEH WITH HAMZA ABOVE WITH AE
     { /*0627 064B*/ 0x274B, 0xFD3D, 0xFD3C, 0x0000, 0x0000 }, // ARABIC LIGATURE ALEF WITH FATHATAN
+    { /*0628 062C*/ 0x282C, 0x0000, 0x0000, 0xFC9C, 0x0000 }, // ARABIC LIGATURE BEH WITH JEEM
+    { /*0628 062D*/ 0x282D, 0x0000, 0x0000, 0xFC9D, 0x0000 }, // ARABIC LIGATURE BEH WITH HAH
+    { /*0628 062E*/ 0x282E, 0x0000, 0x0000, 0xFC9E, 0x0000 }, // ARABIC LIGATURE BEH WITH KHAH
+    { /*0628 0631*/ 0x2831, 0x0000, 0xFC6A, 0x0000, 0x0000 }, // ARABIC LIGATURE BEH WITH REH
+    { /*0628 0645*/ 0x2845, 0xFC08, 0x0000, 0xFC9F, 0x0000 }, // ARABIC LIGATURE BEH WITH MEEM
+    { /*0628 0646*/ 0x2846, 0x0000, 0xFC6D, 0x0000, 0x0000 }, // ARABIC LIGATURE BEH WITH NOON
+    { /*0628 0647*/ 0x2847, 0x0000, 0x0000, 0xFCA0, 0x0000 }, // ARABIC LIGATURE BEH WITH HEH
+    { /*0628 0649*/ 0x2849, 0xFC09, 0xFC6E, 0x0000, 0x0000 }, // ARABIC LIGATURE BEH WITH ALEF MAKSURA
+    { /*0628 064A*/ 0x284A, 0x0000, 0xFC6F, 0x0000, 0x0000 }, // ARABIC LIGATURE BEH WITH YEH
+    { /*062A 062C*/ 0x2A2C, 0x0000, 0x0000, 0xFCA1, 0x0000 }, // ARABIC LIGATURE TEH WITH JEEM
+    { /*062A 062D*/ 0x2A2D, 0x0000, 0x0000, 0xFCA2, 0x0000 }, // ARABIC LIGATURE TEH WITH HAH
+    { /*062A 062E*/ 0x2A2E, 0x0000, 0x0000, 0xFCA3, 0x0000 }, // ARABIC LIGATURE TEH WITH KHAH
+    { /*062A 0631*/ 0x2A31, 0x0000, 0xFC70, 0x0000, 0x0000 }, // ARABIC LIGATURE TEH WITH REH
+    { /*062A 0645*/ 0x2A45, 0xFC0E, 0x0000, 0xFCA4, 0x0000 }, // ARABIC LIGATURE TEH WITH MEEM
+    { /*062A 0646*/ 0x2A46, 0x0000, 0xFC73, 0x0000, 0x0000 }, // ARABIC LIGATURE TEH WITH NOON
+    { /*062A 0647*/ 0x2A47, 0x0000, 0x0000, 0xFCA5, 0x0000 }, // ARABIC LIGATURE TEH WITH HEH
+    { /*062A 0649*/ 0x2A49, 0x0000, 0xFC74, 0x0000, 0x0000 }, // ARABIC LIGATURE TEH WITH ALEF MAKSURA
+    { /*062A 064A*/ 0x2A4A, 0x0000, 0xFC75, 0x0000, 0x0000 }, // ARABIC LIGATURE TEH WITH YEH
+    { /*062B 0645*/ 0x2B45, 0xFC12, 0x0000, 0xFCA6, 0x0000 }, // ARABIC LIGATURE THEH WITH MEEM
+    { /*062C 0645*/ 0x2C45, 0x0000, 0x0000, 0xFCA8, 0x0000 }, // ARABIC LIGATURE JEEM WITH MEEM
+    { /*062D 0645*/ 0x2D45, 0x0000, 0x0000, 0xFCAA, 0x0000 }, // ARABIC LIGATURE HAH WITH MEEM
+    { /*062E 0645*/ 0x2E45, 0x0000, 0x0000, 0xFCAC, 0x0000 }, // ARABIC LIGATURE KHAH WITH MEEM
+    { /*0633 0645*/ 0x3345, 0x0000, 0x0000, 0xFCB0, 0x0000 }, // ARABIC LIGATURE SEEN WITH MEEM
+    { /*0634 0645*/ 0x3445, 0x0000, 0x0000, 0xFD30, 0x0000 }, // ARABIC LIGATURE SHEEN WITH MEEM
     { /*0640 064B*/ 0x404B, 0x0000, 0x0000, 0x0000, 0xFE71 }, // ARABIC TATWEEL WITH FATHATAN ABOVE
     { /*0640 064E*/ 0x404E, 0x0000, 0x0000, 0x0000, 0xFE77 }, // ARABIC FATHA
     { /*0640 064F*/ 0x404F, 0x0000, 0x0000, 0x0000, 0xFE79 }, // ARABIC DAMMA
     { /*0640 0650*/ 0x4050, 0x0000, 0x0000, 0x0000, 0xFE7B }, // ARABIC KASRA
     { /*0640 0651*/ 0x4051, 0x0000, 0x0000, 0x0000, 0xFE7D }, // ARABIC SHADDA
     { /*0640 0652*/ 0x4052, 0x0000, 0x0000, 0x0000, 0xFE7F }, // ARABIC SUKUN
+    { /*0641 0649*/ 0x4149, 0xFC31, 0x0000, 0x0000, 0x0000 }, // ARABIC LIGATURE FEH WITH ALEF MAKSURA
+    { /*0641 064A*/ 0x414A, 0xFC32, 0x0000, 0x0000, 0x0000 }, // ARABIC LIGATURE FEH WITH YEH
     { /*0644 0622*/ 0x4422, 0xFEF5, 0xFEF6, 0x0000, 0x0000 }, // ARABIC LIGATURE LAM WITH ALEF WITH MADDA ABOVE
     { /*0644 0623*/ 0x4423, 0xFEF7, 0xFEF8, 0x0000, 0x0000 }, // ARABIC LIGATURE LAM WITH ALEF WITH HAMZA ABOVE
     { /*0644 0625*/ 0x4425, 0xFEF9, 0xFEFA, 0x0000, 0x0000 }, // ARABIC LIGATURE LAM WITH ALEF WITH HAMZA BELOW
-    { /*0644 0627*/ 0x4427, 0xFEFB, 0xFEFC, 0x0000, 0x0000 }  // ARABIC LIGATURE LAM WITH ALEF
+    { /*0644 0627*/ 0x4427, 0xFEFB, 0xFEFC, 0x0000, 0x0000 }, // ARABIC LIGATURE LAM WITH ALEF
+    { /*0644 062C*/ 0x442C, 0xFC3F, 0x0000, 0xFCC9, 0x0000 }, // ARABIC LIGATURE LAM WITH JEEM
+    { /*0644 062D*/ 0x442D, 0xFC40, 0x0000, 0xFCCA, 0x0000 }, // ARABIC LIGATURE LAM WITH HAH
+    { /*0644 062E*/ 0x442E, 0xFC41, 0x0000, 0xFCCB, 0x0000 }, // ARABIC LIGATURE LAM WITH KHAH
+    { /*0644 0645*/ 0x4445, 0xFC42, 0x0000, 0xFCCC, 0x0000 }, // ARABIC LIGATURE LAM WITH MEEM
+    { /*0644 0647*/ 0x4447, 0x0000, 0x0000, 0xFCCD, 0x0000 }, // ARABIC LIGATURE LAM WITH HEH
+    { /*0644 0649*/ 0x4449, 0xFC43, 0x0000, 0x0000, 0x0000 }, // ARABIC LIGATURE LAM WITH ALEF MAKSURA
+    { /*0644 064A*/ 0x444A, 0xFC44, 0x0000, 0x0000, 0x0000 }, // ARABIC LIGATURE LAM WITH YEH
+    { /*0645 062C*/ 0x452C, 0x0000, 0x0000, 0xFCCE, 0x0000 }, // ARABIC LIGATURE MEEM WITH JEEM
+    { /*0645 062D*/ 0x452D, 0x0000, 0x0000, 0xFCCF, 0x0000 }, // ARABIC LIGATURE MEEM WITH HAH
+    { /*0645 062E*/ 0x452E, 0x0000, 0x0000, 0xFCD0, 0x0000 }, // ARABIC LIGATURE MEEM WITH KHAH
+    { /*0645 0645*/ 0x4545, 0x0000, 0x0000, 0xFCD1, 0x0000 }, // ARABIC LIGATURE MEEM WITH MEEM
+    { /*0646 062C*/ 0x462C, 0x0000, 0x0000, 0xFCD2, 0x0000 }, // ARABIC LIGATURE NOON WITH JEEM
+    { /*0646 062D*/ 0x462D, 0x0000, 0x0000, 0xFCD3, 0x0000 }, // ARABIC LIGATURE NOON WITH HAH
+    { /*0646 062E*/ 0x462E, 0x0000, 0x0000, 0xFCD4, 0x0000 }, // ARABIC LIGATURE NOON WITH KHAH
+    { /*0646 0645*/ 0x4645, 0xFC4E, 0x0000, 0xFCD5, 0x0000 }, // ARABIC LIGATURE NOON WITH MEEM
+    { /*0646 0647*/ 0x4647, 0x0000, 0x0000, 0xFCD6, 0x0000 }, // ARABIC LIGATURE NOON WITH HEH
+    { /*0646 0649*/ 0x4649, 0xFC4F, 0xFC8E, 0x0000, 0x0000 }, // ARABIC LIGATURE NOON WITH ALEF MAKSURA
+    { /*0646 064A*/ 0x464A, 0x0000, 0xFC8F, 0x0000, 0x0000 }, // ARABIC LIGATURE NOON WITH YEH
+    { /*0647 0645*/ 0x4745, 0x0000, 0x0000, 0xFCD8, 0x0000 }, // ARABIC LIGATURE HEH WITH MEEM
+    { /*064A 062C*/ 0x4A2C, 0x0000, 0x0000, 0xFCDA, 0x0000 }, // ARABIC LIGATURE YEH WITH JEEM
+    { /*064A 062D*/ 0x4A2D, 0x0000, 0x0000, 0xFCDB, 0x0000 }, // ARABIC LIGATURE YEH WITH HAH
+    { /*064A 062E*/ 0x4A2E, 0x0000, 0x0000, 0xFCDC, 0x0000 }, // ARABIC LIGATURE YEH WITH KHAH
+    { /*064A 0631*/ 0x4A31, 0x0000, 0xFC91, 0x0000, 0x0000 }, // ARABIC LIGATURE YEH WITH REH
+    { /*064A 0646*/ 0x4A46, 0x0000, 0xFC94, 0x0000, 0x0000 }, // ARABIC LIGATURE YEH WITH NOON
+    { /*064A 0649*/ 0x4A49, 0xFC59, 0x0000, 0x0000, 0x0000 }  // ARABIC LIGATURE YEH WITH ALEF MAKSURA
 };
 
 static const touchgfx::Unicode::UnicodeChar contextualForms0621_063a[][4] = {
@@ -168,9 +221,9 @@ static const touchgfx::Unicode::UnicodeChar contextualForms06XX[][5] = {
     { /*06D3*/ 0x06D3, 0xFBB0, 0xFBB1, 0x0000, 0x0000 }  // ARABIC LETTER YEH BARREE WITH HAMZA ABOVE
 };
 
-extern const touchgfx::FontContextualFormsTable segoeuil_contextualFormsTable;
+extern const touchgfx::FontContextualFormsTable cour_contextualFormsTable;
 
-const touchgfx::FontContextualFormsTable segoeuil_contextualFormsTable =
+const touchgfx::FontContextualFormsTable cour_contextualFormsTable =
 {
     contextualForms4Long,
     contextualForms3Long,
@@ -185,10 +238,10 @@ const touchgfx::FontContextualFormsTable segoeuil_contextualFormsTable =
     sizeof(contextualForms06XX)/sizeof(contextualForms06XX[0])
 };
 
-touchgfx::GeneratedFont& getFont_segoeuil_66_2bpp();
+touchgfx::GeneratedFont& getFont_cour_48_2bpp();
 
-touchgfx::GeneratedFont& getFont_segoeuil_66_2bpp()
+touchgfx::GeneratedFont& getFont_cour_48_2bpp()
 {
-    static touchgfx::GeneratedFont segoeuil_66_2bpp(glyphs_segoeuil_66_2bpp, 12, 67, 66, 0, 0, 2, 0, 0, 0, unicodes_segoeuil_66_2bpp, kerning_segoeuil_66_2bpp, 63, 0, 0, &segoeuil_contextualFormsTable);
-    return segoeuil_66_2bpp;
+    static touchgfx::GeneratedFont cour_48_2bpp(glyphs_cour_48_2bpp, 13, 49, 48, 0, 0, 2, 0, 0, 0, unicodes_cour_48_2bpp, kerning_cour_48_2bpp, 63, 0, 0, &cour_contextualFormsTable);
+    return cour_48_2bpp;
 }
