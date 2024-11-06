@@ -3,12 +3,15 @@
 #include <Logger/LoggerThread.hpp>
 
 #include <EnvSensorConfig.hpp>
+
+#include <AppControllers/AppState.hpp>
 #include <Logger/ReadoutFileLogger.hpp>
 #include <Utils/DebugLog.hpp>
 
 #define LOGGER_INTERVAL (60 * 1000)
 
-extern ReadoutsState readoutsState;
+extern AppState appState;
+//extern ReadoutsState readoutsState;
 
 uint32_t loggerThreadBuffer[1024];
 StaticTask_t loggerThreadControlBlock;
@@ -33,6 +36,7 @@ void LoggerThread::startThread() {
 }
 
 void LoggerThread::thread(void *pvParameters) {
+	ReadoutsState readoutsState = appState.getReadoutsState();
 	ReadoutFileLogger readoutFileLogger("env-logs");
 
 	uint32_t wakeTime = osKernelGetTickCount();

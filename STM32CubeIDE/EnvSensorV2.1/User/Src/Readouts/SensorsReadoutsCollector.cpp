@@ -5,17 +5,17 @@
 
 #include <Readouts/SensorsReadoutsCollector.hpp>
 
+#include <AppControllers/AppState.hpp>
 #include <Readouts/ReadoutsState.hpp>
 #include <Readouts/SensorMessages.hpp>
 
 #include <Utils/ftoa.h>
 
+extern AppState appState;
 extern osMessageQueueId_t sensorReadoutsQueueHandle;
 
 uint32_t sensorReadoutsThreadBuffer[128];
 StaticTask_t sensorReadoutsThreadControlBlock;
-
-ReadoutsState readoutsState;
 
 void SensorsReadoutsCollector::init() {
 	startThread();
@@ -36,6 +36,7 @@ void SensorsReadoutsCollector::startThread() {
 }
 
 void SensorsReadoutsCollector::thread(void *pvParameters) {
+	ReadoutsState& readoutsState = appState.getReadoutsState();
 	ReadoutMessage message;
 
 	for (;;) {

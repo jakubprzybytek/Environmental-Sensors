@@ -8,6 +8,7 @@
 #ifndef INC_APPCONTROLLERS_APPSTATE_HPP_
 #define INC_APPCONTROLLERS_APPSTATE_HPP_
 
+#include <Readouts/ReadoutsState.hpp>
 #include <Time/DateTime.hpp>
 
 typedef enum {
@@ -15,7 +16,10 @@ typedef enum {
 } SettingsField;
 
 class AppState {
+
 private:
+	ReadoutsState readoutsState;
+
 	DateTime settingsDateTime;
 	SettingsField settingsFieldUnderEdit;
 
@@ -27,6 +31,10 @@ private:
 public:
 	AppState() :
 			settingsDateTime(0, 0, 0, 0, 0, 0), settingsFieldUnderEdit(None), button1Label(NULL), button2Label(NULL), button3Label(NULL), button4Label(NULL) {
+	}
+
+	ReadoutsState& getReadoutsState() {
+		return readoutsState;
 	}
 
 	void setSettingsDateTime(DateTime &settingsDateTime) {
@@ -67,7 +75,6 @@ public:
 	const char* getButton4Label() const {
 		return this->button4Label;
 	}
-
 };
 
 #endif /* INC_APPCONTROLLERS_APPSTATE_HPP_ */

@@ -6,11 +6,10 @@
 #ifndef SIMULATOR
 
 #include <AppControllers/AppState.hpp>
-#include <Readouts/ReadoutsState.hpp>
 #include <Time/RtcUtils.hpp>
 
 extern AppState appState;
-extern ReadoutsState readoutsState;
+//extern ReadoutsState readoutsState;
 //ReadoutsState storedReadoutsState;
 
 #endif
@@ -25,6 +24,8 @@ void Model::tick() {
 
 	modelListener->notifyBottomButtonLabelsChanged(appState.getButton1Label(), appState.getButton2Label(), appState.getButton3Label(),
 			appState.getButton4Label());
+
+	ReadoutsState &readoutsState = appState.getReadoutsState();
 
 	float roundedVoltage = round(readoutsState.voltage * 100.0) / 100.0;
 //	if (this->storedReadoutsState2.voltage != roundedVoltage) {
