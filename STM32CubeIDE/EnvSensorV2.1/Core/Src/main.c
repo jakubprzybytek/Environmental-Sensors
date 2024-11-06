@@ -31,7 +31,6 @@
 
 /* Private typedef -----------------------------------------------------------*/
 typedef StaticTask_t osStaticThreadDef_t;
-typedef StaticQueue_t osStaticMessageQDef_t;
 typedef StaticSemaphore_t osStaticMutexDef_t;
 /* USER CODE BEGIN PTD */
 
@@ -82,25 +81,13 @@ const osMessageQueueAttr_t debugLogQueue_attributes = {
 };
 /* Definitions for sensorReadoutsQueue */
 osMessageQueueId_t sensorReadoutsQueueHandle;
-uint8_t sensorReadoutsQueueBuffer[ 6 * sizeof( ReadoutMessage_t ) ];
-osStaticMessageQDef_t sensorReadoutsQueueControlBlock;
 const osMessageQueueAttr_t sensorReadoutsQueue_attributes = {
-  .name = "sensorReadoutsQueue",
-  .cb_mem = &sensorReadoutsQueueControlBlock,
-  .cb_size = sizeof(sensorReadoutsQueueControlBlock),
-  .mq_mem = &sensorReadoutsQueueBuffer,
-  .mq_size = sizeof(sensorReadoutsQueueBuffer)
+  .name = "sensorReadoutsQueue"
 };
 /* Definitions for displayCommandsQueue */
 osMessageQueueId_t displayCommandsQueueHandle;
-uint8_t displayCommandsQueueBuffer[ 6 * sizeof( DisplayCommandMessage_t ) ];
-osStaticMessageQDef_t displayCommandsQueueControlBlock;
 const osMessageQueueAttr_t displayCommandsQueue_attributes = {
-  .name = "displayCommandsQueue",
-  .cb_mem = &displayCommandsQueueControlBlock,
-  .cb_size = sizeof(displayCommandsQueueControlBlock),
-  .mq_mem = &displayCommandsQueueBuffer,
-  .mq_size = sizeof(displayCommandsQueueBuffer)
+  .name = "displayCommandsQueue"
 };
 /* Definitions for i2c1Mutex */
 osMutexId_t i2c1MutexHandle;
