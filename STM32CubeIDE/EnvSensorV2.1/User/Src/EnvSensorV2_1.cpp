@@ -11,8 +11,8 @@
 
 #include <Readouts/SensorsReadoutsCollector.hpp>
 
-#include <Logger/SdCardInspector.hpp>
 #include <Logger/LoggerThread.hpp>
+#include <Logger/Utils/SdCardInspector.hpp>
 
 #include <Misc/BlinkingLeds.hpp>
 
