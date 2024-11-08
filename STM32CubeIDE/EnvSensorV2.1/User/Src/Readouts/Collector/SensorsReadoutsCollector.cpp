@@ -3,11 +3,11 @@
 #include <stdio.h>
 #include <string.h>
 
-#include <Readouts/SensorsReadoutsCollector.hpp>
+#include <Readouts/Collector/SensorsReadoutsCollector.hpp>
+#include <Readouts/Collector/SensorMessages.hpp>
+#include <Readouts/ReadoutsState.hpp>
 
 #include <AppControllers/AppState.hpp>
-#include <Readouts/ReadoutsState.hpp>
-#include <Readouts/SensorMessages.hpp>
 
 #include <Utils/ftoa.h>
 

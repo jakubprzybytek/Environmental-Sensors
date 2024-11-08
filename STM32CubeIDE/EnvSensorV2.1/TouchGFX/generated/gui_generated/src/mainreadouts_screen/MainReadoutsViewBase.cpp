@@ -14,6 +14,9 @@ MainReadoutsViewBase::MainReadoutsViewBase()
     background.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
     add(background);
 
+    ledLabels.setXY(246, 287);
+    add(ledLabels);
+
     bottomButtons.setXY(6, 287);
     add(bottomButtons);
 
@@ -46,6 +49,7 @@ MainReadoutsViewBase::~MainReadoutsViewBase()
 
 void MainReadoutsViewBase::setupScreen()
 {
+    ledLabels.initialize();
     bottomButtons.initialize();
     particlesContainer.initialize();
     pressureContainer.initialize();

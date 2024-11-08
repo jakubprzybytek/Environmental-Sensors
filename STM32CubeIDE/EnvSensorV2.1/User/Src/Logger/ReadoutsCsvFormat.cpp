@@ -4,19 +4,18 @@
  *  Created on: Jan 27, 2021
  *      Author: Chipotle
  */
+#include <Logger/ReadoutsCsvFormat.hpp>
 #include "stm32l4xx_hal.h"
 
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
 
-#include <Logger/EnvStateCsvFormat.hpp>
-
 #include <Utils/ftoa.h>
 
 using namespace std;
 
-void EnvStateCsvFormat::toCsv(char *lineBuffer, DateTime &dateTime, ReadoutsState &readout) {
+void ReadoutsCsvFormat::toCsv(char *lineBuffer, DateTime &dateTime, ReadoutsState &readout) {
 	uint16_t length = sprintf(lineBuffer, "20%02d.%02d.%02d %02d:%02d:%02d,", dateTime.year, dateTime.month, dateTime.day, dateTime.hour, dateTime.minutes,
 			dateTime.seconds);
 
@@ -77,7 +76,7 @@ void EnvStateCsvFormat::toCsv(char *lineBuffer, DateTime &dateTime, ReadoutsStat
 	strcpy(tempBuffer, "\n");
 }
 
-const char* EnvStateCsvFormat::parseTimeStamp(const char *lineBuffer, DateTime &dateTime) {
+const char* ReadoutsCsvFormat::parseTimeStamp(const char *lineBuffer, DateTime &dateTime) {
 	char *nextValue;
 	dateTime.year = strtol(lineBuffer, &nextValue, 10) - 2000;
 	nextValue++;
@@ -93,7 +92,7 @@ const char* EnvStateCsvFormat::parseTimeStamp(const char *lineBuffer, DateTime &
 	return ++nextValue;
 }
 
-const char* EnvStateCsvFormat::parseEnvState(const char *lineBuffer, ReadoutsState &readout) {
+const char* ReadoutsCsvFormat::parseEnvState(const char *lineBuffer, ReadoutsState &readout) {
 	char *nextValue = (char*) lineBuffer;
 	readout.voltage = strtof(nextValue, &nextValue);
 	nextValue++;
@@ -112,6 +111,15 @@ const char* EnvStateCsvFormat::parseEnvState(const char *lineBuffer, ReadoutsSta
 	readout.scdHumidity = strtof(nextValue, &nextValue);
 	nextValue++;
 
+	readout.pm1 = strtol(nextValue, &nextValue, 10);
+	nextValue++;
+	readout.pm2_5 = strtol(nextValue, &nextValue, 10);
+	nextValue++;
+	readout.pm4 = strtol(nextValue, &nextValue, 10);
+	nextValue++;
+	readout.pm10 = strtol(nextValue, &nextValue, 10);
+
+/*
 	readout.pm1 = atoi(nextValue);
 	nextValue += strlen(nextValue);
 	readout.pm2_5 = atoi(nextValue);
@@ -120,6 +128,7 @@ const char* EnvStateCsvFormat::parseEnvState(const char *lineBuffer, ReadoutsSta
 	nextValue += strlen(nextValue);
 	readout.pm10 = atoi(nextValue);
 	nextValue += strlen(nextValue);
+*/
 
 	return ++nextValue;
 }

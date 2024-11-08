@@ -385,13 +385,13 @@ void EPD_4in2A::display(const uint8_t *blackBuffer, uint8_t *redBuffer, bool qui
 void EPD_4in2A::displayGrey(const uint8_t *buffer, bool quick, bool blocking) {
 	EPD_CHIP_SELECT_LOW;
 
-	uint32_t started, firstCommand, firstDataCompute, firstDataSend;
+//	uint32_t started, firstCommand, firstDataCompute, firstDataSend;
 
-	started = HAL_GetTick();
+//	started = HAL_GetTick();
 
 	sendCommand(EPD_4IN2B_DATA_START_TRANSMISSION_1);
 
-	firstCommand = HAL_GetTick();
+//	firstCommand = HAL_GetTick();
 
 	uint16_t i = 0;
 	while (i < EPD_WIDTH_BLOCKS * EPD_HEIGHT) {
@@ -411,16 +411,16 @@ void EPD_4in2A::displayGrey(const uint8_t *buffer, bool quick, bool blocking) {
 			j++;
 			i++;
 		}
-		firstDataCompute = HAL_GetTick();
+//		firstDataCompute = HAL_GetTick();
 
 		sendData(auxBuffer, AUX_BUFFER_SIZE);
 
-		firstDataSend = HAL_GetTick();
+//		firstDataSend = HAL_GetTick();
 	}
 
-	uint32_t firstCommandElapsed = firstCommand - started; // 0ms
-	uint32_t firstDataComputeElapsed = firstDataCompute - firstCommand; // 478ms
-	uint32_t firstDataSendElapsed = firstDataSend - firstDataCompute; // 300ms
+//	uint32_t firstCommandElapsed = firstCommand - started; // 0ms
+//	uint32_t firstDataComputeElapsed = firstDataCompute - firstCommand; // 478ms
+//	uint32_t firstDataSendElapsed = firstDataSend - firstDataCompute; // 300ms
 
 	sendCommand(EPD_4IN2B_DATA_START_TRANSMISSION_2);
 

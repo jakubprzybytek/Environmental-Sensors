@@ -27,15 +27,15 @@ public:
 	DateTime(int8_t year, int8_t month, int8_t day, int8_t hour, int8_t minutes, int8_t seconds);
 
 	static int8_t daysInMonth(int8_t month);
-//
-//	static DateTime normalize(int8_t year, int8_t month, int8_t day, int8_t hour, int8_t minutes, int8_t seconds);
-//
-//	DateTime minusMinutes(uint8_t delta);
-//	DateTime minusHours(uint8_t delta);
-//	DateTime minusDays(uint8_t delta);
-//
+
+	static DateTime normalize(int8_t year, int8_t month, int8_t day, int8_t hour, int8_t minutes, int8_t seconds);
+
+	DateTime minusMinutes(uint8_t delta);
+	DateTime minusHours(uint8_t delta);
+	DateTime minusDays(uint8_t delta);
+
 //	bool equals(DateTime other);
-//	bool afterOrSame(DateTime other);
+	bool afterOrSame(DateTime other);
 };
 
 #endif /* DATETIME_HPP_ */

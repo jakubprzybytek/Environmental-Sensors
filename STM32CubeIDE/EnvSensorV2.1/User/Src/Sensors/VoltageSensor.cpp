@@ -7,10 +7,9 @@
 #include <main.h>
 
 #include <EnvSensorConfig.hpp>
+#include <Readouts/SubmitReadouts.hpp>
 
 #include <Sensors/VoltageSensor.hpp>
-#include <Readouts/SensorsReadouts.hpp>
-
 #include <Utils/ftoa.h>
 #include <Utils/DebugLog.hpp>
 
@@ -79,7 +78,7 @@ void VoltageSensor::thread(void *pvParameters) {
 		DebugLog::logWithStackHighWaterMark("Batt - stack: ");
 #endif
 
-		SensorsReadouts::submitVoltage(voltage);
+		SubmitReadouts::submitVoltage(voltage);
 	}
 }
 

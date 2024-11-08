@@ -25,46 +25,27 @@ void Model::tick() {
 	modelListener->notifyBottomButtonLabelsChanged(appState.getButton1Label(), appState.getButton2Label(), appState.getButton3Label(),
 			appState.getButton4Label());
 
+	modelListener->notifyLedLabelsChanged(appState.getLed1Label(), appState.getLed2Label(), appState.getLed3Label(),
+			appState.getLed4Label());
+
 	ReadoutsState &readoutsState = appState.getReadoutsState();
 
 	float roundedVoltage = round(readoutsState.voltage * 100.0) / 100.0;
-//	if (this->storedReadoutsState2.voltage != roundedVoltage) {
-//		this->storedReadoutsState2.voltage = roundedVoltage;
 	modelListener->notifyVoltageChanged(roundedVoltage);
-//	}
 
 	float roundedBmeTemperature = round(readoutsState.bmeTemperature * 10.0) / 10.0;
-//	if (storedReadoutsState.bmeTemperature != roundedBmeTemperature) {
-//		storedReadoutsState.bmeTemperature = roundedBmeTemperature;
 	modelListener->notifyTemperatureChanged(roundedBmeTemperature);
-//	}
 
 	float roundedBmePressure = round(readoutsState.bmePressure * 10.0) / 10.0;
-//	if (storedReadoutsState.bmePressure != roundedBmePressure) {
-//		storedReadoutsState.bmePressure = roundedBmePressure;
 	modelListener->notifyPressureChanged(roundedBmePressure);
-//	}
 
 	float roundedScdCo2 = round(readoutsState.scdCo2 * 10.0) / 10.0;
-//	if (storedReadoutsState.scdCo2 != roundedScdCo2) {
-//		storedReadoutsState.scdCo2 = roundedScdCo2;
 	modelListener->notifyCO2Changed(roundedScdCo2);
-//	}
 
 	float roundedScdHumidity = round(readoutsState.scdHumidity * 10.0) / 10.0;
-//	if (storedReadoutsState.scdHumidity != roundedScdHumidity) {
-//		storedReadoutsState.scdHumidity = roundedScdHumidity;
 	modelListener->notifyHumidityChanged(roundedScdHumidity);
-//	}
 
-//	if (storedReadoutsState.pm1 != readoutsState.pm1 || storedReadoutsState.pm2_5 != readoutsState.pm2_5 || storedReadoutsState.pm4 != readoutsState.pm4
-//			|| storedReadoutsState.pm10 != readoutsState.pm10) {
-//		storedReadoutsState.pm1 = readoutsState.pm1;
-//		storedReadoutsState.pm2_5 = readoutsState.pm2_5;
-//		storedReadoutsState.pm4 = readoutsState.pm4;
-//		storedReadoutsState.pm10 = readoutsState.pm10;
 	modelListener->notifyParticlesChanged(readoutsState.pm1, readoutsState.pm2_5, readoutsState.pm4, readoutsState.pm10);
-//	}
 
 	const DateTime currentDateTime = RtcUtils::getCurrentDateTime();
 	modelListener->notifyDateTimeChanged(currentDateTime);

@@ -6,6 +6,30 @@
   <Texts>
     <TextGroup Id="Group1" />
     <TextGroup Id="Unsorted">
+      <Text Id="__SingleUse_DUJC" Alignment="Left" TypographyId="Small">
+        <Translation Language="GB">led1</Translation>
+      </Text>
+      <Text Id="__SingleUse_YBTJ" Alignment="Center" TypographyId="Small">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_KKLX" Alignment="Left" TypographyId="Small">
+        <Translation Language="GB">led2</Translation>
+      </Text>
+      <Text Id="__SingleUse_WEGB" Alignment="Center" TypographyId="Small">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_4TG8" Alignment="Left" TypographyId="Small">
+        <Translation Language="GB">led3</Translation>
+      </Text>
+      <Text Id="__SingleUse_7DN6" Alignment="Center" TypographyId="Small">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_MHY8" Alignment="Left" TypographyId="Small">
+        <Translation Language="GB">led4</Translation>
+      </Text>
+      <Text Id="__SingleUse_4VIM" Alignment="Center" TypographyId="Small">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
       <Text Id="__SingleUse_0GF7" Alignment="Left" TypographyId="Small">
         <Translation Language="GB">cmd</Translation>
       </Text>

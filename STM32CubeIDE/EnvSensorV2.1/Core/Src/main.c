@@ -25,7 +25,7 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include <EnvSensorV2_1.hpp>
-#include <Readouts/SensorMessages.hpp>
+#include <Readouts/Collector/SensorMessages.hpp>
 #include <Display/DisplayCommandMessage.hpp>
 /* USER CODE END Includes */
 

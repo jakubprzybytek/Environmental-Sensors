@@ -1,13 +1,14 @@
-#include <Logger/FileLogger.hpp>
 #include "stm32l4xx_hal.h"
 #include "cmsis_os.h"
 
 #include <string.h>
 #include <stdlib.h>
 
-#include <Logger/Utils/SdCard.hpp>
-#include <Logger/Utils/SpeedTest.hpp>
-#include <Logger/Utils/SdCardInspector.hpp>
+#include <Logger/SD/FileLogger.hpp>
+
+#include <Logger/SD/SdCard.hpp>
+#include <Logger/SD/SpeedTest.hpp>
+#include <Logger/SD/SdCardInspector.hpp>
 
 #include <Utils/DebugLog.hpp>
 

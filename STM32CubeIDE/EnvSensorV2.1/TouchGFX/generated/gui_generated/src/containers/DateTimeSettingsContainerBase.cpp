@@ -8,7 +8,7 @@
 DateTimeSettingsContainerBase::DateTimeSettingsContainerBase()
 {
     setWidth(400);
-    setHeight(193);
+    setHeight(161);
     secondsBorderBox.setPosition(256, 110, 62, 42);
     secondsBorderBox.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
     secondsBorderBox.setBorderColor(touchgfx::Color::getColorFromRGB(0, 0, 0));

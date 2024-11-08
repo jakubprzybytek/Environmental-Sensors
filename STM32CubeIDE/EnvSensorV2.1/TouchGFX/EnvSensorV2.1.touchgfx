@@ -17,6 +17,15 @@
           },
           {
             "Type": "CustomContainerInstance",
+            "Name": "ledLabels",
+            "X": 246,
+            "Y": 287,
+            "Width": 132,
+            "Height": 15,
+            "CustomContainerDefinitionName": "LedLabels"
+          },
+          {
+            "Type": "CustomContainerInstance",
             "Name": "bottomButtons",
             "X": 6,
             "Y": 287,
@@ -125,7 +134,7 @@
             "Name": "dateTimeSettingsContainer",
             "Y": 28,
             "Width": 400,
-            "Height": 193,
+            "Height": 161,
             "CustomContainerDefinitionName": "DateTimeSettingsContainer"
           }
         ],
@@ -474,7 +483,7 @@
       {
         "Name": "DateTimeSettingsContainer",
         "Width": 400,
-        "Height": 193,
+        "Height": 161,
         "Components": [
           {
             "Type": "BoxWithBorder",
@@ -670,6 +679,69 @@
             "TextRotation": "0",
             "Wildcard1": {
               "TextId": "__SingleUse_WADD",
+              "UseBuffer": true,
+              "BufferSize": 10
+            }
+          }
+        ],
+        "Interactions": []
+      },
+      {
+        "Name": "LedLabels",
+        "Width": 132,
+        "Height": 15,
+        "Components": [
+          {
+            "Type": "TextArea",
+            "Name": "led4LabeltextArea",
+            "X": 102,
+            "Width": 30,
+            "Height": 12,
+            "TextId": "__SingleUse_4VIM",
+            "TextRotation": "0",
+            "Wildcard1": {
+              "TextId": "__SingleUse_MHY8",
+              "UseBuffer": true,
+              "BufferSize": 10
+            }
+          },
+          {
+            "Type": "TextArea",
+            "Name": "led3LabeltextArea",
+            "X": 68,
+            "Width": 30,
+            "Height": 12,
+            "TextId": "__SingleUse_7DN6",
+            "TextRotation": "0",
+            "Wildcard1": {
+              "TextId": "__SingleUse_4TG8",
+              "UseBuffer": true,
+              "BufferSize": 10
+            }
+          },
+          {
+            "Type": "TextArea",
+            "Name": "led2LabeltextArea",
+            "X": 34,
+            "Width": 30,
+            "Height": 12,
+            "TextId": "__SingleUse_WEGB",
+            "TextRotation": "0",
+            "Wildcard1": {
+              "TextId": "__SingleUse_KKLX",
+              "UseBuffer": true,
+              "BufferSize": 10
+            }
+          },
+          {
+            "Type": "TextArea",
+            "Name": "led1LabeltextArea",
+            "Width": 30,
+            "Height": 12,
+            "TextId": "__SingleUse_YBTJ",
+            "TextRotation": "0",
+            "Wildcard1": {
+              "TextId": "__SingleUse_DUJC",
               "UseBuffer": true,
               "BufferSize": 10
             }

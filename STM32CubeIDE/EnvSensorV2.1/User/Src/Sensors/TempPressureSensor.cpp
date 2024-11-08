@@ -14,7 +14,7 @@
 #include <Sensors/TempPressureSensor.hpp>
 
 #include <EnvSensorCommon.hpp>
-#include <Readouts/SensorsReadouts.hpp>
+#include <Readouts/SubmitReadouts.hpp>
 #include <Sensors/Devices/Bme280.hpp>
 #include <Utils/ftoa.h>
 #include <Utils/DebugLog.hpp>
@@ -121,7 +121,7 @@ void TempPressureSensor::bmp280Thread(void *pvParameters) {
 			DebugLog::log(messageBuffer);
 #endif
 
-			SensorsReadouts::submitBmpTemperatureAndPressure(temperature, pressure);
+			SubmitReadouts::submitBmpTemperatureAndPressure(temperature, pressure);
 
 		} else {
 #ifdef PRESSURE_SENSOR_INFO
@@ -191,7 +191,7 @@ void TempPressureSensor::bme280Thread(void *pvParameters) {
 			DebugLog::log(messageBuffer);
 #endif
 
-			SensorsReadouts::submitBmeTemperaturePressureHumidity(temperature, pressure, humidity);
+			SubmitReadouts::submitBmeTemperaturePressureHumidity(temperature, pressure, humidity);
 
 		} else {
 #ifdef PRESSURE_SENSOR_INFO

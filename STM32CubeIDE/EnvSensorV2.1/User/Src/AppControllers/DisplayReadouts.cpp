@@ -8,6 +8,7 @@
 
 #include <AppControllers/DisplayReadouts.hpp>
 #include <AppControllers/AppState.hpp>
+#include <AppControllers/Charts.hpp>
 #include <AppControllers/Settings.hpp>
 
 #include <TouchGFX.hpp>
@@ -17,6 +18,7 @@
 
 extern AppState appState;
 
+extern Charts charts;
 extern Settings settings;
 
 DisplayReadouts::DisplayReadouts() {
@@ -49,8 +51,9 @@ Controller* DisplayReadouts::proceed() {
 			TRIGGER_TOUCHGFX_REFRESH();
 			break;
 		case Switch3:
-			SensorsController::triggerHighMeasurements();
-			break;
+			return &charts;
+//			SensorsController::triggerHighMeasurements();
+//			break;
 		case Switch4:
 			return &settings;
 		}

@@ -4,7 +4,9 @@
  *  Created on: Jan 27, 2021
  *      Author: Chipotle
  */
-#include <Logger/FileSystem/FileReader.hpp>
+#include <Logger/SD/FileReader.hpp>
+
+#include <Display/Leds.hpp>
 
 bool FileReader::open() {
 	FRESULT fresult = f_mount(&fatfs, "", 1);
@@ -17,7 +19,13 @@ bool FileReader::open() {
 }
 
 bool FileReader::read(char *buffer, uint16_t bufferSize, uint32_t *bytesRead) {
-	return f_read(&rfile, buffer, bufferSize, (UINT*) bytesRead) == FR_OK;
+	SD_CARD_LED_On();
+
+	FRESULT result = f_read(&rfile, buffer, bufferSize, (UINT*) bytesRead);
+
+	SD_CARD_LED_Off();
+
+	return result == FR_OK;
 }
 
 bool FileReader::close() {

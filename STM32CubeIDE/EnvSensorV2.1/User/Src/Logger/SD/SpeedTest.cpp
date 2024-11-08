@@ -4,7 +4,7 @@
  *  Created on: Jan 31, 2021
  *      Author: Chipotle
  */
-#include <Logger/Utils/SpeedTest.hpp>
+#include <Logger/SD/SpeedTest.hpp>
 
 FRESULT SpeedTest::testWrite(const char *testFileName, const void *buffer, uint16_t bufferSize, uint32_t *duration) {
 	FATFS fatfs;

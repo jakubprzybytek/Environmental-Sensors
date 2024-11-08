@@ -30,6 +30,7 @@ public:
 	;
 
 	void notifyBottomButtonLabelsChanged(const char *button1Label, const char *button2Label, const char *button3Label, const char *button4Label);
+	void notifyLedLabelsChanged(const char *led1Label, const char *led2Label, const char *led3Label, const char *led4Label);
 
 	void notifyVoltageChanged(float newVoltage);
 

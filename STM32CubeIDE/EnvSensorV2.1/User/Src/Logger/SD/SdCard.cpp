@@ -5,7 +5,7 @@
  *      Author: jakub
  */
 
-#include <Logger/Utils/SdCard.hpp>
+#include <Logger/SD/SdCard.hpp>
 
 #include <string.h>
 

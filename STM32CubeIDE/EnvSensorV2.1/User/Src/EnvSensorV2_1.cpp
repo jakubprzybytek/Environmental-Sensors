@@ -9,10 +9,10 @@
 #include <Sensors/SensorsController.hpp>
 #include <Sensors/CO2Sensor.hpp>
 
-#include <Readouts/SensorsReadoutsCollector.hpp>
+#include <Readouts/Collector/SensorsReadoutsCollector.hpp>
 
 #include <Logger/LoggerThread.hpp>
-#include <Logger/Utils/SdCardInspector.hpp>
+#include <Logger/SD/SdCardInspector.hpp>
 
 #include <Misc/BlinkingLeds.hpp>
 

@@ -18,7 +18,7 @@
 #include <Sensors/CO2Sensor.hpp>
 
 #include <EnvSensorCommon.hpp>
-#include <Readouts/SensorsReadouts.hpp>
+#include <Readouts/SubmitReadouts.hpp>
 #include <Sensors/Devices/Scd30.hpp>
 #include <Utils/ftoa.h>
 #include <Utils/DebugLog.hpp>
@@ -116,7 +116,7 @@ void CO2Sensor::thread(void *pvParameters) {
 				}
 #endif
 
-				SensorsReadouts::submitScdCO2AndTemperature(co2, temp, hum);
+				SubmitReadouts::submitScdCO2AndTemperature(co2, temp, hum);
 
 			} else {
 #ifdef CO2_SENSOR_INFO
@@ -145,7 +145,7 @@ void CO2Sensor::thread(void *pvParameters) {
 						}
 #endif
 
-						SensorsReadouts::submitScdCO2AndTemperature(co2, temp, hum);
+						SubmitReadouts::submitScdCO2AndTemperature(co2, temp, hum);
 
 					} else {
 #ifdef CO2_SENSOR_INFO

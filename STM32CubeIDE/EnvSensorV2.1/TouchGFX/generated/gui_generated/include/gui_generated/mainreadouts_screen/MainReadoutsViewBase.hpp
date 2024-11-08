@@ -8,6 +8,7 @@
 #include <mvp/View.hpp>
 #include <gui/mainreadouts_screen/MainReadoutsPresenter.hpp>
 #include <touchgfx/widgets/Box.hpp>
+#include <gui/containers/LedLabels.hpp>
 #include <gui/containers/BottomButtons.hpp>
 #include <gui/containers/ParticlesContainer.hpp>
 #include <gui/containers/PressureContainer.hpp>
@@ -35,6 +36,7 @@ protected:
      */
     touchgfx::Box __background;
     touchgfx::Box background;
+    LedLabels ledLabels;
     BottomButtons bottomButtons;
     ParticlesContainer particlesContainer;
     PressureContainer pressureContainer;

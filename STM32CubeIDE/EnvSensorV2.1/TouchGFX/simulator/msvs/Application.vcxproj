@@ -45,6 +45,8 @@
     <ClCompile Include="..\..\generated\gui_generated\src\settings_screen\SettingsViewBase.cpp"/>
     <ClCompile Include="..\..\gui\src\containers\BottomButtons.cpp"/>
     <ClCompile Include="..\..\generated\gui_generated\src\containers\BottomButtonsBase.cpp"/>
+    <ClCompile Include="..\..\gui\src\containers\LedLabels.cpp"/>
+    <ClCompile Include="..\..\generated\gui_generated\src\containers\LedLabelsBase.cpp"/>
   </ItemGroup>
   <ItemGroup>
     <None Include="$(ApplicationRoot)\assets\texts\texts.xml"/>
@@ -219,6 +221,8 @@
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\settings_screen\SettingsViewBase.hpp"/>
     <ClInclude Include="..\..\gui\include\gui\containers\BottomButtons.hpp"/>
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\BottomButtonsBase.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\containers\LedLabels.hpp"/>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\LedLabelsBase.hpp"/>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="$(ApplicationRoot)\generated\simulator\touchgfx.rc"/>

@@ -1,7 +1,7 @@
 #ifndef INC_SENSORSREADOUTS_HPP_
 #define INC_SENSORSREADOUTS_HPP_
 
-class SensorsReadouts {
+class SubmitReadouts {
 public:
 	static void submitVoltage(float voltage);
 	static void submitBmpTemperatureAndPressure(float temperature, float pressure);

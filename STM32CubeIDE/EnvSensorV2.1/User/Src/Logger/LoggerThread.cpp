@@ -37,7 +37,7 @@ void LoggerThread::startThread() {
 
 void LoggerThread::thread(void *pvParameters) {
 	ReadoutsState readoutsState = appState.getReadoutsState();
-	ReadoutFileLogger readoutFileLogger("env-logs");
+	ReadoutFileLogger readoutFileLogger(LOGGER_DIRECTORY);
 
 	uint32_t wakeTime = osKernelGetTickCount();
 

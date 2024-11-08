@@ -8,6 +8,7 @@
 #include <AppControllers/Controller.hpp>
 #include <AppControllers/DisplayReadouts.hpp>
 #include <AppControllers/Settings.hpp>
+#include <AppControllers/Charts.hpp>
 #include <AppControllers/AppState.hpp>
 
 #include <EnvSensorConfig.hpp>
@@ -15,13 +16,14 @@
 
 AppState appState;
 
-uint32_t mainControllerThreadBuffer[128];
+uint32_t mainControllerThreadBuffer[2048];
 StaticTask_t mainControllerThreadControlBlock;
 
 uint32_t sensorRoutineControllerThreadBuffer[128];
 StaticTask_t sensorRoutineControllerThreadControlBlock;
 
 DisplayReadouts displayReadouts;
+Charts charts;
 Settings settings;
 
 osThreadId_t Controller::mainControllerThreadHandle;
@@ -68,6 +70,8 @@ void Controller::sensorRoutineThreadStart() {
 }
 
 void Controller::mainThread(void *pvParameters) {
+	appState.setLedLabels("CPU", "SD/D", "Partic", "Hbeat");
+
 	osDelay(1000 / portTICK_RATE_MS);
 
 	while (true) {

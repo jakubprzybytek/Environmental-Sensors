@@ -4,11 +4,12 @@
  *  Created on: Jan 11, 2021
  *      Author: Chipotle
  */
-#include <Logger/FileLogger.hpp>
 #include <string.h>
 
+#include <Logger/SD/FileLogger.hpp>
+
 #include <EnvSensorConfig.hpp>
-#include <Logger/Utils/SdCard.hpp>
+#include <Logger/SD/SdCard.hpp>
 #include <Utils/DebugLog.hpp>
 
 FileLogger::FileLogger(const char *_filePath) :

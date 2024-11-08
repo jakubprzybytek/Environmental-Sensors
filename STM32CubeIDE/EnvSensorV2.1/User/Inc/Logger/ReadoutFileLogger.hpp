@@ -8,7 +8,7 @@
 #ifndef INC_LOGGER_READOUTFILELOGGER_HPP_
 #define INC_LOGGER_READOUTFILELOGGER_HPP_
 
-#include <Logger/FileLogger.hpp>
+#include <Logger/SD/FileLogger.hpp>
 
 #include <Time/DateTime.hpp>
 #include <Readouts/ReadoutsState.hpp>
@@ -26,8 +26,8 @@ class ReadoutFileLogger {
 	const char *directory;
 	FileLogger fileLogger;
 
-	void getLogFileName(char *buffer, DateTime dateTime);
-	bool isSameLogFile(DateTime first, DateTime second);
+//	void getLogFileName(char *buffer, DateTime dateTime);
+//	bool isSameLogFile(DateTime first, DateTime second);
 
 public:
 	ReadoutFileLogger(const char *_directory) :

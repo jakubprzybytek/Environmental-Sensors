@@ -14,9 +14,8 @@
 #include <Sensors/ParticlesSensor.hpp>
 #include <Sensors/Devices/Hpma115C0.hpp>
 
-#include <Readouts/SensorsReadouts.hpp>
-
 #include <Display/Leds.hpp>
+#include <Readouts/SubmitReadouts.hpp>
 
 #include <Utils/DebugLog.hpp>
 
@@ -149,7 +148,7 @@ void ParticlesSensor::thread(void *pvParameters) {
 		DebugLog::logWithStackHighWaterMark("HPMA - stack: ");
 #endif
 
-		SensorsReadouts::submitParticles(pm1, pm2_5, pm4, pm10);
+		SubmitReadouts::submitParticles(pm1, pm2_5, pm4, pm10);
 
 		keepRunning = !WAIT_FOR_INTERRUPT(10000);
 	}

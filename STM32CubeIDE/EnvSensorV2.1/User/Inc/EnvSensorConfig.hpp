@@ -10,6 +10,8 @@
 
 #include <main.h>
 
+#define LOGGER_DIRECTORY "env-logs"
+
 //#define APPLICATION_CONTROLLER_INFO
 #define APPLICATION_CONTROLLER_TRACE
 

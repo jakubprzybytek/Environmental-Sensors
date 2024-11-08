@@ -5,13 +5,13 @@
  *      Author: Chipotle
  */
 
-#ifndef INC_LOGGER_ENVSTATECSVFORMAT_HPP_
-#define INC_LOGGER_ENVSTATECSVFORMAT_HPP_
+#ifndef INC_LOGGER_READOUTSCSVFORMAT_HPP_
+#define INC_LOGGER_READOUTSCSVFORMAT_HPP_
 
 #include <Readouts/ReadoutsState.hpp>
 #include <Time/DateTime.hpp>
 
-class EnvStateCsvFormat {
+class ReadoutsCsvFormat {
 
 public:
 	static void toCsv(char *lineBuffer, DateTime &dateTime, ReadoutsState &readout);
@@ -20,4 +20,4 @@ public:
 	static const char* parseEnvState(const char *lineBuffer, ReadoutsState &readout);
 };
 
-#endif /* INC_LOGGER_ENVSTATECSVFORMAT_HPP_ */
+#endif /* INC_LOGGER_READOUTSCSVFORMAT_HPP_ */

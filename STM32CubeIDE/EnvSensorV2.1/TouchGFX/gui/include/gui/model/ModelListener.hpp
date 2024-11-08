@@ -25,6 +25,7 @@ public:
     }
 
     virtual void notifyBottomButtonLabelsChanged(const char *newButton1Label, const char *newButton2Label, const char *newButton3Label, const char *newButton4Label) {}
+    virtual void notifyLedLabelsChanged(const char *newLed1Label, const char *newLed2Label, const char *newLed3Label, const char *newLed4Label) {}
 
     virtual void notifyVoltageChanged(float newVoltage) {}
 

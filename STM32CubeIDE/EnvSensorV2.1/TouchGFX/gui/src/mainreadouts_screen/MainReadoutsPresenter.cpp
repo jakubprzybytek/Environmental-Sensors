@@ -14,6 +14,10 @@ void MainReadoutsPresenter::notifyBottomButtonLabelsChanged(const char *button1L
 	view.setBottomButtonLabels(button1Label, button2Label, button3Label, button4Label);
 }
 
+void MainReadoutsPresenter::notifyLedLabelsChanged(const char *led1Label, const char *led2Label, const char *led3Label, const char *led4Label) {
+	view.setLedLabels(led1Label, led2Label, led3Label, led4Label);
+}
+
 void MainReadoutsPresenter::notifyVoltageChanged(float newVoltage) {
 	view.setVoltage(newVoltage);
 }

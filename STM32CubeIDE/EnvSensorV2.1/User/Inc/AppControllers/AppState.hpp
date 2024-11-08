@@ -28,9 +28,14 @@ private:
 	const char *button3Label;
 	const char *button4Label;
 
+	const char *led1Label;
+	const char *led2Label;
+	const char *led3Label;
+	const char *led4Label;
+
 public:
 	AppState() :
-			settingsDateTime(0, 0, 0, 0, 0, 0), settingsFieldUnderEdit(None), button1Label(NULL), button2Label(NULL), button3Label(NULL), button4Label(NULL) {
+			settingsDateTime(0, 0, 0, 0, 0, 0), settingsFieldUnderEdit(None) {
 	}
 
 	ReadoutsState& getReadoutsState() {
@@ -74,6 +79,29 @@ public:
 
 	const char* getButton4Label() const {
 		return this->button4Label;
+	}
+
+	void setLedLabels(const char *led1Label, const char *led2Label, const char *led3Label, const char *led4Label) {
+		this->led1Label = led1Label;
+		this->led2Label = led2Label;
+		this->led3Label = led3Label;
+		this->led4Label = led4Label;
+	}
+
+	const char* getLed1Label() const {
+		return this->led1Label;
+	}
+
+	const char* getLed2Label() const {
+		return this->led2Label;
+	}
+
+	const char* getLed3Label() const {
+		return this->led3Label;
+	}
+
+	const char* getLed4Label() const {
+		return this->led4Label;
 	}
 };
 
