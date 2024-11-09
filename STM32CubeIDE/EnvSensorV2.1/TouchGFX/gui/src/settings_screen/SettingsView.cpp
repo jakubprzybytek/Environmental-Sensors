@@ -16,6 +16,10 @@ void SettingsView::setBottomButtonLabels(const char *button1Label, const char *b
 	bottomButtons.setLabels(button1Label, button2Label, button3Label, button4Label);
 }
 
+void SettingsView::setLedLabels(const char *led1Label, const char *led2Label, const char *led3Label, const char *led4Label) {
+	ledLabels.setLabels(led1Label, led2Label, led3Label, led4Label);
+}
+
 #ifndef SIMULATOR
 
 void SettingsView::setDateTime(DateTime dateTime) {
