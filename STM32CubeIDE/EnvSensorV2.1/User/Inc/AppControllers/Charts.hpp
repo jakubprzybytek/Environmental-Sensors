@@ -14,6 +14,13 @@
 
 class Charts: public virtual Controller {
 
+private:
+	void loadChartData();
+
+	void toggleSensor();
+
+	void toggleTimeSpan();
+
 public:
 	void onEnter();
 

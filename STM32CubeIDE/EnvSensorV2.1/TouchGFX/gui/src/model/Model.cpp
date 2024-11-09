@@ -25,8 +25,7 @@ void Model::tick() {
 	modelListener->notifyBottomButtonLabelsChanged(appState.getButton1Label(), appState.getButton2Label(), appState.getButton3Label(),
 			appState.getButton4Label());
 
-	modelListener->notifyLedLabelsChanged(appState.getLed1Label(), appState.getLed2Label(), appState.getLed3Label(),
-			appState.getLed4Label());
+	modelListener->notifyLedLabelsChanged(appState.getLed1Label(), appState.getLed2Label(), appState.getLed3Label(), appState.getLed4Label());
 
 	ReadoutsState &readoutsState = appState.getReadoutsState();
 
@@ -55,6 +54,8 @@ void Model::tick() {
 
 	const SettingsField fieldUnderTest = appState.getSettingsFieldUnderEdit();
 	modelListener->notifySettingsFieldUnderTest(fieldUnderTest);
+
+	modelListener->notifyChartDataChanged(appState.getChartData(), appState.getCurrentSensor(), appState.getCurrentTimeSpan());
 
 #endif
 }

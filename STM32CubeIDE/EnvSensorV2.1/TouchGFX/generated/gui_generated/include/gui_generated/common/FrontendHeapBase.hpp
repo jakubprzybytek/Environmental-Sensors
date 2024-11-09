@@ -16,6 +16,8 @@
 #include <gui/mainreadouts_screen/MainReadoutsPresenter.hpp>
 #include <gui/settings_screen/SettingsView.hpp>
 #include <gui/settings_screen/SettingsPresenter.hpp>
+#include <gui/chart_screen/ChartView.hpp>
+#include <gui/chart_screen/ChartPresenter.hpp>
 
 
 /**
@@ -40,7 +42,8 @@ public:
      */
     typedef touchgfx::meta::TypeList< MainReadoutsView,
             touchgfx::meta::TypeList< SettingsView,
-            touchgfx::meta::Nil >
+            touchgfx::meta::TypeList< ChartView,
+            touchgfx::meta::Nil > >
             > GeneratedViewTypes;
 
     /**
@@ -54,7 +57,8 @@ public:
      */
     typedef touchgfx::meta::TypeList< MainReadoutsPresenter,
             touchgfx::meta::TypeList< SettingsPresenter,
-            touchgfx::meta::Nil >
+            touchgfx::meta::TypeList< ChartPresenter,
+            touchgfx::meta::Nil > >
             > GeneratedPresenterTypes;
 
     /**

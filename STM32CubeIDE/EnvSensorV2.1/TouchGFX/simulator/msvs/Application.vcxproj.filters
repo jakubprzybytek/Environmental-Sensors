@@ -208,6 +208,18 @@
     <Filter Include="Source Files\generated\gui_generated\settings_screen">
       <UniqueIdentifier>CF4E8094-23D0-8510-5499-24996A3D0463</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\gui\chart_screen">
+      <UniqueIdentifier>782EB1B7-719A-59F6-2640-17F9318635BA</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\gui\chart_screen">
+      <UniqueIdentifier>2CA64DB5-DDF6-23EA-BDE4-C1C6DCDC5ED5</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\generated\gui_generated\chart_screen">
+      <UniqueIdentifier>E8F805AD-6D39-3325-ECBE-63972F78D305</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\generated\gui_generated\chart_screen">
+      <UniqueIdentifier>15DF1EAA-9192-1FD3-8AEA-8C0B9095CE76</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(TouchGFXReleasePath)\framework\source\platform\driver\touch\SDL2TouchController.cpp">
@@ -317,6 +329,24 @@
     </ClCompile>
     <ClCompile Include="..\..\generated\gui_generated\src\containers\LedLabelsBase.cpp">
       <Filter>Source Files\generated\gui_generated\containers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\containers\Chart.cpp">
+      <Filter>Source Files\gui\containers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\generated\gui_generated\src\containers\ChartBase.cpp">
+      <Filter>Source Files\generated\gui_generated\containers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\chart_screen\ChartPresenter.cpp">
+      <Filter>Source Files\gui\chart_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\chart_screen\ChartView.cpp">
+      <Filter>Source Files\gui\chart_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\generated\gui_generated\src\chart_screen\ChartViewBase.cpp">
+      <Filter>Source Files\generated\gui_generated\chart_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\chart_screen\BarsChart.cpp">
+      <Filter>Source Files\gui\chart_screen</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -837,6 +867,24 @@
     </ClInclude>
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\LedLabelsBase.hpp">
       <Filter>Header Files\generated\gui_generated\containers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\containers\Chart.hpp">
+      <Filter>Header Files\gui\containers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\ChartBase.hpp">
+      <Filter>Header Files\generated\gui_generated\containers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\chart_screen\ChartPresenter.hpp">
+      <Filter>Header Files\gui\chart_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\chart_screen\ChartView.hpp">
+      <Filter>Header Files\gui\chart_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\chart_screen\ChartViewBase.hpp">
+      <Filter>Header Files\generated\gui_generated\chart_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\chart_screen\BarsChart.hpp">
+      <Filter>Header Files\gui\chart_screen</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

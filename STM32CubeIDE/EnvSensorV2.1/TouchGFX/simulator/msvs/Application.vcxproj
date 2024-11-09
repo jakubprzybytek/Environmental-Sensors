@@ -47,6 +47,12 @@
     <ClCompile Include="..\..\generated\gui_generated\src\containers\BottomButtonsBase.cpp"/>
     <ClCompile Include="..\..\gui\src\containers\LedLabels.cpp"/>
     <ClCompile Include="..\..\generated\gui_generated\src\containers\LedLabelsBase.cpp"/>
+    <ClCompile Include="..\..\gui\src\containers\Chart.cpp"/>
+    <ClCompile Include="..\..\generated\gui_generated\src\containers\ChartBase.cpp"/>
+    <ClCompile Include="..\..\gui\src\chart_screen\ChartPresenter.cpp"/>
+    <ClCompile Include="..\..\gui\src\chart_screen\ChartView.cpp"/>
+    <ClCompile Include="..\..\generated\gui_generated\src\chart_screen\ChartViewBase.cpp"/>
+    <ClCompile Include="..\..\gui\src\chart_screen\BarsChart.cpp"/>
   </ItemGroup>
   <ItemGroup>
     <None Include="$(ApplicationRoot)\assets\texts\texts.xml"/>
@@ -223,6 +229,12 @@
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\BottomButtonsBase.hpp"/>
     <ClInclude Include="..\..\gui\include\gui\containers\LedLabels.hpp"/>
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\LedLabelsBase.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\containers\Chart.hpp"/>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\ChartBase.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\chart_screen\ChartPresenter.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\chart_screen\ChartView.hpp"/>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\chart_screen\ChartViewBase.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\chart_screen\BarsChart.hpp"/>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="$(ApplicationRoot)\generated\simulator\touchgfx.rc"/>

@@ -9,7 +9,12 @@
 #define INC_APPCONTROLLERS_APPSTATE_HPP_
 
 #include <Readouts/ReadoutsState.hpp>
+#include <Readouts/DataSeries/ChartData.hpp>
 #include <Time/DateTime.hpp>
+
+enum class SensorName {
+	CO2, Pressure, Temperature, Humidity
+};
 
 typedef enum {
 	None, Year, Month, Day, Hours, Minutes, Seconds
@@ -23,6 +28,10 @@ private:
 	DateTime settingsDateTime;
 	SettingsField settingsFieldUnderEdit;
 
+	ChartData chartData;
+	SensorName currentSensor;
+	TimeSpan currentTimeSpan;
+
 	const char *button1Label;
 	const char *button2Label;
 	const char *button3Label;
@@ -35,7 +44,7 @@ private:
 
 public:
 	AppState() :
-			settingsDateTime(0, 0, 0, 0, 0, 0), settingsFieldUnderEdit(None) {
+			settingsDateTime(0, 0, 0, 0, 0, 0), settingsFieldUnderEdit(None), currentSensor(SensorName::CO2), currentTimeSpan(TimeSpan::Minutes5) {
 	}
 
 	ReadoutsState& getReadoutsState() {
@@ -56,6 +65,26 @@ public:
 
 	void setSettingsFieldUnderEdit(SettingsField settingsFieldUnderEdit) {
 		this->settingsFieldUnderEdit = settingsFieldUnderEdit;
+	}
+
+	ChartData& getChartData() {
+		return chartData;
+	}
+
+	SensorName getCurrentSensor() {
+		return currentSensor;
+	}
+
+	void setCurrentSensor(SensorName currentSensor) {
+		this->currentSensor = currentSensor;
+	}
+
+	TimeSpan getCurrentTimeSpan() {
+		return currentTimeSpan;
+	}
+
+	void setCurrentTimeSpan(TimeSpan currentTimeSpan) {
+		this->currentTimeSpan = currentTimeSpan;
 	}
 
 	void setButtonLabels(const char *button1Label, const char *button2Label, const char *button3Label, const char *button4Label) {
@@ -103,6 +132,7 @@ public:
 	const char* getLed4Label() const {
 		return this->led4Label;
 	}
+
 };
 
 #endif /* INC_APPCONTROLLERS_APPSTATE_HPP_ */

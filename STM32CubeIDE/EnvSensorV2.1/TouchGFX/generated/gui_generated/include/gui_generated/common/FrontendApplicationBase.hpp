@@ -26,6 +26,9 @@ public:
     // Settings
     void gotoSettingsScreenNoTransition();
 
+    // Chart
+    void gotoChartScreenNoTransition();
+
 protected:
     touchgfx::Callback<FrontendApplicationBase> transitionCallback;
     FrontendHeap& frontendHeap;
@@ -36,6 +39,9 @@ protected:
 
     // Settings
     void gotoSettingsScreenNoTransitionImpl();
+
+    // Chart
+    void gotoChartScreenNoTransitionImpl();
 };
 
 #endif // FRONTENDAPPLICATIONBASE_HPP

@@ -70,4 +70,13 @@ void MainReadoutsViewBase::handleKeyEvent(uint8_t key)
         application().gotoSettingsScreenNoTransition();
     
     }
+
+    if(1 == key)
+    {
+        //openChart
+        //When hardware button 1 clicked change screen to Chart
+        //Go to Chart with no screen transition
+        application().gotoChartScreenNoTransition();
+    
+    }
 }

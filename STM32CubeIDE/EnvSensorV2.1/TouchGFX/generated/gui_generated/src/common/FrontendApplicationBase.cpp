@@ -13,6 +13,8 @@
 #include <gui/mainreadouts_screen/MainReadoutsPresenter.hpp>
 #include <gui/settings_screen/SettingsView.hpp>
 #include <gui/settings_screen/SettingsPresenter.hpp>
+#include <gui/chart_screen/ChartView.hpp>
+#include <gui/chart_screen/ChartPresenter.hpp>
 
 using namespace touchgfx;
 
@@ -55,4 +57,17 @@ void FrontendApplicationBase::gotoSettingsScreenNoTransition()
 void FrontendApplicationBase::gotoSettingsScreenNoTransitionImpl()
 {
     touchgfx::makeTransition<SettingsView, SettingsPresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
+}
+
+// Chart
+
+void FrontendApplicationBase::gotoChartScreenNoTransition()
+{
+    transitionCallback = touchgfx::Callback<FrontendApplicationBase>(this, &FrontendApplicationBase::gotoChartScreenNoTransitionImpl);
+    pendingScreenTransitionCallback = &transitionCallback;
+}
+
+void FrontendApplicationBase::gotoChartScreenNoTransitionImpl()
+{
+    touchgfx::makeTransition<ChartView, ChartPresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
 }

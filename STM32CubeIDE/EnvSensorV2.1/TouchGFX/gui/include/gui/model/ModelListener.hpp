@@ -7,8 +7,9 @@
 
 #ifndef SIMULATOR
 
-#include <Time/DateTime.hpp>
 #include <AppControllers/AppState.hpp>
+#include <Readouts/DataSeries/ChartData.hpp>
+#include <Time/DateTime.hpp>
 
 #endif
 
@@ -40,6 +41,8 @@ public:
     virtual void notifySettingsDateTimeChanged(DateTime settingsDateTime) {}
     virtual void notifySettingsFieldUnderTest(SettingsField fieldUnderTest) {}
 #endif
+
+    virtual void notifyChartDataChanged(ChartData &chartData, SensorName chartSensor, TimeSpan barTimeSpan) {}
 
 protected:
     Model* model;

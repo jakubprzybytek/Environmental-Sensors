@@ -6,26 +6,80 @@
   <Texts>
     <TextGroup Id="Group1" />
     <TextGroup Id="Unsorted">
+      <Text Id="__SingleUse_Q9Z5" Alignment="Left" TypographyId="Small">
+        <Translation Language="GB">Title</Translation>
+      </Text>
+      <Text Id="__SingleUse_RF7F" Alignment="Left" TypographyId="Small">
+        <Translation Language="GB">label</Translation>
+      </Text>
+      <Text Id="__SingleUse_KJZY" Alignment="Center" TypographyId="Small">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_9ED7" Alignment="Left" TypographyId="Small">
+        <Translation Language="GB">label</Translation>
+      </Text>
+      <Text Id="__SingleUse_EA6F" Alignment="Center" TypographyId="Small">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_EENB" Alignment="Left" TypographyId="Small">
+        <Translation Language="GB">label</Translation>
+      </Text>
+      <Text Id="__SingleUse_413C" Alignment="Center" TypographyId="Small">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_C1AW" Alignment="Left" TypographyId="Small">
+        <Translation Language="GB">label</Translation>
+      </Text>
+      <Text Id="__SingleUse_TVWD" Alignment="Center" TypographyId="Small">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_7K92" Alignment="Left" TypographyId="Small">
+        <Translation Language="GB">label</Translation>
+      </Text>
+      <Text Id="__SingleUse_LVJC" Alignment="Right" TypographyId="Small">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_MZQM" Alignment="Left" TypographyId="Small">
+        <Translation Language="GB">label</Translation>
+      </Text>
+      <Text Id="__SingleUse_OGDK" Alignment="Right" TypographyId="Small">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_GB9I" Alignment="Left" TypographyId="Small">
+        <Translation Language="GB">label</Translation>
+      </Text>
+      <Text Id="__SingleUse_IVVH" Alignment="Right" TypographyId="Small">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_OMVM" Alignment="Left" TypographyId="Small">
+        <Translation Language="GB">label</Translation>
+      </Text>
+      <Text Id="__SingleUse_B3AD" Alignment="Right" TypographyId="Small">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_Z071" Alignment="Center" TypographyId="Default">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
       <Text Id="__SingleUse_DUJC" Alignment="Left" TypographyId="Small">
-        <Translation Language="GB">led1</Translation>
+        <Translation Language="GB">led</Translation>
       </Text>
       <Text Id="__SingleUse_YBTJ" Alignment="Center" TypographyId="Small">
         <Translation Language="GB">&lt;value&gt;</Translation>
       </Text>
       <Text Id="__SingleUse_KKLX" Alignment="Left" TypographyId="Small">
-        <Translation Language="GB">led2</Translation>
+        <Translation Language="GB">led</Translation>
       </Text>
       <Text Id="__SingleUse_WEGB" Alignment="Center" TypographyId="Small">
         <Translation Language="GB">&lt;value&gt;</Translation>
       </Text>
       <Text Id="__SingleUse_4TG8" Alignment="Left" TypographyId="Small">
-        <Translation Language="GB">led3</Translation>
+        <Translation Language="GB">led</Translation>
       </Text>
       <Text Id="__SingleUse_7DN6" Alignment="Center" TypographyId="Small">
         <Translation Language="GB">&lt;value&gt;</Translation>
       </Text>
       <Text Id="__SingleUse_MHY8" Alignment="Left" TypographyId="Small">
-        <Translation Language="GB">led4</Translation>
+        <Translation Language="GB">led</Translation>
       </Text>
       <Text Id="__SingleUse_4VIM" Alignment="Center" TypographyId="Small">
         <Translation Language="GB">&lt;value&gt;</Translation>
