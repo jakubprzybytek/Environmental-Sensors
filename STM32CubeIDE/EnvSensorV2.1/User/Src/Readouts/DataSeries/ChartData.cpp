@@ -21,7 +21,7 @@ bool ChartData::getStatistics(DataPoint (&dataSeries)[ChartData::DATA_SERIES_LEN
 
 	for (uint8_t i = 0; i < DATA_SERIES_LENGTH; i++) {
 		if (valid[i]) {
-			if (dataSeries[i].min < globalMin) {
+			if (dataSeries[i].min != 0 && dataSeries[i].min < globalMin) {
 				globalMin = dataSeries[i].min;
 			}
 			if (dataSeries[i].max > globalMax) {

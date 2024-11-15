@@ -19,9 +19,14 @@ void BarsChart::setChartData(DataPoint (&dataSeries)[ChartData::DATA_SERIES_LENG
 		for (uint8_t i = 0; i < CHART_BARS; i++) {
 			if (valid[i]) {
 				barVisible[i] = true;
+
+				// ignore 0 as value
+				const float minValue = dataSeries[i].min != 0 ? dataSeries[i].min : dataSeries[i].max;
+				const float maxValue = dataSeries[i].max;
+
 				barX[i] = (width - barWidth) * i / (CHART_BARS - 1);
-				barMaxY[i] = height * (max - dataSeries[i].max) / delta;
-				barHeight[i] = height * (dataSeries[i].max - dataSeries[i].min) / delta;
+				barMaxY[i] = height * (max - maxValue) / delta;
+				barHeight[i] = height * (maxValue - minValue) / delta;
 
 				if (barHeight[i] == 0) {
 					barMaxY[i] -= barWidth / 2;
