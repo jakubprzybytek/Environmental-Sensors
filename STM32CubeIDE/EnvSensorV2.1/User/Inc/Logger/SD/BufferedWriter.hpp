@@ -10,24 +10,26 @@
 
 #include "stm32l4xx_hal.h"
 
+#include <EnvSensorConfig.hpp>
+
+#define BUFFER_SIZE LOGGER_WRITER_BUFFER_SIZE
+
 typedef enum {
 	LOGGER_OK = 0, LOGGER_ERROR,
 } LOGGER_RESULT;
 
-#define LOG_BUFFER_SIZE 512
-
-class FileLogger {
+class BufferedWriter {
 
 private:
 	const char *filePath;
 
-	char logBuffer[LOG_BUFFER_SIZE];
-	uint16_t logBufferIndex;
+	char buffer[BUFFER_SIZE];
+	uint16_t bufferIndex;
 
 public:
-	FileLogger(const char *_filePath);
+	BufferedWriter(const char *_filePath);
 
-	LOGGER_RESULT logLine(char *line);
+	LOGGER_RESULT writeLine(char *line);
 
 	LOGGER_RESULT flush();
 };

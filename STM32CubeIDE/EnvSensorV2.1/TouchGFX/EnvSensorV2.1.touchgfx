@@ -198,7 +198,7 @@
             "Type": "CustomContainerInstance",
             "Name": "chart",
             "Width": 400,
-            "Height": 271,
+            "Height": 287,
             "CustomContainerDefinitionName": "Chart"
           }
         ],
@@ -816,15 +816,15 @@
       {
         "Name": "Chart",
         "Width": 400,
-        "Height": 271,
+        "Height": 287,
         "Components": [
           {
             "Type": "TextArea",
             "Name": "xAxisLabel4",
             "X": 336,
-            "Y": 255,
+            "Y": 271,
             "Width": 60,
-            "Height": 24,
+            "Height": 15,
             "TextId": "__SingleUse_TVWD",
             "TextRotation": "0",
             "Wildcard1": {
@@ -837,9 +837,9 @@
             "Type": "TextArea",
             "Name": "xAxisLabel3",
             "X": 241,
-            "Y": 255,
+            "Y": 271,
             "Width": 60,
-            "Height": 24,
+            "Height": 15,
             "TextId": "__SingleUse_413C",
             "TextRotation": "0",
             "Wildcard1": {
@@ -852,9 +852,9 @@
             "Type": "TextArea",
             "Name": "xAxisLabel2",
             "X": 146,
-            "Y": 255,
+            "Y": 271,
             "Width": 60,
-            "Height": 24,
+            "Height": 15,
             "TextId": "__SingleUse_EA6F",
             "TextRotation": "0",
             "Wildcard1": {
@@ -867,9 +867,9 @@
             "Type": "TextArea",
             "Name": "xAxisLabel1",
             "X": 50,
-            "Y": 255,
+            "Y": 271,
             "Width": 60,
-            "Height": 24,
+            "Height": 15,
             "TextId": "__SingleUse_KJZY",
             "TextRotation": "0",
             "Wildcard1": {
@@ -880,9 +880,23 @@
           },
           {
             "Type": "TextArea",
+            "Name": "yAxisLabel5",
+            "Y": 20,
+            "Width": 43,
+            "Height": 15,
+            "TextId": "__SingleUse_6A1E",
+            "TextRotation": "0",
+            "Wildcard1": {
+              "TextId": "__SingleUse_M7EE",
+              "UseBuffer": true,
+              "BufferSize": 10
+            }
+          },
+          {
+            "Type": "TextArea",
             "Name": "yAxisLabel4",
-            "Y": 72,
-            "Width": 54,
+            "Y": 76,
+            "Width": 43,
             "Height": 15,
             "TextId": "__SingleUse_LVJC",
             "TextRotation": "0",
@@ -895,8 +909,8 @@
           {
             "Type": "TextArea",
             "Name": "yAxisLabel3",
-            "Y": 125,
-            "Width": 54,
+            "Y": 133,
+            "Width": 43,
             "Height": 15,
             "TextId": "__SingleUse_OGDK",
             "TextRotation": "0",
@@ -909,8 +923,8 @@
           {
             "Type": "TextArea",
             "Name": "yAxisLabel2",
-            "Y": 178,
-            "Width": 54,
+            "Y": 190,
+            "Width": 43,
             "Height": 15,
             "TextId": "__SingleUse_IVVH",
             "TextRotation": "0",
@@ -923,9 +937,8 @@
           {
             "Type": "TextArea",
             "Name": "yAxisLabel1",
-            "X": 1,
-            "Y": 230,
-            "Width": 54,
+            "Y": 245,
+            "Width": 43,
             "Height": 15,
             "TextId": "__SingleUse_B3AD",
             "TextRotation": "0",
@@ -938,22 +951,22 @@
           {
             "Type": "Line",
             "Name": "xAxisLine",
-            "X": 54,
-            "Y": 255,
-            "Width": 338,
+            "X": 44,
+            "Y": 271,
+            "Width": 348,
             "Height": 1,
-            "EndX": 338.0,
+            "EndX": 348.0,
             "LineWidth": 10.0,
             "LineEndingStyle": "Round"
           },
           {
             "Type": "Line",
             "Name": "yAxisLine",
-            "X": 54,
+            "X": 44,
             "Y": 25,
             "Width": 1,
-            "Height": 230,
-            "EndY": 230.0,
+            "Height": 246,
+            "EndY": 246.0,
             "LineWidth": 10.0,
             "LineEndingStyle": "Round"
           },
@@ -966,9 +979,7 @@
             "TextId": "__SingleUse_Z071",
             "TextRotation": "0",
             "Wildcard1": {
-              "TextId": "__SingleUse_Q9Z5",
-              "UseBuffer": true,
-              "BufferSize": 16
+              "TextId": "__SingleUse_Q9Z5"
             }
           }
         ],

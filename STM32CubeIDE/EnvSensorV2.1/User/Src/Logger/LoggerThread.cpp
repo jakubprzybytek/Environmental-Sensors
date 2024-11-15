@@ -2,23 +2,25 @@
 
 #include <Logger/LoggerThread.hpp>
 
-#include <EnvSensorConfig.hpp>
-
 #include <AppControllers/AppState.hpp>
-#include <Logger/ReadoutFileLogger.hpp>
 #include <Utils/DebugLog.hpp>
 
-#define LOGGER_INTERVAL (60 * 1000)
+#define INTERVAL LOGGER_INTERVAL
 
 extern AppState appState;
-//extern ReadoutsState readoutsState;
 
 uint32_t loggerThreadBuffer[1024];
 StaticTask_t loggerThreadControlBlock;
 osThreadId_t loggerThreadHandle;
 
+ReadoutFileLogger LoggerThread::readoutFileLogger = ReadoutFileLogger(LOGGER_DIRECTORY);
+
 void LoggerThread::init() {
 	startThread();
+}
+
+void LoggerThread::flush() {
+	LoggerThread::readoutFileLogger.flush();
 }
 
 void LoggerThread::startThread() {
@@ -37,17 +39,16 @@ void LoggerThread::startThread() {
 
 void LoggerThread::thread(void *pvParameters) {
 	ReadoutsState &readoutsState = appState.getReadoutsState();
-	ReadoutFileLogger readoutFileLogger(LOGGER_DIRECTORY);
 
 	uint32_t wakeTime = osKernelGetTickCount();
 
 	LOGGER_RESULT result = LOGGER_OK;
 	while (result == LOGGER_OK) {
 
-		wakeTime += LOGGER_INTERVAL / portTICK_RATE_MS;
+		wakeTime += INTERVAL / portTICK_RATE_MS;
 		osDelayUntil(wakeTime);
 
-		readoutFileLogger.log(readoutsState);
+		LoggerThread::readoutFileLogger.log(readoutsState);
 
 #ifdef LOGGER_TRACE
 		DebugLog::logWithStackHighWaterMark("Logger - stack: ");

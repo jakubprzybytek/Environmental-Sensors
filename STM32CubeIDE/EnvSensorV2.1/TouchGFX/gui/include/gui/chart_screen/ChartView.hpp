@@ -6,11 +6,11 @@
 
 #include <gui/chart_screen/BarsChart.hpp>
 
-#define CHART_AREA_START_X 60
-#define CHART_AREA_WIDTH 320
+#define CHART_AREA_START_X 50
+#define CHART_AREA_WIDTH 346
 
 #define CHART_AREA_START_Y 25
-#define CHART_AREA_HEIGHT 230
+#define CHART_AREA_HEIGHT 246
 
 #define BAR_WIDTH 4
 
@@ -31,12 +31,11 @@ public:
 	void setBottomButtonLabels(const char *button1Label, const char *button2Label, const char *button3Label, const char *button4Label);
 	void setLedLabels(const char *led1Label, const char *led2Label, const char *led3Label, const char *led4Label);
 
-//	void setTitle(SensorName chartSensor);
-//	void setupXAxis(DateTime (&timeSeries)[ChartData::DATA_SERIES_LENGTH], TimeSpan barTimeSpan);
-//	void setupYAxis(DataPoint (&dataSeries)[ChartData::DATA_SERIES_LENGTH], bool (&valid)[ChartData::DATA_SERIES_LENGTH]);
-	void setChartData(DataPoint (&dataSeries)[ChartData::DATA_SERIES_LENGTH], bool (&valid)[ChartData::DATA_SERIES_LENGTH]);
+	void setChartData(ChartData &chartData, SensorName chartSensor, TimeSpan barTimeSpan);
 
 protected:
+
+	void setBars(DataPoint (&dataSeries)[ChartData::DATA_SERIES_LENGTH], bool (&valid)[ChartData::DATA_SERIES_LENGTH]);
 };
 
 #endif // CHARTVIEW_HPP

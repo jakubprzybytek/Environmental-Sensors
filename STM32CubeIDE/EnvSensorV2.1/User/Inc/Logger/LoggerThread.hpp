@@ -8,13 +8,22 @@
 #ifndef INC_LOGGER_THREAD_HPP_
 #define INC_LOGGER_THREAD_HPP_
 
+#include <EnvSensorConfig.hpp>
+
+#include <Logger/ReadoutFileLogger.hpp>
+
 class LoggerThread {
 
 public:
 	static void init();
 
+	static void flush();
+
 private:
+	static ReadoutFileLogger readoutFileLogger;
+
 	static void startThread();
+
 	static void thread(void *pvParameters);
 };
 

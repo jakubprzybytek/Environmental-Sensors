@@ -99,7 +99,7 @@ const char* ReadoutsCsvFormat::parseEnvState(const char *lineBuffer, ReadoutsSta
 
 	readout.bmeTemperature = strtof(nextValue, &nextValue);
 	nextValue++;
-	readout.bmeTemperature = strtof(nextValue, &nextValue);
+	readout.bmePressure = strtof(nextValue, &nextValue);
 	nextValue++;
 	readout.bmeHumidity = strtof(nextValue, &nextValue);
 	nextValue++;
@@ -118,17 +118,6 @@ const char* ReadoutsCsvFormat::parseEnvState(const char *lineBuffer, ReadoutsSta
 	readout.pm4 = strtol(nextValue, &nextValue, 10);
 	nextValue++;
 	readout.pm10 = strtol(nextValue, &nextValue, 10);
-
-/*
-	readout.pm1 = atoi(nextValue);
-	nextValue += strlen(nextValue);
-	readout.pm2_5 = atoi(nextValue);
-	nextValue += strlen(nextValue);
-	readout.pm4 = atoi(nextValue);
-	nextValue += strlen(nextValue);
-	readout.pm10 = atoi(nextValue);
-	nextValue += strlen(nextValue);
-*/
 
 	return ++nextValue;
 }

@@ -18,7 +18,7 @@ bool BufferedReader::close() {
 
 const char* BufferedReader::readLine() {
 	if (lineEnd == NULL) {
-		toRead = READ_BUFFER_SIZE;
+		toRead = BUFFER_SIZE;
 		if (!fileReader.read(readBuffer, toRead, &bytesRead)) {
 			return NULL;
 		}
@@ -39,10 +39,12 @@ const char* BufferedReader::readLine() {
 		return NULL;
 	}
 
-	uint16_t lastLineFragmentSize = readBuffer + READ_BUFFER_SIZE - lineStart;
+	//memset(readBuffer, 0, 200);
+
+	uint16_t lastLineFragmentSize = readBuffer + BUFFER_SIZE - lineStart;
 	strncpy(readBuffer, lineStart, lastLineFragmentSize);
 
-	toRead = READ_BUFFER_SIZE - lastLineFragmentSize;
+	toRead = BUFFER_SIZE - lastLineFragmentSize;
 	if (!fileReader.read(readBuffer + lastLineFragmentSize, toRead, &bytesRead)) {
 		return NULL;
 	}

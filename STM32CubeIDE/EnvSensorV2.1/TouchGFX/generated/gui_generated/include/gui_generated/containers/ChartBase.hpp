@@ -29,6 +29,7 @@ protected:
     touchgfx::TextAreaWithOneWildcard xAxisLabel3;
     touchgfx::TextAreaWithOneWildcard xAxisLabel2;
     touchgfx::TextAreaWithOneWildcard xAxisLabel1;
+    touchgfx::TextAreaWithOneWildcard yAxisLabel5;
     touchgfx::TextAreaWithOneWildcard yAxisLabel4;
     touchgfx::TextAreaWithOneWildcard yAxisLabel3;
     touchgfx::TextAreaWithOneWildcard yAxisLabel2;
@@ -50,6 +51,8 @@ protected:
     touchgfx::Unicode::UnicodeChar xAxisLabel2Buffer[XAXISLABEL2_SIZE];
     static const uint16_t XAXISLABEL1_SIZE = 10;
     touchgfx::Unicode::UnicodeChar xAxisLabel1Buffer[XAXISLABEL1_SIZE];
+    static const uint16_t YAXISLABEL5_SIZE = 10;
+    touchgfx::Unicode::UnicodeChar yAxisLabel5Buffer[YAXISLABEL5_SIZE];
     static const uint16_t YAXISLABEL4_SIZE = 10;
     touchgfx::Unicode::UnicodeChar yAxisLabel4Buffer[YAXISLABEL4_SIZE];
     static const uint16_t YAXISLABEL3_SIZE = 10;
@@ -58,8 +61,6 @@ protected:
     touchgfx::Unicode::UnicodeChar yAxisLabel2Buffer[YAXISLABEL2_SIZE];
     static const uint16_t YAXISLABEL1_SIZE = 10;
     touchgfx::Unicode::UnicodeChar yAxisLabel1Buffer[YAXISLABEL1_SIZE];
-    static const uint16_t TITLETEXTAREA_SIZE = 16;
-    touchgfx::Unicode::UnicodeChar titleTextAreaBuffer[TITLETEXTAREA_SIZE];
 
 private:
 

@@ -4,6 +4,7 @@
 
 FONT_TABLE_LOCATION_FLASH_PRAGMA
 KEEP extern const touchgfx::GlyphNode glyphs_segoeui_20_2bpp[] FONT_TABLE_LOCATION_FLASH_ATTRIBUTE = {
+    {     0, 0x0020,   0,   0,   0,   0,   5,   0,   0, 0x00 },
     {     0, 0x0025,  16,  14,  14,   0,  16,   0,   0, 0x00 },
     {    56, 0x002E,   2,   2,   2,   1,   4,   0,   7, 0x00 },
     {    57, 0x0030,   9,  14,  14,   1,  11,   0,   0, 0x00 },
@@ -217,6 +218,6 @@ touchgfx::GeneratedFont& getFont_segoeui_20_2bpp();
 
 touchgfx::GeneratedFont& getFont_segoeui_20_2bpp()
 {
-    static touchgfx::GeneratedFont segoeui_20_2bpp(glyphs_segoeui_20_2bpp, 40, 24, 20, 0, 0, 2, 0, 0, 0, unicodes_segoeui_20_2bpp, kerning_segoeui_20_2bpp, 63, 0, 0, &segoeui_contextualFormsTable);
+    static touchgfx::GeneratedFont segoeui_20_2bpp(glyphs_segoeui_20_2bpp, 41, 24, 20, 0, 0, 2, 0, 0, 0, unicodes_segoeui_20_2bpp, kerning_segoeui_20_2bpp, 63, 0, 0, &segoeui_contextualFormsTable);
     return segoeui_20_2bpp;
 }

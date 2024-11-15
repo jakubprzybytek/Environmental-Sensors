@@ -1,8 +1,10 @@
 #include <touchgfx/widgets/canvas/Canvas.hpp>
 
+#include <algorithm>
 #include <gui/chart_screen/BarsChart.hpp>
 
 using namespace touchgfx;
+using namespace std;
 
 void BarsChart::setChartData(DataPoint (&dataSeries)[ChartData::DATA_SERIES_LENGTH], bool (&valid)[ChartData::DATA_SERIES_LENGTH]) {
 	float min, max;
@@ -20,10 +22,17 @@ void BarsChart::setChartData(DataPoint (&dataSeries)[ChartData::DATA_SERIES_LENG
 				barX[i] = (width - barWidth) * i / (CHART_BARS - 1);
 				barMaxY[i] = height * (max - dataSeries[i].max) / delta;
 				barHeight[i] = height * (dataSeries[i].max - dataSeries[i].min) / delta;
+
+				if (barHeight[i] == 0) {
+					barMaxY[i] -= barWidth / 2;
+					barHeight[i] = barWidth;
+				}
 			} else {
 				barVisible[i] = false;
 			}
 		}
+
+//		gridYLine[0] =
 	} else {
 		for (uint8_t i = 0; i < CHART_BARS; i++) {
 			barVisible[i] = false;
@@ -47,6 +56,10 @@ bool BarsChart::drawCanvasWidget(const Rect &invalidatedArea) const {
 			canvas.lineTo(barX[i], barMaxY[i]);
 		}
 	}
+
+//	for (uint8_t i = 0; i < CHART_BARS; i++) {
+//		if (tim)
+//	}
 
 	return canvas.render();
 }

@@ -1,10 +1,9 @@
+#include <Logger/SD/BufferedWriter.hpp>
 #include "stm32l4xx_hal.h"
 #include "cmsis_os.h"
 
 #include <string.h>
 #include <stdlib.h>
-
-#include <Logger/SD/FileLogger.hpp>
 
 #include <Logger/SD/SdCard.hpp>
 #include <Logger/SD/SpeedTest.hpp>
@@ -72,9 +71,9 @@ void SdCardInspector::thread(void *pvParameters) {
 
 	//free(buffer);
 
-	FileLogger logger1("test2.log");
-	logger1.logLine((char*) "Hello world, line 1\n");
-	logger1.logLine((char*) "Eat my shorts, line 2\n");
+	BufferedWriter logger1("test2.log");
+	logger1.writeLine((char*) "Hello world, line 1\n");
+	logger1.writeLine((char*) "Eat my shorts, line 2\n");
 	logger1.flush();
 
 	osThreadExit();

@@ -10,7 +10,9 @@
 
 #include <Logger/SD/FileReader.hpp>
 
-#define READ_BUFFER_SIZE 2048
+#include <EnvSensorConfig.hpp>
+
+#define BUFFER_SIZE LOGGER_READER_BUFFER_SIZE
 
 class BufferedReader {
 
@@ -20,7 +22,7 @@ private:
 	uint16_t toRead;
 	uint32_t bytesRead;
 
-	char readBuffer[READ_BUFFER_SIZE + 1];
+	char readBuffer[BUFFER_SIZE + 1];
 	char *lineStart;
 	char *lineEnd;
 

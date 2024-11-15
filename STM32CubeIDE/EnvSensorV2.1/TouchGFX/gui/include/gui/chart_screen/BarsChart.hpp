@@ -16,6 +16,8 @@ private:
 	uint16_t height;
 	uint8_t barWidth;
 
+	uint16_t gridYLine[5];
+
 	bool barVisible[CHART_BARS];
 	uint16_t barX[CHART_BARS];
 	uint16_t barMaxY[CHART_BARS];
@@ -29,7 +31,7 @@ public:
 	virtual Rect getMinimalRect() const;
 	virtual bool drawCanvasWidget(const Rect &invalidatedArea) const;
 
-	void setChartData(DataPoint (&dataSeries)[ChartData::DATA_SERIES_LENGTH], bool (&valid)[ChartData::DATA_SERIES_LENGTH]);
+	void setChartData(DataPoint (&dataSeries)[CHART_BARS], bool (&valid)[CHART_BARS]);
 };
 
 #endif // BARS_HPP

@@ -15,8 +15,8 @@
 
 #include <Readouts/DataSeries/ChartDataLoader.hpp>
 
+#include <Logger/LoggerThread.hpp>
 #include <Time/RtcUtils.hpp>
-
 #include <Utils/DebugLog.hpp>
 
 extern AppState appState;
@@ -26,9 +26,15 @@ extern DisplayReadouts displayReadouts;
 void Charts::loadChartData() {
 	uint32_t start = HAL_GetTick();
 
+	LoggerThread::flush();
+
 	DateTime now = RtcUtils::getCurrentDateTime();
-	ChartData chartData = appState.getChartData();
-	ChartDataLoader::load(chartData, LOGGER_DIRECTORY, now, TimeSpan::Hour);
+	ChartDataLoader::load(appState.getChartData(), LOGGER_DIRECTORY, now, appState.getCurrentTimeSpan());
+
+	for (uint8_t i =0; i < ChartData::DATA_SERIES_LENGTH; i++) {
+		appState.getChartData().humiditySeries[i].min = i % 10;
+		appState.getChartData().humiditySeries[i].max = i % 10 + 1;
+	}
 
 	uint32_t end = HAL_GetTick();
 

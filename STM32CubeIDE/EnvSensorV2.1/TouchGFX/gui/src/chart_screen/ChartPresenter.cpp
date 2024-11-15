@@ -20,25 +20,26 @@ void ChartPresenter::notifyLedLabelsChanged(const char *led1Label, const char *l
 }
 
 void ChartPresenter::notifyChartDataChanged(ChartData &chartData, SensorName chartSensor, TimeSpan barTimeSpan) {
+	view.setChartData(chartData, chartSensor, barTimeSpan);
 //	view.setTitle(chartSensor);
-//	view.setupXAxis(chartData.timeSeries, barTimeSpan);
-
-	switch (chartSensor) {
-	case SensorName::CO2:
-//		view.setupYAxis(chartData.co2Series, chartData.valid);
-		view.setChartData(chartData.co2Series, chartData.valid);
-		break;
-	case SensorName::Pressure:
-//		view.setupYAxis(chartData.pressureSeries, chartData.valid);
-		view.setChartData(chartData.pressureSeries, chartData.valid);
-		break;
-	case SensorName::Temperature:
-//		view.setupYAxis(chartData.temperatureSeries, chartData.valid);
-		view.setChartData(chartData.temperatureSeries, chartData.valid);
-		break;
-	case SensorName::Humidity:
-//		view.setupYAxis(chartData.humiditySeries, chartData.valid);
-		view.setChartData(chartData.humiditySeries, chartData.valid);
-		break;
-	}
+////	view.setupXAxis(chartData.timeSeries, barTimeSpan);
+//
+//	switch (chartSensor) {
+//	case SensorName::CO2:
+////		view.setupYAxis(chartData.co2Series, chartData.valid);
+//		view.setChartData(chartData.co2Series, chartData.valid);
+//		break;
+//	case SensorName::Pressure:
+////		view.setupYAxis(chartData.pressureSeries, chartData.valid);
+//		view.setChartData(chartData.pressureSeries, chartData.valid);
+//		break;
+//	case SensorName::Temperature:
+////		view.setupYAxis(chartData.temperatureSeries, chartData.valid);
+//		view.setChartData(chartData.temperatureSeries, chartData.valid);
+//		break;
+//	case SensorName::Humidity:
+////		view.setupYAxis(chartData.humiditySeries, chartData.valid);
+//		view.setChartData(chartData.humiditySeries, chartData.valid);
+//		break;
+//	}
 }

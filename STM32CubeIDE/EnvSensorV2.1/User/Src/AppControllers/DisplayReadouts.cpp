@@ -31,7 +31,7 @@ DisplayReadouts::DisplayReadouts() {
 //}
 
 void DisplayReadouts::onEnter() {
-	appState.setButtonLabels("Clear", "Refresh", "Particles", "Settings");
+	appState.setButtonLabels("Clear", "Refresh", "History", "Settings");
 
 //	osTimerStart(this->screenRefreshTimerId, 3000 / portTICK_RATE_MS);
 

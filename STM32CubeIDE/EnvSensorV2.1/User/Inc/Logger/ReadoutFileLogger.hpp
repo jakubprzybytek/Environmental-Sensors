@@ -8,8 +8,7 @@
 #ifndef INC_LOGGER_READOUTFILELOGGER_HPP_
 #define INC_LOGGER_READOUTFILELOGGER_HPP_
 
-#include <Logger/SD/FileLogger.hpp>
-
+#include <Logger/SD/BufferedWriter.hpp>
 #include <Time/DateTime.hpp>
 #include <Readouts/ReadoutsState.hpp>
 
@@ -18,16 +17,14 @@
 
 class ReadoutFileLogger {
 
+private:
 	DateTime lastDateTime;
 
 	char logFileName[LOG_FILE_NAME_BUFFER_SIZE];
 	char logMessageBuffer[LOG_MESSAGE_BUFFER_SIZE];
 
 	const char *directory;
-	FileLogger fileLogger;
-
-//	void getLogFileName(char *buffer, DateTime dateTime);
-//	bool isSameLogFile(DateTime first, DateTime second);
+	BufferedWriter fileLogger;
 
 public:
 	ReadoutFileLogger(const char *_directory) :
@@ -35,6 +32,8 @@ public:
 	}
 
 	LOGGER_RESULT log(ReadoutsState &readoutState);
+
+	void flush();
 };
 
 #endif /* INC_LOGGER_READOUTFILELOGGER_HPP_ */
