@@ -54,6 +54,13 @@ void ChartDataLoader::setupTimeSeries(ChartData &chartData, DateTime &referenceD
 			chartData.timeSeries[i] = chartData.timeSeries[i + 1].minusHours(1);
 		}
 		break;
+	case TimeSpan::Hours6:
+		chartData.timeSeries[ChartData::DATA_SERIES_LENGTH - 1] = DateTime(referenceDateTime.year, referenceDateTime.month, referenceDateTime.day,
+				referenceDateTime.hour, 0, 0);
+		for (int8_t i = ChartData::DATA_SERIES_LENGTH - 2; i >= 0; i--) {
+			chartData.timeSeries[i] = chartData.timeSeries[i + 1].minusHours(6);
+		}
+		break;
 	case TimeSpan::Day:
 		chartData.timeSeries[ChartData::DATA_SERIES_LENGTH - 1] = DateTime(referenceDateTime.year, referenceDateTime.month, referenceDateTime.day, 0, 0, 0);
 		for (int8_t i = ChartData::DATA_SERIES_LENGTH - 2; i >= 0; i--) {
@@ -64,8 +71,6 @@ void ChartDataLoader::setupTimeSeries(ChartData &chartData, DateTime &referenceD
 }
 
 bool ChartDataLoader::load(ChartData &chartData, const char *directory, DateTime &referenceDateTime, TimeSpan barTimeSpan) {
-
-//	LED_ON;
 
 	setupTimeSeries(chartData, referenceDateTime, barTimeSpan);
 
@@ -114,8 +119,6 @@ bool ChartDataLoader::load(ChartData &chartData, const char *directory, DateTime
 		// end of file means next bar
 		barIndex++;
 	}
-
-//	LED_OFF;
 
 	return true;
 }

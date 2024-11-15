@@ -64,6 +64,9 @@ void Charts::toggleTimeSpan() {
 		appState.setCurrentTimeSpan(TimeSpan::Hour);
 		break;
 	case TimeSpan::Hour:
+		appState.setCurrentTimeSpan(TimeSpan::Hours6);
+		break;
+	case TimeSpan::Hours6:
 		appState.setCurrentTimeSpan(TimeSpan::Day);
 		break;
 	case TimeSpan::Day:

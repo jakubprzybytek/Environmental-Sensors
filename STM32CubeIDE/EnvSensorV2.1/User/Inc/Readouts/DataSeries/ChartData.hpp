@@ -13,7 +13,7 @@
 #include "Time/DateTime.hpp"
 
 enum class TimeSpan {
-	Minutes5, Hour, Day
+	Minutes5, Hour, Hours6, Day
 };
 
 class DataPoint {

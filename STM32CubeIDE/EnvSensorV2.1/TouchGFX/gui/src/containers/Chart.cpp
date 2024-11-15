@@ -31,6 +31,7 @@ void Chart::formatTime(touchgfx::Unicode::UnicodeChar *buffer, uint8_t bufferSiz
 	switch (barTimeSpan) {
 	case TimeSpan::Minutes5:
 	case TimeSpan::Hour:
+	case TimeSpan::Hours6:
 		Unicode::snprintf(buffer, bufferSize, "%02d:%02d", dateTime.hour, dateTime.minutes);
 		break;
 	case TimeSpan::Day:
