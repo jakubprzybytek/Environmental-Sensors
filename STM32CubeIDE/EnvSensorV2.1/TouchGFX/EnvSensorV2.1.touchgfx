@@ -163,7 +163,8 @@
       },
       {
         "Name": "Chart",
-        "CanvasBufferSize": 6000,
+        "OverrideDefaultBufferSize": true,
+        "CanvasBufferSize": 18000,
         "Components": [
           {
             "Type": "Box",
@@ -820,9 +821,21 @@
         "Components": [
           {
             "Type": "TextArea",
+            "Name": "noDataTextArea",
+            "X": 185,
+            "Y": 124,
+            "Width": 73,
+            "Height": 24,
+            "Visible": false,
+            "TextId": "__SingleUse_LTM8",
+            "TextRotation": "0",
+            "AutoSize": true
+          },
+          {
+            "Type": "TextArea",
             "Name": "xAxisLabel4",
-            "X": 336,
-            "Y": 271,
+            "X": 338,
+            "Y": 272,
             "Width": 60,
             "Height": 15,
             "TextId": "__SingleUse_TVWD",
@@ -830,14 +843,14 @@
             "Wildcard1": {
               "TextId": "__SingleUse_C1AW",
               "UseBuffer": true,
-              "BufferSize": 10
+              "BufferSize": 12
             }
           },
           {
             "Type": "TextArea",
             "Name": "xAxisLabel3",
-            "X": 241,
-            "Y": 271,
+            "X": 250,
+            "Y": 272,
             "Width": 60,
             "Height": 15,
             "TextId": "__SingleUse_413C",
@@ -845,14 +858,14 @@
             "Wildcard1": {
               "TextId": "__SingleUse_EENB",
               "UseBuffer": true,
-              "BufferSize": 10
+              "BufferSize": 12
             }
           },
           {
             "Type": "TextArea",
             "Name": "xAxisLabel2",
-            "X": 146,
-            "Y": 271,
+            "X": 136,
+            "Y": 272,
             "Width": 60,
             "Height": 15,
             "TextId": "__SingleUse_EA6F",
@@ -860,14 +873,14 @@
             "Wildcard1": {
               "TextId": "__SingleUse_9ED7",
               "UseBuffer": true,
-              "BufferSize": 10
+              "BufferSize": 12
             }
           },
           {
             "Type": "TextArea",
             "Name": "xAxisLabel1",
-            "X": 50,
-            "Y": 271,
+            "X": 48,
+            "Y": 272,
             "Width": 60,
             "Height": 15,
             "TextId": "__SingleUse_KJZY",
@@ -875,7 +888,7 @@
             "Wildcard1": {
               "TextId": "__SingleUse_RF7F",
               "UseBuffer": true,
-              "BufferSize": 10
+              "BufferSize": 12
             }
           },
           {
@@ -950,12 +963,56 @@
           },
           {
             "Type": "Line",
+            "Name": "xAxisUnitLine4",
+            "X": 392,
+            "Y": 268,
+            "Width": 1,
+            "Height": 7,
+            "EndY": 7.0,
+            "LineWidth": 2.0,
+            "LineEndingStyle": "Round"
+          },
+          {
+            "Type": "Line",
+            "Name": "xAxisUnitLine3",
+            "X": 278,
+            "Y": 268,
+            "Width": 1,
+            "Height": 7,
+            "EndY": 7.0,
+            "LineWidth": 2.0,
+            "LineEndingStyle": "Round"
+          },
+          {
+            "Type": "Line",
+            "Name": "xAxisUnitLine2",
+            "X": 164,
+            "Y": 268,
+            "Width": 1,
+            "Height": 7,
+            "EndY": 7.0,
+            "LineWidth": 2.0,
+            "LineEndingStyle": "Round"
+          },
+          {
+            "Type": "Line",
+            "Name": "xAxisUnitLine1",
+            "X": 50,
+            "Y": 268,
+            "Width": 1,
+            "Height": 7,
+            "EndY": 7.0,
+            "LineWidth": 2.0,
+            "LineEndingStyle": "Round"
+          },
+          {
+            "Type": "Line",
             "Name": "xAxisLine",
             "X": 44,
             "Y": 271,
-            "Width": 348,
+            "Width": 354,
             "Height": 1,
-            "EndX": 348.0,
+            "EndX": 354.0,
             "LineWidth": 10.0,
             "LineEndingStyle": "Round"
           },

@@ -9,7 +9,14 @@ ChartBase::ChartBase()
 {
     setWidth(400);
     setHeight(287);
-    xAxisLabel4.setPosition(336, 271, 60, 15);
+    noDataTextArea.setXY(185, 124);
+    noDataTextArea.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+    noDataTextArea.setLinespacing(0);
+    noDataTextArea.setTypedText(touchgfx::TypedText(T___SINGLEUSE_LTM8));
+    noDataTextArea.setVisible(false);
+    add(noDataTextArea);
+
+    xAxisLabel4.setPosition(338, 272, 60, 15);
     xAxisLabel4.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     xAxisLabel4.setLinespacing(0);
     Unicode::snprintf(xAxisLabel4Buffer, XAXISLABEL4_SIZE, "%s", touchgfx::TypedText(T___SINGLEUSE_C1AW).getText());
@@ -17,7 +24,7 @@ ChartBase::ChartBase()
     xAxisLabel4.setTypedText(touchgfx::TypedText(T___SINGLEUSE_TVWD));
     add(xAxisLabel4);
 
-    xAxisLabel3.setPosition(241, 271, 60, 15);
+    xAxisLabel3.setPosition(250, 272, 60, 15);
     xAxisLabel3.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     xAxisLabel3.setLinespacing(0);
     Unicode::snprintf(xAxisLabel3Buffer, XAXISLABEL3_SIZE, "%s", touchgfx::TypedText(T___SINGLEUSE_EENB).getText());
@@ -25,7 +32,7 @@ ChartBase::ChartBase()
     xAxisLabel3.setTypedText(touchgfx::TypedText(T___SINGLEUSE_413C));
     add(xAxisLabel3);
 
-    xAxisLabel2.setPosition(146, 271, 60, 15);
+    xAxisLabel2.setPosition(136, 272, 60, 15);
     xAxisLabel2.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     xAxisLabel2.setLinespacing(0);
     Unicode::snprintf(xAxisLabel2Buffer, XAXISLABEL2_SIZE, "%s", touchgfx::TypedText(T___SINGLEUSE_9ED7).getText());
@@ -33,7 +40,7 @@ ChartBase::ChartBase()
     xAxisLabel2.setTypedText(touchgfx::TypedText(T___SINGLEUSE_EA6F));
     add(xAxisLabel2);
 
-    xAxisLabel1.setPosition(50, 271, 60, 15);
+    xAxisLabel1.setPosition(48, 272, 60, 15);
     xAxisLabel1.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     xAxisLabel1.setLinespacing(0);
     Unicode::snprintf(xAxisLabel1Buffer, XAXISLABEL1_SIZE, "%s", touchgfx::TypedText(T___SINGLEUSE_RF7F).getText());
@@ -81,11 +88,47 @@ ChartBase::ChartBase()
     yAxisLabel1.setTypedText(touchgfx::TypedText(T___SINGLEUSE_B3AD));
     add(yAxisLabel1);
 
-    xAxisLine.setPosition(44, 271, 348, 1);
+    xAxisUnitLine4.setPosition(392, 268, 1, 7);
+    xAxisUnitLine4Painter.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+    xAxisUnitLine4.setPainter(xAxisUnitLine4Painter);
+    xAxisUnitLine4.setStart(0, 0);
+    xAxisUnitLine4.setEnd(0, 7);
+    xAxisUnitLine4.setLineWidth(2);
+    xAxisUnitLine4.setLineEndingStyle(touchgfx::Line::ROUND_CAP_ENDING);
+    add(xAxisUnitLine4);
+
+    xAxisUnitLine3.setPosition(278, 268, 1, 7);
+    xAxisUnitLine3Painter.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+    xAxisUnitLine3.setPainter(xAxisUnitLine3Painter);
+    xAxisUnitLine3.setStart(0, 0);
+    xAxisUnitLine3.setEnd(0, 7);
+    xAxisUnitLine3.setLineWidth(2);
+    xAxisUnitLine3.setLineEndingStyle(touchgfx::Line::ROUND_CAP_ENDING);
+    add(xAxisUnitLine3);
+
+    xAxisUnitLine2.setPosition(164, 268, 1, 7);
+    xAxisUnitLine2Painter.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+    xAxisUnitLine2.setPainter(xAxisUnitLine2Painter);
+    xAxisUnitLine2.setStart(0, 0);
+    xAxisUnitLine2.setEnd(0, 7);
+    xAxisUnitLine2.setLineWidth(2);
+    xAxisUnitLine2.setLineEndingStyle(touchgfx::Line::ROUND_CAP_ENDING);
+    add(xAxisUnitLine2);
+
+    xAxisUnitLine1.setPosition(50, 268, 1, 7);
+    xAxisUnitLine1Painter.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+    xAxisUnitLine1.setPainter(xAxisUnitLine1Painter);
+    xAxisUnitLine1.setStart(0, 0);
+    xAxisUnitLine1.setEnd(0, 7);
+    xAxisUnitLine1.setLineWidth(2);
+    xAxisUnitLine1.setLineEndingStyle(touchgfx::Line::ROUND_CAP_ENDING);
+    add(xAxisUnitLine1);
+
+    xAxisLine.setPosition(44, 271, 354, 1);
     xAxisLinePainter.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     xAxisLine.setPainter(xAxisLinePainter);
     xAxisLine.setStart(0, 0);
-    xAxisLine.setEnd(348, 0);
+    xAxisLine.setEnd(354, 0);
     xAxisLine.setLineWidth(10);
     xAxisLine.setLineEndingStyle(touchgfx::Line::ROUND_CAP_ENDING);
     add(xAxisLine);

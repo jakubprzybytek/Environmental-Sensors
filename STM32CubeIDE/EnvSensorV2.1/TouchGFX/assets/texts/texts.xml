@@ -19,6 +19,9 @@
       </Text>
     </TextGroup>
     <TextGroup Id="Unsorted">
+      <Text Id="__SingleUse_LTM8" Alignment="Center" TypographyId="Default">
+        <Translation Language="GB">No Data</Translation>
+      </Text>
       <Text Id="__SingleUse_M7EE" Alignment="Left" TypographyId="Small">
         <Translation Language="GB">label</Translation>
       </Text>
@@ -31,7 +34,7 @@
       <Text Id="__SingleUse_RF7F" Alignment="Left" TypographyId="Small">
         <Translation Language="GB">label</Translation>
       </Text>
-      <Text Id="__SingleUse_KJZY" Alignment="Center" TypographyId="Small">
+      <Text Id="__SingleUse_KJZY" Alignment="Left" TypographyId="Small">
         <Translation Language="GB">&lt;value&gt;</Translation>
       </Text>
       <Text Id="__SingleUse_9ED7" Alignment="Left" TypographyId="Small">
@@ -49,7 +52,7 @@
       <Text Id="__SingleUse_C1AW" Alignment="Left" TypographyId="Small">
         <Translation Language="GB">label</Translation>
       </Text>
-      <Text Id="__SingleUse_TVWD" Alignment="Center" TypographyId="Small">
+      <Text Id="__SingleUse_TVWD" Alignment="Right" TypographyId="Small">
         <Translation Language="GB">&lt;value&gt;</Translation>
       </Text>
       <Text Id="__SingleUse_7K92" Alignment="Left" TypographyId="Small">
@@ -315,7 +318,7 @@
   <Typographies>
     <Typography Id="Default" Font="segoeui.ttf" Size="20" Bpp="4" IsVector="no" Direction="LTR" FallbackCharacter="?" WildcardCharacters="." WildcardCharacterRanges="0-9" />
     <Typography Id="Large" Font="segoeuil.ttf" Size="66" Bpp="4" IsVector="no" Direction="LTR" FallbackCharacter="?" WildcardCharacters="." WildcardCharacterRanges="0-9" />
-    <Typography Id="Small" Font="seguisb.ttf" Size="12" Bpp="4" IsVector="no" Direction="LTR" FallbackCharacter="?" WildcardCharacters="+-.:" WildcardCharacterRanges="a-z,A-Z,0-9" />
+    <Typography Id="Small" Font="seguisb.ttf" Size="12" Bpp="4" IsVector="no" Direction="LTR" FallbackCharacter="?" WildcardCharacters="+-.: " WildcardCharacterRanges="a-z,A-Z,0-9" />
     <Typography Id="XLarge" Font="segoeuil.ttf" Size="96" Bpp="4" IsVector="no" Direction="LTR" FallbackCharacter="?" WildcardCharacters="." WildcardCharacterRanges="0-9" />
     <Typography Id="MonospaceMedium" Font="cour.ttf" Size="48" Bpp="4" IsVector="no" Direction="LTR" FallbackCharacter="?" WildcardCharacters=":." WildcardCharacterRanges="0-9" />
   </Typographies>

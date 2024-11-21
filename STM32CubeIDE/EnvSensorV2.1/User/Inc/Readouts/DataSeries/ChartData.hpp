@@ -27,7 +27,7 @@ public:
 class ChartData {
 
 public:
-	static const uint8_t DATA_SERIES_LENGTH = 32;
+	static const uint8_t DATA_SERIES_LENGTH = 37;
 
 	bool valid[DATA_SERIES_LENGTH];
 

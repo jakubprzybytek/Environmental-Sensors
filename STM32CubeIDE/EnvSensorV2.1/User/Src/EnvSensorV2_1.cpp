@@ -37,7 +37,7 @@ void EnvSensorV2_1_Init() {
 //	DateTime now(24, 10, 24, 20, 01, 30);
 //	RtcUtils::updateDateTime(now);
 
-	SdCardInspector::init();
+//	SdCardInspector::init();
 
 	BlinkingLeds::init();
 

@@ -30,11 +30,11 @@ void Charts::loadChartData() {
 
 	DateTime now = RtcUtils::getCurrentDateTime();
 	ChartDataLoader::load(appState.getChartData(), LOGGER_DIRECTORY, now, appState.getCurrentTimeSpan());
-
-	for (uint8_t i =0; i < ChartData::DATA_SERIES_LENGTH; i++) {
-		appState.getChartData().humiditySeries[i].min = i % 10;
-		appState.getChartData().humiditySeries[i].max = i % 10 + 1;
-	}
+//
+//	for (uint8_t i =0; i < ChartData::DATA_SERIES_LENGTH; i++) {
+//		appState.getChartData().humiditySeries[i].min = i % 10;
+//		appState.getChartData().humiditySeries[i].max = i % 10 + 1;
+//	}
 
 	uint32_t end = HAL_GetTick();
 

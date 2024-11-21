@@ -4,6 +4,7 @@
 
 FONT_TABLE_LOCATION_FLASH_PRAGMA
 KEEP extern const touchgfx::GlyphNode glyphs_seguisb_12_2bpp[] FONT_TABLE_LOCATION_FLASH_ATTRIBUTE = {
+    {     0, 0x0020,   0,   0,   0,   0,   3,   0,   0, 0x00 },
     {     0, 0x002B,   6,   6,   6,   1,   8,   0,   0, 0x00 },
     {     9, 0x002D,   3,   1,   4,   1,   5,   0,   0, 0x00 },
     {    10, 0x002E,   2,   2,   2,   0,   3,   0,   4, 0x00 },
@@ -249,6 +250,6 @@ touchgfx::GeneratedFont& getFont_seguisb_12_2bpp();
 
 touchgfx::GeneratedFont& getFont_seguisb_12_2bpp()
 {
-    static touchgfx::GeneratedFont seguisb_12_2bpp(glyphs_seguisb_12_2bpp, 72, 15, 12, 0, 0, 2, 0, 1, 1, unicodes_seguisb_12_2bpp, kerning_seguisb_12_2bpp, 63, 0, 0, &seguisb_contextualFormsTable);
+    static touchgfx::GeneratedFont seguisb_12_2bpp(glyphs_seguisb_12_2bpp, 73, 15, 12, 0, 0, 2, 0, 1, 1, unicodes_seguisb_12_2bpp, kerning_seguisb_12_2bpp, 63, 0, 0, &seguisb_contextualFormsTable);
     return seguisb_12_2bpp;
 }

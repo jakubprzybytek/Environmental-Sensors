@@ -52,7 +52,8 @@
     <ClCompile Include="..\..\gui\src\chart_screen\ChartPresenter.cpp"/>
     <ClCompile Include="..\..\gui\src\chart_screen\ChartView.cpp"/>
     <ClCompile Include="..\..\generated\gui_generated\src\chart_screen\ChartViewBase.cpp"/>
-    <ClCompile Include="..\..\gui\src\chart_screen\BarsChart.cpp"/>
+    <ClCompile Include="..\..\gui\src\chart_screen\BarChart.cpp"/>
+    <ClCompile Include="..\..\gui\src\chart_screen\Scale.cpp"/>
   </ItemGroup>
   <ItemGroup>
     <None Include="$(ApplicationRoot)\assets\texts\texts.xml"/>
@@ -234,7 +235,8 @@
     <ClInclude Include="..\..\gui\include\gui\chart_screen\ChartPresenter.hpp"/>
     <ClInclude Include="..\..\gui\include\gui\chart_screen\ChartView.hpp"/>
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\chart_screen\ChartViewBase.hpp"/>
-    <ClInclude Include="..\..\gui\include\gui\chart_screen\BarsChart.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\chart_screen\BarChart.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\chart_screen\Scale.hpp"/>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="$(ApplicationRoot)\generated\simulator\touchgfx.rc"/>

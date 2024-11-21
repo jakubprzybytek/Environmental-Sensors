@@ -2,6 +2,8 @@
 
 FONT_GLYPH_LOCATION_FLASH_PRAGMA
 KEEP extern const uint8_t unicodes_seguisb_12_2bpp_0[] FONT_GLYPH_LOCATION_FLASH_ATTRIBUTE = {
+    // Unicode: [0x0020]
+    // (Has no glyph data)
     // Unicode: [0x002B]
     0x90, 0x00, 0x09, 0xFE, 0x0F, 0x09, 0x90, 0x00, 0x04,
     // Unicode: [0x002D]

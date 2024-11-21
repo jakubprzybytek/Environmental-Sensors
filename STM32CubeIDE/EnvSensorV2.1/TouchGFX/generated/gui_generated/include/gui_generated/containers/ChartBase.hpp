@@ -6,6 +6,7 @@
 
 #include <gui/common/FrontendApplication.hpp>
 #include <touchgfx/containers/Container.hpp>
+#include <touchgfx/widgets/TextArea.hpp>
 #include <touchgfx/widgets/TextAreaWithWildcard.hpp>
 #include <touchgfx/widgets/canvas/Line.hpp>
 #include <touchgfx/widgets/canvas/PainterGRAY2.hpp>
@@ -25,6 +26,7 @@ protected:
     /*
      * Member Declarations
      */
+    touchgfx::TextArea noDataTextArea;
     touchgfx::TextAreaWithOneWildcard xAxisLabel4;
     touchgfx::TextAreaWithOneWildcard xAxisLabel3;
     touchgfx::TextAreaWithOneWildcard xAxisLabel2;
@@ -34,6 +36,14 @@ protected:
     touchgfx::TextAreaWithOneWildcard yAxisLabel3;
     touchgfx::TextAreaWithOneWildcard yAxisLabel2;
     touchgfx::TextAreaWithOneWildcard yAxisLabel1;
+    touchgfx::Line xAxisUnitLine4;
+    touchgfx::PainterGRAY2 xAxisUnitLine4Painter;
+    touchgfx::Line xAxisUnitLine3;
+    touchgfx::PainterGRAY2 xAxisUnitLine3Painter;
+    touchgfx::Line xAxisUnitLine2;
+    touchgfx::PainterGRAY2 xAxisUnitLine2Painter;
+    touchgfx::Line xAxisUnitLine1;
+    touchgfx::PainterGRAY2 xAxisUnitLine1Painter;
     touchgfx::Line xAxisLine;
     touchgfx::PainterGRAY2 xAxisLinePainter;
     touchgfx::Line yAxisLine;
@@ -43,13 +53,13 @@ protected:
     /*
      * Wildcard Buffers
      */
-    static const uint16_t XAXISLABEL4_SIZE = 10;
+    static const uint16_t XAXISLABEL4_SIZE = 12;
     touchgfx::Unicode::UnicodeChar xAxisLabel4Buffer[XAXISLABEL4_SIZE];
-    static const uint16_t XAXISLABEL3_SIZE = 10;
+    static const uint16_t XAXISLABEL3_SIZE = 12;
     touchgfx::Unicode::UnicodeChar xAxisLabel3Buffer[XAXISLABEL3_SIZE];
-    static const uint16_t XAXISLABEL2_SIZE = 10;
+    static const uint16_t XAXISLABEL2_SIZE = 12;
     touchgfx::Unicode::UnicodeChar xAxisLabel2Buffer[XAXISLABEL2_SIZE];
-    static const uint16_t XAXISLABEL1_SIZE = 10;
+    static const uint16_t XAXISLABEL1_SIZE = 12;
     touchgfx::Unicode::UnicodeChar xAxisLabel1Buffer[XAXISLABEL1_SIZE];
     static const uint16_t YAXISLABEL5_SIZE = 10;
     touchgfx::Unicode::UnicodeChar yAxisLabel5Buffer[YAXISLABEL5_SIZE];

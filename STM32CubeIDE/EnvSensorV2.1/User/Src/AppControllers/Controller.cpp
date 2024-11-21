@@ -35,7 +35,8 @@ Controller *Controller::currentController;
 Switch Controller::lastPressed;
 
 void Controller::init() {
-	currentController = &displayReadouts;
+//	currentController = &displayReadouts;
+	currentController = &charts;
 
 	Controller::mainThreadStart();
 	Controller::sensorRoutineThreadStart();
