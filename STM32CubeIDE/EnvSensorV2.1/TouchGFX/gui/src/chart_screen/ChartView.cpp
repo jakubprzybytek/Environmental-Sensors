@@ -22,4 +22,5 @@ void ChartView::setLedLabels(const char *led1Label, const char *led2Label, const
 
 void ChartView::setChartData(ChartData &chartData, SensorName chartSensor, TimeSpan barTimeSpan) {
 	chart.setChartData(chartData, chartSensor, barTimeSpan);
+	background.invalidate();
 }

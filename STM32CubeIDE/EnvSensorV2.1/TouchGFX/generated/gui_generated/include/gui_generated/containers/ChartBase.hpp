@@ -48,6 +48,8 @@ protected:
     touchgfx::PainterGRAY2 xAxisLinePainter;
     touchgfx::Line yAxisLine;
     touchgfx::PainterGRAY2 yAxisLinePainter;
+    touchgfx::TextArea intervalValueTextArea;
+    touchgfx::TextArea intervalLabelTextArea;
     touchgfx::TextAreaWithOneWildcard titleTextArea;
 
     /*

@@ -19,6 +19,21 @@
       </Text>
     </TextGroup>
     <TextGroup Id="Unsorted">
+      <Text Id="INTERVAL_DAY" Alignment="Center" TypographyId="Small">
+        <Translation Language="GB">day</Translation>
+      </Text>
+      <Text Id="INTERVAL_6_HOURS" Alignment="Center" TypographyId="Small">
+        <Translation Language="GB">6 hours</Translation>
+      </Text>
+      <Text Id="INTERVAL_HOUR" Alignment="Center" TypographyId="Small">
+        <Translation Language="GB">hour</Translation>
+      </Text>
+      <Text Id="INTERVAL_5_MINUTES" Alignment="Center" TypographyId="Small">
+        <Translation Language="GB">5 minutes</Translation>
+      </Text>
+      <Text Id="__SingleUse_Z34U" Alignment="Center" TypographyId="Small">
+        <Translation Language="GB">Interval:</Translation>
+      </Text>
       <Text Id="__SingleUse_LTM8" Alignment="Center" TypographyId="Default">
         <Translation Language="GB">No Data</Translation>
       </Text>

@@ -896,7 +896,7 @@
             "Name": "yAxisLabel5",
             "Y": 20,
             "Width": 43,
-            "Height": 15,
+            "Height": 13,
             "TextId": "__SingleUse_6A1E",
             "TextRotation": "0",
             "Wildcard1": {
@@ -1029,9 +1029,28 @@
           },
           {
             "Type": "TextArea",
+            "Name": "intervalValueTextArea",
+            "X": 338,
+            "Y": 13,
+            "Width": 60,
+            "Height": 13,
+            "TextId": "INTERVAL_5_MINUTES",
+            "TextRotation": "0"
+          },
+          {
+            "Type": "TextArea",
+            "Name": "intervalLabelTextArea",
+            "X": 338,
+            "Width": 60,
+            "Height": 13,
+            "TextId": "__SingleUse_Z34U",
+            "TextRotation": "0"
+          },
+          {
+            "Type": "TextArea",
             "Name": "titleTextArea",
-            "X": 55,
-            "Width": 337,
+            "X": 45,
+            "Width": 293,
             "Height": 25,
             "TextId": "__SingleUse_Z071",
             "TextRotation": "0",

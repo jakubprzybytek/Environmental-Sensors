@@ -48,7 +48,7 @@ ChartBase::ChartBase()
     xAxisLabel1.setTypedText(touchgfx::TypedText(T___SINGLEUSE_KJZY));
     add(xAxisLabel1);
 
-    yAxisLabel5.setPosition(0, 20, 43, 15);
+    yAxisLabel5.setPosition(0, 20, 43, 13);
     yAxisLabel5.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     yAxisLabel5.setLinespacing(0);
     Unicode::snprintf(yAxisLabel5Buffer, YAXISLABEL5_SIZE, "%s", touchgfx::TypedText(T___SINGLEUSE_M7EE).getText());
@@ -142,7 +142,19 @@ ChartBase::ChartBase()
     yAxisLine.setLineEndingStyle(touchgfx::Line::ROUND_CAP_ENDING);
     add(yAxisLine);
 
-    titleTextArea.setPosition(55, 0, 337, 25);
+    intervalValueTextArea.setPosition(338, 13, 60, 13);
+    intervalValueTextArea.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+    intervalValueTextArea.setLinespacing(0);
+    intervalValueTextArea.setTypedText(touchgfx::TypedText(T_INTERVAL_5_MINUTES));
+    add(intervalValueTextArea);
+
+    intervalLabelTextArea.setPosition(338, 0, 60, 13);
+    intervalLabelTextArea.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+    intervalLabelTextArea.setLinespacing(0);
+    intervalLabelTextArea.setTypedText(touchgfx::TypedText(T___SINGLEUSE_Z34U));
+    add(intervalLabelTextArea);
+
+    titleTextArea.setPosition(45, 0, 293, 25);
     titleTextArea.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     titleTextArea.setLinespacing(0);
     titleTextArea.setWildcard(touchgfx::TypedText(T___SINGLEUSE_Q9Z5).getText());

@@ -36,6 +36,8 @@ protected:
 
 	void setTitle(SensorName sensor);
 
+	void setInterval(TimeSpan timeSpan);
+
 	void setupXAxis(DateTime (&timeSeries)[ChartData::DATA_SERIES_LENGTH], TimeSpan barTimeSpan);
 
 	void setupYAxis(DataPoint (&dataSeries)[ChartData::DATA_SERIES_LENGTH], bool (&valid)[ChartData::DATA_SERIES_LENGTH], Scale &scale);

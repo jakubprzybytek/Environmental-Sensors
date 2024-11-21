@@ -49,6 +49,24 @@ void Chart::setTitle(SensorName sensor) {
 	titleTextArea.invalidate();
 }
 
+void Chart::setInterval(TimeSpan timeSpan) {
+	switch (timeSpan) {
+	case TimeSpan::Minutes5:
+		intervalValueTextArea.setTypedText(touchgfx::TypedText(T_INTERVAL_5_MINUTES));
+		break;
+	case TimeSpan::Hour:
+		intervalValueTextArea.setTypedText(touchgfx::TypedText(T_INTERVAL_HOUR));
+		break;
+	case TimeSpan::Hours6:
+		intervalValueTextArea.setTypedText(touchgfx::TypedText(T_INTERVAL_6_HOURS));
+		break;
+	case TimeSpan::Day:
+		intervalValueTextArea.setTypedText(touchgfx::TypedText(T_INTERVAL_DAY));
+		break;
+	}
+	intervalValueTextArea.invalidate();
+}
+
 void Chart::formatTime(touchgfx::Unicode::UnicodeChar *buffer, uint8_t bufferSize, DateTime dateTime, TimeSpan barTimeSpan) {
 	switch (barTimeSpan) {
 	case TimeSpan::Minutes5:
@@ -217,6 +235,8 @@ void Chart::setDataSeries(DataPoint (&dataSeries)[ChartData::DATA_SERIES_LENGTH]
 
 void Chart::setChartData(ChartData &chartData, SensorName chartSensor, TimeSpan barTimeSpan) {
 	setTitle(chartSensor);
+	setInterval(barTimeSpan);
+
 	setupXAxis(chartData.timeSeries, barTimeSpan);
 
 	switch (chartSensor) {
