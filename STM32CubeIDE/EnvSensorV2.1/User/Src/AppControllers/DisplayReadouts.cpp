@@ -5,7 +5,6 @@
  *      Author: jakub
  */
 
-
 #include <AppControllers/DisplayReadouts.hpp>
 #include <AppControllers/AppState.hpp>
 #include <AppControllers/Charts.hpp>
@@ -21,19 +20,8 @@ extern AppState appState;
 extern Charts charts;
 extern Settings settings;
 
-DisplayReadouts::DisplayReadouts() {
-//	const osTimerAttr_t screenRefreshTimerAttributes = { .name = "Screen refresh" };
-//	this->screenRefreshTimerId = osTimerNew(&DisplayReadouts::refreshScreen, osTimerPeriodic, NULL, &screenRefreshTimerAttributes);
-}
-
-//void DisplayReadouts::refreshScreen(void *attr) {
-//	TRIGGER_TOUCHGFX_REFRESH();
-//}
-
 void DisplayReadouts::onEnter() {
-	appState.setButtonLabels("Clear", "Refresh", "History", "Settings");
-
-//	osTimerStart(this->screenRefreshTimerId, 3000 / portTICK_RATE_MS);
+	appState.setButtonLabels("Refresh", "Burst", "History", "Settings");
 
 	TOUCHGFX_GO_TO_READOUT_SCREEN();
 	TRIGGER_TOUCHGFX_REFRESH();
@@ -45,10 +33,9 @@ Controller* DisplayReadouts::proceed() {
 
 		switch (switchPressed) {
 		case Switch1:
-			DisplayCommands::submitDisplayClear();
+			TRIGGER_TOUCHGFX_REFRESH();
 			break;
 		case Switch2:
-			TRIGGER_TOUCHGFX_REFRESH();
 			break;
 		case Switch3:
 			return &charts;
@@ -58,10 +45,6 @@ Controller* DisplayReadouts::proceed() {
 			return &settings;
 		}
 	}
-}
-
-void DisplayReadouts::onExit() {
-//	osTimerStop(this->screenRefreshTimerId);
 }
 
 void DisplayReadouts::onSensorsRoutineFinished() {

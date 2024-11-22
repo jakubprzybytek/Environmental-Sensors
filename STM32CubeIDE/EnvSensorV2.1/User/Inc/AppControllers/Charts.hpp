@@ -19,7 +19,7 @@ private:
 
 	void toggleSensor();
 
-	void toggleTimeSpan();
+	void toggleTimeSpan(bool ascending);
 
 public:
 	void onEnter();

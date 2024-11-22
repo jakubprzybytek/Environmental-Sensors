@@ -14,21 +14,12 @@
 
 class DisplayReadouts: public virtual Controller {
 
-private:
-//	osTimerId screenRefreshTimerId;
-
 public:
-	DisplayReadouts();
-
 	void onEnter();
 
 	Controller* proceed();
 
-	void onExit();
-
 	void onSensorsRoutineFinished();
-
-//	static void refreshScreen(void *attr);
 };
 
 #endif /* INC_APPCONTROLLERS_DISPLAYREADOUTS_HPP_ */

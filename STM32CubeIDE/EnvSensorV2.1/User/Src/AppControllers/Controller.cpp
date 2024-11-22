@@ -12,6 +12,10 @@
 #include <AppControllers/AppState.hpp>
 
 #include <EnvSensorConfig.hpp>
+
+#include <TouchGFX.hpp>
+
+#include <Display/DisplayCommands.hpp>
 #include <Utils/DebugLog.hpp>
 
 AppState appState;
@@ -52,7 +56,7 @@ void Controller::mainThreadStart() {
 		.stack_size = sizeof(mainControllerThreadBuffer),
 		.priority = (osPriority_t) osPriorityNormal
 	};
-		// @formatter:on
+				// @formatter:on
 	mainControllerThreadHandle = osThreadNew(mainThread, NULL, &controllerThreadaAttributes);
 }
 
@@ -66,14 +70,18 @@ void Controller::sensorRoutineThreadStart() {
 		.stack_size = sizeof(sensorRoutineControllerThreadBuffer),
 		.priority = (osPriority_t) osPriorityNormal
 	};
-		// @formatter:on
+				// @formatter:on
 	sensorRoutineControllerThreadHandle = osThreadNew(sensorRoutineThread, NULL, &controllerThreadaAttributes2);
 }
 
 void Controller::mainThread(void *pvParameters) {
-	appState.setLedLabels("CPU", "SD/D", "Partic", "Hbeat");
+	DisplayCommands::submitDisplayClear();
 
-	osDelay(1000 / portTICK_RATE_MS);
+	appState.setLedLabels("CPU", "SD/D", "Burst", "Hbeat");
+
+	osDelay(8000 / portTICK_RATE_MS);
+
+	TRIGGER_TOUCHGFX_REFRESH();
 
 	while (true) {
 		currentController->onEnter();
