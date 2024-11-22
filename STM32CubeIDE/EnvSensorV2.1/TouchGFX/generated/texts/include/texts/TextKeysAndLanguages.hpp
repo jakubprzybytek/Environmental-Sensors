@@ -12,6 +12,7 @@ enum LANGUAGES
 
 enum TEXTS
 {
+    T_PARTICLES,
     T_HUMIDITY,
     T_TEMPERATURE,
     T_PRESSURE,

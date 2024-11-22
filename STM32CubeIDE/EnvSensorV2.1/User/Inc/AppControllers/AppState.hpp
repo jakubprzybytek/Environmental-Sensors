@@ -13,7 +13,7 @@
 #include <Time/DateTime.hpp>
 
 enum class SensorName {
-	CO2, Pressure, Temperature, Humidity
+	CO2, Pressure, Temperature, Humidity, Particles
 };
 
 typedef enum {

@@ -33,17 +33,25 @@ void Chart::initialize() {
 
 void Chart::setTitle(SensorName sensor) {
 	switch (sensor) {
+
 	case SensorName::CO2:
 		titleTextArea.setTypedText(touchgfx::TypedText(T_CO2));
 		break;
+
 	case SensorName::Pressure:
 		titleTextArea.setTypedText(touchgfx::TypedText(T_PRESSURE));
 		break;
+
 	case SensorName::Temperature:
 		titleTextArea.setTypedText(touchgfx::TypedText(T_TEMPERATURE));
 		break;
+
 	case SensorName::Humidity:
 		titleTextArea.setTypedText(touchgfx::TypedText(T_HUMIDITY));
+		break;
+
+	case SensorName::Particles:
+		titleTextArea.setTypedText(touchgfx::TypedText(T_PARTICLES));
 		break;
 	}
 	titleTextArea.invalidate();
@@ -240,17 +248,25 @@ void Chart::setChartData(ChartData &chartData, SensorName chartSensor, TimeSpan 
 	setupXAxis(chartData.timeSeries, barTimeSpan);
 
 	switch (chartSensor) {
+
 	case SensorName::CO2:
 		setDataSeries(chartData.co2Series, chartData.valid);
 		break;
+
 	case SensorName::Pressure:
 		setDataSeries(chartData.pressureSeries, chartData.valid);
 		break;
+
 	case SensorName::Temperature:
 		setDataSeries(chartData.temperatureSeries, chartData.valid);
 		break;
+
 	case SensorName::Humidity:
 		setDataSeries(chartData.humiditySeries, chartData.valid);
+		break;
+
+	case SensorName::Particles:
+		setDataSeries(chartData.particlesSeries, chartData.valid);
 		break;
 	}
 }

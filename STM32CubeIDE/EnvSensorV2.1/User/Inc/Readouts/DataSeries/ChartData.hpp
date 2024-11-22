@@ -37,6 +37,7 @@ public:
 	DataPoint pressureSeries[DATA_SERIES_LENGTH];
 	DataPoint temperatureSeries[DATA_SERIES_LENGTH];
 	DataPoint humiditySeries[DATA_SERIES_LENGTH];
+	DataPoint particlesSeries[DATA_SERIES_LENGTH];
 
 	static bool getStatistics(DataPoint (&dataSeries)[ChartData::DATA_SERIES_LENGTH], bool (&valid)[ChartData::DATA_SERIES_LENGTH], float *min, float *max);
 };

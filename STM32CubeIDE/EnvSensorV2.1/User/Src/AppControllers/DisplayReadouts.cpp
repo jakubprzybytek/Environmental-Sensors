@@ -38,12 +38,11 @@ Controller* DisplayReadouts::proceed() {
 			break;
 
 		case Switch2:
+			SensorsController::triggerBurstMeasurements();
 			break;
 
 		case Switch3:
 			return &charts;
-			SensorsController::triggerBurstMeasurements();
-			break;
 
 		case Switch4:
 			return &settings;

@@ -57,8 +57,11 @@ void CO2Sensor::startThread() {
 
 void CO2Sensor::thread(void *pvParameters) {
 
-	Scd30 scd30(hi2c1);
+#ifdef CO2_SENSOR_INFO
 	char messageBuffer[22];
+#endif
+
+	Scd30 scd30(hi2c1);
 	uint8_t status;
 
 	osDelay(100 / portTICK_RATE_MS);

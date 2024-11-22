@@ -24,7 +24,9 @@ extern AppState appState;
 extern DisplayReadouts displayReadouts;
 
 void Charts::loadChartData() {
+#ifdef APPLICATION_CONTROLLER_INFO
 	uint32_t start = HAL_GetTick();
+#endif
 
 	LoggerThread::flush();
 
@@ -36,9 +38,11 @@ void Charts::loadChartData() {
 //		appState.getChartData().humiditySeries[i].max = i % 10 + 1;
 //	}
 
+#ifdef APPLICATION_CONTROLLER_INFO
 	uint32_t end = HAL_GetTick();
 
 	DebugLog::log("Data loaded: ", end - start);
+#endif
 }
 
 void Charts::toggleSensor() {
@@ -57,6 +61,10 @@ void Charts::toggleSensor() {
 		break;
 
 	case SensorName::Humidity:
+		appState.setCurrentSensor(SensorName::Particles);
+		break;
+
+	case SensorName::Particles:
 		appState.setCurrentSensor(SensorName::CO2);
 		break;
 	}

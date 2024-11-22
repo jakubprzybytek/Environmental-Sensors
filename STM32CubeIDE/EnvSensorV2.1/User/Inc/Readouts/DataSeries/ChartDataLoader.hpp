@@ -11,14 +11,13 @@
 #include <Readouts/DataSeries/ChartData.hpp>
 #include <Readouts/ReadoutsState.hpp>
 
-//#include <EnvState.hpp>
 #include <Time/DateTime.hpp>
 
 class ChartDataLoader {
 
 private:
 	static void setupTimeSeries(ChartData &chartData, DateTime &referenceDateTime, TimeSpan barTimeSpan);
-	static void feedStats(DataPoint &co2, DataPoint &pressure, DataPoint &temperature, DataPoint &humidity, ReadoutsState &envState);
+	static void feedStats(DataPoint &co2, DataPoint &pressure, DataPoint &temperature, DataPoint &humidity, DataPoint &particles, ReadoutsState &envState);
 
 public:
 	static bool load(ChartData &chartData, const char *directory, DateTime &referenceDateTime, TimeSpan barTimeSpan);

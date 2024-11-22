@@ -11,7 +11,7 @@
 
 using namespace std;
 
-void ChartDataLoader::feedStats(DataPoint &co2, DataPoint &pressure, DataPoint &temperature, DataPoint &humidity, ReadoutsState &readout) {
+void ChartDataLoader::feedStats(DataPoint &co2, DataPoint &pressure, DataPoint &temperature, DataPoint &humidity, DataPoint &particles, ReadoutsState &readout) {
 	if (readout.scdCo2 < co2.min) {
 		co2.min = readout.scdCo2;
 	}
@@ -35,6 +35,12 @@ void ChartDataLoader::feedStats(DataPoint &co2, DataPoint &pressure, DataPoint &
 	}
 	if (readout.scdHumidity > humidity.max) {
 		humidity.max = readout.scdHumidity;
+	}
+	if (readout.pm2_5 < particles.min) {
+		particles.min = readout.pm2_5;
+	}
+	if (readout.pm2_5 > particles.max) {
+		particles.max = readout.pm2_5;
 	}
 }
 
@@ -107,7 +113,7 @@ bool ChartDataLoader::load(ChartData &chartData, const char *directory, DateTime
 
 					if (barIndex < ChartData::DATA_SERIES_LENGTH) {
 						feedStats(chartData.co2Series[barIndex], chartData.pressureSeries[barIndex], chartData.temperatureSeries[barIndex],
-								chartData.humiditySeries[barIndex], readout);
+								chartData.humiditySeries[barIndex], chartData.particlesSeries[barIndex], readout);
 						chartData.valid[barIndex] = true;
 					}
 				}

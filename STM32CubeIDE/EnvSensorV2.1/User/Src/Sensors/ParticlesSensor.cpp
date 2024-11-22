@@ -65,7 +65,10 @@ void ParticlesSensor::startThread() {
 void ParticlesSensor::thread(void *pvParameters) {
 	HAL_StatusTypeDef status;
 
+#ifdef PARTICLES_SENSOR_INFO
 	char messageBuffer[25];
+#endif
+
 	bool keepRunning = true;
 
 	PARTICLES_SENSOR_LED_On();

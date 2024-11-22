@@ -5,6 +5,9 @@
   </Languages>
   <Texts>
     <TextGroup Id="Group1">
+      <Text Id="PARTICLES" Alignment="Center" TypographyId="Default">
+        <Translation Language="GB">Particles 2.5µg [µg/m³]</Translation>
+      </Text>
       <Text Id="HUMIDITY" Alignment="Center" TypographyId="Default">
         <Translation Language="GB">Humidity [%]</Translation>
       </Text>
