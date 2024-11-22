@@ -18,6 +18,8 @@
 #include <Display/DisplayCommands.hpp>
 #include <Utils/DebugLog.hpp>
 
+#define INITIAL_DELAY 6000
+
 AppState appState;
 
 uint32_t mainControllerThreadBuffer[2048];
@@ -79,7 +81,7 @@ void Controller::mainThread(void *pvParameters) {
 
 	appState.setLedLabels("CPU", "SD/D", "Burst", "Hbeat");
 
-	osDelay(8000 / portTICK_RATE_MS);
+	osDelay(INITIAL_DELAY / portTICK_RATE_MS);
 
 	TRIGGER_TOUCHGFX_REFRESH();
 

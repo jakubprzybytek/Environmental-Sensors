@@ -19,7 +19,7 @@
 
 #include <AppControllers/Controller.hpp>
 
-#define TRIGGER_HIGH_MEASUREMENTS_FLAG 0x01
+#define TRIGGER_BURST_MEASUREMENTS_FLAG 0x01
 
 #define SECONDS(x) (x * 1000)
 #define MINUTES(x) (x * 60 * 1000)
@@ -60,8 +60,8 @@ void SensorsController::thread(void *pvParameters) {
 	osDelay(INITIAL_DELAY / portTICK_RATE_MS);
 
 	for (;;) {
-		osThreadFlagsClear(TRIGGER_HIGH_MEASUREMENTS_FLAG);
-		osThreadFlagsWait(TRIGGER_HIGH_MEASUREMENTS_FLAG, osFlagsWaitAny, LOW_MEASUREMENTS_PERIOD / portTICK_RATE_MS);
+		osThreadFlagsClear(TRIGGER_BURST_MEASUREMENTS_FLAG);
+		osThreadFlagsWait(TRIGGER_BURST_MEASUREMENTS_FLAG, osFlagsWaitAny, LOW_MEASUREMENTS_PERIOD / portTICK_RATE_MS);
 
 		ParticlesSensor::initAndStart();
 
@@ -75,6 +75,6 @@ void SensorsController::thread(void *pvParameters) {
 	osThreadExit();
 }
 
-void SensorsController::triggerHighMeasurements() {
-	osThreadFlagsSet(sensorsControllerThreadHandle, TRIGGER_HIGH_MEASUREMENTS_FLAG);
+void SensorsController::triggerBurstMeasurements() {
+	osThreadFlagsSet(sensorsControllerThreadHandle, TRIGGER_BURST_MEASUREMENTS_FLAG);
 }

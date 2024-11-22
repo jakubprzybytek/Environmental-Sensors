@@ -32,15 +32,19 @@ Controller* DisplayReadouts::proceed() {
 		Switch switchPressed = waitForSwitchPressed();
 
 		switch (switchPressed) {
+
 		case Switch1:
 			TRIGGER_TOUCHGFX_REFRESH();
 			break;
+
 		case Switch2:
 			break;
+
 		case Switch3:
 			return &charts;
-//			SensorsController::triggerHighMeasurements();
-//			break;
+			SensorsController::triggerBurstMeasurements();
+			break;
+
 		case Switch4:
 			return &settings;
 		}

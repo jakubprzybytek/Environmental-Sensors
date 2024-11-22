@@ -13,7 +13,7 @@ class SensorsController {
 public:
 	static void init();
 
-	static void triggerHighMeasurements();
+	static void triggerBurstMeasurements();
 
 private:
 	static void startThread();
