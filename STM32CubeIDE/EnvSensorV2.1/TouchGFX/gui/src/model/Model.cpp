@@ -9,8 +9,6 @@
 #include <Time/RtcUtils.hpp>
 
 extern AppState appState;
-//extern ReadoutsState readoutsState;
-//ReadoutsState storedReadoutsState;
 
 #endif
 
@@ -29,8 +27,14 @@ void Model::tick() {
 
 	ReadoutsState &readoutsState = appState.getReadoutsState();
 
-	float roundedVoltage = round(readoutsState.voltage * 100.0) / 100.0;
-	modelListener->notifyVoltageChanged(roundedVoltage);
+	if (readoutsState.voltage >= 0.0f) {
+		float roundedVoltage = round(readoutsState.voltage * 100.0) / 100.0;
+		modelListener->notifyVoltageChanged(roundedVoltage);
+	}
+
+	if (readoutsState.sdAvailableSpace >= 0) {
+		modelListener->notifySdAvailableSpaceChanged(readoutsState.sdAvailableSpace);
+	}
 
 	float roundedBmeTemperature = round(readoutsState.bmeTemperature * 10.0) / 10.0;
 	modelListener->notifyTemperatureChanged(roundedBmeTemperature);

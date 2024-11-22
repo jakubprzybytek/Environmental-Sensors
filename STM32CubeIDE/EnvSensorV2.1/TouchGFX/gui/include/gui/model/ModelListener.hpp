@@ -29,6 +29,7 @@ public:
     virtual void notifyLedLabelsChanged(const char *newLed1Label, const char *newLed2Label, const char *newLed3Label, const char *newLed4Label) {}
 
     virtual void notifyVoltageChanged(float newVoltage) {}
+    virtual void notifySdAvailableSpaceChanged(int16_t sdAvailableSpace) {}
 
     virtual void notifyTemperatureChanged(float newTemperature) {}
     virtual void notifyPressureChanged(float newPressure) {}

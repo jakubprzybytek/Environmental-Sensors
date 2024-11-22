@@ -6,7 +6,8 @@
 class ReadoutsState {
 
 public:
-	float voltage;
+	float voltage = -1;
+	int16_t sdAvailableSpace = -1;
 
 	float bmpTemperature;
 	float bmpPressure;

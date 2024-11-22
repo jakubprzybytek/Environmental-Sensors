@@ -20,26 +20,29 @@ MainReadoutsViewBase::MainReadoutsViewBase()
     bottomButtons.setXY(6, 287);
     add(bottomButtons);
 
+    sdCardContainer.setXY(336, 253);
+    add(sdCardContainer);
+
+    voltageContainer.setXY(336, 224);
+    add(voltageContainer);
+
     particlesContainer.setXY(80, 225);
     add(particlesContainer);
 
-    pressureContainer.setXY(0, 124);
-    add(pressureContainer);
-
-    temperatureContainer.setXY(0, 0);
-    add(temperatureContainer);
+    timeContainer.setXY(0, 225);
+    add(timeContainer);
 
     cO2Container.setXY(200, 124);
     add(cO2Container);
 
+    pressureContainer.setXY(0, 124);
+    add(pressureContainer);
+
     humidityContainer.setXY(200, 0);
     add(humidityContainer);
 
-    voltageContainer.setXY(326, 225);
-    add(voltageContainer);
-
-    timeContainer.setXY(0, 225);
-    add(timeContainer);
+    temperatureContainer.setXY(0, 0);
+    add(temperatureContainer);
 }
 
 MainReadoutsViewBase::~MainReadoutsViewBase()
@@ -51,13 +54,14 @@ void MainReadoutsViewBase::setupScreen()
 {
     ledLabels.initialize();
     bottomButtons.initialize();
-    particlesContainer.initialize();
-    pressureContainer.initialize();
-    temperatureContainer.initialize();
-    cO2Container.initialize();
-    humidityContainer.initialize();
+    sdCardContainer.initialize();
     voltageContainer.initialize();
+    particlesContainer.initialize();
     timeContainer.initialize();
+    cO2Container.initialize();
+    pressureContainer.initialize();
+    humidityContainer.initialize();
+    temperatureContainer.initialize();
 }
 
 void MainReadoutsViewBase::handleKeyEvent(uint8_t key)

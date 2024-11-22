@@ -23,6 +23,10 @@ void MainReadoutsView::setVoltage(float voltage) {
 	voltageContainer.setValue(voltage);
 }
 
+void MainReadoutsView::setSdAvailableSpace(int16_t availableSpace) {
+	sdCardContainer.setValue(availableSpace);
+}
+
 void MainReadoutsView::setTemperature(float temperature) {
 	temperatureContainer.setValue(temperature);
 }

@@ -351,6 +351,12 @@
     <ClCompile Include="..\..\gui\src\chart_screen\Scale.cpp">
       <Filter>Source Files\gui\chart_screen</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\gui\src\containers\SdCardContainer.cpp">
+      <Filter>Source Files\gui\containers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\generated\gui_generated\src\containers\SdCardContainerBase.cpp">
+      <Filter>Source Files\generated\gui_generated\containers</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="$(ApplicationRoot)\assets\texts\texts.xml">
@@ -891,6 +897,12 @@
     </ClInclude>
     <ClInclude Include="..\..\gui\include\gui\chart_screen\Scale.hpp">
       <Filter>Header Files\gui\chart_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\containers\SdCardContainer.hpp">
+      <Filter>Header Files\gui\containers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\SdCardContainerBase.hpp">
+      <Filter>Header Files\generated\gui_generated\containers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

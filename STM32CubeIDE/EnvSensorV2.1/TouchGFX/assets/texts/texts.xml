@@ -22,6 +22,18 @@
       </Text>
     </TextGroup>
     <TextGroup Id="Unsorted">
+      <Text Id="__SingleUse_ENI6" Alignment="Right" TypographyId="Small">
+        <Translation Language="GB">SD</Translation>
+      </Text>
+      <Text Id="__SingleUse_31P3" Alignment="Left" TypographyId="Small">
+        <Translation Language="GB">[MB]</Translation>
+      </Text>
+      <Text Id="__SingleUse_AQHC" Alignment="Left" TypographyId="Small">
+        <Translation Language="GB">N/A</Translation>
+      </Text>
+      <Text Id="__SingleUse_5QQE" Alignment="Right" TypographyId="Small">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
       <Text Id="INTERVAL_DAY" Alignment="Center" TypographyId="Small">
         <Translation Language="GB">day</Translation>
       </Text>
@@ -296,7 +308,7 @@
         <Translation Language="GB">&lt;value&gt;</Translation>
       </Text>
       <Text Id="__SingleUse_IXTO" Alignment="Left" TypographyId="Small">
-        <Translation Language="GB">0.0</Translation>
+        <Translation Language="GB">N/A</Translation>
       </Text>
       <Text Id="__SingleUse_CR7E" Alignment="Left" TypographyId="Small">
         <Translation Language="GB">[V]</Translation>

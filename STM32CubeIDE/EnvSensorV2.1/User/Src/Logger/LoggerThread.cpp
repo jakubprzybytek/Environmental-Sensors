@@ -3,6 +3,7 @@
 #include <Logger/LoggerThread.hpp>
 
 #include <AppControllers/AppState.hpp>
+#include <Logger/SD/SdCard.hpp>
 #include <Utils/DebugLog.hpp>
 
 #define INTERVAL LOGGER_INTERVAL
@@ -39,6 +40,18 @@ void LoggerThread::startThread() {
 
 void LoggerThread::thread(void *pvParameters) {
 	ReadoutsState &readoutsState = appState.getReadoutsState();
+
+	uint32_t availableSpace_kB;
+	if (SdCard::readAvailableSpace(&availableSpace_kB) == FR_OK) {
+		readoutsState.sdAvailableSpace = availableSpace_kB / 1024;
+#ifdef LOGGER_INFO
+		DebugLog::log("SD free [MB]: ", availableSpace_kB / 1024);
+#endif
+	} else {
+#ifdef LOGGER_INFO
+		DebugLog::log("SD free failed!");
+#endif
+	}
 
 	uint32_t wakeTime = osKernelGetTickCount();
 

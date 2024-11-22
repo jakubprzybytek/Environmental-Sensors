@@ -54,6 +54,8 @@
     <ClCompile Include="..\..\generated\gui_generated\src\chart_screen\ChartViewBase.cpp"/>
     <ClCompile Include="..\..\gui\src\chart_screen\BarChart.cpp"/>
     <ClCompile Include="..\..\gui\src\chart_screen\Scale.cpp"/>
+    <ClCompile Include="..\..\gui\src\containers\SdCardContainer.cpp"/>
+    <ClCompile Include="..\..\generated\gui_generated\src\containers\SdCardContainerBase.cpp"/>
   </ItemGroup>
   <ItemGroup>
     <None Include="$(ApplicationRoot)\assets\texts\texts.xml"/>
@@ -237,6 +239,8 @@
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\chart_screen\ChartViewBase.hpp"/>
     <ClInclude Include="..\..\gui\include\gui\chart_screen\BarChart.hpp"/>
     <ClInclude Include="..\..\gui\include\gui\chart_screen\Scale.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\containers\SdCardContainer.hpp"/>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\SdCardContainerBase.hpp"/>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="$(ApplicationRoot)\generated\simulator\touchgfx.rc"/>

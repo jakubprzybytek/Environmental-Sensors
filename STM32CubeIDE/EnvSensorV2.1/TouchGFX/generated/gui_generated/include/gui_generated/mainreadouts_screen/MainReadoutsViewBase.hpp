@@ -10,13 +10,14 @@
 #include <touchgfx/widgets/Box.hpp>
 #include <gui/containers/LedLabels.hpp>
 #include <gui/containers/BottomButtons.hpp>
-#include <gui/containers/ParticlesContainer.hpp>
-#include <gui/containers/PressureContainer.hpp>
-#include <gui/containers/TemperatureContainer.hpp>
-#include <gui/containers/CO2Container.hpp>
-#include <gui/containers/HumidityContainer.hpp>
+#include <gui/containers/SdCardContainer.hpp>
 #include <gui/containers/VoltageContainer.hpp>
+#include <gui/containers/ParticlesContainer.hpp>
 #include <gui/containers/TimeContainer.hpp>
+#include <gui/containers/CO2Container.hpp>
+#include <gui/containers/PressureContainer.hpp>
+#include <gui/containers/HumidityContainer.hpp>
+#include <gui/containers/TemperatureContainer.hpp>
 
 class MainReadoutsViewBase : public touchgfx::View<MainReadoutsPresenter>
 {
@@ -38,13 +39,14 @@ protected:
     touchgfx::Box background;
     LedLabels ledLabels;
     BottomButtons bottomButtons;
-    ParticlesContainer particlesContainer;
-    PressureContainer pressureContainer;
-    TemperatureContainer temperatureContainer;
-    CO2Container cO2Container;
-    HumidityContainer humidityContainer;
+    SdCardContainer sdCardContainer;
     VoltageContainer voltageContainer;
+    ParticlesContainer particlesContainer;
     TimeContainer timeContainer;
+    CO2Container cO2Container;
+    PressureContainer pressureContainer;
+    HumidityContainer humidityContainer;
+    TemperatureContainer temperatureContainer;
 
 private:
 
