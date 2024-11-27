@@ -5,15 +5,14 @@
  *      Author: jakub
  */
 
-#include <AppControllers/DisplayReadouts.hpp>
-#include <AppControllers/AppState.hpp>
-#include <AppControllers/Charts.hpp>
-#include <AppControllers/Settings.hpp>
-
 #include <TouchGFX.hpp>
 
 #include <Display/DisplayCommands.hpp>
 #include <Sensors/SensorsController.hpp>
+#include <UIControllers/AppState.hpp>
+#include <UIControllers/Charts.hpp>
+#include <UIControllers/DisplayReadouts.hpp>
+#include <UIControllers/Settings.hpp>
 
 extern AppState appState;
 

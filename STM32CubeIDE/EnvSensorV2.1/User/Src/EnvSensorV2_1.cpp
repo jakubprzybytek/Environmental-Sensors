@@ -1,4 +1,3 @@
-#include <AppControllers/Controller.hpp>
 #include <EnvSensorV2_1.hpp>
 #include <EnvSensorConfig.hpp>
 
@@ -17,6 +16,7 @@
 #include <Misc/BlinkingLeds.hpp>
 
 #include <Time/RtcUtils.hpp>
+#include <UIControllers/Controller.hpp>
 #include <Utils/DebugLog.hpp>
 
 void EnvSensorV2_1_Init() {

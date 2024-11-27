@@ -8,6 +8,8 @@
 #ifndef INC_LOGGER_THREAD_HPP_
 #define INC_LOGGER_THREAD_HPP_
 
+#include "cmsis_os.h"
+
 #include <EnvSensorConfig.hpp>
 
 #include <Logger/ReadoutFileLogger.hpp>
@@ -20,6 +22,8 @@ public:
 	static void flush();
 
 private:
+	static osThreadId_t loggerThreadHandle;
+
 	static ReadoutFileLogger readoutFileLogger;
 
 	static void startThread();

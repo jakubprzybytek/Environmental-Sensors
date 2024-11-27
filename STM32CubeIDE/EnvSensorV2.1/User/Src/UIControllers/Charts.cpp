@@ -5,18 +5,16 @@
  *      Author: jakub
  */
 
-#include <AppControllers/Charts.hpp>
-
 #include <EnvSensorConfig.hpp>
 #include <TouchGFX.hpp>
-
-#include <AppControllers/AppState.hpp>
-#include <AppControllers/DisplayReadouts.hpp>
 
 #include <Readouts/DataSeries/ChartDataLoader.hpp>
 
 #include <Logger/LoggerThread.hpp>
 #include <Time/RtcUtils.hpp>
+#include <UIControllers/AppState.hpp>
+#include <UIControllers/Charts.hpp>
+#include <UIControllers/DisplayReadouts.hpp>
 #include <Utils/DebugLog.hpp>
 
 extern AppState appState;

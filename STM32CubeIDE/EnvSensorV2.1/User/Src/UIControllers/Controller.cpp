@@ -5,17 +5,16 @@
  *      Author: jakub
  */
 
-#include <AppControllers/Controller.hpp>
-#include <AppControllers/DisplayReadouts.hpp>
-#include <AppControllers/Settings.hpp>
-#include <AppControllers/Charts.hpp>
-#include <AppControllers/AppState.hpp>
-
 #include <EnvSensorConfig.hpp>
 
 #include <TouchGFX.hpp>
 
 #include <Display/DisplayCommands.hpp>
+#include <UIControllers/AppState.hpp>
+#include <UIControllers/Charts.hpp>
+#include <UIControllers/Controller.hpp>
+#include <UIControllers/DisplayReadouts.hpp>
+#include <UIControllers/Settings.hpp>
 #include <Utils/DebugLog.hpp>
 
 #define INITIAL_DELAY 6000

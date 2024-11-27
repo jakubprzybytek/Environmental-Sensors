@@ -3,9 +3,9 @@
 
 #include <gui_generated/containers/ChartBase.hpp>
 
-#include <AppControllers/AppState.hpp>
 #include <gui/chart_screen/BarChart.hpp>
 #include <Readouts/DataSeries/ChartData.hpp>
+#include <UIControllers/AppState.hpp>
 
 #define MAX_X_AXIS_GRID_LINES 5
 #define MAX_Y_AXIS_GRID_LINES 5

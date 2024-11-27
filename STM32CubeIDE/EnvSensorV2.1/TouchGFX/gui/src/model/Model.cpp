@@ -5,7 +5,7 @@
 
 #ifndef SIMULATOR
 
-#include <AppControllers/AppState.hpp>
+#include <UIControllers/AppState.hpp>
 #include <Time/RtcUtils.hpp>
 
 extern AppState appState;

@@ -5,8 +5,8 @@
  *      Author: jakub
  */
 
-#ifndef INC_APPCONTROLLERS_APPSTATE_HPP_
-#define INC_APPCONTROLLERS_APPSTATE_HPP_
+#ifndef INC_UICONTROLLERS_APPSTATE_HPP_
+#define INC_UICONTROLLERS_APPSTATE_HPP_
 
 #include <Readouts/ReadoutsState.hpp>
 #include <Readouts/DataSeries/ChartData.hpp>
@@ -135,4 +135,4 @@ public:
 
 };
 
-#endif /* INC_APPCONTROLLERS_APPSTATE_HPP_ */
+#endif /* INC_UICONTROLLERS_APPSTATE_HPP_ */

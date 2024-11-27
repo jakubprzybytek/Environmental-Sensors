@@ -6,8 +6,7 @@
 #include <Readouts/Collector/SensorsReadoutsCollector.hpp>
 #include <Readouts/Collector/SensorMessages.hpp>
 #include <Readouts/ReadoutsState.hpp>
-
-#include <AppControllers/AppState.hpp>
+#include <UIControllers/AppState.hpp>
 
 #include <Utils/ftoa.h>
 

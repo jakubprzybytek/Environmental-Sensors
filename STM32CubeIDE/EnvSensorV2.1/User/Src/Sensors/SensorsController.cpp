@@ -17,7 +17,7 @@
 #include <Sensors/CO2Sensor.hpp>
 #include <Sensors/ParticlesSensor.hpp>
 
-#include <AppControllers/Controller.hpp>
+#include <UIControllers/Controller.hpp>
 
 #define TRIGGER_BURST_MEASUREMENTS_FLAG 0x01
 

@@ -1,9 +1,10 @@
-#include "cmsis_os.h"
+#include <string.h>
 
 #include <Logger/LoggerThread.hpp>
 
-#include <AppControllers/AppState.hpp>
 #include <Logger/SD/SdCard.hpp>
+#include <Logger/SD/SpeedTest.hpp>
+#include <UIControllers/AppState.hpp>
 #include <Utils/DebugLog.hpp>
 
 #define INTERVAL LOGGER_INTERVAL
@@ -12,7 +13,8 @@ extern AppState appState;
 
 uint32_t loggerThreadBuffer[1024];
 StaticTask_t loggerThreadControlBlock;
-osThreadId_t loggerThreadHandle;
+
+osThreadId_t LoggerThread::loggerThreadHandle;
 
 ReadoutFileLogger LoggerThread::readoutFileLogger = ReadoutFileLogger(LOGGER_DIRECTORY);
 
@@ -35,11 +37,15 @@ void LoggerThread::startThread() {
 	  .priority = (osPriority_t) osPriorityLow,
 	};
 // @formatter:on
-	loggerThreadHandle = osThreadNew(thread, NULL, &loggerThreadAttributes);
+	LoggerThread::loggerThreadHandle = osThreadNew(thread, NULL, &loggerThreadAttributes);
 }
+
+char buffer[10 * 1024];
 
 void LoggerThread::thread(void *pvParameters) {
 	ReadoutsState &readoutsState = appState.getReadoutsState();
+
+	osDelay(500 / portTICK_RATE_MS);
 
 	uint32_t availableSpace_kB;
 	if (SdCard::readAvailableSpace(&availableSpace_kB) == FR_OK) {
@@ -51,6 +57,26 @@ void LoggerThread::thread(void *pvParameters) {
 #ifdef LOGGER_INFO
 		DebugLog::log("SD free failed!");
 #endif
+	}
+
+//	char buffer[10 * 1024];
+	strcpy((char*) buffer, "Here comes the test");
+
+	float readSpeed_kB, writeSpeed_kB;
+	if (SpeedTest::test(buffer, 1024, &readSpeed_kB, &writeSpeed_kB) == FR_OK) {
+		DebugLog::log("SD speed 1 kB");
+		DebugLog::log("Read [kB/s]: ", readSpeed_kB, 1);
+		DebugLog::log("Write [kB/s]: ", writeSpeed_kB, 1);
+	} else {
+		DebugLog::log("SD speed 1KB failed!");
+	}
+
+	if (SpeedTest::test(buffer, 10 * 1024, &readSpeed_kB, &writeSpeed_kB) == FR_OK) {
+		DebugLog::log("SD speed 10 kB");
+		DebugLog::log("Read [kB/s]: ", readSpeed_kB, 1);
+		DebugLog::log("Write [kB/s]: ", writeSpeed_kB, 1);
+	} else {
+		DebugLog::log("SD speed 10kB failed!");
 	}
 
 	uint32_t wakeTime = osKernelGetTickCount();
