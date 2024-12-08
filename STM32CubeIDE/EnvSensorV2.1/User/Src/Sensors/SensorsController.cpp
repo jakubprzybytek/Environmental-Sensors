@@ -22,11 +22,11 @@
 #define TRIGGER_BURST_MEASUREMENTS_FLAG 0x01
 
 #define SECONDS(x) (x * 1000)
-#define MINUTES(x) (x * 60 * 1000)
+#define MINUTES(x) (x * SECONDS(60))
 
 #define INITIAL_DELAY SECONDS(5)
-#define LOW_MEASUREMENTS_PERIOD (MINUTES(4) + SECONDS(30))
-#define HIGH_MEASUREMENTS_PERIOD SECONDS(30)
+#define BURST_MEASUREMENTS_PERIOD SECONDS(60)
+#define NORMAL_MEASUREMENTS_PERIOD (MINUTES(5) - BURST_MEASUREMENTS_PERIOD)
 
 uint32_t sensorsControllerThreadBuffer[128];
 StaticTask_t sensorsControllerThreadControlBlock;
@@ -61,11 +61,11 @@ void SensorsController::thread(void *pvParameters) {
 
 	for (;;) {
 		osThreadFlagsClear(TRIGGER_BURST_MEASUREMENTS_FLAG);
-		osThreadFlagsWait(TRIGGER_BURST_MEASUREMENTS_FLAG, osFlagsWaitAny, LOW_MEASUREMENTS_PERIOD / portTICK_RATE_MS);
+		osThreadFlagsWait(TRIGGER_BURST_MEASUREMENTS_FLAG, osFlagsWaitAny, NORMAL_MEASUREMENTS_PERIOD / portTICK_RATE_MS);
 
 		ParticlesSensor::initAndStart();
 
-		osDelay(HIGH_MEASUREMENTS_PERIOD / portTICK_RATE_MS);
+		osDelay(BURST_MEASUREMENTS_PERIOD / portTICK_RATE_MS);
 
 		ParticlesSensor::stopAndTerminate();
 

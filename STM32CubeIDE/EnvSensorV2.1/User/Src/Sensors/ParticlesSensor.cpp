@@ -21,6 +21,8 @@
 
 extern UART_HandleTypeDef huart2;
 
+#define MEASUREMENT_INTERVAL 5000
+
 #define STOP_THREAD_FLAG 0x01
 
 uint32_t particlesReadoutThreadBuffer[100];
@@ -125,7 +127,7 @@ void ParticlesSensor::thread(void *pvParameters) {
 #endif
 
 	if (keepRunning) {
-		keepRunning = !WAIT_FOR_INTERRUPT(10000);
+		keepRunning = !WAIT_FOR_INTERRUPT(MEASUREMENT_INTERVAL);
 	}
 
 	while (keepRunning) {
@@ -153,7 +155,7 @@ void ParticlesSensor::thread(void *pvParameters) {
 
 		SubmitReadouts::submitParticles(pm1, pm2_5, pm4, pm10);
 
-		keepRunning = !WAIT_FOR_INTERRUPT(10000);
+		keepRunning = !WAIT_FOR_INTERRUPT(MEASUREMENT_INTERVAL);
 	}
 
 	status = hpma.stopMeasurements();
@@ -164,7 +166,7 @@ void ParticlesSensor::thread(void *pvParameters) {
 	}
 #endif
 
-	WAIT_FOR_INTERRUPT(100);
+	keepRunning = !WAIT_FOR_INTERRUPT(100);
 
 	hpma.deinit();
 
