@@ -80,19 +80,19 @@ void ParticlesSensor::thread(void *pvParameters) {
 	DebugLog::log((char*) "HPMA - starting");
 #endif
 
-	status = hpma.init();
+//	status = hpma.init();
+//
+//	if (status != HAL_OK) {
+//#ifdef PARTICLES_SENSOR_INFO
+//		DebugLog::log((char*) "HPMA - error init");
+//#endif
+//
+//		keepRunning = false;
+//	}
 
-	if (status != HAL_OK) {
-#ifdef PARTICLES_SENSOR_INFO
-		DebugLog::log((char*) "HPMA - error init");
-#endif
-
-		keepRunning = false;
-	}
-
-	if (keepRunning) {
-		keepRunning = !WAIT_FOR_INTERRUPT(1000);
-	}
+//	if (keepRunning) {
+		keepRunning = !WAIT_FOR_INTERRUPT(3000);
+//	}
 
 	if (keepRunning) {
 		status = hpma.stopAutoSend();
@@ -168,7 +168,7 @@ void ParticlesSensor::thread(void *pvParameters) {
 
 	keepRunning = !WAIT_FOR_INTERRUPT(100);
 
-	hpma.deinit();
+//	hpma.deinit();
 
 	POWER_5V_DISABLE();
 	PARTICLES_SENSOR_LED_Off();
