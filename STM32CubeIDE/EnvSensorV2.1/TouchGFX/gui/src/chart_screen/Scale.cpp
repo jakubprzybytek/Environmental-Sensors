@@ -10,7 +10,7 @@
 Scale::Scale(float _inputMin, float _inputMax, float margin, uint16_t targetMax) :
 		outputMax(targetMax) {
 
-	const float tempDelta = _inputMax - _inputMin;
+	const float tempDelta = _inputMax != _inputMin ? _inputMax - _inputMin : 1;
 	const float newInputMin = _inputMin - tempDelta * margin;
 	const float newInputMax = _inputMax + tempDelta * margin;
 
