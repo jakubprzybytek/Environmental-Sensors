@@ -40,7 +40,9 @@ void LoggerThread::startThread() {
 	LoggerThread::loggerThreadHandle = osThreadNew(thread, NULL, &loggerThreadAttributes);
 }
 
+#ifdef LOGGER_RUN_TEST
 char buffer[10 * 1024];
+#endif
 
 void LoggerThread::thread(void *pvParameters) {
 	ReadoutsState &readoutsState = appState.getReadoutsState();
@@ -59,7 +61,7 @@ void LoggerThread::thread(void *pvParameters) {
 #endif
 	}
 
-//	char buffer[10 * 1024];
+#ifdef LOGGER_RUN_TEST
 	strcpy((char*) buffer, "Here comes the test");
 
 	float readSpeed_kB, writeSpeed_kB;
@@ -78,6 +80,7 @@ void LoggerThread::thread(void *pvParameters) {
 	} else {
 		DebugLog::log("SD speed 10kB failed!");
 	}
+#endif
 
 	uint32_t wakeTime = osKernelGetTickCount();
 

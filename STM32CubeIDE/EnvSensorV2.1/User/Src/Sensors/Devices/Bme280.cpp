@@ -127,8 +127,9 @@ HAL_StatusTypeDef Bme280::init() {
 		dig_H6 = buffer[6];
 	}
 
-	//uint8_t toWrite = 0b11110100; // t_sb = 4000ms, IIR 2
-	uint8_t toWrite = 0b01110100; // t_sb = 250ms, IIR 2
+//	uint8_t toWrite = 0b11110100; // t_sb = 4000ms, IIR 2
+	uint8_t toWrite = 0b10110100; // t_sb = 1000ms, IIR 2
+//	uint8_t toWrite = 0b01110100; // t_sb = 250ms, IIR 2
 	return HAL_I2C_Mem_Write(&hi2c, i2cAddress, BME280_INTERNAL_CONFIG, 1, (uint8_t*) &toWrite, 1, BME280_MAX_DELAY);
 }
 
