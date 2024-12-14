@@ -28,27 +28,30 @@ void DisplayReadouts::onEnter() {
 
 Controller* DisplayReadouts::proceed() {
 	while (true) {
-		Switch switchPressed = waitForSwitchPressed();
+		ControllerEvent event = waitForEvent();
 
-		switch (switchPressed) {
+		switch (event) {
 
-		case Switch1:
+		case Switch1Pressed:
 			TRIGGER_TOUCHGFX_REFRESH();
 			break;
 
-		case Switch2:
+		case Switch2Pressed:
 			SensorsController::triggerBurstMeasurements();
 			break;
 
-		case Switch3:
+		case Switch3Pressed:
 			return &charts;
 
-		case Switch4:
+		case Switch4Pressed:
 			return &settings;
+
+		case SensorsRoutineFinished:
+			TRIGGER_TOUCHGFX_REFRESH();
+			break;
+
+		default:
+			break;
 		}
 	}
-}
-
-void DisplayReadouts::onSensorsRoutineFinished() {
-	TRIGGER_TOUCHGFX_REFRESH();
 }

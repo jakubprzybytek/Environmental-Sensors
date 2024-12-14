@@ -9,15 +9,19 @@
 
 #include <TouchGFX.hpp>
 
+#include <UIControllers/Controller.hpp>
+
 #include <Display/DisplayCommands.hpp>
 #include <UIControllers/AppState.hpp>
 #include <UIControllers/Charts.hpp>
-#include <UIControllers/Controller.hpp>
 #include <UIControllers/DisplayReadouts.hpp>
 #include <UIControllers/Settings.hpp>
 #include <Utils/DebugLog.hpp>
 
 #define INITIAL_DELAY 6000
+
+#define MAIN_THREAD_SWITCH_PRESSED_FLAG 0x01
+#define SENSORS_ROUTINE_FINISHED_FLAG 0x02
 
 AppState appState;
 
@@ -33,8 +37,6 @@ Settings settings;
 
 osThreadId_t Controller::mainControllerThreadHandle;
 
-osThreadId_t Controller::sensorRoutineControllerThreadHandle;
-
 Controller *Controller::currentController;
 
 Switch Controller::lastPressed;
@@ -44,7 +46,6 @@ void Controller::init() {
 //	currentController = &charts;
 
 	Controller::mainThreadStart();
-	Controller::sensorRoutineThreadStart();
 }
 
 void Controller::mainThreadStart() {
@@ -57,22 +58,8 @@ void Controller::mainThreadStart() {
 		.stack_size = sizeof(mainControllerThreadBuffer),
 		.priority = (osPriority_t) osPriorityNormal
 	};
-				// @formatter:on
+							// @formatter:on
 	mainControllerThreadHandle = osThreadNew(mainThread, NULL, &controllerThreadaAttributes);
-}
-
-void Controller::sensorRoutineThreadStart() {
-	// @formatter:off
-	const osThreadAttr_t controllerThreadaAttributes2 = {
-		.name = "controller-sensor-routine-th",
-		.cb_mem = &sensorRoutineControllerThreadControlBlock,
-		.cb_size = sizeof(sensorRoutineControllerThreadControlBlock),
-		.stack_mem = &sensorRoutineControllerThreadBuffer[0],
-		.stack_size = sizeof(sensorRoutineControllerThreadBuffer),
-		.priority = (osPriority_t) osPriorityNormal
-	};
-				// @formatter:on
-	sensorRoutineControllerThreadHandle = osThreadNew(sensorRoutineThread, NULL, &controllerThreadaAttributes2);
 }
 
 void Controller::mainThread(void *pvParameters) {
@@ -101,28 +88,35 @@ void Controller::mainThread(void *pvParameters) {
 	osThreadExit();
 }
 
-void Controller::sensorRoutineThread(void *pvParameters) {
-	while (true) {
-		osThreadFlagsWait(SENSORS_ROUTINE_FINISHED_FLAG, osFlagsWaitAny, osWaitForever);
-
-		currentController->onSensorsRoutineFinished();
-	}
-
-	osThreadExit();
-}
-
 void Controller::handleSwitchPressedInterrupt(Switch switchPressed) {
 	lastPressed = switchPressed;
 	osThreadFlagsSet(mainControllerThreadHandle, MAIN_THREAD_SWITCH_PRESSED_FLAG);
 }
 
-Switch Controller::waitForSwitchPressed() {
-	osThreadFlagsWait(MAIN_THREAD_SWITCH_PRESSED_FLAG, osFlagsWaitAny, osWaitForever);
-	return lastPressed;
+void Controller::handleSensorsRoutineFinished() {
+	osThreadFlagsSet(mainControllerThreadHandle, SENSORS_ROUTINE_FINISHED_FLAG);
 }
 
-void Controller::handleSensorsRoutineFinished() {
-	osThreadFlagsSet(sensorRoutineControllerThreadHandle, SENSORS_ROUTINE_FINISHED_FLAG);
+ControllerEvent Controller::waitForEvent() {
+	uint32_t flag = osThreadFlagsWait(MAIN_THREAD_SWITCH_PRESSED_FLAG | SENSORS_ROUTINE_FINISHED_FLAG, osFlagsWaitAny, osWaitForever);
+	switch (flag) {
+	case MAIN_THREAD_SWITCH_PRESSED_FLAG:
+		switch (lastPressed) {
+		case Switch1:
+			return Switch1Pressed;
+		case Switch2:
+			return Switch2Pressed;
+		case Switch3:
+			return Switch3Pressed;
+		case Switch4:
+			return Switch4Pressed;
+		}
+
+	case SENSORS_ROUTINE_FINISHED_FLAG:
+		return SensorsRoutineFinished;
+	}
+
+	return Unknown;
 }
 
 void Controller::onEnter() {
@@ -137,5 +131,5 @@ void Controller::onExit() {
 
 }
 
-void Controller::onSensorsRoutineFinished() {
-}
+//void Controller::onSensorsRoutineFinished() {
+//}

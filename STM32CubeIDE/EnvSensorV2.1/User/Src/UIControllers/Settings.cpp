@@ -16,7 +16,7 @@ extern AppState appState;
 
 extern DisplayReadouts displayReadouts;
 
-#define REFRESH_DELAY 1000 / portTICK_RATE_MS
+#define REFRESH_DELAY 2000 / portTICK_RATE_MS
 
 Settings::Settings() {
 	const osTimerAttr_t screenRefreshTimerAttributes = { .name = "Settings screen refresh" };
@@ -51,24 +51,27 @@ Controller* Settings::proceed() {
 
 	bool goNext = false;
 	while (!goNext) {
-		Switch switchPressed = waitForSwitchPressed();
+		ControllerEvent event = waitForEvent();
 
-		switch (switchPressed) {
+		switch (event) {
 
-		case Switch1:
+		case Switch1Pressed:
 			appState.getSettingsDateTime().year++;
 			break;
 
-		case Switch2:
+		case Switch2Pressed:
 			appState.getSettingsDateTime().year += 10;
 			break;
 
-		case Switch3:
+		case Switch3Pressed:
 			appState.getSettingsDateTime().year--;
 			break;
 
-		case Switch4:
+		case Switch4Pressed:
 			goNext = true;
+
+		default:
+			break;
 		}
 
 		if (appState.getSettingsDateTime().year < 0) {
@@ -86,24 +89,27 @@ Controller* Settings::proceed() {
 
 	goNext = false;
 	while (!goNext) {
-		Switch switchPressed = waitForSwitchPressed();
+		ControllerEvent event = waitForEvent();
 
-		switch (switchPressed) {
+		switch (event) {
 
-		case Switch1:
+		case Switch1Pressed:
 			appState.getSettingsDateTime().month++;
 			break;
 
-		case Switch2:
+		case Switch2Pressed:
 			appState.getSettingsDateTime().month += 10;
 			break;
 
-		case Switch3:
+		case Switch3Pressed:
 			appState.getSettingsDateTime().month--;
 			break;
 
-		case Switch4:
+		case Switch4Pressed:
 			goNext = true;
+
+		default:
+			break;
 		}
 
 		if (appState.getSettingsDateTime().month < 1) {
@@ -121,24 +127,27 @@ Controller* Settings::proceed() {
 
 	goNext = false;
 	while (!goNext) {
-		Switch switchPressed = waitForSwitchPressed();
+		ControllerEvent event = waitForEvent();
 
-		switch (switchPressed) {
+		switch (event) {
 
-		case Switch1:
+		case Switch1Pressed:
 			appState.getSettingsDateTime().day++;
 			break;
 
-		case Switch2:
+		case Switch2Pressed:
 			appState.getSettingsDateTime().day += 10;
 			break;
 
-		case Switch3:
+		case Switch3Pressed:
 			appState.getSettingsDateTime().day--;
 			break;
 
-		case Switch4:
+		case Switch4Pressed:
 			goNext = true;
+
+		default:
+			break;
 		}
 
 		if (appState.getSettingsDateTime().day < 1) {
@@ -156,24 +165,27 @@ Controller* Settings::proceed() {
 
 	goNext = false;
 	while (!goNext) {
-		Switch switchPressed = waitForSwitchPressed();
+		ControllerEvent event = waitForEvent();
 
-		switch (switchPressed) {
+		switch (event) {
 
-		case Switch1:
+		case Switch1Pressed:
 			appState.getSettingsDateTime().hour++;
 			break;
 
-		case Switch2:
+		case Switch2Pressed:
 			appState.getSettingsDateTime().hour += 10;
 			break;
 
-		case Switch3:
+		case Switch3Pressed:
 			appState.getSettingsDateTime().hour--;
 			break;
 
-		case Switch4:
+		case Switch4Pressed:
 			goNext = true;
+
+		default:
+			break;
 		}
 
 		if (appState.getSettingsDateTime().hour < 0) {
@@ -191,24 +203,27 @@ Controller* Settings::proceed() {
 
 	goNext = false;
 	while (!goNext) {
-		Switch switchPressed = waitForSwitchPressed();
+		ControllerEvent event = waitForEvent();
 
-		switch (switchPressed) {
+		switch (event) {
 
-		case Switch1:
+		case Switch1Pressed:
 			appState.getSettingsDateTime().minutes++;
 			break;
 
-		case Switch2:
+		case Switch2Pressed:
 			appState.getSettingsDateTime().minutes += 10;
 			break;
 
-		case Switch3:
+		case Switch3Pressed:
 			appState.getSettingsDateTime().minutes--;
 			break;
 
-		case Switch4:
+		case Switch4Pressed:
 			goNext = true;
+
+		default:
+			break;
 		}
 
 		if (appState.getSettingsDateTime().minutes < 0) {
@@ -226,24 +241,27 @@ Controller* Settings::proceed() {
 
 	goNext = false;
 	while (!goNext) {
-		Switch switchPressed = waitForSwitchPressed();
+		ControllerEvent event = waitForEvent();
 
-		switch (switchPressed) {
+		switch (event) {
 
-		case Switch1:
+		case Switch1Pressed:
 			appState.getSettingsDateTime().seconds++;
 			break;
 
-		case Switch2:
+		case Switch2Pressed:
 			appState.getSettingsDateTime().seconds += 10;
 			break;
 
-		case Switch3:
+		case Switch3Pressed:
 			appState.getSettingsDateTime().seconds--;
 			break;
 
-		case Switch4:
+		case Switch4Pressed:
 			goNext = true;
+
+		default:
+			break;
 		}
 
 		if (appState.getSettingsDateTime().seconds < 0) {
@@ -265,15 +283,15 @@ Controller* Settings::proceed() {
 
 	goNext = false;
 	while (!goNext) {
-		Switch switchPressed = waitForSwitchPressed();
+		ControllerEvent event = waitForEvent();
 
-		switch (switchPressed) {
+		switch (event) {
 
-		case Switch3:
+		case Switch3Pressed:
 			goNext = true;
 			break;
 
-		case Switch4:
+		case Switch4Pressed:
 			goNext = true;
 			RtcUtils::updateDateTime(appState.getSettingsDateTime());
 			break;

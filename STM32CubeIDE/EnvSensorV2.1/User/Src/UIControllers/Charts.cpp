@@ -100,29 +100,32 @@ void Charts::onEnter() {
 
 Controller* Charts::proceed() {
 	while (true) {
-		Switch switchPressed = waitForSwitchPressed();
+		ControllerEvent event = waitForEvent();
 
-		switch (switchPressed) {
+		switch (event) {
 
-		case Switch1:
+		case Switch1Pressed:
 			toggleSensor();
 			TRIGGER_TOUCHGFX_REFRESH();
 			break;
 
-		case Switch2:
+		case Switch2Pressed:
 			toggleTimeSpan(true);
 			loadChartData();
 			TRIGGER_TOUCHGFX_REFRESH();
 			break;
 
-		case Switch3:
+		case Switch3Pressed:
 			toggleTimeSpan(false);
 			loadChartData();
 			TRIGGER_TOUCHGFX_REFRESH();
 			break;
 
-		case Switch4:
+		case Switch4Pressed:
 			return &displayReadouts;
+
+		default:
+			break;
 		}
 	}
 }

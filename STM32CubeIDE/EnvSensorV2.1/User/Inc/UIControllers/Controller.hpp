@@ -11,13 +11,19 @@
 #include "stm32l4xx_hal.h"
 #include "cmsis_os.h"
 
-#define MAIN_THREAD_SWITCH_PRESSED_FLAG 0x01
-
-#define SENSORS_ROUTINE_FINISHED_FLAG 0x02
 
 typedef enum {
 	Switch1, Switch2, Switch3, Switch4
 } Switch;
+
+typedef enum {
+	Unknown,
+	Switch1Pressed,
+	Switch2Pressed,
+	Switch3Pressed,
+	Switch4Pressed,
+	SensorsRoutineFinished
+} ControllerEvent;
 
 class Controller {
 
@@ -29,18 +35,12 @@ private:
 
 	static osThreadId_t mainControllerThreadHandle;
 
-	static osThreadId_t sensorRoutineControllerThreadHandle;
-
 	static void mainThreadStart();
-
-	static void sensorRoutineThreadStart();
 
 	static void mainThread(void *pvParameters);
 
-	static void sensorRoutineThread(void *pvParameters);
-
 protected:
-	Switch waitForSwitchPressed();
+	ControllerEvent waitForEvent();
 
 public:
 
@@ -55,8 +55,6 @@ public:
 	virtual Controller* proceed();
 
 	virtual void onExit();
-
-	virtual void onSensorsRoutineFinished();
 };
 
 #endif /* INC_UICONTROLLERS_CONTROLLER_HPP_ */
