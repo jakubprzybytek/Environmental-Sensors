@@ -10,6 +10,9 @@
 
 #include <main.h>
 
+#define SECONDS(x) (x * 1000)
+#define MINUTES(x) (x * SECONDS(60))
+
 /*
  * Logger
  */
@@ -18,9 +21,9 @@
 #define LOGGER_WRITER_BUFFER_SIZE 512
 #define LOGGER_READER_BUFFER_SIZE 512
 
-//#define LOGGER_RUN_TEST
-#define LOGGER_INFO
-#define LOGGER_TRACE
+//#define LOGGER_THREAD_RUN_TEST
+//#define LOGGER_THREAD_INFO
+//#define LOGGER_THREAD_TRACE
 
 
 #define APPLICATION_CONTROLLER_INFO
@@ -30,6 +33,8 @@
 
 //#define DISPLAY_CONTROLLER_INFO
 //#define DISPLAY_CONTROLLER_TRACE
+
+#define PRESSURE_SENSOR_READOUT_DELAY MINUTES(2)
 
 #define PRESSURE_SENSOR_INFO
 //#define PRESSURE_SENSOR_TRACE

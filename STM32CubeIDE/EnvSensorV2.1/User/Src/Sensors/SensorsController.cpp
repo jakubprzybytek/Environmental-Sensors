@@ -9,6 +9,7 @@
 #include "cmsis_os.h"
 
 #include <main.h>
+#include <EnvSensorConfig.hpp>
 
 #include <Sensors/SensorsController.hpp>
 
@@ -20,9 +21,6 @@
 #include <UIControllers/Controller.hpp>
 
 #define TRIGGER_BURST_MEASUREMENTS_FLAG 0x01
-
-#define SECONDS(x) (x * 1000)
-#define MINUTES(x) (x * SECONDS(60))
 
 #define INITIAL_DELAY SECONDS(5)
 #define BURST_MEASUREMENTS_PERIOD SECONDS(45)

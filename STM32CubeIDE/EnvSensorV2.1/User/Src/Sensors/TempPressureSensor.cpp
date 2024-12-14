@@ -20,7 +20,7 @@
 #include <Utils/DebugLog.hpp>
 
 #define RETRY_DELAY 5000
-#define READOUTS_DELAY 45000
+#define READOUTS_DELAY PRESSURE_SENSOR_READOUT_DELAY
 
 extern I2C_HandleTypeDef hi2c1;
 
@@ -139,7 +139,7 @@ void TempPressureSensor::bme280Thread(void *pvParameters) {
 
 	Bme280 bme280(hi2c1, BME280_SLAVE_ADDRESS_MAIN, true);
 
-	osDelay(50 / portTICK_RATE_MS);
+	osDelay(5 / portTICK_RATE_MS);
 
 	HAL_StatusTypeDef status;
 
@@ -156,24 +156,27 @@ void TempPressureSensor::bme280Thread(void *pvParameters) {
 		}
 	} while (status != HAL_OK);
 
-	do {
-		I2C1_ACQUIRE
-		status = bme280.startContinousMeasurement();
-		I2C1_RELEASE
-
-		if (status != HAL_OK) {
 #ifdef PRESSURE_SENSOR_INFO
-			DebugLog::log((char*) "BME - error start");
+	DebugLog::log((char*) "BME - init OK");
 #endif
-			osDelay(RETRY_DELAY / portTICK_RATE_MS);
-		}
-	} while (status != HAL_OK);
 
 	uint32_t wakeTime = osKernelGetTickCount();
 
 	for (;;) {
-		wakeTime += READOUTS_DELAY / portTICK_RATE_MS;
-		osDelayUntil(wakeTime);
+		do {
+			I2C1_ACQUIRE
+			status = bme280.startSingleMeasurement();
+			I2C1_RELEASE
+
+			if (status != HAL_OK) {
+#ifdef PRESSURE_SENSOR_INFO
+				DebugLog::log((char*) "BME - error start");
+#endif
+				osDelay(RETRY_DELAY / portTICK_RATE_MS);
+			}
+		} while (status != HAL_OK);
+
+		osDelay(1 / portTICK_RATE_MS);
 
 		I2C1_ACQUIRE
 
@@ -202,6 +205,9 @@ void TempPressureSensor::bme280Thread(void *pvParameters) {
 #ifdef PRESSURE_SENSOR_TRACE
 		DebugLog::logWithStackHighWaterMark((char*) "BME - stack: ");
 #endif
+
+		wakeTime += READOUTS_DELAY / portTICK_RATE_MS;
+		osDelayUntil(wakeTime);
 	}
 }
 

@@ -40,7 +40,7 @@ void LoggerThread::startThread() {
 	LoggerThread::loggerThreadHandle = osThreadNew(thread, NULL, &loggerThreadAttributes);
 }
 
-#ifdef LOGGER_RUN_TEST
+#ifdef LOGGER_THREAD_RUN_TEST
 char buffer[10 * 1024];
 #endif
 
@@ -52,16 +52,16 @@ void LoggerThread::thread(void *pvParameters) {
 	uint32_t availableSpace_kB;
 	if (SdCard::readAvailableSpace(&availableSpace_kB) == FR_OK) {
 		readoutsState.sdAvailableSpace = availableSpace_kB / 1024;
-#ifdef LOGGER_INFO
+#ifdef LOGGER_THREAD_INFO
 		DebugLog::log("SD free [MB]: ", availableSpace_kB / 1024);
 #endif
 	} else {
-#ifdef LOGGER_INFO
+#ifdef LOGGER_THREAD_INFO
 		DebugLog::log("SD free failed!");
 #endif
 	}
 
-#ifdef LOGGER_RUN_TEST
+#ifdef LOGGER_THREAD_RUN_TEST
 	strcpy((char*) buffer, "Here comes the test");
 
 	float readSpeed_kB, writeSpeed_kB;
@@ -92,7 +92,7 @@ void LoggerThread::thread(void *pvParameters) {
 
 		LoggerThread::readoutFileLogger.log(readoutsState);
 
-#ifdef LOGGER_TRACE
+#ifdef LOGGER_THREAD_TRACE
 		DebugLog::logWithStackHighWaterMark("Logger - stack: ");
 #endif
 	}

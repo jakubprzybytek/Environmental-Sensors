@@ -57,14 +57,16 @@ HAL_StatusTypeDef Bme280::setMode(uint8_t mode) {
 	uint8_t toWrite;
 
 	if (humidityReadoutEnabled) {
-		toWrite = 0b00000101; // humidity oversampling x16
+		//toWrite = 0b00000101; // humidity oversampling x16
+		toWrite = 0b00000001; // humidity oversampling x1
 		HAL_StatusTypeDef status = HAL_I2C_Mem_Write(&hi2c, i2cAddress, BME280_INTERNAL_CTRL_HUM, 1, (uint8_t*) &toWrite, 1, BME280_MAX_DELAY);
 		if (status != HAL_OK) {
 			return status;
 		}
 	}
 
-	toWrite = 0b10101000 | mode; // pressure oversampling x16, temperature oversampling x2
+//	toWrite = 0b10101000 | mode; // pressure oversampling x16, temperature oversampling x2
+	toWrite = 0b00100100 | mode; // pressure oversampling x1, temperature oversampling x1
 	return HAL_I2C_Mem_Write(&hi2c, i2cAddress, BME280_INTERNAL_CTRL_MEAS, 1, (uint8_t*) &toWrite, 1, BME280_MAX_DELAY);
 }
 
@@ -128,13 +130,18 @@ HAL_StatusTypeDef Bme280::init() {
 	}
 
 //	uint8_t toWrite = 0b11110100; // t_sb = 4000ms, IIR 2
-	uint8_t toWrite = 0b10110100; // t_sb = 1000ms, IIR 2
+//	uint8_t toWrite = 0b10110100; // t_sb = 1000ms, IIR 2
 //	uint8_t toWrite = 0b01110100; // t_sb = 250ms, IIR 2
+	uint8_t toWrite = 0b00000000;  // t_sb = 0.5ms - but not used in forced mode, IIR filter off, SPI disabled
 	return HAL_I2C_Mem_Write(&hi2c, i2cAddress, BME280_INTERNAL_CONFIG, 1, (uint8_t*) &toWrite, 1, BME280_MAX_DELAY);
 }
 
 HAL_StatusTypeDef Bme280::startContinousMeasurement() {
 	return setMode(BME280_MODE_NORMAL);
+}
+
+HAL_StatusTypeDef Bme280::startSingleMeasurement() {
+	return setMode(BME280_MODE_FORCED);
 }
 
 HAL_StatusTypeDef Bme280::stopContinousMeasurement() {

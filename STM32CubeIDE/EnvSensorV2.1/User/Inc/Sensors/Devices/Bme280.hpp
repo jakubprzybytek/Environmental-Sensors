@@ -62,6 +62,7 @@ public:
 	HAL_StatusTypeDef init();
 
 	HAL_StatusTypeDef startContinousMeasurement();
+	HAL_StatusTypeDef startSingleMeasurement();
 	HAL_StatusTypeDef stopContinousMeasurement();
 
 	HAL_StatusTypeDef readMeasurements(float *preassure, float *temperature);
