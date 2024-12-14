@@ -31,6 +31,8 @@
 #define RETRY_DELAY 5000
 #define SCD30_IS_READY() HAL_GPIO_ReadPin(SCD30_READY_GPIO_Port, SCD30_READY_Pin)
 
+#define MEASUREMENT_INTERVAL_S CO2_SENSOR_READOUT_DELAY_S
+
 extern I2C_HandleTypeDef hi2c1;
 
 uint32_t co2ReadoutThreadBuffer[150];
@@ -68,7 +70,7 @@ void CO2Sensor::thread(void *pvParameters) {
 
 	do {
 		I2C1_ACQUIRE
-		status = scd30.init(60);
+		status = scd30.init(MEASUREMENT_INTERVAL_S);
 		I2C1_RELEASE
 
 		if (status != HAL_OK) {
