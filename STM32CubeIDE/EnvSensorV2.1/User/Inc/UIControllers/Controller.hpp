@@ -16,7 +16,7 @@ typedef enum {
 } Switch;
 
 typedef enum {
-	Unknown, Switch1Pressed, Switch2Pressed, Switch3Pressed, Switch4Pressed, SensorsRoutineFinished
+	Unknown, Switch1Pressed, Switch2Pressed, Switch3Pressed, Switch4Pressed, SensorsRoutineFinished, ScreenInactiveTimer
 } ControllerEvent;
 
 class Controller {
@@ -31,7 +31,11 @@ private:
 
 	static osTimerId delayedScreenRefreshTimerId;
 
+	static osTimerId screenInactiveTimerId;
+
 	static void handleRefreshScreen(void *attr);
+
+	static void handleScreenInactiveTimer(void *attr);
 
 	static void mainThreadStart();
 
@@ -42,6 +46,10 @@ protected:
 	void resetDelayedScreenRefresh();
 
 	void stopDelayedScreenRefresh();
+
+	void resetScreenInactiveTimer();
+
+	void stopScreenInactiveTimer();
 
 	ControllerEvent waitForEvent();
 

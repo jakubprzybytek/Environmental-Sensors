@@ -99,6 +99,8 @@ void Charts::onEnter() {
 }
 
 Controller* Charts::proceed() {
+	resetScreenInactiveTimer();
+
 	while (true) {
 		ControllerEvent event = waitForEvent();
 
@@ -122,6 +124,9 @@ Controller* Charts::proceed() {
 			break;
 
 		case Switch4Pressed:
+			stopScreenInactiveTimer();
+
+		case ScreenInactiveTimer:
 			return &displayReadouts;
 
 		default:

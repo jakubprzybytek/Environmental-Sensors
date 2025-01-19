@@ -31,6 +31,8 @@ Controller* Settings::proceed() {
 
 	appState.setSettingsFieldUnderEdit(Year);
 
+	resetScreenInactiveTimer();
+
 	bool goNext = false;
 	while (!goNext) {
 		ControllerEvent event = waitForEvent();
@@ -53,6 +55,9 @@ Controller* Settings::proceed() {
 			goNext = true;
 			break;
 
+		case ScreenInactiveTimer:
+			return &displayReadouts;
+
 		default:
 			break;
 		}
@@ -66,6 +71,7 @@ Controller* Settings::proceed() {
 		}
 
 		resetDelayedScreenRefresh();
+		resetScreenInactiveTimer();
 	}
 
 	appState.setSettingsFieldUnderEdit(Month);
@@ -78,23 +84,23 @@ Controller* Settings::proceed() {
 
 		case Switch1Pressed:
 			appState.getSettingsDateTime().month++;
-			resetDelayedScreenRefresh();
+
 			break;
 
 		case Switch2Pressed:
 			appState.getSettingsDateTime().month += 10;
-			resetDelayedScreenRefresh();
 			break;
 
 		case Switch3Pressed:
 			appState.getSettingsDateTime().month--;
-			resetDelayedScreenRefresh();
 			break;
 
 		case Switch4Pressed:
 			goNext = true;
-			resetDelayedScreenRefresh();
 			break;
+
+		case ScreenInactiveTimer:
+			return &displayReadouts;
 
 		default:
 			break;
@@ -107,6 +113,9 @@ Controller* Settings::proceed() {
 		if (appState.getSettingsDateTime().month > 12) {
 			appState.getSettingsDateTime().month -= 12;
 		}
+
+		resetDelayedScreenRefresh();
+		resetScreenInactiveTimer();
 	}
 
 	appState.setSettingsFieldUnderEdit(Day);
@@ -119,23 +128,22 @@ Controller* Settings::proceed() {
 
 		case Switch1Pressed:
 			appState.getSettingsDateTime().day++;
-			resetDelayedScreenRefresh();
 			break;
 
 		case Switch2Pressed:
 			appState.getSettingsDateTime().day += 10;
-			resetDelayedScreenRefresh();
 			break;
 
 		case Switch3Pressed:
 			appState.getSettingsDateTime().day--;
-			resetDelayedScreenRefresh();
 			break;
 
 		case Switch4Pressed:
 			goNext = true;
-			resetDelayedScreenRefresh();
 			break;
+
+		case ScreenInactiveTimer:
+			return &displayReadouts;
 
 		default:
 			break;
@@ -148,6 +156,9 @@ Controller* Settings::proceed() {
 		if (appState.getSettingsDateTime().day > DateTime::daysInMonth(appState.getSettingsDateTime().month)) {
 			appState.getSettingsDateTime().day -= DateTime::daysInMonth(appState.getSettingsDateTime().month);
 		}
+
+		resetDelayedScreenRefresh();
+		resetScreenInactiveTimer();
 	}
 
 	appState.setSettingsFieldUnderEdit(Hours);
@@ -160,23 +171,22 @@ Controller* Settings::proceed() {
 
 		case Switch1Pressed:
 			appState.getSettingsDateTime().hour++;
-			resetDelayedScreenRefresh();
 			break;
 
 		case Switch2Pressed:
 			appState.getSettingsDateTime().hour += 10;
-			resetDelayedScreenRefresh();
 			break;
 
 		case Switch3Pressed:
 			appState.getSettingsDateTime().hour--;
-			resetDelayedScreenRefresh();
 			break;
 
 		case Switch4Pressed:
 			goNext = true;
-			resetDelayedScreenRefresh();
 			break;
+
+		case ScreenInactiveTimer:
+			return &displayReadouts;
 
 		default:
 			break;
@@ -189,6 +199,9 @@ Controller* Settings::proceed() {
 		if (appState.getSettingsDateTime().hour >= 24) {
 			appState.getSettingsDateTime().hour -= 24;
 		}
+
+		resetDelayedScreenRefresh();
+		resetScreenInactiveTimer();
 	}
 
 	appState.setSettingsFieldUnderEdit(Minutes);
@@ -201,23 +214,22 @@ Controller* Settings::proceed() {
 
 		case Switch1Pressed:
 			appState.getSettingsDateTime().minutes++;
-			resetDelayedScreenRefresh();
 			break;
 
 		case Switch2Pressed:
 			appState.getSettingsDateTime().minutes += 10;
-			resetDelayedScreenRefresh();
 			break;
 
 		case Switch3Pressed:
 			appState.getSettingsDateTime().minutes--;
-			resetDelayedScreenRefresh();
 			break;
 
 		case Switch4Pressed:
 			goNext = true;
-			resetDelayedScreenRefresh();
 			break;
+
+		case ScreenInactiveTimer:
+			return &displayReadouts;
 
 		default:
 			break;
@@ -230,6 +242,9 @@ Controller* Settings::proceed() {
 		if (appState.getSettingsDateTime().minutes >= 60) {
 			appState.getSettingsDateTime().minutes -= 60;
 		}
+
+		resetDelayedScreenRefresh();
+		resetScreenInactiveTimer();
 	}
 
 	appState.setSettingsFieldUnderEdit(Seconds);
@@ -242,23 +257,22 @@ Controller* Settings::proceed() {
 
 		case Switch1Pressed:
 			appState.getSettingsDateTime().seconds++;
-			resetDelayedScreenRefresh();
 			break;
 
 		case Switch2Pressed:
 			appState.getSettingsDateTime().seconds += 10;
-			resetDelayedScreenRefresh();
 			break;
 
 		case Switch3Pressed:
 			appState.getSettingsDateTime().seconds--;
-			resetDelayedScreenRefresh();
 			break;
 
 		case Switch4Pressed:
 			goNext = true;
-			resetDelayedScreenRefresh();
 			break;
+
+		case ScreenInactiveTimer:
+			return &displayReadouts;
 
 		default:
 			break;
@@ -271,6 +285,8 @@ Controller* Settings::proceed() {
 		if (appState.getSettingsDateTime().seconds >= 60) {
 			appState.getSettingsDateTime().seconds -= 60;
 		}
+
+		resetScreenInactiveTimer();
 	}
 
 	stopDelayedScreenRefresh();
@@ -294,10 +310,15 @@ Controller* Settings::proceed() {
 			RtcUtils::updateDateTime(appState.getSettingsDateTime());
 			break;
 
+		case ScreenInactiveTimer:
+			return &displayReadouts;
+
 		default:
 			break;
 		}
 	}
+
+	stopScreenInactiveTimer();
 
 	return &displayReadouts;
 }

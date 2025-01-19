@@ -18,13 +18,16 @@
 #include <UIControllers/Settings.hpp>
 #include <Utils/DebugLog.hpp>
 
-#define INITIAL_DELAY 6000
+#define INITIAL_DELAY SECONDS(6)
 
-#define REFRESH_DELAY 1500 / portTICK_RATE_MS
+#define REFRESH_DELAY 1500
+
+#define SCREEN_INACTIVE_DELAY MINUTES(1)
 
 #define CONTROLLER_THREAD_SWITCH_PRESSED_FLAG 0x01
 #define CONTROLLER_THREAD_SENSORS_ROUTINE_FINISHED_FLAG 0x02
 #define CONTROLLER_THREAD_DELAYED_SCREEN_REFRESH_FLAG 0x04
+#define CONTROLLER_THREAD_SCREEN_INACTIVE_TIMER_FLAG 0x08
 
 AppState appState;
 
@@ -41,6 +44,7 @@ Settings settings;
 osThreadId_t Controller::mainControllerThreadHandle;
 
 osTimerId Controller::delayedScreenRefreshTimerId;
+osTimerId Controller::screenInactiveTimerId;
 
 Controller *Controller::currentController;
 
@@ -52,6 +56,9 @@ void Controller::init() {
 
 	const osTimerAttr_t delayedScreenRefreshTimerAttributes = { .name = "Delayed screen refresh" };
 	delayedScreenRefreshTimerId = osTimerNew(&Controller::handleRefreshScreen, osTimerOnce, NULL, &delayedScreenRefreshTimerAttributes);
+
+	const osTimerAttr_t screenInactiveTimerAttributes = { .name = "Screen inactive timer" };
+	screenInactiveTimerId = osTimerNew(&Controller::handleScreenInactiveTimer, osTimerOnce, NULL, &screenInactiveTimerAttributes);
 
 	Controller::mainThreadStart();
 }
@@ -84,6 +91,7 @@ void Controller::mainThread(void *pvParameters) {
 
 		Controller *newController = currentController->proceed();
 
+		currentController->stopDelayedScreenRefresh();
 		currentController->onExit();
 
 		currentController = newController;
@@ -97,11 +105,19 @@ void Controller::mainThread(void *pvParameters) {
 }
 
 void Controller::resetDelayedScreenRefresh() {
-	osTimerStart(delayedScreenRefreshTimerId, REFRESH_DELAY);
+	osTimerStart(delayedScreenRefreshTimerId, REFRESH_DELAY / portTICK_RATE_MS);
 }
 
 void Controller::stopDelayedScreenRefresh() {
 	osTimerStop(delayedScreenRefreshTimerId);
+}
+
+void Controller::resetScreenInactiveTimer() {
+	osTimerStart(screenInactiveTimerId, SCREEN_INACTIVE_DELAY / portTICK_RATE_MS);
+}
+
+void Controller::stopScreenInactiveTimer() {
+	osTimerStop(screenInactiveTimerId);
 }
 
 void Controller::handleSwitchPressedInterrupt(Switch switchPressed) {
@@ -117,11 +133,16 @@ void Controller::handleRefreshScreen(void *attr) {
 	osThreadFlagsSet(mainControllerThreadHandle, CONTROLLER_THREAD_DELAYED_SCREEN_REFRESH_FLAG);
 }
 
+void Controller::handleScreenInactiveTimer(void *attr) {
+	osThreadFlagsSet(mainControllerThreadHandle, CONTROLLER_THREAD_SCREEN_INACTIVE_TIMER_FLAG);
+}
+
 ControllerEvent Controller::waitForEvent() {
 	uint32_t flag = osThreadFlagsWait(
 	CONTROLLER_THREAD_SWITCH_PRESSED_FLAG |
 	CONTROLLER_THREAD_SENSORS_ROUTINE_FINISHED_FLAG |
-	CONTROLLER_THREAD_DELAYED_SCREEN_REFRESH_FLAG,
+	CONTROLLER_THREAD_DELAYED_SCREEN_REFRESH_FLAG |
+	CONTROLLER_THREAD_SCREEN_INACTIVE_TIMER_FLAG,
 	osFlagsWaitAny, osWaitForever);
 
 	switch (flag) {
@@ -143,7 +164,9 @@ ControllerEvent Controller::waitForEvent() {
 	case CONTROLLER_THREAD_DELAYED_SCREEN_REFRESH_FLAG:
 		TRIGGER_TOUCHGFX_REFRESH();
 		return waitForEvent();
-//		return RefreshScreen;
+
+	case CONTROLLER_THREAD_SCREEN_INACTIVE_TIMER_FLAG:
+		return ScreenInactiveTimer;
 	}
 
 	return Unknown;
