@@ -11,18 +11,12 @@
 #include "stm32l4xx_hal.h"
 #include "cmsis_os.h"
 
-
 typedef enum {
 	Switch1, Switch2, Switch3, Switch4
 } Switch;
 
 typedef enum {
-	Unknown,
-	Switch1Pressed,
-	Switch2Pressed,
-	Switch3Pressed,
-	Switch4Pressed,
-	SensorsRoutineFinished
+	Unknown, Switch1Pressed, Switch2Pressed, Switch3Pressed, Switch4Pressed, SensorsRoutineFinished
 } ControllerEvent;
 
 class Controller {
@@ -35,11 +29,20 @@ private:
 
 	static osThreadId_t mainControllerThreadHandle;
 
+	static osTimerId delayedScreenRefreshTimerId;
+
+	static void handleRefreshScreen(void *attr);
+
 	static void mainThreadStart();
 
 	static void mainThread(void *pvParameters);
 
 protected:
+
+	void resetDelayedScreenRefresh();
+
+	void stopDelayedScreenRefresh();
+
 	ControllerEvent waitForEvent();
 
 public:

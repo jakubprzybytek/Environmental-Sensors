@@ -20,8 +20,11 @@
 
 #define INITIAL_DELAY 6000
 
-#define MAIN_THREAD_SWITCH_PRESSED_FLAG 0x01
-#define SENSORS_ROUTINE_FINISHED_FLAG 0x02
+#define REFRESH_DELAY 1500 / portTICK_RATE_MS
+
+#define CONTROLLER_THREAD_SWITCH_PRESSED_FLAG 0x01
+#define CONTROLLER_THREAD_SENSORS_ROUTINE_FINISHED_FLAG 0x02
+#define CONTROLLER_THREAD_DELAYED_SCREEN_REFRESH_FLAG 0x04
 
 AppState appState;
 
@@ -37,6 +40,8 @@ Settings settings;
 
 osThreadId_t Controller::mainControllerThreadHandle;
 
+osTimerId Controller::delayedScreenRefreshTimerId;
+
 Controller *Controller::currentController;
 
 Switch Controller::lastPressed;
@@ -44,6 +49,9 @@ Switch Controller::lastPressed;
 void Controller::init() {
 	currentController = &displayReadouts;
 //	currentController = &charts;
+
+	const osTimerAttr_t delayedScreenRefreshTimerAttributes = { .name = "Delayed screen refresh" };
+	delayedScreenRefreshTimerId = osTimerNew(&Controller::handleRefreshScreen, osTimerOnce, NULL, &delayedScreenRefreshTimerAttributes);
 
 	Controller::mainThreadStart();
 }
@@ -58,7 +66,7 @@ void Controller::mainThreadStart() {
 		.stack_size = sizeof(mainControllerThreadBuffer),
 		.priority = (osPriority_t) osPriorityNormal
 	};
-							// @formatter:on
+																	// @formatter:on
 	mainControllerThreadHandle = osThreadNew(mainThread, NULL, &controllerThreadaAttributes);
 }
 
@@ -88,19 +96,36 @@ void Controller::mainThread(void *pvParameters) {
 	osThreadExit();
 }
 
+void Controller::resetDelayedScreenRefresh() {
+	osTimerStart(delayedScreenRefreshTimerId, REFRESH_DELAY);
+}
+
+void Controller::stopDelayedScreenRefresh() {
+	osTimerStop(delayedScreenRefreshTimerId);
+}
+
 void Controller::handleSwitchPressedInterrupt(Switch switchPressed) {
 	lastPressed = switchPressed;
-	osThreadFlagsSet(mainControllerThreadHandle, MAIN_THREAD_SWITCH_PRESSED_FLAG);
+	osThreadFlagsSet(mainControllerThreadHandle, CONTROLLER_THREAD_SWITCH_PRESSED_FLAG);
 }
 
 void Controller::handleSensorsRoutineFinished() {
-	osThreadFlagsSet(mainControllerThreadHandle, SENSORS_ROUTINE_FINISHED_FLAG);
+	osThreadFlagsSet(mainControllerThreadHandle, CONTROLLER_THREAD_SENSORS_ROUTINE_FINISHED_FLAG);
+}
+
+void Controller::handleRefreshScreen(void *attr) {
+	osThreadFlagsSet(mainControllerThreadHandle, CONTROLLER_THREAD_DELAYED_SCREEN_REFRESH_FLAG);
 }
 
 ControllerEvent Controller::waitForEvent() {
-	uint32_t flag = osThreadFlagsWait(MAIN_THREAD_SWITCH_PRESSED_FLAG | SENSORS_ROUTINE_FINISHED_FLAG, osFlagsWaitAny, osWaitForever);
+	uint32_t flag = osThreadFlagsWait(
+	CONTROLLER_THREAD_SWITCH_PRESSED_FLAG |
+	CONTROLLER_THREAD_SENSORS_ROUTINE_FINISHED_FLAG |
+	CONTROLLER_THREAD_DELAYED_SCREEN_REFRESH_FLAG,
+	osFlagsWaitAny, osWaitForever);
+
 	switch (flag) {
-	case MAIN_THREAD_SWITCH_PRESSED_FLAG:
+	case CONTROLLER_THREAD_SWITCH_PRESSED_FLAG:
 		switch (lastPressed) {
 		case Switch1:
 			return Switch1Pressed;
@@ -112,8 +137,13 @@ ControllerEvent Controller::waitForEvent() {
 			return Switch4Pressed;
 		}
 
-	case SENSORS_ROUTINE_FINISHED_FLAG:
+	case CONTROLLER_THREAD_SENSORS_ROUTINE_FINISHED_FLAG:
 		return SensorsRoutineFinished;
+
+	case CONTROLLER_THREAD_DELAYED_SCREEN_REFRESH_FLAG:
+		TRIGGER_TOUCHGFX_REFRESH();
+		return waitForEvent();
+//		return RefreshScreen;
 	}
 
 	return Unknown;
@@ -130,6 +160,3 @@ Controller* Controller::proceed() {
 void Controller::onExit() {
 
 }
-
-//void Controller::onSensorsRoutineFinished() {
-//}

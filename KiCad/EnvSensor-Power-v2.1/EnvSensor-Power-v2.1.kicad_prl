@@ -67,6 +67,12 @@
     "visible_layers": "ffcfff3_ffffffff",
     "zone_display_mode": 1
   },
+  "git": {
+    "repo_password": "",
+    "repo_type": "",
+    "repo_username": "",
+    "ssh_key": ""
+  },
   "meta": {
     "filename": "EnvSensor-Power-v2.1.kicad_prl",
     "version": 3

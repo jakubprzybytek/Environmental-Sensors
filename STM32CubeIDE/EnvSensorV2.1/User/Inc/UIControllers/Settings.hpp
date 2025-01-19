@@ -14,17 +14,7 @@
 
 class Settings: public virtual Controller {
 
-private:
-	osTimerId screenRefreshTimerId;
-
-	void resetDelayedScreenRefresh();
-	void stopDelayedScreenRefresh();
-
-	static void refreshScreen(void *attr);
-
 public:
-	Settings();
-
 	void onEnter();
 
 	Controller* proceed();
