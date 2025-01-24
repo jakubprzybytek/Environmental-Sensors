@@ -47,9 +47,9 @@ Controller* DisplayReadouts::proceed() {
 //			return &charts;
 
 		case Switch4Pressed:
-			SensorsController::resumeSensors();
-			break;
-//			return &settings;
+//			SensorsController::resumeSensors();
+//			break;
+			return &settings;
 
 		case SensorsRoutineFinished:
 			TRIGGER_TOUCHGFX_REFRESH();

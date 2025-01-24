@@ -7,10 +7,7 @@
 
 #include <UIControllers/Settings.hpp>
 
-#include <Time/RtcUtils.hpp>
-
 #include <TouchGFX.hpp>
-#include <UIControllers/AppState.hpp>
 #include <UIControllers/DisplayReadouts.hpp>
 
 extern AppState appState;
@@ -27,267 +24,164 @@ void Settings::onEnter() {
 	TRIGGER_TOUCHGFX_REFRESH();
 }
 
+void Settings::modifyField(DateTime &dateTime, SettingsField field, int8_t delta) {
+	switch (field) {
+	case Year:
+		dateTime.year += delta;
+		break;
+	case Month:
+		dateTime.month += delta;
+		break;
+	case Day:
+		dateTime.day += delta;
+		break;
+	case Hours:
+		dateTime.hour += delta;
+		break;
+	case Minutes:
+		dateTime.minutes += delta;
+		break;
+	case Seconds:
+		dateTime.seconds += delta;
+		break;
+	default:
+		break;
+	}
+}
+
+void Settings::normalize(DateTime &dateTime, SettingsField field) {
+	switch (field) {
+	case Year:
+		if (dateTime.year < 0) {
+			dateTime.year += 100;
+		}
+
+		if (dateTime.year >= 100) {
+			dateTime.year -= 100;
+		}
+		break;
+	case Month:
+		if (dateTime.month < 1) {
+			dateTime.month += 12;
+		}
+
+		if (dateTime.month > 12) {
+			dateTime.month -= 12;
+		}
+		break;
+	case Day:
+		if (dateTime.day < 1) {
+			dateTime.day += DateTime::daysInMonth(dateTime.month);
+		}
+
+		if (dateTime.day > DateTime::daysInMonth(dateTime.month)) {
+			dateTime.day -= DateTime::daysInMonth(dateTime.month);
+		}
+		break;
+	case Hours:
+		if (dateTime.hour < 0) {
+			dateTime.hour += 24;
+		}
+
+		if (dateTime.hour >= 24) {
+			dateTime.hour -= 24;
+		}
+		break;
+	case Minutes:
+		if (dateTime.minutes < 0) {
+			dateTime.minutes += 60;
+		}
+
+		if (dateTime.minutes >= 60) {
+			dateTime.minutes -= 60;
+		}
+		break;
+	case Seconds:
+		if (dateTime.seconds < 0) {
+			dateTime.seconds += 60;
+		}
+
+		if (dateTime.seconds >= 60) {
+			dateTime.seconds -= 60;
+		}
+		break;
+	default:
+		break;
+	}
+}
+
 Controller* Settings::proceed() {
-
-	appState.setSettingsFieldUnderEdit(Year);
-
 	resetScreenInactiveTimer();
 
-	bool goNext = false;
-	while (!goNext) {
-		ControllerEvent event = waitForEvent();
+	SettingsField currentField = Year;
 
-		switch (event) {
+	do {
+		appState.setSettingsFieldUnderEdit(currentField);
 
-		case Switch1Pressed:
-			appState.getSettingsDateTime().year++;
+		bool goNext = false;
+		while (!goNext) {
+			ControllerEvent event = waitForEvent();
+
+			switch (event) {
+
+			case Switch1Pressed:
+				modifyField(appState.getSettingsDateTime(), currentField, 1);
+				break;
+
+			case Switch2Pressed:
+				modifyField(appState.getSettingsDateTime(), currentField, 10);
+				break;
+
+			case Switch3Pressed:
+				modifyField(appState.getSettingsDateTime(), currentField, -1);
+				break;
+
+			case Switch4Pressed:
+				goNext = true;
+				break;
+
+			case ScreenInactiveTimer:
+				return &displayReadouts;
+
+			default:
+				break;
+			}
+
+			normalize(appState.getSettingsDateTime(), currentField);
+
+			resetDelayedScreenRefresh();
+			resetScreenInactiveTimer();
+		}
+
+		switch (currentField) {
+		case Year:
+			currentField = Month;
 			break;
 
-		case Switch2Pressed:
-			appState.getSettingsDateTime().year += 10;
+		case Month:
+			currentField = Day;
 			break;
 
-		case Switch3Pressed:
-			appState.getSettingsDateTime().year--;
+		case Day:
+			currentField = Hours;
 			break;
 
-		case Switch4Pressed:
-			goNext = true;
+		case Hours:
+			currentField = Minutes;
 			break;
 
-		case ScreenInactiveTimer:
-			return &displayReadouts;
+		case Minutes:
+			currentField = Seconds;
+			break;
 
+		case Seconds:
+			currentField = None;
+			break;
 		default:
 			break;
 		}
 
-		if (appState.getSettingsDateTime().year < 0) {
-			appState.getSettingsDateTime().year += 100;
-		}
-
-		if (appState.getSettingsDateTime().year >= 100) {
-			appState.getSettingsDateTime().year -= 100;
-		}
-
-		resetDelayedScreenRefresh();
-		resetScreenInactiveTimer();
-	}
-
-	appState.setSettingsFieldUnderEdit(Month);
-
-	goNext = false;
-	while (!goNext) {
-		ControllerEvent event = waitForEvent();
-
-		switch (event) {
-
-		case Switch1Pressed:
-			appState.getSettingsDateTime().month++;
-
-			break;
-
-		case Switch2Pressed:
-			appState.getSettingsDateTime().month += 10;
-			break;
-
-		case Switch3Pressed:
-			appState.getSettingsDateTime().month--;
-			break;
-
-		case Switch4Pressed:
-			goNext = true;
-			break;
-
-		case ScreenInactiveTimer:
-			return &displayReadouts;
-
-		default:
-			break;
-		}
-
-		if (appState.getSettingsDateTime().month < 1) {
-			appState.getSettingsDateTime().month += 12;
-		}
-
-		if (appState.getSettingsDateTime().month > 12) {
-			appState.getSettingsDateTime().month -= 12;
-		}
-
-		resetDelayedScreenRefresh();
-		resetScreenInactiveTimer();
-	}
-
-	appState.setSettingsFieldUnderEdit(Day);
-
-	goNext = false;
-	while (!goNext) {
-		ControllerEvent event = waitForEvent();
-
-		switch (event) {
-
-		case Switch1Pressed:
-			appState.getSettingsDateTime().day++;
-			break;
-
-		case Switch2Pressed:
-			appState.getSettingsDateTime().day += 10;
-			break;
-
-		case Switch3Pressed:
-			appState.getSettingsDateTime().day--;
-			break;
-
-		case Switch4Pressed:
-			goNext = true;
-			break;
-
-		case ScreenInactiveTimer:
-			return &displayReadouts;
-
-		default:
-			break;
-		}
-
-		if (appState.getSettingsDateTime().day < 1) {
-			appState.getSettingsDateTime().day += DateTime::daysInMonth(appState.getSettingsDateTime().month);
-		}
-
-		if (appState.getSettingsDateTime().day > DateTime::daysInMonth(appState.getSettingsDateTime().month)) {
-			appState.getSettingsDateTime().day -= DateTime::daysInMonth(appState.getSettingsDateTime().month);
-		}
-
-		resetDelayedScreenRefresh();
-		resetScreenInactiveTimer();
-	}
-
-	appState.setSettingsFieldUnderEdit(Hours);
-
-	goNext = false;
-	while (!goNext) {
-		ControllerEvent event = waitForEvent();
-
-		switch (event) {
-
-		case Switch1Pressed:
-			appState.getSettingsDateTime().hour++;
-			break;
-
-		case Switch2Pressed:
-			appState.getSettingsDateTime().hour += 10;
-			break;
-
-		case Switch3Pressed:
-			appState.getSettingsDateTime().hour--;
-			break;
-
-		case Switch4Pressed:
-			goNext = true;
-			break;
-
-		case ScreenInactiveTimer:
-			return &displayReadouts;
-
-		default:
-			break;
-		}
-
-		if (appState.getSettingsDateTime().hour < 0) {
-			appState.getSettingsDateTime().hour += 24;
-		}
-
-		if (appState.getSettingsDateTime().hour >= 24) {
-			appState.getSettingsDateTime().hour -= 24;
-		}
-
-		resetDelayedScreenRefresh();
-		resetScreenInactiveTimer();
-	}
-
-	appState.setSettingsFieldUnderEdit(Minutes);
-
-	goNext = false;
-	while (!goNext) {
-		ControllerEvent event = waitForEvent();
-
-		switch (event) {
-
-		case Switch1Pressed:
-			appState.getSettingsDateTime().minutes++;
-			break;
-
-		case Switch2Pressed:
-			appState.getSettingsDateTime().minutes += 10;
-			break;
-
-		case Switch3Pressed:
-			appState.getSettingsDateTime().minutes--;
-			break;
-
-		case Switch4Pressed:
-			goNext = true;
-			break;
-
-		case ScreenInactiveTimer:
-			return &displayReadouts;
-
-		default:
-			break;
-		}
-
-		if (appState.getSettingsDateTime().minutes < 0) {
-			appState.getSettingsDateTime().minutes += 60;
-		}
-
-		if (appState.getSettingsDateTime().minutes >= 60) {
-			appState.getSettingsDateTime().minutes -= 60;
-		}
-
-		resetDelayedScreenRefresh();
-		resetScreenInactiveTimer();
-	}
-
-	appState.setSettingsFieldUnderEdit(Seconds);
-
-	goNext = false;
-	while (!goNext) {
-		ControllerEvent event = waitForEvent();
-
-		switch (event) {
-
-		case Switch1Pressed:
-			appState.getSettingsDateTime().seconds++;
-			break;
-
-		case Switch2Pressed:
-			appState.getSettingsDateTime().seconds += 10;
-			break;
-
-		case Switch3Pressed:
-			appState.getSettingsDateTime().seconds--;
-			break;
-
-		case Switch4Pressed:
-			goNext = true;
-			break;
-
-		case ScreenInactiveTimer:
-			return &displayReadouts;
-
-		default:
-			break;
-		}
-
-		if (appState.getSettingsDateTime().seconds < 0) {
-			appState.getSettingsDateTime().seconds += 60;
-		}
-
-		if (appState.getSettingsDateTime().seconds >= 60) {
-			appState.getSettingsDateTime().seconds -= 60;
-		}
-
-		resetScreenInactiveTimer();
-	}
+	} while (currentField != None);
 
 	stopDelayedScreenRefresh();
 
@@ -295,7 +189,7 @@ Controller* Settings::proceed() {
 	appState.setSettingsFieldUnderEdit(None);
 	TRIGGER_TOUCHGFX_REFRESH();
 
-	goNext = false;
+	bool goNext = false;
 	while (!goNext) {
 		ControllerEvent event = waitForEvent();
 
