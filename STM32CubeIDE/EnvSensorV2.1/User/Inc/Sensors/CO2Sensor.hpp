@@ -11,7 +11,9 @@
 class CO2Sensor {
 
 public:
-	static void init();
+	static void start();
+	static void terminate();
+	static bool isRunning();
 
 	static void sensorReadyInterruptHandler();
 

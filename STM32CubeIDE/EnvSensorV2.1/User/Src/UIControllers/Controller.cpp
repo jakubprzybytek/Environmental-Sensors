@@ -34,9 +34,6 @@ AppState appState;
 uint32_t mainControllerThreadBuffer[2048];
 StaticTask_t mainControllerThreadControlBlock;
 
-uint32_t sensorRoutineControllerThreadBuffer[128];
-StaticTask_t sensorRoutineControllerThreadControlBlock;
-
 DisplayReadouts displayReadouts;
 Charts charts;
 Settings settings;

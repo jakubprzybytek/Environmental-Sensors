@@ -11,14 +11,14 @@
 class TempPressureSensor {
 
 public:
-	static void init();
-
-	static void startBmp280Thread();
-	static void startBme280Thread();
-	static void bmp280Thread(void *pvParameters);
-	static void bme280Thread(void *pvParameters);
+	static void start();
+	static void terminate();
+	static bool isRunning();
 
 private:
+	static void startBme280Thread();
+	static void bme280Thread(void *pvParameters);
+
 	static char* printf(char *buffer, float temperature, float pressure);
 	static char* printf(char *buffer, float temperature, float pressure, float humidity);
 };

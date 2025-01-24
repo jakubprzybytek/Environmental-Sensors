@@ -132,5 +132,7 @@ Controller* Charts::proceed() {
 		default:
 			break;
 		}
+
+		resetScreenInactiveTimer();
 	}
 }

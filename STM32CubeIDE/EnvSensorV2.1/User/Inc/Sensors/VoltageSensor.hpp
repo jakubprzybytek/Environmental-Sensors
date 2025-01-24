@@ -4,7 +4,7 @@
 class VoltageSensor {
 
 public:
-	static void init();
+	static void start();
 
 private:
 	static void startThread();

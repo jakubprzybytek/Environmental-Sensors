@@ -23,10 +23,8 @@
 #include <Utils/ftoa.h>
 #include <Utils/DebugLog.hpp>
 
-#define CO2_READY_FLAG 0x01
-
-#define WAIT_FOR_READY() osThreadFlagsWait(CO2_READY_FLAG, osFlagsWaitAny, osWaitForever);
-#define NOTIFY_READY() osThreadFlagsSet(co2ReadoutThreadHandle, CO2_READY_FLAG);
+#define TERMINATE_FLAG 0x01
+#define CO2_READY_FLAG 0x02
 
 #define RETRY_DELAY 5000
 #define SCD30_IS_READY() HAL_GPIO_ReadPin(SCD30_READY_GPIO_Port, SCD30_READY_Pin)
@@ -39,8 +37,21 @@ uint32_t co2ReadoutThreadBuffer[150];
 StaticTask_t co2ReadoutThreadControlBlock;
 osThreadId_t co2ReadoutThreadHandle;
 
-void CO2Sensor::init() {
+void CO2Sensor::start() {
 	startThread();
+}
+
+void CO2Sensor::terminate() {
+	osThreadFlagsSet(co2ReadoutThreadHandle, TERMINATE_FLAG);
+}
+
+void CO2Sensor::sensorReadyInterruptHandler() {
+	osThreadFlagsSet(co2ReadoutThreadHandle, CO2_READY_FLAG);
+}
+
+bool CO2Sensor::isRunning() {
+	osThreadState_t state = osThreadGetState(co2ReadoutThreadHandle);
+	return state != osThreadTerminated && state != osThreadError;
 }
 
 void CO2Sensor::startThread() {
@@ -99,82 +110,88 @@ void CO2Sensor::thread(void *pvParameters) {
 #endif
 
 	if (SCD30_IS_READY()) {
-		NOTIFY_READY();
+		osThreadFlagsSet(co2ReadoutThreadHandle, CO2_READY_FLAG);
 	}
 
-	for (;;) {
-		WAIT_FOR_READY();
-		if (status == osOK) {
+	bool running = true;
 
-			I2C1_ACQUIRE
+	while (running) {
 
-			float co2, temp, hum;
-			uint8_t i2cStatus = scd30.readMeasurements(&co2, &temp, &hum);
+		uint32_t flag = osThreadFlagsWait(TERMINATE_FLAG | CO2_READY_FLAG, osFlagsWaitAny, osWaitForever);
 
-			I2C1_RELEASE
+		if (flag == TERMINATE_FLAG) {
+			running = false;
+			break;
+		}
 
-			if (i2cStatus == HAL_OK) {
+		I2C1_ACQUIRE
+
+		float co2, temp, hum;
+		uint8_t i2cStatus = scd30.readMeasurements(&co2, &temp, &hum);
+
+		I2C1_RELEASE
+
+		if (i2cStatus == HAL_OK) {
 #ifdef CO2_SENSOR_INFO
-				if (DebugLog::isInitialized()) {
-					printf(messageBuffer, co2, temp, hum);
-					DebugLog::log(messageBuffer);
-				}
+			if (DebugLog::isInitialized()) {
+				printf(messageBuffer, co2, temp, hum);
+				DebugLog::log(messageBuffer);
+			}
 #endif
 
-				SubmitReadouts::submitScdCO2AndTemperature(co2, temp, hum);
+			SubmitReadouts::submitScdCO2AndTemperature(co2, temp, hum);
 
-			} else {
+		} else {
 #ifdef CO2_SENSOR_INFO
-				DebugLog::log((char*) "SCD - error read");
+			DebugLog::log((char*) "SCD - error read");
 #endif
 
-				// retry if SCD30 is still ready
-				while (SCD30_IS_READY()) {
-					osDelay(500 / portTICK_RATE_MS);
+			// retry if SCD30 is still ready
+			while (SCD30_IS_READY()) {
+				osDelay(500 / portTICK_RATE_MS);
 
 #ifdef CO2_SENSOR_INFO
-					DebugLog::log((char*) "SCD - retry");
+				DebugLog::log((char*) "SCD - retry");
 #endif
 
-					I2C1_ACQUIRE
+				I2C1_ACQUIRE
 
-					i2cStatus = scd30.readMeasurements(&co2, &temp, &hum);
+				i2cStatus = scd30.readMeasurements(&co2, &temp, &hum);
 
-					I2C1_RELEASE
+				I2C1_RELEASE
 
-					if (i2cStatus == HAL_OK) {
+				if (i2cStatus == HAL_OK) {
 #ifdef CO2_SENSOR_INFO
-						if (DebugLog::isInitialized()) {
-							printf(messageBuffer, co2, temp, hum);
-							DebugLog::log(messageBuffer);
-						}
-#endif
-
-						SubmitReadouts::submitScdCO2AndTemperature(co2, temp, hum);
-
-					} else {
-#ifdef CO2_SENSOR_INFO
-						DebugLog::log((char*) "SCD - error on retry");
-#endif
+					if (DebugLog::isInitialized()) {
+						printf(messageBuffer, co2, temp, hum);
+						DebugLog::log(messageBuffer);
 					}
+#endif
+
+					SubmitReadouts::submitScdCO2AndTemperature(co2, temp, hum);
+
+				} else {
+#ifdef CO2_SENSOR_INFO
+					DebugLog::log((char*) "SCD - error on retry");
+#endif
 				}
 			}
+		}
 
 #ifdef CO2_SENSOR_TRACE
 			DebugLog::logWithStackHighWaterMark("SCD - stack: ");
 #endif
-
-		} else if (status != osErrorTimeout) {
-			osDelay(5000 / portTICK_RATE_MS);
-		}
 	}
+
+	scd30.stopContinousMeasurement();
+
+#ifdef CO2_SENSOR_INFO
+	DebugLog::log((char*) "SCD - terminate");
+#endif
 
 	osThreadExit();
 }
 
-void CO2Sensor::sensorReadyInterruptHandler() {
-	NOTIFY_READY();
-}
 
 void CO2Sensor::printf(char *buffer, float co2, float temperature, float humidity) {
 	*(buffer++) = 'C';

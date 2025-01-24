@@ -20,7 +20,8 @@ extern Charts charts;
 extern Settings settings;
 
 void DisplayReadouts::onEnter() {
-	appState.setButtonLabels("Refresh", "Burst", "History", "Settings");
+//	appState.setButtonLabels("Refresh", "Burst", "History", "Settings");
+	appState.setButtonLabels("Refresh", "Burst", "stop", "start");
 
 	TOUCHGFX_GO_TO_READOUT_SCREEN();
 	TRIGGER_TOUCHGFX_REFRESH();
@@ -41,10 +42,14 @@ Controller* DisplayReadouts::proceed() {
 			break;
 
 		case Switch3Pressed:
-			return &charts;
+			SensorsController::stopSensors();
+			break;
+//			return &charts;
 
 		case Switch4Pressed:
-			return &settings;
+			SensorsController::resumeSensors();
+			break;
+//			return &settings;
 
 		case SensorsRoutineFinished:
 			TRIGGER_TOUCHGFX_REFRESH();

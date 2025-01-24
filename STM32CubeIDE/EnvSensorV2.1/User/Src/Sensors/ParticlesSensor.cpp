@@ -37,11 +37,11 @@ osThreadId_t particlesSensorThreadHandle;
 #define WAIT_FOR_INTERRUPT(ms) (osThreadFlagsWait(STOP_THREAD_FLAG, osFlagsWaitAll, ms / portTICK_RATE_MS) != (uint32_t) osErrorTimeout)
 #define NOTIFY() osThreadFlagsSet(particlesSensorThreadHandle, STOP_THREAD_FLAG);
 
-void ParticlesSensor::initAndStart() {
+void ParticlesSensor::start() {
 	startThread();
 }
 
-void ParticlesSensor::stopAndTerminate() {
+void ParticlesSensor::terminate() {
 	osThreadFlagsSet(particlesSensorThreadHandle, STOP_THREAD_FLAG);
 }
 
@@ -174,7 +174,7 @@ void ParticlesSensor::thread(void *pvParameters) {
 	PARTICLES_SENSOR_LED_Off();
 
 #ifdef PARTICLES_SENSOR_INFO
-	DebugLog::log((char*) "HPMA - stopped");
+	DebugLog::log((char*) "HPMA - terminated");
 #endif
 
 	osThreadExit();

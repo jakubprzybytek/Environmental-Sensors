@@ -16,15 +16,17 @@
 #define BATTERY_MESSURE_ENABLE HAL_GPIO_WritePin(BATTERY_MEASURE_ENABLE_GPIO_Port, BATTERY_MEASURE_ENABLE_Pin, GPIO_PIN_SET);
 #define BATTERY_MESSURE_DISABLE HAL_GPIO_WritePin(BATTERY_MEASURE_ENABLE_GPIO_Port, BATTERY_MEASURE_ENABLE_Pin, GPIO_PIN_RESET);
 
-#define READOUTS_DELAY 35000
-#define OVERSAMPLING_READOUTS 100
+#define INITIAL_DELAY SECONDS(2)
+#define READOUTS_DELAY SECONDS(35)
+
+#define OVERSAMPLING_READOUTS 10
 
 extern ADC_HandleTypeDef hadc1;
 
 uint32_t voltageReadoutThreadBuffer[128];
 StaticTask_t voltageReadoutThreadControlBlock;
 
-void VoltageSensor::init() {
+void VoltageSensor::start() {
 	startThread();
 }
 
@@ -44,12 +46,11 @@ void VoltageSensor::startThread() {
 
 void VoltageSensor::thread(void *pvParameters) {
 
+	osDelay(INITIAL_DELAY / portTICK_RATE_MS);
+
 	uint32_t wakeTime = osKernelGetTickCount();
 
 	for (;;) {
-		wakeTime += READOUTS_DELAY / portTICK_RATE_MS;
-		osDelayUntil(wakeTime);
-
 		BATTERY_MESSURE_ENABLE
 
 		osDelay(10 / portTICK_RATE_MS);
@@ -79,6 +80,9 @@ void VoltageSensor::thread(void *pvParameters) {
 #endif
 
 		SubmitReadouts::submitVoltage(voltage);
+
+		wakeTime += READOUTS_DELAY / portTICK_RATE_MS;
+		osDelayUntil(wakeTime);
 	}
 }
 
