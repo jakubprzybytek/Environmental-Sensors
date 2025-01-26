@@ -25,7 +25,7 @@ uint32_t displayControllerThreadBuffer[100];
 StaticTask_t displayControllerThreadControlBlock;
 osThreadId_t displayControllerThreadHandle;
 
-void DisplayController::init() {
+void DisplayController::start() {
 	startThread();
 }
 

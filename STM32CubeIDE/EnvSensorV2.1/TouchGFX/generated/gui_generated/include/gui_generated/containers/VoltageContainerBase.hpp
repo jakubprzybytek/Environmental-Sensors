@@ -8,6 +8,7 @@
 #include <touchgfx/containers/Container.hpp>
 #include <touchgfx/widgets/TextAreaWithWildcard.hpp>
 #include <touchgfx/widgets/TextArea.hpp>
+#include <touchgfx/widgets/Image.hpp>
 
 class VoltageContainerBase : public touchgfx::Container
 {
@@ -27,6 +28,10 @@ protected:
     touchgfx::TextAreaWithOneWildcard valueTextArea;
     touchgfx::TextArea unitTextArea;
     touchgfx::TextArea labelTextArea;
+    touchgfx::Image battLevel4Image;
+    touchgfx::Image battLevel3Image;
+    touchgfx::Image battLevel2Image;
+    touchgfx::Image battLevel1Image;
 
     /*
      * Wildcard Buffers

@@ -16,7 +16,7 @@ typedef enum {
 } Switch;
 
 typedef enum {
-	Unknown, Switch1Pressed, Switch2Pressed, Switch3Pressed, Switch4Pressed, SensorsRoutineFinished, ScreenInactiveTimer
+	Unknown, Switch1Pressed, Switch2Pressed, Switch3Pressed, Switch4Pressed, SensorsRoutineFinished, ScreenInactiveTimer, BatteryDrained, BatteryGood
 } ControllerEvent;
 
 class Controller {
@@ -55,11 +55,15 @@ protected:
 
 public:
 
-	static void init();
+	static void start();
 
 	static void handleSwitchPressedInterrupt(Switch switchPressed);
 
 	static void handleSensorsRoutineFinished();
+
+	static void handleBatteryDrained();
+
+	static void handleBatteryGood();
 
 	virtual void onEnter();
 

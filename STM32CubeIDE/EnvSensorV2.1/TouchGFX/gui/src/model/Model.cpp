@@ -31,6 +31,7 @@ void Model::tick() {
 		float roundedVoltage = round(readoutsState.voltage * 100.0) / 100.0;
 		modelListener->notifyVoltageChanged(roundedVoltage);
 	}
+	modelListener->notifyBatteryLevelChanged(appState.getBatteryLevel());
 
 	if (readoutsState.sdAvailableSpace >= 0) {
 		modelListener->notifySdAvailableSpaceChanged(readoutsState.sdAvailableSpace);

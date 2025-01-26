@@ -29,6 +29,9 @@ public:
     // Chart
     void gotoChartScreenNoTransition();
 
+    // EmptyBattery
+    void gotoEmptyBatteryScreenNoTransition();
+
 protected:
     touchgfx::Callback<FrontendApplicationBase> transitionCallback;
     FrontendHeap& frontendHeap;
@@ -42,6 +45,9 @@ protected:
 
     // Chart
     void gotoChartScreenNoTransitionImpl();
+
+    // EmptyBattery
+    void gotoEmptyBatteryScreenNoTransitionImpl();
 };
 
 #endif // FRONTENDAPPLICATIONBASE_HPP

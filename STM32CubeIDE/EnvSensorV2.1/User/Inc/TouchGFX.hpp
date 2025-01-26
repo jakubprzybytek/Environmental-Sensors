@@ -17,5 +17,6 @@ using namespace touchgfx;
 #define TOUCHGFX_GO_TO_READOUT_SCREEN() static_cast<FrontendApplication*>(Application::getInstance())->gotoMainReadoutsScreenNoTransition();
 #define TOUCHGFX_GO_TO_SETTINGS() static_cast<FrontendApplication*>(Application::getInstance())->gotoSettingsScreenNoTransition();
 #define TOUCHGFX_GO_TO_CHART() static_cast<FrontendApplication*>(Application::getInstance())->gotoChartScreenNoTransition();
+#define TOUCHGFX_GO_TO_EMPTY_BATTERY() static_cast<FrontendApplication*>(Application::getInstance())->gotoEmptyBatteryScreenNoTransition();
 
 #endif /* INC_TOUCH_GFX_HPP_ */

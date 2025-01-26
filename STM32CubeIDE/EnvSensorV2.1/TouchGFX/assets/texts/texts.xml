@@ -22,17 +22,17 @@
       </Text>
     </TextGroup>
     <TextGroup Id="Unsorted">
-      <Text Id="__SingleUse_ENI6" Alignment="Right" TypographyId="Small">
-        <Translation Language="GB">SD</Translation>
+      <Text Id="__SingleUse_CNY7" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">00.00.2000</Translation>
       </Text>
-      <Text Id="__SingleUse_31P3" Alignment="Left" TypographyId="Small">
-        <Translation Language="GB">[MB]</Translation>
+      <Text Id="__SingleUse_ENI6" Alignment="Right" TypographyId="Small">
+        <Translation Language="GB">SD:</Translation>
       </Text>
       <Text Id="__SingleUse_AQHC" Alignment="Left" TypographyId="Small">
         <Translation Language="GB">N/A</Translation>
       </Text>
-      <Text Id="__SingleUse_5QQE" Alignment="Right" TypographyId="Small">
-        <Translation Language="GB">&lt;value&gt;</Translation>
+      <Text Id="__SingleUse_5QQE" Alignment="Left" TypographyId="Small">
+        <Translation Language="GB">&lt;value&gt; MB</Translation>
       </Text>
       <Text Id="INTERVAL_DAY" Alignment="Center" TypographyId="Small">
         <Translation Language="GB">day</Translation>
@@ -304,7 +304,7 @@
       <Text Id="__SingleUse_0OK7" Alignment="Right" TypographyId="Default">
         <Translation Language="GB">Humidity</Translation>
       </Text>
-      <Text Id="__SingleUse_94JU" Alignment="Right" TypographyId="Small">
+      <Text Id="__SingleUse_94JU" Alignment="Left" TypographyId="Small">
         <Translation Language="GB">&lt;value&gt;</Translation>
       </Text>
       <Text Id="__SingleUse_IXTO" Alignment="Left" TypographyId="Small">
@@ -313,11 +313,11 @@
       <Text Id="__SingleUse_CR7E" Alignment="Left" TypographyId="Small">
         <Translation Language="GB">[V]</Translation>
       </Text>
-      <Text Id="__SingleUse_S6EA" Alignment="Right" TypographyId="Small">
-        <Translation Language="GB">Volt.</Translation>
+      <Text Id="__SingleUse_S6EA" Alignment="Left" TypographyId="Small">
+        <Translation Language="GB">Batt.</Translation>
       </Text>
       <Text Id="__SingleUse_HZ9N" Alignment="Center" TypographyId="Default">
-        <Translation Language="GB">Time</Translation>
+        <Translation Language="GB">&lt;value&gt;</Translation>
       </Text>
       <Text Id="__SingleUse_UKDP" Alignment="Left" TypographyId="Default">
         <Translation Language="GB">00:00:00</Translation>

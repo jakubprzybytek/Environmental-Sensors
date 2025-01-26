@@ -4,12 +4,13 @@
 #include <gui_generated/containers/VoltageContainerBase.hpp>
 #include <texts/TextKeysAndLanguages.hpp>
 #include <touchgfx/Color.hpp>
+#include <images/BitmapDatabase.hpp>
 
 VoltageContainerBase::VoltageContainerBase()
 {
     setWidth(64);
-    setHeight(26);
-    valueTextArea.setPosition(0, 13, 40, 13);
+    setHeight(31);
+    valueTextArea.setPosition(0, 13, 38, 13);
     valueTextArea.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     valueTextArea.setLinespacing(0);
     Unicode::snprintf(valueTextAreaBuffer, VALUETEXTAREA_SIZE, "%s", touchgfx::TypedText(T___SINGLEUSE_IXTO).getText());
@@ -21,6 +22,7 @@ VoltageContainerBase::VoltageContainerBase()
     unitTextArea.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     unitTextArea.setLinespacing(0);
     unitTextArea.setTypedText(touchgfx::TypedText(T___SINGLEUSE_CR7E));
+    unitTextArea.setVisible(false);
     add(unitTextArea);
 
     labelTextArea.setPosition(0, 0, 32, 13);
@@ -28,6 +30,25 @@ VoltageContainerBase::VoltageContainerBase()
     labelTextArea.setLinespacing(0);
     labelTextArea.setTypedText(touchgfx::TypedText(T___SINGLEUSE_S6EA));
     add(labelTextArea);
+
+    battLevel4Image.setXY(40, 0);
+    battLevel4Image.setBitmap(touchgfx::Bitmap(BITMAP_BATT4_20_B_ID));
+    add(battLevel4Image);
+
+    battLevel3Image.setXY(40, 0);
+    battLevel3Image.setBitmap(touchgfx::Bitmap(BITMAP_BATT3_20_B_ID));
+    battLevel3Image.setVisible(false);
+    add(battLevel3Image);
+
+    battLevel2Image.setXY(40, 0);
+    battLevel2Image.setBitmap(touchgfx::Bitmap(BITMAP_BATT2_20_B_ID));
+    battLevel2Image.setVisible(false);
+    add(battLevel2Image);
+
+    battLevel1Image.setXY(40, 0);
+    battLevel1Image.setBitmap(touchgfx::Bitmap(BITMAP_BATT1_20_B_ID));
+    battLevel1Image.setVisible(false);
+    add(battLevel1Image);
 }
 
 VoltageContainerBase::~VoltageContainerBase()

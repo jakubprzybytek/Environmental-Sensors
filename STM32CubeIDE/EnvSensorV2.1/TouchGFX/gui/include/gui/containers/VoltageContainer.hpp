@@ -2,6 +2,7 @@
 #define VOLTAGECONTAINER_HPP
 
 #include <gui_generated/containers/VoltageContainerBase.hpp>
+#include <UIControllers/AppState.hpp>
 
 class VoltageContainer: public VoltageContainerBase {
 
@@ -13,6 +14,7 @@ public:
 	virtual void initialize();
 
 	void setValue(float value);
+	void setBatteryLevel(BatteryLevel batteryLevel);
 
 protected:
 };

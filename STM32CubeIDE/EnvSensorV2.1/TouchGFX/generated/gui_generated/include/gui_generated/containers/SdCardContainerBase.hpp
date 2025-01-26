@@ -25,7 +25,6 @@ protected:
      * Member Declarations
      */
     touchgfx::TextAreaWithOneWildcard valueTextArea;
-    touchgfx::TextArea unitTextArea;
     touchgfx::TextArea labelTextArea;
 
     /*

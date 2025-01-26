@@ -220,6 +220,18 @@
     <Filter Include="Source Files\generated\gui_generated\chart_screen">
       <UniqueIdentifier>15DF1EAA-9192-1FD3-8AEA-8C0B9095CE76</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\gui\emptybattery_screen">
+      <UniqueIdentifier>09FE40B6-3B2C-02B0-E883-5253829B9CEF</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\gui\emptybattery_screen">
+      <UniqueIdentifier>6A3A76C6-BEEB-D3B6-447D-D662AEAF604E</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\generated\gui_generated\emptybattery_screen">
+      <UniqueIdentifier>88020616-7795-FC1D-3921-BE51FC3D946A</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\generated\gui_generated\emptybattery_screen">
+      <UniqueIdentifier>E99BDCF4-CD45-BFBB-800D-758409DAD0F9</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(TouchGFXReleasePath)\framework\source\platform\driver\touch\SDL2TouchController.cpp">
@@ -356,6 +368,15 @@
     </ClCompile>
     <ClCompile Include="..\..\generated\gui_generated\src\containers\SdCardContainerBase.cpp">
       <Filter>Source Files\generated\gui_generated\containers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\emptybattery_screen\EmptyBatteryPresenter.cpp">
+      <Filter>Source Files\gui\emptybattery_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\emptybattery_screen\EmptyBatteryView.cpp">
+      <Filter>Source Files\gui\emptybattery_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\generated\gui_generated\src\emptybattery_screen\EmptyBatteryViewBase.cpp">
+      <Filter>Source Files\generated\gui_generated\emptybattery_screen</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -903,6 +924,15 @@
     </ClInclude>
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\SdCardContainerBase.hpp">
       <Filter>Header Files\generated\gui_generated\containers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\emptybattery_screen\EmptyBatteryPresenter.hpp">
+      <Filter>Header Files\gui\emptybattery_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\emptybattery_screen\EmptyBatteryView.hpp">
+      <Filter>Header Files\gui\emptybattery_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\emptybattery_screen\EmptyBatteryViewBase.hpp">
+      <Filter>Header Files\generated\gui_generated\emptybattery_screen</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

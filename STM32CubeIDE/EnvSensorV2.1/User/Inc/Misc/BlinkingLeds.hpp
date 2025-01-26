@@ -11,7 +11,7 @@
 class BlinkingLeds {
 
 public:
-	static void init();
+	static void start();
 
 private:
 	static void startThread();

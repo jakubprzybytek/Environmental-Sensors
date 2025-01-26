@@ -23,6 +23,7 @@ public:
 	void setLedLabels(const char *led1Label, const char *led2Label, const char *led3Label, const char *led4Label);
 
 	void setVoltage(float voltage);
+	void setBatteryLevel(BatteryLevel batteryLevel);
 	void setSdAvailableSpace(int16_t availableSpace);
 	void setTemperature(float temperature);
 	void setPressure(float preassure);

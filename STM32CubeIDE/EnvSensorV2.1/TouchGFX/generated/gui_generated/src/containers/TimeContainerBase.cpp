@@ -7,9 +7,9 @@
 
 TimeContainerBase::TimeContainerBase()
 {
-    setWidth(80);
+    setWidth(100);
     setHeight(52);
-    timeTextArea.setPosition(0, 26, 80, 26);
+    timeTextArea.setPosition(0, 26, 100, 26);
     timeTextArea.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     timeTextArea.setLinespacing(0);
     Unicode::snprintf(timeTextAreaBuffer, TIMETEXTAREA_SIZE, "%s", touchgfx::TypedText(T___SINGLEUSE_UKDP).getText());
@@ -17,11 +17,13 @@ TimeContainerBase::TimeContainerBase()
     timeTextArea.setTypedText(touchgfx::TypedText(T___SINGLEUSE_O4NC));
     add(timeTextArea);
 
-    labelTextArea.setPosition(0, 0, 80, 26);
-    labelTextArea.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
-    labelTextArea.setLinespacing(0);
-    labelTextArea.setTypedText(touchgfx::TypedText(T___SINGLEUSE_HZ9N));
-    add(labelTextArea);
+    dateTextArea.setPosition(0, 0, 100, 26);
+    dateTextArea.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+    dateTextArea.setLinespacing(0);
+    Unicode::snprintf(dateTextAreaBuffer, DATETEXTAREA_SIZE, "%s", touchgfx::TypedText(T___SINGLEUSE_CNY7).getText());
+    dateTextArea.setWildcard(dateTextAreaBuffer);
+    dateTextArea.setTypedText(touchgfx::TypedText(T___SINGLEUSE_HZ9N));
+    add(dateTextArea);
 }
 
 TimeContainerBase::~TimeContainerBase()

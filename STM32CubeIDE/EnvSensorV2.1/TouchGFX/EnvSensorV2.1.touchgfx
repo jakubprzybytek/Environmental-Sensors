@@ -37,9 +37,9 @@
             "Type": "CustomContainerInstance",
             "Name": "sdCardContainer",
             "X": 336,
-            "Y": 253,
-            "Width": 64,
-            "Height": 26,
+            "Y": 262,
+            "Width": 60,
+            "Height": 15,
             "CustomContainerDefinitionName": "SdCardContainer"
           },
           {
@@ -48,15 +48,15 @@
             "X": 336,
             "Y": 224,
             "Width": 64,
-            "Height": 26,
+            "Height": 31,
             "CustomContainerDefinitionName": "VoltageContainer"
           },
           {
             "Type": "CustomContainerInstance",
             "Name": "particlesContainer",
-            "X": 80,
+            "X": 100,
             "Y": 225,
-            "Width": 250,
+            "Width": 234,
             "Height": 52,
             "CustomContainerDefinitionName": "ParticlesContainer"
           },
@@ -64,7 +64,7 @@
             "Type": "CustomContainerInstance",
             "Name": "timeContainer",
             "Y": 225,
-            "Width": 80,
+            "Width": 100,
             "Height": 52,
             "CustomContainerDefinitionName": "TimeContainer"
           },
@@ -123,6 +123,18 @@
               "Type": "ActionGotoScreen",
               "ScreenTransitionType": "ScreenTransitionNone",
               "ActionComponent": "Chart"
+            }
+          },
+          {
+            "InteractionName": "openEmptyBattery",
+            "Trigger": {
+              "Type": "TriggerPhysicalButtonClicked",
+              "ButtonKey": 2
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "EmptyBattery"
             }
           }
         ]
@@ -210,6 +222,32 @@
             "Width": 400,
             "Height": 287,
             "CustomContainerDefinitionName": "Chart"
+          }
+        ],
+        "Interactions": []
+      },
+      {
+        "Name": "EmptyBattery",
+        "Components": [
+          {
+            "Type": "Box",
+            "Name": "background",
+            "Width": 400,
+            "Height": 300,
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            }
+          },
+          {
+            "Type": "Image",
+            "Name": "emptyBatteryImage",
+            "X": 75,
+            "Y": 25,
+            "Width": 250,
+            "Height": 250,
+            "RelativeFilename": "low-batt-250.png"
           }
         ],
         "Interactions": []
@@ -375,15 +413,14 @@
       },
       {
         "Name": "SdCardContainer",
-        "Width": 64,
-        "Height": 26,
+        "Width": 60,
+        "Height": 15,
         "Components": [
           {
             "Type": "TextArea",
             "Name": "valueTextArea",
-            "Y": 13,
-            "Width": 40,
-            "Height": 13,
+            "Width": 60,
+            "Height": 15,
             "TextId": "__SingleUse_5QQE",
             "TextRotation": "0",
             "Wildcard1": {
@@ -394,18 +431,10 @@
           },
           {
             "Type": "TextArea",
-            "Name": "unitTextArea",
-            "X": 36,
-            "Width": 28,
-            "Height": 16,
-            "TextId": "__SingleUse_31P3",
-            "TextRotation": "0"
-          },
-          {
-            "Type": "TextArea",
             "Name": "labelTextArea",
-            "Width": 32,
-            "Height": 13,
+            "Width": 20,
+            "Height": 15,
+            "Visible": false,
             "TextId": "__SingleUse_ENI6",
             "TextRotation": "0"
           }
@@ -415,13 +444,13 @@
       {
         "Name": "VoltageContainer",
         "Width": 64,
-        "Height": 26,
+        "Height": 31,
         "Components": [
           {
             "Type": "TextArea",
             "Name": "valueTextArea",
             "Y": 13,
-            "Width": 40,
+            "Width": 38,
             "Height": 13,
             "TextId": "__SingleUse_94JU",
             "TextRotation": "0",
@@ -437,6 +466,7 @@
             "X": 36,
             "Width": 28,
             "Height": 15,
+            "Visible": false,
             "TextId": "__SingleUse_CR7E",
             "TextRotation": "0"
           },
@@ -447,20 +477,55 @@
             "Height": 13,
             "TextId": "__SingleUse_S6EA",
             "TextRotation": "0"
+          },
+          {
+            "Type": "Image",
+            "Name": "battLevel4Image",
+            "X": 40,
+            "Width": 20,
+            "Height": 31,
+            "RelativeFilename": "batt4-20-b.png"
+          },
+          {
+            "Type": "Image",
+            "Name": "battLevel3Image",
+            "X": 40,
+            "Width": 20,
+            "Height": 31,
+            "Visible": false,
+            "RelativeFilename": "batt3-20-b.png"
+          },
+          {
+            "Type": "Image",
+            "Name": "battLevel2Image",
+            "X": 40,
+            "Width": 20,
+            "Height": 31,
+            "Visible": false,
+            "RelativeFilename": "batt2-20-b.png"
+          },
+          {
+            "Type": "Image",
+            "Name": "battLevel1Image",
+            "X": 40,
+            "Width": 20,
+            "Height": 31,
+            "Visible": false,
+            "RelativeFilename": "batt1-20-b.png"
           }
         ],
         "Interactions": []
       },
       {
         "Name": "TimeContainer",
-        "Width": 80,
+        "Width": 100,
         "Height": 52,
         "Components": [
           {
             "Type": "TextArea",
             "Name": "timeTextArea",
             "Y": 26,
-            "Width": 80,
+            "Width": 100,
             "Height": 26,
             "TextId": "__SingleUse_O4NC",
             "TextRotation": "0",
@@ -472,29 +537,35 @@
           },
           {
             "Type": "TextArea",
-            "Name": "labelTextArea",
-            "Width": 80,
+            "Name": "dateTextArea",
+            "Width": 100,
             "Height": 26,
             "TextId": "__SingleUse_HZ9N",
-            "TextRotation": "0"
+            "TextRotation": "0",
+            "Wildcard1": {
+              "TextId": "__SingleUse_CNY7",
+              "UseBuffer": true,
+              "BufferSize": 11
+            }
           }
         ],
         "Interactions": []
       },
       {
         "Name": "ParticlesContainer",
-        "Width": 250,
+        "Width": 234,
         "Height": 52,
         "Components": [
           {
             "Type": "TextArea",
             "Name": "unitLabelTextArea",
             "X": 216,
-            "Y": 8,
-            "Width": 36,
-            "Height": 18,
+            "Y": 5,
+            "Width": 18,
+            "Height": 44,
             "TextId": "__SingleUse_6P4T",
-            "TextRotation": "0"
+            "TextRotation": "90",
+            "WideTextAction": 2
           },
           {
             "Type": "TextArea",

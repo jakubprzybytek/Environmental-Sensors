@@ -15,7 +15,7 @@ enum class SensorsControllerState {
 class SensorsController {
 
 public:
-	static void init();
+	static void start();
 
 	static void stopSensors();
 

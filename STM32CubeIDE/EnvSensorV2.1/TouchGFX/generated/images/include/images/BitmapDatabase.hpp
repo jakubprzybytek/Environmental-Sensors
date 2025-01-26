@@ -6,6 +6,11 @@
 #include <touchgfx/hal/Types.hpp>
 #include <touchgfx/Bitmap.hpp>
 
+const uint16_t BITMAP_BATT1_20_B_ID = 0;
+const uint16_t BITMAP_BATT2_20_B_ID = 1;
+const uint16_t BITMAP_BATT3_20_B_ID = 2;
+const uint16_t BITMAP_BATT4_20_B_ID = 3;
+const uint16_t BITMAP_LOW_BATT_250_ID = 4;
 
 namespace BitmapDatabase
 {

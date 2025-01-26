@@ -56,6 +56,9 @@
     <ClCompile Include="..\..\gui\src\chart_screen\Scale.cpp"/>
     <ClCompile Include="..\..\gui\src\containers\SdCardContainer.cpp"/>
     <ClCompile Include="..\..\generated\gui_generated\src\containers\SdCardContainerBase.cpp"/>
+    <ClCompile Include="..\..\gui\src\emptybattery_screen\EmptyBatteryPresenter.cpp"/>
+    <ClCompile Include="..\..\gui\src\emptybattery_screen\EmptyBatteryView.cpp"/>
+    <ClCompile Include="..\..\generated\gui_generated\src\emptybattery_screen\EmptyBatteryViewBase.cpp"/>
   </ItemGroup>
   <ItemGroup>
     <None Include="$(ApplicationRoot)\assets\texts\texts.xml"/>
@@ -241,6 +244,9 @@
     <ClInclude Include="..\..\gui\include\gui\chart_screen\Scale.hpp"/>
     <ClInclude Include="..\..\gui\include\gui\containers\SdCardContainer.hpp"/>
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\SdCardContainerBase.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\emptybattery_screen\EmptyBatteryPresenter.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\emptybattery_screen\EmptyBatteryView.hpp"/>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\emptybattery_screen\EmptyBatteryViewBase.hpp"/>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="$(ApplicationRoot)\generated\simulator\touchgfx.rc"/>

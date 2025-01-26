@@ -5,7 +5,7 @@
 
 class DebugLog {
 public:
-	static void init();
+	static void start();
 	static bool isInitialized();
 
 	static void log(const char *message);

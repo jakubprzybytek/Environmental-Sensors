@@ -16,6 +16,7 @@
 #include <UIControllers/Charts.hpp>
 #include <UIControllers/DisplayReadouts.hpp>
 #include <UIControllers/Settings.hpp>
+#include <UIControllers/EmptyBattery.hpp>
 #include <Utils/DebugLog.hpp>
 
 #define INITIAL_DELAY SECONDS(6)
@@ -28,6 +29,8 @@
 #define CONTROLLER_THREAD_SENSORS_ROUTINE_FINISHED_FLAG 0x02
 #define CONTROLLER_THREAD_DELAYED_SCREEN_REFRESH_FLAG 0x04
 #define CONTROLLER_THREAD_SCREEN_INACTIVE_TIMER_FLAG 0x08
+#define CONTROLLER_THREAD_BATTERY_DRAINED_FLAG 0x10
+#define CONTROLLER_THREAD_BATTERY_GOOD_FLAG 0x20
 
 AppState appState;
 
@@ -37,6 +40,7 @@ StaticTask_t mainControllerThreadControlBlock;
 DisplayReadouts displayReadouts;
 Charts charts;
 Settings settings;
+EmptyBattery emptyBattery;
 
 osThreadId_t Controller::mainControllerThreadHandle;
 
@@ -47,7 +51,7 @@ Controller *Controller::currentController;
 
 Switch Controller::lastPressed;
 
-void Controller::init() {
+void Controller::start() {
 	currentController = &displayReadouts;
 //	currentController = &charts;
 
@@ -70,7 +74,7 @@ void Controller::mainThreadStart() {
 		.stack_size = sizeof(mainControllerThreadBuffer),
 		.priority = (osPriority_t) osPriorityNormal
 	};
-																	// @formatter:on
+																		// @formatter:on
 	mainControllerThreadHandle = osThreadNew(mainThread, NULL, &controllerThreadaAttributes);
 }
 
@@ -126,6 +130,14 @@ void Controller::handleSensorsRoutineFinished() {
 	osThreadFlagsSet(mainControllerThreadHandle, CONTROLLER_THREAD_SENSORS_ROUTINE_FINISHED_FLAG);
 }
 
+void Controller::handleBatteryDrained() {
+	osThreadFlagsSet(mainControllerThreadHandle, CONTROLLER_THREAD_BATTERY_DRAINED_FLAG);
+}
+
+void Controller::handleBatteryGood() {
+	osThreadFlagsSet(mainControllerThreadHandle, CONTROLLER_THREAD_BATTERY_GOOD_FLAG);
+}
+
 void Controller::handleRefreshScreen(void *attr) {
 	osThreadFlagsSet(mainControllerThreadHandle, CONTROLLER_THREAD_DELAYED_SCREEN_REFRESH_FLAG);
 }
@@ -139,7 +151,9 @@ ControllerEvent Controller::waitForEvent() {
 	CONTROLLER_THREAD_SWITCH_PRESSED_FLAG |
 	CONTROLLER_THREAD_SENSORS_ROUTINE_FINISHED_FLAG |
 	CONTROLLER_THREAD_DELAYED_SCREEN_REFRESH_FLAG |
-	CONTROLLER_THREAD_SCREEN_INACTIVE_TIMER_FLAG,
+	CONTROLLER_THREAD_SCREEN_INACTIVE_TIMER_FLAG |
+	CONTROLLER_THREAD_BATTERY_DRAINED_FLAG |
+	CONTROLLER_THREAD_BATTERY_GOOD_FLAG,
 	osFlagsWaitAny, osWaitForever);
 
 	switch (flag) {
@@ -164,6 +178,12 @@ ControllerEvent Controller::waitForEvent() {
 
 	case CONTROLLER_THREAD_SCREEN_INACTIVE_TIMER_FLAG:
 		return ScreenInactiveTimer;
+
+	case CONTROLLER_THREAD_BATTERY_DRAINED_FLAG:
+		return BatteryDrained;
+
+	case CONTROLLER_THREAD_BATTERY_GOOD_FLAG:
+		return BatteryGood;
 	}
 
 	return Unknown;

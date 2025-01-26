@@ -7,17 +7,20 @@
 
 #include <TouchGFX.hpp>
 
+#include <UIControllers/DisplayReadouts.hpp>
+
 #include <Display/DisplayCommands.hpp>
 #include <Sensors/SensorsController.hpp>
 #include <UIControllers/AppState.hpp>
 #include <UIControllers/Charts.hpp>
-#include <UIControllers/DisplayReadouts.hpp>
 #include <UIControllers/Settings.hpp>
+#include <UIControllers/EmptyBattery.hpp>
 
 extern AppState appState;
 
 extern Charts charts;
 extern Settings settings;
+extern EmptyBattery emptyBattery;
 
 void DisplayReadouts::onEnter() {
 //	appState.setButtonLabels("Refresh", "Burst", "History", "Settings");
@@ -54,6 +57,9 @@ Controller* DisplayReadouts::proceed() {
 		case SensorsRoutineFinished:
 			TRIGGER_TOUCHGFX_REFRESH();
 			break;
+
+		case BatteryDrained:
+			return &emptyBattery;
 
 		default:
 			break;

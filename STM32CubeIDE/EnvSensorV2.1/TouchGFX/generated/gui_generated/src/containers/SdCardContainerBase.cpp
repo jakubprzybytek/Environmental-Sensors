@@ -7,9 +7,9 @@
 
 SdCardContainerBase::SdCardContainerBase()
 {
-    setWidth(64);
-    setHeight(26);
-    valueTextArea.setPosition(0, 13, 40, 13);
+    setWidth(60);
+    setHeight(15);
+    valueTextArea.setPosition(0, 0, 60, 15);
     valueTextArea.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     valueTextArea.setLinespacing(0);
     Unicode::snprintf(valueTextAreaBuffer, VALUETEXTAREA_SIZE, "%s", touchgfx::TypedText(T___SINGLEUSE_AQHC).getText());
@@ -17,16 +17,11 @@ SdCardContainerBase::SdCardContainerBase()
     valueTextArea.setTypedText(touchgfx::TypedText(T___SINGLEUSE_5QQE));
     add(valueTextArea);
 
-    unitTextArea.setPosition(36, 0, 28, 16);
-    unitTextArea.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
-    unitTextArea.setLinespacing(0);
-    unitTextArea.setTypedText(touchgfx::TypedText(T___SINGLEUSE_31P3));
-    add(unitTextArea);
-
-    labelTextArea.setPosition(0, 0, 32, 13);
+    labelTextArea.setPosition(0, 0, 20, 15);
     labelTextArea.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     labelTextArea.setLinespacing(0);
     labelTextArea.setTypedText(touchgfx::TypedText(T___SINGLEUSE_ENI6));
+    labelTextArea.setVisible(false);
     add(labelTextArea);
 }
 

@@ -17,7 +17,9 @@
 class LoggerThread {
 
 public:
-	static void init();
+	static void start();
+	static void terminate();
+	static bool isRunning();
 
 	static void flush();
 

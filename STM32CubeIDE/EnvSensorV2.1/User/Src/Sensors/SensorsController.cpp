@@ -19,12 +19,13 @@
 #include <Sensors/ParticlesSensor.hpp>
 
 #include <UIControllers/Controller.hpp>
+#include <Utils/DebugLog.hpp>
 
 #define STOP_SENSORS_FLAG 0x01
 #define RESUME_SENSORS_FLAG 0x02
 #define TRIGGER_BURST_MEASUREMENTS_FLAG 0x04
 
-#define INITIAL_DELAY SECONDS(5)
+#define INITIAL_DELAY SECONDS(2)
 #define BURST_MEASUREMENTS_PERIOD SECONDS(45)
 #define NORMAL_MEASUREMENTS_PERIOD (MINUTES(5) - BURST_MEASUREMENTS_PERIOD)
 
@@ -32,7 +33,7 @@ uint32_t sensorsControllerThreadBuffer[128];
 StaticTask_t sensorsControllerThreadControlBlock;
 osThreadId_t sensorsControllerThreadHandle;
 
-void SensorsController::init() {
+void SensorsController::start() {
 	startThread();
 }
 
@@ -58,6 +59,8 @@ SensorsControllerState SensorsController::enterState(SensorsControllerState curr
 	switch (currentState) {
 
 	case SensorsControllerState::OnlyVoltage:
+		DebugLog::log("SensCtrl: OnlyV");
+
 		if (TempPressureSensor::isRunning()) {
 			TempPressureSensor::terminate();
 		}
@@ -73,6 +76,8 @@ SensorsControllerState SensorsController::enterState(SensorsControllerState curr
 		return SensorsControllerState::MainSensors;
 
 	case SensorsControllerState::MainSensors:
+		DebugLog::log("SensCtrl: MainS");
+
 		if (ParticlesSensor::isRunning()) {
 			ParticlesSensor::terminate();
 		}
@@ -93,6 +98,8 @@ SensorsControllerState SensorsController::enterState(SensorsControllerState curr
 		return SensorsControllerState::AllSensors;
 
 	case SensorsControllerState::AllSensors:
+		DebugLog::log("SensCtrl: AllS");
+
 		ParticlesSensor::start();
 
 		flag = osThreadFlagsWait(STOP_SENSORS_FLAG, osFlagsWaitAny, BURST_MEASUREMENTS_PERIOD / portTICK_RATE_MS);
@@ -110,9 +117,9 @@ SensorsControllerState SensorsController::enterState(SensorsControllerState curr
 }
 
 void SensorsController::thread(void *pvParameters) {
-	VoltageSensor::start();
-
 	osDelay(INITIAL_DELAY / portTICK_RATE_MS);
+
+	VoltageSensor::start();
 
 	SensorsControllerState currentState = SensorsControllerState::OnlyVoltage;
 	for (;;) {

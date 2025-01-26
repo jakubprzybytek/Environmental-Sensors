@@ -8,8 +8,8 @@
 #ifndef INC_UICONTROLLERS_APPSTATE_HPP_
 #define INC_UICONTROLLERS_APPSTATE_HPP_
 
-#include <Readouts/ReadoutsState.hpp>
 #include <Readouts/DataSeries/ChartData.hpp>
+#include <Readouts/ReadoutsState.hpp>
 #include <Time/DateTime.hpp>
 
 enum class SensorName {
@@ -19,6 +19,10 @@ enum class SensorName {
 typedef enum {
 	None, Year, Month, Day, Hours, Minutes, Seconds
 } SettingsField;
+
+typedef enum {
+	Undefined, Empty, Level1, Level2, Level3, Level4
+} BatteryLevel;
 
 class AppState {
 
@@ -32,6 +36,8 @@ private:
 	SensorName currentSensor;
 	TimeSpan currentTimeSpan;
 
+	BatteryLevel batteryLevel;
+
 	const char *button1Label;
 	const char *button2Label;
 	const char *button3Label;
@@ -44,7 +50,8 @@ private:
 
 public:
 	AppState() :
-			settingsDateTime(0, 0, 0, 0, 0, 0), settingsFieldUnderEdit(None), currentSensor(SensorName::CO2), currentTimeSpan(TimeSpan::Minutes5) {
+			settingsDateTime(0, 0, 0, 0, 0, 0), settingsFieldUnderEdit(None), currentSensor(SensorName::CO2), currentTimeSpan(TimeSpan::Minutes5), batteryLevel(
+					Undefined) {
 	}
 
 	ReadoutsState& getReadoutsState() {
@@ -85,6 +92,14 @@ public:
 
 	void setCurrentTimeSpan(TimeSpan currentTimeSpan) {
 		this->currentTimeSpan = currentTimeSpan;
+	}
+
+	BatteryLevel getBatteryLevel() {
+		return batteryLevel;
+	}
+
+	void setBatteryLevel(BatteryLevel batteryLevel) {
+		this->batteryLevel = batteryLevel;
 	}
 
 	void setButtonLabels(const char *button1Label, const char *button2Label, const char *button3Label, const char *button4Label) {

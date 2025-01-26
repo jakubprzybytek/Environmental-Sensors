@@ -9,10 +9,12 @@
 
 #include <TouchGFX.hpp>
 #include <UIControllers/DisplayReadouts.hpp>
+#include <UIControllers/EmptyBattery.hpp>
 
 extern AppState appState;
 
 extern DisplayReadouts displayReadouts;
+extern EmptyBattery emptyBattery;
 
 void Settings::onEnter() {
 	DateTime currentDateTime = RtcUtils::getCurrentDateTime();
@@ -143,6 +145,9 @@ Controller* Settings::proceed() {
 			case ScreenInactiveTimer:
 				return &displayReadouts;
 
+			case BatteryDrained:
+				return &emptyBattery;
+
 			default:
 				break;
 			}
@@ -206,6 +211,9 @@ Controller* Settings::proceed() {
 
 		case ScreenInactiveTimer:
 			return &displayReadouts;
+
+		case BatteryDrained:
+			return &emptyBattery;
 
 		default:
 			break;

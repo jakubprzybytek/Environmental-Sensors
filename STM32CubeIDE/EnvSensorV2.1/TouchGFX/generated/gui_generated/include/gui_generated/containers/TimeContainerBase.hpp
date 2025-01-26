@@ -7,7 +7,6 @@
 #include <gui/common/FrontendApplication.hpp>
 #include <touchgfx/containers/Container.hpp>
 #include <touchgfx/widgets/TextAreaWithWildcard.hpp>
-#include <touchgfx/widgets/TextArea.hpp>
 
 class TimeContainerBase : public touchgfx::Container
 {
@@ -25,13 +24,15 @@ protected:
      * Member Declarations
      */
     touchgfx::TextAreaWithOneWildcard timeTextArea;
-    touchgfx::TextArea labelTextArea;
+    touchgfx::TextAreaWithOneWildcard dateTextArea;
 
     /*
      * Wildcard Buffers
      */
     static const uint16_t TIMETEXTAREA_SIZE = 10;
     touchgfx::Unicode::UnicodeChar timeTextAreaBuffer[TIMETEXTAREA_SIZE];
+    static const uint16_t DATETEXTAREA_SIZE = 11;
+    touchgfx::Unicode::UnicodeChar dateTextAreaBuffer[DATETEXTAREA_SIZE];
 
 private:
 

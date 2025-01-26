@@ -7,11 +7,13 @@
 
 ParticlesContainerBase::ParticlesContainerBase()
 {
-    setWidth(250);
+    setWidth(234);
     setHeight(52);
-    unitLabelTextArea.setPosition(216, 8, 36, 18);
+    unitLabelTextArea.setPosition(216, 5, 18, 44);
     unitLabelTextArea.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     unitLabelTextArea.setLinespacing(0);
+    unitLabelTextArea.setWideTextAction(WIDE_TEXT_WORDWRAP_ELLIPSIS);
+    unitLabelTextArea.setRotation(touchgfx::TEXT_ROTATE_90);
     unitLabelTextArea.setTypedText(touchgfx::TypedText(T___SINGLEUSE_6P4T));
     add(unitLabelTextArea);
 

@@ -18,6 +18,8 @@
 #include <gui/settings_screen/SettingsPresenter.hpp>
 #include <gui/chart_screen/ChartView.hpp>
 #include <gui/chart_screen/ChartPresenter.hpp>
+#include <gui/emptybattery_screen/EmptyBatteryView.hpp>
+#include <gui/emptybattery_screen/EmptyBatteryPresenter.hpp>
 
 
 /**
@@ -43,7 +45,8 @@ public:
     typedef touchgfx::meta::TypeList< MainReadoutsView,
             touchgfx::meta::TypeList< SettingsView,
             touchgfx::meta::TypeList< ChartView,
-            touchgfx::meta::Nil > >
+            touchgfx::meta::TypeList< EmptyBatteryView,
+            touchgfx::meta::Nil > > >
             > GeneratedViewTypes;
 
     /**
@@ -58,7 +61,8 @@ public:
     typedef touchgfx::meta::TypeList< MainReadoutsPresenter,
             touchgfx::meta::TypeList< SettingsPresenter,
             touchgfx::meta::TypeList< ChartPresenter,
-            touchgfx::meta::Nil > >
+            touchgfx::meta::TypeList< EmptyBatteryPresenter,
+            touchgfx::meta::Nil > > >
             > GeneratedPresenterTypes;
 
     /**

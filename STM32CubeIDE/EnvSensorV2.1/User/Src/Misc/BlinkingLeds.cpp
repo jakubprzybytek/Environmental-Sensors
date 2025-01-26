@@ -15,7 +15,7 @@
 uint32_t ledBlinkBuffer[ 128 ];
 StaticTask_t ledBlinkControlBlock;
 
-void BlinkingLeds::init() {
+void BlinkingLeds::start() {
 	startThread();
 }
 

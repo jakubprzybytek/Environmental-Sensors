@@ -7,6 +7,8 @@
 #include <UIControllers/AppState.hpp>
 #include <Utils/DebugLog.hpp>
 
+#define TERMINATE_FLAG 0x01
+
 #define INTERVAL LOGGER_INTERVAL
 
 extern AppState appState;
@@ -18,8 +20,17 @@ osThreadId_t LoggerThread::loggerThreadHandle;
 
 ReadoutFileLogger LoggerThread::readoutFileLogger = ReadoutFileLogger(LOGGER_DIRECTORY);
 
-void LoggerThread::init() {
+void LoggerThread::start() {
 	startThread();
+}
+
+void LoggerThread::terminate() {
+	osThreadFlagsSet(LoggerThread::loggerThreadHandle, TERMINATE_FLAG);
+}
+
+bool LoggerThread::isRunning() {
+	osThreadState_t state = osThreadGetState(LoggerThread::loggerThreadHandle);
+	return state != osThreadTerminated && state != osThreadError;
 }
 
 void LoggerThread::flush() {
@@ -82,22 +93,35 @@ void LoggerThread::thread(void *pvParameters) {
 	}
 #endif
 
-	uint32_t wakeTime = osKernelGetTickCount();
+//	uint32_t wakeTime = osKernelGetTickCount();
 
-	LOGGER_RESULT result = LOGGER_OK;
-	while (result == LOGGER_OK) {
+	bool running = true;
+	while (running) {
 
-		wakeTime += INTERVAL / portTICK_RATE_MS;
-		osDelayUntil(wakeTime);
+//		wakeTime += INTERVAL / portTICK_RATE_MS;
+//		osDelayUntil(wakeTime);
+		if (osThreadFlagsWait(TERMINATE_FLAG, osFlagsWaitAny, INTERVAL / portTICK_RATE_MS) != osFlagsErrorTimeout) {
+			running = false;
+		}
 
-		LoggerThread::readoutFileLogger.log(readoutsState);
+		LOGGER_RESULT result = LoggerThread::readoutFileLogger.log(readoutsState);
+
+		if (result != LOGGER_OK) {
+#ifdef LOGGER_THREAD_INFO
+			DebugLog::log((char*) "Logger failed!");
+#endif
+		}
 
 #ifdef LOGGER_THREAD_TRACE
 		DebugLog::logWithStackHighWaterMark("Logger - stack: ");
 #endif
 	}
 
-	DebugLog::log((char*) "Logger failed!");
+	readoutFileLogger.flush();
+
+#ifdef LOGGER_THREAD_INFO
+	DebugLog::log((char*) "Logger terminated");
+#endif
 
 	osThreadExit();
 }

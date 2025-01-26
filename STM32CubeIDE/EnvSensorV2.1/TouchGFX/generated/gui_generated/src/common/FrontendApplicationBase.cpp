@@ -15,6 +15,8 @@
 #include <gui/settings_screen/SettingsPresenter.hpp>
 #include <gui/chart_screen/ChartView.hpp>
 #include <gui/chart_screen/ChartPresenter.hpp>
+#include <gui/emptybattery_screen/EmptyBatteryView.hpp>
+#include <gui/emptybattery_screen/EmptyBatteryPresenter.hpp>
 
 using namespace touchgfx;
 
@@ -70,4 +72,17 @@ void FrontendApplicationBase::gotoChartScreenNoTransition()
 void FrontendApplicationBase::gotoChartScreenNoTransitionImpl()
 {
     touchgfx::makeTransition<ChartView, ChartPresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
+}
+
+// EmptyBattery
+
+void FrontendApplicationBase::gotoEmptyBatteryScreenNoTransition()
+{
+    transitionCallback = touchgfx::Callback<FrontendApplicationBase>(this, &FrontendApplicationBase::gotoEmptyBatteryScreenNoTransitionImpl);
+    pendingScreenTransitionCallback = &transitionCallback;
+}
+
+void FrontendApplicationBase::gotoEmptyBatteryScreenNoTransitionImpl()
+{
+    touchgfx::makeTransition<EmptyBatteryView, EmptyBatteryPresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
 }

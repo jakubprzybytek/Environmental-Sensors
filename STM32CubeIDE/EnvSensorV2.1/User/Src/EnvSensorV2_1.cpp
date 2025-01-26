@@ -39,19 +39,19 @@ void EnvSensorV2_1_Init() {
 
 //	SdCardInspector::init();
 
-	BlinkingLeds::init();
+	BlinkingLeds::start();
 
-	DebugLog::init();
+	DebugLog::start();
 
-	DisplayController::init();
+	DisplayController::start();
 
-	SensorsReadoutsCollector::init();
+	SensorsReadoutsCollector::start();
 
-	SensorsController::init();
+	SensorsController::start();
 
-	LoggerThread::init();
+//	LoggerThread::start();
 
-	Controller::init();
+	Controller::start();
 }
 
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin) {

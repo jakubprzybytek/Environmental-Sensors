@@ -23,6 +23,10 @@ void MainReadoutsView::setVoltage(float voltage) {
 	voltageContainer.setValue(voltage);
 }
 
+void MainReadoutsView::setBatteryLevel(BatteryLevel batteryLevel) {
+	voltageContainer.setBatteryLevel(batteryLevel);
+}
+
 void MainReadoutsView::setSdAvailableSpace(int16_t availableSpace) {
 	sdCardContainer.setValue(availableSpace);
 }

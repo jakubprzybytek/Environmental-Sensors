@@ -13,13 +13,15 @@
 #include <Logger/LoggerThread.hpp>
 #include <Time/RtcUtils.hpp>
 #include <UIControllers/AppState.hpp>
-#include <UIControllers/Charts.hpp>
 #include <UIControllers/DisplayReadouts.hpp>
+#include <UIControllers/Charts.hpp>
+#include <UIControllers/EmptyBattery.hpp>
 #include <Utils/DebugLog.hpp>
 
 extern AppState appState;
 
 extern DisplayReadouts displayReadouts;
+extern EmptyBattery emptyBattery;
 
 void Charts::loadChartData() {
 #ifdef APPLICATION_CONTROLLER_INFO
@@ -128,6 +130,9 @@ Controller* Charts::proceed() {
 
 		case ScreenInactiveTimer:
 			return &displayReadouts;
+
+		case BatteryDrained:
+			return &emptyBattery;
 
 		default:
 			break;

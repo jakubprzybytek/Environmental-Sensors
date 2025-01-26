@@ -22,6 +22,10 @@ void MainReadoutsPresenter::notifyVoltageChanged(float newVoltage) {
 	view.setVoltage(newVoltage);
 }
 
+void MainReadoutsPresenter::notifyBatteryLevelChanged(BatteryLevel batteryLevel) {
+	view.setBatteryLevel(batteryLevel);
+}
+
 void MainReadoutsPresenter::notifySdAvailableSpaceChanged(int16_t sdAvailableSpace) {
 	view.setSdAvailableSpace(sdAvailableSpace);
 }

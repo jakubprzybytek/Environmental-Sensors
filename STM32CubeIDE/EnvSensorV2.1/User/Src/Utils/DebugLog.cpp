@@ -25,7 +25,7 @@ StaticTask_t debugLogCollectorThreadControlBlock;
 bool DebugLog::initialized = false;
 char DebugLog::messageBuffer[DEBUG_LOG_MAX_LINE_LENGTH + 1];
 
-void DebugLog::init() {
+void DebugLog::start() {
 	startThread();
 	initialized = true;
 }

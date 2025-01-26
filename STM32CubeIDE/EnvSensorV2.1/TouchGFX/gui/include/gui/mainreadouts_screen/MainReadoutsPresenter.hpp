@@ -33,6 +33,7 @@ public:
 	void notifyLedLabelsChanged(const char *led1Label, const char *led2Label, const char *led3Label, const char *led4Label);
 
 	void notifyVoltageChanged(float newVoltage);
+    void notifyBatteryLevelChanged(BatteryLevel batteryLevel);
 	void notifySdAvailableSpaceChanged(int16_t sdAvailableSpace);
 
 	void notifyTemperatureChanged(float newTemperature);

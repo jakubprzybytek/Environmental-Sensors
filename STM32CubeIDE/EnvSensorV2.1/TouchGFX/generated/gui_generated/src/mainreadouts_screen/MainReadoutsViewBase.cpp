@@ -20,13 +20,13 @@ MainReadoutsViewBase::MainReadoutsViewBase()
     bottomButtons.setXY(6, 287);
     add(bottomButtons);
 
-    sdCardContainer.setXY(336, 253);
+    sdCardContainer.setXY(336, 262);
     add(sdCardContainer);
 
     voltageContainer.setXY(336, 224);
     add(voltageContainer);
 
-    particlesContainer.setXY(80, 225);
+    particlesContainer.setXY(100, 225);
     add(particlesContainer);
 
     timeContainer.setXY(0, 225);
@@ -81,6 +81,15 @@ void MainReadoutsViewBase::handleKeyEvent(uint8_t key)
         //When hardware button 1 clicked change screen to Chart
         //Go to Chart with no screen transition
         application().gotoChartScreenNoTransition();
+    
+    }
+
+    if(2 == key)
+    {
+        //openEmptyBattery
+        //When hardware button 2 clicked change screen to EmptyBattery
+        //Go to EmptyBattery with no screen transition
+        application().gotoEmptyBatteryScreenNoTransition();
     
     }
 }
