@@ -36,8 +36,8 @@
           {
             "Type": "CustomContainerInstance",
             "Name": "sdCardContainer",
-            "X": 336,
-            "Y": 262,
+            "X": 338,
+            "Y": 255,
             "Width": 60,
             "Height": 15,
             "CustomContainerDefinitionName": "SdCardContainer"
@@ -45,9 +45,9 @@
           {
             "Type": "CustomContainerInstance",
             "Name": "voltageContainer",
-            "X": 336,
+            "X": 338,
             "Y": 224,
-            "Width": 64,
+            "Width": 58,
             "Height": 31,
             "CustomContainerDefinitionName": "VoltageContainer"
           },
@@ -443,14 +443,14 @@
       },
       {
         "Name": "VoltageContainer",
-        "Width": 64,
+        "Width": 60,
         "Height": 31,
         "Components": [
           {
             "Type": "TextArea",
             "Name": "valueTextArea",
             "Y": 13,
-            "Width": 38,
+            "Width": 36,
             "Height": 13,
             "TextId": "__SingleUse_94JU",
             "TextRotation": "0",
@@ -481,7 +481,7 @@
           {
             "Type": "Image",
             "Name": "battLevel4Image",
-            "X": 40,
+            "X": 38,
             "Width": 20,
             "Height": 31,
             "RelativeFilename": "batt4-20-b.png"

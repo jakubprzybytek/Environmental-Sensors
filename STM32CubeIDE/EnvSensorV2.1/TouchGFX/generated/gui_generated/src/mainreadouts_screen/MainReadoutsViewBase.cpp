@@ -20,10 +20,10 @@ MainReadoutsViewBase::MainReadoutsViewBase()
     bottomButtons.setXY(6, 287);
     add(bottomButtons);
 
-    sdCardContainer.setXY(336, 262);
+    sdCardContainer.setXY(338, 255);
     add(sdCardContainer);
 
-    voltageContainer.setXY(336, 224);
+    voltageContainer.setXY(338, 224);
     add(voltageContainer);
 
     particlesContainer.setXY(100, 225);

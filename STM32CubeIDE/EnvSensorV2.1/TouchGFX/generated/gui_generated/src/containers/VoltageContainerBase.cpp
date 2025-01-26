@@ -8,9 +8,9 @@
 
 VoltageContainerBase::VoltageContainerBase()
 {
-    setWidth(64);
+    setWidth(60);
     setHeight(31);
-    valueTextArea.setPosition(0, 13, 38, 13);
+    valueTextArea.setPosition(0, 13, 36, 13);
     valueTextArea.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     valueTextArea.setLinespacing(0);
     Unicode::snprintf(valueTextAreaBuffer, VALUETEXTAREA_SIZE, "%s", touchgfx::TypedText(T___SINGLEUSE_IXTO).getText());
@@ -31,7 +31,7 @@ VoltageContainerBase::VoltageContainerBase()
     labelTextArea.setTypedText(touchgfx::TypedText(T___SINGLEUSE_S6EA));
     add(labelTextArea);
 
-    battLevel4Image.setXY(40, 0);
+    battLevel4Image.setXY(38, 0);
     battLevel4Image.setBitmap(touchgfx::Bitmap(BITMAP_BATT4_20_B_ID));
     add(battLevel4Image);
 

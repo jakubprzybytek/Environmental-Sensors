@@ -305,7 +305,7 @@
         <Translation Language="GB">Humidity</Translation>
       </Text>
       <Text Id="__SingleUse_94JU" Alignment="Left" TypographyId="Small">
-        <Translation Language="GB">&lt;value&gt;</Translation>
+        <Translation Language="GB">&lt;value&gt; V</Translation>
       </Text>
       <Text Id="__SingleUse_IXTO" Alignment="Left" TypographyId="Small">
         <Translation Language="GB">N/A</Translation>

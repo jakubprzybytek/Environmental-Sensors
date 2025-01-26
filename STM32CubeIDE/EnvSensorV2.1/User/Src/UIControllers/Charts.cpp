@@ -38,6 +38,12 @@ void Charts::loadChartData() {
 //		appState.getChartData().humiditySeries[i].max = i % 10 + 1;
 //	}
 
+//	if (appState.getCurrentTimeSpan() == TimeSpan::Hour) {
+//		for (uint8_t i = 0; i < ChartData::DATA_SERIES_LENGTH; i++) {
+//			appState.getChartData().valid[i] = false;
+//		}
+//	}
+
 #ifdef APPLICATION_CONTROLLER_INFO
 	uint32_t end = HAL_GetTick();
 

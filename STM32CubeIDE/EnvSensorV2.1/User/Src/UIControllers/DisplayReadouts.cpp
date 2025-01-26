@@ -23,8 +23,7 @@ extern Settings settings;
 extern EmptyBattery emptyBattery;
 
 void DisplayReadouts::onEnter() {
-//	appState.setButtonLabels("Refresh", "Burst", "History", "Settings");
-	appState.setButtonLabels("Refresh", "Burst", "stop", "start");
+	appState.setButtonLabels("Refresh", "Burst", "History", "Settings");
 
 	TOUCHGFX_GO_TO_READOUT_SCREEN();
 	TRIGGER_TOUCHGFX_REFRESH();
@@ -45,13 +44,9 @@ Controller* DisplayReadouts::proceed() {
 			break;
 
 		case Switch3Pressed:
-			SensorsController::stopSensors();
-			break;
-//			return &charts;
+			return &charts;
 
 		case Switch4Pressed:
-//			SensorsController::resumeSensors();
-//			break;
 			return &settings;
 
 		case SensorsRoutineFinished:

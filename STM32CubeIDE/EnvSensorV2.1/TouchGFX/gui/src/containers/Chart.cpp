@@ -225,6 +225,10 @@ void Chart::setDataSeries(DataPoint (&dataSeries)[ChartData::DATA_SERIES_LENGTH]
 
 		setupYAxis(dataSeries, valid, scale);
 
+		if (!barChart.isVisible()) {
+			barChart.setVisible(true);
+		}
+
 		barChart.setDataSeries(dataSeries, valid, scale);
 		barChart.invalidate();
 
@@ -234,6 +238,11 @@ void Chart::setDataSeries(DataPoint (&dataSeries)[ChartData::DATA_SERIES_LENGTH]
 		}
 
 	} else {
+		if (barChart.isVisible()) {
+			barChart.setVisible(false);
+			barChart.invalidate();
+		}
+
 		if (!noDataTextArea.isVisible()) {
 			noDataTextArea.setVisible(true);
 			noDataTextArea.invalidate();
