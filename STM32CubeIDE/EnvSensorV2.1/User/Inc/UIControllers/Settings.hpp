@@ -11,16 +11,15 @@
 #include "cmsis_os.h"
 
 #include <UIControllers/AppState.hpp>
-#include <UIControllers/Controller.hpp>
-
 #include <Time/RtcUtils.hpp>
+#include <UIControllers/UIController.hpp>
 
-class Settings: public virtual Controller {
+class Settings: public virtual UIController {
 
 public:
 	void onEnter();
 
-	Controller* proceed();
+	UIController* proceed();
 
 private:
 	void modifyField(DateTime &dateTime, SettingsField field, int8_t delta);

@@ -112,7 +112,7 @@ void Settings::normalize(DateTime &dateTime, SettingsField field) {
 	}
 }
 
-Controller* Settings::proceed() {
+UIController* Settings::proceed() {
 	resetScreenInactiveTimer();
 
 	SettingsField currentField = Year;

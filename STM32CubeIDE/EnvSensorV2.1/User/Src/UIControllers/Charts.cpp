@@ -106,7 +106,7 @@ void Charts::onEnter() {
 	TRIGGER_TOUCHGFX_REFRESH();
 }
 
-Controller* Charts::proceed() {
+UIController* Charts::proceed() {
 	resetScreenInactiveTimer();
 
 	while (true) {

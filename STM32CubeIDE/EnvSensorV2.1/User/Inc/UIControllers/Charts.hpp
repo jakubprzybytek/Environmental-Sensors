@@ -8,11 +8,11 @@
 #ifndef INC_UICONTROLLERS_CHARTS_HPP_
 #define INC_UICONTROLLERS_CHARTS_HPP_
 
-#include <UIControllers/Controller.hpp>
+#include <UIControllers/UIController.hpp>
 #include "cmsis_os.h"
 
 
-class Charts: public virtual Controller {
+class Charts: public virtual UIController {
 
 private:
 	void loadChartData();
@@ -24,7 +24,7 @@ private:
 public:
 	void onEnter();
 
-	Controller* proceed();
+	UIController* proceed();
 };
 
 #endif /* INC_UICONTROLLERS_CHARTS_HPP_ */

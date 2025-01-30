@@ -9,14 +9,13 @@
 
 #include <TouchGFX.hpp>
 
-#include <UIControllers/Controller.hpp>
-
 #include <Display/DisplayCommands.hpp>
 #include <UIControllers/AppState.hpp>
 #include <UIControllers/Charts.hpp>
 #include <UIControllers/DisplayReadouts.hpp>
 #include <UIControllers/Settings.hpp>
 #include <UIControllers/EmptyBattery.hpp>
+#include <UIControllers/UIController.hpp>
 #include <Utils/DebugLog.hpp>
 
 #define INITIAL_DELAY SECONDS(6)
@@ -42,30 +41,30 @@ Charts charts;
 Settings settings;
 EmptyBattery emptyBattery;
 
-osThreadId_t Controller::mainControllerThreadHandle;
+osThreadId_t UIController::mainControllerThreadHandle;
 
-osTimerId Controller::delayedScreenRefreshTimerId;
-osTimerId Controller::screenInactiveTimerId;
+osTimerId UIController::delayedScreenRefreshTimerId;
+osTimerId UIController::screenInactiveTimerId;
 
-Controller *Controller::currentController;
+UIController *UIController::currentController;
 
-Switch Controller::lastPressed;
+Switch UIController::lastPressed;
 
-void Controller::start() {
+void UIController::start() {
 	currentController = &displayReadouts;
 //	currentController = &charts;
 
 	const osTimerAttr_t delayedScreenRefreshTimerAttributes = { .name = "Delayed screen refresh" };
-	delayedScreenRefreshTimerId = osTimerNew(&Controller::handleRefreshScreen, osTimerOnce, NULL, &delayedScreenRefreshTimerAttributes);
+	delayedScreenRefreshTimerId = osTimerNew(&UIController::handleRefreshScreen, osTimerOnce, NULL, &delayedScreenRefreshTimerAttributes);
 
 	const osTimerAttr_t screenInactiveTimerAttributes = { .name = "Screen inactive timer" };
-	screenInactiveTimerId = osTimerNew(&Controller::handleScreenInactiveTimer, osTimerOnce, NULL, &screenInactiveTimerAttributes);
+	screenInactiveTimerId = osTimerNew(&UIController::handleScreenInactiveTimer, osTimerOnce, NULL, &screenInactiveTimerAttributes);
 
-	Controller::mainThreadStart();
+	UIController::mainThreadStart();
 }
 
-void Controller::mainThreadStart() {
-	// @formatter:off
+void UIController::mainThreadStart() {
+// @formatter:off
 	const osThreadAttr_t controllerThreadaAttributes = {
 		.name = "controller-th",
 		.cb_mem = &mainControllerThreadControlBlock,
@@ -74,23 +73,26 @@ void Controller::mainThreadStart() {
 		.stack_size = sizeof(mainControllerThreadBuffer),
 		.priority = (osPriority_t) osPriorityNormal
 	};
-																		// @formatter:on
+// @formatter:on
 	mainControllerThreadHandle = osThreadNew(mainThread, NULL, &controllerThreadaAttributes);
 }
 
-void Controller::mainThread(void *pvParameters) {
+void UIController::mainThread(void *pvParameters) {
 	DisplayCommands::submitDisplayClear();
-
-	appState.setLedLabels("CPU", "SD/D", "Burst", "Hbeat");
 
 	osDelay(INITIAL_DELAY / portTICK_RATE_MS);
 
-	TRIGGER_TOUCHGFX_REFRESH();
+	uint32_t flag = osThreadFlagsWait(CONTROLLER_THREAD_BATTERY_DRAINED_FLAG, osFlagsWaitAny, 0);
+	if (flag == CONTROLLER_THREAD_BATTERY_DRAINED_FLAG) {
+		currentController = &emptyBattery;
+	}
+
+//	TRIGGER_TOUCHGFX_REFRESH();
 
 	while (true) {
 		currentController->onEnter();
 
-		Controller *newController = currentController->proceed();
+		UIController *newController = currentController->proceed();
 
 		currentController->stopDelayedScreenRefresh();
 		currentController->onExit();
@@ -105,48 +107,48 @@ void Controller::mainThread(void *pvParameters) {
 	osThreadExit();
 }
 
-void Controller::resetDelayedScreenRefresh() {
+void UIController::resetDelayedScreenRefresh() {
 	osTimerStart(delayedScreenRefreshTimerId, REFRESH_DELAY / portTICK_RATE_MS);
 }
 
-void Controller::stopDelayedScreenRefresh() {
+void UIController::stopDelayedScreenRefresh() {
 	osTimerStop(delayedScreenRefreshTimerId);
 }
 
-void Controller::resetScreenInactiveTimer() {
+void UIController::resetScreenInactiveTimer() {
 	osTimerStart(screenInactiveTimerId, SCREEN_INACTIVE_DELAY / portTICK_RATE_MS);
 }
 
-void Controller::stopScreenInactiveTimer() {
+void UIController::stopScreenInactiveTimer() {
 	osTimerStop(screenInactiveTimerId);
 }
 
-void Controller::handleSwitchPressedInterrupt(Switch switchPressed) {
+void UIController::handleSwitchPressedInterrupt(Switch switchPressed) {
 	lastPressed = switchPressed;
 	osThreadFlagsSet(mainControllerThreadHandle, CONTROLLER_THREAD_SWITCH_PRESSED_FLAG);
 }
 
-void Controller::handleSensorsRoutineFinished() {
+void UIController::handleSensorsRoutineFinished() {
 	osThreadFlagsSet(mainControllerThreadHandle, CONTROLLER_THREAD_SENSORS_ROUTINE_FINISHED_FLAG);
 }
 
-void Controller::handleBatteryDrained() {
+void UIController::handleBatteryDrained() {
 	osThreadFlagsSet(mainControllerThreadHandle, CONTROLLER_THREAD_BATTERY_DRAINED_FLAG);
 }
 
-void Controller::handleBatteryGood() {
+void UIController::handleBatteryGood() {
 	osThreadFlagsSet(mainControllerThreadHandle, CONTROLLER_THREAD_BATTERY_GOOD_FLAG);
 }
 
-void Controller::handleRefreshScreen(void *attr) {
+void UIController::handleRefreshScreen(void *attr) {
 	osThreadFlagsSet(mainControllerThreadHandle, CONTROLLER_THREAD_DELAYED_SCREEN_REFRESH_FLAG);
 }
 
-void Controller::handleScreenInactiveTimer(void *attr) {
+void UIController::handleScreenInactiveTimer(void *attr) {
 	osThreadFlagsSet(mainControllerThreadHandle, CONTROLLER_THREAD_SCREEN_INACTIVE_TIMER_FLAG);
 }
 
-ControllerEvent Controller::waitForEvent() {
+ControllerEvent UIController::waitForEvent() {
 	uint32_t flag = osThreadFlagsWait(
 	CONTROLLER_THREAD_SWITCH_PRESSED_FLAG |
 	CONTROLLER_THREAD_SENSORS_ROUTINE_FINISHED_FLAG |
@@ -189,14 +191,14 @@ ControllerEvent Controller::waitForEvent() {
 	return Unknown;
 }
 
-void Controller::onEnter() {
+void UIController::onEnter() {
 
 }
 
-Controller* Controller::proceed() {
+UIController* UIController::proceed() {
 	return &displayReadouts;
 }
 
-void Controller::onExit() {
+void UIController::onExit() {
 
 }

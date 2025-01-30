@@ -24,12 +24,13 @@ extern EmptyBattery emptyBattery;
 
 void DisplayReadouts::onEnter() {
 	appState.setButtonLabels("Refresh", "Burst", "History", "Settings");
+	appState.setLedLabels("CPU", "SD/D", "Burst", "Hbeat");
 
 	TOUCHGFX_GO_TO_READOUT_SCREEN();
 	TRIGGER_TOUCHGFX_REFRESH();
 }
 
-Controller* DisplayReadouts::proceed() {
+UIController* DisplayReadouts::proceed() {
 	while (true) {
 		ControllerEvent event = waitForEvent();
 

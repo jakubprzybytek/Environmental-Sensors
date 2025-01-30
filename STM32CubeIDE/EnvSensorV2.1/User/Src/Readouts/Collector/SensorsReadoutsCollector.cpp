@@ -8,8 +8,8 @@
 #include <Readouts/ReadoutsState.hpp>
 
 #include <Sensors/SensorsController.hpp>
-#include <UIControllers/Controller.hpp>
 #include <Logger/LoggerThread.hpp>
+#include <UIControllers/UIController.hpp>
 
 #include <Utils/ftoa.h>
 
@@ -152,7 +152,7 @@ void SensorsReadoutsCollector::checkBatteryState(AppState &appState, float batte
 		if (!LoggerThread::isRunning()) {
 			LoggerThread::start();
 		}
-		Controller::handleBatteryGood();
+		UIController::handleBatteryGood();
 	}
 
 	if (previousBatteryLevel != Empty && newBatteryLevel == Empty) {
@@ -160,6 +160,6 @@ void SensorsReadoutsCollector::checkBatteryState(AppState &appState, float batte
 		if (LoggerThread::isRunning()) {
 			LoggerThread::terminate();
 		}
-		Controller::handleBatteryDrained();
+		UIController::handleBatteryDrained();
 	}
 }

@@ -23,7 +23,7 @@ void EmptyBattery::onEnter() {
 	TRIGGER_TOUCHGFX_REFRESH();
 }
 
-Controller* EmptyBattery::proceed() {
+UIController* EmptyBattery::proceed() {
 	while (true) {
 		ControllerEvent event = waitForEvent();
 

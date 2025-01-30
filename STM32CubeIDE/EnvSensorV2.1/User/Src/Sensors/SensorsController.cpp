@@ -17,8 +17,8 @@
 #include <Sensors/TempPressureSensor.hpp>
 #include <Sensors/CO2Sensor.hpp>
 #include <Sensors/ParticlesSensor.hpp>
+#include <UIControllers/UIController.hpp>
 
-#include <UIControllers/Controller.hpp>
 #include <Utils/DebugLog.hpp>
 
 #define STOP_SENSORS_FLAG 0x01
@@ -108,7 +108,7 @@ SensorsControllerState SensorsController::enterState(SensorsControllerState curr
 			return SensorsControllerState::OnlyVoltage;
 		}
 
-		Controller::handleSensorsRoutineFinished();
+		UIController::handleSensorsRoutineFinished();
 
 		return SensorsControllerState::MainSensors;
 	}

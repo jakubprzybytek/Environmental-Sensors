@@ -11,15 +11,15 @@
 #include "cmsis_os.h"
 
 #include <UIControllers/AppState.hpp>
-#include <UIControllers/Controller.hpp>
+#include <UIControllers/UIController.hpp>
 
 
-class EmptyBattery: public virtual Controller {
+class EmptyBattery: public virtual UIController {
 
 public:
 	void onEnter();
 
-	Controller* proceed();
+	UIController* proceed();
 };
 
 #endif /* INC_UICONTROLLERS_SETTINGS_HPP_ */

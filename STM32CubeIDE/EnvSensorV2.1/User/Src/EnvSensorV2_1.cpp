@@ -16,7 +16,7 @@
 #include <Misc/BlinkingLeds.hpp>
 
 #include <Time/RtcUtils.hpp>
-#include <UIControllers/Controller.hpp>
+#include <UIControllers/UIController.hpp>
 #include <Utils/DebugLog.hpp>
 
 void EnvSensorV2_1_Init() {
@@ -37,8 +37,6 @@ void EnvSensorV2_1_Init() {
 //	DateTime now(24, 10, 24, 20, 01, 30);
 //	RtcUtils::updateDateTime(now);
 
-//	SdCardInspector::init();
-
 	BlinkingLeds::start();
 
 	DebugLog::start();
@@ -51,7 +49,7 @@ void EnvSensorV2_1_Init() {
 
 //	LoggerThread::start();
 
-	Controller::start();
+	UIController::start();
 }
 
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin) {
@@ -60,12 +58,12 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin) {
 	} else if (GPIO_Pin == SCD30_READY_Pin) {
 		CO2Sensor::sensorReadyInterruptHandler();
 	} else if (GPIO_Pin == SWITCH_1_Pin) {
-		Controller::handleSwitchPressedInterrupt(Switch1);
+		UIController::handleSwitchPressedInterrupt(Switch1);
 	} else if (GPIO_Pin == SWITCH_2_Pin) {
-		Controller::handleSwitchPressedInterrupt(Switch2);
+		UIController::handleSwitchPressedInterrupt(Switch2);
 	} else if (GPIO_Pin == SWITCH_3_Pin) {
-		Controller::handleSwitchPressedInterrupt(Switch3);
+		UIController::handleSwitchPressedInterrupt(Switch3);
 	} else if (GPIO_Pin == SWITCH_4_Pin) {
-		Controller::handleSwitchPressedInterrupt(Switch4);
+		UIController::handleSwitchPressedInterrupt(Switch4);
 	}
 }

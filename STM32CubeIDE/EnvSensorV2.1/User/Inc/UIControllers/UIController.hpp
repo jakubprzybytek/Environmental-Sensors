@@ -5,8 +5,8 @@
  *      Author: jakub
  */
 
-#ifndef INC_UICONTROLLERS_CONTROLLER_HPP_
-#define INC_UICONTROLLERS_CONTROLLER_HPP_
+#ifndef INC_UICONTROLLERS_UICONTROLLER_HPP_
+#define INC_UICONTROLLERS_UICONTROLLER_HPP_
 
 #include "stm32l4xx_hal.h"
 #include "cmsis_os.h"
@@ -19,11 +19,11 @@ typedef enum {
 	Unknown, Switch1Pressed, Switch2Pressed, Switch3Pressed, Switch4Pressed, SensorsRoutineFinished, ScreenInactiveTimer, BatteryDrained, BatteryGood
 } ControllerEvent;
 
-class Controller {
+class UIController {
 
 private:
 
-	static Controller *currentController;
+	static UIController *currentController;
 
 	static Switch lastPressed;
 
@@ -67,9 +67,9 @@ public:
 
 	virtual void onEnter();
 
-	virtual Controller* proceed();
+	virtual UIController* proceed();
 
 	virtual void onExit();
 };
 
-#endif /* INC_UICONTROLLERS_CONTROLLER_HPP_ */
+#endif /* INC_UICONTROLLERS_UICONTROLLER_HPP_ */

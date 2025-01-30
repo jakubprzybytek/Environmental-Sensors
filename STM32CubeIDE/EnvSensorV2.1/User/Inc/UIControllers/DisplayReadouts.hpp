@@ -8,16 +8,16 @@
 #ifndef INC_UICONTROLLERS_DISPLAYREADOUTS_HPP_
 #define INC_UICONTROLLERS_DISPLAYREADOUTS_HPP_
 
-#include <UIControllers/Controller.hpp>
+#include <UIControllers/UIController.hpp>
 #include "cmsis_os.h"
 
 
-class DisplayReadouts: public virtual Controller {
+class DisplayReadouts: public virtual UIController {
 
 public:
 	void onEnter();
 
-	Controller* proceed();
+	UIController* proceed();
 
 	void onSensorsRoutineFinished();
 };
