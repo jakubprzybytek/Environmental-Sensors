@@ -87,8 +87,6 @@ void UIController::mainThread(void *pvParameters) {
 		currentController = &emptyBattery;
 	}
 
-//	TRIGGER_TOUCHGFX_REFRESH();
-
 	while (true) {
 		currentController->onEnter();
 
@@ -99,7 +97,7 @@ void UIController::mainThread(void *pvParameters) {
 
 		currentController = newController;
 
-#ifdef APPLICATION_CONTROLLER_TRACE
+#ifdef UI_CONTROLLER_TRACE
 		DebugLog::logWithStackHighWaterMark("Ctrl - stack: ");
 #endif
 	}

@@ -48,18 +48,24 @@ void SensorsController::startThread() {
 	  .priority = (osPriority_t) osPriorityLow,
 	};
 // @formatter:on
-	sensorsControllerThreadHandle = osThreadNew(thread, NULL, &sensorsControllerThreadAttributes);
+	sensorsControllerThreadHandle = osThreadNew(thread, NULL,
+			&sensorsControllerThreadAttributes);
 }
 
-SensorsControllerState SensorsController::enterState(SensorsControllerState currentState) {
-	osThreadFlagsClear(STOP_SENSORS_FLAG | RESUME_SENSORS_FLAG | TRIGGER_BURST_MEASUREMENTS_FLAG);
+SensorsControllerState SensorsController::enterState(
+		SensorsControllerState currentState) {
+	osThreadFlagsClear(
+			STOP_SENSORS_FLAG | RESUME_SENSORS_FLAG
+					| TRIGGER_BURST_MEASUREMENTS_FLAG);
 
 	uint32_t flag;
 
 	switch (currentState) {
 
 	case SensorsControllerState::OnlyVoltage:
-		DebugLog::log("SensCtrl: OnlyV");
+#ifdef SENSORS_CONTROLLER_INFO
+		DebugLog::log("SensCtrl: Only Volt");
+#endif
 
 		if (TempPressureSensor::isRunning()) {
 			TempPressureSensor::terminate();
@@ -76,7 +82,9 @@ SensorsControllerState SensorsController::enterState(SensorsControllerState curr
 		return SensorsControllerState::MainSensors;
 
 	case SensorsControllerState::MainSensors:
-		DebugLog::log("SensCtrl: MainS");
+#ifdef SENSORS_CONTROLLER_INFO
+		DebugLog::log("SensCtrl: Main Sens");
+#endif
 
 		if (ParticlesSensor::isRunning()) {
 			ParticlesSensor::terminate();
@@ -89,7 +97,9 @@ SensorsControllerState SensorsController::enterState(SensorsControllerState curr
 			CO2Sensor::start();
 		}
 
-		flag = osThreadFlagsWait(STOP_SENSORS_FLAG | TRIGGER_BURST_MEASUREMENTS_FLAG, osFlagsWaitAny, NORMAL_MEASUREMENTS_PERIOD / portTICK_RATE_MS);
+		flag = osThreadFlagsWait(
+				STOP_SENSORS_FLAG | TRIGGER_BURST_MEASUREMENTS_FLAG,
+				osFlagsWaitAny, NORMAL_MEASUREMENTS_PERIOD / portTICK_RATE_MS);
 
 		if (flag == STOP_SENSORS_FLAG) {
 			return SensorsControllerState::OnlyVoltage;
@@ -98,11 +108,14 @@ SensorsControllerState SensorsController::enterState(SensorsControllerState curr
 		return SensorsControllerState::AllSensors;
 
 	case SensorsControllerState::AllSensors:
-		DebugLog::log("SensCtrl: AllS");
+#ifdef SENSORS_CONTROLLER_INFO
+		DebugLog::log("SensCtrl: All Sens");
+#endif
 
 		ParticlesSensor::start();
 
-		flag = osThreadFlagsWait(STOP_SENSORS_FLAG, osFlagsWaitAny, BURST_MEASUREMENTS_PERIOD / portTICK_RATE_MS);
+		flag = osThreadFlagsWait(STOP_SENSORS_FLAG, osFlagsWaitAny,
+				BURST_MEASUREMENTS_PERIOD / portTICK_RATE_MS);
 
 		if (flag == STOP_SENSORS_FLAG) {
 			return SensorsControllerState::OnlyVoltage;
@@ -113,6 +126,7 @@ SensorsControllerState SensorsController::enterState(SensorsControllerState curr
 		return SensorsControllerState::MainSensors;
 	}
 
+	// should never reach here
 	return SensorsControllerState::OnlyVoltage;
 }
 
@@ -124,6 +138,9 @@ void SensorsController::thread(void *pvParameters) {
 	SensorsControllerState currentState = SensorsControllerState::OnlyVoltage;
 	for (;;) {
 		currentState = enterState(currentState);
+#ifdef SENSORS_CONTROLLER_TRACE
+		DebugLog::logWithStackHighWaterMark("SensCtrl - stack: ");
+#endif
 	}
 
 	osThreadExit();
@@ -138,5 +155,6 @@ void SensorsController::resumeSensors() {
 }
 
 void SensorsController::triggerBurstMeasurements() {
-	osThreadFlagsSet(sensorsControllerThreadHandle, TRIGGER_BURST_MEASUREMENTS_FLAG);
+	osThreadFlagsSet(sensorsControllerThreadHandle,
+			TRIGGER_BURST_MEASUREMENTS_FLAG);
 }
