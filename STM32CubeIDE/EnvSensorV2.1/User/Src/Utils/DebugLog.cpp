@@ -90,7 +90,8 @@ void DebugLog::thread(void *pvParameters) {
 
 	smallScreen.init();
 	smallScreen.clear();
-	smallScreen.appendLine("Hello world (21chars)");
+	smallScreen.appendLine("EnvSensor 2.1 21chars");
+//	smallScreen.appendLine("Hello world (21chars)");
 
 	I2C1_RELEASE
 

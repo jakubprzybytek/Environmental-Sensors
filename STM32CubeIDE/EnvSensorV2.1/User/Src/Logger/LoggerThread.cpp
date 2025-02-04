@@ -2,6 +2,7 @@
 
 #include <Logger/LoggerThread.hpp>
 
+#include <EnvSensorConfig.hpp>
 #include <Logger/SD/SdCard.hpp>
 #include <Logger/SD/SpeedTest.hpp>
 #include <UIControllers/AppState.hpp>
