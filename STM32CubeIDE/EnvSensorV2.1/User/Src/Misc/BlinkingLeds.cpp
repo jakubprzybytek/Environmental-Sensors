@@ -12,7 +12,10 @@
 
 #include <Misc/BlinkingLeds.hpp>
 
-uint32_t ledBlinkBuffer[ 128 ];
+#define ON_DELAY 50
+#define OFF_PERIOD 5000
+
+uint32_t ledBlinkBuffer[128];
 StaticTask_t ledBlinkControlBlock;
 
 void BlinkingLeds::start() {
@@ -20,6 +23,7 @@ void BlinkingLeds::start() {
 }
 
 void BlinkingLeds::startThread() {
+// @formatter:off
 	const osThreadAttr_t ledBlinkThreadAttributes = {
 	  .name = "led-blink-th",
 	  .cb_mem = &ledBlinkControlBlock,
@@ -28,25 +32,20 @@ void BlinkingLeds::startThread() {
 	  .stack_size = sizeof(ledBlinkBuffer),
 	  .priority = (osPriority_t) osPriorityLow,
 	};
+// @formatter:on
 	osThreadNew(thread, NULL, &ledBlinkThreadAttributes);
 }
 
 void BlinkingLeds::thread(void *pvParameters) {
-	const uint32_t delay = 100;
+	uint32_t wakeTime = osKernelGetTickCount();
 
 	for (;;) {
-//		HAL_GPIO_WritePin(LED_1_GPIO_Port, LED_1_Pin, GPIO_PIN_SET);
-//		osDelay( delay / portTICK_RATE_MS );
-//		HAL_GPIO_WritePin(LED_1_GPIO_Port, LED_1_Pin, GPIO_PIN_RESET);
-//		HAL_GPIO_WritePin(LED_2_GPIO_Port, LED_2_Pin, GPIO_PIN_SET);
-//		osDelay( delay / portTICK_RATE_MS );
-//		HAL_GPIO_WritePin(LED_2_GPIO_Port, LED_2_Pin, GPIO_PIN_RESET);
-//		HAL_GPIO_WritePin(LED_3_GPIO_Port, LED_3_Pin, GPIO_PIN_SET);
-		osDelay( delay / portTICK_RATE_MS );
-//		HAL_GPIO_WritePin(LED_3_GPIO_Port, LED_3_Pin, GPIO_PIN_RESET);
 		HAL_GPIO_WritePin(LED_4_GPIO_Port, LED_4_Pin, GPIO_PIN_SET);
-		osDelay( delay / portTICK_RATE_MS );
+		osDelay(ON_DELAY / portTICK_RATE_MS);
 		HAL_GPIO_WritePin(LED_4_GPIO_Port, LED_4_Pin, GPIO_PIN_RESET);
+
+		wakeTime += OFF_PERIOD / portTICK_RATE_MS;
+		osDelayUntil(wakeTime);
 	}
 
 	osThreadExit();
